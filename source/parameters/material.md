@@ -14,7 +14,7 @@ ElementP:
 - A:         # [int]    The mass number (equals Z+N)
 - N:         # [int]    The neutron number
 - m:         # [g/mol]  The atomic mass
-```{code} yaml
+```
 
 and compunds by
 
@@ -24,7 +24,7 @@ CompundP:
 - density:   # [g/cm^3] The density of the material
 - elements:  # List of MaterialP
 - ratio:    # List of ratios of the elements
-```{code} yaml
+```
 
 ### Examples
 `MaterialP: "G4_Cu"` or `MaterialP: "G4_STAINLESS-STEEL"` or define a new material.
@@ -37,7 +37,7 @@ MaterialP:
 - Z: 1
 - A: 1
 - m: 2.01
-```{code} yaml
+```
 and deuterated polyethylene (C2H4) can be defined based on the previous definition
 ```{code} yaml
 MaterialP:
@@ -49,6 +49,6 @@ MaterialP:
 - ratio:
   - 2
   - 4
-```{code} yaml
+```
 
 
