@@ -330,27 +330,6 @@ Element parameter groups associated with this element kind are:
 
 
 %---------------------------------------------------------------------------------------------------
-(s:foil)=
-### Foil Element
-
-A `Foil` element represents a planar sheet of material which can strip electrons from a particle. In
-conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
-Material that can strip electrons from a particle
-will also cause energy loss and diffusion.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**FoilP**](#s:foil.params): Foil parameters.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------
 (s:fork)=
 ### Fork Element
 
@@ -486,6 +465,24 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:matter)=
+## Matter Element
+
+Materials which fully occupy the beamline, like targets, (stripper-)foils, vacuum windows, gas cells or degraders.
+This element can cause energy-loss, angualar and energy straggling, as well as change of charge state or particle type.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters of the outer (blocking) aperture.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ReferenceP**](#s:ref.params): Reference parameters.
+- [**ReferenceChangeP**](#s:refchange.params): Reference energy change and/or reference time correction.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**MatterP**](#s:matter.params): Matter parameters.
 
 
 %---------------------------------------------------------------------------------------------------
