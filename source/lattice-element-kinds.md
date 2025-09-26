@@ -484,7 +484,6 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 - [**MatterP**](#s:matter.params): Matter parameters.
 
-
 %---------------------------------------------------------------------------------------------------
 (s:multipole)=
 ### Multipole Element
