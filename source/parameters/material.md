@@ -1,8 +1,8 @@
 (s:material.params)=
 ## MaterialP:  Definition of materials
 
-The definition of materials is inspired by Geant4's material handling. One can either use the name, which is the symbol of an element (`"G4_Cu"`, `"G4_H"`, ...) or compound (`"G4_STAINLESS-STEEL"`).
-In the future all elements and materials in the [G4 Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html) will be supported.
+The definition of materials is inspired by Geant4's material handling. One can either use the name, which is the symbol of an element (`"Cu"`, `"H"`, ...) or compound (`"G4_STAINLESS-STEEL"`).
+In the future all elements and materials in the [G4 Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html) will be supported, without the `G4_`-prefix for elements.
 
 Alternatively custom elements can be defined by
 
@@ -16,22 +16,27 @@ ElementP:
 - m:         # [u]      The atomic mass
 ```
 
-and compunds by
+and compounds by
 
 ```{code} yaml
-CompundP:
-- name:      # [string] The name of the material
-- density:   # [kg/cm^3] The density of the material
-- elements:  # List of MaterialP
-- ratio:    # List of ratios of the elements
+CompoundP:
+- name:       # [string] The name of the material
+- density:    # [kg/cm^3] The density of the material
+- elements:   # List of MaterialP or CompoundP of which the compound consists
+- ratio:      # List of ratios of the elements
+- mass_ratio: # List of mass-ratios of the elements
 ```
 
+`ratio` describes the ratio in terms of atom/molecule count, while `mass_ratio` describes it int terms of mass fractions.
+If density is not given it will be inferred form the densities and mass fractions of the elements.
+
+
 ### Examples
-`MaterialP: "G4_Cu"` or `MaterialP: "G4_STAINLESS-STEEL"` or define a new material.
+`MaterialP: "Cu"` or `MaterialP: "G4_STAINLESS-STEEL"` or define a new material.
 
 Liquid deuterium can be defined with the `ElementP` parameters:
 ```{code} yaml
-MaterialP:
+ElementP:
 - name: "Deuterium(l)"
 - density: 160
 - Z: 1
@@ -40,11 +45,11 @@ MaterialP:
 ```
 and deuterated polyethylene (C2H4) can be defined based on the previous definition
 ```{code} yaml
-MaterialP:
+CompoundP:
 - name: "deutPE"
 - density: 1050
 - elements:
-  - "G4_C"
+  - "C"
   - "Deuterium(l)"
 - ratio:
   - 2
