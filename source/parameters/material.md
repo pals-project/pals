@@ -1,6 +1,12 @@
 (s:material.params)=
 ## MaterialP:  Definition of materials
 
+```{code} yaml
+MaterialP:
+- state:             # ["solid", "liquid", "gas"]
+- material:          # [CompoundP,ElementP] definiton of the material in terms of compounds or elements.
+```
+
 The definition of materials is inspired by Geant4's material handling. One can either use the name, which is the symbol of an element (`"Cu"`, `"H"`, ...) or compound (`"G4_STAINLESS-STEEL"`).
 In the future all elements and materials in the [G4 Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html) will be supported, without the `G4_`-prefix for elements.
 
