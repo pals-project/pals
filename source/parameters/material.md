@@ -38,7 +38,7 @@ If density is not given it will be inferred form the densities and mass fraction
 
 
 ### Examples
-`MaterialP: "Cu"` or `MaterialP: "G4_STAINLESS-STEEL"` or define a new material.
+`material: "Cu"` or `material: "G4_STAINLESS-STEEL"` or define a new material.
 
 Liquid deuterium can be defined with the `ElementP` parameters:
 ```{code} yaml
