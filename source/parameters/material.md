@@ -27,7 +27,7 @@ and compounds by
 ```{code} yaml
 CompoundP:
 - name:       # [string] The name of the material
-- density:    # [kg/cm^3] The density of the material
+- density:    # [kg/m^3] The density of the material
 - elements:   # List of MaterialP or CompoundP of which the compound consists
 - ratio:      # List of ratios of the elements
 - mass_ratio: # List of mass-ratios of the elements
