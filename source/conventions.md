@@ -109,12 +109,8 @@ lattice expansion where there are [`Fork`](#s:forking) elements and for evaluati
 expressions.
 
 The simplist form of name matching is if the string matches
-the `name` field of an element or elements. Regular expressions can be used. 
-Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
-
-The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name to the string
-using the string `">>"` as a separator. For example, `"B1>>Qaf.*"` would match
-to all elements in a branch or BeamLine named `"B1"` whose name begins with `"Qaf"`.
+the `name` field of an element or elements. 
+For example, the string `"Q1"` will match to all elements named `Q1`.
 
 Element matches may be restricted to a given element kind using the notation
 ```{code} yaml
@@ -127,15 +123,50 @@ Marker::bpm.
 ```
 This will match to all `Marker` elements whose name is four characters starting with `bpm`.
 
-If the match string ends with the character `"#"` followed by an integer `N`,
-this will match to the `N`{sup}`th` instance matched to in any `branch` or `BeamLine`.
-For example, `"Sd#3"` will match to the 3{sup}`rd` instance of all elements named
-`"Sd"`.
+The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
+followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
+that matches `"Quadrupole::Q1"`. Notice that the `N`{sup}`th` instance selection is applied last. 
+
+Besides the element name, any parameter in the [`MetaP`](#s:meta.params) parameter group can
+be matched to using the syntax `"{param-name}::{name-to-match}"`. For example, `"alias::black"`
+would match to any element whose `alias` parameter is set to `black`.
+
+In the discussion below, all of the above constructs will be called an "element name".
+
+The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name 
+(henceforth just referred to as a branch name) to the string.
+using the string `">>"` as a separator. For example, `"B1>>Sextupole::Saf"` would match
+to all Sextupole elements in a branch or BeamLine named `"B1"` whose name was `"Saf"`.
+This includes sublines of BeamLines. Thus if `B1` is a BeamLine that contains a subline `B2` 
+that in turn contains a Sextupole element named `Saf`, the string `"B1>>Sextupole::Saf"`
+will match to this element.
 
 Lattice elements can also be referred to by the index in which they appear in a branch
-with the first element having index one, etc. Branches do not get an index since the
+with the first element having index one, etc. For example, `"B1>>7"` matches the seventh
+element in branch `B1`.
+
+Branches do not get an index since the
 PALS standard does not mandate that the branches of a lattice be stored in an array (it
 could, for example, be a linked list).
+
+If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified using the lattice
+name with `">>>"` as a separator. There are several permutations where `>>` and `>>>` are used:
+```{code} yaml
+{lattice-name}>>>{branch-name}>>{element-name>}
+{lattice-name}>>>{element-name}
+{branch-name}>>{element-name}
+```
+
+Regular expressions can be used. 
+Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
+Regex matching is applied to the lattice name, branch name, and element name separately and
+a match to the string requires all the individual names to match.
+When applying regex to a lattice name, any prefix (anything before and including a `"::"`) and
+any suffix (anything after and including a `"#"` character) is not included in the regex match.
+For example, `"B.4>>Quadrupole::Qaf.*"` would match to all Quadrupole elements in branches 
+which have three characters
+beginning in "B" and ending in "4" with the element name beginning with "Qaf". And 
+`"B.4>>Quadrupole::Qaf.*#2"` would match to the second element matched to.
 
 Elements can be matched using a range construct which has the form
 ```{code} yaml
@@ -172,6 +203,17 @@ Example:
 Marker::.* & Q1:Q2
 ```
 This will match to all `Marker` elements that are in the range from `Q1` to `Q2`.
+
+Order of presidence:
+```{code} yaml
+>>>     # Highest
+>>
+::      
+#
+:
+,
+&      # Lowest
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:parameter.matching)=
