@@ -372,9 +372,8 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:multipole)=
 ## Multipole Element
 
-Multipole element.
-
-Under Construction...
+A general multipole element.  The fields are assumed to be uniform along the longitudinal direction,
+and may contain (magnetic or electric) multipole contributions of any order.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -388,18 +387,18 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 %---------------------------------------------------------------------------------------------------
-(s:nullele)=
-## NullEle Element
+(s:placeholder)=
+## Placeholder Element
 
 Placeholder element used for bookkeeping when constructing the expanded lattice.
-This element is empty, zero length and does nothing.
+This element has zero length and does nothing.
 This element can be used as a [`base_item`](#s:placement) element for [superpositions](#s:superposition). 
 Additionally, this element can be used, for example, to denote an invalid element in the internal
 structures defined by a program.
 
-`NullEle` elements present in a lattice file will, as a part of lattice expansion, be removed.
-That is, `NullEle` elements will never be present in the final expanded lattice and
-tracking through a `NullEle` will never be needed.
+`Placeholder` elements present in a lattice file will, as a part of lattice expansion, be removed.
+That is, `Placeholder` elements will never be present in the final expanded lattice and
+tracking through a `Placeholder` will never be needed.
 
 This element does not have any associated parameter groups.
 
@@ -409,9 +408,9 @@ For other purposes, for example, to mark reference points, [Marker](#s:marker) e
 (s:octupole)=
 ## Octupole Element
 
-Octupole element.
-
-Under Construction...
+An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
+Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
+In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -424,6 +423,14 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+Example:
+```{code} yaml
+oct01w:
+  kind: Octupole
+  length: 0.4
+  MagneticMultipoleP:
+    Kn3: 1.0
+```
 %---------------------------------------------------------------------------------------------------
 (s:patch)=
 ## Patch Element
@@ -469,7 +476,8 @@ Example:
 q01w:
   kind: Quadrupole
   length: 0.6
-  Kn1: 0.37
+  MagneticMultipoleP:
+    Kn1: 0.37
 ```
 
 %---------------------------------------------------------------------------------------------------
@@ -498,7 +506,9 @@ helps focusing.
 (s:sextupole)=
 ## Sextupole Element
 
-Under Construction...
+A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
+Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
+In terms of functionality, a `sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -511,11 +521,20 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+Example:
+```{code} yaml
+s01w:
+  kind: Sextupole
+  length: 0.5
+  MagneticMultipoleP:
+    Kn2: 0.28
+```
 %---------------------------------------------------------------------------------------------------
 (s:solenoid)=
 ## Solenoid Element
 
-Under Construction...
+A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
+Additional magnetic (or electric) multipole contributions are allowed.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -529,6 +548,14 @@ Element parameter groups associated with this element kind are:
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+Example:
+```{code} yaml
+sol01w:
+  kind: Solenoid  
+  length: 3.74
+  SolenoidP:   
+    Ksol: -0.15
+```
 %---------------------------------------------------------------------------------------------------
 (s:taylor)=
 ## Taylor Element

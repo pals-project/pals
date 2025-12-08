@@ -1,8 +1,8 @@
-# For local development, from your lattice-standard directory, create the environment like this:
+# Create this environment with:
 #   conda env create -y -f conda.yaml
-#   conda activate lattice-standard
-#
-name: lattice-standard
+# To activate this environment, use:
+#   conda activate pals
+name: pals
 
 channels:
   - conda-forge

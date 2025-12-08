@@ -1,6 +1,7 @@
 # Overview
 
-The Particle Accelerator Lattice Standard (PALS) defines a standard for the sharing of lattice information to describe
+The Particle Accelerator Lattice Standard (PALS) defines a standard for the sharing of
+machine information in general and lattice information in particular for
 particle accelerators and storage rings. PALS aims to promote:
 
  - Portability between various applications and differing algorithms
@@ -27,6 +28,8 @@ lattice files that it generated.
 
 PALS is a schema that defines things like the names of various lattice element kinds, 
 how to organize lattice elements into lines which beams of particles or photons can move through, etc. 
+PALS is also being developed to describe non-lattice things like the machine control system, power supply
+connections, shielding wall geometries, etc.
 
 %---------------------------------------------------------------------------------------------------
 ## What PALS Is Not

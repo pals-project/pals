@@ -22,11 +22,11 @@ to represent rotational errors.
 
 The components of `ElectricMultipoleP` for specifying a multipolar field of order `N` is:
 ```{code} yaml
-emp1:                       # [string] user-defined name
-  kind: ElectricMultipoleP
-  tiltN: 0                  # [unitles] Tilt
-  EnN: 0                    # [unitles] Normal component 
-  EsN: 0                    # [unitles] Skew component
+  tiltN: 0                  # [Radians] Tilt
+  EnN: 0                    # [V/m^(N+1)] Normal component
+  EsN: 0                    # [V/m^(N+1)] Skew component
+  EnNL: 0                   # [V/m^N] Length integrated normal component 
+  EsNL: 0                   # [V/m^N] Length integrated skew component
 ```
 
 The field and normalized values can be given in terms of the integrated strength.
@@ -34,10 +34,13 @@ Integrated values are specified with the letter
 `L` appended at the end of the name. Example:
 ```{code} yaml
 emp1:
-  kind: ElectricMultipoleP
-  tilt7: 0.7        # [unitles] Tilt of 7th order multiple
-  En3: 27.3         # [unitles] Normal multipole component of order 3
-  En2L: 3.47e1      # [unitles] length integrated normal multipole component of order 2
+  kind: Bend
+  length = 0.86
+  ElectricMultipoleP:
+    tilt7: 0.7        # Tilt in raidians of 7th order multiple
+    En3: 27.3         # Normal multipole component of order 3 in V/m^4
+    En2L: 3.47e1      # Length integrated normal multipole component of order 2 in V/m^2
+    geometry: vertically_pure   # See below
 ```
 The length integrated values are related to the non-integrated values via
 ```{code} yaml
@@ -55,11 +58,11 @@ complicated by the curvilinear coordinate system.
 The `geometry` component switch can be used to specify how to calculate the multipole fields. 
 Possible settings for this component are:
 ```{code} yaml
-  geometry: vertically_pure    # [string] TODO: description
-  geometry: horizontally_pure  # [string] TODO: description
-  geometry: entrance_tangent   # [string] TODO: description
-  geometry: exit_tangent       # [string] TODO: description
-  geometry: chord_tangent      # [string] TODO: description
+vertically_pure
+horizontally_pure
+entrance_tangent
+exit_tangent
+chord_tangent
 ```
 The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
 multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
@@ -67,7 +70,7 @@ Similarly, the `exit_tangent` setting is used when the reference curve is the
 straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
 when the reference curve is the straight line connecting the entrance point to the
 exit point. In all these three cases, since the multipole reference curve is a straight line, 
-Eq. [](#exiey) is valid.
+Eq. [](#bbmult) is valid.
 Note that for these cases, the multipole reference curve 
 is not the same as the [`branch` reference curve](#s:coords).
 

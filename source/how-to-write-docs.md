@@ -3,15 +3,18 @@
 The documentation uses the [MyST](https://mystmd.org/) markup language and renders to 
 [Sphinx](https://www.sphinx-doc.org) as HTML, PDF or EPUB documents.
 
-In order to build the documentation locally, from your particle-accelerator-lattice-standard directory, 
-create a software environment using the commands
+To build the documentation locally, from the root directory of the repository create a conda environment with
 ```{code} bash
-conda env create -y -f conda.yaml  # This only needs to be done once.
-conda activate lattice-standard   # Do this with any new window.
+conda env create -y -f conda.yaml
 ```
+This only needs to be done once.
+To activate this environment, use
+```{code} bash
+conda activate pals
+```
+This needs to be done with any new window.
 
-
-and compile via
+Then, compile the documentation with
 
 ::::{tab-set}
 
