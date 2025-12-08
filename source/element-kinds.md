@@ -35,8 +35,9 @@ Example:
 ack1:
   kind: ACKicker
   length: 0.3
-  t_0: 0.0
-  t : 1e-8 
+  ACKickerP:
+    t_0: 0.0
+    t : 1e-8 
 
 %---------------------------------------------------------------------------------------------------
 (s:beambeam)=
@@ -58,11 +59,12 @@ Example:
 ```{code} yaml
 bb1:
   kind: BeamBeam
-  sigma_x: 0.1e-3
-  sigma_y: 0.1e-3
-  sigma_z: 5.0e-2
-  energy: 1.0e10
-  N_particle: 1.0e11
+  beambeamP:
+    sigma_x: 0.1e-3
+    sigma_y: 0.1e-3
+    sigma_z: 5.0e-2
+    energy: 1.0e10
+    N_particle: 1.0e11
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
