@@ -128,9 +128,11 @@ The `N`{sup}`th` element with a given name can be matched to by appending the ch
 followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
 that matches `"Quadrupole::Q1"`. Notice that the `N`{sup}`th` instance selection is applied last. 
 
+<!--
 Besides the element name, any parameter in the [`MetaP`](#s:meta.params) parameter group can
 be matched to using the syntax `"{param-name}::{name-to-match}"`. For example, `"alias::black"`
 would match to any element whose `alias` parameter is set to `black`.
+-->
 
 In the discussion below, all of the above constructs will be called an "element name".
 
@@ -187,7 +189,7 @@ Commas `,` can be used to form the union of element sets. The syntax is
 ```{code} yaml
 <element-set1>, <element-set2>, ... , <element-setN>
 ```
-where `<element-set1>`, ... `<element-setN> are element sets. 
+where `<element-set1>`, ... `<element-setN>` are element sets. 
 Example:
 ```{code} yaml
 A, B, Q.*
@@ -226,7 +228,7 @@ For element parameters, the general syntax is
 ```
 where
 ```{code} yaml
-<beamline>:                     # Optional BeamLine or Branch name.
+<beamline>                      # Optional BeamLine or Branch name.
 <element>                       # Optional lattice element name.
 <parameter-group>               # Parameter group name.
 <sub-group1>. ... .<sub-groupN> # Subgroups if they exist.
