@@ -133,7 +133,7 @@ are matched to a given string. Name matching is important in a number of instanc
 lattice expansion where there are [`Fork`](#s:forking) elements and for evaluating mathematical
 expressions.
 
-The simplest form of name matching is if the string matches
+The simplist form of name matching is if the string matches
 the `name` field of an element or elements. 
 For example, the string `"Q1"` will match to all elements named `Q1`.
 
