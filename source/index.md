@@ -4,17 +4,30 @@ This standard is an effort to create a standard to promote lattice information e
 
 ```{toctree}
 :maxdepth: 2
-:caption: PALS Standard
+:caption: Overview
 
 overview.md
-introduction.md
 definitions.md
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Schema
+
+conventions.md
 coordinates.md
 element-kinds.md
 element-parameters.md
 beamlines.md
 lattice-construction.md
 multipass.md
+miscellaneous.md
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Physics
+
 bend-multipoles.md
 ```
 
@@ -25,6 +38,13 @@ bend-multipoles.md
 fileformats.md
 libraries.md
 simulations.md
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Extensions
+
+extensions.md
 ```
 
 ```{toctree}

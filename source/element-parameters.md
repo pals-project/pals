@@ -29,7 +29,7 @@ any of the parameter groups, that they are not grouped.
 These element parameters are:
 ```{code} yaml
   field_master: NotSet  # [Boolean] See Below.
-  is_on: true           # [Bollean] Turns on or off the fields in an element. When off, the element looks like a drift.
+  is_on: true           # [Boolean] Turns on or off the fields in an element. When off, the element looks like a drift.
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.
@@ -140,9 +140,6 @@ element-by-element.
 ```
 
 ```{include} parameters/magneticmultipole.md
-```
-
-```{include} parameters/master.md
 ```
 
 ```{include} parameters/meta.md

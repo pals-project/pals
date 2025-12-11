@@ -5,11 +5,16 @@
 (s:lattice.construct)=
 ## Constructing a Lattice
 
-A `Lattice` contains a set of branches. 
+A `Lattice` contains a set of branches. The components of `Lattice` are:
+```{code} yaml
+name            # [String] Name of the lattice.
+branches        # [List] List of branches.
+```
 Each branch is instantiated from a `BeamLine` that is called the `root BeamLine`.
 Example:
 ```{code} yaml
 - Lattice:
+    - name: My Toy Lattice
     - branches:
         - this_line    # this_line is the root beamline for the branch.
         - that_line:
@@ -24,8 +29,8 @@ are those branches created due to `Fork` elements.
 
 A branch has the optional components
 ```{code} yaml
-inherit   # Optional String. Name of the root BeamLine for the branch. Default is the name of the Branch.
-periodic  # Optional Bool. Are orbit and Twiss parameters periodic? 
+inherit   # [String] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
+periodic  # [Boolean] Optional. Are orbit and Twiss parameters periodic? 
           #   Default is the setting of the root BeamLine.
 ```
 The setting of `periodic` for a `Branch` overrides the setting of `periodic`
@@ -181,3 +186,24 @@ a `BeamLine` called `generic_dump`. In the expanded lattice, the branch will be 
 `this_dump`. The reference properties at the `dump_beginning`, element that is forked to,
 assuming this is the `BeginningEle` element at the beginning of the branch., will inherit
 the reference properties at the `Fork` element.
+
+%---------------------------------------------------------------------------------------------------
+(s:use)=
+## Use statement
+
+Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
+is the last lattice. This default can be overridden by a `use` statement. Example:
+```{code} yaml
+- Lattice
+    - name: lat1
+    - branches:
+        ...
+
+- Lattice
+    - name: lat2
+    - branches:
+        ...
+
+- use: lat1
+```
+

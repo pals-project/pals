@@ -2,7 +2,7 @@
 # File Formats
 
 The Particle Accelerator Lattice Standard (PALS) documents objects and their properties.
-For readability, [this standard uses YAML-style](c:introduction) examples, but the PALS schema can be implemented in a variety of file formats.
+For readability, [this standard uses YAML-style](c:conventions) examples, but the PALS schema can be implemented in a variety of file formats.
 
 
 ## File Endings

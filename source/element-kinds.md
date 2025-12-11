@@ -13,6 +13,7 @@ cleo:             # [string] user-defined name
 ```
 
 %---------------------------------------------------------------------------------------------------
+---
 (s:ackicker)=
 ## ACKicker Element
 
@@ -40,6 +41,7 @@ ack1:
     t : 1e-8 
 
 %---------------------------------------------------------------------------------------------------
+---
 (s:beambeam)=
 ## BeamBeam Element
 
@@ -430,22 +432,22 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 %---------------------------------------------------------------------------------------------------
-(s:nullele)=
-## NullEle Element
+(s:placeholder)=
+## Placeholder Element
 
 Placeholder element used for bookkeeping when constructing the expanded lattice.
-This element is empty, zero length and does nothing.
+This element has zero length and does nothing.
 This element can be used as a [`base_item`](#s:placement) element for [superpositions](#s:superposition). 
 Additionally, this element can be used, for example, to denote an invalid element in the internal
 structures defined by a program.
 
-`NullEle` elements present in a lattice file will, as a part of lattice expansion, be removed.
-That is, `NullEle` elements will never be present in the final expanded lattice and
-tracking through a `NullEle` will never be needed.
+`Placeholder` elements present in a lattice file will, as a part of lattice expansion, be removed.
+That is, `Placeholder` elements will never be present in the final expanded lattice and
+tracking through a `Placeholder` will never be needed.
 
 This element does not have any associated parameter groups.
 
-For other purposes, for example, to mark reference points, [Marker](#s.marker) elements may be used.
+For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
 
 %---------------------------------------------------------------------------------------------------
 (s:octupole)=
@@ -471,7 +473,8 @@ Example:
 oct01w:
   kind: Octupole
   length: 0.4
-  Kn3: 1.0
+  MagneticMultipoleP:
+    Kn3: 1.0
 ```
 %---------------------------------------------------------------------------------------------------
 (s:patch)=
@@ -521,7 +524,8 @@ Example:
 q01w:
   kind: Quadrupole
   length: 0.6
-  Kn1: 0.37
+  MagneticMultipoleP:
+    Kn1: 0.37
 ```
 
 %---------------------------------------------------------------------------------------------------
@@ -572,7 +576,8 @@ Example:
 s01w:
   kind: Sextupole
   length: 0.5
-  Kn2: 0.28
+  MagneticMultipoleP:
+    Kn2: 0.28
 ```
 %---------------------------------------------------------------------------------------------------
 (s:solenoid)=

@@ -1,3 +1,4 @@
+(s:contribute)=
 # How to Contribute
 
 ## Follow these steps **only once**
