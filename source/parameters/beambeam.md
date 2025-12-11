@@ -2,7 +2,8 @@
 ## BeamBeamP: BeamBeam Parameters
 
 The `BeamBeamP` parameter group describes a particle beam element
-from the opposite moving colliding beam. 
+from the opposite moving colliding beam.
+Without explicit input specification, the hourglass effect is turned off. 
 
 The inputs of `BeamBeamP` are:
 ```{code} yaml
