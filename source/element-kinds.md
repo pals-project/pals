@@ -61,7 +61,7 @@ Example:
 ```{code} yaml
 bb1:
   kind: BeamBeam
-  beambeamP:
+  BeamBeamP:
     sigma_x: 0.1e-3
     sigma_y: 0.1e-3
     sigma_z: 5.0e-2
