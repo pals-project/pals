@@ -109,7 +109,7 @@ are matched to a given string. Name matching is important in a number of instanc
 lattice expansion where there are [`Fork`](#s:forking) elements and for evaluating mathematical
 expressions.
 
-The simplist form of name matching is if the string matches
+The simplest form of name matching is if the string matches
 the `name` field of an element or elements. 
 For example, the string `"Q1"` will match to all elements named `Q1`.
 
@@ -122,11 +122,14 @@ Example:
 ```{code} yaml
 Marker::bpm.
 ```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`.
+This will match to all `Marker` elements whose name is four characters starting with `bpm`
+(since a dot matches to any single character, see below).
 
 The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
 followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
-that matches `"Quadrupole::Q1"`. Notice that the `N`{sup}`th` instance selection is applied last. 
+that matches `"Quadrupole::Q1"`. The `N`{sup}`th` instance selection is always applied last.
+Thus with this example, the element kind selector `::` is applied first to get a list of all
+quadrupole elements named `Q1` and then the `#3` selection is used to get the third instance.
 
 <!--
 Besides the element name, any parameter in the [`MetaP`](#s:meta.params) parameter group can
@@ -137,9 +140,9 @@ would match to any element whose `alias` parameter is set to `black`.
 In the discussion below, all of the above constructs will be called an "element name".
 
 The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name 
-(henceforth just referred to as a branch name) to the string.
+(henceforth just referred to as a branch name) to the string,
 using the string `">>"` as a separator. For example, `"B1>>Sextupole::Saf"` would match
-to all Sextupole elements in a branch or BeamLine named `"B1"` whose name was `"Saf"`.
+to all `Sextupole` elements in a branch or `BeamLine` named `"B1"` whose name was `"Saf"`.
 This includes sublines of BeamLines. Thus if `B1` is a BeamLine that contains a subline `B2` 
 that in turn contains a Sextupole element named `Saf`, the string `"B1>>Sextupole::Saf"`
 will match to this element.
@@ -207,7 +210,7 @@ Marker::.* & Q1:Q2
 ```
 This will match to all `Marker` elements that are in the range from `Q1` to `Q2`.
 
-Order of presidence:
+Order of presedence:
 ```{code} yaml
 >>>     # Highest
 >>
