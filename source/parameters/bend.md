@@ -16,10 +16,10 @@ BendP:
   edge1_int: 0       # [T*m] Entrance end fringe field integral
   edge2_int: 0       # [T*m] Exit end fringe field integral
   g_ref: 0           # [1/m] Reference bend strength = 1/radius_ref
-  h1: 0              # [TODO] Entrance end pole face curvature
-  h2: 0              # [TODO] Exit end pole face curvature
-  L_chord: 0         # [m] Chord length
-  L_sagitta: 0       # [m] Sagitta length (output parameter)  TODO ??? output parameter??
+  h1: 0              # [1/m] Entrance end pole face curvature
+  h2: 0              # [1/m] Exit end pole face curvature
+  L_chord: 0         # [m] Chord length. 
+  L_sagitta: 0       # [m] Sagitta length. Output parameter.  
   tilt_ref: 0        # [radian] Reference tilt
 ```
 
@@ -130,7 +130,8 @@ for an example.
 represents a field of opposite sign as the field due a positive `hkick`.
 %
 - **h1, h2**
-The attributes `h1` and `h2` are the curvature of the entrance and exit pole faces.
+The attributes `h1` and `h2` are the curvature of the entrance and exit pole faces. The radius of
+curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the face is flat.
 %
 - **L_chord, L_sagitta** 
 `L_chord` is the chord length from entrance point to exit point.
