@@ -17,9 +17,9 @@ cleo:             # [string] user-defined name
 (s:ackicker)=
 ## ACKicker Element
 
-Time varying kicker element
-
-Under Construction...
+An ACKicker element simulates a time-dependent kicker.
+It is like a Kicker element except that the field varies in time.
+This element requires a user supplied time-dependent expression.
 
 Element parameter groups associated with this element kind are:
 - [**ACKickerP**](#s:ackicker.params): AC kicker parameters.
@@ -31,14 +31,19 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+Example:
+```{code} yaml
+ack1:
+  kind: ACKicker
+  length: 0.3
+  ACKickerP:
+
 %---------------------------------------------------------------------------------------------------
 ---
 (s:beambeam)=
 ## BeamBeam Element
 
-Element for simulating colliding beams.
-
-Under Construction...
+A BeamBeam element defines the parameters of a oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -50,14 +55,24 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+Example:
+```{code} yaml
+bb1:
+  kind: BeamBeam
+  BeamBeamP:
+    sigma_x: 0.1e-3
+    sigma_y: 0.1e-3
+    sigma_z: 5.0e-2
+    energy: 1.0e10
+    N_particle: 1.0e11
+
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 %---------------------------------------------------------------------------------------------------
 (s:beginningele)=
 ## BeginningEle Element
 
-Initial element at start of a branch.
-
+A BeginningEle element is an initial element at start of a branch.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
@@ -69,7 +84,6 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
-
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
 ##  Bend Elements: RBend and SBend
@@ -107,7 +121,9 @@ between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
 (s:converter)=
 ## Converter Element
 
-Target to produce new species. EG: Positron converter.
+A Converter element represents a target (plate) onto which 
+particles are slammed in order to generate
+particles of a different type. For example, a tungsten plate which is bombarded with electrons to generate positrons.
 
 Under Construction...
 
@@ -128,9 +144,8 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:crabcavity)=
 ## CrabCavity Element
 
-RF crab cavity
-
-Under Construction...
+A CrabCavity element is an zero length RF cavity that gives a longitudinal dependent
+transverse kick. 
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -142,6 +157,15 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceP**](#s:ref.params): Reference parameters.
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+
+Example:
+```{code} yaml
+cc1:
+  kind: CrabCavity
+  RFP:
+    frequency: 394.0e6 
+    phase: 0.0
+    voltage: 1.0e6
 
 %---------------------------------------------------------------------------------------------------
 (s:drift)=
@@ -170,8 +194,8 @@ d01:
 %---------------------------------------------------------------------------------------------------
 (s:egun)=
 ## EGun Element
-
-Electron gun.
+An EGun element represents an electron gun and encompasses a region starting from the cathode were
+the electrons are generated.
 
 Under Construction...
 
@@ -190,7 +214,12 @@ Element parameter groups associated with this element kind are:
 (s:feedback)=
 ## Feedback Circuit 
 
-Element used to simulate a feedback circuit.
+A Feedback element is an element used to simulate a feedback circuit.
+It gathers information about particle trajectories from the inputs
+and uses this
+to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
+A feedback element could be used, for example, to simulate RF feedback systems or beam position
+feedback, or cooling of a proton beam by a beam of electrons.
 
 Under Construction...
 
@@ -200,7 +229,9 @@ Note: This element does not have a `length` nor an `s_position`.
 (s:fiducial)=
 ## Fiducial Element
 
-Global coordinate system fiducial point.
+A Fiducial element is used to fix the position and orientation of the reference orbit within the global
+coordinate system at the location of the fiducial element. A fiducial element will affect the global
+floor coordinates of elements both upstream and downstream of the fiducial element.
 
 Under Construction...
 
@@ -227,8 +258,10 @@ Element parameter groups associated with this element kind are:
 (s:foil)=
 ## Foil Element
 
-Material that can strip electrons from a particle.
-Will also cause energy loss and diffusion.
+A Foil element represents a planar sheet of material which can strip electrons from a particle. In
+conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
+Material that can strip electrons from a particle
+will also cause energy loss and diffusion.
 
 Under Construction...
 
@@ -247,7 +280,9 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:fork)=
 ## Fork Element
 
-Element used to connect lattice branches together.
+A Fork element marks the start of an alternative branch for the beam (or X-rays or
+other particles generated by the beam) to follow.
+This element is used to connect lattice branches together.
 
 Under Construction...
 
@@ -266,7 +301,11 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:girder)=
 ## Girder Element
 
-Element to support in space a group of other elements.
+A Girder element is a support structure that orients the 
+elements that are attached to it in space. This element can
+be used to simulate any rigid support structure and there are 
+no restrictions on how the lattice elements
+that are supported are oriented with respect to one another.
 
 Under Construction...
 
@@ -276,7 +315,7 @@ Note: This element does not have a `length` nor an `s_position`.
 (s:instrument)=
 ## Instrument Element
 
-Measurement element.
+An Instrument element is a measurement element for diagnostics.
 
 Under Construction...
 
@@ -295,7 +334,9 @@ Element parameter groups associated with this element kind are:
 (s:kicker)=
 ## Kicker Element
 
-Particle kicker element.
+A Kicker element is an element that can deflect a beam transversely in both planes. 
+It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
+horizontal and vertical directions.
 
 Under Construction...
 
@@ -314,7 +355,7 @@ Element parameter groups associated with this element kind are:
 (s:marker)=
 ## Marker Element
 
-Zero length element to mark a particular position.
+A Marker element is a zero length element to mark a particular position.
 The main purpose of this element is to name a position in the beamline.
 `Marker` elements has a unit transport map. That is, a particle's phase space coordinates
 are not altered with passage through the element
@@ -334,7 +375,8 @@ a case, the `BodyShiftP` parameter group can be used to misalign the BPM.
 (s:mask)=
 ## Mask Element
 
-Collimation element.
+A Mask element defines an aperture where the mask area can essentially have an arbitrary shape.
+It is a collimation element to remove unwanted particles.
 
 Under Construction...
 
@@ -353,7 +395,8 @@ Element parameter groups associated with this element kind are:
 (s:match)=
 ## Match Element
 
-Orbit, Twiss, and dispersion matching element.
+A Match element is used to match the orbit, Twiss, and dispersion parameters
+ between two locations.
 
 Under Construction...
 
@@ -435,7 +478,10 @@ oct01w:
 (s:patch)=
 ## Patch Element
 
-Crooked drift used to shift the reference curve.
+A Patch element is an element used to shift the reference orbit and time. 
+A common application of this element is to orient two lines with respect 
+to each other. For example,
+to orient an injection line with the ring it is injecting into.
 
 Under Construction...
 
@@ -483,6 +529,8 @@ q01w:
 %---------------------------------------------------------------------------------------------------
 (s:rfcavity)=
 ## RFCavity Element
+
+An RFCavity element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
 
 Under Construction...
 
@@ -560,7 +608,9 @@ sol01w:
 (s:taylor)=
 ## Taylor Element
 
-Taylor map element
+A Taylor element is a Taylor map that maps the input orbital phase space and possibly spin coordinates
+of a particle at the entrance end of the element to the output orbital phase space and spin coordinates at the exit
+end of the element. 
 
 Under Construction...
 
@@ -626,6 +676,7 @@ together with the [`placement`](#s:placement) construct within a `BeamLine` and 
 %---------------------------------------------------------------------------------------------------
 (s:wiggler)=
 ## Wiggler Element
+A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
 
 Under Construction...
 
