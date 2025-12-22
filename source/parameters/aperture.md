@@ -5,14 +5,14 @@ The `ApertureP` parameter group contains parameters for describing an aperture.
 The components of this group and their defaults are:
 ```{code} yaml
 ApertureP:
-  x1_limit: null                   # [m] Left aperture limit.
-  x2_limit: null                   # [m] Right aperture limit.
+  x_min: null                      # [m] Left aperture limit.
+  x_max: null                      # [m] Right aperture limit.
   x_limit: null                    # [m] Horizontal Aperture. Input Parameter. 
-                                   #       Equivalent to x1_limit = -x_limit, x2_limit = x_limit
-  y1_limit: null                   # [m] Bottom aperture limit.
-  y2_limit: null                   # [m] Top aperture limit.
+                                   #       Equivalent to x_min = -x_limit, x_max = x_limit
+  y_min: null                      # [m] Bottom aperture limit.
+  y_max: null                      # [m] Top aperture limit.
   y_limit: null                    # [m] Vertical Aperture. Input Parameter. 
-                                   #       Equivalent to y1_limit = -y_limit, y2_limit = y_limit
+                                   #       Equivalent to y_min = -y_limit, y_max = y_limit
   shape: ""                        # [string] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
@@ -41,8 +41,8 @@ The default is `ENTRANCE_END`.
 :width: 90%
 :name: f:aperture
 
-A) RECTANGULAR and ELLIPTICAL apertures. As drawn, `x1_limit` and `y1_limit` are 
-negative and `x2_limit` and `y2_limit` are positive. B) The `vertices` aperture is defined
+A) RECTANGULAR and ELLIPTICAL apertures. As drawn, `x_min` and `y_min` are 
+negative and `x_max` and `y_max` are positive. B) The `vertices` aperture is defined
 by a set of vertices.
 ```
 
@@ -64,19 +64,19 @@ A particle with position {math}`(x, y)` is outside of the aperture if:
 ```{code}
   ((x - x0) / xw)^2 + ((y - y0) / yw)^2 > 1 
 where
-  x0 = (x2_limit - x1_limit) / 2
-  y0 = (y2_limit - y1_limit) / 2
-  xw = (x2_limit - x1_limit) / 2
-  yw = (y2_limit + y1_limit) / 2
+  x0 = (x_max - x_min) / 2
+  y0 = (y_max - y_min) / 2
+  xw = (x_max - x_min) / 2
+  yw = (y_max + y_min) / 2
 ```
 
 For a `RECTANGULAR` aperture, a particle is outside of the aperture if any of the following
 four conditions is true:
 ```{code}
-  1) x < x1_limit && x1_limit != null
-  2) x > x2_limit && x2_limit != null
-  3) y < y1_limit && y1_limit != null
-  4) y > y2_limit && y2_limit != null
+  1) x < x_min && x_min != null
+  2) x > x_max && x_max != null
+  3) y < y_min && y_min != null
+  4) y > y_max && y_max != null
 ```
 
 ### aperture_shifts_with_body
