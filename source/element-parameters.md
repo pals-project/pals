@@ -74,8 +74,8 @@ Naming a parameter group is only needed if the parameter group is defined outsid
 - q1:
     kind: Quadrupole
     ApertureP: 
-        x_limit: [-0.03, 0.04]
-        y_limit: [-0.02, 0.03]
+        x_limit: -0.03
+        y_limit: -0.02
 ```
 And an element can inherit a parameter group from another element:
 ```{code} yaml
