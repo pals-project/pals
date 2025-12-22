@@ -3,8 +3,9 @@
 
 The `FloorP` parameter group holds parameters that describe the position and orientation 
 (collectively called "placement") of some
-point in [global coordinates](#s:floor). When this group is contained in an element, the evaluation
-point is the upstream edge branch coordinates origin point.
+coordinate system in [global coordinates](#s:floor). When this group is contained in an element, 
+the coordinate system described is the branch coordinate system whose origin point is at the 
+upstream edge of the element.
 
 The components of this group are:
 ```{code} yaml
