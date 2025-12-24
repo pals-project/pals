@@ -5,8 +5,15 @@
 (s:phase.space)=
 ## Phase Space Coordinate Systems
 
-PALS defines four different phase space coordinate systems. Which is used for describing things like
-particle coordinates and beam distributions is determined by the setting of the `phase_space_coordinates`
+PALS defines four different phase space coordinate systems which can be used for describing things
+like initial particle coordinates and as the basis coordinates for Taylor maps. It is assumed that
+phase space are used in a field free region so there is no distinction between canonical and
+non-canonical coordinates. That is, it is assumed that the vector potential is zero.[^canonical]
+
+[^canonical]: The restriction to field free regions is to avoid the complications of how to
+specify vector potentials.
+
+Which phase space coordinates are used in a lattice is determined by the setting of the `phase_space_coordinates`
 [base parameter](#s:tree). Possible settings are:
 ```{code} yaml
   ANGLE_ENERGY_PZ
@@ -16,7 +23,7 @@ particle coordinates and beam distributions is determined by the setting of the 
 ```
 In the PALS documentation, phase space coordinates are labeled `(x, px, y, py, z, pz)`.
 In all cases, `x` and `y` have their natural meaning.
- 
+
 For `ANGLE_ENERGY_PZ` and `ANGLE_MOMENTUM_PZ` coordinate systems, `px` and `py` are defined to be
 {math}`dx/ds = P_x/P_s` and {math}`dx/ds = P_y/P_s` where {math}`(P_x, P_y, P_s)` are the
 momenta along the {math}`(x, y, s)`coordinates axes. For the other two coordinate systems,
