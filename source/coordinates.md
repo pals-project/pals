@@ -6,12 +6,10 @@
 ## Phase Space Coordinate Systems
 
 PALS defines four different phase space coordinate systems which can be used for describing things
-like initial particle coordinates and as the basis coordinates for Taylor maps. It is assumed that
-phase space are used in a field free region so there is no distinction between canonical and
-non-canonical coordinates. That is, it is assumed that the vector potential is zero.[^canonical]
-
-[^canonical]: The restriction to field free regions is to avoid the complications of how to
-specify vector potentials.
+like initial particle coordinates and as the basis coordinates for Taylor maps. 
+PALS defines phase space coordinates using kinetic momenta to avoid the complication of having
+to deal with the vector potential (remember that the vector potential is not unique). 
+Only in a field free region will the kinetic momenta be canonical.
 
 Which phase space coordinates are used in a lattice is determined by the setting of the `phase_space_coordinates`
 [base parameter](#s:tree). Possible settings are:
