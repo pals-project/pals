@@ -7,32 +7,35 @@
 
 PALS defines four different phase space coordinate systems which can be used for describing things
 like initial particle coordinates and as the basis coordinates for Taylor maps. 
-PALS defines phase space coordinates using kinetic momenta to avoid the complication of having
+PALS defines phase space coordinates using kinetic momenta instead of canonical momenta
+to avoid the complication of having
 to deal with the vector potential (remember that the vector potential is not unique). 
 Only in a field free region will the kinetic momenta be canonical.
 
 Which phase space coordinates are used in a lattice is determined by the setting of the `phase_space_coordinates`
 [base parameter](#s:tree). Possible settings are:
 ```{code} yaml
-  ANGLE_ENERGY_PZ
-  ANGLE_MOMENTUM_PZ
-  ENERGY_PZ           
-  MOMENTUM_PZ           # Default.
+  ANGLE_AND_ENERGY
+  ANGLE_AND_MOMENTUM
+  KINETIC_AND_ENERGY      
+  KINETIC_AND_MOMENTUM           # Default.
 ```
 In the PALS documentation, phase space coordinates are labeled `(x, px, y, py, z, pz)`.
 In all cases, `x` and `y` have their natural meaning.
 
-For `ANGLE_ENERGY_PZ` and `ANGLE_MOMENTUM_PZ` coordinate systems, `px` and `py` are defined to be
+For `ANGLE_AND_ENERGY` and `ANGLE_AND_MOMENTUM` coordinate systems, `px` and `py` are defined to be
 {math}`dx/ds = P_x/P_s` and {math}`dx/ds = P_y/P_s` where {math}`(P_x, P_y, P_s)` are the
-momenta along the {math}`(x, y, s)`coordinates axes. For the other two coordinate systems,
+momenta along the {math}`(x, y, s)`coordinates axes. 
+For the other two coordinate systems, `KINETIC_AND_ENERGY` and `KINETIC_AND_MOMENTUM`,
 `px` and `py` are defined to be {math}`P_x/P_0` and {math}`P_y/P_0` where {math}`P_0` is
 the reference momentum.
 
-For `ANGLE_ENERGY_PZ` and `ENERGY_PZ` coordinates, the `z` coordinate is defined
+For `ANGLE_AND_ENERGY` and `KINETIC_AND_ENERGY` coordinates, the `z` coordinate is defined
 to be {math}`-c \Delta t` where {math}`\Delta t` is the time the particle is at the evaluation 
 point relative to the reference time. `pz` is defined to be {math}`\Delta E/P_0 c` 
 where {math}`\Delta E` is the particle energy relative to the reference energy. 
-For the other two coordinate systems, the `z` coordinate is defined to be 
+For the other two coordinate systems, `ANGLE_AND_MOMENTUM` and `KINETIC_AND_MOMENTUM`,
+the `z` coordinate is defined to be 
 {math}`-c \beta \, \Delta t` where {math}`\beta` is the particle's normalized velocity {math}`v/c`. 
 The `pz` coordinate is {math}`\Delta P/P_0` where {math}`\Delta P` is the
 particle momentum relative to the reference momentum.
