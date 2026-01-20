@@ -22,6 +22,7 @@ cleo:             # [string] user-defined name
 The following element kinds involve applied electromagnetic fields in vacuum.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:ackicker)=
 ## ACKicker Element
 
@@ -47,6 +48,7 @@ ack1:
   ACKickerP:
 
 
+%---------------------------------------------------------------------------------------------------
 (s:bend)=
 ##  Bend Elements: RBend and SBend
 
@@ -80,6 +82,7 @@ held constant and `e1` and `e2` can be varied to keep the relationship
 between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:crabcavity)=
 ## CrabCavity Element
 
@@ -107,6 +110,7 @@ cc1:
     voltage: 1.0e6
 
 
+%---------------------------------------------------------------------------------------------------
 (s:drift)=
 ## Drift Element
 
@@ -130,6 +134,7 @@ d01:
     description: "Blueprint: 4596-32A"
 ```
 
+%---------------------------------------------------------------------------------------------------
 (s:kicker)=
 ## Kicker Element
 
@@ -151,6 +156,7 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:multipole)=
 ## Multipole Element
 
@@ -169,6 +175,7 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:octupole)=
 ## Octupole Element
 
@@ -196,6 +203,7 @@ oct01w:
     Kn3: 1.0
 ```
 
+%---------------------------------------------------------------------------------------------------
 (s:quadrupole)=
 ## Quadrupole Element
 
@@ -223,6 +231,7 @@ q01w:
     Kn1: 0.37
 ```
 
+%---------------------------------------------------------------------------------------------------
 (s:rfcavity)=
 ## RFCavity Element
 
@@ -247,6 +256,7 @@ Note: Multipole parameters represent DC fields. A common example is a DC solenoi
 helps focusing.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:sextupole)=
 ## Sextupole Element
 
@@ -275,6 +285,7 @@ s01w:
 ```
 
 
+%---------------------------------------------------------------------------------------------------
 (s:solenoid)=
 ## Solenoid Element
 
@@ -303,6 +314,7 @@ sol01w:
 ```
 
 
+%---------------------------------------------------------------------------------------------------
 (s:wiggler)=
 ## Wiggler Element
 A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
@@ -330,6 +342,7 @@ Element parameter groups associated with this element kind are:
 The following element kinds involve interactions with the mean field of a particle distribution.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:beambeam)=
 ## BeamBeam Element
 
@@ -368,6 +381,7 @@ The length of this element is considered to be zero so if `length` is specified,
 The following element kinds are for producing or removing beam particles. 
 
 
+%---------------------------------------------------------------------------------------------------
 (s:converter)=
 ## Converter Element
 
@@ -391,6 +405,7 @@ Element parameter groups associated with this element kind are:
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:egun)=
 ## EGun Element
 An EGun element represents an electron gun and encompasses a region starting from the cathode were
@@ -410,6 +425,7 @@ Element parameter groups associated with this element kind are:
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:foil)=
 ## Foil Element
 
@@ -431,7 +447,8 @@ Element parameter groups associated with this element kind are:
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
-                      
+
+%---------------------------------------------------------------------------------------------------                      
 (s:mask)=
 ## Mask Element
 
@@ -461,6 +478,7 @@ Element parameter groups associated with this element kind are:
 The following element kinds are for instrumentation and diagnostics.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:instrument)=
 ## Instrument Element
 
@@ -505,6 +523,7 @@ Under Construction...
 Note: This element does not have a `length` nor an `s_position`.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:match)=
 ## Match Element
 
@@ -525,6 +544,7 @@ Element parameter groups associated with this element kind are:
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:taylor)=
 ## Taylor Element
 
@@ -555,6 +575,7 @@ The length of this element is considered to be zero so if `length` is specified,
 The following element kinds provide relationships among branches and coordinate systems.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:beginningele)=
 ## BeginningEle Element
 
@@ -572,6 +593,7 @@ Element parameter groups associated with this element kind are:
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:fiducial)=
 ## Fiducial Element
 
@@ -584,6 +606,7 @@ Under Construction...
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:floorshift)=
 ## FloorShift Element
 
@@ -601,6 +624,7 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceP**](#s:ref.params): Reference parameters.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:fork)=
 ## Fork Element
 
@@ -622,6 +646,7 @@ Element parameter groups associated with this element kind are:
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:marker)=
 ## Marker Element
 
@@ -641,7 +666,7 @@ The `length` of this element must be zero.
 `Marker` elements can be used, for example, to designate beam position monitor locations. In such
 a case, the `BodyShiftP` parameter group can be used to misalign the BPM.
 
-
+%---------------------------------------------------------------------------------------------------
 (s:placeholder)=
 ## Placeholder Element
 
@@ -660,6 +685,7 @@ This element does not have any associated parameter groups.
 For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:patch)=
 ## Patch Element
 
@@ -691,6 +717,7 @@ This matters due to the dependence of the reference velocity on the the referenc
 The following element kinds describe composite elements and support structures.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:girder)=
 ## Girder Element
 
@@ -705,6 +732,7 @@ Under Construction...
 Note: This element does not have a `length` nor an `s_position`.
 
 
+%---------------------------------------------------------------------------------------------------
 (s:unionele)=
 ## UnionEle Element
 
