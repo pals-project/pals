@@ -12,7 +12,7 @@
 PALS:
   version: null  # later, we will put the version of the PALS standard here
 
-  lattice:
+  elements:
     - drift1:
         kind: Drift
         length: 0.25
