@@ -13,32 +13,32 @@ PALS:
   version: null  # later, we will put the version of the PALS standard here
 
   lattice:
-  - drift1:
-      kind: Drift
-      length: 0.25
-
-  - quad1:
-      kind: Quadrupole
-      MagneticMultipoleP:
-        Bn1: 1.0
-      length: 1.0
-
-  - fodo_cell:
-      kind: BeamLine
-      line:
-      - drift1
-      - quad1
-      - drift2:
-          kind: Drift
-          length: 0.5
-      - quad2:
-          inherit: quad1
-          MagneticMultipoleP:
-            Bn1: -1.0
-      - drift1
-
-  - fodo_channel:
-      kind: BeamLine
-      line:
+    - drift1:
+        kind: Drift
+        length: 0.25
+  
+    - quad1:
+        kind: Quadrupole
+        MagneticMultipoleP:
+          Bn1: 1.0
+        length: 1.0
+  
+    - fodo_cell:
+        kind: BeamLine
+        line:
+        - drift1
+        - quad1
+        - drift2:
+            kind: Drift
+            length: 0.5
+        - quad2:
+            inherit: quad1
+            MagneticMultipoleP:
+              Bn1: -1.0
+        - drift1
+  
+    - fodo_channel:
+        kind: BeamLine
+        line:
       - fodo_cell:
           repeat: 3
