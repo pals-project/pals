@@ -24,7 +24,7 @@ The following element kinds involve applied electromagnetic fields in vacuum.
 
 %---------------------------------------------------------------------------------------------------
 (s:ackicker)=
-## ACKicker Element
+### ACKicker Element
 
 An ACKicker element simulates a time-dependent kicker.
 It is like a Kicker element except that the field varies in time.
@@ -46,11 +46,12 @@ ack1:
   kind: ACKicker
   length: 0.3
   ACKickerP:
+```
 
 
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
-##  Bend Elements: RBend and SBend
+###  Bend Elements: RBend and SBend
 
 Dipole bend. There are two kinds of bends depending upon the "logical shape". 
 The `RBend` element has a "rectangular" logical shape and the `SBend` element has a "sector"
@@ -84,7 +85,7 @@ between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
 
 %---------------------------------------------------------------------------------------------------
 (s:crabcavity)=
-## CrabCavity Element
+### CrabCavity Element
 
 A CrabCavity element is an zero length RF cavity that gives a longitudinal dependent
 transverse kick. 
@@ -108,11 +109,11 @@ cc1:
     frequency: 394.0e6 
     phase: 0.0
     voltage: 1.0e6
-
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:drift)=
-## Drift Element
+### Drift Element
 
 A `Drift` element is a space free and clear of any fields.
 
@@ -136,7 +137,7 @@ d01:
 
 %---------------------------------------------------------------------------------------------------
 (s:kicker)=
-## Kicker Element
+### Kicker Element
 
 A Kicker element is an element that can deflect a beam transversely in both planes. 
 It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
@@ -158,7 +159,7 @@ Element parameter groups associated with this element kind are:
 
 %---------------------------------------------------------------------------------------------------
 (s:multipole)=
-## Multipole Element
+### Multipole Element
 
 A general multipole element.  The fields are assumed to be uniform along the longitudinal direction,
 and may contain (magnetic or electric) multipole contributions of any order.
@@ -177,7 +178,7 @@ Element parameter groups associated with this element kind are:
 
 %---------------------------------------------------------------------------------------------------
 (s:octupole)=
-## Octupole Element
+### Octupole Element
 
 An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
@@ -205,7 +206,7 @@ oct01w:
 
 %---------------------------------------------------------------------------------------------------
 (s:quadrupole)=
-## Quadrupole Element
+### Quadrupole Element
 
 A `quadrupole` is an element whose major field has a linear field dependence .with transverse offset.
 Both electric and magnetic fields can be defined and the field is not restricted to be linear.
@@ -233,7 +234,7 @@ q01w:
 
 %---------------------------------------------------------------------------------------------------
 (s:rfcavity)=
-## RFCavity Element
+### RFCavity Element
 
 An RFCavity element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
 
@@ -258,7 +259,7 @@ helps focusing.
 
 %---------------------------------------------------------------------------------------------------
 (s:sextupole)=
-## Sextupole Element
+### Sextupole Element
 
 A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
@@ -287,7 +288,7 @@ s01w:
 
 %---------------------------------------------------------------------------------------------------
 (s:solenoid)=
-## Solenoid Element
+### Solenoid Element
 
 A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
 Additional magnetic (or electric) multipole contributions are allowed.
@@ -316,7 +317,7 @@ sol01w:
 
 %---------------------------------------------------------------------------------------------------
 (s:wiggler)=
-## Wiggler Element
+### Wiggler Element
 A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
 
 Under Construction...
@@ -344,7 +345,7 @@ The following element kinds involve interactions with the mean field of a partic
 
 %---------------------------------------------------------------------------------------------------
 (s:beambeam)=
-## BeamBeam Element
+### BeamBeam Element
 
 A BeamBeam element defines the parameters of a oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
 
@@ -383,7 +384,7 @@ The following element kinds are for producing or removing beam particles.
 
 %---------------------------------------------------------------------------------------------------
 (s:converter)=
-## Converter Element
+### Converter Element
 
 A Converter element represents a target (plate) onto which 
 particles are slammed in order to generate
@@ -407,7 +408,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------
 (s:egun)=
-## EGun Element
+### EGun Element
 An EGun element represents an electron gun and encompasses a region starting from the cathode were
 the electrons are generated.
 
@@ -427,7 +428,7 @@ Element parameter groups associated with this element kind are:
 
 %---------------------------------------------------------------------------------------------------
 (s:foil)=
-## Foil Element
+### Foil Element
 
 A Foil element represents a planar sheet of material which can strip electrons from a particle. In
 conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
@@ -450,7 +451,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------                      
 (s:mask)=
-## Mask Element
+### Mask Element
 
 A Mask element defines an aperture where the mask area can essentially have an arbitrary shape.
 It is a collimation element to remove unwanted particles.
@@ -480,7 +481,7 @@ The following element kinds are for instrumentation and diagnostics.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
-## Instrument Element
+### Instrument Element
 
 An Instrument element is a measurement element for diagnostics.
 
@@ -525,7 +526,7 @@ Note: This element does not have a `length` nor an `s_position`.
 
 %---------------------------------------------------------------------------------------------------
 (s:match)=
-## Match Element
+### Match Element
 
 A Match element is used to match the orbit, Twiss, and dispersion parameters
  between two locations.
@@ -546,7 +547,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------
 (s:taylor)=
-## Taylor Element
+### Taylor Element
 
 A Taylor element is a Taylor map that maps the input orbital phase space and possibly spin coordinates
 of a particle at the entrance end of the element to the output orbital phase space and spin coordinates at the exit
@@ -577,7 +578,7 @@ The following element kinds provide relationships among branches and coordinate 
 
 %---------------------------------------------------------------------------------------------------
 (s:beginningele)=
-## BeginningEle Element
+### BeginningEle Element
 
 A BeginningEle element is an initial element at start of a branch.
 Under Construction...
@@ -595,7 +596,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------
 (s:fiducial)=
-## Fiducial Element
+### Fiducial Element
 
 A Fiducial element is used to fix the position and orientation of the reference orbit within the global
 coordinate system at the location of the fiducial element. A fiducial element will affect the global
@@ -608,7 +609,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------
 (s:floorshift)=
-## FloorShift Element
+### FloorShift Element
 
 Global coordinates shift.
 
@@ -626,7 +627,7 @@ Element parameter groups associated with this element kind are:
 
 %---------------------------------------------------------------------------------------------------
 (s:fork)=
-## Fork Element
+### Fork Element
 
 A Fork element marks the start of an alternative branch for the beam (or X-rays or
 other particles generated by the beam) to follow.
@@ -648,7 +649,7 @@ The length of this element is considered to be zero so if `length` is specified,
 
 %---------------------------------------------------------------------------------------------------
 (s:marker)=
-## Marker Element
+### Marker Element
 
 A Marker element is a zero length element to mark a particular position.
 The main purpose of this element is to name a position in the beamline.
@@ -668,7 +669,7 @@ a case, the `BodyShiftP` parameter group can be used to misalign the BPM.
 
 %---------------------------------------------------------------------------------------------------
 (s:placeholder)=
-## Placeholder Element
+### Placeholder Element
 
 Placeholder element used for bookkeeping when constructing the expanded lattice.
 This element has zero length and does nothing.
@@ -687,7 +688,7 @@ For other purposes, for example, to mark reference points, [Marker](#s:marker) e
 
 %---------------------------------------------------------------------------------------------------
 (s:patch)=
-## Patch Element
+### Patch Element
 
 A Patch element is an element used to shift the reference orbit and time. 
 A common application of this element is to orient two lines with respect 
@@ -719,7 +720,7 @@ The following element kinds describe composite elements and support structures.
 
 %---------------------------------------------------------------------------------------------------
 (s:girder)=
-## Girder Element
+### Girder Element
 
 A Girder element is a support structure that orients the 
 elements that are attached to it in space. This element can
@@ -734,7 +735,7 @@ Note: This element does not have a `length` nor an `s_position`.
 
 %---------------------------------------------------------------------------------------------------
 (s:unionele)=
-## UnionEle Element
+### UnionEle Element
 
 The `UnionEle` element holds a set of overlapping elements.
 
