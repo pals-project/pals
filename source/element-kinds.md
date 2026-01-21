@@ -511,7 +511,7 @@ that is related to tracking or control.
 
 
 (s:feedback)=
-## Feedback Circuit 
+### Feedback Circuit 
 
 A Feedback element is an element used to simulate a feedback circuit.
 It gathers information about particle trajectories from the inputs
