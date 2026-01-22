@@ -83,7 +83,47 @@ associated standards, there are packages that implement translation between latt
 representational internal format defined by the package.
 
 While the standard itself is language agnostic, this document that describes the standard
-needs to use some syntax and this syntax is based upon YAML. Non-YAML syntax used here is:
+needs to use some syntax and this syntax is based upon YAML.
+
+%---------------------------------------------------------------------------------------------------
+(s:includefiles)=
+## PALS Root Object
+
+The root of the PALS schema is given by this dictionary:
+```{code} YAML
+PALS:
+  version: null  # version schema: defined later
+
+  elements:
+    - ...  # a list of lattice elements
+```
+
+%---------------------------------------------------------------------------------------------------
+(s:includefiles)=
+## Include Lattice Files
+
+A lattice file can include other lattices using an include statement.
+```{code} YAML
+PALS:
+  version: null  # version schema: defined later
+
+  include:
+    - "./base-lattice.pals.yaml"
+    - "./extra-lattice.pals.yaml"
+
+  elements:
+    # the elements of base-lattice.pals.yaml
+    # the elemetns of extra-lattice.pals.yaml
+    - ...  # a list of additional lattice elements
+```
+where the include file names above are examples.
+Includes add the `elements` of the referenced file(s), prepending them before the elements of the current file.
+
+%---------------------------------------------------------------------------------------------------
+(s:matching)=
+## Matching Syntax
+
+Non-YAML syntax used here is:
 
 1. The {math}`N^{th}` item in a list is referred to using square brackets enclosing the index: `[N]`.
 For example:
@@ -139,16 +179,6 @@ enhances legibility.
 All parameters are optional unless explicitly stated otherwise.
 Optional real or integer parameters have a default value of zero unless otherwise stated.
 Optional string parameters have a default value of blank unless otherwise stated.
-
-%---------------------------------------------------------------------------------------------------
-(s:includefiles)=
-## Include Files
-
-A lattice file can include other lattice files using an include statement.
-```{code} yaml
-include: <file-name>
-```
-where `<file-name>` is the name of the file to be included.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
