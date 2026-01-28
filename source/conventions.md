@@ -94,8 +94,8 @@ The root of the PALS schema is given by this dictionary:
 PALS:
   version: null  # version schema: defined later
 
-  elements:
-    - ...  # a list of lattice elements
+  lattices:
+    - ...  # a list of lattice elements and commands
 ```
 
 %---------------------------------------------------------------------------------------------------
@@ -113,13 +113,13 @@ PALS:
     - "./base-lattice.pals.yaml"
     - "./extra-lattice.pals.yaml"
 
-  elements:
+  lattices:
     # the elements and commands of base-lattice.pals.yaml
     # the elements and commands of extra-lattice.pals.yaml
-    - ...  # a list of additional lattice elements
+    - ...  # a list of additional lattice elements and commands
 ```
 where the include file names above are examples.
-Includes simplify insert the `elements` block of the `include` file(s), prepending them before the elements and commands of the current file.
+Includes simplify insert the `lattices` block of the `include` file(s) first.
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
