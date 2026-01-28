@@ -102,7 +102,7 @@ PALS:
 (s:includefiles)=
 ## Include Lattice Files
 
-A lattice file can include other lattices using an include statement.
+A lattice file can include other lattices (elements and commands) using an include statement.
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
@@ -112,12 +112,12 @@ PALS:
     - "./extra-lattice.pals.yaml"
 
   elements:
-    # the elements of base-lattice.pals.yaml
-    # the elements of extra-lattice.pals.yaml
+    # the elements and commands of base-lattice.pals.yaml
+    # the elements and commands of extra-lattice.pals.yaml
     - ...  # a list of additional lattice elements
 ```
 where the include file names above are examples.
-Includes simplify insert the `elements` of the `include` file(s), prepending them before the elements of the current file.
+Includes simplify insert the `elements` block of the `include` file(s), prepending them before the elements and commands of the current file.
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
