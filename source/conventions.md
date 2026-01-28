@@ -113,11 +113,11 @@ PALS:
 
   elements:
     # the elements of base-lattice.pals.yaml
-    # the elemetns of extra-lattice.pals.yaml
+    # the elements of extra-lattice.pals.yaml
     - ...  # a list of additional lattice elements
 ```
 where the include file names above are examples.
-Includes add the `elements` of the referenced file(s), prepending them before the elements of the current file.
+Includes simplify insert the `elements` of the `include` file(s), prepending them before the elements of the current file.
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
