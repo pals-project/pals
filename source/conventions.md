@@ -118,7 +118,7 @@ PALS:
     - ...
 ```
 where the include file names above are examples.
-Includes simplify insert the `lattices` block of the `include` file(s).
+Includes simply insert the `lattices` block of the `include` file(s).
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
