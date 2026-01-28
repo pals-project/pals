@@ -86,7 +86,7 @@ While the standard itself is language agnostic, this document that describes the
 needs to use some syntax and this syntax is based upon YAML.
 
 %---------------------------------------------------------------------------------------------------
-(s:includefiles)=
+(s:palsroot)=
 ## PALS Root Object
 
 The root of the PALS schema is given by this dictionary:
@@ -97,28 +97,6 @@ PALS:
   lattices:
     - ...  # a list of lattice elements and commands
 ```
-
-%---------------------------------------------------------------------------------------------------
-(s:includefiles)=
-## Include Lattice Files
-
-A lattice file can include other lattices (elements and commands) using an include statement.
-
-Example:
-```{code} YAML
-PALS:
-  version: null  # version schema: defined later
-
-  lattices:
-    # the elements and commands of base-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-    # the elements and commands of extra-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-    # a list of additional lattice elements and commands
-    - ...
-```
-where the include file names above are examples.
-Includes simply insert the `lattices` block of the `include` file(s).
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
@@ -180,6 +158,30 @@ enhances legibility.
 All parameters are optional unless explicitly stated otherwise.
 Optional real or integer parameters have a default value of zero unless otherwise stated.
 Optional string parameters have a default value of blank unless otherwise stated.
+
+%---------------------------------------------------------------------------------------------------
+(s:includefiles)=
+## Include Lattice Files
+
+A lattice file can include other lattices (elements and commands) using an include statement.
+
+Example:
+```{code} YAML
+PALS:
+  # ...
+
+  lattices:
+    # the elements and commands of base-lattice.pals.yaml
+    - include: "./base-lattice.pals.yaml"
+
+    # the elements and commands of extra-lattice.pals.yaml
+    - include: "./base-lattice.pals.yaml"
+
+    # a list of additional lattice elements and commands
+    - ...
+```
+where the include file names above are examples.
+Includes simply insert the `lattices` block of the `include` file(s).
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
