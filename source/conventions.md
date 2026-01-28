@@ -109,17 +109,16 @@ Example:
 PALS:
   version: null  # version schema: defined later
 
-  include:
-    - "./base-lattice.pals.yaml"
-    - "./extra-lattice.pals.yaml"
-
   lattices:
     # the elements and commands of base-lattice.pals.yaml
+    - include: "./base-lattice.pals.yaml"
     # the elements and commands of extra-lattice.pals.yaml
-    - ...  # a list of additional lattice elements and commands
+    - include: "./base-lattice.pals.yaml"
+    # a list of additional lattice elements and commands
+    - ...
 ```
 where the include file names above are examples.
-Includes simplify insert the `lattices` block of the `include` file(s) first.
+Includes simplify insert the `lattices` block of the `include` file(s).
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
