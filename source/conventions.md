@@ -103,6 +103,8 @@ PALS:
 ## Include Lattice Files
 
 A lattice file can include other lattices (elements and commands) using an include statement.
+
+Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
