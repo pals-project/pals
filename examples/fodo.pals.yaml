@@ -9,32 +9,36 @@
 # - definition of a FODO channel that:
 #   - repeats a line (fodo_cell) three times
 #
-- drift1:
-    kind: Drift
-    length: 0.25
+PALS:
+  version: null  # later, we will put the version of the PALS standard here
 
-- quad1:
-    kind: Quadrupole
-    MagneticMultipoleP:
-      Bn1: 1.0
-    length: 1.0
-
-- fodo_cell:
-    kind: BeamLine
-    line:
-    - drift1
-    - quad1
-    - drift2:
+  lattices:
+    - drift1:
         kind: Drift
-        length: 0.5
-    - quad2:
-        inherit: quad1
+        length: 0.25
+  
+    - quad1:
+        kind: Quadrupole
         MagneticMultipoleP:
-          Bn1: -1.0
-    - drift1
-
-- fodo_channel:
-    kind: BeamLine
-    line:
+          Bn1: 1.0
+        length: 1.0
+  
     - fodo_cell:
-        repeat: 3
+        kind: BeamLine
+        line:
+        - drift1
+        - quad1
+        - drift2:
+            kind: Drift
+            length: 0.5
+        - quad2:
+            inherit: quad1
+            MagneticMultipoleP:
+              Bn1: -1.0
+        - drift1
+  
+    - fodo_channel:
+        kind: BeamLine
+        line:
+      - fodo_cell:
+          repeat: 3
