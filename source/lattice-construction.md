@@ -199,7 +199,7 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
         ...
 
 - lat2:
-    - name: Lattice
+    - kind: Lattice
     - branches:
         ...
 
