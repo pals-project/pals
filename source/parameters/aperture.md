@@ -7,12 +7,12 @@ The components of this group and their defaults are:
 ApertureP:
   x_min: null                      # [m] Left aperture limit.
   x_max: null                      # [m] Right aperture limit.
-  x_limit: null                    # [m] Horizontal Aperture. Input Parameter. 
-                                   #       Equivalent to x_min = -x_limit, x_max = x_limit
+  x_width: null                    # [m] Horizontal aperture full width.
+                                   #       Equivalent to x_min = -x_width/2, x_max = x_width/2
   y_min: null                      # [m] Bottom aperture limit.
   y_max: null                      # [m] Top aperture limit.
-  y_limit: null                    # [m] Vertical Aperture. Input Parameter. 
-                                   #       Equivalent to y_min = -y_limit, y_max = y_limit
+  y_width: null                    # [m] Vertical aperture full width.
+                                   #       Equivalent to y_min = -y_width/2, y_max = y_width/2
   shape: ""                        # [string] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
