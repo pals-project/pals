@@ -107,9 +107,9 @@ Non-YAML syntax used here is:
 1. The {math}`N^{th}` item in a list is referred to using square brackets enclosing the index: `[N]`.
 For example:
 ```{code} YAML
-Aperture:
-  name: ap1
-  x_limit: [-0.03, 0.04]
+- ap1:
+    kind: Aperture
+    x_limit: [-0.03, 0.04]
 ```
 here `x_limit[1]` and `x_limit[2]` would refer to the first and second values of `x_limit` respectively.
 
