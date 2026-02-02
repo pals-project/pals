@@ -87,7 +87,9 @@ calculating the reference energy for all elements.
 
 %---------------------------------------------------------------------------------------------------
 (s:tree)=
-## The PALS standard organizes data in a tree-like structure. Tree nodes are the fundamental 
+## The PALS standard organizes data in a tree-like structure
+
+Tree nodes are the fundamental 
 building blocks. To handle included files, there can be multiple root nodes. Sub-nodes of a
 root node are called `base` nodes or `base` parameters.
 
