@@ -13,13 +13,13 @@ BendP:
   e2: 0              # [radian] Exit end pole face rotation with respect to a sector geometry
   e1_rect: 0         # [radian] Entrance end pole face rotation with respect to a rectangular geometry
   e2_rect: 0         # [radian] Exit end pole face rotation with respect to a rectangular geometry
-  edge_int1: 0       # [T*m] Entrance end fringe field integral
-  edge_int2: 0       # [T*m] Exit end fringe field integral
+  edge1_int: 0       # [T*m] Entrance end fringe field integral
+  edge2_int: 0       # [T*m] Exit end fringe field integral
   g_ref: 0           # [1/m] Reference bend strength = 1/radius_ref
-  h1: 0              # [TODO] Entrance end pole face curvature
-  h2: 0              # [TODO] Exit end pole face curvature
-  L_chord: 0         # [m] Chord length
-  L_sagitta: 0       # [m] Sagitta length (output parameter)  TODO ??? output parameter??
+  h1: 0              # [1/m] Entrance end pole face curvature
+  h2: 0              # [1/m] Exit end pole face curvature
+  L_chord: 0         # [m] Chord length. 
+  L_sagitta: 0       # [m] Sagitta length. Output parameter.  
   tilt_ref: 0        # [radian] Reference tilt
 ```
 
@@ -79,16 +79,16 @@ fiducial lines that are parallel to each other and rotated by `angle_ref`/2 from
 {math}`x_1` and {math}`x_2` axes as shown in {numref}`f:bend`.
 Zero `e1_rect` and `e2_rect` gives a rectangular magnet shape.
 %
-- **edge_int1, edge_int2**
-The field integral for the entrance pole face `edge_int1` is given by
+- **edge1_int, edge2_int**
+The field integral for the entrance pole face `edge1_int` is given by
   ```{math}
-  \mathrm{edge\_int1} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
+  \mathrm{edge1\_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
   ```
-  For the exit pole face there is a similar equation for `edge_int2`
+  For the exit pole face there is a similar equation for `edge2_int`
 
   Note: In Bmad and MAD, these integrals are represented by the product of `fint` and `hgap`.
 
-  `edge_int1` and `edge_int2` can be related to the Enge function which is sometimes used to model the
+  `edge1_int` and `edge2_int` can be related to the Enge function which is sometimes used to model the
   fringe field. The Enge function is of the form
   ```{math}
   B_y(s) = \frac{B_{y0}}{1 + \exp[P(s)]}
@@ -130,7 +130,8 @@ for an example.
 represents a field of opposite sign as the field due a positive `hkick`.
 %
 - **h1, h2**
-The attributes `h1` and `h2` are the curvature of the entrance and exit pole faces.
+The attributes `h1` and `h2` are the curvature of the entrance and exit pole faces. The radius of
+curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the face is flat.
 %
 - **L_chord, L_sagitta** 
 `L_chord` is the chord length from entrance point to exit point.

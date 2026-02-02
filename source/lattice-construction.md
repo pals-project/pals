@@ -5,21 +5,20 @@
 (s:lattice.construct)=
 ## Constructing a Lattice
 
-A `Lattice` contains a set of branches. The components of `Lattice` are:
+A `Lattice` contains a set of branches. The component of `Lattice` is:
 ```{code} yaml
-name            # [String] Name of the lattice.
 branches        # [List] List of branches.
 ```
 Each branch is instantiated from a `BeamLine` that is called the `root BeamLine`.
 Example:
 ```{code} yaml
-- Lattice:
-    - name: My Toy Lattice
-    - branches:
-        - this_line    # this_line is the root beamline for the branch.
-        - that_line:
-            inherit: that_ring    # Inherit from that_ring BeamLine
-            periodic: true
+- my_lattice:
+    kind: Lattice
+    branches:
+      - this_line    # this_line is the root beamline for the branch.
+      - that_line:
+          inherit: that_ring    # Inherit from that_ring BeamLine
+          periodic: true
 ```
 In this example, `this_line` and `that_line` are the names of the root BeamLines
 for the two `Branches` that will be created when the lattice is [expanded](#s:expansion.intro).
@@ -127,10 +126,10 @@ the reverse direction. To get a bi-directional link between branches, use two `F
 the `to-element` of both `Forks` being the other `Fork`.
 
 To avoid ambiguities, the kinds of `to-elements` are restricted to be one of:
-- Marker
-- Beginning
-- FloorPosition
-- Fork
+- `Marker`
+- `Beginning`
+- `FloorPosition`
+- `Fork`
 
 Notice that these kinds of elements have zero length and unit transfer maps.
 
@@ -173,8 +172,8 @@ Reference propagation override any reference setting in the `to-element`.
 
 Example `Fork` element:
 ```{code} yaml
-  Fork:
-    name: to_dump
+- to_dump:
+    kind: Fork
     ForkP:
       to_beamline: generic_dump
       to_element: dump_beginning
@@ -194,13 +193,13 @@ the reference properties at the `Fork` element.
 Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
 is the last lattice. This default can be overridden by a `use` statement. Example:
 ```{code} yaml
-- Lattice
-    - name: lat1
+- lat1:
+    - kind: Lattice
     - branches:
         ...
 
-- Lattice
-    - name: lat2
+- lat2:
+    - kind: Lattice
     - branches:
         ...
 
