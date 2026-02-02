@@ -94,7 +94,7 @@ The root of the PALS schema is given by this dictionary:
 PALS:
   version: null  # version schema: defined later
 
-  lattices:
+  elements:
     - ...  # a list of lattice elements and commands
 ```
 
@@ -161,7 +161,7 @@ Example:
 PALS:
   # ...
 
-  lattices:
+  elements:
     # the elements and commands of base-lattice.pals.yaml
     - include: "./base-lattice.pals.yaml"
 
