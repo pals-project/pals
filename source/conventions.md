@@ -104,26 +104,17 @@ PALS:
 
 Non-YAML syntax used here is:
 
-1. The {math}`N^{th}` item in a list is referred to using square brackets enclosing the index: `[N]`.
-For example:
-```{code} YAML
-- ap1:
-    kind: Aperture
-    x_limit: [-0.03, 0.04]
-```
-here `x_limit[1]` and `x_limit[2]` would refer to the first and second values of `x_limit` respectively.
-
-2. Boolean parameters can be one of three values
+1. Boolean parameters can be one of three values
 - `true`
 - `false`
 - `null`          # Useful as a default value when neither `true` nor `false` is appropriate.
 
-3. The standard defines the following symbols which can be used in place of a real or integer value:
+2. The standard defines the following symbols which can be used in place of a real or integer value:
 - `null`   # Value has not been set.
 - `Inf`    # Infinity
 - `-Inf`   # Negative infinity
 
-4. In general, `null` can be used to signify that any parameter does not have a specific default value.
+3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
 Note: There is a difference between
 ```{code} yaml
