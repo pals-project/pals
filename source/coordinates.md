@@ -13,13 +13,17 @@ to deal with the vector potential (remember that the vector potential is not uni
 Only in a field free region will the kinetic momenta be canonical.
 
 Which phase space coordinates are used in a lattice is determined by the setting of the `phase_space_coordinates`
-[base parameter](#s:tree). Possible settings are:
+[option](#s:palsroot).
 ```{code} yaml
-  ANGLE_AND_ENERGY
-  ANGLE_AND_MOMENTUM
-  KINETIC_AND_ENERGY      
-  KINETIC_AND_MOMENTUM           # Default.
+PALS:
+  phase_space_coordinates: [string]
 ```
+Possible settings are:
+* `ANGLE_AND_ENERGY`
+* `ANGLE_AND_MOMENTUM`
+* `KINETIC_AND_ENERGY`
+* `KINETIC_AND_MOMENTUM`: default
+
 In the PALS documentation, phase space coordinates are labeled `(x, px, y, py, z, pz)`.
 In all cases, `x` and `y` have their natural meaning.
 
