@@ -68,7 +68,7 @@ Now we can use the aperture parameter group as follows:
 - q0:
     kind: Quadrupole
     ApertureP:
-        inherit: ap2
+      inherit: ap2
 ```
 
 Naming a parameter group is only needed if the parameter group is defined outside of an element.
@@ -76,15 +76,15 @@ Naming a parameter group is only needed if the parameter group is defined outsid
 - q1:
     kind: Quadrupole
     ApertureP: 
-        x_width: 0.03
-        y_width: 0.02
+      x_width: 0.03
+      y_width: 0.02
 ```
 And an element can inherit a parameter group from another element:
 ```{code} yaml
 - q2:
     kind: Quadrupole
     ApertureP:
-        inherit: q1.ApertureP
+      inherit: q1.ApertureP
 ```
 
 For an element to inherit all parameter groups from another element, just inherit the element itself:
