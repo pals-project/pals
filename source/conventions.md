@@ -130,8 +130,11 @@ this_group:
   - key2: value2
   - key3: value3
 ```
-The first represents an unordered dictionary of key-value pairs and the second represents an ordered 
-dictionary of key-value pairs. 
+The first represents a dictionary of key-value pairs.
+The second represents a list of single-key dictionaries.
+
+Dictionaries are accessed by name, their keys are not ordered.
+List are accessed by index, they are ordered.
 
 Note: the actual syntax in some particular language that is used to 
 represent an unordered dictionary may be an ordered dictionary. That is, the standard does not
