@@ -9,23 +9,22 @@ The `set` command is used for setting parameters. The components of `set` are:
 ```{code} yaml
 parameter     # [String] Parmeter(s) to vary.
 value         # [Expression] Value to set.
-delta         # [Boolean] Default false. If false, parameter is set to value.
-              #   If true, value is added to existing value of parameter.
 ```
-In the `value` expression, the symbol `@` can be used for the value of the parameter being changed.
+In the `value` expression, the symbol `@Param` can be used for the value of the parameter being changed
+and `@Ele` can be used for the lattice element whose parameter is being changed. 
 Example:
 ```{code} yaml
-- Q1:
-    kind: Quadrupole
-    ...
+- B1a:
+    kind: Bend
+    BendP:
+      e1: 0.1
+      g_ref = 0.02
 
 - set:
-    parameter: Q1.*>MagneticMultipoleP.Kn3
-    value: 2 * @ 
-
-- Lattice:
-  - branches:
-      - line1         # First branch
-      ...             # More branches
+    parameter: B1.*>BendP.e1
+    value: 2*@Param + atan(@Ele.g_ref)
 ```
-In this example, the `Kn3` parameter of all elements whose name begins with `Q1` is doubled.
+In this example, the `e1` parameter of all elements whose name begins with `B1` is modified.
+This includes element `B1a`. 
+
+Note: Grep is not used `value` expressions.
