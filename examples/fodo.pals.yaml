@@ -42,3 +42,10 @@ PALS:
         line:
           - fodo_cell:
               repeat: 3
+
+    - fodo_lattice:
+        kind: Lattice
+        branches:
+          - fodo_channel
+
+    - use: fodo_lattice
