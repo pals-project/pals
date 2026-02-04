@@ -194,14 +194,14 @@ Multiple `Lattice`s can be defined in a lattice file. By default, the one that g
 is the last lattice. This default can be overridden by a `use` statement. Example:
 ```{code} yaml
 - lat1:
-    - kind: Lattice
-    - branches:
-        ...
+    kind: Lattice
+    branches:
+      ...
 
 - lat2:
-    - kind: Lattice
-    - branches:
-        ...
+    kind: Lattice
+    branches:
+      ...
 
 - use: lat1
 ```
