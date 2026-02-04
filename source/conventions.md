@@ -139,9 +139,9 @@ For example, the string `"Q1"` will match to all elements named `Q1`.
 
 Element matches may be restricted to a given element kind using the notation
 ```{code} yaml
-<kind>::<name>
+{kind}::{name}
 ```
-where `<kind>` is the element kind and `<name>` is the element name.
+where `{kind}` is the element kind and `{name}` is the element name.
 Example:
 ```{code} yaml
 Marker::bpm.
@@ -182,7 +182,7 @@ could, for example, be a linked list).
 If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified using the lattice
 name with `">>>"` as a separator. There are several permutations where `>>` and `>>>` are used:
 ```{code} yaml
-{lattice-name}>>>{branch-name}>>{element-name>}
+{lattice-name}>>>{branch-name}>>{element-name}
 {lattice-name}>>>{element-name}
 {branch-name}>>{element-name}
 ```
@@ -200,23 +200,23 @@ beginning in "B" and ending in "4" with the element name beginning with "Qaf". A
 
 Elements can be matched using a range construct which has the form
 ```{code} yaml
-<ele1>:<ele2>
+{ele1}:{ele2}
 ```
-where `<ele1>` marks the beginning of the range and `<ele2>` marks the end of the range.
+where `{ele1}` marks the beginning of the range and `{ele2}` marks the end of the range.
 Example:
 ```{code} yaml
 Q1:Q2
 ```
 In this example, the range matches all elements from `Q1` to `Q2` inclusive of `Q1` and `Q2`.
-If `<ele2>` comes before `<ele1>` the range "wraps around" the branch or beamline.
+If `{ele2}` comes before `{ele1}` the range "wraps around" the branch or beamline.
 For example, if `Q2` comes before `Q1` in the above example, the range matches all elements from
 `Q1` to the end of the line plus all elements from the beginning of the line to `Q2`.
 
 Commas `,` can be used to form the union of element sets. The syntax is
 ```{code} yaml
-<element-set1>, <element-set2>, ... , <element-setN>
+{element-set1}, {element-set2}, ... , {element-setN}
 ```
-where `<element-set1>`, ... `<element-setN>` are element sets. 
+where `{element-set1}`, ... `{element-setN}` are element sets. 
 Example:
 ```{code} yaml
 A, B, Q.*
@@ -225,9 +225,9 @@ This will match to all elements named `A`, `B`, and all elements whose name begi
 
 Ampersands `&` can be used to form the intersection of element sets. The syntax is
 ```{code} yaml
-<element-set1> & <element-set2> & ... & <element-setN>
+{element-set1} & {element-set2} & ... & {element-setN}
 ```
-where `<element-set1>`, ... `<element-setN> are element sets. 
+where `{element-set1}`, ... `{element-setN} are element sets. 
 Example:
 ```{code} yaml
 Marker::.* & Q1:Q2
@@ -251,24 +251,24 @@ Order of presedence:
 
 For element parameters, the general syntax is
 ```{code} yaml
-<beamline>>><element>><parameter-group>.<sub-group1>. ... .<sub-groupN>.<parameter>
+{beamline}>>{element}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
 ```
 where
 ```{code} yaml
-<beamline>                      # Optional BeamLine or Branch name.
-<element>                       # Optional lattice element name.
-<parameter-group>               # Parameter group name.
-<sub-group1>. ... .<sub-groupN> # Subgroups if they exist.
-<parameter>                     # Parameter name.
+{beamline}                      # Optional BeamLine or Branch name.
+{element}                       # Optional lattice element name.
+{parameter-group}               # Parameter group name.
+{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
+{parameter}                     # Parameter name.
 ```
-Only `<beamline>` and `<element>` use PCRE2 syntax. 
+Only `{beamline}` and `{element}` use PCRE2 syntax. 
 
 Example:
 ```{code} yaml
 Qa.*>MagneticMultipoleP.Ks2L
 ```
 This will match the `Ks2L` component of all elements whose name begins with `Qa`. Notice that
-since only `<beamline>` and `<element>` use PCRE2 syntax, the dot separating the parameter group
+since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the parameter group
 and the parameter is unambiguous.
 
 %---------------------------------------------------------------------------------------------------
