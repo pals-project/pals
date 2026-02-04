@@ -94,9 +94,11 @@ The root of the PALS schema is given by this dictionary:
 PALS:
   version: null  # version schema: defined later
 
-  lattices:
-    - ...  # a list of lattice elements and commands
+  facility:
+    - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
+
+
 
 %---------------------------------------------------------------------------------------------------
 (s:matching)=
@@ -155,24 +157,22 @@ Optional string parameters have a default value of blank unless otherwise stated
 ## Include Lattice Files
 
 A lattice file can include other lattices (elements and commands) using an include statement.
+An include statement can appear anywhere in the information tree.
 
-Example:
+For example:
 ```{code} YAML
 PALS:
-  # ...
+  include: "../base-lattice.pals.yaml"
 
   lattices:
-    # the elements and commands of base-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-
-    # the elements and commands of extra-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-
-    # a list of additional lattice elements and commands
+    - Q01:
+        kind: Quadrupole
+        include: "Q-field-table.pals.yaml"
+    - ...
+    - include: "parameter-set-commands.pals.yaml"
     - ...
 ```
-where the include file names above are examples.
-Includes simply insert the `lattices` block of the `include` file(s).
+The information in an included file is inserted at the `include` point.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
