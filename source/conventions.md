@@ -314,14 +314,14 @@ Constants defined by PALS:
 ```{code} yaml
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
-h_bar_planck              # [eV*sec] Reduced Planck's constant
-r_e                       # [m] Classical electron radius
-r_p                       # [m] Classical proton radius
+hbar                      # [eV*sec] Reduced Planck's constant
+r_electron                # [m] Classical electron radius
+r_proton                  # [m] Classical proton radius
 e_charge                  # [Coul] Elementary charge
-mu_0_vac                  # [eV*sec^2/m] Vacuum permeability
-eps_0_vac                 # [1/eV*m] Permittivity of free space
+mu_0                      # [eV*sec^2/m] Vacuum permeability
+epsilon_0                 # [1/eV*m] Permittivity of free space
 classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c^2)
-fine_structure_const      # [-] Fine structure constant
+fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
 The `classical_radius_factor` is a useful number when converting a formula that involve the classical
