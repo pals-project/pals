@@ -348,7 +348,7 @@ asinh(x), acosh(x)       # Hyperbolic arc sine and Arc cosine
 atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
 abs(x)                   # Absolute Value
 factorial(n)             # Factorial
-ran()                    # Random number between 0 and 1
+random()                 # Uniform random number between 0 and 1
 ran_gauss()              # Gaussian distributed random number
 ran_gauss(sig_cut)       # Gaussian distributed random number
 int(x)                   # Nearest integer with magnitude less then x
