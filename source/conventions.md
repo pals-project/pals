@@ -1,76 +1,15 @@
-(c:introduction)=
-# Introduction
+(c:conventions)=
+# Conventions
 
 %---------------------------------------------------------------------------------------------------
-(s:conventions)=
-## Conventions
+(s:keywords)=
+## Keywords
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-All `keywords` in this standard are case-sensitive.
-
-%---------------------------------------------------------------------------------------------------
-(s:elements.intro)=
-## Lattice Elements
-
-The basic building block used to describe an accelerator is the lattice **element**. Typically,
-a lattice element is something physical like a bending magnet or an electrostatic
-quadrupole, or a diffracting crystal. A lattice element may define a region in space 
-distinguished by the presence of (possibly time-varying) electromagnetic fields,
-materials, apertures and other possible engineered structures. However, lattice elements
-are not restricted to being something physical and may, for example, just mark a particular point 
-in space (EG: `Marker` elements), or may designate where beamlines intersect (`Fork` elements).
-By convention, element names in PALS will be upper camel case.
-
-%---------------------------------------------------------------------------------------------------
-(s:branches.intro)=
-## Lattice Branches
-
-A lattice `branch` holds an ordered array of lattice elements
-that gives the sequence of elements to be tracked through. 
-A branch can represent something like a storage ring, transfer line or Linac.
-In the simplest case, a program can track through the elements one element at a time.
-However, lattice elements may overlap which will naturally complicate tracking.
-
-%---------------------------------------------------------------------------------------------------
-(s:lattices.intro)=
-## Lattices
-
-A `lattice` is the root structure holding the information about a
-``machine``. A machine may be as simple as a line of elements (like the elements of a Linac) or
-as complicated as an entire accelerator complex with multiple storage rings, Linacs, transfer
-lines, etc.
-
-Essentially a `lattice` has an array of `branches` with each branch describing part of the
-machine. Branches can be interconnected to form a unified whole.
-Branches can be interconnected using `Fork` elements. 
-This is used to simulate forking beamlines such as a connections to a transfer line, dump line, or an
-X-ray beamline.
-
-Besides `branches`, a lattice will hold information like details of any support girders that are
-present and `multipass` information in the case where elements are transversed multiple times 
-as in an ERL or in opposite directions as in a colliding beam machine.
-
-%---------------------------------------------------------------------------------------------------
-(s:root.intro)=
-## Root branch
-
-The `branch` from which other `branches` fork but is not forked to by any
-other branch is called a `root` branch.
-A lattice may contain multiple `root` branches. For example, a pair of intersecting storage
-rings will generally have two root branches, one for each ring.
-
-%---------------------------------------------------------------------------------------------------
-(s:expansion.intro)=
-## Lattice Expansion
-
-An important concept is [`lattice expansion`](#s:lattice.expand) and `branch expansion`.
-Branch expansion is the process, starting from the `root` `BeamLine`
-of a branch, of constructing the ordered list of lattice elements contained in that branch.
-`Lattice expansion` involves branch expansion along with things like
-calculating the reference energy for all elements.
+All keywords in this standard are case-sensitive.
 
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
@@ -145,7 +84,7 @@ lattice element attribute dictionaries where having the name of the element as t
 enhances legibility. 
 
 %---------------------------------------------------------------------------------------------------
-(s:parameters)
+(s:parameters)=
 ## Parameters
 
 All parameters are optional unless explicitly stated otherwise.
@@ -186,7 +125,7 @@ to the following:
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 
 %---------------------------------------------------------------------------------------------------
-(s:name.matching)=
+(s:element.matching)=
 ## Element Name Matching
 
 Lattice element name matching is the process of finding the set of lattice elements that 
@@ -195,22 +134,142 @@ lattice expansion where there are [`Fork`](#s:forking) elements and for evaluati
 expressions.
 
 The simplist form of name matching is if the string matches
-the `name` field of an element or elements. Regular expressions can be used. 
-Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
+the `name` field of an element or elements. 
+For example, the string `"Q1"` will match to all elements named `Q1`.
 
-The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name to the string
-using the string `">>"` as a separator. For example, `"B1>>Qaf.*"` would match
-to all elements in a branch or BeamLine named `"B1"` whose name begins with `"Qaf"`.
+Element matches may be restricted to a given element kind using the notation
+```{code} yaml
+{kind}::{name}
+```
+where `{kind}` is the element kind and `{name}` is the element name.
+Example:
+```{code} yaml
+Marker::bpm.
+```
+This will match to all `Marker` elements whose name is four characters starting with `bpm`
+(since a dot matches to any single character, see below).
 
-Additionally, if the match string ends with the character `"#"` followed by an integer `N`,
-this will match to the `N`{sup}`th` instance matched to in any `branch` or `BeamLine`.
-For example, `"Sd#3"` will match to the 3{sup}`rd` instance of all elements named
-`"Sd".
+The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
+followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
+that matches `"Quadrupole::Q1"`. The `N`{sup}`th` instance selection is always applied last.
+Thus with this example, the element kind selector `::` is applied first to get a list of all
+quadrupole elements named `Q1` and then the `#3` selection is used to get the third instance.
+
+<!--
+Besides the element name, any parameter in the [`MetaP`](#s:meta.params) parameter group can
+be matched to using the syntax `"{param-name}::{name-to-match}"`. For example, `"alias::black"`
+would match to any element whose `alias` parameter is set to `black`.
+-->
+
+In the discussion below, all of the above constructs will be called an "element name".
+
+The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name 
+(henceforth just referred to as a branch name) to the string,
+using the string `">>"` as a separator. For example, `"B1>>Sextupole::Saf"` would match
+to all `Sextupole` elements in a branch or `BeamLine` named `"B1"` whose name was `"Saf"`.
+This includes sublines of BeamLines. Thus if `B1` is a BeamLine that contains a subline `B2` 
+that in turn contains a Sextupole element named `Saf`, the string `"B1>>Sextupole::Saf"`
+will match to this element.
 
 Lattice elements can also be referred to by the index in which they appear in a branch
-with the first element having index one, etc. Branches do not get an index since the
+with the first element having index one, etc. For example, `"B1>>7"` matches the seventh
+element in branch `B1`.
+
+Branches do not get an index since the
 PALS standard does not mandate that the branches of a lattice be stored in an array (it
 could, for example, be a linked list).
+
+If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified using the lattice
+name with `">>>"` as a separator. There are several permutations where `>>` and `>>>` are used:
+```{code} yaml
+{lattice-name}>>>{branch-name}>>{element-name}
+{lattice-name}>>>{element-name}
+{branch-name}>>{element-name}
+```
+
+Regular expressions can be used. 
+Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
+Regex matching is applied to the lattice name, branch name, and element name separately and
+a match to the string requires all the individual names to match.
+When applying regex to a lattice name, any prefix (anything before and including a `"::"`) and
+any suffix (anything after and including a `"#"` character) is not included in the regex match.
+For example, `"B.4>>Quadrupole::Qaf.*"` would match to all Quadrupole elements in branches 
+which have three characters
+beginning in "B" and ending in "4" with the element name beginning with "Qaf". And 
+`"B.4>>Quadrupole::Qaf.*#2"` would match to the second element matched to.
+
+Elements can be matched using a range construct which has the form
+```{code} yaml
+{ele1}:{ele2}
+```
+where `{ele1}` marks the beginning of the range and `{ele2}` marks the end of the range.
+Example:
+```{code} yaml
+Q1:Q2
+```
+In this example, the range matches all elements from `Q1` to `Q2` inclusive of `Q1` and `Q2`.
+If `{ele2}` comes before `{ele1}` the range "wraps around" the branch or beamline.
+For example, if `Q2` comes before `Q1` in the above example, the range matches all elements from
+`Q1` to the end of the line plus all elements from the beginning of the line to `Q2`.
+
+Commas `,` can be used to form the union of element sets. The syntax is
+```{code} yaml
+{element-set1}, {element-set2}, ... , {element-setN}
+```
+where `{element-set1}`, ... `{element-setN}` are element sets. 
+Example:
+```{code} yaml
+A, B, Q.*
+```
+This will match to all elements named `A`, `B`, and all elements whose name begins with `Q`.
+
+Ampersands `&` can be used to form the intersection of element sets. The syntax is
+```{code} yaml
+{element-set1} & {element-set2} & ... & {element-setN}
+```
+where `{element-set1}`, ... `{element-setN} are element sets. 
+Example:
+```{code} yaml
+Marker::.* & Q1:Q2
+```
+This will match to all `Marker` elements that are in the range from `Q1` to `Q2`.
+
+Order of presedence:
+```{code} yaml
+>>>     # Highest
+>>
+::      
+#
+:
+,
+&      # Lowest
+```
+
+%---------------------------------------------------------------------------------------------------
+(s:parameter.matching)=
+## Element Parameter Name Matching
+
+For element parameters, the general syntax is
+```{code} yaml
+{beamline}>>{element}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+```
+where
+```{code} yaml
+{beamline}                      # Optional BeamLine or Branch name.
+{element}                       # Optional lattice element name.
+{parameter-group}               # Parameter group name.
+{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
+{parameter}                     # Parameter name.
+```
+Only `{beamline}` and `{element}` use PCRE2 syntax. 
+
+Example:
+```{code} yaml
+Qa.*>MagneticMultipoleP.Ks2L
+```
+This will match the `Ks2L` component of all elements whose name begins with `Qa`. Notice that
+since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the parameter group
+and the parameter is unambiguous.
 
 %---------------------------------------------------------------------------------------------------
 (s:units)=
@@ -223,6 +282,8 @@ The lattice standard uses SI except for energy which uses `eV`.
 
 * - Quantity
   - Units
+* - charge
+  - fundamental charge
 * - length
   - meters
 * - time
@@ -243,4 +304,60 @@ The lattice standard uses SI except for energy which uses `eV`.
   - Hz
 * - electric field
   - Volts/m
+```
+
+%---------------------------------------------------------------------------------------------------
+(s:constants)=
+## Constants
+
+Constants defined by PALS:
+```{code} yaml
+c_light                   # [ m/sec] Speed of light
+h_planck                  # [eV*sec] Planck's constant
+hbar                      # [eV*sec] Reduced Planck's constant
+r_electron                # [m] Classical electron radius
+r_proton                  # [m] Classical proton radius
+e_charge                  # [Coul] Elementary charge
+mu_0                      # [eV*sec^2/m] Vacuum permeability
+epsilon_0                 # [1/eV*m] Permittivity of free space
+classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c^2)
+fine_structure            # [-] Fine structure constant
+n_avogadro                # [-] Avogadro's constant
+```
+The `classical_radius_factor` is a useful number when converting a formula that involve the classical
+electron or proton radius to a formula for something other than an electron or proton.
+
+%---------------------------------------------------------------------------------------------------
+(s:functions)=
+## Functions
+
+Functions defined by PALS:
+```{code} yaml
+sqrt(x)                  # Square Root
+log(x)                   # Logarithm
+exp(x)                   # Exponential
+sin(x), cos(x)           # Sine and cosine
+tan(x), cot(x)           # Tangent and cotangent
+sinc(x)                  # Sin(x)/x Function
+asin(x), acos(x)         # Arc sine and Arc cosine
+atan(x)                  # Arc tangent
+atan2(y, x)              # Arc tangent of y/x
+sinh(x), cosh(x)         # Hyperbolic sine and cosine
+tanh(x), coth(x)         # Hyperbolic tangent and cotangent
+asinh(x), acosh(x)       # Hyperbolic arc sine and Arc cosine
+atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
+abs(x)                   # Absolute Value
+factorial(n)             # Factorial
+random()                 # Uniform random number between 0 and 1
+ran_gauss()              # Gaussian distributed random number
+ran_gauss(sig_cut)       # Gaussian distributed random number
+int(x)                   # Nearest integer with magnitude less then x
+nint(x)                  # Nearest integer to x
+sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
+floor(x)                 # Nearest integer less than x
+ceiling(x)               # Nearest integer greater than x
+modulo(a, p)             # a - floor(a/p) * p. Will be in range [0, p).
+mass_of(A)               # Mass of particle A
+charge_of(A)             # Charge, in units of the elementary charge, of particle A 
+anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
