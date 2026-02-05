@@ -135,7 +135,6 @@ standard. For example, an included file may be an
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
-=======
     # the elements and commands of base-lattice.pals.yaml
     - using: "./base-lattice.pals.yaml"
 
@@ -147,7 +146,16 @@ The recommended suffixes for PALS files is discussed in the [File Formats](#c:im
 ```
 where the file names above are examples of other valid, standalone PALS files.
 `using` simply inserts the `facility` list of another PALS file.
->>>>>>> 6e464d0 (Rename Include -> Using (#177))
+
+  lattices:
+    - Q01:
+        kind: Quadrupole
+        include: "A-field-table.pals.yaml"
+    - ...
+    - include: "parameter-set-commands.pals.yaml"
+    - ...
+```
+The information in an included file is inserted at the `include` point.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
