@@ -50,14 +50,16 @@ For example:
 ```{code} yaml
 - ap1:
     kind: ApertureP
-    x_limit: [-0.03, 0.04]
+    x_min: -0.03
+    x_max:  0.04
 ```
 The above defines an aperture with the name **ap1**. 
 ```{code} yaml
 - ap2:
     kind: ApertureP
     inherit: ap1
-    y_limit: [-0.02, 0.05]
+    y_min: -0.02
+    y_max:  0.05
 ```
 And the above defines a new aperture group which inherits from **ap1**.
 
@@ -66,7 +68,7 @@ Now we can use the aperture parameter group as follows:
 - q0:
     kind: Quadrupole
     ApertureP:
-        inherit: ap2
+      inherit: ap2
 ```
 
 Naming a parameter group is only needed if the parameter group is defined outside of an element.
@@ -74,15 +76,15 @@ Naming a parameter group is only needed if the parameter group is defined outsid
 - q1:
     kind: Quadrupole
     ApertureP: 
-        x_limit: [-0.03, 0.04]
-        y_limit: [-0.02, 0.03]
+      x_width: 0.03
+      y_width: 0.02
 ```
 And an element can inherit a parameter group from another element:
 ```{code} yaml
 - q2:
     kind: Quadrupole
     ApertureP:
-        inherit: q1.ApertureP
+      inherit: q1.ApertureP
 ```
 
 For an element to inherit all parameter groups from another element, just inherit the element itself:
