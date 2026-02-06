@@ -28,7 +28,7 @@ needs to use some syntax and this syntax is based upon YAML.
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary:
+The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
