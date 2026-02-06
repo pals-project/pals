@@ -109,7 +109,12 @@ PALS:
     - include: "parameter-set-commands.pals.yaml"
     - ...
 ```
-The information in an included file is inserted at the `include` point.
+The information in an included file is inserted at the `include` point. In this example,
+the included file `A-field-table.pals.yaml` could look like, for example:
+```{code} YAML
+field_table:
+  ... field table data ...
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
