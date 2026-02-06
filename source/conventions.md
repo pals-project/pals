@@ -101,7 +101,7 @@ Example:
 PALS:
   include: "../base-lattice.pals.yaml"
 
-  lattices:
+  facility:
     - Q01:
         kind: Quadrupole
         include: "A-field-table.pals.yaml"
