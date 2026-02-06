@@ -9,7 +9,7 @@ For readability, [this standard uses YAML-style](c:conventions) examples, but th
 
 When storing a PALS lattice in a file, please use the following self-describing file endings.
 
-* [YAML](https://yaml.org/faq.html): `.pals.yaml`
+* [YAML](https://yaml.org): `.pals.yaml`
 * [JSON](https://www.json.org/json-en.html): `.pals.json`
 * [TOML](https://toml.io): `.pals.toml`
 * [XML](https://en.wikipedia.org/wiki/XML): `.pals.xml`
