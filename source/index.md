@@ -1,9 +1,10 @@
-# Particle Accelerator Lattice Standard (PALS)
+# PALS: Particle Accelerator Lattice Standard
 
-This standard is an effort to create a standard to promote lattice information exchange for particle accelerators.
+Welcome to PALS, a standard to promote lattice information exchange for particle accelerators.
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Overview
 
 overview.md
@@ -12,6 +13,7 @@ definitions.md
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Schema
 
 conventions.md
@@ -26,6 +28,7 @@ miscellaneous.md
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Physics
 
 bend-multipoles.md
@@ -33,6 +36,7 @@ bend-multipoles.md
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Implementations
 
 fileformats.md
@@ -42,6 +46,7 @@ simulations.md
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Extensions
 
 extensions.md
@@ -49,6 +54,7 @@ extensions.md
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 :caption: Back Matter
 
 governance.md

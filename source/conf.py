@@ -29,4 +29,9 @@ exclude_patterns = ['parameters']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_book_theme'
+html_theme_options = {
+    "show_toc_level": 3,
+    "show_navbar_depth": 3,
+    "collapse_navbar": False,
+}
 ## html_static_path = ['_static']
