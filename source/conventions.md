@@ -28,13 +28,14 @@ needs to use some syntax and this syntax is based upon YAML.
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary:
+The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
+  phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
 
   facility:
-    - ...  # a list of lattice elements and commands
+    - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
 
 %---------------------------------------------------------------------------------------------------
@@ -98,20 +99,22 @@ A lattice file can include other lattices (elements and commands) using an inclu
 Example:
 ```{code} YAML
 PALS:
-  # ...
+  include: "../base-lattice.pals.yaml"
 
   facility:
-    # the elements and commands of base-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-
-    # the elements and commands of extra-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
-
-    # a list of additional lattice elements and commands
+    - Q01:
+        kind: Quadrupole
+        include: "A-field-table.pals.yaml"
+    - ...
+    - include: "parameter-set-commands.pals.yaml"
     - ...
 ```
-where the include file names above are examples.
-Includes simply insert the `lattices` block of the `include` file(s).
+The information in an included file is inserted at the `include` point. In this example,
+the included file `A-field-table.pals.yaml` could look like, for example:
+```{code} YAML
+field_table:
+  ... field table data ...
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
