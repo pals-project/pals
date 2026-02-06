@@ -123,8 +123,7 @@ magnetic multipole. If the multipole `tilt0` and `Ks0` is zero, the total bend s
   Changing the multipole strength `Kn0` or `Ks0` leaves the Reference orbit and the positions of
 all downstream lattice elements
 unchanged but will vary a particle's orbit. One common mistake when designing lattices is to vary
-`g_ref` and not `Kn0` which results in downstream elements moving around. See {ref}`s:ex.chicane`
-for an example.
+`g_ref` and not `Kn0` which results in downstream elements moving around.
 
   Note: A positive `g_ref`, which will bend particles and the reference orbit in the {math}`-x` direction
 represents a field of opposite sign as the field due a positive `hkick`.
