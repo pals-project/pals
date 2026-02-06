@@ -32,7 +32,7 @@ The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
-  phase_space_coordinates: KINETIC_AND_MOMENTUM
+  phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
