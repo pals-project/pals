@@ -1,0 +1,647 @@
+# This is a PALS example of the beamline of the ALS injector
+# based on the AT beam optics file.
+#
+
+- START:
+    kind: Marker
+    length: 0.0
+
+- BPM:
+    kind: Marker
+    length: 0.0
+
+- TV:
+    kind: Marker
+    length: 0.0
+
+- END:
+    kind: Marker
+    length: 0.0
+
+######
+# Gun to Linac
+######
+
+- HCM:
+    kind: Kicker
+    length: 0.1524
+    MagneticMultipoleP:
+      kn0: 0.0 
+
+- VCM:
+    kind: Kicker
+    length: 0.1524
+    MagneticMultipoleP:
+      ks0: 0.0
+
+- GTL_START_HCM1:
+    kind: Drift
+    length: 0.644
+
+- GTL_HCM1_VCM1:
+    kind: Drift
+    length: 0.000
+
+- GTL_VCM1_HCM2:
+    kind: Drift
+    length: 0.369
+
+- GTL_HCM2_VCM2:
+    kind: Drift
+    length: 0.000
+
+- GTL_VCM2_BPM1:
+    kind: Drift
+    length: 0.095 
+
+- GTL_BPM1_HCM3:
+    kind: Drift
+    length: 0.906
+
+- GTL_HCM3_VCM3:
+    kind: Drift
+    length: 0.000
+
+- GTL_VCM3_TV1:
+    kind: Drift
+    length: 0.366
+
+- GTL_TV1_BPM2:
+    kind: Drift
+    length: 0.095
+
+- GTL_BPM2_HCM4:
+    kind: Drift
+    length: 0.104
+
+- GTL_HCM4_VCM4:
+    kind: Drift
+    length: 0.000
+
+- GTL_VCM4_TV2:
+    kind: Drift
+    length: 0.354
+
+- GTL_TV2_END:
+    kind: Drift
+    length: 0.000
+
+- GUN:
+    kind: BeamLine
+    line:
+    - START
+    - GTL_START_HCM1
+    - HCM
+    - GTL_HCM1_VCM1
+    - VCM
+    - GTL_VCM1_HCM2
+    - HCM
+    - GTL_HCM2_VCM2
+    - VCM
+    - GTL_VCM2_BPM1
+    - BPM
+    - GTL_BPM1_HCM3
+    - HCM
+    - GTL_HCM3_VCM3
+    - VCM
+    - GTL_VCM3_TV1
+    - TV
+    - GTL_TV1_BPM2
+    - BPM
+    - GTL_BPM2_HCM4
+    - HCM
+    - GTL_HCM4_VCM4
+    - VCM
+    - GTL_VCM4_TV2
+    - TV
+    - GTL_TV2_END
+    - END
+
+######
+# Linac
+######
+
+- HCM:
+    kind: Kicker
+    length: 0.1524
+    kn0: 0.0
+
+- VCM:
+    kind: Kicker
+    length: 0.1524
+    ks0: 0.0
+
+- LNQ11:
+    kind: Quadrupole
+    length: 0.12
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- LNQ12:
+    kind: Quadrupole
+    length: 0.12
+    MagneticMultipoleP:
+      kn1: -1.2635
+
+- LNQ13:
+    kind: Quadrupole
+    length: 0.12
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- AS:
+    kind: Drift
+    length: 2.015
+
+- LN_START_AS1:
+    kind: Drift
+    length: .063
+
+- LN_AS1_BPM1:
+    kind: Drift
+    length: .086
+
+- LN_BPM1_HCM1:
+    kind: Drift
+    length: .138
+
+- LN_HCM1_VCM1:
+    kind: Drift
+    length: .000
+
+- LN_VCM1_TV1:
+    kind: Drift
+    length: .139
+
+- LN_TV1_Q11:
+    kind: Drift
+    length: .086
+
+- LN_Q11_Q12:
+    kind: Drift
+    length: .177
+
+- LN_Q12_Q13:
+    kind: Drift
+    length: .177
+
+- LN_Q13_HCM2:
+    kind: Drift
+    length: .165
+
+- LN_HCM2_VCM2:
+    kind: Drift
+    length: .000
+
+- LN_VCM2_AS2:
+    kind: Drift
+    length: .111
+
+- LN_AS2_BPM2:
+    kind: Drift
+    length: .313
+
+- LN_BPM2_TV2:
+    kind: Drift
+    length: .228
+
+- LN_TV2_END:
+    kind: Drift
+    length: .195
+
+
+- LINAC:
+    kind: BeamLine
+    line:
+    - START
+    - LN_START_AS1
+    - AS
+    - LN_AS1_BPM1
+    - BPM
+    - LN_BPM1_HCM1
+    - HCM
+    - LN_HCM1_VCM1
+    - VCM
+    - LN_VCM1_TV1
+    - TV
+    - LN_TV1_Q11
+    - LNQ11
+    - LN_Q11_Q12
+    - LNQ12
+    - LN_Q12_Q13
+    - LNQ13
+    - LN_Q13_HCM2
+    - HCM
+    - LN_HCM2_VCM2
+    - VCM
+    - LN_VCM2_AS2
+    - AS
+    - LN_AS2_BPM2
+    - BPM
+    - LN_BPM2_TV2
+    - TV
+    - LN_TV2_END
+    - END
+
+######
+# LTB 1
+######
+
+- HCM:
+    kind: Kicker
+    length: 0.052
+    MagneticMultipoleP:
+      kn0: 0.0
+
+- VCM:
+    kind: Kicker
+    length: 0.052
+    MagneticMultipoleP:
+      ks0: 0.0
+
+- Q11:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q12:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: -1.2635
+
+- Q13:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- BX:
+    kind: Rbend
+    length: 0.5
+    BendP:
+      angle_ref: 0.0
+
+- BS:
+    kind: Rbend
+    length: 0.515
+    BendP:
+      angle_ref: 0.698
+
+- LTB_START_HCM1:
+    kind: Drift
+    length: 0.760 
+
+- LTB_HCM1_VCM1:
+    kind: Drift
+    length: 0.126
+
+- LTB_VCM1_BX:
+    kind: Drift
+    length: 0.443
+
+- LTB_BX_VCM2:
+    kind: Drift
+    length: 0.443
+
+- LTB_VCM2_HCM2:
+    kind: Drift
+    length: 0.18
+
+- LTB_HCM2_Q11:
+    kind: Drift
+    length: 0.191
+
+- LTB_Q11_Q12:
+    kind: Drift
+    length: 0.3 
+
+- LTB_Q12_Q13:
+    kind: Drift
+    length: 0.3 
+
+- LTB_Q13_BPM1:
+    kind: Drift
+    length: 0.131
+
+- LTB_BPM1_TV1:
+    kind: Drift
+    length: .385
+
+- LTB_TV1_BPM2:
+    kind: Drift
+    length: .558
+
+- LTB_BPM2_BS:
+    kind: Drift
+    length: .326
+
+- LTB1:
+    kind: BeamLine
+    line:
+    - START
+    - LN_START_HCM1
+    - HCM
+    - LTB_HCM1_VCM1
+    - VCM
+    - LTB_VCM1_BX
+    - BX
+    - LTB_BX_VCM2
+    - VCM
+    - LTB_VCM2_HCM2
+    - HCM
+    - LTB_HCM2_Q11
+    - Q11
+    - LTB_Q11_Q12
+    - Q12
+    - LTB_Q12_Q13
+    - Q13
+    - LTB_Q13_BPM1
+    - BPM
+    - LTB_BPM1_TV1
+    - TV
+    - LTB_TV1_BPM2
+    - BPM
+    - LTB_BPM2_BS
+    - BS
+
+######
+# LTB 2: Branch to Booster
+######
+
+- HCM:
+    kind: Kicker
+    length: 0.052
+    MagneticMultipoleP:
+      kn0:
+
+- VCM:
+    kind: Kicker
+    length: 0.052
+    MagneticMultipoleP:
+      ks0:
+
+- Q2:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q31:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q32:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q41:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q42:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q5:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- Q6:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- BR1QD1:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- BR1QF2:
+    kind: Quadrupole
+    length: 0.15
+    MagneticMultipoleP:
+      kn1: 0.781050
+
+- B1:
+    kind: Rbend
+    length: 0.515
+    BendP:
+      angle_ref: 0.698
+      e1_rect: 0.31416
+      e2_rect: 0.31416
+
+- B2:
+    kind: Rbend
+    length: 0.503
+    BendP:
+      angle_ref: -0.349
+      e1_rect: 0.0
+      e2_rect: 0.0
+
+- B3:
+    kind: Rbend
+    length: 0.354
+    BendP:
+      angle_ref: -0.1745
+      e1_rect: -0.08727
+      e2_rect: -0.08727
+
+- BRKI:
+    kind: Rbend
+    length: 0.5
+    BendP:
+      angle_ref: -0.07854
+      e1_rect: -0.07854
+      e2_rect: 0.0
+
+- LTB_BS_VCM3:
+    kind: Drift
+    length: .886
+
+- LTB_VCM3_Q2:
+    kind: Drift
+    length: 0.181
+
+- LTB_Q2_TV3:
+    kind: Drift
+    length: 0.279
+
+- LTB_TV3_BPM4:
+    kind: Drift
+    length: .126
+
+- LTB_BPM4_B1:
+    kind: Drift
+    length: .528
+
+- LTB_B1_Q31:
+    kind: Drift
+    length: 0.5
+
+- LTB_Q31_Q32:
+    kind: Drift
+    length: 0.3
+
+- LTB_Q32_VCM4:
+    kind: Drift
+    length: .432
+
+- LTB_VCM4_BPM5:
+    kind: Drift
+    length: 1.435
+
+- LTB_BPM5_B2:
+    kind: Drift
+    length: .3434
+
+- LTB_B2_Q41:
+    kind: Drift
+    length: 0.5
+
+- LTB_Q41_TV4:
+    kind: Drift
+    length: 0.147
+
+- LTB_TV4_Q42:
+    kind: Drift
+    length: 0.152
+
+- LTB_Q42_VCM5:
+    kind: Drift
+    length: 0.295
+
+- LTB_VCM5_VCM6:
+    kind: Drift
+    length: 1.021
+
+- LTB_VCM6_BPM6:
+    kind: Drift
+    length: .195
+
+- LTB_BPM6_Q5:
+    kind: Drift
+    length: 0.945
+
+- LTB_Q5_BPM7:
+    kind: Drift
+    length: 0.207
+
+- LTB_BPM7_Q6:
+    kind: Drift
+    length: 0.293
+
+- LTB_Q6_VCM7:
+    kind: Drift
+    length: 0.309
+
+- LTB_VCM7_B3:
+    kind: Drift
+    length: .191
+
+- LTB_B3_TV5:
+    kind: Drift
+    length: .407
+
+- LTB_TV5_BR1QD1:
+    kind: Drift
+    length: .611
+
+- LTB_BR1QD1_TV6:
+    kind: Drift
+    length: .9175
+
+- LTB_TV6_BRKI:
+    kind: Drift
+    length: .2763
+
+- LTB_BRKI_BR1QF2:
+    kind: Drift
+    length: .346
+
+- LTB_BR1QF2_END:
+    kind: Drift
+    length: .3375
+
+- LTB2:
+    kind: BeamLine
+    line:
+    - LTB_BS_VCM3
+    - VCM
+    - LTB_VCM3_Q2
+    - Q2
+    - LTB_Q2_TV3
+    - TV
+    - LTB_TV3_BPM4
+    - BPM
+    - LTB_BPM4_B1
+    - B1
+    - LTB_B1_Q31
+    - Q31
+    - LTB_Q31_Q32
+    - Q32
+    - LTB_Q32_VCM4
+    - VCM
+    - LTB_VCM4_BPM5
+    - BPM
+    - LTB_BPM5_B2
+    - B2
+    - LTB_B2_Q41
+    - Q41
+    - LTB_Q41_TV4
+    - TV
+    - LTB_TV4_Q42
+    - Q42
+    - LTB_Q42_VCM5
+    - VCM
+    - LTB_VCM5_VCM6
+    - VCM
+    - LTB_VCM6_BPM6
+    - BPM
+    - LTB_BPM6_Q5
+    - Q5
+    - LTB_Q5_BPM7
+    - BPM
+    - LTB_BPM7_Q6
+    - Q6
+    - LTB_Q6_VCM7
+    - VCM
+    - LTB_VCM7_B3
+    - B3                
+    - LTB_B3_TV5
+    - TV
+    - LTB_TV5_BR1QD1
+    - BR1QD1
+    - LTB_BR1QD1_TV6
+    - TV
+    - LTB_TV6_BRKI
+    - BRKI
+    - LTB_BRKI_BR1QF2
+    - BR1QF2
+    - LTB_BR1QF2_END
+    - END
+
+######
+# LTB : the whole injector beam line
+######
+#
+- LTB:
+    kind: BeamLine
+    line:
+    - GUN
+    - LINAC
+    - LTB1
+    - LTB2
