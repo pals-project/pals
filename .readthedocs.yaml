@@ -14,7 +14,7 @@ sphinx:
   configuration: source/conf.py
 
 conda:
-  environment: conda.yaml
+  environment: environment.yml
 
 formats:
   - htmlzip

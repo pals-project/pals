@@ -1,5 +1,5 @@
 # Create this environment with:
-#   conda env create -y -f conda.yaml
+#   conda env create -y -f environment.yml
 # To activate this environment, use:
 #   conda activate pals
 name: pals

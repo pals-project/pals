@@ -5,7 +5,7 @@ The documentation uses the [MyST](https://mystmd.org/) markup language and rende
 
 To build the documentation locally, from the root directory of the repository create a conda environment with
 ```{code} bash
-conda env create -y -f conda.yaml
+conda env create -y -f environment.yml
 ```
 This only needs to be done once.
 To activate this environment, use
