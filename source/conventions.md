@@ -37,7 +37,7 @@ this_dictionary:
 
 And lists:
 ```{code} yaml
-this_list
+this_list:
   - entry1
   - entry2
   - more_entries
@@ -53,8 +53,7 @@ this_list:
       key4: value4
 ```
 
-.. note::
-
+```{note}
    Developer note:
    After reading a PALS files, the actual syntax in a particular programming language might use an
    unordered or ordered dictionary (ordered by key or insertion order).
@@ -62,6 +61,7 @@ this_list:
 
    An example of this is with lattice element attribute dictionaries: having the *kind* of the
    element as the first attribute enhances legibility.
+```
 
 ### Special Values
 
@@ -70,12 +70,12 @@ Special values used in this document are:
 1. Boolean parameters can be one of three values
 - `true`
 - `false`
-- `null`          # Useful as a default value when neither `true` nor `false` is appropriate.
+- `null` Useful as a default value when neither `true` nor `false` is appropriate.
 
 2. The standard defines the following symbols which can be used in place of a real or integer value:
-- `null`   # Value has not been set.
-- `Inf`    # Infinity
-- `-Inf`   # Negative infinity
+- `null` Value has not been set.
+- `Inf` Infinity
+- `-Inf` Negative infinity
 
 3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
