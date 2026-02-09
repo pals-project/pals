@@ -55,12 +55,10 @@ this_list:
 
 ```{note}
    Developer note:
-   After reading a PALS files, the actual syntax in a particular programming language might use an
-   unordered or ordered dictionary (ordered by key or insertion order).
-   When there is a choice, prefer an insertion-ordered  dictionary to maintain human readability.
+   PALS dictionaries should, when possible, implement a dictionary that preserves insertion order.
 
-   An example of this is with lattice element attribute dictionaries: having the *kind* of the
-   element as the first attribute enhances legibility.
+   While not strictly necessary, this helps with human readability:
+   For example, having the [`kind`](#c:element.parameters) key of an element as the first attribute enhances legibility.
 ```
 
 ### Special Values
