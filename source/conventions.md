@@ -74,7 +74,7 @@ calculating the reference energy for all elements.
 
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
-## Syntax Used in this Document
+## Syntax Used in this Document is YAML
 
 The PALS [schema standard](#s:std.components) does not define any particular language to implement 
 a lattice. Rather, there are associated
@@ -84,25 +84,50 @@ representational internal format defined by the package.
 
 While the standard itself is language agnostic, this document that describes the standard
 needs to use some syntax and this syntax is based upon YAML.
+YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
 
-%---------------------------------------------------------------------------------------------------
-(s:palsroot)=
-## PALS Root Object
+### YAML 101
 
-The root of the PALS schema is given by this dictionary:
-```{code} YAML
-PALS:
-  version: null  # version schema: defined later
-
-  lattices:
-    - ...  # a list of lattice elements and commands
+In particular, there are dictionaries, which collect key-value pairs, e.g.:
+```{code} yaml
+this_dictionary:
+  key1: value1
+  key2: value2
+  key3: value3
 ```
 
-%---------------------------------------------------------------------------------------------------
-(s:matching)=
-## Matching Syntax
+And lists:
+```{code} yaml
+this_list
+  - entry1
+  - entry2
+  - more_entries
+```
 
-Non-YAML syntax used here is:
+One can nest dictionaries into lists and other dictionaries, e.g.:
+```{code} yaml
+this_list:
+  - key1: value1
+    key2: value2
+  - named_dictionary:
+      key3: value3
+      key4: value4
+```
+
+.. note::
+
+   Developer note:
+   After reading a PALS files, the actual syntax in a particular programming language might use an
+   unordered order dictionary (ordered by key or insertation order).
+   When there is a choice of using an insertion-ordered or an unordered dictionary,
+   an insertion-ordered dictionary may be preferred to maintain human readability.
+
+   An example of this is with lattice element attribute dictionaries, where having the *kind* of the
+   element as the first attribute enhances legibility.
+
+### Special Values
+
+Special values used in this document are:
 
 1. Boolean parameters can be one of three values
 - `true`
@@ -116,34 +141,18 @@ Non-YAML syntax used here is:
 
 3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
-Note: There is a difference between
-```{code} yaml
-this_group:
-  key1: value1
-  key2: value2
-  key3: value3
-```
-and
-```{code} yaml
-this_group:
-  - key1: value1
-  - key2: value2
-  - key3: value3
-```
-The first represents a dictionary of key-value pairs.
-The second represents a list of single-key dictionaries.
+%---------------------------------------------------------------------------------------------------
+(s:palsroot)=
+## PALS Root Object
 
-Dictionaries are accessed by name, their keys are not ordered.
-List are accessed by index, they are ordered.
+The root of the PALS schema is given by this dictionary:
+```{code} YAML
+PALS:
+  version: null  # version schema: defined later
 
-Note: the actual syntax in some particular language that is used to 
-represent an unordered dictionary may be an ordered dictionary. That is, the standard does not
-prohibit ordered dictionaries being used in place of unordered dictionaries. However, ordered
-dictionaries must always be used for things that the standard defines as an ordered dictionary.
-In fact, when there is a choice of using an ordered or an unordered dictionary,
-an ordered dictionary may be preferred to maintain human readability. An example of this is with
-lattice element attribute dictionaries where having the name of the element as the first attribute
-enhances legibility. 
+  lattices:
+    - ...  # a list of lattice elements and commands
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)
