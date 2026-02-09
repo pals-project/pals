@@ -57,11 +57,10 @@ this_list:
 
    Developer note:
    After reading a PALS files, the actual syntax in a particular programming language might use an
-   unordered order dictionary (ordered by key or insertation order).
-   When there is a choice of using an insertion-ordered or an unordered dictionary,
-   an insertion-ordered dictionary may be preferred to maintain human readability.
+   unordered or ordered dictionary (ordered by key or insertion order).
+   When there is a choice, prefer an insertion-ordered  dictionary to maintain human readability.
 
-   An example of this is with lattice element attribute dictionaries, where having the *kind* of the
+   An example of this is with lattice element attribute dictionaries: having the *kind* of the
    element as the first attribute enhances legibility.
 
 ### Special Values
