@@ -4,21 +4,19 @@
 There are reference implementations of PALS "parsers". Here the word "parser" is used loosely since
 the parsers do much more than parse lattice files. All parsers will:
 
-* Write and read from/to files,
-* Expand & evaluate expressions on lattices ( [`lattice expansion`](#s:lattice.expand)),
-* Validate existing files.
+- Write and read from/to files.
+- Expand and evaluate expressions on lattices ( [`lattice expansion`](#s:lattice.expand)).
+- Validate existing files.
+- Calculate the [floor coordinates](#s:floor) of all elements, both nominal and "misaligned" positions.
+- Evaluate dependent (output) parameter values.
 
-## Python Parser
+## Parsers
 
-The [PALS-Python](https://github.com/campa-consortium/pals-python) project implements the PALS schema.
-
-## Julia Parser
-
-A Julia parser is planned and will be developed as part of the [SciBmad project](https://github.com/bmad-sim/SciBmad.jl).
-
-## C/C++ Parser
-
-A C/C++ parser is contemplated (and is in need of volunteers).
+- A Python [parser](https://github.com/pals-project/pals-python) is in development.
+- A C/C++ [parser](https://github.com/pals-project/pals-cpp) is in development.
+Currently supporting only YAML files, other formats will be added as needed.
+- A Julia [parser](https://github.com/pals-project/pals-julia) is in development. This parser
+uses the C++ parser as a back end.
 
 ## Visualization
 
@@ -32,3 +30,4 @@ of volunteers). It is envisaged that converting to PALS format will be handled b
 that implement non-PALS languages since these programs already have the ability to read in
 a non-PALS format.
 
+- Conversion between PALS and [Bmad/SciBmad](https://github.com/bmad-sim) is in the planning stages.
