@@ -152,10 +152,31 @@ where the file names above are examples of other valid, standalone PALS files.
         kind: Quadrupole
         include: "A-field-table.pals.yaml"
     - ...
-    - include: "parameter-set-commands.pals.yaml"
+    - include: "parameter-set-commands.subpals.yaml"
     - ...
 ```
-The information in an included file is inserted at the `include` point.
+
+The information in an included file is inserted at the `include` point. In this example,
+the included file `A-field-table.subpals.yaml` could look like, for example:
+```{code} YAML
+- Q1:
+  - type: Quadrupole
+  - ...
+```
+There are two types of included files. One type of file is compliant with the PALS format standard
+like in the example above. These "compliant format" files can be used to break up the lattice
+information tree into manageable parts. Compliant format files can themselves have include
+statements. 
+
+The other type of included files, "non-compliant format" files, conform to some other non-PALS 
+standard. For example, an included file may be an 
+[OpenPMD](https://github.com/openPMD/openPMD-standard) compliant file coded in 
+[HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
+
+The recommended file suffix for a top-level PALS file (a file that includes the `PALS` root node) 
+is `.pals.XXX` where `XXX` is the standard suffix for the particular file format 
+(`.yaml` for YAML files, etc.).
+The recommended file suffix for non-top-level compliant format files is `.subpals.yaml`.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
