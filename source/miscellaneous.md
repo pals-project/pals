@@ -24,7 +24,7 @@ Example:
     parameter: B1.*>BendP.e1
     value: 2*@Param + atan(@Ele.BendP.g_ref)
 ```
-In this example, the `e1` parameter of all elements whose name begins with `B1` is modified.
+In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. 
 
 Note: Grep is not used `value` expressions.
