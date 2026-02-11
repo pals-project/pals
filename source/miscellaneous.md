@@ -22,7 +22,7 @@ Example:
 
 - set:
     parameter: B1.*>BendP.e1
-    value: 2*@Param + atan(@Ele.g_ref)
+    value: 2*@Param + atan(@Ele.BendP.g_ref)
 ```
 In this example, the `e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. 
