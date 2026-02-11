@@ -150,7 +150,7 @@ where the file names above are examples of other valid, standalone PALS files.
   lattices:
     - Q01:
         kind: Quadrupole
-        include: "A-field-table.pals.yaml"
+        include: "A-field-table.subpals.yaml"
     - ...
     - include: "parameter-set-commands.subpals.yaml"
     - ...
