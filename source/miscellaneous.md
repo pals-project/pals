@@ -10,7 +10,7 @@ The `set` command is used for setting parameters. The components of `set` are:
 parameter     # [String] Parmeter(s) to vary.
 value         # [Expression] Value to set.
 ```
-In the `value` expression, the symbol `@Param` can be used for the value of the parameter being changed
+In the `value` expression, the symbol `@Param` can be used for the current value of the parameter being changed
 and `@Ele` can be used for the lattice element whose parameter is being changed. 
 Example:
 ```{code} yaml
