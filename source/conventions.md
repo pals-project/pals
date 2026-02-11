@@ -91,9 +91,9 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Include Lattice Files
+## Using Multiple Lattice Files
 
-A lattice file can include other lattices (elements and commands) using an include statement.
+A lattice file can use other lattices (elements and commands) via the `using` statement.
 
 Example:
 ```{code} YAML
@@ -102,16 +102,16 @@ PALS:
 
   facility:
     # the elements and commands of base-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
+    - using: "./base-lattice.pals.yaml"
 
     # the elements and commands of extra-lattice.pals.yaml
-    - include: "./base-lattice.pals.yaml"
+    - using: "./base-lattice.pals.yaml"
 
     # a list of additional lattice elements and commands
     - ...
 ```
-where the include file names above are examples.
-Includes simply insert the `lattices` block of the `include` file(s).
+where the file names above are examples of other valid, standalone PALS files.
+`using` simply inserts the `facility` list of another PALS file.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
