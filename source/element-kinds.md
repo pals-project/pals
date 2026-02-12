@@ -12,73 +12,15 @@ cleo:             # [string] user-defined name
     Ksol: -0.15
 ```
 
-<<<<<<< alsinjector
-%---------------------------------------------------------------------------------------------------
----
-(s:ackicker)=
-## ACKicker Element
 
-An ACKicker element simulates a time-dependent kicker.
-It is like a Kicker element except that the field varies in time.
-This element requires a user supplied time-dependent expression.
-
-Element parameter groups associated with this element kind are:
-- [**ACKickerP**](#s:ackicker.params): AC kicker parameters.
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-=======
-
->>>>>>> main
-
-Example:
-```{code} yaml
-ack1:
-  kind: ACKicker
-  length: 0.3
-  ACKickerP:
-    t_0: 0.0
-    t : 1e-8 
 
 %---------------------------------------------------------------------------------------------------
 ---
-<<<<<<< alsinjector
-(s:beambeam)=
-## BeamBeam Element
-
-A BeamBeam element defines the parameters of a oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
-=======
 (s:magnets)=
 ## Magnets and RF Cavities
->>>>>>> main
 
 The following element kinds involve applied electromagnetic fields in vacuum.
 
-<<<<<<< alsinjector
-Example:
-```{code} yaml
-bb1:
-  kind: BeamBeam
-  beambeamP:
-    sigma_x: 0.1e-3
-    sigma_y: 0.1e-3
-    sigma_z: 5.0e-2
-    energy: 1.0e10
-    N_particle: 1.0e11
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-
-%---------------------------------------------------------------------------------------------------
-(s:beginningele)=
-## BeginningEle Element
-
-A BeginningEle element is an initial element at start of a branch.
-Under Construction...
-=======
 
 %---------------------------------------------------------------------------------------------------
 (s:ackicker)=
@@ -87,7 +29,6 @@ Under Construction...
 An ACKicker element simulates a time-dependent kicker.
 It is like a Kicker element except that the field varies in time.
 This element requires a user supplied time-dependent expression.
->>>>>>> main
 
 Element parameter groups associated with this element kind are:
 - [**ACKickerP**](#s:ackicker.params): AC kicker parameters.
@@ -99,9 +40,6 @@ Element parameter groups associated with this element kind are:
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
-<<<<<<< alsinjector
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-=======
 Example:
 ```{code} yaml
 ack1:
@@ -111,7 +49,6 @@ ack1:
 ```
 
 
->>>>>>> main
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
 ###  Bend Elements: RBend and SBend
@@ -145,31 +82,6 @@ the face angles `e1_rect` and `e2_rect` can be
 held constant and `e1` and `e2` can be varied to keep the relationship
 between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
 
-<<<<<<< alsinjector
-%---------------------------------------------------------------------------------------------------
-(s:converter)=
-## Converter Element
-
-A Converter element represents a target (plate) onto which 
-particles are slammed in order to generate
-particles of a different type. For example, a tungsten plate which is bombarded with electrons to generate positrons.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-=======
->>>>>>> main
 
 %---------------------------------------------------------------------------------------------------
 (s:crabcavity)=
@@ -197,10 +109,7 @@ cc1:
     frequency: 394.0e6 
     phase: 0.0
     voltage: 1.0e6
-<<<<<<< alsinjector
-=======
 ```
->>>>>>> main
 
 %---------------------------------------------------------------------------------------------------
 (s:drift)=
@@ -227,19 +136,12 @@ d01:
 ```
 
 %---------------------------------------------------------------------------------------------------
-<<<<<<< alsinjector
-(s:egun)=
-## EGun Element
-An EGun element represents an electron gun and encompasses a region starting from the cathode were
-the electrons are generated.
-=======
 (s:kicker)=
 ### Kicker Element
 
 A Kicker element is an element that can deflect a beam transversely in both planes. 
 It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
 horizontal and vertical directions.
->>>>>>> main
 
 Under Construction...
 
@@ -259,17 +161,8 @@ Element parameter groups associated with this element kind are:
 (s:multipole)=
 ### Multipole Element
 
-<<<<<<< alsinjector
-A Feedback element is an element used to simulate a feedback circuit.
-It gathers information about particle trajectories from the inputs
-and uses this
-to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
-A feedback element could be used, for example, to simulate RF feedback systems or beam position
-feedback, or cooling of a proton beam by a beam of electrons.
-=======
 A general multipole element.  The fields are assumed to be uniform along the longitudinal direction,
 and may contain (magnetic or electric) multipole contributions of any order.
->>>>>>> main
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -287,15 +180,9 @@ Element parameter groups associated with this element kind are:
 (s:octupole)=
 ### Octupole Element
 
-<<<<<<< alsinjector
-A Fiducial element is used to fix the position and orientation of the reference orbit within the global
-coordinate system at the location of the fiducial element. A fiducial element will affect the global
-floor coordinates of elements both upstream and downstream of the fiducial element.
-=======
 An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
 In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
->>>>>>> main
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -349,14 +236,7 @@ q01w:
 (s:rfcavity)=
 ### RFCavity Element
 
-<<<<<<< alsinjector
-A Foil element represents a planar sheet of material which can strip electrons from a particle. In
-conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
-Material that can strip electrons from a particle
-will also cause energy loss and diffusion.
-=======
 An RFCavity element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
->>>>>>> main
 
 Under Construction...
 
@@ -377,15 +257,9 @@ Note: Multipole parameters represent DC fields. A common example is a DC solenoi
 helps focusing.
 
 
-<<<<<<< alsinjector
-A Fork element marks the start of an alternative branch for the beam (or X-rays or
-other particles generated by the beam) to follow.
-This element is used to connect lattice branches together.
-=======
 %---------------------------------------------------------------------------------------------------
 (s:sextupole)=
 ### Sextupole Element
->>>>>>> main
 
 A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
@@ -416,16 +290,8 @@ s01w:
 (s:solenoid)=
 ### Solenoid Element
 
-<<<<<<< alsinjector
-A Girder element is a support structure that orients the 
-elements that are attached to it in space. This element can
-be used to simulate any rigid support structure and there are 
-no restrictions on how the lattice elements
-that are supported are oriented with respect to one another.
-=======
 A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
 Additional magnetic (or electric) multipole contributions are allowed.
->>>>>>> main
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -449,14 +315,10 @@ sol01w:
 ```
 
 
-<<<<<<< alsinjector
-An Instrument element is a measurement element for diagnostics.
-=======
 %---------------------------------------------------------------------------------------------------
 (s:wiggler)=
 ### Wiggler Element
 A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
->>>>>>> main
 
 Under Construction...
 
@@ -478,13 +340,7 @@ Element parameter groups associated with this element kind are:
 (s:beam)=   
 ## Beam and Plasma Elements 
 
-<<<<<<< alsinjector
-A Kicker element is an element that can deflect a beam transversely in both planes. 
-It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
-horizontal and vertical directions.
-=======
 The following element kinds involve interactions with the mean field of a particle distribution.
->>>>>>> main
 
 
 %---------------------------------------------------------------------------------------------------
@@ -524,12 +380,6 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:sources)=
 ## Sources and Collimation  
 
-<<<<<<< alsinjector
-A Marker element is a zero length element to mark a particular position.
-The main purpose of this element is to name a position in the beamline.
-`Marker` elements has a unit transport map. That is, a particle's phase space coordinates
-are not altered with passage through the element
-=======
 The following element kinds are for producing or removing beam particles. 
 
 
@@ -542,7 +392,6 @@ particles are slammed in order to generate
 particles of a different type. For example, a tungsten plate which is bombarded with electrons to generate positrons.
 
 Under Construction...
->>>>>>> main
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -559,18 +408,10 @@ The length of this element is considered to be zero so if `length` is specified,
 
 
 %---------------------------------------------------------------------------------------------------
-<<<<<<< alsinjector
-(s:mask)=
-## Mask Element
-
-A Mask element defines an aperture where the mask area can essentially have an arbitrary shape.
-It is a collimation element to remove unwanted particles.
-=======
 (s:egun)=
 ### EGun Element
 An EGun element represents an electron gun and encompasses a region starting from the cathode were
 the electrons are generated.
->>>>>>> main
 
 Under Construction...
 
@@ -590,15 +431,10 @@ Element parameter groups associated with this element kind are:
 (s:foil)=
 ### Foil Element
 
-<<<<<<< alsinjector
-A Match element is used to match the orbit, Twiss, and dispersion parameters
- between two locations.
-=======
 A Foil element represents a planar sheet of material which can strip electrons from a particle. In
 conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
 Material that can strip electrons from a particle
 will also cause energy loss and diffusion.
->>>>>>> main
 
 Under Construction...
 
@@ -686,12 +522,6 @@ feedback, or cooling of a proton beam by a beam of electrons.
 
 Under Construction...
 
-<<<<<<< alsinjector
-A Patch element is an element used to shift the reference orbit and time. 
-A common application of this element is to orient two lines with respect 
-to each other. For example,
-to orient an injection line with the ring it is injecting into.
-=======
 Note: This element does not have a `length` nor an `s_position`.
 
 
@@ -701,7 +531,6 @@ Note: This element does not have a `length` nor an `s_position`.
 
 A Match element is used to match the orbit, Twiss, and dispersion parameters
  between two locations.
->>>>>>> main
 
 Under Construction...
 
@@ -745,10 +574,6 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:bookkeeping)=         
 ## Bookkeeping Elements                
 
-<<<<<<< alsinjector
-An RFCavity element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
-
-=======
 The following element kinds provide relationships among branches and coordinate systems.
 
 
@@ -757,7 +582,6 @@ The following element kinds provide relationships among branches and coordinate 
 ### BeginningEle Element
 
 A BeginningEle element is an initial element at start of a branch.
->>>>>>> main
 Under Construction...
 
 Element parameter groups associated with this element kind are:
@@ -848,11 +672,6 @@ a case, the `BodyShiftP` parameter group can be used to misalign the BPM.
 (s:placeholder)=
 ### Placeholder Element
 
-<<<<<<< alsinjector
-A Taylor element is a Taylor map that maps the input orbital phase space and possibly spin coordinates
-of a particle at the entrance end of the element to the output orbital phase space and spin coordinates at the exit
-end of the element. 
-=======
 Placeholder element used for bookkeeping when constructing the expanded lattice.
 This element has zero length and does nothing.
 This element can be used as a [`base_item`](#s:placement) element for [superpositions](#s:superposition). 
@@ -876,7 +695,6 @@ A Patch element is an element used to shift the reference orbit and time.
 A common application of this element is to orient two lines with respect 
 to each other. For example,
 to orient an injection line with the ring it is injecting into.
->>>>>>> main
 
 Under Construction...
 
@@ -963,25 +781,3 @@ MMM:
 Note: `UnionEle` shares the feature of describing elements that overlap physically, 
 together with the [`placement`](#s:placement) construct within a `BeamLine` and the
 [`superposition`](#s:superposition) construct.
-<<<<<<< alsinjector
-
-%---------------------------------------------------------------------------------------------------
-(s:wiggler)=
-## Wiggler Element
-A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-=======
->>>>>>> main
