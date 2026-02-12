@@ -12,7 +12,7 @@
 PALS:
   version: null  # later, we will put the version of the PALS standard here
 
-  lattices:
+  facility:
     - drift1:
         kind: Drift
         length: 0.25
@@ -42,3 +42,10 @@ PALS:
         line:
           - fodo_cell:
               repeat: 3
+
+    - fodo_lattice:
+        kind: Lattice
+        branches:
+          - fodo_channel
+
+    - use: fodo_lattice
