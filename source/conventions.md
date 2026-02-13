@@ -13,7 +13,7 @@ All keywords in this standard are case-sensitive.
 
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
-## Syntax Used in this Document
+## Syntax Used in this Document is YAML
 
 The PALS [schema standard](#s:std.components) does not define any particular language to implement 
 a lattice. Rather, there are associated
@@ -23,6 +23,59 @@ representational internal format defined by the package.
 
 While the standard itself is language agnostic, this document that describes the standard
 needs to use some syntax and this syntax is based upon YAML.
+YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
+
+### YAML 101
+
+In particular, there are dictionaries, which collect key-value pairs, e.g.:
+```{code} yaml
+this_dictionary:
+  key1: value1
+  key2: value2
+  key3: value3
+```
+
+And lists:
+```{code} yaml
+this_list:
+  - entry1
+  - entry2
+  - more_entries
+```
+
+One can nest dictionaries into lists and other dictionaries, e.g.:
+```{code} yaml
+this_list:
+  - key1: value1
+    key2: value2
+  - named_dictionary:
+      key3: value3
+      key4: value4
+```
+
+```{note}
+   Developer note:
+   PALS dictionaries should, when possible, implement a dictionary that preserves insertion order.
+
+   While not strictly necessary, this helps with human readability:
+   For example, having the [`kind`](#c:element.parameters) key of an element as the first attribute enhances legibility.
+```
+
+### Special Values
+
+Special values used in this document are:
+
+1. Boolean parameters can be one of three values
+- `true`
+- `false`
+- `null` Useful as a default value when neither `true` nor `false` is appropriate.
+
+2. The standard defines the following symbols which can be used in place of a real or integer value:
+- `null` Value has not been set.
+- `Inf` Infinity
+- `-Inf` Negative infinity
+
+3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
 %---------------------------------------------------------------------------------------------------
 (s:palsroot)=
@@ -37,50 +90,6 @@ PALS:
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
-
-%---------------------------------------------------------------------------------------------------
-(s:matching)=
-## Matching Syntax
-
-Non-YAML syntax used here is:
-
-1. Boolean parameters can be one of three values
-- `true`
-- `false`
-- `null`          # Useful as a default value when neither `true` nor `false` is appropriate.
-
-2. The standard defines the following symbols which can be used in place of a real or integer value:
-- `null`   # Value has not been set.
-- `Inf`    # Infinity
-- `-Inf`   # Negative infinity
-
-3. In general, `null` can be used to signify that any parameter does not have a specific default value.
-
-Note: There is a difference between
-```{code} yaml
-this_group:
-  key1: value1
-  key2: value2
-  key3: value3
-```
-and
-```{code} yaml
-this_group:
-  - key1: value1
-  - key2: value2
-  - key3: value3
-```
-The first represents an unordered dictionary of key-value pairs and the second represents an ordered 
-dictionary of key-value pairs. 
-
-Note: the actual syntax in some particular language that is used to 
-represent an unordered dictionary may be an ordered dictionary. That is, the standard does not
-prohibit ordered dictionaries being used in place of unordered dictionaries. However, ordered
-dictionaries must always be used for things that the standard defines as an ordered dictionary.
-In fact, when there is a choice of using an ordered or an unordered dictionary,
-an ordered dictionary may be preferred to maintain human readability. An example of this is with
-lattice element attribute dictionaries where having the name of the element as the first attribute
-enhances legibility. 
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
