@@ -101,10 +101,9 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Include Lattice Files
+## Using Multiple Lattice Files
 
 A lattice file can include other files using an include statement.
-
 Example:
 ```{code} YAML
 PALS:
@@ -136,6 +135,19 @@ standard. For example, an included file may be an
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
+=======
+    # the elements and commands of base-lattice.pals.yaml
+    - using: "./base-lattice.pals.yaml"
+
+    # the elements and commands of extra-lattice.pals.yaml
+    - using: "./base-lattice.pals.yaml"
+
+    # a list of additional lattice elements and commands
+    - ...
+```
+where the file names above are examples of other valid, standalone PALS files.
+`using` simply inserts the `facility` list of another PALS file.
+>>>>>>> 6e464d0 (Rename Include -> Using (#177))
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
