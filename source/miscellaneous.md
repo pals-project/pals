@@ -18,7 +18,7 @@ Example:
     kind: Bend
     BendP:
       e1: 0.1
-      g_ref = 0.02
+      g_ref: 0.02
 
 - set:
     parameter: B1.*>BendP.e1
