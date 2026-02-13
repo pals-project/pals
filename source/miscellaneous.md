@@ -27,4 +27,4 @@ Example:
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. 
 
-Note: Grep (pattern matching) is not used in `value` expressions.
+Note: Pattern matching is not supported in the `value` expression.
