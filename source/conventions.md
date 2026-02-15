@@ -84,12 +84,14 @@ Special values used in this document are:
 The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
-  version: null  # version schema: defined later
-  phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
+  - version: null  # version schema: defined later
+  - phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
 
-  facility:
+  - facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
+Information may appear in a lattice file outside of the `PALS` node but this information is considered
+to be outside of the PALS standard and will be ignored by a PALS parser.
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
@@ -101,28 +103,29 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Using Multiple Lattice Files
+## Including Other Files Within Lattice Files
 
 A lattice file can include other files using an include statement.
 Example:
 ```{code} YAML
 PALS:
-  include: "../base-lattice.pals.yaml"
+  - include: "../base-lattice.pals.yaml"
 
-  facility:
+  - facility:
     - Q01:
         kind: Quadrupole
-        include: "include-this.subpals.yaml"
+        include: "include-Q-params.subpals.yaml"
+        include: "field-table.hdf5"
     - ...
     - include: "parameter-set-commands.subpals.yaml"
     - ...
 ```
 The information in an included file is inserted at the `include` point. In this example,
-the included file `include-this.subpals.yaml` could look like, for example:
+the included file `include-Q-params.subpals.yaml` could look like, for example:
 ```{code} YAML
-- Q1:
-  - type: Quadrupole
-  - ...
+  - MagneticMultipoleP:
+    - Kn3L: 0.3
+    ...
 ```
 There are two types of included files. One type of file is compliant with the PALS format standard
 like in the example above. These "compliant format" files can be used to break up the lattice
@@ -135,45 +138,29 @@ standard. For example, an included file may be an
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
-    # the elements and commands of base-lattice.pals.yaml
-    - using: "./base-lattice.pals.yaml"
+compliant files must have the appropriate suffix (`.yaml` in the example above) for the lattice
+file format. non-compliant files must use some other suffix. This is important since the PALS
+parser will not try to read in non-compliant files.
 
-    # the elements and commands of extra-lattice.pals.yaml
-    - using: "./base-lattice.pals.yaml"
-
-    # a list of additional lattice elements and commands
-    - ...
-```
-where the file names above are examples of other valid, standalone PALS files.
-`using` simply inserts the `facility` list of another PALS file.
-
-  lattices:
-    - Q01:
-        kind: Quadrupole
-        include: "include-this.subpals.yaml"
-    - ...
-    - include: "parameter-set-commands.subpals.yaml"
-    - ...
-```
-
-The information in an included file is inserted at the `include` point. In this example,
-the included file `include-this.subpals.yaml` could look like, for example:
+Include can appear at any level of the information tree but must be within the `PALS` root node.
+If the top level of a compliant included file is `PALS`, this node is dropped when inserting
+the information tree from the file. For example, if file `p1.yaml` contains:
 ```{code} YAML
-- Q1:
-  - type: Quadrupole
-  - ...
+PALS:
+  ... stuff in p1.yaml ...
+  - incude: p2.yaml
 ```
-There are two types of included files. One type of file is compliant with the PALS format standard
-like in the example above. These "compliant format" files can be used to break up the lattice
-information tree into manageable parts. Compliant format files can themselves have include
-statements. 
-
-The other type of included files, "non-compliant format" files, conform to some other non-PALS 
-standard. For example, an included file may be an 
-[OpenPMD](https://github.com/openPMD/openPMD-standard) compliant file coded in 
-[HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
-
-The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
+and file `p2.yaml` contains:
+```{code} YAML
+PALS:
+  ... stuff in p2.yaml ...
+```
+then the information tree after insertion will look like:
+```{code} YAML
+PALS:
+  ... stuff in p1.yaml ...
+  ... stuff in p2.yaml ...
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
@@ -297,7 +284,7 @@ Marker::.* & Q1:Q2
 This will match to all `Marker` elements that are in the range from `Q1` to `Q2`.
 
 Order of precedence:
-```{code} yaml
+```{code}
 >>>     # Highest
 >>
 ::      
