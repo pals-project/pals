@@ -104,13 +104,13 @@ PALS:
   facility:
     - Q01:
         kind: Quadrupole
-        include: "A-field-table.subpals.yaml"
+        include: "include-this.subpals.yaml"
     - ...
     - include: "parameter-set-commands.subpals.yaml"
     - ...
 ```
 The information in an included file is inserted at the `include` point. In this example,
-the included file `A-field-table.subpals.yaml` could look like, for example:
+the included file `include-this.subpals.yaml` could look like, for example:
 ```{code} YAML
 - Q1:
   - type: Quadrupole
@@ -126,10 +126,7 @@ standard. For example, an included file may be an
 [OpenPMD](https://github.com/openPMD/openPMD-standard) compliant file coded in 
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
-The recommended file suffix for a top-level PALS file (a file that includes the `PALS` root node) 
-is `.pals.XXX` where `XXX` is the standard suffix for the particular file format 
-(`.yaml` for YAML files, etc.).
-The recommended file suffix for non-top-level compliant format files is `.subpals.yaml`.
+The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
