@@ -27,7 +27,7 @@ YAML is [formally defined](https://yaml.org) and there are [tutorials to learn Y
 
 ### YAML 101
 
-In particular, there are dictionaries, which collect key-value pairs, e.g.:
+In particular, there are dictionaries, which are unordered sets of key-value pairs, e.g.:
 ```{code} yaml
 this_dictionary:
   key1: value1
@@ -35,7 +35,7 @@ this_dictionary:
   key3: value3
 ```
 
-And lists:
+And lists, which are ordered sets of items, e.g.:
 ```{code} yaml
 this_list:
   - entry1
