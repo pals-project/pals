@@ -85,9 +85,9 @@ The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
   - version: null  # version schema: defined later
-  - phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
 
   - facility:
+    - phase_space_coordinates: KINETIC_AND_MOMENTUM   # This is optional
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
 Information may appear in a lattice file outside of the `PALS` node but this information is considered
@@ -109,9 +109,9 @@ A lattice file can include other files using an include statement.
 Example:
 ```{code} YAML
 PALS:
-  - include: "../base-lattice.pals.yaml"
+  include: "../base-lattice.pals.yaml"
 
-  - facility:
+  facility:
     - Q01:
         kind: Quadrupole
         include: "include-Q-params.subpals.yaml"
@@ -144,22 +144,22 @@ parser will not try to read in non-compliant files.
 
 Include can appear at any level of the information tree but must be within the `PALS` root node.
 If the top level of a compliant included file is `PALS`, this node is dropped when inserting
-the information tree from the file. For example, if file `p1.yaml` contains:
+the information tree from the file. For example, if file `p1.pals.yaml` contains:
 ```{code} YAML
 PALS:
-  ... stuff in p1.yaml ...
-  - incude: p2.yaml
+  ... stuff in p1.pals.yaml ...
+  incude: p2.pals.yaml
 ```
-and file `p2.yaml` contains:
+and file `p2.pals.yaml` contains:
 ```{code} YAML
 PALS:
-  ... stuff in p2.yaml ...
+  ... stuff in p2.pals.yaml ...
 ```
 then the information tree after insertion will look like:
 ```{code} YAML
 PALS:
-  ... stuff in p1.yaml ...
-  ... stuff in p2.yaml ...
+  ... stuff in p1.pals.yaml ...
+  ... stuff in p2.pals.yaml ...
 ```
 
 %---------------------------------------------------------------------------------------------------
