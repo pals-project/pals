@@ -35,7 +35,7 @@ this_dictionary:
   key3: value3
 ```
 
-And lists which are ordered sets of items, e.g.:
+And lists, which are ordered sets of items, e.g.:
 ```{code} yaml
 this_list:
   - entry1
