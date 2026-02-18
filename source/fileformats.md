@@ -7,13 +7,15 @@ For readability, [this standard uses YAML-style](c:conventions) examples, but th
 
 ## File Endings
 
-When storing a PALS lattice in a file, please use the following self-describing file endings.
+The following self-describing file suffixes are recommended for top-level PALS files (files that 
+contain the root `PALS` node:
 
 * [YAML](https://yaml.org): `.pals.yaml`
 * [JSON](https://www.json.org/json-en.html): `.pals.json`
 * [TOML](https://toml.io): `.pals.toml`
 * [XML](https://en.wikipedia.org/wiki/XML): `.pals.xml`
 
+For non-top-level [included](#s:includefiles) PALS format files, replace `.pals` with `.subpals`
 
 ## Schema Files
 
