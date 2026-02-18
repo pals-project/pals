@@ -133,7 +133,7 @@ and the file `include-Q-params.subpals.yaml` could look like:
 - MagneticMultipoleP:
   - Kn3L: 0.3
 ```
-There are two types of included files. One type of file is contains subpart of a compliant PALS file
+There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
 information tree into manageable parts. Compliant format files can themselves have include
 statements. 
