@@ -7,7 +7,7 @@ For readability, [this standard uses YAML-style](c:conventions) examples, but th
 
 ## File Endings
 
-The following self-describing file suffixes are recommended for top-level PALS files (files that 
+The following self-describing file suffixes shall be used for top-level PALS files (files that 
 contain the root `PALS` node):
 
 * [YAML](https://yaml.org): `.pals.yaml`
