@@ -5,11 +5,12 @@
 (s:lattice.construct)=
 ## Constructing a Lattice
 
-A `Lattice` contains a set of branches. The component of `Lattice` is:
+A `Lattice` contains a set of branches. The components of `Lattice` are:
 ```{code} yaml
-branches        # [List] List of branches.
+branches        # [List] List of branches
+load            # [List of paths] Another PALS file that defines a lattice
 ```
-Each branch is instantiated from a `BeamLine` that is called the `root BeamLine`.
+Each branch is instantiated from a `BeamLine` that is called the "root BeamLine".
 Example:
 ```{code} yaml
 - my_lattice:
@@ -34,6 +35,78 @@ periodic  # [Boolean] Optional. Are orbit and Twiss parameters periodic?
 ```
 The setting of `periodic` for a `Branch` overrides the setting of `periodic`
 set in the root `BeamLine`. See [](#s:beamline.components) for documentation of `periodic`.
+
+%---------------------------------------------------------------------------------------------------
+(s:lattice.compose)=
+## Composing Multiple Lattice over Files
+
+Complex facilities might split their lattices over multiple, otherwise standalone PALS files.
+
+Example:
+```{code} yaml
+# Content of injector.pals.yaml
+PALS:
+  version: ...
+  facility:
+    - injector:
+        kind: Lattice
+        branches:
+          - ...
+
+    - use: injector
+```
+```{code} yaml
+# Content of accumulator.pals.yaml
+PALS:
+  version: ...
+  facility:
+    - accumulator:
+        kind: Lattice
+        branches:
+          - ...
+
+    - use: accumulator
+```
+```{code} yaml
+# Content of storage_ring.pals.yaml
+PALS:
+  version: ...
+  facility:
+    - storage_ring:
+        kind: Lattice
+        load:
+          - "injector.pals.yaml"
+          - "accumulator.pals.yaml"
+
+    - use: storage_ring
+```
+
+If both `branches` and `load` are specified, then beamlines in `load` come first.
+
+The `load`-ed files themselves are valid PALS files themselves
+
+%---------------------------------------------------------------------------------------------------
+(s:use)=
+## Use statement
+
+Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
+is the last lattice. This default can be overridden by a `use` statement. Example:
+```{code} yaml
+PALS:
+  version: ...
+  facility:
+    - injector:
+        kind: Lattice
+        branches:
+          - load: "injector.pals.yaml"
+
+    - ring:
+        kind: Lattice
+        branches:
+          - ...
+
+    - use: ring
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:branch.expand)=
@@ -185,24 +258,4 @@ a `BeamLine` called `generic_dump`. In the expanded lattice, the branch will be 
 `this_dump`. The reference properties at the `dump_beginning`, element that is forked to,
 assuming this is the `BeginningEle` element at the beginning of the branch., will inherit
 the reference properties at the `Fork` element.
-
-%---------------------------------------------------------------------------------------------------
-(s:use)=
-## Use statement
-
-Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
-is the last lattice. This default can be overridden by a `use` statement. Example:
-```{code} yaml
-- lat1:
-    kind: Lattice
-    branches:
-      ...
-
-- lat2:
-    kind: Lattice
-    branches:
-      ...
-
-- use: lat1
-```
 
