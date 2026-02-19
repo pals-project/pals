@@ -144,8 +144,7 @@ standard. For example, an included file may be an
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) chapter.
-compliant files must have the appropriate suffix (`pals.yaml` and `subpals.yaml` in the example above)
-for the lattice file format. Other file endings indicate non-PALS data.
+Other file endings indicate non-PALS data.
 
 Include can appear at any level of the information tree but must be within the `PALS` root node.
 
