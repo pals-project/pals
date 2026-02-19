@@ -85,12 +85,17 @@ The root of the PALS schema is given by this dictionary. Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
+  
+  author: "..."  # [str, optional] a comma separated string of names and emails
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
 Information may appear in a lattice file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
+
+PALS file author information is optional but recommended to enable data provenance and contacts.
+The syntax is ``"Firstname Lastname <email>, Other name <otheremail>, ..."`` with email being optional.
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
