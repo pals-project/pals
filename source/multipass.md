@@ -76,7 +76,7 @@ The ERL may then be constructed like:
 Here, for purposes of illustration, the `linac_line` has two elements both named `cavityA`.
 Each of these elements is considered distinct from each other however,
 when the `erl` lattice is expanded, `cavityA` will appear four times:
-```{code} YAML
+```{code}
 inj_line elements..., cavityA, cavityA, arc_line elements..., cavityA, cavityA, dump_line elements
                         (1)      (2)                            (1)      (2)
 ```
