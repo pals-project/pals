@@ -86,7 +86,7 @@ elements in `linac_line` and the two that are marked with a `(2)` underneath the
 `cavityA` element in `linac_line`. 
 In a more complicated situation where the `linac_line` is traversed {math}`N` times,
 the two physical `cavityA` elements will each appear {math}`N` times in the expanded line.
-Sets of lattice elements that represent the same physical element are called ``physical element'' sets.
+Sets of lattice elements that represent the same physical element are called "physical element" sets.
 
 The procedure for how to group lattice elements into physical element sets is as follows. 
 For any given element in the lattice, this element has some line it
