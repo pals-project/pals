@@ -26,13 +26,11 @@ their energy and then transfered to the dump line.
 ```
 
 In this example, beams of particles:
-```{code} YAML
-  a) travel through the injection line, 
-  b) accelerate while traveling through the linac line,
-  c) travel through the arc line back to the linac line,
-  d) decellerate (energy recover) through the linac line,
-  e) get dumped into the dump line.
-```
+* a. travel through the injection line, 
+* b. accelerate while traveling through the linac line,
+* c. travel through the arc line back to the linac line,
+* d. decelerate (energy recover) through the linac line,
+* e. get dumped into the dump line.
 Beams on their journey travel through the linac twice and thus elements in the linac will show
 up in the [expanded lattice](#s:expansion.intro) twice. 
 To mark these pairs of elements in the lattice as the same physical element, 
