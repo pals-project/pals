@@ -21,7 +21,7 @@ Consider the Energy Recovery Linac (ERL) example shown in {numref}`f:erl`.
 
 Example Energy Recovery Linac (ERL): Particle beams are injected
 into the linac line from the injection line, after acceleration from the linac, the beams
-are transfered through the arc back to the linac where they are decellerated to recover
+are transferred through the arc back to the linac where they are decelerated to recover
 their energy and then transfered to the dump line.
 ```
 
