@@ -72,10 +72,11 @@ name            # Name of lattice element or subline.
 kind            # Type of element.
 ```
 
-Example with four items in `line`:
+Example:
 ```{code} yaml
 - thingB:
     kind: Sextupole
+    length: 0.73
     ...
 
 - inj_line:
@@ -85,8 +86,9 @@ Example with four items in `line`:
     zero_point: thingC
     line:
       - thingB                # This item refers to the name of an element or BeamLine defined elsewhere.
-      - thingZ:               # thingZ inherits parameters from thingB
-          inherit: thingB
+          length: 0.45        # This instance of thingB can have differing parameter values.
+      - thingZ:               
+          inherit: thingB     # thingZ inherits parameters from thingB
       - Q1a:                  # Define an element in place called Q1a
           kind: Quadrupole
           length: 1.03
@@ -96,6 +98,17 @@ Example with four items in `line`:
           repeat: 3
           ...
 ```
+There are four items in the `line`. The second item is an element `thingZ` which inherits the 
+properties of `thingB`. To avoid confusion, if the `inherit` value is just an 
+[unqualified](#s:element.matching) element name, 
+what is inherited is the definition outside of any beam line. 
+Thus in the above example, since the inherit string is the unqualified element name `thingB`,
+`thingZ` will inherit from the definition of `thingB` that happens before `inj_line` is defined
+and will, for example, have a length of 0.73 meters. To inherit from the `thingB` which is 
+the first element in the line, a qualified name would have to be used. For this `inj_line>>thingB`
+would work if `thingB` only appeared once in the line. In any case, `inj_line>>thingB#1` 
+(first `thingB` in the line) or `inj_line>>1` (first item in the line) will always work even when
+there are multiple `thingB` element in the line.
 
 %---------------------------------------------------------------------------------------------------
 (s:line.construction)=
