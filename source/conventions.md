@@ -81,12 +81,24 @@ Special values used in this document are:
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary. Example:
+The root of the PALS schema is given by this dictionary.
+```{code} YAML
+PALS:
+  version:   # [string] version of the PALS schema used in this file
+  authors:   # [list, optional] authors of this file
+  facility:  # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+```
+
+Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
   
-  author: "..."  # [str, optional] a comma separated string of names and emails
+  authors:
+  - name: Lastname, Firstname
+    orcid: AAAA-BBBB-CCCC-DDDD
+    affiliation: Affiliation Long Name
+    email: lastname@laboratory.gov
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
@@ -94,8 +106,8 @@ PALS:
 Information may appear in a lattice file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
 
-PALS file author information is optional but recommended to enable data provenance and contacts.
-The syntax is ``"Firstname Lastname <email>, Other name <otheremail>, ..."`` with email being optional.
+PALS file `authors` are optional, but recommended to enable data provenance and contacts.
+Per author, the `name` is required; the `orcid`, `affiliation` and `email` fields are optional.
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
