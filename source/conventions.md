@@ -371,9 +371,10 @@ PALS:
         value: 1.45 * c_light
     ...
 ```
-Constants must be defined directly under the `facility` node. Constants may not be redefined.
+Constants must be defined directly under the `PALS` node or the `facility` node. 
+Constants may not be redefined.
 Exception: Since multiple include files may define the same constant, a redefinition of a constant
-with the same value as the original is valid.
+with the **same value** as the original is valid.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
