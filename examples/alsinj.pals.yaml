@@ -8,7 +8,6 @@
 
 - BPM:
     kind: Marker
-    length: 0.0
 
 - TV:
     kind: Marker
