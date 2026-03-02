@@ -7,15 +7,15 @@ For readability, [this standard uses YAML-style](c:conventions) examples, but th
 
 ## File Endings
 
-The following self-describing file suffixes shall be used for top-level PALS files (files that 
-contain the root `PALS` node):
+It is highly recommended that the following self-describing file suffixes be used for 
+top-level PALS files (files that contain the root `PALS` node):
 
 * [YAML](https://yaml.org): `.pals.yaml`
 * [JSON](https://www.json.org/json-en.html): `.pals.json`
 * [TOML](https://toml.io): `.pals.toml`
 * [XML](https://en.wikipedia.org/wiki/XML): `.pals.xml`
 
-For sub-level [included](#s:includefiles) PALS format files, replace `.pals` with `.subpals` .
+For sub-level [included](#s:includefiles) PALS format files, replace `.pals` with `.subpals`.
 
 ## Schema Files
 
