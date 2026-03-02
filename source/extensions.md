@@ -1,7 +1,16 @@
+(c:extension-list)=
 # Extensions
 
-Extensions are standards used with PALS lattice files that are specific to a single simulation program.
-This section documents extensions to aid the User in identifying extension usage in lattice files
-and in directing the User to detailed extension documentation. 
 
-Program developers are encouraged to [contribute extension documentation](#s:contribute).
+Extensions are standards used with PALS lattice files that are specific to a single machine
+with no analogue with any other machine.
+
+This section is meant to contain brief documentation on extensions to aid the User in identifying 
+extension usage in lattice files and for directing the User to detailed extension documentation 
+(which will live outside of the PALS documentation).
+To get extension information into this section, a [pull request](#s:contribute) needs to be
+created.
+
+Syntax for including extension data in a lattice file is in the [Extension Syntax](#s:extension-syntax)
+section.
+
