@@ -40,7 +40,7 @@ bend-multipoles.md
 :caption: Implementations
 
 fileformats.md
-libraries.md
+code-packages.md
 simulations.md
 ```
 
