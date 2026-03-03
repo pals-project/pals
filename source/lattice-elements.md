@@ -20,7 +20,7 @@ The different kinds of elements are discussed in the [Element Kinds](#c:ele.kind
 
 %---------------------------------------------------------------------------------------------------
 (s:ele.syntax)=
-## Element Definition Syntax
+## Lattice Element Definition
 
 Lattice element definition syntax is:
 ```{code} yaml
@@ -55,6 +55,8 @@ PALS:
              kind: Marker
           ...
 ```
+
+To avoid confusion, a lattice element definition
 
 %---------------------------------------------------------------------------------------------------
 (s:element.matching)=

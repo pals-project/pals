@@ -87,6 +87,10 @@ and the parameter is unambiguous.
 (s:inherit.params)=
 ## Naming and Inheriting Parameters
 
+Parameters from one element may be inherited by another element wholesale as documented
+[here](#s:ele.syntax). On a per parameter group basis, parameter groups may be inherited
+as follows.
+
 Any group can be given a **name** and the values can be used in another group of the same type
 using **import**.
 For example:
