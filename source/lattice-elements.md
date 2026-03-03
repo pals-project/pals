@@ -56,7 +56,23 @@ PALS:
           ...
 ```
 
-To avoid confusion, a lattice element definition
+Element parameters from one element may be inherited by another using an `inherit` node. Example:
+```{code} yaml
+S2: 
+  kind: Sextupole
+  length: 0.45
+  MagneticMultipoleP:
+    Kn2L: 0.56
+    tilt2: 0.12
+
+S3:
+  inherit: S2        # Inherits parameters from S2
+  length: 0.55       # And any inherited parameter may be modified.
+```
+Inheritance may also be done on the parameter group level. See [here](#s:inherit.params).
+
+To avoid confusion, lattice elements may not be redefined. That is, two lattice element definitions
+that use the same element name is not allowed.
 
 %---------------------------------------------------------------------------------------------------
 (s:element.matching)=
