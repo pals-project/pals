@@ -18,8 +18,10 @@ definitions.md
 
 conventions.md
 coordinates.md
-element-kinds.md
+lattice-elements.md
 element-parameters.md
+element-kinds.md
+element-parameter-groups.md
 beamlines.md
 lattice-construction.md
 multipass.md
