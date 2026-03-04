@@ -32,6 +32,7 @@ miscellaneous.md
 :caption: Physics
 
 bend-multipoles.md
+dispersion.md
 ```
 
 ```{toctree}
