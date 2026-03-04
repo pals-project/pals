@@ -47,7 +47,7 @@ Note that the spin transport is independent of the input spin coordinates.
 In other words, Stern-Gerlach effects are ignored.
 
 The `ref_in` component of `TaylorP` gives the orbital reference point about which the
-taylor map is constructed. The components of ref_in are:
+taylor map is constructed. The components of `ref_in` are:
 ```{code} yaml
 x:      # x orbital component
 px:     # px orbital component
