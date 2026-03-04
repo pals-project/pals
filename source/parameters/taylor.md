@@ -29,7 +29,12 @@ Each Taylor series structure has a set of monomial `term` nodes with the syntax:
 term <coef> <e1> <e2> <e3> <e4> <e5> <e6>
 ```
 Each `term` specifies a real valued coefficient `<coef>` and six integer exponents 
-`<e1>` through `<e6>`.
+`<e1>` through `<e6>`. The monomial represented by a `term` is:
+```{math}
+\text{<coef>} \cdot x^{\text{<e1>}} \cdot p_x^{\text{<e2>}}
+              \cdot y^{\text{<e3>}} \cdot p_y^{\text{<e4>}}
+              \cdot z^{\text{<e5>}} \cdot p_z^{\text{<e6>}}
+```
 Example:
 ```{code} yaml
 T9:               # Taylor element
