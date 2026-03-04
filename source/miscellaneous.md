@@ -56,17 +56,31 @@ synchrotron-connect:
 ```
 
 Alternatively, Extension root node names may be "registered" using an `extension-names` node 
-to be used as the root of the extension sub-tree. Example:
+to be used as the root of the extension sub-tree. `extension-names` has three components:
+```{code} yaml
+extension-names:
+  names:            # List of names
+  prefixes:         # List of prefixes
+  suffixes:         # List of suffixes
+```
+The `names` section contains a list of extension key names. 
+The `prefixes` contains a list of extension prefixes. Any key names that have one of these
+prefixes is considered an extension. Similarly, `suffixes` contains a list of suffixes so that
+any key names whose ending matches a suffix in the list is considered an extension.
+Example:
 ```{code} yaml
 PALS:
   extension-names:
-    -name: db_node
-    -name: short_name
+    -names:
+      short_name
+      blueprint
+    -prefixes:
+      SciBmad_
 
   facility:
     Q1_vary_long_string:
-      short_name: Q1
-      db_node:
-        ... data base info ...
+      short_name: Q1       # Extension matching "short_name".
+      SciBmad_connect:     # Extension with "SciBmad_" prefix.
+        ... SciBmad connection info ...
 ```
 The `extension-names` node must appear as a child of the `PALS` root node.
