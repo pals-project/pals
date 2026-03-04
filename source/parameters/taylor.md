@@ -38,7 +38,7 @@ Each `term` specifies a real valued coefficient `<coef>` and six integer exponen
 Example:
 ```{code} yaml
 T9:               # Taylor element
-  kind Taylor
+  kind: Taylor
   TaylorP:
     x_out:
       term 3.4 1 0 0 2 0 1
