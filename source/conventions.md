@@ -362,6 +362,20 @@ n_avogadro                # [-] Avogadro's constant
 The `classical_radius_factor` is a useful number when converting a formula that involve the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
+Other constants may be defined. Example:
+```{code} yaml
+PALS:
+  facility:
+    - my_const:
+        kind: constant
+        value: 1.45 * c_light
+    ...
+```
+Constants must be defined directly under the `PALS` node or the `facility` node. 
+Constants may not be redefined.
+Exception: Since multiple include files may define the same constant, a redefinition of a constant
+with the **same value** as the original is valid.
+
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
 ## Functions
