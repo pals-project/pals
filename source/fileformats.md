@@ -2,8 +2,8 @@
 # File Formats
 
 The Particle Accelerator Lattice Standard (PALS) documents objects and their properties.
-For readability, [this standard uses YAML-style](c:conventions) examples, but the PALS schema can be implemented in a variety of file formats.
-
+For readability, [this standard uses YAML-style](c:conventions) examples, 
+but the PALS schema can be implemented in a variety of file formats.
 
 ## File Endings
 
@@ -16,6 +16,9 @@ top-level PALS files (files that contain the root `PALS` node):
 * [XML](https://en.wikipedia.org/wiki/XML): `.pals.xml`
 
 For sub-level [included](#s:includefiles) PALS format files, replace `.pals` with `.subpals`.
+
+Note: Not following the recommendation may lead to, for example, reader/visualization tools 
+not auto discovering the file as PALS, which can create friction for users.
 
 ## Schema Files
 
