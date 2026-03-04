@@ -502,28 +502,11 @@ Element parameter groups associated with this element kind are:
 
 
 %---------------------------------------------------------------------------------------------------
----
-(s:action)=
-## Action Elements
+(s:map)=
+## Map Elements
 
-The following element kinds specify an action that should be taken.  Typically, this is an abstract action
-that is related to tracking or control.
-
-
-(s:feedback)=
-### Feedback Circuit 
-
-A Feedback element is an element used to simulate a feedback circuit.
-It gathers information about particle trajectories from the inputs
-and uses this
-to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
-A feedback element could be used, for example, to simulate RF feedback systems or beam position
-feedback, or cooling of a proton beam by a beam of electrons.
-
-Under Construction...
-
-Note: This element does not have a `length` nor an `s_position`.
-
+The following element kinds specify transport maps through an element without regard to the physical fields
+present.
 
 %---------------------------------------------------------------------------------------------------
 (s:match)=
@@ -781,3 +764,26 @@ MMM:
 Note: `UnionEle` shares the feature of describing elements that overlap physically, 
 together with the [`placement`](#s:placement) construct within a `BeamLine` and the
 [`superposition`](#s:superposition) construct.
+
+%---------------------------------------------------------------------------------------------------
+(s:external)=
+## External Circuits
+
+The following element kinds describe machine components "external" to any beam lines. 
+For example, control or feedback circuits.
+
+%---------------------------------------------------------------------------------------------------
+(s:feedback)=
+### Feedback Circuit 
+
+A Feedback element is an element used to simulate a feedback circuit.
+It gathers information about particle trajectories from the inputs
+and uses this
+to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
+A feedback element could be used, for example, to simulate RF feedback systems or beam position
+feedback, or cooling of a proton beam by a beam of electrons.
+
+Under Construction...
+
+Note: This element does not have a `length` nor an `s_position`.
+
