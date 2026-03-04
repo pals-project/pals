@@ -38,8 +38,8 @@ For example, information specific to a particular machine that has no analogue w
 machines can be put in an extension. A list of "registered" extensions is in the 
 [Extension List](#c:extension-list) section.
 
-An extension section in a lattice file has a root node and sub-tree below this root
-node is part of the extension. Extensions may be marked in a PALS lattice file using
+An extension section in a lattice file has a root node and any sub-nodes of this root
+node in the information tree is part of the extension. Extensions may be marked in a PALS lattice file using
 an `extension` node to mark the root node. The syntax is:
 ```{code} yaml
 <name>:
@@ -49,11 +49,14 @@ an `extension` node to mark the root node. The syntax is:
 where `<name>` is any name (since a given extension type might appear in multiple places in
 the lattice file), and `<extension-type>` is the type of the extension. Example:
 ```{code} yaml
-synchrotron-connect:
-  extension: Cornell-CESR-Connections
-  alarm-system:
+synch-connect:                         # Extension name
+  extension: Cornell-CESR-Connect      # Extension type
+  alarm-system:                        # Extension stuff ...
     ...
 ```
+In this example, the `synch-connect` node is the extension root node. The type of extension is
+`Cornell-CESR-Connect`. Any sub-nodes below the `synch_connect` node will excluded from any
+PALS validation process.
 
 Alternatively, Extension root node names may be "registered" using an `extension-names` node 
 to be used as the root of the extension sub-tree. `extension-names` has three components:
@@ -84,3 +87,5 @@ PALS:
         ... SciBmad connection info ...
 ```
 The `extension-names` node must appear as a child of the `PALS` root node.
+The advantage of using `extension-names` is that single node extensions are possible
+(there does not have to be an `extension` sub-node).
