@@ -99,11 +99,11 @@ PALS:
   version: null  # version schema: defined later
 
   notes:
-    - Extraction transfer line will be added to lattice in next iteration.
+    - "Extraction transfer line will be added to lattice in next iteration."
     - ...
 
   reminders:
-    - Important! West RF cavity phasing needs to be done before any simulations!!!
+    - "Important! West RF cavity phasing needs to be done before any simulations!!!"
     - ...
 
   authors:
