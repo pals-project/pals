@@ -1,8 +1,9 @@
 %---------------------------------------------------------------------------------------------------
-(s:init.twiss.params)=
-## InitialTwissP: Initial Twiss and dispersionParameters
+(s:twiss.params)=
+## TwissP: Initial Twiss, coupling, and dispersion Parameters.
 
-Initial twiss parameters can be specified at the beginning of a lattice branch.
+Typically this parameter group is used to specify the initial Twiss, coupling and dispersion
+parameters at the beginning of a lattice branch.
 The components if `InitialTwissP` are:
 ```{code} yaml
 alpha_a       # [-] "a" mode alpha

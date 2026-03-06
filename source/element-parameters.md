@@ -141,9 +141,6 @@ element-by-element.
 ```{include} parameters/initialparticle.md
 ```
 
-```{include} parameters/initialtwiss.md
-```
-
 ```{include} parameters/magneticmultipole.md
 ```
 
@@ -167,5 +164,9 @@ element-by-element.
 
 ```{include} parameters/tracking.md
 ```
+
+```{include} parameters/twiss.md
+```
+
 
 
