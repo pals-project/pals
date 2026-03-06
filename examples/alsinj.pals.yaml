@@ -7,7 +7,6 @@ PALS:
 
     - START:
         kind: Marker
-        length: 0.0
 
     - BPM:
         kind: Marker
@@ -17,7 +16,6 @@ PALS:
 
     - END:
         kind: Marker
-        length: 0.0
 
 ######
 # Gun to Linac
