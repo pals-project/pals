@@ -35,7 +35,7 @@ Note: Pattern matching is not supported in the `value` expression.
 
 An Extension is data added to a PALS lattice that is not part of the PALS standard.
 For example, information specific to a particular machine that has no analogue with other
-machines can be put in an extension. A list of "registered" extensions is in the 
+machines can be put in as an extension. A list of "registered" extensions is in the 
 [Extension List](#c:extension-list) section.
 
 An extension section in a lattice file has a root node and any sub-nodes of this root
