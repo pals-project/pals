@@ -19,17 +19,18 @@ to change reference time and/or energy.
 The components of `PatchP` are:
 ```{code} yaml
 PatchP:
-  x_offset          # Offset in x-direction.
-  y_offset          # Offset in y-direction.
-  z_offset          # Offset in z-direction.
-  x_rot             # Rotation around x-axis.
-  y_rot             # Rotation around y-axis.
-  z_rot             # Rotation around z-axis.
-  flexible          # Default is False.
+  x_offset          # [m] Offset in x-direction.
+  y_offset          # [m] Offset in y-direction.
+  z_offset          # [m] Offset in z-direction.
+  t_offset          # [sec] Offset in time.
+  x_rot             # [rad] Rotation around x-axis.
+  y_rot             # [rad] Rotation around y-axis.
+  z_rot             # [rad] Rotation around z-axis.
+  flexible          # [logical] Default is False.
                     #    true -> User sets offsets and rot. 
-                    #    False -> Offsets and rot from branch layout. 
-  ref_coords        # Coordinate system defining the length
-  user_sets_length  # Default is False. Is the element length User set? 
+                    #    False -> Offsets and rot from branch layout.
+  ref_coords        # [enum] Coordinate system defining the length
+  user_sets_length  # [logic] Default is False. Is the element length User set? 
 ```
 
 The transformation from `Patch` entrance coordinates to exit coordinates is given by [](#wws)
@@ -52,7 +53,7 @@ entrance face. With a `Patch` element, the entrance and exit faces can be arbitr
 with respect to one another as shown in {numref}`f:patch`A.
 
 There are two different ways the orientation of the exit face is determined. Which way is used is
-determined by the setting of the `flexible` attribute.  With the `flexible` attribute set to
+determined by the setting of the `flexible` attribute. With the `flexible` attribute set to
 `False`, the default, the exit face of the `Patch` will be determined from the offset, and rot
 parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
