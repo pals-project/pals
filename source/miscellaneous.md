@@ -55,7 +55,7 @@ synch-connect:                         # Extension name
     ...
 ```
 In this example, the `synch-connect` node is the extension root node. The type of extension is
-`Cornell-CESR-Connect`. Any sub-nodes below the `synch_connect` node will excluded from any
+`Cornell-CESR-Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
 PALS validation process.
 
 Alternatively, Extension root node names may be "registered" using an `extension-names` node 
