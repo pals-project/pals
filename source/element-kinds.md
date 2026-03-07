@@ -431,7 +431,7 @@ Element parameter groups associated with this element kind are:
 (s:foil)=
 ### Foil Element
 
-A Foil element represents a planar sheet of material which can strip electrons from a particle. In
+A `Foil` element represents a planar sheet of material which can strip electrons from a particle. In
 conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
 Material that can strip electrons from a particle
 will also cause energy loss and diffusion.

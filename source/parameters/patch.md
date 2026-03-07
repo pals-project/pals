@@ -22,7 +22,6 @@ PatchP:
   x_offset          # [m] Offset in x-direction.
   y_offset          # [m] Offset in y-direction.
   z_offset          # [m] Offset in z-direction.
-  t_offset          # [sec] Offset in time.
   x_rot             # [rad] Rotation around x-axis.
   y_rot             # [rad] Rotation around y-axis.
   z_rot             # [rad] Rotation around z-axis.
@@ -53,7 +52,7 @@ entrance face. With a `Patch` element, the entrance and exit faces can be arbitr
 with respect to one another as shown in {numref}`f:patch`A.
 
 There are two different ways the orientation of the exit face is determined. Which way is used is
-determined by the setting of the `flexible` attribute. With the `flexible` attribute set to
+determined by the setting of the `flexible` attribute. .With the `flexible` attribute set to
 `False`, the default, the exit face of the `Patch` will be determined from the offset, and rot
 parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
@@ -62,8 +61,10 @@ parameters. This type of `Patch` is called
 - pt
     kind: Patch
     PatchP:
-      z_offset: 3.2   # Equivalent to a drift.
+      z_offset: 3.2 
 ```
+Note: A `Patch` element with only a `z_offset`, like in the example, is equivalent to a drift
+of the same length.
 
 With `flexible` set to `true`, the exit face is taken to be the reference frame of the
 entrance face of the next element in the lattice. In this case, it must be possible to compute the
@@ -118,7 +119,9 @@ exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to
 the length is calculated as the perpendicular distance between the entrance face and the origin of
 the exit coordinate system. In this case, the length will be equal to `z_offset`.
 
-Note: To provide flexibility, the `extra_dtime_ref` of the `ReferenceChageP` group can be used to set
-the change in reference time through a patch. The difference between using `t_offset` and
+Note: To shift the reference energy, time, or species, use the 
+[ReferenceChangeP](#s:ref.change.params) parameter group.
+The `extra_dtime_ref` of the `ReferenceChageP` group can be used to set
+the change in reference time through a patch. The difference between using `extra_dtime_ref` and
 `length` is that the reference time change using `extra_dtime_ref` is independent of the reference 
 velocity while with `length` there is a dependence upon the reference velocity. 
