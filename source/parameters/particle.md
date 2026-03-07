@@ -1,19 +1,21 @@
 %---------------------------------------------------------------------------------------------------
-(s:init.particle.params)=
-## InitialParticleP: Initial Particle Coordinates Parameters
+(s:particle.params)=
+## ParticleP: Particle Coordinates Parameters
 
-The `InitialParticleP` parameter group contains parameters for describing the 
-initial beam particle distribution based on its first two moments.
+The `ParticleP` parameter group contains parameters for describing single particle coordinates
+or a beam particle distribution that is Gaussian distributed.
 The components of this group are:
 ```{code} yaml
-InitialParticleP:
-  distribution_type: ""    # [string] name of initial distribution type
-  x_off:         null         # <x>, <> denotes average over distribution
-  px_off:        null         # <px>
-  y_off:         null         # <y>
-  py_off:        null         # <py>
-  z_off:         null         # <z>
-  pz_off:        null         # <pz>
+ParticleP:                    # <> denotes average over distribution
+  x:             0            # <x>  x  phase space component
+  px:            0            # <px> px phase space component
+  y:             0            # <y>  y  phase space component
+  py:            0            # <py> py phase space component
+  z:             0            # <z>  z  phase space component
+  pz:            0            # <pz> pz phase space component
+  spin_x         0            # <Sx> Spin x-component
+  spin_y         0            # <Sy> Spin y-component
+  spin_z         0            # <Xz> Spin z-component
   sigma_xx:      null         # <x^2>
   sigma_pxpx:    null         # <px^2>
   sigma_yy:      null         # <y^2>
@@ -36,4 +38,4 @@ InitialParticleP:
   sigma_pypz:    null         # <py*pz>
   sigma_zpz:     null         # <z*pz>
 ```
-
+When describing a single particle, the `sigma` parameters are not relavent. 

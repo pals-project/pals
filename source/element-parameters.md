@@ -138,13 +138,13 @@ element-by-element.
 ```{include} parameters/girder.md
 ```
 
-```{include} parameters/initialparticle.md
-```
-
 ```{include} parameters/magneticmultipole.md
 ```
 
 ```{include} parameters/meta.md
+```
+
+```{include} parameters/particle.md
 ```
 
 ```{include} parameters/patch.md
