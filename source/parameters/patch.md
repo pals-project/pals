@@ -64,7 +64,7 @@ parameters. This type of `Patch` is called
       z_offset: 3.2 
 ```
 Note: A `Patch` element with only a `z_offset`, like in the example, is equivalent to a drift
-of the same length.
+with the same length as the `z_offset` value.
 
 With `flexible` set to `true`, the exit face is taken to be the reference frame of the
 entrance face of the next element in the lattice. In this case, it must be possible to compute the
