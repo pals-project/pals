@@ -13,14 +13,14 @@ For example:
 ```
 In this example, the two `EleA` elements are considered to be physically distinct. 
 
-However, there are cases where sets of elements in lattice represent the same physical element.
+However, there are cases where sets of elements in a lattice represent the same physical element.
 Consider the Energy Recovery Linac (ERL) example shown in {numref}`f:erl`.
 ```{figure} figures/erl.svg
 :width: 70%
 :name: f:erl
 
 Example Energy Recovery Linac (ERL): Particle beams are injected
-into the linac line from the injection line, after acceleration from the linac, the beams
+into the linac line from the injection line. After acceleration from the linac, the beams
 are transferred through the arc back to the linac where they are decelerated to recover
 their energy and then transfered to the dump line.
 ```
@@ -35,7 +35,7 @@ In this example, the trajectory of a particle beam is:
 ```
 Beams on their journey travel through the linac twice and thus elements in the linac will show
 up in the [expanded lattice](#s:expansion.intro) twice. 
-To mark these pairs of elements in the lattice as the same physical element, 
+To mark pairs of elements in the lattice as the same physical element, 
 PALS has the [`multipass`](#s:beamline.components) flag which can be applied to beam lines. 
 The ERL may then be constructed like:
 ```{code} YAML
@@ -76,11 +76,11 @@ The ERL may then be constructed like:
       - erl_line
 ```
 Here, for purposes of illustration, the `linac_line` has two elements both named `cavityA`.
-Each of these elements is considered distinct from each other however,
+Each of these elements is considered distinct from each other. However,
 when the `erl` lattice is expanded, `cavityA` will appear four times:
 ```{code}
-inj_line elements..., cavityA, cavityA, arc_line elements..., cavityA, cavityA, dump_line elements
-                        (1)      (2)                            (1)      (2)
+inj_line..., cavityA, cavityA, arc_line..., cavityA, cavityA, dump_line...
+             (1)      (2)                   (1)      (2)
 ```
 Each physical `cavityA` element appears twice in the expanded line. Explicitly, the two `cavityA`
 elements that are marked with a `(1)` underneath them represent the first of the `cavityA`
