@@ -11,7 +11,7 @@ RFP:
   phase: 0                      # [unitless] RF phase in 0 to 2*pi
   multipass_phase: 0            # [unitless] RF Phase added to multipass elements
   cavity_type: STANDING_WAVE    # [string] Cavity type
-  n_cell: 1                     # [unitles] Number of cavity cells
+  num_cells: null               # [unitles] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
 ```
 
