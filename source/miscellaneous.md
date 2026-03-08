@@ -49,19 +49,19 @@ an `extension` node to mark the root node. The syntax is:
 where `<name>` is any name (since a given extension type might appear in multiple places in
 the lattice file), and `<extension-type>` is the type of the extension. Example:
 ```{code} yaml
-synch-connect:                         # Extension name
-  extension: Cornell-CESR-Connect      # Extension type
+synch_connect:                         # Extension name
+  extension: Cornell_CESR_Connect      # Extension type
   alarm-system:                        # Extension stuff ...
     ...
 ```
-In this example, the `synch-connect` node is the extension root node. The type of extension is
-`Cornell-CESR-Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
+In this example, the `synch_connect` node is the extension root node. The type of extension is
+`Cornell_CESR_Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
 PALS validation process.
 
-Alternatively, Extension root node names may be "registered" using an `extension-names` node 
-to be used as the root of the extension sub-tree. `extension-names` has three components:
+Alternatively, Extension root node names may be "registered" using an `extension_names` node 
+to be used as the root of the extension sub-tree. `extension_names` has three components:
 ```{code} yaml
-extension-names:
+extension_names:
   names:            # List of names
   prefixes:         # List of prefixes
   suffixes:         # List of suffixes
@@ -73,7 +73,7 @@ any key names whose ending matches a suffix in the list is considered an extensi
 Example:
 ```{code} yaml
 PALS:
-  extension-names:
+  extension_names:
     -names:
       short_name
       blueprint
@@ -86,6 +86,6 @@ PALS:
       SciBmad_connect:     # Extension with "SciBmad_" prefix.
         ... SciBmad connection info ...
 ```
-The `extension-names` node must appear as a child of the `PALS` root node.
-The advantage of using `extension-names` is that single node extensions are possible
+The `extension_names` node must appear as a child of the `PALS` root node.
+The advantage of using `extension_names` is that single node extensions are possible
 (there does not have to be an `extension` sub-node).
