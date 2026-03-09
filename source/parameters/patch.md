@@ -8,8 +8,8 @@
 A) A `Patch` element can align its exit face arbitrarily with respect to its entrance face. The
 red arrow illustrates a possible particle trajectory form entrance face to exit face. B) The
 reference length of a `Patch` element, if `ref_coords` is set to the default value of
-`exit_end`, is the longitudinal distance from the entrance origin to the exit origin using the
-reference coordinates at the exit end as shown. If `ref_coords` is set to `entrance_end`, the
+`EXIT_END`, is the longitudinal distance from the entrance origin to the exit origin using the
+reference coordinates at the exit end as shown. If `ref_coords` is set to `ENTRANCE_END`, the
 length of the patch will be equal to the `z_offset`.
 ```
 
@@ -101,21 +101,21 @@ coordinates. For this, the `ref_coords`
 parameter of a patch can be used. Possible settings are:
 `ref_coords` are:
 ```{code} yaml
-entrance_end  #
-exit_end      # Default
+ENTRANCE_END  #
+EXIT_END      # Default
 ```
-The default setting of `ref_coords` is `exit_end` and with this the reference coordinates are
+The default setting of `ref_coords` is `EXIT_END` and with this the reference coordinates are
 set by the exit end coordinate system (see {numref}`f:patch`). If `ref_coords` is set to
-`entrance_end`, the reference coordinates are set by the entrance end coordinate system.
+`ENTRANCE_END`, the reference coordinates are set by the entrance end coordinate system.
 
 Unfortunately, there is no intuitive way to define the "`length`" of a patch. This is
 important since the reference transit time is the element length divided by the
 reference velocity. If the parameter `user_sets_length` is set to true, the
 value of `length` set in the lattice file will be used (default is zero). `user_sets_length` is set
 to False (the default), the length of a patch is calculated depending upon the setting of
-`ref_coords`.  If `ref_coords` is set to `exit_end`, the length of the patch is calculated
+`ref_coords`.  If `ref_coords` is set to `EXIT_END`, the length of the patch is calculated
 as the perpendicular distance between the origin of the patch's entrance coordinate system and the
-exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to `entrance_end`,
+exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to `ENTRANCE_END`,
 the length is calculated as the perpendicular distance between the entrance face and the origin of
 the exit coordinate system. In this case, the length will be equal to `z_offset`.
 
