@@ -25,7 +25,7 @@ are transferred through the arc back to the linac where they are decelerated to 
 their energy and then transfered to the dump line.
 ```
 
-In this example, the trajectory of a particle beam is:
+In this example, a particle beam will:
 ```
 1. travel through the injection line, 
 2. accelerate while traveling through the linac line,
