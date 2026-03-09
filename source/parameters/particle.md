@@ -38,4 +38,4 @@ ParticleP:                    # <> denotes average over distribution
   sigma_pypz:    null         # <py*pz>
   sigma_zpz:     null         # <z*pz>
 ```
-When describing a single particle, the `sigma` parameters are not relavent. 
+When describing a single particle, the `sigma` parameters are not relevant. 
