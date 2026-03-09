@@ -53,8 +53,11 @@ this_list:
       key4: value4
 ```
 
+In a lattice file, an ordered list of key-value pairs can always be used in place of a dictionary
+with the restriction that no duplicate keys can be present in the list.
+
 ```{note}
-   Developer note:
+   Code Developer note:
    PALS dictionaries should, when possible, implement a dictionary that preserves insertion order.
 
    While not strictly necessary, this helps with human readability:
