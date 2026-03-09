@@ -546,6 +546,7 @@ Element parameter groups associated with this element kind are:
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ReferenceP**](#s:ref.params): Reference parameters.
 - [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**TaylorP**](#s:taylor.params): Orbital and spin Taylor map.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.

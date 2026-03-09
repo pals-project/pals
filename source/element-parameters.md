@@ -162,6 +162,9 @@ element-by-element.
 ```{include} parameters/solenoid.md
 ```
 
+```{include} parameters/taylor.md
+```
+
 ```{include} parameters/tracking.md
 ```
 
