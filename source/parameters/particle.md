@@ -15,7 +15,7 @@ ParticleP:                    # <> denotes average over distribution
   pz:            0            # <pz> pz phase space component
   spin_x         0            # <Sx> Spin x-component
   spin_y         0            # <Sy> Spin y-component
-  spin_z         0            # <Xz> Spin z-component
+  spin_z         0            # <Sz> Spin z-component
   sigma_xx:      null         # <x^2>
   sigma_pxpx:    null         # <px^2>
   sigma_yy:      null         # <y^2>
