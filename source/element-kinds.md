@@ -776,7 +776,7 @@ For example, control or feedback circuits.
 (s:feedback)=
 ### Feedback Circuit 
 
-A Feedback element is an element used to simulate a feedback circuit.
+A `Feedback` element is an element used to simulate a feedback circuit.
 It gathers information about particle trajectories from the inputs
 and uses this
 to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
