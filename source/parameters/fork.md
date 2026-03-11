@@ -56,7 +56,7 @@ Example `Fork` element:
       branch_name: this_dump
       propagate_reference: true
 ```
-In this example, a `Fork` element connects to a new branch which will be instantiated using
+In this example, a `Fork` element connects to a new branch that will be instantiated using
 a `line` called `generic_dump`. In the expanded lattice, the branch will be called
 `this_dump`. The reference properties at the `dump_beginning`, element that is forked to,
 assuming this is the `BeginningEle` element at the beginning of the branch., will inherit
