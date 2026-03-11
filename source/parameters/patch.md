@@ -8,8 +8,8 @@
 A) A `Patch` element can align its exit face arbitrarily with respect to its entrance face. The
 red arrow illustrates a possible particle trajectory form entrance face to exit face. B) The
 reference length of a `Patch` element, if `ref_coords` is set to the default value of
-`exit_end`, is the longitudinal distance from the entrance origin to the exit origin using the
-reference coordinates at the exit end as shown. If `ref_coords` is set to `entrance_end`, the
+`EXIT_END`, is the longitudinal distance from the entrance origin to the exit origin using the
+reference coordinates at the exit end as shown. If `ref_coords` is set to `ENTRANCE_END`, the
 length of the patch will be equal to the `z_offset`.
 ```
 
@@ -19,17 +19,17 @@ to change reference time and/or energy.
 The components of `PatchP` are:
 ```{code} yaml
 PatchP:
-  x_offset          # Offset in x-direction.
-  y_offset          # Offset in y-direction.
-  z_offset          # Offset in z-direction.
-  x_rot             # Rotation around x-axis.
-  y_rot             # Rotation around y-axis.
-  z_rot             # Rotation around z-axis.
-  flexible          # Default is False.
+  x_offset          # [m] Offset in x-direction.
+  y_offset          # [m] Offset in y-direction.
+  z_offset          # [m] Offset in z-direction.
+  x_rot             # [rad] Rotation around x-axis.
+  y_rot             # [rad] Rotation around y-axis.
+  z_rot             # [rad] Rotation around z-axis.
+  flexible          # [logical] Default is False.
                     #    true -> User sets offsets and rot. 
-                    #    False -> Offsets and rot from branch layout. 
-  ref_coords        # Coordinate system defining the length
-  user_sets_length  # Default is False. Is the element length User set? 
+                    #    False -> Offsets and rot from branch layout.
+  ref_coords        # [enum] Coordinate system defining the length
+  user_sets_length  # [logic] Default is False. Is the element length User set? 
 ```
 
 The transformation from `Patch` entrance coordinates to exit coordinates is given by [](#wws)
@@ -52,7 +52,7 @@ entrance face. With a `Patch` element, the entrance and exit faces can be arbitr
 with respect to one another as shown in {numref}`f:patch`A.
 
 There are two different ways the orientation of the exit face is determined. Which way is used is
-determined by the setting of the `flexible` attribute.  With the `flexible` attribute set to
+determined by the setting of the `flexible` attribute. .With the `flexible` attribute set to
 `False`, the default, the exit face of the `Patch` will be determined from the offset, and rot
 parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
@@ -61,8 +61,10 @@ parameters. This type of `Patch` is called
 - pt
     kind: Patch
     PatchP:
-      z_offset: 3.2   # Equivalent to a drift.
+      z_offset: 3.2 
 ```
+Note: A `Patch` element with only a `z_offset`, like in the example, is equivalent to a drift
+with the same length as the `z_offset` value.
 
 With `flexible` set to `true`, the exit face is taken to be the reference frame of the
 entrance face of the next element in the lattice. In this case, it must be possible to compute the
@@ -99,25 +101,27 @@ coordinates. For this, the `ref_coords`
 parameter of a patch can be used. Possible settings are:
 `ref_coords` are:
 ```{code} yaml
-entrance_end  #
-exit_end      # Default
+ENTRANCE_END  #
+EXIT_END      # Default
 ```
-The default setting of `ref_coords` is `exit_end` and with this the reference coordinates are
+The default setting of `ref_coords` is `EXIT_END` and with this the reference coordinates are
 set by the exit end coordinate system (see {numref}`f:patch`). If `ref_coords` is set to
-`entrance_end`, the reference coordinates are set by the entrance end coordinate system.
+`ENTRANCE_END`, the reference coordinates are set by the entrance end coordinate system.
 
 Unfortunately, there is no intuitive way to define the "`length`" of a patch. This is
 important since the reference transit time is the element length divided by the
 reference velocity. If the parameter `user_sets_length` is set to true, the
 value of `length` set in the lattice file will be used (default is zero). `user_sets_length` is set
 to False (the default), the length of a patch is calculated depending upon the setting of
-`ref_coords`.  If `ref_coords` is set to `exit_end`, the length of the patch is calculated
+`ref_coords`.  If `ref_coords` is set to `EXIT_END`, the length of the patch is calculated
 as the perpendicular distance between the origin of the patch's entrance coordinate system and the
-exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to `entrance_end`,
+exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to `ENTRANCE_END`,
 the length is calculated as the perpendicular distance between the entrance face and the origin of
 the exit coordinate system. In this case, the length will be equal to `z_offset`.
 
-Note: To provide flexibility, the `extra_dtime_ref` of the `ReferenceChageP` group can be used to set
-the change in reference time through a patch. The difference between using `t_offset` and
+Note: To shift the reference energy, time, or species, use the 
+[ReferenceChangeP](#s:ref.change.params) parameter group.
+The `extra_dtime_ref` of the `ReferenceChageP` group can be used to set
+the change in reference time through a patch. The difference between using `extra_dtime_ref` and
 `length` is that the reference time change using `extra_dtime_ref` is independent of the reference 
 velocity while with `length` there is a dependence upon the reference velocity. 
