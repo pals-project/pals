@@ -4,7 +4,7 @@
 
 Typically this parameter group is used to specify the initial Twiss, coupling and dispersion
 parameters at the beginning of a lattice branch.
-The components if `InitialTwissP` are:
+The components if `TwissP` are:
 ```{code} yaml
 alpha_a       # [-] "a" mode alpha
 alpha_b       # [-] "b" mode alpha
