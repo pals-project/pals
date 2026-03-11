@@ -1,5 +1,12 @@
-(c:element.parameters)=
-# Element Parameters
+(s:ele.params)=
+# Lattice Element Parameters
+
+The following discusses lattice element parameters in general.
+For details on the different parameter groups see [here](#c:ele.param.groups).
+
+%---------------------------------------------------------------------------------------------------
+(s:param.groups)=
+## Parameter Groups
 
 Lattice elements parameters are organized into **parameter groups**. 
 All groups are organized as dictionaries (structures) and lists.
@@ -19,13 +26,14 @@ the following is not allowed:
     ApertureP: ...
     ApertureP: ...    # Second instance not allowed!
 ```
+For details on the different parameter groups see [here](#c:ele.param.groups).
 
 %---------------------------------------------------------------------------------------------------
 (s:non.params)=
-## Non-Parameter Group Parameters
+## Element Parameters Not in any Element Group
 
-There are element parameters that are so common, and do not fit into
-any of the parameter groups, that they are not grouped. 
+There are element parameters that are common and do not naturally fit into
+any of the parameter groups. These parameters are not grouped. 
 These element parameters are:
 ```{code} yaml
   field_master: NotSet  # [Boolean] See Below.
@@ -40,9 +48,48 @@ The setting of `field_master` matters when there is a change in reference energy
 In this case, if `field_master = T`, magnetic multipoles, RF, and Bend unnormalized fields will be held constant
 and normalized field strengths will be varied. And vice versa when `field_master` is `F`. 
 
+Example:
+```{code} yaml
+cleo:             # [string] user-defined name
+  kind: Solenoid  # [string] element switch
+  length: 3.74
+  SolenoidP:
+    Ksol: -0.15
+```
+
+%---------------------------------------------------------------------------------------------------
+(s:parameter.matching)=
+## Element Parameter Name Matching
+
+For element parameters, the general syntax is
+```{code} text
+{beamline}>>{element}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+```
+where
+```{code} yaml
+{beamline}                      # Optional BeamLine or Branch name.
+{element}                       # Optional lattice element name.
+{parameter-group}               # Parameter group name.
+{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
+{parameter}                     # Parameter name.
+```
+Only `{beamline}` and `{element}` use PCRE2 syntax. 
+
+Example:
+```{code} yaml
+Qa.*>MagneticMultipoleP.Ks2L
+```
+This will match the `Ks2L` component of all elements whose name begins with `Qa`. Notice that
+since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the parameter group
+and the parameter is unambiguous.
+
 %---------------------------------------------------------------------------------------------------
 (s:inherit.params)=
 ## Naming and Inheriting Parameters
+
+Parameters from one element may be inherited by another element wholesale as documented
+[here](#s:ele.syntax). On a per parameter group basis, parameter groups may be inherited
+as follows.
 
 Any group can be given a **name** and the values can be used in another group of the same type
 using **import**.
@@ -105,64 +152,3 @@ For example, the `FloorP` parameters can be set for the `BeginningEle` element w
 first element of any branch line. For most other elements, the `FloorP` parameters can
 be calculated starting at the `BeginningEle` and working forward computing the floor parameters
 element-by-element.
-
-%---------------------------------------------------------------------------------------------------
-
-```{include} parameters/ackicker.md
-```
-
-```{include} parameters/aperture.md
-```
-
-```{include} parameters/beambeam.md
-```
-
-```{include} parameters/bend.md
-```
-
-```{include} parameters/bodyshift.md
-```
-
-```{include} parameters/electricmultipole.md
-```
-
-```{include} parameters/floor.md
-```
-
-```{include} parameters/floorshift.md
-```
-
-```{include} parameters/fork.md
-```
-
-```{include} parameters/girder.md
-```
-
-```{include} parameters/magneticmultipole.md
-```
-
-```{include} parameters/meta.md
-```
-
-```{include} parameters/particle.md
-```
-
-```{include} parameters/patch.md
-```
-
-```{include} parameters/reference.md
-```
-
-```{include} parameters/referencechange.md
-```
-
-```{include} parameters/rf.md
-```
-
-```{include} parameters/solenoid.md
-```
-
-```{include} parameters/tracking.md
-```
-
-

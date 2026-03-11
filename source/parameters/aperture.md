@@ -13,7 +13,7 @@ ApertureP:
   y_max: null                      # [m] Top aperture limit.
   y_width: null                    # [m] Vertical aperture full width.
                                    #       Equivalent to y_min = -y_width/2, y_max = y_width/2
-  shape: ""                        # [string] Aperture shape switch
+  shape: ELLIPTICAL                # [enum] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture
@@ -49,7 +49,7 @@ by a set of vertices.
 The `shape` parameter selects the shape of the aperture. Possible values are:
 ```{code} yaml
   shape: RECTANGULAR   # Rectangular shape.
-  shape: ELLIPTICAL    # Elliptical shape.
+  shape: ELLIPTICAL    # Elliptical shape. Default.
   shape: VERTICES      # Shape defined by set of vertices.
   shape: CUSTOM_SHAPE  # Shape defined outside of the lattice standard.
 ```
