@@ -84,21 +84,36 @@ Special values used in this document are:
 The root of the PALS schema is given by this dictionary.
 ```{code} YAML
 PALS:
-  version:   # [string] version of the PALS schema used in this file
-  authors:   # [list, optional] authors of this file
+  version:   # [string] Version of the PALS schema used in this file
+  authors:   # [list] Authors associated with this file
+  notes:     # [list] Notes of interest.
+  reminders: # [list] Reminder messages to be printed when file is read.
   facility:  # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
+The difference between `notes` and `reminders` is that reminder messages are meant to be 
+printed (or otherwise communicated to the user) every time the file is read.
 
 Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
-  
+
+  notes:
+    - "Extraction transfer line will be added to lattice in next iteration."
+    - ...
+
+  reminders:
+    - "Important! West RF cavity phasing needs to be done before any simulations!!!"
+    - ...
+
   authors:
-  - name: Lastname, Firstname
-    orcid: AAAA-BBBB-CCCC-DDDD
-    affiliation: Affiliation Long Name
-    email: lastname@laboratory.gov
+    - author:
+        name: Lastname, Firstname
+        orcid: AAAA-BBBB-CCCC-DDDD
+        affiliation: Affiliation Long Name
+        email: lastname@laboratory.gov
+    - author:
+        ...
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
