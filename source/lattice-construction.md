@@ -90,7 +90,7 @@ the first `Fork` element must be temporarily ignored until the branch is instant
 A [`Fork`](#s:fork) element marks a point in a lattice branch where another branch branches off from. 
 A common example is using a `Fork` element to connect from a storage ring to 
 an extraction line or an X-ray beam line. Similarly, a `Fork` can be used to connect 
-from the end of an injection line to someplace in a ring.
+from the end of an injection line to some place in a ring.
 Beam travel is always from the `Fork` element to another point in the machine.
 Using `Fork` elements, complex machine layouts may be constructed.
 An example is shown in figure {numref}`f:fork`. See the [ForkP](#s:fork.params) documentation
