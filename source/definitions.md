@@ -30,12 +30,7 @@ physical like a quadrupole magnet or an RF cavity.
 
 The basic building block used to describe an accelerator is the lattice **element**. Typically,
 a lattice element is something physical like a bending magnet or an electrostatic
-quadrupole, or a diffracting crystal. A lattice element may define a region in space 
-distinguished by the presence of (possibly time-varying) electromagnetic fields,
-materials, apertures and other possible engineered structures. However, lattice elements
-are not restricted to being something physical and may, for example, just mark a particular point 
-in space (EG: `Marker` elements), or may designate where beamlines intersect (`Fork` elements).
-By convention, element names in PALS will be upper camel case.
+quadrupole, or a diffracting crystal. Further details [here](#s:lat.elements).
 
 %---------------------------------------------------------------------------------------------------
 (s:branches.intro)=

@@ -1,26 +1,14 @@
 (c:ele.kinds)=
 # Element Kinds
 
-Note: `name`, `length`, and `s_position` parameters stand alone and not part of any parameter group.
-
-Example:
-```{code} yaml
-cleo:             # [string] user-defined name
-  kind: Solenoid  # [string] element switch
-  length: 3.74
-  SolenoidP:
-    Ksol: -0.15
-```
-
-
+The following details the different kinds of lattice elements and the associated parameter groups.
+For documentation on lattice elements in general see [here](#c:lat.ele).
 
 %---------------------------------------------------------------------------------------------------
----
 (s:magnets)=
 ## Magnets and RF Cavities
 
 The following element kinds involve applied electromagnetic fields in vacuum.
-
 
 %---------------------------------------------------------------------------------------------------
 (s:ackicker)=
