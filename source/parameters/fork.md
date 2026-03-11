@@ -30,7 +30,7 @@ The names given by `to_element` must be unique.
 The `to-element` may inherit the reference species and energy of the `Fork` element 
 if and only if the `to-element` is the `Beginning` element and
 the `propagate_reference` component is set to `true`. If the `to-element` is not
-the beginning element, `propagate_refernece` is ignored and no reference parameters are
+the beginning element, `propagate_reference` is ignored and no reference parameters are
 propagated.
 
 The possible values of the optional `direction` switch are:
