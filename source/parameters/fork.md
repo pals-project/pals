@@ -10,7 +10,7 @@ The components of the `ForkP` group are:
   to_element                 # [name] Element to fork to. Default is the beginning element.
   direction: FORWARDS        # [enum] Longitudinal Direction of travel of injected beam.
   new_branch: null           # [name] Name to give newly created Branch.
-  propagate_reference: true  # [logical] Propagate reference species and energy?
+  propagate_reference: true  # [logical] Propagate reference species and energy.
 ```
 
 The `branch` containing a forking element is called the
