@@ -637,10 +637,13 @@ PALS:
 # LTB : the whole injector beam line
 ######
 #
-    - LTB:
-        kind: BeamLine
-        line:
-        - GUN
-        - LINAC
-        - LTB1
-        - LTB2
+    - ALS_injector
+        kind: Lattice
+        branches:
+          - LTB:
+              kind: BeamLine
+              line:
+              - GUN
+              - LINAC
+              - LTB1
+              - LTB2
