@@ -20,7 +20,6 @@ the setting of `field_master` ([](#s:non.params)). If `field_master` is `true`, 
 `gradient` is kept constant and vice versa.
 
 The `cavity_type` parameters sets the kind of cavity under consideration. Possible settings are:
-The `zero_phase` parameter sets what zero `phase` is in reference to. Possible settings are:
 ```{code} yaml
 STANDING_WAVE             # Default
 TRAVELING_WAVE
