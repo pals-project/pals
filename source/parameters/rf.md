@@ -13,11 +13,18 @@ RFP:
   cavity_type: STANDING_WAVE    # [enum] Cavity type
   num_cells: null               # [-] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
+  L_active: L                   # [m] Active acceleration length.
 ```
+Either `frequency` or `harmon` should be set but not both. To translate between the two 
+the 1-turn reference time `t1_ref` must be known using the relationship `frequency = harmon / t1_ref`.
 
-Whether `voltage` or `gradient` is kept constant with length changes is determined by
-the setting of `field_master` ([](#s:non.params)). If `field_master` is `true`, the
-`gradient` is kept constant and vice versa.
+The `L_active` length is the longitudinal length over which there is an RF field. The active
+length can be different from the element length `L` since `L` can include the entire RF vessel.
+Especially with cryo-modules, `L_active` can be quite different from `L`. 
+If not given, the value of `L_active` defaults to the value of `L`.
+
+Either `voltage` or `gradient` should be set but not both. The two are related by the active length
+`voltage = gradient * L_active`.
 
 The `cavity_type` parameters sets the kind of cavity under consideration. Possible settings are:
 ```{code} yaml
