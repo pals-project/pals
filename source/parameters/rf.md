@@ -15,8 +15,9 @@ RFP:
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
   L_active: L                   # [m] Active acceleration length.
 ```
-Either `frequency` or `harmon` should be set but not both. To translate between the two 
-the 1-turn reference time `t1_ref` must be known using the relationship `frequency = harmon / t1_ref`.
+Either `frequency` or `harmon` should be set but not both. The 
+relationship between the two is `frequency = harmon / t1_ref` where
+`t1_ref` is the 1-turn reference time.
 
 The `L_active` length is the longitudinal length over which there is an RF field. The active
 length can be different from the element length `L` since `L` can include the entire RF vessel.
