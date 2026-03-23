@@ -39,3 +39,9 @@ ACCELERATING              # Default. Zero phase is the maximum accelerating phas
 BELOW_TRANSITION          # Zero phase is at the stable zero crossing for particles below transition.
 ABOVE_TRANSITION          # Zero phase is at the stable zero crossing for particles above transition.
 ```
+
+The RF phase `phase_RF`, in units of `rad/2pi`, at time `t` will be
+```{code} yaml
+phase_RF = t*frequency + phase + phi0
+```
+where `phi0` is a phase determined by the setting of `zero_phase`. 
