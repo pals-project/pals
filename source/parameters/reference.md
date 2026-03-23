@@ -32,5 +32,5 @@ energy and time is computed.
 
 For a `BeginningEle` element, parameters of this group are user settable.
 For all other element kinds, the parameters of this
-group are calculated by  and are not user settable. 
+group are calculated (output parameters) and are not user settable. 
 To shift reference parameters, use the ReferenceChangeP parameter group.
