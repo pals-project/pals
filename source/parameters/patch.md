@@ -52,7 +52,7 @@ entrance face. With a `Patch` element, the entrance and exit faces can be arbitr
 with respect to one another as shown in {numref}`f:patch`A.
 
 There are two different ways the orientation of the exit face is determined. Which way is used is
-determined by the setting of the `flexible` attribute. .With the `flexible` attribute set to
+determined by the setting of the `flexible` attribute. With the `flexible` attribute set to
 `False`, the default, the exit face of the `Patch` will be determined from the offset, and rot
 parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
