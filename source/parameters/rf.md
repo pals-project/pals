@@ -8,16 +8,30 @@ RFP:
   harmon: 0                     # [unitless] RF frequency harmonic number
   voltage: 0                    # [V] RF voltage
   gradient: 0                   # [V/m] RF gradient
-  phase: 0                      # [unitless] RF phase in 0 to 2*pi
-  multipass_phase: 0            # [unitless] RF Phase added to multipass elements
-  cavity_type: STANDING_WAVE    # [string] Cavity type
-  n_cell: 1                     # [unitles] Number of cavity cells
+  phase: 0                      # [rad/2pi] RF phase in 0 to 2*pi
+  multipass_phase: 0            # [rad/2pi] RF Phase added to multipass elements
+  cavity_type: STANDING_WAVE    # [enum] Cavity type
+  num_cells: null               # [-] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
+  L_active: L                   # [m] Active acceleration length.
 ```
+Either `frequency` or `harmon` should be set but not both. The 
+relationship between the two is `frequency = harmon / t1_ref` where
+`t1_ref` is the 1-turn reference time.
 
-Whether `voltage` or `gradient` is kept constant with length changes is determined by
-the setting of `field_master` ([](#s:non.params)). If `field_master` is `true`, the
-`gradient` is kept constant and vice versa.
+The `L_active` length is the longitudinal length over which there is an RF field. The active
+length can be different from the element length `L` since `L` can include the entire RF vessel.
+Especially with cryo-modules, `L_active` can be quite different from `L`. 
+If not given, the value of `L_active` defaults to the value of `L`.
+
+Either `voltage` or `gradient` should be set but not both. The two are related by the active length
+`voltage = gradient * L_active`.
+
+The `cavity_type` parameters sets the kind of cavity under consideration. Possible settings are:
+```{code} yaml
+STANDING_WAVE             # Default
+TRAVELING_WAVE
+``` 
 
 The `zero_phase` parameter sets what zero `phase` is in reference to. Possible settings are:
 ```{code} yaml
