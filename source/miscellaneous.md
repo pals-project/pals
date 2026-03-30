@@ -43,7 +43,7 @@ node in the information tree is part of the extension. Extensions may be marked 
 an `extension` node to mark the root node. The syntax is:
 ```{code} yaml
 <name>:
-  - extension: <extension-type>
+  extension: <extension-type>
   ... extension info ...
 ```
 where `<name>` is any name (since a given extension type might appear in multiple places in
@@ -58,7 +58,7 @@ In this example, the `synch_connect` node is the extension root node. The type o
 `Cornell_CESR_Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
 PALS validation process.
 
-Alternatively, Extension root node names may be "registered" using an `extension_names` node 
+Alternatively, extension root node names may be "registered" using an `extension_names` node 
 to be used as the root of the extension sub-tree. `extension_names` has three components:
 ```{code} yaml
 extension_names:
@@ -74,10 +74,10 @@ Example:
 ```{code} yaml
 PALS:
   extension_names:
-    -names:
+    names:
       short_name
       blueprint
-    -prefixes:
+    prefixes:
       SciBmad_
 
   facility:
