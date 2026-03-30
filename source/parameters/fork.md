@@ -16,7 +16,7 @@ The components of the `ForkP` group are:
 The `branch` containing a forking element is called the
 "`from-branch`". The `branch` that the forking element points to is called the
 "`to-branch`". It is possible for these two branches to be one and the same.
-The element in the to-branch that the `Fork` connects to is called the "`to-element`".
+The element in the `to-branch` that the `Fork` connects to is called the "`to-element`".
 
 The `to_line` parameter is required and names the branch or beam line to fork to.
 If `new_branch` is present and not `null`, a new branch is created in the lattice 
