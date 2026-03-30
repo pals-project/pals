@@ -57,7 +57,7 @@ In a lattice file, an ordered list of key-value pairs can always be used in plac
 with the restriction that no duplicate keys can be present in the list. 
 For example, the above dictionary written as a list would look like:
 ```{code} yaml
-this_dictionary:
+was_a_dictionary_now_a_list:
   - key1: value1
   - key2: value2
   - key3: value3
