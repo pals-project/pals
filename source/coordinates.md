@@ -48,9 +48,8 @@ particle momentum relative to the reference momentum.
 (s:spin)=
 ## Spin Transport
 
-Spin transport is described using a quaternion rotation representation. 
-Quaternion components are labeled in general {math}`q = (q_1, q_x, q_y, q_z)` and for 
-spin transport the notation {math}`(S_1, S_x, S_y, S_z)` can be used. 
+Spin transport is described using a quaternion rotation representation using 
+the notation {math}`(S_q1, S_qx, S_qy, S_qz)`. 
 
 %---------------------------------------------------------------------------------------------------
 (s:coords)=
