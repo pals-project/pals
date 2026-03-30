@@ -22,7 +22,7 @@ The `to_line` parameter is required and names the branch or beam line to fork to
 If `new_branch` is present and not `null`, a new branch is created in the lattice 
 set of branches with
 the name given by `new_branch` and the `Fork` element will point to this new branch. 
-If `new_branch` is not present or is `null`, the to-element will be in an existing branch.
+If `new_branch` is not present or is `null`, the `to-element` will be in an existing branch.
 
 The optional `to_element` component of `ForkP` gives the name of the `to-element`. 
 If not present, the default is the `Beginning` element.
