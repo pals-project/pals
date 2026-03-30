@@ -118,12 +118,12 @@ differing energies, is done using `Patch` elements.
 ```
 
 The `branch` containing a forking element is called the
-"`from-branch`". The `branch` that the forking element points to is called the
-"`to-branch`". It is possible for these two branches to be one and the same.
-The element in the to-branch that the `Fork` connects to is called the "`to_element`".
+"`from_branch`". The `branch` that the forking element points to is called the
+"`to_branch`". It is possible for these two branches to be one and the same.
+The element in the to_branch that the `Fork` connects to is called the "`to_element`".
 
 `Fork` elements are uni-directional. That is, particles can travel from a `Fork` element
-in a `from-branch` to the `to-branch` of the `Fork` but travel cannot happen in
+in a `from_branch` to the `to_branch` of the `Fork` but travel cannot happen in
 the reverse direction. To get a bi-directional link between branches, use two `Forks` with
 the `to_element` of both `Forks` being the other `Fork`.
 

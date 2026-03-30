@@ -15,9 +15,9 @@ ForkP:
 ```
 
 The `branch` containing a forking element is called the
-"`from-branch`". The `branch` that the forking element points to is called the
-"`to-branch`". It is possible for these two branches to be one and the same.
-The element in the `to-branch` that the `Fork` connects to is called the "`to_element`".
+"`from_branch`". The `branch` that the forking element points to is called the
+"`to_branch`". It is possible for these two branches to be one and the same.
+The element in the `to_branch` that the `Fork` connects to is called the "`to_element`".
 
 The `to_line` parameter is required and names the branch or beam line to fork to.
 If `new_branch` is present and not `null`, a new branch is created in the lattice 
@@ -58,7 +58,7 @@ Example `Fork` element:
       propagate_reference: true
 ```
 In this example, a `Fork` element connects to a new branch that will be instantiated using
-a `BeamLine` called `generic_dump`. In the expanded lattice the to-branch will be called
+a `BeamLine` called `generic_dump`. In the expanded lattice the to_branch will be called
 `this_dump`. The reference properties at the `dump_beginning` element that is forked to,
 assuming this is the `BeginningEle` element at the beginning of the branch, will be
 the reference properties at the `Fork` element.
