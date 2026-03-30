@@ -14,13 +14,13 @@ The top level `BeamLine` from which a branch is constructed is called a `root Be
 
 The components of a BeamLine are:
 ```{code} yaml
-name        # Optional. String: Name of the BeamLine.
-multipass   # Optional. Bool: Multipass line or not. Default is False.
-length      # Optional. [m]: Length of the BeamLine.
-line        # Ordered list: List of elements.
-zero_point  # Optional. String: Name of a line item used as a reference point when
+name        # [string] Name of the BeamLine.
+multipass   # [logical] Multipass line or not. Default is False.
+length      # [m]: Length of the BeamLine.
+line        # [list] List of elements.
+zero_point  # [string] Name of a line item used as a reference point when
             #  the BeamLine is used as a subline.
-periodic    # Optional Bool. Are orbit and Twiss parameters periodic? Default is False.
+periodic    # [logical] Are orbit and Twiss parameters periodic? Default is False.
 ```
 
 The `name` component is a string that can be used to reference the `BeamLine`.
@@ -64,13 +64,14 @@ BeamLine.
 
 A line item can have components
 ```{code} yaml
-repeat          # Integer. Repetition count. Default is 1.
-direction       # +1 or -1. Longitudinal orientation of element. Default is +1.
-placement       # Structure. Shifts element or subline longitudinally.
-inherit         # Name of lattice element or subline defined outside the line
-name            # Name of lattice element or subline.
-kind            # Type of element.
+repeat          # [integer] Repetition count. Default is 1.
+direction       # [switch] +1 or -1. Longitudinal orientation. Default is +1.
+placement       # [struct] Shifts element or subline longitudinally.
+inherit         # [string] of lattice element or subline defined outside the line
+kind            # [enum] Type of element.
 ```
+A line item which is an element can also have components that define the properties of the element. 
+For example, a `MagneticMultipoleP` component to define multipoles.
 
 Example:
 ```{code} yaml

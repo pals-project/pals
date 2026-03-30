@@ -1,26 +1,14 @@
 (c:ele.kinds)=
 # Element Kinds
 
-Note: `name`, `length`, and `s_position` parameters stand alone and not part of any parameter group.
-
-Example:
-```{code} yaml
-cleo:             # [string] user-defined name
-  kind: Solenoid  # [string] element switch
-  length: 3.74
-  SolenoidP:
-    Ksol: -0.15
-```
-
-
+The following details the different kinds of lattice elements and the associated parameter groups.
+For documentation on lattice elements in general see [here](#c:lat.ele).
 
 %---------------------------------------------------------------------------------------------------
----
 (s:magnets)=
 ## Magnets and RF Cavities
 
 The following element kinds involve applied electromagnetic fields in vacuum.
-
 
 %---------------------------------------------------------------------------------------------------
 (s:ackicker)=
@@ -431,7 +419,7 @@ Element parameter groups associated with this element kind are:
 (s:foil)=
 ### Foil Element
 
-A Foil element represents a planar sheet of material which can strip electrons from a particle. In
+A `Foil` element represents a planar sheet of material which can strip electrons from a particle. In
 conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
 Material that can strip electrons from a particle
 will also cause energy loss and diffusion.
@@ -502,28 +490,11 @@ Element parameter groups associated with this element kind are:
 
 
 %---------------------------------------------------------------------------------------------------
----
-(s:action)=
-## Action Elements
+(s:map)=
+## Map Elements
 
-The following element kinds specify an action that should be taken.  Typically, this is an abstract action
-that is related to tracking or control.
-
-
-(s:feedback)=
-### Feedback Circuit 
-
-A Feedback element is an element used to simulate a feedback circuit.
-It gathers information about particle trajectories from the inputs
-and uses this
-to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
-A feedback element could be used, for example, to simulate RF feedback systems or beam position
-feedback, or cooling of a proton beam by a beam of electrons.
-
-Under Construction...
-
-Note: This element does not have a `length` nor an `s_position`.
-
+The following element kinds specify transport maps through an element without regard to the physical fields
+present.
 
 %---------------------------------------------------------------------------------------------------
 (s:match)=
@@ -782,3 +753,26 @@ MMM:
 Note: `UnionEle` shares the feature of describing elements that overlap physically, 
 together with the [`placement`](#s:placement) construct within a `BeamLine` and the
 [`superposition`](#s:superposition) construct.
+
+%---------------------------------------------------------------------------------------------------
+(s:external)=
+## External Circuits
+
+The following element kinds describe machine components "external" to any beam lines. 
+For example, control or feedback circuits.
+
+%---------------------------------------------------------------------------------------------------
+(s:feedback)=
+### Feedback Circuit 
+
+A `Feedback` element is an element used to simulate a feedback circuit.
+It gathers information about particle trajectories from the inputs
+and uses this
+to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
+A feedback element could be used, for example, to simulate RF feedback systems or beam position
+feedback, or cooling of a proton beam by a beam of electrons.
+
+Under Construction...
+
+Note: This element does not have a `length` nor an `s_position`.
+

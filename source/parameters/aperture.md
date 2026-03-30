@@ -7,13 +7,13 @@ The components of this group and their defaults are:
 ApertureP:
   x_min: null                      # [m] Left aperture limit.
   x_max: null                      # [m] Right aperture limit.
+  x_center: null                   # [m] Center of horizontal aperture.
   x_width: null                    # [m] Horizontal aperture full width.
-                                   #       Equivalent to x_min = -x_width/2, x_max = x_width/2
   y_min: null                      # [m] Bottom aperture limit.
   y_max: null                      # [m] Top aperture limit.
+  y_center: null                   # [m] Center of vertical aperture
   y_width: null                    # [m] Vertical aperture full width.
-                                   #       Equivalent to y_min = -y_width/2, y_max = y_width/2
-  shape: ""                        # [string] Aperture shape switch
+  shape: ELLIPTICAL                # [enum] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture
@@ -21,6 +21,17 @@ ApertureP:
   aperture_shifts_with_body: false # [Boolean] See below.
   aperture_active: true            # [Boolean] false implies aperture is not operating.
 ```
+The horizontal aperture may be specified by setting `x_min` and `x_max` or by setting
+`x_center` and `x_width` but only one pair may be set. A Similar situation applies to
+the vertical aperture. The conversion between the two is 
+```{code}
+  x_min = x_center - x_width/2, 
+  x_max = x_center + x_width/2
+  y_min = y_center - y_width/2, 
+  y_max = y_center + y_width/2
+```
+If there is only an aperture on one side, the min or max must be set as it does not make
+sense to set center and width in this case.
 
 ### Location component
 
@@ -49,7 +60,7 @@ by a set of vertices.
 The `shape` parameter selects the shape of the aperture. Possible values are:
 ```{code} yaml
   shape: RECTANGULAR   # Rectangular shape.
-  shape: ELLIPTICAL    # Elliptical shape.
+  shape: ELLIPTICAL    # Elliptical shape. Default.
   shape: VERTICES      # Shape defined by set of vertices.
   shape: CUSTOM_SHAPE  # Shape defined outside of the lattice standard.
 ```
@@ -78,6 +89,8 @@ four conditions is true:
   3) y < y_min && y_min != null
   4) y > y_max && y_max != null
 ```
+If center and width are specified, the equivalent min and max are calculated to be used in the
+above inequalities. 
 
 ### aperture_shifts_with_body
 

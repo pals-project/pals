@@ -58,7 +58,7 @@ this_list:
    PALS dictionaries should, when possible, implement a dictionary that preserves insertion order.
 
    While not strictly necessary, this helps with human readability:
-   For example, having the [`kind`](#c:element.parameters) key of an element as the first attribute enhances legibility.
+   For example, having the [`kind`](#s:ele.syntax) key of an element as the first attribute enhances legibility.
 ```
 
 ### Special Values
@@ -81,10 +81,39 @@ Special values used in this document are:
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary. Example:
+The root of the PALS schema is given by this dictionary.
+```{code} YAML
+PALS:
+  version:   # [string] Version of the PALS schema used in this file
+  authors:   # [list] Authors associated with this file
+  notes:     # [list] Notes of interest.
+  reminders: # [list] Reminder messages to be printed when file is read.
+  facility:  # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+```
+The difference between `notes` and `reminders` is that reminder messages are meant to be 
+printed (or otherwise communicated to the user) every time the file is read.
+
+Example:
 ```{code} YAML
 PALS:
   version: null  # version schema: defined later
+
+  notes:
+    - "Extraction transfer line will be added to lattice in next iteration."
+    - ...
+
+  reminders:
+    - "Important! West RF cavity phasing needs to be done before any simulations!!!"
+    - ...
+
+  authors:
+    - author:
+        name: Lastname, Firstname
+        orcid: AAAA-BBBB-CCCC-DDDD
+        affiliation: Affiliation Long Name
+        email: lastname@laboratory.gov
+    - author:
+        ...
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
@@ -92,11 +121,15 @@ PALS:
 Information may appear in a lattice file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
 
+PALS file `authors` are optional, but recommended to enable data provenance and contacts.
+Per author, the `name` is required; the `orcid`, `affiliation` and `email` fields are optional.
+
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
 ## Parameters
 
-All parameters are optional unless explicitly stated otherwise.
+All parameters (both element parameters and non-element parameters) are optional unless 
+explicitly stated otherwise.
 Optional real or integer parameters have a default value of zero unless otherwise stated.
 Optional string parameters have a default value of blank unless otherwise stated.
 
@@ -158,153 +191,6 @@ to the following:
 - A name must start with a letter or the underscore character
 - A name cannot start with a number
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
-
-%---------------------------------------------------------------------------------------------------
-(s:element.matching)=
-## Element Name Matching
-
-Lattice element name matching is the process of finding the set of lattice elements that 
-are matched to a given string. Name matching is important in a number of instances including
-lattice expansion where there are [`Fork`](#s:forking) elements and for evaluating mathematical
-expressions.
-
-The simplist form of name matching is if the string matches
-the `name` field of an element or elements. 
-For example, the string `"Q1"` will match to all elements named `Q1`.
-
-Element matches may be restricted to a given element kind using the notation
-```{code} yaml
-{kind}::{name}
-```
-where `{kind}` is the element kind and `{name}` is the element name.
-Example:
-```{code} yaml
-Marker::bpm.
-```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character, see below).
-
-The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
-followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
-that matches `"Quadrupole::Q1"`. The `N`{sup}`th` instance selection is always applied last.
-Thus with this example, the element kind selector `::` is applied first to get a list of all
-quadrupole elements named `Q1` and then the `#3` selection is used to get the third instance.
-
-<!--
-Besides the element name, any parameter in the [`MetaP`](#s:meta.params) parameter group can
-be matched to using the syntax `"{param-name}::{name-to-match}"`. For example, `"alias::black"`
-would match to any element whose `alias` parameter is set to `black`.
--->
-
-In the discussion below, all of the above constructs will be called an "element name".
-
-The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name 
-(henceforth just referred to as a branch name) to the string,
-using the string `">>"` as a separator. For example, `"B1>>Sextupole::Saf"` would match
-to all `Sextupole` elements in a branch or `BeamLine` named `"B1"` whose name was `"Saf"`.
-This includes sublines of BeamLines. Thus if `B1` is a BeamLine that contains a subline `B2` 
-that in turn contains a Sextupole element named `Saf`, the string `"B1>>Sextupole::Saf"`
-will match to this element.
-
-Lattice elements can also be referred to by the index in which they appear in a branch
-with the first element having index one, etc. For example, `"B1>>7"` matches the seventh
-element in branch `B1`.
-
-Branches do not get an index since the
-PALS standard does not mandate that the branches of a lattice be stored in an array (it
-could, for example, be a linked list).
-
-If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified using the lattice
-name with `">>>"` as a separator. There are several permutations where `>>` and `>>>` are used:
-```{code} text
-{lattice-name}>>>{branch-name}>>{element-name}
-{lattice-name}>>>{element-name}
-{branch-name}>>{element-name}
-```
-
-Regular expressions can be used. 
-Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
-Regex matching is applied to the lattice name, branch name, and element name separately and
-a match to the string requires all the individual names to match.
-When applying regex to a lattice name, any prefix (anything before and including a `"::"`) and
-any suffix (anything after and including a `"#"` character) is not included in the regex match.
-For example, `"B.4>>Quadrupole::Qaf.*"` would match to all Quadrupole elements in branches 
-which have three characters
-beginning in "B" and ending in "4" with the element name beginning with "Qaf". And 
-`"B.4>>Quadrupole::Qaf.*#2"` would match to the second element matched to.
-
-Elements can be matched using a range construct which has the form
-```{code} yaml
-{ele1}:{ele2}
-```
-where `{ele1}` marks the beginning of the range and `{ele2}` marks the end of the range.
-Example:
-```{code} yaml
-Q1:Q2
-```
-In this example, the range matches all elements from `Q1` to `Q2` inclusive of `Q1` and `Q2`.
-If `{ele2}` comes before `{ele1}` the range "wraps around" the branch or beamline.
-For example, if `Q2` comes before `Q1` in the above example, the range matches all elements from
-`Q1` to the end of the line plus all elements from the beginning of the line to `Q2`.
-
-Commas `,` can be used to form the union of element sets. The syntax is
-```{code} text
-{element-set1}, {element-set2}, ... , {element-setN}
-```
-where `{element-set1}`, ... `{element-setN}` are element sets. 
-Example:
-```{code} yaml
-A, B, Q.*
-```
-This will match to all elements named `A`, `B`, and all elements whose name begins with `Q`.
-
-Ampersands `&` can be used to form the intersection of element sets. The syntax is
-```{code} text
-{element-set1} & {element-set2} & ... & {element-setN}
-```
-where `{element-set1}`, ... `{element-setN} are element sets. 
-Example:
-```{code} yaml
-Marker::.* & Q1:Q2
-```
-This will match to all `Marker` elements that are in the range from `Q1` to `Q2`.
-
-Order of precedence:
-```{code}
->>>     # Highest
->>
-::      
-#
-:
-,
-&      # Lowest
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:parameter.matching)=
-## Element Parameter Name Matching
-
-For element parameters, the general syntax is
-```{code} text
-{beamline}>>{element}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
-```
-where
-```{code} yaml
-{beamline}                      # Optional BeamLine or Branch name.
-{element}                       # Optional lattice element name.
-{parameter-group}               # Parameter group name.
-{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
-{parameter}                     # Parameter name.
-```
-Only `{beamline}` and `{element}` use PCRE2 syntax. 
-
-Example:
-```{code} yaml
-Qa.*>MagneticMultipoleP.Ks2L
-```
-This will match the `Ks2L` component of all elements whose name begins with `Qa`. Notice that
-since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the parameter group
-and the parameter is unambiguous.
 
 %---------------------------------------------------------------------------------------------------
 (s:units)=
