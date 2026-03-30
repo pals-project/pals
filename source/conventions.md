@@ -54,7 +54,16 @@ this_list:
 ```
 
 In a lattice file, an ordered list of key-value pairs can always be used in place of a dictionary
-with the restriction that no duplicate keys can be present in the list.
+with the restriction that no duplicate keys can be present in the list. 
+For example, the above dictionary written as a list would look like:
+```{code} yaml
+this_dictionary:
+  - key1: value1
+  - key2: value2
+  - key3: value3
+```
+The reverse -- using a dictionary in place of a list -- in general 
+is not allowed since order may be important and lists may have duplicate entries.
 
 ```{note}
    Code Developer note:
