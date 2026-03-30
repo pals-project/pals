@@ -12,10 +12,10 @@ TaylorP:
   py_out:     # [Struct] Taylor series for output py orbital component.
   z_out:      # [Struct] Taylor series for output z orbital component.
   pz_out:     # [Struct] Taylor series for output pz orbital component.
-  S1_out:     # [Struct] Taylor series for output S1 quaternion component.
-  Sx_out:     # [Struct] Taylor series for output Sx quaternion component.
-  Sy_out:     # [Struct] Taylor series for output Sy quaternion component.
-  Sz_out:     # [Struct] Taylor series for output Sz quaternion component.
+  S_q1_out:   # [Struct] Taylor series for output spin q1 quaternion component.
+  S_qx_out:   # [Struct] Taylor series for output spin qx quaternion component.
+  S_qy_out:   # [Struct] Taylor series for output spin qy quaternion component.
+  S_qz_out:   # [Struct] Taylor series for output spin qz quaternion component.
   ref_in:     # [Struct] Input orbital reference point for the map. 
 ```
 Here "input" refers to the starting coordinates at the beginning of the element,
@@ -69,4 +69,5 @@ TaylorP:
     px: 0.02
     ...
 ```
+
 
