@@ -17,20 +17,20 @@ ForkP:
 The `branch` containing a forking element is called the
 "`from-branch`". The `branch` that the forking element points to is called the
 "`to-branch`". It is possible for these two branches to be one and the same.
-The element in the `to-branch` that the `Fork` connects to is called the "`to-element`".
+The element in the `to-branch` that the `Fork` connects to is called the "`to_element`".
 
 The `to_line` parameter is required and names the branch or beam line to fork to.
 If `new_branch` is present and not `null`, a new branch is created in the lattice 
 set of branches with
 the name given by `new_branch` and the `Fork` element will point to this new branch. 
-If `new_branch` is not present or is `null`, the `to-element` will be in an existing branch.
+If `new_branch` is not present or is `null`, the `to_element` will be in an existing branch.
 
-The optional `to_element` component of `ForkP` gives the name of the `to-element`. 
+The optional `to_element` component of `ForkP` gives the name of the `to_element`. 
 If not present, the default is the `Beginning` element.
 The names given by `to_element` must be unique.
-The `to-element` may inherit the reference species and energy of the `Fork` element 
-if and only if the `to-element` is the `Beginning` element and
-the `propagate_reference` component is set to `true`. If the `to-element` is not
+The `to_element` may inherit the reference species and energy of the `Fork` element 
+if and only if the `to_element` is the `Beginning` element and
+the `propagate_reference` component is set to `true`. If the `to_element` is not
 the beginning element, `propagate_reference` is ignored and no reference parameters are
 propagated.
 
@@ -44,8 +44,8 @@ The `direction` component of `ForkP` indicates the direction that a particle mov
 the forked-to branch will travel. If `direction` is set to `FORWARDS` (the default)
 the direction of travel is downstream (`+s`-direction) and vice versa if `direction` is set to
 `BACKWARDS`. Note: It does not make sense to have `direction` set to `BACKWARDS` if the
-to-element is the `Beginning` element. Similarly, it does not make sense to have `direction`
-set to `FORWARDS` if the to-element is the end element in the branch.
+to_element is the `Beginning` element. Similarly, it does not make sense to have `direction`
+set to `FORWARDS` if the to_element is the end element in the branch.
 
 Example `Fork` element:
 ```{code} yaml
