@@ -2,8 +2,8 @@
 # Extensions
 
 
-Extensions are standards used with PALS lattice files that are specific to a single machine
-with no analogue with any other machine.
+Extensions are standards used with PALS lattice files that are specific to a single machine or use case,
+with no analogue elsewhere.
 
 This section is meant to contain brief documentation on extensions to aid the User in identifying 
 extension usage in lattice files and for directing the User to detailed extension documentation 
