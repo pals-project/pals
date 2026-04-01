@@ -45,6 +45,13 @@ The `pz` coordinate is {math}`\Delta P/P_0` where {math}`\Delta P` is the
 particle momentum relative to the reference momentum.
 
 %---------------------------------------------------------------------------------------------------
+(s:spin)=
+## Spin Transport
+
+Spin transport is described using a quaternion rotation representation using 
+the notation {math}`(S_q1, S_qx, S_qy, S_qz)`. 
+
+%---------------------------------------------------------------------------------------------------
 (s:coords)=
 ## Coordinate Systems Used to Describe a Machine
 
