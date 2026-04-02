@@ -13,7 +13,6 @@ top-level PALS files (files that contain the root `PALS` node):
 * [YAML](https://yaml.org): `.pals.yaml`
 * [JSON](https://www.json.org/json-en.html): `.pals.json`
 * [TOML](https://toml.io): `.pals.toml`
-* [XML](https://en.wikipedia.org/wiki/XML): `.pals.xml`
 
 For sub-level [included](#s:includefiles) PALS format files, replace `.pals` with `.subpals`.
 
