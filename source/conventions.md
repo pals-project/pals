@@ -28,22 +28,148 @@ YAML is [formally defined](https://yaml.org) and there are [tutorials to learn Y
 ### YAML 101
 
 In particular, there are dictionaries, which are unordered sets of key-value pairs, e.g.:
+
+::::{tab-set}
+
+:::{tab-item} YAML
+:sync: yaml
 ```{code} yaml
 this_dictionary:
   key1: value1
-  key2: value2
-  key3: value3
+  key2: 2.0
+  key3: true
 ```
+:::
+:::{tab-item} JSON
+:sync: json
+```{code} json
+{"this_dictionary": {
+  "key1": "value1",
+  "key2": 2.0,
+  "key3": true
+}}
+```
+:::
+:::{tab-item} TOML
+:sync: toml
+```{code} toml
+[this_dictionary]
+key1 = "value1"
+key2 = 2.0
+key3 = true
+```
+:::
+:::{tab-item} Python
+:sync: python
+```{code} python
+{"this_dictionary": {
+  "key1": "value1",
+  "key2": 2.0,
+  "key3": True
+}}
+```
+:::
+:::{tab-item} C++17
+:sync: cpp
+```{code} c++
+// insertion-order preserving dictionary
+// alternatives: boost::multi_index_container, ryml::Tree, nlohmann::ordered_map, ...
+using Dict = std::vector<std::pair<std::string, std::any>>;
+
+Dict this_dictionary = {
+    {"key1", "value1"s},
+    {"key2", 2.0},
+    {"key3", true}
+};
+```
+:::
+:::{tab-item} Julia
+:sync: julia
+```{code} julia
+using OrderedCollections
+
+this_dictionary = OrderedDict(
+    "key1" => "value1",
+    "key2" => 2.0,
+    "key3" => true
+)
+```
+:::
+
+::::
 
 And lists, which are ordered sets of items, e.g.:
+
+::::{tab-set}
+
+:::{tab-item} YAML
+:sync: yaml
 ```{code} yaml
 this_list:
   - entry1
   - entry2
   - more_entries
 ```
+:::
+:::{tab-item} JSON
+:sync: json
+```{code} json
+{"this_list": [
+  "entry1",
+  "entry2",
+  "more_entries"
+]}
+```
+:::
+:::{tab-item} TOML
+:sync: toml
+```{code} toml
+this_list = [
+  "entry1",
+  "entry2",
+  "more_entries"
+]
+```
+:::
+:::{tab-item} Python
+:sync: python
+```{code} python
+{"this_list": [
+  "entry1",
+  "entry2",
+  "more_entries"
+]}
+```
+:::
+:::{tab-item} C++17
+:sync: cpp
+```{code} c++
+std::vector<std::string> this_list = {
+    "entry1",
+    "entry2",
+    "more_entries"
+};
+```
+:::
+:::{tab-item} Julia
+:sync: julia
+```{code} julia
+this_list = [
+    "entry1",
+    "entry2",
+    "more_entries"
+]
+```
+:::
+
+::::
 
 One can nest dictionaries into lists and other dictionaries, e.g.:
+
+::::{tab-set}
+
+:::{tab-item} YAML
+:sync: yaml
 ```{code} yaml
 this_list:
   - key1: value1
@@ -52,6 +178,74 @@ this_list:
       key3: value3
       key4: value4
 ```
+:::
+:::{tab-item} JSON
+:sync: json
+```{code} json
+{"this_list": [
+  {"key1": "value1",
+   "key2": "value2"},
+  {"named_dictionary": {
+    "key3": "value3",
+    "key4": "value4"
+  }}
+]}
+```
+:::
+:::{tab-item} TOML
+:sync: toml
+```{code} toml
+[[this_list]]
+key1 = "value1"
+key2 = "value2"
+
+[[this_list]]
+[this_list.named_dictionary]
+key3 = "value3"
+key4 = "value4"
+```
+:::
+:::{tab-item} Python
+:sync: python
+```{code} python
+{"this_list":
+   [
+     {"key1": "value1",
+      "key2": "value2"},
+     {"named_dictionary":
+        {"key3": "value3",
+         "key4": "value4"}
+     }
+   ]
+}
+```
+:::
+:::{tab-item} C++17
+:sync: cpp
+```{code} c++
+std::vector<std::any> this_list = {
+    Dict{{"key1", "value1"s}, {"key2", "value2"s}},
+    Dict{{"named_dictionary", Dict{
+        {"key3", "value3"s}, {"key4", "value4"s}
+    }}}
+};
+```
+:::
+:::{tab-item} Julia
+:sync: julia
+```{code} julia
+using OrderedCollections
+
+this_list = [
+    OrderedDict("key1" => "value1", "key2" => "value2"),
+    OrderedDict("named_dictionary" => OrderedDict(
+        "key3" => "value3", "key4" => "value4"
+    ))
+]
+```
+:::
+
+::::
 
 ```{note}
    Developer note:
