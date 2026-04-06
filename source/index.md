@@ -16,7 +16,8 @@ definitions.md
 :hidden:
 :caption: Schema
 
-conventions.md
+notation.md
+fundamentals.md
 coordinates.md
 lattice-elements.md
 element-parameters.md
@@ -42,7 +43,6 @@ dispersion.md
 :hidden:
 :caption: Implementations
 
-fileformats.md
 code-packages.md
 simulations.md
 ```
