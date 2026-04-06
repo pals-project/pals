@@ -1,5 +1,5 @@
 (c:fundamentals)=
-# Fundamentals
+# Fundamental Structure
 
 %---------------------------------------------------------------------------------------------------
 (s:palsroot)=
