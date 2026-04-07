@@ -67,13 +67,13 @@ extension_names:
   suffixes:         # List of suffixes
 ```
 The `names` section contains a list of extension names. 
-Any key names in the lattice file that match one of these names is considered an extension.
+Any dictionary key names in the lattice file that match one of these names is considered an extension.
 Similarly, the `prefixes` and `suffixes` sections contains a list of extension prefixes and suffixes.
 Any key names in the lattice file that has a prefix or suffix that matches one of these is considered an extension.
 Example:
 ```{code} yaml
 PALS:
-  extension_names:
+  extension_properties:
     names:
       short_name: description of short_name usage
       blueprint: what is a blue print
