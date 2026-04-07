@@ -58,10 +58,10 @@ In this example, the `synch_connect` node is the extension root node. The type o
 `Cornell_CESR_Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
 PALS validation process.
 
-Alternatively, extension root node names may be "registered" using an `extension_names` node 
-to be used as the root of the extension sub-tree. `extension_names` has three components:
+Alternatively, extension root node names may be "registered" using an `extension_labels` node 
+to be used as the root of the extension sub-tree. `extension_labels` has three components:
 ```{code} yaml
-extension_names:
+extension_labels:
   names:            # List of names
   prefixes:         # List of prefixes
   suffixes:         # List of suffixes
@@ -73,7 +73,7 @@ Any key names in the lattice file that has a prefix or suffix that matches one o
 Example:
 ```{code} yaml
 PALS:
-  extension_properties:
+  extension_labels:
     names:
       short_name: description of short_name usage
       blueprint: what is a blue print
@@ -86,6 +86,6 @@ PALS:
       SciBmad_connect:     # Extension with "SciBmad_" prefix.
         ... SciBmad connection info ...
 ```
-The `extension_names` node must appear as a child of the `PALS` root node.
-The advantage of using `extension_names` is that single node extensions are possible
+The `extension_labels` node must appear as a child of the `PALS` root node.
+The advantage of using `extension_labels` is that single node extensions are possible
 (there does not have to be an `extension` sub-node).
