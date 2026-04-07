@@ -75,10 +75,10 @@ Example:
 PALS:
   extension_names:
     names:
-      short_name
-      blueprint
+      short_name: description of short_name usage
+      blueprint: what is a blue print
     prefixes:
-      SciBmad_
+      SciBmad_: for the SciBmad ecosystem
 
   facility:
     Q1_vary_long_string:
