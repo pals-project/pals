@@ -36,8 +36,8 @@ propagated.
 
 The possible values of the optional `direction` switch are:
 ```{code} yaml
-FORWARDS            # Injected particle propagates in forward (+s) direction. Default.
-BACKWARDS           # Injected particle propagates in reverse (-s) direction.
+FORWARDS            # Injected particle propagates in the forward (+s) direction. Default.
+BACKWARDS           # Injected particle propagates in the backward (-s) direction.
 ```
 
 The `direction` component of `ForkP` indicates the direction that a particle moving into
