@@ -52,14 +52,14 @@ Example `Fork` element:
 - to_dump:
     kind: Fork
     ForkP:
-      to_line: generic_dump
+      to_line: dump_beamline
       to_element: dump_beginning
-      to_branch: this_dump
+      new_branch: proton_dump
       propagate_reference: true
 ```
 In this example, a `Fork` element connects to a new branch that will be instantiated using
-a `BeamLine` called `generic_dump`. In the expanded lattice the to_branch will be called
-`this_dump`. The reference properties at the `dump_beginning` element that is forked to,
+a `BeamLine` called `dump_beamline`. In the expanded lattice, the to_branch will be called
+`proton_dump`. The reference properties at the `dump_beginning` element that is forked to,
 assuming this is the `BeginningEle` element at the beginning of the branch, will be
 the reference properties at the `Fork` element.
 
