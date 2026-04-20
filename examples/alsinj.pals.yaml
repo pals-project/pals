@@ -25,13 +25,13 @@ PALS:
         kind: Kicker
         length: 0.1524
         MagneticMultipoleP:
-          kn0: 0.0 
+          Kn0: 0.0 
 
     - VCM:
         kind: Kicker
         length: 0.1524
         MagneticMultipoleP:
-          ks0: 0.0
+          Ks0: 0.0
 
     - GTL_START_HCM1:
         kind: Drift
@@ -123,30 +123,30 @@ PALS:
     - HCM:
         kind: Kicker
         length: 0.1524
-        kn0: 0.0
+        Kn0: 0.0
 
     - VCM:
         kind: Kicker
         length: 0.1524
-        ks0: 0.0
+        Ks0: 0.0
 
     - LNQ11:
         kind: Quadrupole
         length: 0.12
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 0.781050
 
     - LNQ12:
         kind: Quadrupole
         length: 0.12
         MagneticMultipoleP:
-          kn1: -1.2635
+          Bn1: -1.2635
 
     - LNQ13:
         kind: Quadrupole
         length: 0.12
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 0.781050
 
     - AS:
         kind: Drift
@@ -250,31 +250,31 @@ PALS:
         kind: Kicker
         length: 0.052
         MagneticMultipoleP:
-          kn0: 0.0
+          Kn0: 0.0
 
     - VCM:
         kind: Kicker
         length: 0.052
         MagneticMultipoleP:
-          ks0: 0.0
+          Ks0: 0.0
 
     - Q11:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: -0.677778
 
     - Q12:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: -1.2635
+          Bn1: 0.9361111
 
     - Q13:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: -0.677778
 
     - BX:
         kind: Rbend
@@ -373,67 +373,67 @@ PALS:
         kind: Kicker
         length: 0.052
         MagneticMultipoleP:
-          kn0:  0.0
+          Kn0:  0.0
 
     - VCM:
         kind: Kicker
         length: 0.052
         MagneticMultipoleP:
-          ks0:  0.0
+          Ks0:  0.0
 
     - Q2:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 1.5194444
 
     - Q31:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 1.7944444
 
     - Q32:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: -1.6194444
 
     - Q41:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 1.8083333
 
     - Q42:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: -1.5722222
 
     - Q5:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 1.1944444
 
     - Q6:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: -0.8833333
 
     - BR1QD1:
         kind: Quadrupole
-        length: 0.15
+        length: 0.3
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 0.0
 
     - BR1QF2:
         kind: Quadrupole
         length: 0.15
         MagneticMultipoleP:
-          kn1: 0.781050
+          Bn1: 0.462
 
     - B1:
         kind: Rbend
