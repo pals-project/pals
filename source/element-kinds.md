@@ -470,23 +470,36 @@ The following element kinds are for instrumentation and diagnostics.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
-### Instrument Element
+### Screen Element
 
-An Instrument element is a measurement element for diagnostics.
-
-Under Construction...
+An Screen element is a transverse profile monitor element that produces a 2-dimensional projection of
+the x/y particle distribution.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
 - [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ScreenP**](#s:screen.params): Screen parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
+
+%---------------------------------------------------------------------------------------------------
+(s:instrument)=
+### Wire Element
+
+A Wire element is a transverse profile monitor element that produces a 
+1-dimensional projection of the x/y particle distribution.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ReferenceP**](#s:ref.params): Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**WireP**](#s:wire.params): Wire parameters.
 
 
 %---------------------------------------------------------------------------------------------------
