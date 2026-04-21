@@ -118,17 +118,17 @@ differing energies, is done using `Patch` elements.
 ```
 
 The `branch` containing a forking element is called the
-"`from_branch`". The `branch` that the forking element points to is called the
-"`to_branch`". It is possible for these two branches to be one and the same.
-The element in the to_branch that the `Fork` connects to is called the "`to_element`".
+"destination" branch. The `branch` that the forking element points to is called the
+"destination" branch. It is possible for these two branches to be one and the same.
+The element in the destination branch that the `Fork` connects to is called the "destination" element.
 
 `Fork` elements are uni-directional. That is, particles can travel from a `Fork` element
-in a `from_branch` to the `to_branch` of the `Fork` but travel cannot happen in
+in a destination branch to the destination branch of the `Fork` but travel cannot happen in
 the reverse direction. To get a bi-directional link between branches, use two `Forks` with
-the `to_element` of both `Forks` being the other `Fork`.
+the destination element of both `Forks` being the other `Fork`.
 
 To avoid ambiguities, a `Fork` element has zero length and unit transfer map and
-the kinds of `to_elements` are restricted to be one of:
+the kinds of destination element are restricted to be one of:
 - `Marker`
 - `Beginning`
 - `FloorPosition`
@@ -141,15 +141,15 @@ Example `Fork` element:
 - to_dump:
     kind: Fork
     ForkP:
-      to_line: generic_dump
+      to_line: dump_beamline
       to_element: dump_beginning
-      branch_name: this_dump
+      new_branch: proton_dump
       propagate_reference: true
 ```
-In this example, a `Fork` element connects to a new branch which will be instantiated using
-a `line` called `generic_dump`. In the expanded lattice, the branch will be called
-`this_dump`. The reference properties at the `dump_beginning`, element that is forked to,
-assuming this is the `BeginningEle` element at the beginning of the branch., will inherit
+In this example, a `Fork` element connects to a new branch that will be instantiated using
+a `BeamLine` called `dump_beamline`. In the expanded lattice, the destination branch will be called
+`proton_dump`. The reference properties at the `dump_beginning` element that is forked to,
+assuming this is the `BeginningEle` element at the beginning of the branch, will be
 the reference properties at the `Fork` element.
 
 %---------------------------------------------------------------------------------------------------
