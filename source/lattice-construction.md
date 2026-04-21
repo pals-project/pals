@@ -120,7 +120,7 @@ differing energies, is done using `Patch` elements.
 The `branch` containing a forking element is called the
 "destination" branch. The `branch` that the forking element points to is called the
 "destination" branch. It is possible for these two branches to be one and the same.
-The element in the to_branch that the `Fork` connects to is called the "destination" element.
+The element in the destination branch that the `Fork` connects to is called the "destination" element.
 
 `Fork` elements are uni-directional. That is, particles can travel from a `Fork` element
 in a destination branch to the destination branch of the `Fork` but travel cannot happen in
