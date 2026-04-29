@@ -24,8 +24,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -53,8 +52,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 `RBend` and `SBend` elements are parameterized exactly the same way by the `BendP` parameter group. 
@@ -85,8 +83,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -110,8 +107,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -140,8 +136,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -159,8 +154,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -179,8 +173,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -196,7 +189,7 @@ oct01w:
 (s:quadrupole)=
 ### Quadrupole Element
 
-A `quadrupole` is an element whose major field has a linear field dependence .with transverse offset.
+A `Quadrupole` is an element whose major field has a linear field dependence .with transverse offset.
 Both electric and magnetic fields can be defined and the field is not restricted to be linear.
 In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
 
@@ -207,8 +200,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -224,7 +216,7 @@ q01w:
 (s:rfcavity)=
 ### RFCavity Element
 
-An RFCavity element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
+An `RFCavity` element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
 
 Under Construction...
 
@@ -235,8 +227,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**RFP**](#s:rf.params): RF parameters.
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
@@ -260,8 +251,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -288,8 +278,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
@@ -317,8 +306,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -343,8 +331,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Example:
@@ -384,15 +371,13 @@ Under Construction...
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ConverterP**](#s:converter.params): Converter parameters.
 - [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -410,8 +395,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -430,12 +414,10 @@ Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**FoilP**](#s:foil.params): Foil parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
 %---------------------------------------------------------------------------------------------------                      
@@ -454,14 +436,11 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
-
 %---------------------------------------------------------------------------------------------------
----
 (s:instrumentation)=
 ## Instrumentation and Diagnostics
 
@@ -483,8 +462,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -510,8 +488,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
@@ -532,8 +509,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TaylorP**](#s:taylor.params): Orbital and spin Taylor map.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
@@ -561,7 +537,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
@@ -595,7 +571,7 @@ Also see [`patch`](#s:patch) and [`fiducial`](#s:fiducial) elements.
 Element parameter groups associated with this element kind are:
 - [**FloorShiftP**](#s:floor.shift.params): Floor shift parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -616,8 +592,7 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**ForkP**](#s:fork.params): Required. Fork element parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
@@ -635,7 +610,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 
 The `length` of this element must be zero.
 
@@ -678,12 +653,27 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**PatchP**](#s:meta.params): Exit coordinates with respect to entrance coordinates.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
 This matters due to the dependence of the reference velocity on the the reference energy.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:reference.change)=
+### ReferenceChange Element
+
+A `ReferenceChange` element is used to adjust reference parameters at any location in a branch.
+These adjusted reference parameters will then be used to calculate the reference parameters for
+the downstream elements of the `ReferenceChange` element.
+
+Element parameter groups associated with this element kind are:
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ReferenceChangeP**](#s:ref.change.params): Reference parameters adjustments.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -720,8 +710,7 @@ Element parameter groups associated with this element kind are:
 - **elements**: A list of contained element kinds.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): Reference parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference energy change and/or reference time correction.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
