@@ -213,21 +213,6 @@ q01w:
 ```
 
 %---------------------------------------------------------------------------------------------------
-(s:reference.change)=
-### ReferenceChange Element
-
-A `ReferenceChange` element is used to adjust reference parameters at any location in a branch.
-These adjusted reference parameters will then be used to calculate the reference parameters for
-the downstream elements of the `ReferenceChange` element.
-
-Element parameter groups associated with this element kind are:
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceChangeP**](#s:ref.change.params): Reference parameters adjustments.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-%---------------------------------------------------------------------------------------------------
 (s:rfcavity)=
 ### RFCavity Element
 
@@ -673,6 +658,22 @@ Element parameter groups associated with this element kind are:
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
 This matters due to the dependence of the reference velocity on the the reference energy.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:reference.change)=
+### ReferenceChange Element
+
+A `ReferenceChange` element is used to adjust reference parameters at any location in a branch.
+These adjusted reference parameters will then be used to calculate the reference parameters for
+the downstream elements of the `ReferenceChange` element.
+
+Element parameter groups associated with this element kind are:
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ReferenceChangeP**](#s:ref.change.params): Reference parameters adjustments.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
 
 
 %---------------------------------------------------------------------------------------------------
