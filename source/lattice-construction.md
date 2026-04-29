@@ -118,14 +118,14 @@ differing energies, is done using `Patch` elements.
 ```
 
 The `branch` containing a forking element is called the
-"destination" branch. The `branch` that the forking element points to is called the
+"source" branch. The `branch` that the forking element points to is called the
 "destination" branch. It is possible for these two branches to be one and the same.
 The element in the destination branch that the `Fork` connects to is called the "destination" element.
 
 `Fork` elements are uni-directional. That is, particles can travel from a `Fork` element
-in a destination branch to the destination branch of the `Fork` but travel cannot happen in
-the reverse direction. To get a bi-directional link between branches, use two `Forks` with
-the destination element of both `Forks` being the other `Fork`.
+to the destination element but travel cannot happen in
+the reverse direction. To get a bi-directional link, use two `Fork` elements with
+the destination element of both Forks being the other `Fork`.
 
 To avoid ambiguities, a `Fork` element has zero length and unit transfer map and
 the kinds of destination element are restricted to be one of:
@@ -142,7 +142,7 @@ Example `Fork` element:
     kind: Fork
     ForkP:
       to_line: dump_beamline
-      to_element: dump_beginning
+      destination_element: dump_beginning
       new_branch: proton_dump
       propagate_reference: true
 ```

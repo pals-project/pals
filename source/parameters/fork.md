@@ -8,7 +8,7 @@ The components of the `ForkP` group are:
 ```{code} yaml
 ForkP:
   to_line                    # [name] Required. Name of branch or beam line to fork to.
-  to_element                 # [name] Destination element to fork to. Default is the beginning element.
+  destination_element        # [name] Destination element to fork to. Default is the beginning element.
   direction: FORWARDS        # [enum] Longitudinal Direction of travel of injected beam.
   new_branch: null           # [name] Name to give newly created destination branch.
   propagate_reference: true  # [logical] Propagate reference species and energy.
@@ -16,19 +16,19 @@ ForkP:
 
 The `branch` containing a forking element is called the
 "destination" branch. The `branch` that the forking element points to is called the
-"source" branch. It is possible for these two branches to be one and the same.
-The element in the source branch that the `Fork` connects to is called the "destination" element.
+"destination" branch. It is possible for these two branches to be one and the same.
+The element in the destination branch that the `Fork` connects to is called the "destination" element.
 
 The `to_line` parameter is required and names the branch or beam line to fork to.
 If `new_branch` is present and not `null`, a new branch is created in the lattice 
 set of branches with
 the name given by `new_branch` and the `Fork` element will point to this new branch. 
 If `new_branch` is not present or is `null`, the destination element, specified by the 
-`to_element` parameter, will be in an existing branch.
+`destination_element` parameter, will be in an existing branch.
 
-The optional `to_element` component of `ForkP` gives the name of the destination element. 
+The optional `destination_element` component of `ForkP` gives the name of the destination element. 
 If not present, the default is the `Beginning` element.
-The name given by `to_element` must be unique.
+The name given by `destination_element` must be unique.
 The destination element may inherit the reference species and energy of the `Fork` element 
 if and only if the destination element is the `Beginning` element and
 the `propagate_reference` component is set to `true`. If the destination element is not
@@ -54,7 +54,7 @@ Example `Fork` element:
     kind: Fork
     ForkP:
       to_line: dump_beamline
-      to_element: dump_beginning
+      destination_element: dump_beginning
       new_branch: proton_dump
       propagate_reference: true
 ```
