@@ -73,7 +73,7 @@ First, the `floor` coordinates are rectangular coordinates independent of the ac
 The position of the accelerator itself as well as external objects like the building the
 accelerator is in  may be described using `floor` coordinates.
 
-It is inconvenient to describe the position lattice elements and the position of a 
+It is inconvenient to describe the position of lattice elements and the position of a 
 particle beam using the `floor` coordinate system so, for each branch,
 a "[branch](#s:ref.construct)" coordinate system is used. This curvilinear coordinate
 system defines the nominal position of the lattice elements. The relationship between the
@@ -235,7 +235,6 @@ That is, to get a particle going forward through the bend in {numref}`f:patch.be
 
 - A `reflection Patch` that rotated the coordinates, for example, 
 around the {math}`x`-axis by 180{math}`^o`  would also produce a plausible geometry.
-\end{itemize}
 
 %---------------------------------------------------------------------------------------------------
 (s:reflect.patch)=
@@ -279,7 +278,7 @@ orientation with positive {math}`\theta(s)` and {math}`\psi(s)` but with negativ
 
 The Cartesian `floor` coordinate system is the
 coordinate system "attached to the earth" that is used to describe the branch coordinate
-system. Following the \mad\ convention, the `floor` coordinate axis are labeled {math}`(X, Y,
+system. Following the MAD convention, the `floor` coordinate axis are labeled {math}`(X, Y,
 Z)`. Conventionally, {math}`Y` is the "vertical" coordinate and {math}`(X, Z)` are the "horizontal"
 coordinates. To describe how the branch coordinate system is oriented within the floor coordinate
 system, each point on the {math}`s`-axis of the branch coordinate system is characterized by its 
