@@ -15,7 +15,7 @@ ForkP:
 ```
 
 The `branch` containing a forking element is called the
-"destination" branch. The `branch` that the forking element points to is called the
+"source" branch. The `branch` that the forking element points to is called the
 "destination" branch. It is possible for these two branches to be one and the same.
 The element in the destination branch that the `Fork` connects to is called the "destination" element.
 
