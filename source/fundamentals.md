@@ -138,7 +138,7 @@ Special values used in this document are:
 (s:units)=
 ## Units
 
-The lattice standard uses SI except for energy which uses `eV`.
+PALS uses SI except for energy which uses `eV`.
 ```{list-table} Units used by the Standard
 :width: 60%
 :header-rows: 1

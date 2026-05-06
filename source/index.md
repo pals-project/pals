@@ -1,4 +1,4 @@
-# PALS: Particle Accelerator Lattice Standard
+# PALS: Particle Accelerator Language Standard
 
 Welcome to PALS, a standard to promote lattice information exchange for particle accelerators.
 

@@ -1,8 +1,8 @@
 [![Documentation Status](https://readthedocs.org/projects/pals-project/badge/?version=latest)](https://pals-project.readthedocs.io)
 
-# Particle Accelerator Lattice Standard (PALS)
+# Particle Accelerator Language Standard (PALS)
 
-An effort to create a standard to promote lattice information exchange for particle accelerators.
+An effort to create a standard to promote information exchange for particle accelerators.
 PALS can also serve as the schema for new simulation programs and 
 the associated code that comes
 with PALS will be usable to read/validate/write lattice files thus saving considerable programming time.
@@ -19,8 +19,8 @@ can be useful to share will be described by the standard.
 ## Participation
 
 Community involvement is invited! 
-There are weekly (more or less) meetings to discuss development of the lattice standard.
-To participate in the creation of the lattice standard, 
+There are weekly (more or less) meetings to discuss development of PALS.
+To participate in the creation of PALS 
 please contact [Jean-Luc Vay](https://github.com/jlvay) to be put on the mailing list. 
 
 ## Goals
