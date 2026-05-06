@@ -21,7 +21,16 @@ uses the C++ parser as a back end.
 ## Visualization
 
 A 3D Visualization package is in development.
-Xelera Research LLC is working to develop an open-source extension to the widely used graphics program Blender that will provide an intuitive graphical user-interface for accelerator modeling in 3D. The extension will support lattice editing in both a 2D graphical node-based layout as well as in the 3D view, and it will include support for importing and exporting the PALS lattice standard format. The goal is for this software to enable viewing, editing, or constructing beamline models with a 3D layout that can include realistic physical constraints and infrastructure. Xelera also plans to explore incorporating external signals into the software to permit integration with control systems at accelerator facilities. This would enable such signals to be coupled with a model to permit continuously updated output in the 3D view. This work is supported by the U.S. Department of Energy SBIR program.
+Xelera Research LLC is working to develop an open-source extension to the widely used graphics 
+program Blender that will provide an intuitive graphical user-interface for accelerator modeling in 3D. 
+The extension will support lattice editing in both a 2D graphical node-based layout as well as in 
+the 3D view, and it will include support for importing and exporting the PALS standard format. 
+The goal is for this software to enable viewing, editing, or constructing beamline models with a 3D 
+layout that can include realistic physical constraints and infrastructure. 
+Xelera also plans to explore incorporating external signals into the software to permit integration 
+with control systems at accelerator facilities. 
+This would enable such signals to be coupled with a model to permit continuously updated output in 
+the 3D view. This work is supported by the U.S. Department of Energy SBIR program.
 
 ## Language converters.
 

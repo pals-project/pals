@@ -62,7 +62,7 @@ The `shape` parameter selects the shape of the aperture. Possible values are:
   shape: RECTANGULAR   # Rectangular shape.
   shape: ELLIPTICAL    # Elliptical shape. Default.
   shape: VERTICES      # Shape defined by set of vertices.
-  shape: CUSTOM_SHAPE  # Shape defined outside of the lattice standard.
+  shape: CUSTOM_SHAPE  # Shape defined outside of the PALS standard.
 ```
 
 ### Limit components

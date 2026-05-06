@@ -1,6 +1,6 @@
 # Governance
 
-The Particle Accelerator Lattice Standard (PALS) is led in an open governance model, described in this file.
+The Particle Accelerator Language Standard (PALS) is led in an open governance model, described in this file.
 
 ## Steering Committee
 
@@ -70,7 +70,7 @@ TC members can individually appoint new contributors, unless a vote is called on
 
 ### Appointment Process
 
-TC members are the maintainers of Lattice Standard.
+TC members are the maintainers of PALS.
 As a TC member, regularly attending and contributing to the weekly developer meetings is expected.
 
 One is appointed to the TC by the steering committee, in a unanimous vote, or by majority vote of the TC.
@@ -92,7 +92,7 @@ TC members can resign or be removed by majority vote by either TC or SC, e.g., d
 
 ### Role
 
-Contributors are valuable, vetted developers of Lattice Standard.
+Contributors are valuable, vetted developers of PALS.
 Contributions can be in many forms and not all need to be code contributions.
 Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
 Contributors can participate in developer meetings and weigh in on discussions.
@@ -105,14 +105,15 @@ Contributors can individually decide on classification (triage) of pull requests
 
 ### Appointment Process
 
-Appointed after contributing to Lattice Standard (see above) by any member of the TC.
+Appointed after contributing to PALS (see above) by any member of the TC.
 
 The role can be lost by resigning or by decision of an individual TC or SC member, e.g., due to inactivity, bad acting or other.
 
 ## Former Members
 
 "Former members" are the giants on whose shoulders we stand.
-But, for the purpose of Lattice Standard governance, they are *not* tracked as a governance role in Lattice Standard.
-Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, the Lattice Standard documentation, references, citable Zenodo archives of releases, etc. as appropriate.
+But, for the purpose of PALS governance, they are *not* tracked as a governance role in PALS.
+Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, 
+the PALS documentation, references, citable Zenodo archives of releases, etc. as appropriate.
 
 Former members of SC, TC and Contributors are not kept in the roster, since committee role rosters shall reflect currently active members and the responsible governance body.
