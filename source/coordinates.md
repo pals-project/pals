@@ -385,7 +385,7 @@ axis {math}`\bf u` (normalized to 1) and angle of rotation {math}`\beta`
 (s:ele.pos)=
 ## Lattice Element Positioning
 
-PALS, again following MAD, computes {math}`\bf V` and {math}`\bf W` 
+The lattice standard, again following MAD, computes {math}`\bf V` and {math}`\bf W` 
 by starting at the first element of the lattice and iteratively using the equations
 ```{math}
 :label: wws
