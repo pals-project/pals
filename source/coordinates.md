@@ -49,7 +49,7 @@ particle momentum relative to the reference momentum.
 ## Spin Transport
 
 Spin transport is described using a quaternion rotation representation using 
-the notation {math}`(S_q1, S_qx, S_qy, S_qz)`. 
+the notation {math}`(S_{q1}, S_{qx}, S_{qy}, S_{qz})`. 
 
 %---------------------------------------------------------------------------------------------------
 (s:coords)=
@@ -257,7 +257,7 @@ that the associated {math}`\bf S` matrix (Eq. {eq}`wws`) satisfy:
 Using Eq. {eq}`wws` gives, after some simple algebra, this condition is equivalent to
 ```{math}
 
-  \cos(\text{x_rot}) \, \cos(\text{y_rot}) < 0
+  \cos(\text{x}\_\text{rot}) \, \cos(\text{y}\_\text{rot}) < 0
 ```
 When there are a series of patches, The transformations of all the patches are concatenated together
 to form an effective {math}`\bf S` which can then be used with Eq. {eq}`s330`.
@@ -563,13 +563,12 @@ For this transformation, {math}`\bf S` is the unit matrix and {math}`{\bf L} = (
 :label: swww2
 
 
-\bf L =
+{\bf L} =
 \begin{pmatrix}
-\text{x_offset} \\ \text{y_offset} \\ \text{z_offset}
+\text{x}\_\text{offset} \\ \text{y}\_\text{offset} \\ \text{z}\_\text{offset}
 \end{pmatrix},
 \qquad
-\bf S = {\bf R}_y (\text{y_rot}) \; {\bf R}_x (\text{x_rot}) \; {\bf R}_z (\text{tilt})
-
+{\bf S} = {\bf R}_y (\text{y}\_\text{rot}) \; {\bf R}_x (\text{x}\_\text{rot}) \; {\bf R}_z (\text{tilt})
 ```
 
 1. {math}`E_\text{mid} \longrightarrow E_s`: Translation to body coordinates {math}`E_s`.
