@@ -127,7 +127,7 @@ and the horizontally pure solutions can be written in the form
   \psi_n^i = \sum_{k = n}^\infty D_{nk} \, \phi_k^i
 ```
 For any given order {math}`n`, the {math}`C_{nk}` and {math}`D_{nk}` are determined up to an 
-overall scaling factor. PALS this scaling factor by demanding
+overall scaling factor. PALS sets this scaling factor by demanding
 {math}`C_{nn} = D_{nn} = 1`.
 
 The {math}`C_{nk}` and {math}`D_{nk}` are chosen, order
