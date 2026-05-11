@@ -113,7 +113,7 @@ The role can be lost by resigning or by decision of an individual TC or SC membe
 
 "Former members" are the giants on whose shoulders we stand.
 But, for the purpose of PALS governance, they are *not* tracked as a governance role in PALS.
-Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, 
+Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking,
 the PALS documentation, references, citable Zenodo archives of releases, etc. as appropriate.
 
 Former members of SC, TC and Contributors are not kept in the roster, since committee role rosters shall reflect currently active members and the responsible governance body.

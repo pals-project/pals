@@ -55,8 +55,8 @@ The components here are:
 lattice structure defined by the Translator. This code will be program specific and outside the
 scope of the standard. However, structure translation should (hopefully) be 
 relatively straightforward.
-- **Translator:** Package supplied with PALS. The Translator has code to put 
-information into an "expanded form". 
+- **Translator:** Package supplied with PALS.
+The Translator has code to put information into an "expanded form".
 This includes expanding beam lines, evaluating expressions, etc.
 - **Reader / Writer:** Package to read/write files of a standard format (JSON, YAML, etc). 
 Packages to do this are widely available.
