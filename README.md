@@ -20,7 +20,8 @@ can be useful to share will be described by the standard.
 
 Community involvement is invited! 
 There are weekly (more or less) meetings to discuss development of PALS.
-To participate in the creation of PALS please contact [Jean-Luc Vay](https://github.com/jlvay) to be put on the mailing list.
+To participate in the creation of PALS,
+please contact [Jean-Luc Vay](https://github.com/jlvay) to be put on the mailing list.
 
 ## Goals
 
