@@ -21,9 +21,6 @@ Eq. [](#bbmult) is valid.
 Note that for these cases, the multipole reference curve 
 is not the same as the [`branch` reference curve](#s:coords).
 
-If the multipole reference curve is a straight line, the reference curve may be shifted by
-setting either `multipole_x_offset` and/or `multipole_angle`.
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 (s:bend.params)=
