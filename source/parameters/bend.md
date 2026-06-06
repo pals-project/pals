@@ -1,3 +1,31 @@
+The `multipole_geometry` component switch specifies the reference curve that multipoles are
+calculated with respect to.
+```{code} yaml
+vertically_pure
+horizontally_pure
+entrance_tangent
+exit_tangent
+chord_tangent
+```
+If `geometry` is set to `vertically_pure` or `horizontally_pure`, the reference curve
+for the multipoles is the circular arc of the bend corresponding to the `branch` reference curve. 
+This is discussed in detail in [](#s:bend.multipoles).
+
+The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
+multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
+Similarly, the `exit_tangent` setting is used when the reference curve is the 
+straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
+when the reference curve is the straight line connecting the entrance point to the
+exit point. In all these three cases, since the multipole reference curve is a straight line, 
+Eq. [](#bbmult) is valid.
+Note that for these cases, the multipole reference curve 
+is not the same as the [`branch` reference curve](#s:coords).
+
+If the multipole reference curve is a straight line, the reference curve may be shifted by
+setting either `multipole_x_offset` and/or `multipole_angle`.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 (s:bend.params)=
 ## BendP: Bend Parameters
 
@@ -7,20 +35,23 @@ length `length` parameter.
 
 ```{code} yaml
 BendP:
-  rho_ref: 0         # [radian] Reference bend angle
-  bend_field_ref: 0  # [T] Reference bend field
-  e1: 0              # [radian] Entrance end pole face rotation with respect to a sector geometry
-  e2: 0              # [radian] Exit end pole face rotation with respect to a sector geometry
-  e1_rect: 0         # [radian] Entrance end pole face rotation with respect to a rectangular geometry
-  e2_rect: 0         # [radian] Exit end pole face rotation with respect to a rectangular geometry
-  edge1_int: 0       # [T*m] Entrance end fringe field integral
-  edge2_int: 0       # [T*m] Exit end fringe field integral
-  g_ref: 0           # [1/m] Reference bend strength = 1/radius_ref
-  h1: 0              # [1/m] Entrance end pole face curvature
-  h2: 0              # [1/m] Exit end pole face curvature
-  L_chord: 0         # [m] Chord length. 
-  L_sagitta: 0       # [m] Sagitta length. Output parameter.  
-  tilt_ref: 0        # [radian] Reference tilt
+  angle_ref: 0             # [radian] Reference bend angle
+  bend_field_ref: 0        # [T] Reference bend field
+  e1: 0                    # [radian] Entrance end pole face rotation with respect to a sector geometry
+  e2: 0                    # [radian] Exit end pole face rotation with respect to a sector geometry
+  e1_rect: 0               # [radian] Entrance end pole face rotation with respect to a rectangular geometry
+  e2_rect: 0               # [radian] Exit end pole face rotation with respect to a rectangular geometry
+  edge1_int: 0             # [T*m] Entrance end fringe field integral
+  edge2_int: 0             # [T*m] Exit end fringe field integral
+  g_ref: 0                 # [1/m] Reference bend strength = 1/radius_ref
+  multipole_type: vertically_pure # [enum] Only relavent if `ref_coords` is set to `curved`.
+  h1: 0                    # [1/m] Entrance end pole face curvature
+  h2: 0                    # [1/m] Exit end pole face curvature
+  L_chord: 0               # [m] Chord length. 
+  L_sagitta: 0             # [m] Sagitta length. Output parameter.  
+  ref_coords: curved       # [enum] Reference coordinates type.
+  rho_ref: null            # [m] Reference bend radius
+  tilt_ref: 0              # [radian] Reference tilt
 ```
 
 ```{figure} figures/bend.svg
@@ -38,7 +69,6 @@ B) Bend geometry with negative bend angle. For the geometry shown,
 Note: The figures are drawn for zero `tilt_ref` where the rotation axis is parallel to the
 {math}`y`-axis.
 ```
-
 In detail:
 - **angle_ref**
 The total Reference bend angle. A positive `angle_ref` represents a
@@ -138,6 +168,19 @@ curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the fa
   The `L_sagitta` parameter is the sagitta length (The sagitta is the distance
 from the midpoint of the arc to the midpoint of the chord). `L_sagitta` can be negative and will have
 the same sign as the `g_ref` parameter. `L_sagitta` is an output parameter
+%
+- **multipole_type**
+This parameter is only relavent if `ref_coords` is set to `curved`. This parameter
+sets how multipole coefficients are to be evaluated. Possible values of `multipole_type`
+are:
+  ```{code} yaml
+    vertically_pure     # Vertically pure multipoles
+    horizontally_pure   # Horizontally pure multipoles
+  ```
+See [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for more details.
+%
+- **ref_coords**
+This parameters sets the reference coordinates
 %
 - **tilt_ref**
 The `tilt_ref` attribute rotates a bend about the longitudinal axis at the entrance face of the
