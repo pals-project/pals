@@ -7,10 +7,11 @@ the `Fork` element is connected to.
 The components of the `ForkP` group are:
 ```{code} yaml
 ForkP:
-  to_line: ""               # [string] Beam line to fork to
-  to_ele: ""                # [string] Element forked to.
-  direction: FORWARDS       # [enum] Switch: Longitudinal Direction of travel of injected beam.
-  propagate_reference: ...  # [Boolean] Propagate reference species and energy?  ... TODO: description, default ...
+  to_line                    # [string] Required. Name of branch or beam line to fork to.
+  destination_element        # [string] Destination element to fork to. Default is the beginning element.
+  direction: FORWARDS        # [enum] Longitudinal Direction of travel of injected beam.
+  new_branch: null           # [string] Name to give newly created destination branch.
+  propagate_reference: true  # [logical] Propagate reference species and energy.
 ```
 
 The `branch` containing a forking element is called the
