@@ -45,7 +45,7 @@ Alternatively, extension metadata names may be "registered" using an `extension_
 to be used as the start of the extension.
 The `extension_labels` attribute must appear as a child of the `PALS` root node.
 The `extension_labels` attribute can also be used to register list values.
-`extension_labels` has three components:
+`extension_labels` has three components, at least one of them is required:
 ```{code} yaml
 PALS:
   extension_labels:
