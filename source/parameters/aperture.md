@@ -13,7 +13,7 @@ ApertureP:
   y_max: null                      # [m] Top aperture limit.
   y_center: null                   # [m] Center of vertical aperture
   y_width: null                    # [m] Vertical aperture full width.
-  shape: "ELLIPTICAL"              # [enum] Aperture shape switch
+  shape: ELLIPTICAL                # [enum] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture
