@@ -19,9 +19,9 @@ A list of "registered" extensions is in the [Extension Documentation](#c:extensi
 (s:extension-syntax)=
 ## Extension Syntax
 
-An extension section in a PALS file has a top node and any sub-nodes of this top
-node in the information tree is part of the extension. 
-Extensions may be marked in a PALS file using an `extension` node to mark the top node.
+An extension can be introduced at any dictionary entry within `PALS`.
+The `extension` dictionary key marks the start of the extension structure, any remaining entries in that dictionary entry belong to the extension.
+
 Explicitly naming these extension dictionary key names is helpful to enable automatic finding 
 typographic errors. The syntax is:
 ```{code} yaml
@@ -37,27 +37,27 @@ synch_connect:                         # Extension name
   alarm_system:                        # Extension stuff ...
     ...
 ```
-In this example, the `synch_connect` node is the extension top node. The type of extension is
-`Cornell_CESR_Connect`. Any sub-nodes below the `synch_connect` node will be excluded from any
+In this example, the `synch_connect` dictionary key is the start of the extension. The type of extension is
+`Cornell_CESR_Connect`. Any further entries in `synch_connect` will be excluded from any
 PALS validation process.
 
-Alternatively, extension top node names may be "registered" using an `extension_labels` node 
-to be used as the top of the extension sub-tree. 
-The `extension_labels` node must appear as a child of the `PALS` root node.
-The `extension_labels` node can also be used to register list values.
+Alternatively, extension metadata names may be "registered" using an `extension_labels` attribute
+to be used as the start of the extension.
+The `extension_labels` attribute must appear as a child of the `PALS` root node.
+The `extension_labels` attribute can also be used to register list values.
 `extension_labels` has three components:
 ```{code} yaml
 PALS:
   extension_labels:
-    names:            # List of names
-    prefixes:         # List of prefixes
-    suffixes:         # List of suffixes
+    names:            # Dict of names + description
+    prefixes:         # Dict of prefixes + description
+    suffixes:         # Dict of suffixes + description
 ```
 The `names` section contains a dictionary of extension names. 
 The key of each entry of the dictionary is an extension name and the value of each
 entry being a short description.
 Any key name or enum value in the PALS file that match one of these names is considered an extension.
-Similarly, the `prefixes` and `suffixes` sections contains a list of extension prefixes and suffixes.
+Similarly, the `prefixes` and `suffixes` sections contain dictionaries of extension prefixes and suffixes as keys, and their descriptions as values.
 Any key name or enum value in the PALS file that has a prefix or suffix that matches one of these 
 is considered an extension.
 Example:
@@ -80,8 +80,8 @@ PALS:
     - R23:
         kind: Rotator   # enum value is an extension name.
 ```
-The advantage of using `extension_labels` is that single node extensions are possible
-(there does not have to be an `extension` sub-node).
+The advantage of using `extension_labels` is that single attribute key extensions are possible
+(there does not have to be an `extension` key).
 
 %---------------------------------------------------------------------------------------------------
 (s:extension-list)=
