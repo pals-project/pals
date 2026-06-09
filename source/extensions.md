@@ -13,7 +13,7 @@ extension maintainers are not encumbered to use PALS pull requests when modifyin
 
 Syntax for including extension data in a PALS file is in the 
 [Extension Syntax](#s:extension-syntax) section.
-A list of "registered" extensions is in the [Extension Documentation](#c:extension-list) section.
+A list of "registered" extensions is in the [Extension Documentation](#s:extension-list) section.
 
 %---------------------------------------------------------------------------------------------------
 (s:extension-syntax)=
