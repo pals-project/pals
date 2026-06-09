@@ -1,27 +1,10 @@
-The `multipole_geometry` component switch specifies the reference curve that multipoles are
-calculated with respect to.
-```{code} yaml
-vertically_pure
-horizontally_pure
-entrance_tangent
-exit_tangent
-chord_tangent
-```
+
 If `geometry` is set to `vertically_pure` or `horizontally_pure`, the reference curve
 for the multipoles is the circular arc of the bend corresponding to the `branch` reference curve. 
 This is discussed in detail in [](#s:bend.multipoles).
 
-The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
-multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
-Similarly, the `exit_tangent` setting is used when the reference curve is the 
-straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
-when the reference curve is the straight line connecting the entrance point to the
-exit point. In all these three cases, since the multipole reference curve is a straight line, 
-Eq. [](#bbmult) is valid.
-Note that for these cases, the multipole reference curve 
-is not the same as the [`branch` reference curve](#s:coords).
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (s:bend.params)=
 ## BendP: Bend Parameters
@@ -41,13 +24,14 @@ BendP:
   edge1_int: 0             # [T*m] Entrance end fringe field integral
   edge2_int: 0             # [T*m] Exit end fringe field integral
   g_ref: 0                 # [1/m] Reference bend strength = 1/radius_ref
-  multipole_type: vertically_pure # [enum] Only relavent if `ref_coords` is set to `curved`.
+  multipole_type: vertically_pure # [enum] Only relavent if `ref_coords` is set to `arc`.
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature
   L_chord: 0               # [m] Chord length. 
-  L_sagitta: 0             # [m] Sagitta length. Output parameter.  
-  ref_coords: curved       # [enum] Reference coordinates type.
-  rho_ref: null            # [m] Reference bend radius
+  L_sagitta: 0             # [m] Sagitta length. Output parameter.
+  L_rectangle: 0           # [m] Rectangular length. 
+  ref_coords: arc          # [enum] Reference coordinates type.
+  rho_ref: null            # [m]s Reference bend radius
   tilt_ref: 0              # [radian] Reference tilt
 ```
 
@@ -166,8 +150,11 @@ curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the fa
 from the midpoint of the arc to the midpoint of the chord). `L_sagitta` can be negative and will have
 the same sign as the `g_ref` parameter. `L_sagitta` is an output parameter
 %
+- **L_rectangle**
+
+%
 - **multipole_type**
-This parameter is only relavent if `ref_coords` is set to `curved`. This parameter
+This parameter is only relavent if `ref_coords` is set to `arc`. This parameter
 sets how multipole coefficients are to be evaluated. Possible values of `multipole_type`
 are:
   ```{code} yaml
@@ -175,9 +162,28 @@ are:
     horizontally_pure   # Horizontally pure multipoles
   ```
 See [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for more details.
+
+The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
+multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
+Similarly, the `exit_tangent` setting is used when the reference curve is the 
+straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
+when the reference curve is the straight line connecting the entrance point to the
+exit point. In all these three cases, since the multipole reference curve is a straight line, 
+Eq. [](#bbmult) is valid.
+Note that for these cases, the multipole reference curve 
+is not the same as the [`branch` reference curve](#s:coords).
+
 %
 - **ref_coords**
-This parameters sets the reference coordinates
+The `ref_coords` component switch specifies the reference curve that multipoles are
+calculated with respect to and sets the coordinates that edge angles are measured
+with respect to. Possible settings are:
+```{code} yaml
+arc
+chord
+entrance_tangent
+exit_tangent
+```
 %
 - **tilt_ref**
 The `tilt_ref` attribute rotates a bend about the longitudinal axis at the entrance face of the
