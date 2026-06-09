@@ -68,7 +68,6 @@ repeat          # [integer] Repetition count. Default is 1.
 direction       # [switch] +1 or -1. Longitudinal orientation. Default is +1.
 placement       # [struct] Shifts element or subline longitudinally.
 inherit         # [string] of lattice element or subline defined outside the line
-name            # [string] Name of lattice element or subline.
 kind            # [enum] Type of element.
 ```
 A line item which is an element can also have components that define the properties of the element. 
