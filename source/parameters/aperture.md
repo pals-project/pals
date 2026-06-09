@@ -13,7 +13,7 @@ ApertureP:
   y_max: null                      # [m] Top aperture limit.
   y_width: null                    # [m] Vertical aperture full width.
                                    #       Equivalent to y_min = -y_width/2, y_max = y_width/2
-  shape: ""                        # [string] Aperture shape switch
+  shape: ""                        # [enum] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
   vertices: []                     # [array] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture

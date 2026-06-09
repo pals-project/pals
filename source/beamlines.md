@@ -64,12 +64,12 @@ BeamLine.
 
 A line item can have components
 ```{code} yaml
-repeat          # Integer. Repetition count. Default is 1.
-direction       # +1 or -1. Longitudinal orientation of element. Default is +1.
-placement       # Structure. Shifts element or subline longitudinally.
-inherit         # Name of lattice element or subline defined outside the line
-name            # Name of lattice element or subline.
-kind            # Type of element.
+repeat          # [integer]. Repetition count. Default is 1.
+direction       # [integer] +1 or -1. Longitudinal orientation of element. Default is +1.
+placement       # [structure] Shifts element or subline longitudinally.
+inherit         # [string] Name of lattice element or subline defined outside the line
+name            # [string] Name of lattice element or subline.
+kind            # [enum] Type of element.
 ```
 
 Example with four items in `line`:

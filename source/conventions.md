@@ -307,6 +307,15 @@ since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the
 and the parameter is unambiguous.
 
 %---------------------------------------------------------------------------------------------------
+(s:extension-syntax)=
+## Extension Syntax
+
+An Extension is data added to a PALS lattice that is not part of the PALS standard.
+For example, information specific to a particular machine that has no analogue with other
+machines can be put in as an extension. A list of "registered" extensions is in the 
+[Extension](#c:extension) section.
+
+%---------------------------------------------------------------------------------------------------
 (s:units)=
 ## Units
 

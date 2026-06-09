@@ -7,7 +7,7 @@ The components of this group and their defaults are:
 ForkP:
   to_line: ""               # [string] Beam line to fork to
   to_ele: ""                # [string] Element forked to.
-  direction: FORWARDS       # [string] Switch: Longitudinal Direction of travel of injected beam.
+  direction: FORWARDS       # [enum] Switch: Longitudinal Direction of travel of injected beam.
   propagate_reference: ...  # [Boolean] Propagate reference species and energy?  ... TODO: description, default ...
 ```
 The possible values of the optional `direction` switch are:
