@@ -1,11 +1,3 @@
-
-If `geometry` is set to `vertically_pure` or `horizontally_pure`, the reference curve
-for the multipoles is the circular arc of the bend corresponding to the `branch` reference curve. 
-This is discussed in detail in [](#s:bend.multipoles).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 (s:bend.params)=
 ## BendP: Bend Parameters
 
@@ -17,6 +9,7 @@ length `length` parameter.
 BendP:
   angle_ref: 0             # [radian] Reference bend angle
   bend_field_ref: 0        # [T] Reference bend field
+  bend_field_actual:       # [T] Output param. Actual bend field perpendicular to the reference plane. 
   e1: 0                    # [radian] Entrance end pole face rotation with respect to a sector geometry
   e2: 0                    # [radian] Exit end pole face rotation with respect to a sector geometry
   e1_rect: 0               # [radian] Entrance end pole face rotation with respect to a rectangular geometry
@@ -24,6 +17,7 @@ BendP:
   edge1_int: 0             # [T*m] Entrance end fringe field integral
   edge2_int: 0             # [T*m] Exit end fringe field integral
   g_ref: 0                 # [1/m] Reference bend strength = 1/radius_ref
+  g_actual:                 # [1/m] Output param. Actual bending strength corresponding to `bend_field_actual`.
   multipole_type: vertically_pure # [enum] Only relavent if `ref_coords` is set to `arc`.
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature
@@ -31,73 +25,109 @@ BendP:
   L_sagitta: 0             # [m] Sagitta length. Output parameter.
   L_rectangle: 0           # [m] Rectangular length. 
   ref_coords: arc          # [enum] Reference coordinates type.
-  rho_ref: null            # [m]s Reference bend radius
+  rho_ref: null            # [m]s Reference bend radius.
   tilt_ref: 0              # [radian] Reference tilt
 ```
+
+The geometry of a bend in [body](#s:coords).  coordinates is shown in {numref}`f:bend`. 
+In body coordinates the rotation axis is, by definition, always the {math}`y`-axis.
+Note that in general the rotation axis in branch coordinates will not be the {math}`y`-axis.
+An exception to this is if `tilt_ref` is zero for all bends so that the
+machine lies in the "horizontal" plane.
+
+Note: In the equations below, {math}`q` is the charge of the reference particle 
+and {math}`p_0` is the reference momentum.
+
+Note: The attributes `g_ref`, `angle_ref`, `rho_ref` and `length` are mutually dependent. Specifying
+more than two of these can be contradictory.
 
 ```{figure} figures/bend.svg
 :width: 90%
 :name: f:bend
  
-Bend geometry. Red dots are the entry and exit points that define the origin for the
-coordinate systems at the entry end {math}`(s_1, x_1)` and exit ends {math}`(s_2, x_2)` respectively.
+Bend geometry in body coordinates.
+The red curve is the reference curve.
+Red dots mark the entry {math}`(z_1, x_1)` and exit {math}`(z_2, x_2)` coordinate points.
+The rotation axis is parallel to the (out of the page) {math}`y`-axis.
 
-A) Bend geometry with positive bend angle. For the geometry shown,
+A) Bend geometry for `ref_coords` set to `arc` or `chord`. For the geometry shown,
 `g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all positive.
 
-B) Bend geometry with negative bend angle. For the geometry shown,
-`g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2` are all negative.
-Note: The figures are drawn for zero `tilt_ref` where the rotation axis is parallel to the
-{math}`y`-axis.
+B) Same as (A) but with a negative bend angle. For the geometry shown,
+`g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all negative.
+
+C) Bend geometry for `ref_coords` set to `entrance_coords`.
+
+D) Bend geometry for `ref_coords` set to `exit_coords`.
 ```
+
 In detail:
 - **angle_ref**
-The total Reference bend angle. A positive `angle_ref` represents a
-bend towards negative {math}`x` as shown in {numref}`f:bend`.
+
+  The total Reference bend angle. A positive `angle_ref` represents a
+bend towards negative {math}`x` as shown in {numref}`f:bend`. 
+`angle_ref = length * g_ref`.
 %
 - **bend_field_ref**
-The `bend_field_ref` parameter is the reference magnetic bending field which is the field
-that is needed for the reference particle to be bent in a circle of radius `rho_ref`
-and the placement of lattice elements downstream from the bend. The actual ("total") field is
-a vector sum of
-`bend_field_ref` plus the value of the `Bn0`  and `Bs0` multipoles. If `tilt0` and `Bs0`
-are zero, the actual field is
-  ```{code} yaml
-  B-field(total) = bend_field_ref + Bn0
+
+  The `bend_field_ref` parameter is the reference magnetic bending field which is the field
+that is needed for the reference particle to be bent in a circle of radius `rho_ref`.
+The direction of the reference bend field along the {math}`y`-axis.
+  ```{math}
+  :label: bff
+
+  \text{bend_field_ref} = \frac{p_0}{q} \cdot \text{g_ref}
   ```
-  See the discussion of `g_ref` and `Kn0` below for more details.
+  Also see `g_ref`, `g_actual`, and `bend_field_actual`.
 %
-- **bend_field (output param), norm_bend_field (output_param)**
-The actual dipole bend field ignoring any skew field component which is set by `Bs0`.
-The relation between this and `bend_field_ref` is
+- **bend_field_actual (output param)**
+
+  The actual dipole field is the sum of the reference bend field given by `bend_field_ref` 
+plus any additional zeroth order multipole field component that can be specified using `Bn0`, `Bs0`, and `tilt0`.
+The component of the actual bend field in the {math}`y`-dirction is given by `bend_field_actual`:
   ```{code} yaml
-  bend_field = bend_field_ref + Bn0 * cos(tilt0) + Bs0 * sin(tilt0)
+  bend_field_actual = bend_field_ref + Bn0 * cos(tilt0) + Bs0 * sin(tilt0)
   ```
+  The {math}`(x,z)` in-bend-plane dipole component is given by `Bs0 * cos(tilt0)`. 
+The orientation of this in-plane component is determined by the setting of `ref_coords`.
 %
 - **e1, e2**
-The values of `e1` and `e2` give the rotation angle of the entrance and exit pole faces
+
+  `e1` and `e2` give the rotation angle of the entrance and exit pole faces
 respectively with respect to the radial {math}`x_1` and {math}`x_2` axes as shown in {numref}`f:bend`.
 Zero `e1` and `e2` gives a wedge shaped magnet.
-Also see `e1_rect` and `e2_rect`. The relationship is
+Also see `e1_rect` and `e2_rect`. 
+With `ref_coords` set to `arc` or `chord`, the relationship, as shown in {numref}`f:bend`A is
   ```{code} yaml
   e1 = e1_rect + angle_ref/2 
   e2 = e2_rect + angle_ref/2
   ```
+  With `ref_coords` set to `entrance_coords`, the relationship, as shown in {numref}`f:bend`C, is
+  ```{code} yaml
+  e1 = e1_rect
+  e2 = e2_rect + angle_ref
+  ```
+  With `ref_coords` set to `exit_coords`, the relationship, as shown in {numref}`f:bend`D, is
+  ```{code} yaml
+  e1 = e1_rect + angle_ref
+  e2 = e2_rect
+  ```
 %
 - **e1_rect, e2_rect**
-Face angle rotations like `e1` and `e2` except angles are measured with respect to
-fiducial lines that are parallel to each other and rotated by `angle_ref`/2 from the radial
-{math}`x_1` and {math}`x_2` axes as shown in {numref}`f:bend`.
+
+  Face angle rotations like `e1` and `e2` except angles are measured with respect to
+fiducial lines that are parallel to each other.
 Zero `e1_rect` and `e2_rect` gives a rectangular magnet shape.
 %
 - **edge1_int, edge2_int**
-The field integral for the entrance pole face `edge1_int` is given by
+
+  The field integral for the entrance pole face `edge1_int` is given by
   ```{math}
-  \mathrm{edge1\_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
+  \text{edge1_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
   ```
   For the exit pole face there is a similar equation for `edge2_int`
 
-  Note: In Bmad and MAD, these integrals are represented by the product of `fint` and `hgap`.
+  Note: In Bmad and MAD, these integrals are represented by the product of `fint * hgap`.
 
   `edge1_int` and `edge2_int` can be related to the Enge function which is sometimes used to model the
   fringe field. The Enge function is of the form
@@ -110,105 +140,99 @@ The field integral for the entrance pole face `edge1_int` is given by
   The {math}`C_0` term simply shifts where the edge of the bend is. If all the {math}`C_n` are zero except for
   {math}`C_0` and {math}`C_1` then
   ```{math}
-  C_1 = \frac{1}{2 \cdot \mathrm{field\_int}}
+  C_1 = \frac{1}{2 \cdot \text{field_int}}
   ```
 %
-- **g_ref, rho_ref (output param)**
-The Reference bending radius which determines the reference coordinate system is `rho_ref` (see
-[](#s:coords)). `g_ref` = `1/rho_ref` is the "bend strength" and is proportional to the Reference
-dipole magnetic field. `g_ref` is related to the reference magnetic field `bend_field_ref` via
+- **g_ref**
+
+  `g_ref` = `1/rho_ref` is the reference "bend strength" which determines the curvature
+of the reference arc (red lines in {numref}`f:bend`).
+A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x` direction.
+
+  `g_ref` is proportional to the reference dipole magnetic field `bend_field_ref`:
   ```{math}
   :label: gqpb
 
-  \text{g_ref} = \frac{q}{p_0} \cdot \mathrm{bend\_field\_ref}
+  \text{g_ref} = \frac{q}{p_0} \cdot \text{bend_field_ref}
   ```
-where {math}`q` is the charge of the reference particle and {math}`p_0` is the reference momentum.
-It is important to keep in mind that changing `g_ref` will change the branch reference orbit
-([](#s:ref.construct)) and hence will move all downstream lattice elements in space.
+  It is important to keep in mind that changing `g_ref` will change the 
+[branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.
+One common mistake when creating orbit bumps using a bend is to vary
+`g_ref`. For this, `Kn0` should be varied.
+%
+- **g_actual (output param)**
 
-  The total bend strength felt by a particle is the vector sum of `g_ref` plus the zeroth order
-magnetic multipole. If the multipole `tilt0` and `Ks0` is zero, the total bend strength is
-  ```{code} yaml
-  norm_bend_field = g_ref + Kn0
+  The bend strength corresponding to `bend_field_actual`.
+  ```{math}
+  :label: g_actual
+
+  \text{g_actual} = \frac{q}{p_0} \cdot \text{bend_field_actual}
   ```
-  Changing the multipole strength `Kn0` or `Ks0` leaves the Reference orbit and the positions of
-all downstream lattice elements
-unchanged but will vary a particle's orbit. One common mistake when designing lattices is to vary
-`g_ref` and not `Kn0` which results in downstream elements moving around.
-
-  Note: A positive `g_ref`, which will bend particles and the reference orbit in the {math}`-x` direction
-represents a field of opposite sign as the field due a positive `hkick`.
+  Also see `g_ref`.
 %
 - **h1, h2**
-The attributes `h1` and `h2` are the curvature of the entrance and exit pole faces. The radius of
-curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the face is flat.
-%
-- **L_chord, L_sagitta** 
-`L_chord` is the chord length from entrance point to exit point.
 
-  The `L_sagitta` parameter is the sagitta length (The sagitta is the distance
-from the midpoint of the arc to the midpoint of the chord). `L_sagitta` can be negative and will have
-the same sign as the `g_ref` parameter. `L_sagitta` is an output parameter
+  The `h1` and `h2` parameters are the curvature of the entrance and exit pole faces. The radius of
+curvature is `1/h1` and `1/h2` respectively. A value of zero implies that the face is flat.
+Positive `h1` or `h2` implies the pole face is convex.
+%
+- **L_chord**
+
+  `L_chord` is the chord length from entrance origin point to exit origin point 
+(red dots in {numref}`f:bend`).
 %
 - **L_rectangle**
 
+  "Rectangular" length of the bend. See figures {numref}`f:bend`B and {numref}`f:bend`C. 
+The `L_rectangle = rho_ref / sin(angle)` independent of the setting of `ref_coords`.
+%
+- **L_sagitta (output param)**
+
+  The `L_sagitta` parameter is the sagitta length (The sagitta is the distance
+from the midpoint of the reference arc curve to the midpoint of the chord). 
+`L_sagitta` can be negative and will have the same sign as `g_ref`. 
 %
 - **multipole_type**
-This parameter is only relavent if `ref_coords` is set to `arc`. This parameter
-sets how multipole coefficients are to be evaluated. Possible values of `multipole_type`
-are:
+
+  The `multipole_type` parameter is only relavent if `ref_coords` is set to `arc` so
+that the multipole reference curve is not a straight line. 
+`ref_coords` sets how multipole coefficients are to be evaluated. 
+Possible values of `multipole_type` are:
   ```{code} yaml
-    vertically_pure     # Vertically pure multipoles
-    horizontally_pure   # Horizontally pure multipoles
+    vertically_pure     # Vertically pure multipoles (default).
+    horizontally_pure   # Horizontally pure multipoles.
   ```
 See [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for more details.
-
-The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
-multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
-Similarly, the `exit_tangent` setting is used when the reference curve is the 
-straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
-when the reference curve is the straight line connecting the entrance point to the
-exit point. In all these three cases, since the multipole reference curve is a straight line, 
-Eq. [](#bbmult) is valid.
-Note that for these cases, the multipole reference curve 
-is not the same as the [`branch` reference curve](#s:coords).
-
 %
 - **ref_coords**
-The `ref_coords` component switch specifies the reference curve that multipoles are
-calculated with respect to and sets the coordinates that edge angles are measured
+
+  The `ref_coords` component switch specifies the curvelinear reference coordinates that multipoles are
+calculated with respect to and sets the reference that `e1_rect` and `e2_rect` edge angles are measured
 with respect to. Possible settings are:
-```{code} yaml
-arc
-chord
-entrance_tangent
-exit_tangent
-```
+  ```{code} yaml
+  arc               # Default. Curvelinear coordinates of the circular arc of the reference curve. 
+  chord             # Z-axis is the chord connecting the entrance origin point to the exit origin point.
+  entrance_coords   # Entrance coordinates.
+  exit_coords       # Exit coordinates.
+  ```
+  In all cases, the reference coordinates {math}`y`-axis are parallel to the {math}`y`-axes of the 
+body coordinate system.
+%
+- **rho_ref**
+
+  `rho_ref` is the reference bending radius which determines the branch coordinate system (see
+[](#s:coords)). `rho_ref = 1 / g_ref`. `rho_ref` may be infinite so it is generally better
+to work with `g_ref`.
 %
 - **tilt_ref**
-The `tilt_ref` attribute rotates a bend about the longitudinal axis at the entrance face of the
-bend. A bend with `tilt_ref` of {math}`\pi/2` and positive `g_ref` bends the element in the {math}`-y`
-direction ("downward"). See {numref}`f:tilt.bend`. It is important to understand that `tilt_ref`,
-unlike the `tilt` attribute of other elements, bends both the reference orbit along with the
-physical element. Note that the MAD `tilt` attribute for bends is equivalent to the Bmad
-`tilt_ref`. Bends in Bmad do not have a `tilt` attribute.
 
+  The `tilt_ref` attribute rotates a bend about the longitudinal axis at the entrance face of the
+bend as explained in [](#s:ent.exi). It is important to understand that `tilt_ref`,
+unlike the `tilt` attribute of other elements, bends both the reference orbit along with the
+physical element.
   Important! Do not use `tilt_ref` when doing misalignment studies for a machine. Trying to misalign
 a dipole by setting `tilt_ref` will affect the positions of all downstream elements! Rather, use the
-`tilt` parameter.
+`z_rot` parameter in the `BodyShiftP` group.
 
 %---------------
 
-  The attributes `g_ref`, `angle_ref`, and `length` are mutually dependent. If any two are specified for
-an element, the lattice expansion code will calculate the appropriate value for the third.
-
-  In the local coordinate system ([](#s:coords)), looking from "above" (bend viewed from positive
-{math}`y`), and with `tilt_ref` = 0, a positive `angle_ref` represents a particle rotating clockwise. In
-this case. `g_ref` will also be positive. For counterclockwise rotation, both `angle_ref` and `g_ref`
-will be negative but the length `length` is always positive. Also, looking from above, a positive
-`e1` represents a clockwise rotation of the entrance face and a positive `e2` represents a
-counterclockwise rotation of the exit face. This is true independent of the sign of `angle_ref` and
-`g_ref`. Also it is always the case that the pole faces will be parallel when
-  ```{code} yaml
-  e1 + e2 = angle_ref
-  ```
