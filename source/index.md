@@ -20,9 +20,9 @@ notation.md
 fundamentals.md
 coordinates.md
 lattice-elements.md
-element-parameters.md
-element-kinds.md
-element-parameter-groups.md
+lattice-element-kinds.md
+lattice-element-parameters.md
+lattice-element-parameter-groups.md
 beamlines.md
 lattice-construction.md
 multipass.md

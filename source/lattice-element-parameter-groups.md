@@ -1,5 +1,5 @@
 (c:ele.param.groups)=
-# Element Parameter Groups
+# Lattice Element Parameter Groups
 
 The following details the different lattice element parameter groups.
 See the [Element Parameters](#s:ele.params) section for documentation on element parameters in general.
