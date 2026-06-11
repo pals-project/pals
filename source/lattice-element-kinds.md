@@ -1,5 +1,5 @@
 (c:ele.kinds)=
-# Element Kinds
+# Lattice Element Kinds
 
 The following details the different kinds of lattice elements and the associated parameter groups.
 For documentation on lattice elements in general see [here](#c:lat.ele).
