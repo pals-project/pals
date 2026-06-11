@@ -1,9 +1,14 @@
 (s:bend.multipoles)=
 # Exact Multipole Fields in a Bend
-For static magnetic and electric multipole fields in a bend, the spatial dependence of the
+
+For static magnetic and electric multipole fields in a bend with `ref_coords` set
+to `arc`, the spatial dependence of the
 field is different from multipole fields in an element with a straight geometry as given
 by Eqs. {eq}`bbmult` and {eq}`exiey`. The analysis of the multipole fields in a bend here follows
-McMillan {footcite:p}`McMillan:Multipoles`.
+McMillan {footcite:p}`McMillan:Multipoles`. Note: Whether the multipole coefficients represent
+vertically pure or horizontally pure multipoles (see below) is by the `multipole_type` switch
+of the [`BendP`](#s:bend.params) parameter group. See the `BendP` documentation for more details.
+
 
 In the rest of this section, normalized coordinates {math}`\widetilde r = r / \rho`,
 {math}`\widetilde x / = x / \rho`, and {math}`\widetilde y = y / \rho` will be used where 
