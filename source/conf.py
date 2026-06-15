@@ -28,6 +28,14 @@ exclude_patterns = ['parameters']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
+# Allow '_' to be used literally inside \text{...} in math (MathJax otherwise
+# raises "'_' allowed only in math mode").
+mathjax3_config = {
+    'tex': {
+        'packages': {'[+]': ['textmacros']},
+    },
+}
+
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     "show_toc_level": 3,
