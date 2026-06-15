@@ -180,6 +180,7 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
+pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
@@ -203,7 +204,7 @@ The parameters associated with a constant are:
   value                   # Constant value.
 ```
 If both `absolute_error` and `relative_error` are specified, 
-the true error is `absolute_error + relative_error * value`.
+the true error is `absolute_error + relative_error * |value|`.
 Example:
 ```{code} yaml
 PALS:
@@ -221,10 +222,11 @@ with the **same value** as the original is valid.
 
 For constants that only have a value, an alternative compact form has the syntax:
 ```{code} yaml
-  constants:
-    const_a: value_a    # Define const_a
-    const_b: value_b    # Define const_b
-    ...
+  - constants:
+      - const_a: value_a        # Define const_a
+      - const_b: value_b        # Define const_b
+      - const_c:: pi * const_a  # Can use expressions.
+      ...
 ```
 
 %---------------------------------------------------------------------------------------------------
