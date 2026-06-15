@@ -635,7 +635,7 @@ PALS:
 # LTB : Full injector beamline
 # ------------------------------------------------------------------------------
 
-    - ALS_injector
+    - ALS_injector:
         kind: Lattice
         branches:
           - LTB:
