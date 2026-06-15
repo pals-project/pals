@@ -338,7 +338,7 @@ PALS:
         kind: BeamLine
         line:
         - START
-        - LN_START_HCM1
+        - LTB_START_HCM1
         - HCM
         - LTB_HCM1_VCM1
         - VCM
