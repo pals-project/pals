@@ -72,4 +72,4 @@ to infinity.\footnote
 {
 This is assuming a linear system. In practice, the motion will become unstable due to
 the finite size of the RF bucket.
-
+}
