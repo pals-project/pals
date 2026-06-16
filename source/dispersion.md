@@ -4,14 +4,14 @@
 The dispersion {math}`\eta` is defined in the standard way
 ```{math}
 :label: eedxdpz
-  \text{eta_x} = \eta_x(s) \equiv \left. \frac{dx}{dp_z} \right|_s, \qquad
-  \text{eta_y} = \eta_y(s) \equiv \left. \frac{dy}{dp_z} \right|_s
+  \text{eta\_x} = \eta_x(s) \equiv \left. \frac{dx}{dp_z} \right|_s, \qquad
+  \text{eta\_y} = \eta_y(s) \equiv \left. \frac{dy}{dp_z} \right|_s
 ```
 
 The associated momentum dispersion is:
 ```{math}
-  \text{etap_x} = \eta_{px} \equiv \left. \frac{dp_x}{dp_z} \right|_s, \qquad 
-  \text{etap_y} = \eta_{py} \equiv \left. \frac{dp_y}{dp_z} \right|_s \qquad 
+  \text{etap\_x} = \eta_{px} \equiv \left. \frac{dp_x}{dp_z} \right|_s, \qquad 
+  \text{etap\_y} = \eta_{py} \equiv \left. \frac{dp_y}{dp_z} \right|_s \qquad 
 ```
 The momentum dispersion is useful when constructing particle bunch distributions and for
 various calculations like for calculating radiation integrals.
@@ -21,11 +21,11 @@ derivative of the dispersion {math}`d\eta/ds`. This becomes a factor when design
 some section of the lattice needs to be dispersion free, it is convienient to be able to optimize
 {math}`d\eta/ds` to zero. The dispersion derivative is related to the momentum dispersion by
 \begin{align}
-\text{deta_x_ds} &\equiv \frac{d\eta_x}{ds}
+\text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds}
 = \frac{d}{dp_z} \left( \frac{dx}{ds} \right)
 = \frac{d}{dp_z} \left( \frac{p_x}{1 + p_z} \right)
 = \frac{1}{1 + p_z} \, \eta_{px} - \frac{p_x}{(1 + p_z)^2}  \nonumber \\
-\text{deta_y_ds} &\equiv \frac{d\eta_y}{ds}
+\text{deta\_y\_ds} &\equiv \frac{d\eta_y}{ds}
 = \frac{d}{dp_z} \left( \frac{dy}{ds} \right)
 = \frac{d}{dp_z} \left( \frac{p_y}{1 + p_z} \right)
 = \frac{1}{1 + p_z} \, \eta_{py} - \frac{p_y}{(1 + p_z)^2}

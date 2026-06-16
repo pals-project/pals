@@ -37,14 +37,12 @@ with
 ```{math}
 :label: lxyz
 
-\begin{align}
   {\bf L} &= 
     \begin{pmatrix} 
       \text{x_offset} \\ \text{y_offset} \\ \text{z_offset} 
     \end{pmatrix}
     \\
   {\bf S} &= {\bf R}_{y} (\text{y_rot}) \; {\bf R}_{x} (\text{x_rot}) \; {\bf R}_{z} (\text{z_rot}) 
-\end{align}
 ```
 
 A straight line element like a `Drift` or a `Quadrupole` has the exit face parallel to the

@@ -109,7 +109,7 @@ dipole magnetic field. `g_ref` is related to the reference magnetic field `bend_
   ```{math}
   :label: gqpb
 
-  \text{g_ref} = \frac{q}{p_0} \cdot \mathrm{bend\_field\_ref}
+  \text{g\_ref} = \frac{q}{p_0} \cdot \mathrm{bend\_field\_ref}
   ```
 where {math}`q` is the charge of the reference particle and {math}`p_0` is the reference momentum.
 It is important to keep in mind that changing `g_ref` will change the branch reference orbit

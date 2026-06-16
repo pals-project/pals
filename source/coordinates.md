@@ -389,11 +389,9 @@ PALS, again following MAD, computes {math}`\bf V` and {math}`\bf W`
 by starting at the first element of the lattice and iteratively using the equations
 ```{math}
 :label: wws
-\begin{align}
-  {\bf V}_1 &= {\bf W}_0 \; {\bf L} + {\bf V}_0, 
-    \\
+
+  {\bf V}_1 &= {\bf W}_0 \; {\bf L} + {\bf V}_0, \\
   {\bf W}_1 &= {\bf W}_0 \; {\bf S}
-\end{align}
 ```
 where {math}`({\bf V}_0, {\bf W}_0)` and {math}`({\bf V}_1, {\bf W}_1)` are respectively
 the position and orientation of the branch coordinates
@@ -448,10 +446,9 @@ angle {math}`\theta`.
 For a bend, {math}`\bf S` is given using Eq. [](#wctux2) with 
 ```{math}
 :label: ustt
-\begin{align}
+
   {\bf u} &= (-\sin\theta_{tr}, -\cos\theta_{tr}, 0) \\
   \beta &= \alpha_b
-\end{align}
 ```
 where {math}`\theta_{tr}` is the `tilt_ref` angle. The {math}`\bf L` vector for a `bend` is given by 
 ```{math}
