@@ -1,0 +1,10 @@
+/* Let the outer div scroll rather than mjx-container, so the equation
+   number (on the right) scrolls with the equation instead of staying
+   fixed while just the content area gets a scrollbar. */
+div.math {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+div.math mjx-container {
+  overflow: visible;
+}

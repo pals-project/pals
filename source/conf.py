@@ -49,4 +49,5 @@ html_theme_options = {
     "show_navbar_depth": 3,
     "collapse_navbar": False,
 }
-## html_static_path = ['_static']
+html_static_path = ['_static']
+html_css_files = ['math-overflow.css']
