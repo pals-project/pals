@@ -25,16 +25,23 @@ bibtex_bibfiles = ['bibliography.bib']
 
 exclude_patterns = ['parameters']
 
+# Escape bare underscores inside \text{...} at read time so MathJax does not
+# raise "'_' allowed only in math mode".  Analogous to \usepackage{underscore}
+# in a LaTeX preamble.
+import re
+
+def _escape_text_underscores(app, docname, source):
+    source[0] = re.sub(
+        r'\\text\{([^}]*)\}',
+        lambda m: r'\text{' + m.group(1).replace('_', r'\_') + '}',
+        source[0],
+    )
+
+def setup(app):
+    app.connect('source-read', _escape_text_underscores)
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-# Allow '_' to be used literally inside \text{...} in math (MathJax otherwise
-# raises "'_' allowed only in math mode").
-mathjax3_config = {
-    'tex': {
-        'packages': {'[+]': ['textmacros']},
-    },
-}
 
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
