@@ -8,11 +8,12 @@
 The root of the PALS schema is given by this dictionary.
 ```{code} YAML
 PALS:
-  version:   # [string] Version of the PALS schema used in this file
-  authors:   # [list] Authors associated with this file
-  notes:     # [list] Notes of interest.
-  reminders: # [list] Reminder messages to be printed when file is read.
-  facility:  # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+  version:          # [string] Version of the PALS schema used in this file
+  authors:          # [list] Authors associated with this file
+  notes:            # [list] Optional notes of interest.
+  reminders:        # [list] Optional reminder messages to be printed when file is read.
+  extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
+  facility:         # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
@@ -29,6 +30,10 @@ PALS:
   reminders:
     - "Important! West RF cavity phasing needs to be done before any simulations!!!"
     - ...
+
+  extension_labels:
+    names:
+      my_extension: "See the PALS extensions chapter"
 
   authors:
     - author:

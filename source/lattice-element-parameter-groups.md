@@ -1,5 +1,5 @@
 (c:ele.param.groups)=
-# Element Parameter Groups
+# Lattice Element Parameter Groups
 
 The following details the different lattice element parameter groups.
 See the [Element Parameters](#s:ele.params) section for documentation on element parameters in general.
@@ -21,6 +21,9 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```{include} parameters/bodyshift.md
 ```
 
+```{include} parameters/converter.md
+```
+
 ```{include} parameters/electricmultipole.md
 ```
 
@@ -28,6 +31,9 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```
 
 ```{include} parameters/floorshift.md
+```
+
+```{include} parameters/foil.md
 ```
 
 ```{include} parameters/fork.md
@@ -58,6 +64,9 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```
 
 ```{include} parameters/solenoid.md
+```
+
+```{include} parameters/taylor.md
 ```
 
 ```{include} parameters/tracking.md

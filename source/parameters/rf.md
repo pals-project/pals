@@ -14,6 +14,7 @@ RFP:
   num_cells: null               # [-] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
   L_active: L                   # [m] Active acceleration length.
+  dE_ref: 0                     # [eV] Change in reference energy.
 ```
 Either `frequency` or `harmon` should be set but not both. The 
 relationship between the two is `frequency = harmon / t1_ref` where
@@ -45,3 +46,6 @@ The RF phase `phase_RF`, in units of `rad/2pi`, at time `t` will be
 phase_RF = t*frequency + phase + phi0
 ```
 where `phi0` is a phase determined by the setting of `zero_phase`. 
+
+The reference energy at the downstream end of the RF element will be `E_tot_ref + dE_ref`
+where `E_tot_ref` is the upstream reference energy.

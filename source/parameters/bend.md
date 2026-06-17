@@ -153,7 +153,8 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   ```{math}
   :label: gqpb
 
-  \text{g_ref} = \frac{q}{p_0} \cdot \text{bend_field_ref}
+
+  \text{g\_ref} = \frac{q}{p_0} \cdot \mathrm{bend\_field\_ref}
   ```
   It is important to keep in mind that changing `g_ref` will change the 
 [branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.

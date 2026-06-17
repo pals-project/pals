@@ -60,17 +60,14 @@ with the "boundary condition":
 ```{math}
 :label: f1fln
 
-\begin{align}
 F_0(\widetilde r) &= 1 \nonumber \\
 F_1(\widetilde r) &= \ln \, \widetilde r
-\end{align}
 ```
 This condition ensures that the number of terms in the sums in Eqs. {eq}`pspn1` and {eq}`pspn2`
 are finite. With this condition, all the {math}`F_p` can be constructed:
 ```{math}
 :label: ffff
 
-\begin{align}
 F_1 &= \ln \, \widetilde r = \widetilde x - \frac{1}{2}\widetilde x^2 + \frac{1}{3}\widetilde x^3 - \ldots \\
 F_2 &= \frac{1}{2} (\widetilde r^2 - 1) - \ln \widetilde r = \widetilde x^2 - \frac{1}{3}\widetilde x^3 + \frac{1}{4} \widetilde x^4 - \ldots \\
 F_3 &= \frac{3}{2} [-(\widetilde r^2 - 1) + (\widetilde r^2 + 1) \ln \widetilde r] = \widetilde x^3 - \frac{1}{2} \widetilde x^4 + \frac{7}{20} \widetilde x^5 - \ldots
@@ -78,7 +75,6 @@ F_3 &= \frac{3}{2} [-(\widetilde r^2 - 1) + (\widetilde r^2 + 1) \ln \widetilde 
 F_4 &= 3 [ \frac{1}{8} (\widetilde r^4 - 1) + \frac{1}{2} (\widetilde r^2 - 1) - (\widetilde r^2 + \frac{1}{2}) \ln \widetilde r] =
 \widetilde x^4 - \frac{2}{5} \widetilde x^5 + \frac{3}{10} \widetilde x^6 - \ldots \\
 &\text{Etc...}
-\end{align}
 ```
 Note: Care must be take when evaluating these functions near {math}`\widetilde x = 0` using the exact
 {math}`\widetilde r`-dependent functions can be problematical due to round off error. 
