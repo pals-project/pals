@@ -156,10 +156,10 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
 
   \text{g\_ref} = \frac{q}{p_0} \cdot \mathrm{bend\_field\_ref}
   ```
-  It is important to keep in mind that changing `g_ref` will change the 
-[branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.
-One common mistake when creating orbit bumps using a bend is to vary
+  One common mistake when creating orbit bumps using a bend is to vary
 `g_ref`. For this, `Kn0` should be varied.
+The reason why changing `g_ref` is wrong is that variations in `g_ref` will change the 
+[branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.
 %
 - **g_actual (output param)**
 
