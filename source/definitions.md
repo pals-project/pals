@@ -80,3 +80,12 @@ of a branch, of constructing the ordered list of lattice elements contained in t
 `Lattice expansion` involves branch expansion along with things like
 calculating the reference energy for all elements.
 
+%---------------------------------------------------------------------------------------------------
+(s:extensions)=
+## Extensions
+
+An Extension is data added to a PALS lattice that is not part of the PALS standard.
+For example, information specific to a particular machine that has no analogue with other
+machines can be put in as an extension. A list of "registered" extensions is in the 
+[Extension](#c:extension) section.
+
