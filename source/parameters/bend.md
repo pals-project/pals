@@ -76,7 +76,7 @@ The direction of the reference bend field along the {math}`y`-axis.
   ```{math}
   :label: bff
 
-  \text{bend_field_ref} = \frac{p_0}{q} \cdot \text{g_ref}
+  \text{bend\_field\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
   ```
   Also see `g_ref`, `g_actual`, and `bend_field_actual`.
 %
@@ -123,7 +123,7 @@ Zero `e1_rect` and `e2_rect` gives a rectangular magnet shape.
 
   The field integral for the entrance pole face `edge1_int` is given by
   ```{math}
-  \text{edge1_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
+  \text{edge1\_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
   ```
   For the exit pole face there is a similar equation for `edge2_int`
 
@@ -140,7 +140,7 @@ Zero `e1_rect` and `e2_rect` gives a rectangular magnet shape.
   The {math}`C_0` term simply shifts where the edge of the bend is. If all the {math}`C_n` are zero except for
   {math}`C_0` and {math}`C_1` then
   ```{math}
-  C_1 = \frac{1}{2 \cdot \text{field_int}}
+  C_1 = \frac{1}{2 \cdot \text{field\_int}}
   ```
 %
 - **g_ref**
@@ -167,7 +167,7 @@ The reason why changing `g_ref` is wrong is that variations in `g_ref` will chan
   ```{math}
   :label: g_actual
 
-  \text{g_actual} = \frac{q}{p_0} \cdot \text{bend_field_actual}
+  \text{g\_actual} = \frac{q}{p_0} \cdot \text{bend\_field\_actual}
   ```
   Also see `g_ref`.
 %
