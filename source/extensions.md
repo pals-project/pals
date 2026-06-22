@@ -6,7 +6,7 @@ For example, information specific to a particular machine or simulation program
 that has no analogue with other machines or simulation programs can be put in as an extension. 
 
 Maintenance of an extension schema falls outside of PALS governance. 
-Extension maintainers can add extension documentation submitting a [pull request](#s:contribute).
+Extension maintainers can add extension documentation by submitting a [pull request](#s:contribute).
 If the amount of documentation is "large", it is encouraged that the documentation put in the PALS
 repository should be relatively brief and there should be a reference to full documentation maintained
 elsewhere. The advantage of this setup is that since the full documentation is external to the PALS repo,
