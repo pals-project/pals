@@ -72,8 +72,8 @@ The following element kinds provide relationships among branches and coordinate 
 - [FloorShift](#s:floorshift)
 - [Fork](#s:fork)
 - [Marker](#s:marker)
-- [Placeholder](#s:placeholder)
 - [Patch](#s:patch)
+- [Placeholder](#s:placeholder)
 - [ReferenceChange](#s:reference.change)
 
 %---------------------------------------------------------------------------------------------------
