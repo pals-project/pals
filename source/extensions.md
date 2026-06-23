@@ -39,11 +39,11 @@ In this example, the `synch_connect` dictionary key is the start of the extensio
 `Cornell_CESR_Connect`. Any further entries in `synch_connect` will be excluded from any
 PALS validation process. Either a dict or a list can be used for the children of `<some_name>`.
 
-Alternatively, extension metadata names may be "registered" using an `extension_labels` attribute.
+Alternatively, extension metadata names may be "documented" using an `extension_labels` block.
 Registration means that a PALS parser can validate the extension name.
 Extension metadata names appear at the start (top level) of an extension block.
-The `extension_labels` attribute must appear as a child of the `PALS` root node.
-The `extension_labels` block can also be used to define enum values.
+The `extension_labels` block must appear as a child of the `PALS` root node.
+The `extension_labels` block can also be used to define [enum](#s:enum) values.
 The `extension_labels` block has three components, at least one of them is required:
 ```{code} yaml
 PALS:
@@ -77,7 +77,7 @@ PALS:
           ... SciBmad connection info ...
     ...
     - R23:              # Another lattice element
-        kind: Rotator   # enum value is a registered extension.
+        kind: Rotator   # enum value is a documented extension.
 ```
 The advantage of using `extension_labels` is that enums can be defined and 
 single attribute key extensions are possible (there does not have to be an `extension` key).
