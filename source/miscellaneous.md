@@ -38,5 +38,5 @@ For sets that only have a value, an alternative compact form has the syntax:
 - sets:
     - param1: value1
     - param2: value2
-    ... etc...
+    ...
 ```
