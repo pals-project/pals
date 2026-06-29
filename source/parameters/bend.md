@@ -9,7 +9,7 @@ length `length` parameter.
 BendP:
   angle_ref: 0             # [radian] Reference bend angle
   bend_field_ref: 0        # [T] Reference bend field
-  bend_field_actual:       # [T] Output param. Actual bend field perpendicular to the reference plane. 
+  bend_field_actual:       # [T] Output parameter. Actual bend field perpendicular to the reference plane. 
   e1: 0                    # [radian] Entrance end pole face rotation with respect to a sector geometry
   e2: 0                    # [radian] Exit end pole face rotation with respect to a sector geometry
   e1_rect: 0               # [radian] Entrance end pole face rotation with respect to a rectangular geometry
@@ -21,7 +21,7 @@ BendP:
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature
   L_chord: 0               # [m] Chord length. 
-  L_sagitta: 0             # [m] Sagitta length. Output parameter.
+  L_sagitta: 0             # [m] Output parameter. Sagitta length.
   L_rectangle: 0           # [m] Rectangular length. 
   multipole_geometry: follows_ref_geometry 
                            # [enum] Sets how multipoles are calculated.
