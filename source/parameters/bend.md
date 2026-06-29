@@ -17,23 +17,27 @@ BendP:
   edge1_int: 0             # [T*m] Entrance end fringe field integral
   edge2_int: 0             # [T*m] Exit end fringe field integral
   g_ref: 0                 # [1/m] Reference bend strength = 1/radius_ref
-  g_actual:                 # [1/m] Output param. Actual bending strength corresponding to `bend_field_actual`.
-  multipole_type: vertically_pure # [enum] Only relavent if `ref_coords` is set to `arc`.
+  g_actual:                # [1/m] Output param. Actual bending strength corresponding to `bend_field_actual`.
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature
   L_chord: 0               # [m] Chord length. 
   L_sagitta: 0             # [m] Sagitta length. Output parameter.
   L_rectangle: 0           # [m] Rectangular length. 
-  ref_coords: arc          # [enum] Reference coordinates type.
+  multipole_geometry: follows_ref_geometry 
+                           # [enum] Sets how multipoles are calculated.
+  ref_geometry: arc        # [enum] Reference bend geometry.
+
   rho_ref: null            # [m]s Reference bend radius.
   tilt_ref: 0              # [radian] Reference tilt
 ```
 
-The geometry of a bend in [body](#s:coords).  coordinates is shown in {numref}`f:bend`. 
-In body coordinates the rotation axis is, by definition, always the {math}`y`-axis.
+The geometry of a bend in [body](#s:coords) coordinates is shown in {numref}`f:bend`. 
+In body coordinates, the rotation axis is, by definition, always the {math}`y`-axis.\footnote
+{
 Note that in general the rotation axis in branch coordinates will not be the {math}`y`-axis.
 An exception to this is if `tilt_ref` is zero for all bends so that the
 machine lies in the "horizontal" plane.
+}
 
 Note: In the equations below, {math}`q` is the charge of the reference particle 
 and {math}`p_0` is the reference momentum.
@@ -50,15 +54,15 @@ The red curve is the reference curve.
 Red dots mark the entry {math}`(z_1, x_1)` and exit {math}`(z_2, x_2)` coordinate points.
 The rotation axis is parallel to the (out of the page) {math}`y`-axis.
 
-A) Bend geometry for `ref_coords` set to `arc` or `chord`. For the geometry shown,
+A) Bend geometry for `ref_geometry` set to `arc` or `chord`. For the geometry shown,
 `g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all positive.
 
 B) Same as (A) but with a negative bend angle. For the geometry shown,
 `g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all negative.
 
-C) Bend geometry for `ref_coords` set to `entrance_coords`.
+C) Bend geometry for `ref_geometry` set to `entrance_coords`.
 
-D) Bend geometry for `ref_coords` set to `exit_coords`.
+D) Bend geometry for `ref_geometry` set to `exit_coords`.
 ```
 
 In detail:
@@ -89,7 +93,6 @@ The component of the actual bend field in the {math}`y`-dirction is given by `be
   bend_field_actual = bend_field_ref + Bn0 * cos(tilt0) + Bs0 * sin(tilt0)
   ```
   The {math}`(x,z)` in-bend-plane dipole component is given by `Bs0 * cos(tilt0)`. 
-The orientation of this in-plane component is determined by the setting of `ref_coords`.
 %
 - **e1, e2**
 
@@ -97,17 +100,17 @@ The orientation of this in-plane component is determined by the setting of `ref_
 respectively with respect to the radial {math}`x_1` and {math}`x_2` axes as shown in {numref}`f:bend`.
 Zero `e1` and `e2` gives a wedge shaped magnet.
 Also see `e1_rect` and `e2_rect`. 
-With `ref_coords` set to `arc` or `chord`, the relationship, as shown in {numref}`f:bend`A is
+With `ref_geometry` set to `arc` or `chord`, the relationship, as shown in {numref}`f:bend`A is
   ```{code} yaml
   e1 = e1_rect + angle_ref/2 
   e2 = e2_rect + angle_ref/2
   ```
-  With `ref_coords` set to `entrance_coords`, the relationship, as shown in {numref}`f:bend`C, is
+  With `ref_geometry` set to `entrance_coords`, the relationship, as shown in {numref}`f:bend`C, is
   ```{code} yaml
   e1 = e1_rect
   e2 = e2_rect + angle_ref
   ```
-  With `ref_coords` set to `exit_coords`, the relationship, as shown in {numref}`f:bend`D, is
+  With `ref_geometry` set to `exit_coords`, the relationship, as shown in {numref}`f:bend`D, is
   ```{code} yaml
   e1 = e1_rect + angle_ref
   e2 = e2_rect
@@ -185,7 +188,7 @@ Positive `h1` or `h2` implies the pole face is convex.
 - **L_rectangle**
 
   "Rectangular" length of the bend. See figures {numref}`f:bend`B and {numref}`f:bend`C. 
-The `L_rectangle = rho_ref / sin(angle)` independent of the setting of `ref_coords`.
+`L_rectangle = rho_ref / sin(angle)` independent of the setting of `ref_geometry`.
 %
 - **L_sagitta (output param)**
 
@@ -193,28 +196,34 @@ The `L_rectangle = rho_ref / sin(angle)` independent of the setting of `ref_coor
 from the midpoint of the reference arc curve to the midpoint of the chord). 
 `L_sagitta` can be negative and will have the same sign as `g_ref`. 
 %
-- **multipole_type**
+- **multipole_geometry**
 
-  The `multipole_type` parameter is only relavent if `ref_coords` is set to `arc` so
-that the multipole reference curve is not a straight line. 
-`ref_coords` sets how multipole coefficients are to be evaluated. 
-Possible values of `multipole_type` are:
+  The `multipole_geometry` parameter sets the geometry used to calculate multipoles.
+Possible values of `multipole_geometry` are:
   ```{code} yaml
-    vertically_pure     # Vertically pure multipoles (default).
-    horizontally_pure   # Horizontally pure multipoles.
+  follows_ref_geometry  # Default. Use geometry equivalent to the setting of `ref_geometry`.
+  vertically_pure       # Vertically pure multipoles with arc geometry
+  horizontally_pure     # Horizontally pure multipoles with arc geometry
+  chord                 # Z-axis is the chord connecting the entrance origin point to the exit origin point.
+  entrance_coords       # Rectangular coordinates commensurate with the entrance coordinates.
+  exit_coords           # Rectangular coordinates commensurate with the exit coordinates.
   ```
-See [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for more details.
+See the [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for documentation on horizontally
+and vertically pure multipoles. The `follows_ref_geometry` choice means the multipole geometry
+mirrors the setting of `ref_geometry`. Since `multipole_geometry` has no `arc` setting, if 
+`ref_geometry` is set to `arc`, a setting of `multipole_geometry` to `follows_ref_geometry` is
+equivalent to `vertically_pure`.
 %
-- **ref_coords**
+- **ref_geometry**
 
-  The `ref_coords` component switch specifies the curvelinear reference coordinates that multipoles are
+  The `ref_geometry` component switch specifies the curvelinear reference coordinates that multipoles are
 calculated with respect to and sets the reference that `e1_rect` and `e2_rect` edge angles are measured
 with respect to. Possible settings are:
   ```{code} yaml
-  arc               # Default. Curvelinear coordinates of the circular arc of the reference curve. 
+  arc               # Default. Reference are the curvelinear arc coordinates.
   chord             # Z-axis is the chord connecting the entrance origin point to the exit origin point.
-  entrance_coords   # Entrance coordinates.
-  exit_coords       # Exit coordinates.
+  entrance_coords   # Rectangular coordinates commensurate with the entrance coordinates.
+  exit_coords       # Rectangular coordinates commensurate with the exit coordinates.
   ```
   In all cases, the reference coordinates {math}`y`-axis are parallel to the {math}`y`-axes of the 
 body coordinate system.

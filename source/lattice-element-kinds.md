@@ -38,11 +38,9 @@ ack1:
 
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
-###  Bend Elements: RBend and SBend
+###  Bend Element
 
-Dipole bend. There are two kinds of bends depending upon the "logical shape". 
-The `RBend` element has a "rectangular" logical shape and the `SBend` element has a "sector"
-logical shape.
+Dipole bend.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -54,20 +52,6 @@ Element parameter groups associated with this element kind are:
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-`RBend` and `SBend` elements are parameterized exactly the same way by the `BendP` parameter group. 
-For example, `e1` and `e1_rect` have the same meaning for both kinds of bends.
-
-The logical shape of a bend, in most situations, is irrelevant.
-The only case where the logical shape can be used by a program is when the bend angle is varied.
-In this case, for a `SBend`, the face angles `e1` and `e2` can be
-held constant and `e1_rect` and `e2_rect` can be varied to keep the relationship
-between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied as discussed in the
-[`BendP`](#s:bend.params) documentation. Similarly, for a `RBend`,
-the face angles `e1_rect` and `e2_rect` can be
-held constant and `e1` and `e2` can be varied to keep the relationship
-between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
-
 
 %---------------------------------------------------------------------------------------------------
 (s:crabcavity)=
