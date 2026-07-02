@@ -129,7 +129,7 @@ ack1:
 (s:beambeam)=
 ### BeamBeam Element
 
-A BeamBeam element defines the parameters of a oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
+A BeamBeam element defines the parameters of an oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -159,7 +159,7 @@ The length of this element is considered to be zero so if `length` is specified,
 (s:beginningele)=
 ### BeginningEle Element
 
-A BeginningEle element is an initial element at start of a branch.
+A BeginningEle element is an initial element at the start of a branch.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
@@ -232,7 +232,7 @@ Element parameter groups associated with this element kind are:
 (s:crabcavity)=
 ### CrabCavity Element
 
-A CrabCavity element is an zero length RF cavity that gives a longitudinal dependent
+A CrabCavity element is a zero length RF cavity that gives a longitudinal dependent
 transverse kick. 
 
 Element parameter groups associated with this element kind are:
@@ -281,7 +281,7 @@ d01:
 %---------------------------------------------------------------------------------------------------
 (s:egun)=
 ### EGun Element
-An EGun element represents an electron gun and encompasses a region starting from the cathode were
+An EGun element represents an electron gun and encompasses a region starting from the cathode where
 the electrons are generated.
 
 Under Construction...
@@ -448,7 +448,7 @@ Element parameter groups associated with this element kind are:
 
 A Marker element is a zero length element to mark a particular position.
 The main purpose of this element is to name a position in the beamline.
-`Marker` elements has a unit transport map. That is, a particle's phase space coordinates
+`Marker` elements have a unit transport map. That is, a particle's phase space coordinates
 are not altered with passage through the element
 
 Element parameter groups associated with this element kind are:
@@ -583,7 +583,7 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**PatchP**](#s:meta.params): Exit coordinates with respect to entrance coordinates.
+- [**PatchP**](#s:patch.params): Exit coordinates with respect to entrance coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
 
@@ -595,7 +595,7 @@ This matters due to the dependence of the reference velocity on the the referenc
 (s:quadrupole)=
 ### Quadrupole Element
 
-A `Quadrupole` is an element whose major field has a linear field dependence .with transverse offset.
+A `Quadrupole` is an element whose major field has a linear field dependence with transverse offset.
 Both electric and magnetic fields can be defined and the field is not restricted to be linear.
 In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
 

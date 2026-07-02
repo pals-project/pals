@@ -36,7 +36,7 @@ There are element parameters that are common and do not naturally fit into
 any of the parameter groups. These parameters are not grouped. 
 These element parameters are:
 ```{code} yaml
-  field_master: NotSet  # [Boolean] See Below.
+  field_master: null    # [Boolean] See Below.
   is_on: true           # [Boolean] Turns on or off the fields in an element. When off, the element looks like a drift.
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
@@ -45,8 +45,8 @@ These element parameters are:
 ```
 
 The setting of `field_master` matters when there is a change in reference energy during a simulation.
-In this case, if `field_master = T`, magnetic multipoles, RF, and Bend unnormalized fields will be held constant
-and normalized field strengths will be varied. And vice versa when `field_master` is `F`. 
+In this case, if `field_master` is `true`, magnetic multipoles, RF, and Bend unnormalized fields will be held constant
+and normalized field strengths will be varied. And vice versa when `field_master` is `false`. 
 
 Example:
 ```{code} yaml

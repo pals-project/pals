@@ -25,7 +25,7 @@ periodic    # [logical] Are orbit and Twiss parameters periodic? Default is Fals
 
 The `name` component is a string that can be used to reference the `BeamLine`.
 
-The optional `mutipass` component is a boolean describing whether the `BeamLine` is part of 
+The optional `multipass` component is a boolean describing whether the `BeamLine` is part of 
 a [multipass construct](#c:multipass). The default is False.
 
 The optional `length` component gives the length of the `BeamLine`. 
@@ -86,7 +86,7 @@ Example:
     length: 37.8
     zero_point: thingC
     line:
-      - thingB                # This item refers to the name of an element or BeamLine defined elsewhere.
+      - thingB:               # This item refers to the name of an element or BeamLine defined elsewhere.
           length: 0.45        # This instance of thingB can have differing parameter values.
       - thingZ:               
           inherit: thingB     # thingZ inherits parameters from thingB
@@ -118,7 +118,7 @@ there are multiple `thingB` element in the line.
 A line item that is a lattice element can be specified by name if a lattice element
 of that name has been defined. Example:
 ```{code} yaml
-- q1w
+- q1w:
     kind: Quadrupole
     ...
 
@@ -126,8 +126,8 @@ of that name has been defined. Example:
     kind: BeamLine
     line:
       - q1w               # Line item is element q1w.
-      - q1w_01:           # q1w_01 interits parameters from q1
-          inherit: q1
+      - q1w_01:           # q1w_01 inherits parameters from q1w
+          inherit: q1w
           BodyShiftP:       #   and the parameters for q1w_01 can be modified...
           ...
       ...
@@ -136,12 +136,12 @@ of that name has been defined. Example:
 A line item which is a lattice element can also be specified by defining the lattice element
 "in place" in the line. Example:
 ```{code} yaml
-- a_line
+- a_line:
     kind: BeamLine
     line:
       - octA:              # This is a new element not previously defined.
           kind: Octupole
-          MultipoleP
+          MagneticMultipoleP:
             Kn3L: 0.34
           ...
     ...
@@ -149,7 +149,7 @@ A line item which is a lattice element can also be specified by defining the lat
 
 A line item may be a subline:
 ```{code} yaml
-- linac_line
+- linac_line:
     kind: BeamLine
     line:
       ...
@@ -172,7 +172,7 @@ Also sublines must be defined externally and not in place.
 For any line item, a `repeat` count component can be used to represent multiple copies
 of the item. Example:
 ```{code} yaml
-- full_line
+- full_line:
     kind: BeamLine
     line:
       - short_line:
@@ -181,7 +181,7 @@ of the item. Example:
 In this case, `short_line` is repeated three times when the BeamLine is expanded to form a lattice
 branch. For example, if `short_line` is a beamline defined by:
 ```{code} yaml
-- short_line
+- short_line:
     kind: BeamLine
     line:
       - A
@@ -215,14 +215,14 @@ Possible values are `+1` and `-1`. The Default is `+1` which represents an unrev
 or BeamLine. BeamLine reversal involves both reversed order of the line and direction reversal of
 the individual line items. Example:
 ```{code} yaml
-- lineA
+- lineA:
     kind: BeamLine
     line:
       - lineB:
           direction: -1
       ...
 
-- lineB
+- lineB:
     kind: BeamLine
     line:
       - ele1
@@ -284,7 +284,7 @@ ZERO_POINT         # Used with sublines that define a `zero_point`.
 
 Example:
 ```{code} yaml
-- position_line
+- position_line:
     kind: BeamLine
     line:
       - thingA
@@ -296,7 +296,7 @@ Example:
             to_point: ZERO_POINT
 
 
-- extract_subline
+- extract_subline:
     kind: BeamLine
     line:
         ...
@@ -306,19 +306,19 @@ The `from_point` of `thingA` is placed `37.5` meters from the `to_point` point w
 the `to_point` being at the exit end of `thingA`.
 
 The value of `offset` may be negative as well as positive. With negative offsets, 
-the [lattice expansion](#s:expansion.intro) calculation may become recursive but, in any case, plancement
-must be computable. That is, situations where there in infinite recursion is forbidden.
+the [lattice expansion](#s:expansion.intro) calculation may become recursive but, in any case, placement
+must be computable. That is, situations where there is infinite recursion is forbidden.
 
 In a section of a line where the lattice elements are not reversed, a positive `offset` moves
 the element being placed downstream. If there is reversal, a positive `offset` moves
 the element being placed upstream. That is, placement will not affect the relative distances
-of items if a line is reversed. In the above example, if `ABC_line` expandeds to:
+of items if a line is reversed. In the above example, if `ABC_line` expands to:
 ```{code} yaml
 thingA, thingB, thingC
 ```
 then the following 
 ```{code} yaml
-- z_line
+- z_line:
     kind: BeamLine
     line:
      - ABC_line:
@@ -348,7 +348,7 @@ To remove an ambiguity, if two zero length elements are next to each other in a 
 elements determines the order in which they should tracked through. For example,
 if a line contains the two zero length elements:
 ```{code} yaml
-- d_line
+- d_line:
     kind: BeamLine
     line:
       - markerA
@@ -366,8 +366,8 @@ Superposition does not change the length of the beamline.
 A superposition specifies an element to place on the beamline and a [`placement`](#s:placement) construct
 to position the element within the beamline. Example:
 ```{code} yaml
-- this_line
-    kind: BeamLine:
+- this_line:
+    kind: BeamLine
     line:
       - ...
       - markerA

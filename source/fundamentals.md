@@ -193,7 +193,7 @@ classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
-The `classical_radius_factor` is a useful number when converting a formula that involve the classical
+The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
 Other constants may be defined using `constant` as the `kind`.

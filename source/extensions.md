@@ -22,7 +22,7 @@ A list of "registered" extensions is in the [Extension Documentation](#s:extensi
 An extension can be introduced at any dictionary entry within `PALS`.
 The `extension` dictionary key marks the start of the extension structure, any remaining entries in that dictionary entry belong to the extension.
 
-Explicitly naming these extension dictionary key names is helpful to enable automatic finding 
+Explicitly naming these extension dictionary key names is helpful to enable automatically finding 
 typographic errors. The syntax is:
 ```{code} yaml
 <some_name>:
