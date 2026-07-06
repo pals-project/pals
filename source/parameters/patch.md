@@ -56,7 +56,7 @@ parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
 `Patch`'s attributes as set in the PALS file and is independent of everything else. Example:
 ```{code} yaml
-- pt
+- pt:
     kind: Patch
     PatchP:
       z_offset: 3.2 
