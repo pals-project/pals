@@ -6,23 +6,24 @@
 ```{code} yaml
 MetaP:
   alias: ""         # [string] An alternate name for the element.
-  ID: ""            # [string] An identification string.
+  ID: ""            # [string] Element identification.
   label: ""         # [string] A label string
-  description: ""   # [string] A descriptive string
-  location: ""      # [string] Element's location.
-  history: ""       # [string] Element's history. 
+  description: ""   # A descriptive string
+  location: ""      # Element's location.
+  history: ""       # Element's history. 
 ```
-In addition to an element's `name`, these six strings can be used for pattern matching
+In addition to an element's `name`, the three string components can be used for pattern matching
 when trying to locate all elements of a given type.
 
-Besides the six standard strings, the `MetaP` parameter group can be used to store metadata 
+Besides the six standard components, the `MetaP` parameter group can be used to store metadata 
 that describes the lattice element but is not part of the PALS standard. 
 Example metadata could be blueprint information, information on power supply connections, etc.
 
-Components of `MetaP` are not limited to being simple strings or numbers but can be complex 
-structures. The information contained in `MetaP` should be restricted to information that 
-does not affect simulations. Also, program specific (as opposed to machine specific) information
-should be stored elsewhere.
+The `description`, `location`, and `history` components of `MetaP` are not limited to being 
+simple strings or numbers but can be complex structures. 
+The information contained in `MetaP` should be restricted to information that 
+does not affect tracking in simulations. 
+Also, program specific (as opposed to machine specific) information should be stored elsewhere.
 ```{code} yaml
 quad1:                  # user-defined name
   kind: Quadrupole      # element switch
