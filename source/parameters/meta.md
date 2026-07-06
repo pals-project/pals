@@ -25,7 +25,7 @@ does not affect simulations. Also, program specific (as opposed to machine speci
 should be stored elsewhere.
 ```{code} yaml
 quad1:                  # user-defined name
-  kind: Quadrupole      # [string] element switch
+  kind: Quadrupole      # element switch
   MetaP:
     ID: 0137-85
     location: East transfer line
