@@ -9,8 +9,8 @@ MetaP:
   ID: ""            # [string] An identification string.
   label: ""         # [string] A label string
   description: ""   # [string] A descriptive string
-  location: ""      # [string] To describe the location of an object.
-  history: ""       # [string] Object's history.
+  location: ""      # [string] To describe the location of element.
+  history: ""       # [string] Element's history. 
 ```
 In addition to an element's `name`, these four strings can be used for pattern matching
 when trying to locate all elements of a given type.
@@ -28,6 +28,10 @@ quad1:                  # user-defined name
   kind: Quadrupole      # [string] element switch
   MetaP:
     ID: 0137-85
+    location: East transfer line
+    history:
+      - 2022-04-01: Fixed water leak to vacuum.
+      - 2023-06-24: Fixed short in main bus bar.
     manufacture:        # Custom information
       - date: 2017-03-07
       - installed: 2018-01-23
