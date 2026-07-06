@@ -21,7 +21,7 @@ Example metadata could be blueprint information, information on power supply con
 
 Components of `MetaP` are not limited to being simple strings or numbers but can be complex 
 structures. The information contained in `MetaP` should be restricted to information that 
-does not affect simulations. Also program specific (as opposed to machine specific) information
+does not affect simulations. Also, program specific (as opposed to machine specific) information
 should be stored elsewhere.
 ```{code} yaml
 quad1:                  # user-defined name
