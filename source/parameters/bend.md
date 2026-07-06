@@ -23,16 +23,10 @@ BendP:
   L_chord: 0               # [m] Chord length. 
   L_sagitta: 0             # [m] Output parameter. Sagitta length.
   L_rectangle: 0           # [m] Rectangular length. 
-<<<<<<< rbend-sbend-to-bend
   multipole_geometry: follows_ref_geometry 
                            # [enum] Sets how multipoles are calculated.
   ref_geometry: arc        # [enum] Reference bend geometry.
-
   rho_ref: null            # [m]s Reference bend radius.
-=======
-  ref_coords: arc          # [enum] Reference coordinates type.
-  rho_ref: null            # [m] Reference bend radius.
->>>>>>> main
   tilt_ref: 0              # [radian] Reference tilt
 ```
 
