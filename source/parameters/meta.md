@@ -12,7 +12,7 @@ MetaP:
   location: ""      # [string] Element's location.
   history: ""       # [string] Element's history. 
 ```
-In addition to an element's `name`, these four strings can be used for pattern matching
+In addition to an element's `name`, these six strings can be used for pattern matching
 when trying to locate all elements of a given type.
 
 Besides the six standard strings, the `MetaP` parameter group can be used to store metadata 
