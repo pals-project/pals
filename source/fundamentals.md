@@ -277,6 +277,3 @@ The expressions can involve the functions listed in the [Functions](#s:functions
 constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
 [Lattice element parameter](#s:parameter.matching) values can also be incorporated.
 
-
-
-
