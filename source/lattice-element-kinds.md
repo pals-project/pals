@@ -35,12 +35,13 @@ ack1:
   ACKickerP:
 ```
 
-
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
 ###  Bend Element
 
-Dipole bend.
+Dipole bend. The major difference between this element and other physical elements is that with
+a `Bend` the curvilinear coordinate system is an arc with finite curvature and for the other elements
+the curvilinear coordinate system is straight. 
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
