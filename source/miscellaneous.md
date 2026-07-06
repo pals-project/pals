@@ -40,3 +40,9 @@ For sets that only have a value, an alternative compact form has the syntax:
     - param2: value2
     ...
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:controller)=
+## Controllers
+
+A `Controller` is a construct that

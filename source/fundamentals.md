@@ -229,6 +229,10 @@ For constants that only have a value, an alternative compact form has the syntax
       ...
 ```
 
+Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
+`b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
+involve `a` nor `b`.
+
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
 ## Functions
@@ -263,3 +267,16 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:expressions)=
+## Mathematical Expressions
+
+Mathematical expressions can be used in place of any real value.
+The expressions can involve the functions listed in the [Functions](#s:functions) section,
+constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
+[Lattice element parameter](#s:parameter.matching) values can also be incorporated.
+
+
+
+
