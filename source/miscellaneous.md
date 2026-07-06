@@ -45,4 +45,14 @@ For sets that only have a value, an alternative compact form has the syntax:
 (s:controller)=
 ## Controllers
 
-A `Controller` is a construct that
+A `Controller` is a construct that essentially bundles expressions used for lattice
+element parameter values into one "package".
+Controllers typically represent a physical object like a power supply controlling magnets
+in a machine. 
+Controller syntax:
+```{code} yaml
+facility:
+  - controller:
+      type: controller_type
+      control:                   # Parmeters 
+        - parameter: parameter_
