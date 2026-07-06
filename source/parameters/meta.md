@@ -9,7 +9,7 @@ MetaP:
   ID: ""            # [string] An identification string.
   label: ""         # [string] A label string
   description: ""   # [string] A descriptive string
-  location: ""      # [string] To describe the location of element.
+  location: ""      # [string] Element's location.
   history: ""       # [string] Element's history. 
 ```
 In addition to an element's `name`, these four strings can be used for pattern matching
