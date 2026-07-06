@@ -101,7 +101,7 @@
     <polygon points="75.2 211.36 55.96 215.3 70.65 202.27 75.2 211.36"/>
     <polygon points="109.11 194.4 123.81 181.37 104.57 185.31 109.11 194.4"/>
   </g>
-  <text class="st1" transform="translate(51.71 316.15)"><tspan x="0" y="0">PALS Lattice File (YAML, JSON, etc.)</tspan></text>
+  <text class="st1" transform="translate(51.71 316.15)"><tspan x="0" y="0">PALS PALS file (YAML, JSON, etc.)</tspan></text>
   <metadata>
     <i:aipgfRef id="adobe_illustrator_pgf"/>
     <i:aipgf id="adobe_illustrator_pgf" i:pgfEncoding="zstd/base64" i:pgfVersion="24">

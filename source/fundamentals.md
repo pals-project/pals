@@ -47,7 +47,7 @@ PALS:
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
-Information may appear in a lattice file outside of the `PALS` node but this information is considered
+Information may appear in a PALS file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
@@ -64,9 +64,9 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Including Other Files Within Lattice Files
+## Including Other Files Within PALS files
 
-A PALS lattice file can rely on includes from other files using the `include` command.
+A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
@@ -180,6 +180,7 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
+pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
@@ -192,22 +193,41 @@ classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
-The `classical_radius_factor` is a useful number when converting a formula that involve the classical
+The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants may be defined. Example:
+Other constants may be defined using `constant` as the `kind`.
+The parameters associated with a constant are:
+```{code} yaml
+  absolute_error: 0       # Absolute error.       
+  relative_error: 0       # Relative error.
+  value                   # Constant value.
+```
+If both `absolute_error` and `relative_error` are specified, 
+the true error is `absolute_error + relative_error * |value|`.
+Example:
 ```{code} yaml
 PALS:
   facility:
     - my_const:
         kind: constant
         value: 1.45 * c_light
+        relative_error: 0.02
     ...
 ```
 Constants must be defined directly under the `PALS` node or the `facility` node. 
 Constants may not be redefined.
 Exception: Since multiple include files may define the same constant, a redefinition of a constant
 with the **same value** as the original is valid.
+
+For constants that only have a value, an alternative compact form has the syntax:
+```{code} yaml
+  - constants:
+      - const_a: value_a        # Define const_a
+      - const_b: value_b        # Define const_b
+      - const_c:: pi * const_a  # Can use expressions.
+      ...
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=

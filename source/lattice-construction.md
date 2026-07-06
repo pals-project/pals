@@ -42,8 +42,8 @@ set in the root `BeamLine`. See [](#s:beamline.components) for documentation of 
 `Branch expansion` is the process, starting from the `root BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 
-The first lattice element of any root `BeamLine` line must be a `Beginning` element and the expanded
-branch line may only contain this one `Beginning` element. If a subline contains a `Beginning`
+The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
+branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
 element, this element must be dropped from the branch line.
 
 The last lattice element of a branch line must be a `Marker` element.
@@ -130,8 +130,8 @@ the destination element of both Forks being the other `Fork`.
 To avoid ambiguities, a `Fork` element has zero length and unit transfer map and
 the kinds of destination element are restricted to be one of:
 - `Marker`
-- `Beginning`
-- `FloorPosition`
+- `BeginningEle`
+- `FloorShift`
 - `Fork`
 
 Notice that these kinds of elements have zero length and unit transfer maps.
@@ -156,7 +156,7 @@ the reference properties at the `Fork` element.
 (s:use)=
 ## Use statement
 
-Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
+Multiple `Lattice`s can be defined in a PALS file. By default, the one that gets instantiated 
 is the last lattice. This default can be overridden by a `use` statement. Example:
 ```{code} yaml
 - lat1:

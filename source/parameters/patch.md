@@ -54,9 +54,9 @@ determined by the setting of the `flexible` attribute. With the `flexible` attri
 `False`, the default, the exit face of the `Patch` will be determined from the offset, and rot
 parameters. This type of `Patch` is called
 "rigid" or "inflexible" since the geometry of the `Patch` is solely determined by the
-`Patch`'s attributes as set in the lattice file and is independent of everything else. Example:
+`Patch`'s attributes as set in the PALS file and is independent of everything else. Example:
 ```{code} yaml
-- pt
+- pt:
     kind: Patch
     PatchP:
       z_offset: 3.2 
@@ -109,7 +109,7 @@ set by the exit end coordinate system (see {numref}`f:patch`). If `ref_coords` i
 Unfortunately, there is no intuitive way to define the "`length`" of a patch. This is
 important since the reference transit time is the element length divided by the
 reference velocity. If the parameter `user_sets_length` is set to true, the
-value of `length` set in the lattice file will be used (default is zero). `user_sets_length` is set
+value of `length` set in the PALS file will be used (default is zero). `user_sets_length` is set
 to False (the default), the length of a patch is calculated depending upon the setting of
 `ref_coords`.  If `ref_coords` is set to `EXIT_END`, the length of the patch is calculated
 as the perpendicular distance between the origin of the patch's entrance coordinate system and the
