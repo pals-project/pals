@@ -45,33 +45,37 @@ For sets that only have a value, an alternative compact form has the syntax:
 (s:controller)=
 ## Controllers
 
-A `Controller` is a construct that essentially bundles expressions used used to set lattice
+A `Controller` is a construct that essentially bundles expressions used to set lattice
 parameter values into one "package".
 Controllers typically represent a physical object like a power supply controlling magnet elements
 in a machine. Example:
 ```{code} yaml
 facility:
-  - ps27:                             # Name of the Controller
-      - kind: Controller
-      - control_type: ABSOLUTE        # Or RELATIVE.
-      - variables:
-          - cur1: 0.023
-          - cur2: cur1 / c_light
-          ...
-      - control:                      # Parameter control specification.
-          parameter: Qa.*>MagneticMultipoleP.Ks2L
+  - ps27:                             # Controller name
+      kind: Controller
+      control_type: ABSOLUTE           # Or RELATIVE.
+      variables:
+        cur1: 0.023
+        cur2: cur1 / c_light
+        ...
+      controls:                        
+        - parameter: Qa.*>MagneticMultipoleP.Ks2L  # Parameter control specification.
           expression: 0.075*sin(cur1) + 0.3*cur2
-      - control:                      # Another control specifiction
-          ...           
-      ...
+        - parameter: ...                           # Another specification
+          expression: ...           
+       ...
 ```
 In this example, a controller called `ps27` has two variables used to control parameters called
-`cur1` and `cur2`. Initial values can be set for variables. The default is value of a variable is zero.
-The parameters controlled are set by one or more `control` groups. These
-`control` groups have a `parameter` component giving the [regular expression](#s:parameter.matching) to 
-match parameters to. In the above example, the first `control` group will match to the `Ks2L` 
-component of all elements whose name begins with `Qa`. The `expression` component gives
-the expression used in setting the parameters matched to. In this example, that expression is
+`cur1` and `cur2`. Initial values can be set for variables. The default value of a variable is zero.
+The parameters controlled are set by the `controls` component. Each entry has a 
+`parameter` component giving the [regular expression](#s:parameter.matching) to 
+match parameters to and an `expression` component that gives the arithmetic expression
+used in setting the parameters matched to. 
+In the above example, the first `controls` group will match to the `Ks2L` 
+component of all elements whose name begins with `Qa`. 
+
+
+ In this example, that expression is
 `0.075*sin(cur1) + 0.3*cur2`.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
@@ -95,29 +99,26 @@ where a change in the knob value results in changes to a set of steerings that a
 locally change the orbit in a section of a machine. Example:
 ```{code} yaml
 facility:
-  - chrom_a
-      - kind: Controller
-      - control_type: RELATIVE
-      - variables:
-          - command: 0.4
-      - control:
-          parameter: S1>MagneticMultipoleP.Kn2L
+  - chrom_a:
+      kind: Controller
+      control_type: RELATIVE
+      variables:
+        command: 0.4
+      controls:
+        - parameter: S1>MagneticMultipoleP.Kn2L
           expression: 5.62 * command + 0.02 * command^2
-      - control:
-          parameter: S2>MagneticMultipoleP.Kn2L
+        - parameter: S2>MagneticMultipoleP.Kn2L
           expression: -4.72 * command + 0.13 * command^2
-      - control:
-          ...
-      ...
+        ...
 
-  - S1
+  - S1:
       kind: Sextupole
       MagneticMultipoleP:
-        kn2L: 0.33
+        Kn2L: 0.33
 ```
 Here `chrom_a` is a knob for controlling the chromaticity in a ring. `chrom_a` has a
 variable `command` and varies a set of sextupoles. When the PALS file is read in, the
-the sextupole `Kn2L` strengths are set by the values in the elements themselves. In the above
+sextupole `Kn2L` strengths are set by the values in the elements themselves. In the above
 example, the initial setting of `Kn2L` for element `S1` will be 0.33. After the lattice has
 been read in by a simulation program, variation of the `command` setting of `chrom_a` will
 result in variation of the controlled `Kn2L` parameter values. In the example, if the `command`
@@ -133,28 +134,24 @@ Example:
 ```{code} yaml
 facility:
   - ps1: 
-      - kind: Controller
-      - control_type: ABSOLUTE
-      - variables:
-          - cur: 0.023
-      - control: 
-          parameter: a_kicker>MagneticMultipoleP.Kn0
+      kind: Controller
+      control_type: ABSOLUTE
+      variables:
+        cur: 0.023
+      controls: 
+        - parameter: a_kicker>MagneticMultipoleP.Kn0
           expression: 0.075*sin(cur)
-      - control:
-          ...           
-      ...
+        ...
 
   - ps2:
-      - kind: Controller
-      - control_type: ABSOLUTE
-      - variables:
-          - cur: 0.044
-      - control: 
-          parameter: a_kicker>MagneticMultipoleP.Kn0
-          expression: 0.123*cur
-      - control:
+      kind: Controller
+      control_type: ABSOLUTE
+      variables:
+        cur: 0.044
+      controls: 
+          - parameter: a_kicker>MagneticMultipoleP.Kn0
+            expression: 0.123*cur
           ...           
-      ...
 ```
 Here two controllers control the `Kn0` parameter of the `a_kicker` element.
 In a case where there are multiple `ABSOLUTE` controllers controlling the same parameter,
@@ -164,6 +161,6 @@ In the present example, the value of `Kn0` for `a_kicker` would be:
 a_kicker>MagneticMultipoleP.Kn0 = 0.075*sin(ps1>cur) + 0.123*ps2>cur
 ```
 
-A given lattice parameter may be controlled by multiple `ABSOLUTE` controllers or multipole `RELATIVE` 
+A given lattice parameter may be controlled by multiple `ABSOLUTE` controllers or multiple `RELATIVE` 
 controllers but may not (because it does not make sense) be controlled by both `ABSOLUTE` and
 `RELATIVE` controllers.
