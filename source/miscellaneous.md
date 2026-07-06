@@ -58,12 +58,12 @@ facility:
         cur1: 0.023
         cur2: cur1 / c_light
         ...
-      controls:                        
+      controls: 
         - parameter: Qa.*>MagneticMultipoleP.Ks2L  # Parameter control specification.
           expression: 0.075*sin(cur1) + 0.3*cur2
         - parameter: ...                           # Another specification
           expression: ...           
-       ...
+        ...
 ```
 In this example, a controller called `ps27` has two variables used to control parameters called
 `cur1` and `cur2`. Initial values can be set for variables. The default value of a variable is zero.
@@ -71,12 +71,9 @@ The parameters controlled are set by the `controls` component. Each entry has a
 `parameter` component giving the [regular expression](#s:parameter.matching) to 
 match parameters to and an `expression` component that gives the arithmetic expression
 used in setting the parameters matched to. 
-In the above example, the first `controls` group will match to the `Ks2L` 
-component of all elements whose name begins with `Qa`. 
-
-
- In this example, that expression is
-`0.075*sin(cur1) + 0.3*cur2`.
+In the above example, the first `controls` entry will match to the `Ks2L` 
+component of all elements whose name begins with `Qa`, and the associated expression
+is `0.075*sin(cur1) + 0.3*cur2`.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
 variable is:
@@ -138,7 +135,7 @@ facility:
       control_type: ABSOLUTE
       variables:
         cur: 0.023
-      controls: 
+      controls:
         - parameter: a_kicker>MagneticMultipoleP.Kn0
           expression: 0.075*sin(cur)
         ...
@@ -148,10 +145,10 @@ facility:
       control_type: ABSOLUTE
       variables:
         cur: 0.044
-      controls: 
-          - parameter: a_kicker>MagneticMultipoleP.Kn0
-            expression: 0.123*cur
-          ...           
+      controls:
+        - parameter: a_kicker>MagneticMultipoleP.Kn0
+          expression: 0.123*cur
+        ...           
 ```
 Here two controllers control the `Kn0` parameter of the `a_kicker` element.
 In a case where there are multiple `ABSOLUTE` controllers controlling the same parameter,
