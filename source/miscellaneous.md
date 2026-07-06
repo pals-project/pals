@@ -56,6 +56,8 @@ facility:
   - ps27:                             # Controller name
       kind: Controller
       control_type: ABSOLUTE           # Or RELATIVE.
+      MetaP:
+        description: Model Mitsubishi 800KL
       variables:
         cur1: 0.023
         cur2: cur1 / c_light
@@ -76,6 +78,9 @@ used in setting the parameters matched to.
 In the above example, the first `controls` entry will match to the `Ks2L` 
 component of all elements whose name begins with `Qa`, and the associated expression
 is `0.075*sin(cur1) + 0.3*cur2`.
+
+Besides control information, a controller can contain a [`MetaP`](#s:meta.params) parameter group
+which aids in documentation and searching.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
 variable is:
