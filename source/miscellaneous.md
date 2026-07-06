@@ -46,7 +46,9 @@ For sets that only have a value, an alternative compact form has the syntax:
 ## Controllers
 
 A `Controller` is a construct that essentially bundles expressions used to set lattice
-parameter values into one "package".
+parameter values into one "package". 
+While expressions can be used in place of controllers, 
+controllers add a level of organization and modularity that make them useful constructs. 
 Controllers typically represent a physical object like a power supply controlling magnet elements
 in a machine. Example:
 ```{code} yaml
