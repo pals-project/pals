@@ -58,11 +58,11 @@ facility:
         cur1: 0.023
         cur2: cur1 / c_light
         ...
-      controls: 
+      controls:
         - parameter: Qa.*>MagneticMultipoleP.Ks2L  # Parameter control specification.
           expression: 0.075*sin(cur1) + 0.3*cur2
         - parameter: ...                           # Another specification
-          expression: ...           
+          expression: ...   
         ...
 ```
 In this example, a controller called `ps27` has two variables used to control parameters called
@@ -122,7 +122,7 @@ result in variation of the controlled `Kn2L` parameter values. In the example, i
 value is changed from `v1` (which is 0.4 at the beginning) to some other value `v2` the change
 in `Kn2L` of `S1` will be:
 ```{code} yaml
-change in MagneticMultipoleP.Kn2L = (5.62*v2 + 0.02*v2^2) - (5.62*v1 + 0.02*v1^2) 
+change in MagneticMultipoleP.Kn2L = (5.62*v2 + 0.02*v2^2) - (5.62*v1 + 0.02*v1^2)
 ```
 
 `ABSOLUTE` type controllers are meant for simulating something like power supplies controlling 
@@ -148,13 +148,13 @@ facility:
       controls:
         - parameter: a_kicker>MagneticMultipoleP.Kn0
           expression: 0.123*cur
-        ...           
+        ...
 ```
 Here two controllers control the `Kn0` parameter of the `a_kicker` element.
 In a case where there are multiple `ABSOLUTE` controllers controlling the same parameter,
 the value of the parameter is the sum of the values set by the individual controllers.
 In the present example, the value of `Kn0` for `a_kicker` would be:
- ```{code} yaml
+```{code} yaml
 a_kicker>MagneticMultipoleP.Kn0 = 0.075*sin(ps1>cur) + 0.123*ps2>cur
 ```
 
