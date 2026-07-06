@@ -18,7 +18,7 @@ All keywords in this standard are case-sensitive.
 The PALS [schema standard](#s:std.components) does not define any particular language to implement 
 a lattice. Rather, there are associated
 language specific standards that define grammars for YAML, JSON, Python, etc. Along with these
-associated standards, there are packages that implement translation between lattice files and a 
+associated standards, there are packages that implement translation between PALS files and a 
 representational internal format defined by the package.
 
 While the standard itself is language agnostic, this document that describes the standard

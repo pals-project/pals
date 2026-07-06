@@ -558,7 +558,7 @@ This element can be used as a [`base_item`](#s:placement) element for [superposi
 Additionally, this element can be used, for example, to denote an invalid element in the internal
 structures defined by a program.
 
-`Placeholder` elements present in a lattice file will, as a part of lattice expansion, be removed.
+`Placeholder` elements present in a PALS file will, as a part of lattice expansion, be removed.
 That is, `Placeholder` elements will never be present in the final expanded lattice and
 tracking through a `Placeholder` will never be needed.
 

@@ -144,9 +144,9 @@ For an element to inherit all parameter groups from another element, just inheri
 %---------------------------------------------------------------------------------------------------
 ## User Settable (Input) and Dependent (Output) parameters.
 
-Some parameters are set in the lattice file. These parameters are called "User settable" or "input". 
+Some parameters are set in the PALS file. These parameters are called "User settable" or "input". 
 Some parameters will be computed by the Translator during lattice expansion. These parameters are called "dependent" or "output" parameters. There is a third class of parameters that can be an input
-parameter if it is set in the lattice file or will be an output parameter if not set.
+parameter if it is set in the PALS file or will be an output parameter if not set.
 
 For example, the `FloorP` parameters can be set for the `BeginningEle` element which is the
 first element of any branch line. For most other elements, the `FloorP` parameters can

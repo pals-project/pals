@@ -156,7 +156,7 @@ the reference properties at the `Fork` element.
 (s:use)=
 ## Use statement
 
-Multiple `Lattice`s can be defined in a lattice file. By default, the one that gets instantiated 
+Multiple `Lattice`s can be defined in a PALS file. By default, the one that gets instantiated 
 is the last lattice. This default can be overridden by a `use` statement. Example:
 ```{code} yaml
 - lat1:
