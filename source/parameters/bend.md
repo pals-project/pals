@@ -25,7 +25,7 @@ BendP:
   L_sagitta: 0             # [m] Sagitta length. Output parameter.
   L_rectangle: 0           # [m] Rectangular length. 
   ref_coords: arc          # [enum] Reference coordinates type.
-  rho_ref: null            # [m]s Reference bend radius.
+  rho_ref: null            # [m] Reference bend radius.
   tilt_ref: 0              # [radian] Reference tilt
 ```
 

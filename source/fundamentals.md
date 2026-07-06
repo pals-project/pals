@@ -47,7 +47,7 @@ PALS:
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
-Information may appear in a lattice file outside of the `PALS` node but this information is considered
+Information may appear in a PALS file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
@@ -64,9 +64,9 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Including Other Files Within Lattice Files
+## Including Other Files Within PALS files
 
-A PALS lattice file can rely on includes from other files using the `include` command.
+A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
@@ -193,7 +193,7 @@ classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
-The `classical_radius_factor` is a useful number when converting a formula that involve the classical
+The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
 Other constants may be defined using `constant` as the `kind`.

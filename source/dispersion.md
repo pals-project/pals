@@ -18,7 +18,7 @@ various calculations like for calculating radiation integrals.
 
 The one drawback with the momentum dispersion is that it is not always simply related to the
 derivative of the dispersion {math}`d\eta/ds`. This becomes a factor when designing lattices where, if
-some section of the lattice needs to be dispersion free, it is convienient to be able to optimize
+some section of the lattice needs to be dispersion free, it is convenient to be able to optimize
 {math}`d\eta/ds` to zero. The dispersion derivative is related to the momentum dispersion by
 \begin{align}
 \text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds}
@@ -47,8 +47,8 @@ where {math}`{\bf M}_{21}` is the transfer matrix between points {math}`s_1` and
 For a non-periodic lattice branch, there are two ways one can imagine
 defining the dispersion: Either with respect to changes in energy at the beginning of the machine or
 with respect to the local change in energy at the point of measurement. The former definition will
-be called "non-local dispersion" and the latter definition will be called "local dispersion"
-which what Bmad calculates. The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
+be called "non-local dispersion" and the latter definition will be called "local dispersion",
+which is what Bmad calculates. The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
 related to the local dispersion {math}`{\bf\eta}(s_1)` via
 ```{math}
   \widetilde{\bf\eta}(s_1) = \frac{dp_{z1}}{dp_{z0}} \, {\bf\eta}(s_1)
