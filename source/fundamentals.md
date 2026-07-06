@@ -66,7 +66,7 @@ Optional string parameters have a default value of blank unless otherwise stated
 (s:includefiles)=
 ## Including Other Files Within PALS files
 
-A PALS PALS file can rely on includes from other files using the `include` command.
+A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
