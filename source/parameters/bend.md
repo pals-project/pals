@@ -31,12 +31,11 @@ BendP:
 ```
 
 The geometry of a bend in [body](#s:coords) coordinates is shown in {numref}`f:bend`. 
-In body coordinates, the rotation axis is, by definition, always the {math}`y`-axis.\footnote
-{
-Note that in general the rotation axis in branch coordinates will not be the {math}`y`-axis.
+In body coordinates, the rotation axis is, by definition, always the {math}`y`-axis.[^foot-rot]
+
+[^foot-rot]: Note that in general the rotation axis in branch coordinates will not be the {math}`y`-axis.
 An exception to this is if `tilt_ref` is zero for all bends so that the
 machine lies in the "horizontal" plane.
-}
 
 Note: In the equations below, {math}`q` is the charge of the reference particle 
 and {math}`p_0` is the reference momentum.
