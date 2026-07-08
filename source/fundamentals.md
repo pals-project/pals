@@ -184,6 +184,7 @@ pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
+k_boltzmann               # [eV/K] Boltzmann's constant
 r_electron                # [m] Classical electron radius
 r_proton                  # [m] Classical proton radius
 e_charge                  # [Coul] Elementary charge
