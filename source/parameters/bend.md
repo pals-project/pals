@@ -31,17 +31,7 @@ BendP:
 ```
 
 The geometry of a bend in [body](#s:coords) coordinates is shown in {numref}`f:bend`. 
-In body coordinates, the rotation axis is, by definition, always the {math}`y`-axis.[^foot-rot]
-
-[^foot-rot]: Note that in general the rotation axis in branch coordinates will not be the {math}`y`-axis.
-An exception to this is if `tilt_ref` is zero for all bends so that the
-machine lies in the "horizontal" plane.
-
-Note: In the equations below, {math}`q` is the charge of the reference particle 
-and {math}`p_0` is the reference momentum.
-
-Note: The attributes `g_ref`, `angle_ref`, `rho_ref` and `length` are mutually dependent. Specifying
-more than two of these can be contradictory.
+In body coordinates, the rotation axis is, by definition, always the {math}`y`-axis.
 
 ```{figure} figures/bend.svg
 :width: 90%
@@ -50,7 +40,10 @@ more than two of these can be contradictory.
 Bend geometry in body coordinates.
 The red curve is the reference curve.
 Red dots mark the entry {math}`(z_1, x_1)` and exit {math}`(z_2, x_2)` coordinate points.
-The rotation axis is parallel to the (out of the page) {math}`y`-axis.
+The rotation axis, by definition, is parallel to the (out of the page) {math}`y`-axis.
+Note: In general the rotation axis in **branch** coordinates will not be the {math}`y`-axis.
+An exception to this is if `tilt_ref` is zero for all bends so that the
+machine lies in the "horizontal" plane.
 
 A) Bend geometry for `ref_geometry` set to `arc` or `chord`. For the geometry shown,
 `g_ref`, `angle_ref`, `rho_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all positive.
@@ -63,7 +56,13 @@ C) Bend geometry for `ref_geometry` set to `entrance_coords`.
 D) Bend geometry for `ref_geometry` set to `exit_coords`.
 ```
 
-In detail:
+Note: In the equations below, {math}`q` is the charge of the reference particle 
+and {math}`p_0` is the reference momentum.
+
+Note: The parameters `g_ref`, `angle_ref`, `rho_ref` and `length` are mutually dependent. Specifying
+more than two of these can be contradictory.
+
+The `BendP` parameters are:
 - **angle_ref**
 
   The total Reference bend angle. A positive `angle_ref` represents a
