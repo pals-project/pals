@@ -79,6 +79,9 @@ In the above example, the first `controls` entry will match to the `Ks2L`
 component of all elements whose name begins with `Qa`, and the associated expression
 is `0.075*sin(cur1) + 0.3*cur2`.
 
+Note: All controller expressions are considered to be ["delayed evaluation"](#s:expressions)
+as it does not make sense for these expressions to be considered immediate.
+
 Besides control information, a controller can contain a [`MetaP`](#s:meta.params) parameter group
 which aids in documentation and searching.
 
