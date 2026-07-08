@@ -176,7 +176,7 @@ PALS uses SI except for energy which uses `eV`.
 
 %---------------------------------------------------------------------------------------------------
 (s:constants)=
-## Constants
+## Constants and Variables
 
 Constants defined by PALS:
 ```{code} yaml
@@ -196,8 +196,13 @@ n_avogadro                # [-] Avogadro's constant
 The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants may be defined using `constant` as the `kind`.
-The parameters associated with a constant are:
+Other constants and variables may be defined using `constant` or `variable` as the `kind`.
+The difference between a constant and a variable is that a constant is not supposed to be
+varied after a program reads a PALS file while a variable can vary. Since what happens
+after a PALS file is read in by a program is beyond the scope of PALS, PALS treats constants
+and variables 
+
+The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
   relative_error: 0       # Relative error.
