@@ -33,5 +33,7 @@ html_theme_options = {
     "show_toc_level": 3,
     "show_navbar_depth": 3,
     "collapse_navbar": False,
+    "repository_url": "https://github.com/pals-project/pals",
+    "use_repository_button": True,
 }
 ## html_static_path = ['_static']
