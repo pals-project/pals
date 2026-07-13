@@ -239,13 +239,13 @@ varied after a program reads a PALS file while a variable can vary.
 When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
 That is, the following is not valid:
 ```{code} yaml
-- constants:
-    - my_const: 37.5
+- variables:
+    - my_var: 37.5
 
 ...
 
-- constants:
-    - my_const: 0.13     # VALUE CHANGE NOT VALID!
+- variables:
+    - my_var: 0.13     # VALUE CHANGE NOT VALID!
 ```
 It is sometimes convenient when there are include PALS files, to define the same constant or variable
 in multiple files. Multiple definitions of the same constant or variable are allowed with the 
