@@ -275,8 +275,8 @@ atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
 abs(x)                   # Absolute Value
 factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
-ran_gauss()              # Gaussian distributed random number with unit sigma and zero mean
-ran_gauss(sig_cut)       # Same ran_gauss() but with a probability tail cutoff.
+random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
+random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
 int(x)                   # Nearest integer with magnitude less than x
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
@@ -287,15 +287,15 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
-The `ran_gauss(sig_cut)` function produces a Gaussian distributed random number with unit sigma
+The `random_gauss(sig_cut)` function produces a Gaussian distributed random number with unit sigma
 and zero mean modified so that all random numbers will be in the range `[-sig_cut, sig_cut]`.
  
-When `random` or `ran_gauss` functions are used in a single expression that sets multiple parameters,
+When `random` or `random_gauss` functions are used in a single expression that sets multiple parameters,
 a different random number is generated for each parameter. For example, 
 ```{code} yaml
 - set:
     parameter: B1.*>BendP.e1
-    value: 0.01 + 0.003 * ran_gauss()
+    value: 0.01 + 0.003 * random_gauss()
 ```
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 If there are {math}`N` lattice elements that match the name `B1.*`, {math}`N` different random
@@ -319,11 +319,11 @@ Example:
     a_var: 3.75e7 / c_light^2
     b_var: -0.34
 
-cleo:            
-  kind: Solenoid
-  length: 0.1*log(abs(b_var))
-  MagneticMultipoleP:
-    Kn1: expr(3.74 * a_var)
+- cleo:            
+    kind: Solenoid
+    length: 0.1*log(abs(b_var))
+    MagneticMultipoleP:
+      Kn1: expr(3.74 * a_var)
 ```
 This sets the length of the `cleo` element to `0.1*log(abs(b_var))` and the `Kn1` parameter
 to `3.74 * a_var`. 
