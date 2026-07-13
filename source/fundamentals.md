@@ -198,14 +198,6 @@ The `classical_radius_factor` is a useful number when converting a formula that 
 electron or proton radius to a formula for something other than an electron or proton.
 
 Other constants and variables may be defined using `constant` or `variable` as the `kind`.
-The difference between a constant and a variable is that a constant is not supposed to be
-varied after a program reads a PALS file while a variable can vary. Since what happens
-after a PALS file is read in is beyond the scope of PALS, PALS treats constants
-and variables the same. In particular, neither constants nor variables may be redefined in
-the PALS file. 
-Exception: Since multiple include files may define the same constant or variable, a redefinition
-with the same value or same expression as the original is valid.
-
 The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
@@ -241,6 +233,23 @@ For constants or variables that only have a value, an alternative compact form h
       - var_a: var_val_a        # Define var_a
       ...
 ```
+The difference between a constant and a variable is one of intent of the PALS file creator.
+That is, a constant is not supposed to be
+varied after a program reads a PALS file while a variable can vary. 
+When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
+That is, the following is not valid:
+```{code} yaml
+- constants:
+    - my_const: 37.5
+
+...
+
+- constants:
+    - my_const: 0.13     # VALUE CHANGE NOT VALID!
+```
+It is sometimes convenient when there are include PALS files, to define the same constant or variable
+in multiple files. Multiple definitions of the same constant or variable are allowed with the 
+restriction that the value is always the same.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
