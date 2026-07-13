@@ -235,7 +235,9 @@ For constants or variables that only have a value, an alternative compact form h
 ```
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
-varied after a program reads a PALS file while a variable can vary. 
+varied after a program reads a PALS file while a variable can vary. For example, a constant could
+be the length of a magnet which will not change while a variable could be a magnet strength which
+does vary.
 When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
 That is, the following is not valid:
 ```{code} yaml
