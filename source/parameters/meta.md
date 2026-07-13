@@ -2,33 +2,39 @@
 (s:meta.params)=
 ## MetaP: Metadata Parameters
 
-`MetaP` has four standard components
+`MetaP` has six standard components:
 ```{code} yaml
 MetaP:
   alias: ""         # [string] An alternate name for the element.
-  ID: ""            # [string] An identification string.
+  ID: ""            # [string] Element identification.
   label: ""         # [string] A label string
-  description: ""   # [string] A descriptive string
+  description: ""   # A descriptive string
+  location: ""      # Element's location.
+  history: ""       # Element's history. 
 ```
-In addition to an element's `name`, these four strings can be used for pattern matching
+In addition to an element's `name`, the three string components can be used for pattern matching
 when trying to locate all elements of a given type.
 
-Besides the four standard strings, the `MetaP` parameter group can be used to store metadata 
+Besides the six standard components, the `MetaP` parameter group can be used to store metadata 
 that describes the lattice element but is not part of the PALS standard. 
-Such data is necessarily program dependent.
 Example metadata could be blueprint information, information on power supply connections, etc.
 
-Components of `MetaP` are not limited to being simple strings or numbers but can be complex 
-structures. The information contained in `MetaP` should be restricted to information that 
-does not affect simulations. Custom, program specific information should be stored elsewhere.
-Example:
+The `description`, `location`, and `history` components of `MetaP` are not limited to being 
+simple strings or numbers but can be complex structures. 
+The information contained in `MetaP` should be restricted to information that 
+does not affect tracking in simulations. 
+Also, program specific (as opposed to machine specific) information should be stored elsewhere.
 ```{code} yaml
-quad1:                  # [string] user-defined name
-  kind: Quadrupole      # [string] element switch
+quad1:                  # user-defined name
+  kind: Quadrupole      # element switch
   MetaP:
     ID: 0137-85
-    history:            # Custom information
-      - manufacture: 2017-03-07
+    location: East transfer line
+    history:
+      - 2022-04-01: Fixed water leak to vacuum.
+      - 2023-06-24: Fixed short in main bus bar.
+    manufacture:        # Custom information
+      - date: 2017-03-07
       - installed: 2018-01-23
       - ...
 ```
