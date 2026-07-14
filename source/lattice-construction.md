@@ -154,7 +154,7 @@ the reference properties at the `Fork` element.
 
 %---------------------------------------------------------------------------------------------------
 (s:use)=
-## Use statement
+## use Statement
 
 Multiple `Lattice`s can be defined in a PALS file. By default, the one that gets instantiated 
 is the last lattice. This default can be overridden by a `use` statement. Example:
@@ -171,4 +171,50 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
 
 - use: lat1
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:expand.lat)=
+## expand_lattice Statement
+
+By default, [lattice expansion](#s:expansion.intro) happens at the end when a PALS file has been read.
+Lattice expansion can be triggered before this if there is an `expand_lattice` statement.
+This statement must be a child of the `facility` node. Triggering lattice expansion is necessary.
+when reference to the expanded lattice is needed. For example:
+```{code} yaml
+facility:
+  - q1:
+      kind: Quadrupole
+      MagneticMultipoleP:
+        Kn1L: 0.375
+
+  - bline:
+      kind: Beamline
+      line:
+        - q1:
+            repeat: 3
+
+  - lat:
+      kind: Lattice
+      branches: bline
+
+  - expand_lattice
+
+  - set 
+      parameter: lat>>q1>MagneticMultipoleP.Kn1L
+      value: parameter * (1 + 1e-4*random_gauss())
+```
+In this example, the expanded lattice has three elements named `q1`. 
+To add a random error to each of these, the lattice has to be expanded before a `set` command is used.
+
+If the `expand_lattice` command is removed from the above example, the three `q1` elements of `lat` have
+not yet been instantiated and the set command as written cannot be done. When there is no
+`expand_lattice` statement, trying to set the `Kn1L` parameter in the `q1` element definition as in:
+```{code} yaml
+  - set 
+      parameter: q1>MagneticMultipoleP.Kn1L
+      value: parameter * (1 + 1e-4*random_gauss())
+```
+will be successful but result in the three `q1` elements in the expanded lattice all having
+the same `Kn1L` parameter value.
+
 
