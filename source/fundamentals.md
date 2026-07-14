@@ -366,4 +366,5 @@ here.
 
 Note: A PALS parser will both compute parameter values and will preserve the underlying equations
 so a program that can use the equations will have them available but other programs can just
-use the values for lattice calculations.
+use the values for lattice calculations. In any case, any program can do optimization on any set 
+of parameters for stuff like lattice design independent of any expressions.
