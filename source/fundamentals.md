@@ -304,7 +304,6 @@ numbers need to be generated for the calculation.
 In addition, there is the `expr()` construct which is used to designate 
 "delayed evaluation" expressions. See [](#s:expressions) for details.
 
-
 %---------------------------------------------------------------------------------------------------
 (s:expressions)=
 ## Mathematical Expressions
@@ -346,3 +345,21 @@ The exception is that [controller](#s:controller) expressions are always conside
 Also note that what a program actually does is outside of the PALS purview. The designation of
 immediate or delayed is only a "hint" to the program of what the lattice designer intends.
 
+%---------------------------------------------------------------------------------------------------
+(s:evaluation)=
+## Evaluation Order
+
+A PALS compliant parser will do the following when reading in a PALS file:
+As a PALS file is parsed, the order of evaluations of expressions, 
+[`expand_lattice`](#s:expand.lat) command, [controllers](#s:controller), etc. are as follows:
+
+- A "merged" tree is constructed where any include files are merged into the root file tree.
+
+- The controllers are evaluated last as a group. Controllers with a `RELATIVE` `control_type` do
+not initially affect any parameters (it is only if the program reading the PALS file later varies a 
+RELATIVE controller variable that there is any effect). The ABSOLUTE controllers form a hierarchy
+that can be evaluated from top to bottom.
+
+- For everything else, evaluation starts at the first `facility` child and works downward.
+delayed evaluation equations are evaluated along with all other equations. There is no difference
+here.
