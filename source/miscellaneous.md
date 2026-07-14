@@ -79,7 +79,12 @@ In the above example, the first `controls` entry will match to the `Ks2L`
 component of all elements whose name begins with `Qa`, and the associated expression
 is `0.075*sin(cur1) + 0.3*cur2`.
 
-Note: All controller expressions are considered to be ["delayed evaluation"](#s:expressions)
+Initial values for controller variables may be equations. These equations and the equations
+used for `expression`s are not allowed
+to contain lattice parameters nor variables as this could greatly complicate the problem of 
+evaluation order.
+
+Note: All controller `expression`s are considered to be ["delayed evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
 
 Besides control information, a controller can contain a [`MetaP`](#s:meta.params) parameter group
@@ -92,7 +97,8 @@ variable is:
 ```
 So, for example, with the above example, outside of the `ps27` controller the `cur1` variable
 has the name `ps27>cur1`. While controllers can control the variables of other controllers,
-circular definitions are not allowed.
+circular definitions are not allowed. The set of all controllers thus forms a hierarchy and
+controller evaluation works by starting at the top of the hierarchy and working downwards.
 
 There are two types of controllers that are differentiated by the setting of the controller's
 `control_type` parameter. The possible settings of `control_type`:
@@ -171,3 +177,5 @@ a_kicker>MagneticMultipoleP.Kn0 = 0.075*sin(ps1>cur) + 0.123*ps2>cur
 A given lattice parameter may be controlled by multiple `ABSOLUTE` controllers or multiple `RELATIVE` 
 controllers but may not (because it does not make sense) be controlled by both `ABSOLUTE` and
 `RELATIVE` controllers.
+
+
