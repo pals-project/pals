@@ -178,7 +178,7 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
 
 By default, [lattice expansion](#s:expansion.intro) happens at the end when a PALS file has been read.
 Lattice expansion can be triggered before this if there is an `expand_lattice` statement.
-This statement must be a child of the `facility` node. Triggering lattice expansion is necessary.
+This statement must be a child of the `facility` node. Triggering lattice expansion is necessary
 when reference to the expanded lattice is needed. For example:
 ```{code} yaml
 facility:
@@ -199,7 +199,7 @@ facility:
 
   - expand_lattice
 
-  - set 
+  - set:
       parameter: lat>>q1>MagneticMultipoleP.Kn1L
       value: parameter * (1 + 1e-4*random_gauss())
 ```
@@ -214,7 +214,7 @@ not yet been instantiated and the set command as written cannot be done. When th
       parameter: q1>MagneticMultipoleP.Kn1L
       value: parameter * (1 + 1e-4*random_gauss())
 ```
-will be successful but result in the three `q1` elements in the expanded lattice all having
-the same `Kn1L` parameter value.
+will be successful but without `expand_lattice`, the set targets the single `q1` definition, 
+so `random_gauss()` is evaluated only once and all three expanded copies inherit that one value.
 
 
