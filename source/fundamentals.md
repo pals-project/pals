@@ -122,6 +122,48 @@ to the following:
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 
 %---------------------------------------------------------------------------------------------------
+(s:name.matching)=
+## Name Matching
+
+PALS defines a standard syntax for name matching.
+For element parameters, the general syntax is
+```{code} text
+{beamline}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter} or
+{branch-name}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+{kind}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+```
+where
+```{code} yaml
+{beamline}                      # Optional BeamLine name.
+{branch-name}                   # Optional Branch name.
+{kind}                          # Optional element kind name.
+{element-name}                  # Optional element name.
+{parameter-group}               # Parameter group name.
+{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
+{parameter}                     # Parameter name.
+```
+Only `{beamline}`, `{branch-name},` and `{element-name}` use PCRE2 syntax. 
+
+Example:
+```{code} yaml
+qa.*>MagneticMultipoleP.Ks2L
+Quadrupole>>qa.*>MagneticMultipoleP.Ks2L
+```
+The first line will match the `Ks2L` component of all elements whose name begins with `qa`. Notice that
+since only `{beamline}` and `{element-name}` use PCRE2 syntax, the dot separating the parameter group
+and the parameter is unambiguous. The second line is like the first except only `Quadrupole` kind
+elements are matched to.
+
+Element parameter groups can similarly be matched to by using the above syntax without any
+`{parameter}` component. Similarly, Elements can be matched to if the `{parameter-group}`
+and everything following is not present. Example:
+```{code} yaml
+qa.*>MagneticMultipoleP    # Match to MagnetMultipoleP parameter group.
+qa.*                       # Match to element.
+Controller>>cd.t           # Match to all controllers whose four character name starts with `cd` and ends with `t`.
+```
+
+%---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
 ### Special Values
 
