@@ -125,8 +125,8 @@ The exception is that particle species names, which are considered to be strings
 names for a computer language, follow the [OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
 Examples:
 ```{code} yaml
-"#3He"          # Helium with atomic number three.
-"anti-proton"   # Notice the dash.
+charge_of("#3He+2")          # Helium with atomic number three.
+mass_of("anti-proton")       # Notice the dash.
 ```
 
 %---------------------------------------------------------------------------------------------------
