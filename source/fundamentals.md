@@ -125,47 +125,61 @@ to the following:
 (s:name.matching)=
 ## Name Matching
 
-PALS defines a standard syntax for name matching.
-For element parameters, the general syntax is
+Name matching is the process of finding the set of named constructs — lattice
+elements, element parameter groups, element parameters, constants, variables,
+etc. — that a given string is matched to. PALS defines a standard syntax for this.
+
+At its simplest, a string is matched against the `name` of a construct. For
+example, `qa.*` matches every element (or constant, variable, ...) whose name
+begins with `qa`. Names may be [PCRE2](https://www.pcre.org/) regular
+expressions. Regex matching is a whole-name (fully anchored) match — the pattern
+must match the entire name — so `qa.*` matches any name beginning with `qa`,
+while `qa` on its own matches only the exact name `qa`.
+
+Element parameters are matched by appending the parameter path to an element name
+match, using a single `>` as the separator:
 ```{code} text
-{beamline}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter} or
-{branch-name}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
-{kind}>>{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
 ```
 where
 ```{code} yaml
-{beamline}                      # Optional BeamLine name.
-{branch-name}                   # Optional Branch name.
-{kind}                          # Optional element kind name.
-{element-name}                  # Optional element name.
+{element-name}                  # Element name match, see below.
 {parameter-group}               # Parameter group name.
 {sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
 {parameter}                     # Parameter name.
 ```
-Only `{beamline}`, `{branch-name},` and `{element-name}` use PCRE2 syntax. 
+The `{element-name}` component is any element name match from
+[Element Name Matching](#s:element.matching) — including its kind (`::`),
+BeamLine/Branch (`>>`), and Lattice (`>>>`) qualifiers. The parameter path
+following the `>` is, unlike element names, matched exactly rather than with
+PCRE2; the dots within it are therefore unambiguous, and the single `>`
+separator is distinct from the `>>` and `>>>` qualifiers that may appear inside
+`{element-name}`.
 
 Example:
 ```{code} yaml
 qa.*>MagneticMultipoleP.Ks2L
-Quadrupole>>qa.*>MagneticMultipoleP.Ks2L
+Quadrupole::qa.*>MagneticMultipoleP.Ks2L
 ```
-The first line will match the `Ks2L` component of all elements whose name begins with `qa`. Notice that
-since only `{beamline}` and `{element-name}` use PCRE2 syntax, the dot separating the parameter group
-and the parameter is unambiguous. The second line is like the first except only `Quadrupole` kind
-elements are matched to.
+The first line matches the `Ks2L` component of `MagneticMultipoleP` for all
+elements whose name begins with `qa`. The second is the same but restricted to
+elements of kind `Quadrupole`.
 
-Element parameter groups can similarly be matched to by using the above syntax without any
-`{parameter}` component. Similarly, Elements can be matched to if the `{parameter-group}`
-and everything following is not present. Example:
+A trailing part of the path may be dropped to match the enclosing construct
+instead of a parameter: omit `{parameter}` to match a parameter group, or omit
+the `>{parameter-group}...` entirely to match the element itself. Example:
 ```{code} yaml
-qa.*>MagneticMultipoleP    # Match to MagnetMultipoleP parameter group.
-qa.*                       # Match to element.
-Controller>>cd.t           # Match to all controllers whose four character name starts with `cd` and ends with `t`.
+qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
+qa.*                       # Match the element.
+Controller::cd.t           # Match all Controllers whose four-character name starts with `cd` and ends with `t`.
 ```
+Constructs that are not element parameters — for example
+[constants and variables](#s:constants) — are matched directly by name, with no
+`>`-qualified parameter path.
 
 %---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
-### Special Values
+## Special Values
 
 Special values used in this document are:
 
