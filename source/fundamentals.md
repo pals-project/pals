@@ -128,7 +128,7 @@ Examples:
 charge_of("#3He+2")          # Helium with atomic number three.
 mass_of("anti-proton")       # Notice the dash.
 my_particle: "Au+79"         # Assign a species to a variable or constant.
-charge_of(my_particle)       #   and the variable or constant can be used in an equation.
+charge_of(my_particle)       # The variable or constant can be used in an equation.
 ```
 Notice that particle names must be quoted.
 
