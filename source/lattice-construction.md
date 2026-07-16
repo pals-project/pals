@@ -29,7 +29,7 @@ are those branches created due to `Fork` elements.
 A branch has the optional components
 ```{code} yaml
 inherit   # [String] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
-periodic  # [Boolean] Optional. Are orbit and Twiss parameters periodic? 
+periodic  # [logical] Optional. Are orbit and Twiss parameters periodic? 
           #   Default is the setting of the root BeamLine.
 ```
 The setting of `periodic` for a `Branch` overrides the setting of `periodic`

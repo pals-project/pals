@@ -36,8 +36,8 @@ There are element parameters that are common and do not naturally fit into
 any of the parameter groups. These parameters are not grouped. 
 These element parameters are:
 ```{code} yaml
-  field_master: null    # [Boolean] See Below.
-  is_on: true           # [Boolean] Turns on or off the fields in an element. When off, the element looks like a drift.
+  field_master: null    # [logical] See Below.
+  is_on: true           # [logical] Turns on or off the fields in an element. When off, the element looks like a drift.
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.

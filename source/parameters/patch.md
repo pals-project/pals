@@ -29,7 +29,7 @@ PatchP:
                     #    true -> User sets offsets and rot. 
                     #    False -> Offsets and rot from branch layout.
   ref_coords        # [enum] Coordinate system defining the length
-  user_sets_length  # [logic] Default is False. Is the element length User set? 
+  user_sets_length  # [logical] Default is False. Is the element length User set? 
 ```
 
 The transformation from `Patch` entrance coordinates to exit coordinates is given by [](#wws)

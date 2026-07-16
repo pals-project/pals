@@ -25,7 +25,7 @@ periodic    # [logical] Are orbit and Twiss parameters periodic? Default is Fals
 
 The `name` component is a string that can be used to reference the `BeamLine`.
 
-The optional `multipass` component is a boolean describing whether the `BeamLine` is part of 
+The optional `multipass` component is a logical describing whether the `BeamLine` is part of 
 a [multipass construct](#c:multipass). The default is False.
 
 The optional `length` component gives the length of the `BeamLine`. 
@@ -36,7 +36,7 @@ The optional `zero_point` component is used to position sublines.
 The value of `zero_point` is the name of a line element that marks the reference point. 
 To make things unambiguous, the reference line element must have zero length.
 
-Setting optional `periodic` Boolean to `true` indicates that the `BeamLine` is something like a 
+Setting optional `periodic` logical to `true` indicates that the `BeamLine` is something like a 
 storage ring where the particle beam recirculates through the `BeamLine` multiple times.
 Setting `periodic` to `False` is used to indicate that the `BeamLine` is something like a 
 Linac or any other line that is "single pass". 
