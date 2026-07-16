@@ -121,6 +121,18 @@ to the following:
 - A name cannot start with a number
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 
+The exception is that particle species names, which are considered to be strings and not proper
+computer language variable names, follow the
+[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
+Examples:
+```{code} yaml
+charge_of("#3He+2")          # Helium with atomic number three.
+mass_of("anti-proton")       # Notice the dash.
+my_particle: "Au+79"         # Assign a species to a variable or constant.
+charge_of(my_particle)       # The variable or constant can be used in an equation.
+```
+Notice that particle names must be quoted.
+
 %---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
 ### Special Values
