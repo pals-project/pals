@@ -4,6 +4,16 @@
 
 The `ParticleP` parameter group contains parameters for describing single particle coordinates
 or a beam particle distribution that is Gaussian distributed.
+For a [BeginningEle](#s:beginningele) element, `ParticleP` is an input parameter group that sets the
+particle coordinates at the start of a branch.
+For all other element kinds that have a [ReferenceP](#s:ref.params) group, `ParticleP` is an
+[output parameter](#s:io.params) group.
+
+Note that PALS itself does not define how any `ParticleP` component is calculated: that is outside
+the scope of PALS.
+A program is free to track particles and write the resulting coordinates out for each element of an
+expanded lattice so that other programs may read them back in.
+
 The components of this group are:
 ```{code} yaml
 ParticleP:                    # <> denotes average over distribution
