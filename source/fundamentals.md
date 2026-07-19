@@ -5,11 +5,11 @@
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary.
+The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
   version:          # [string] Version of the PALS schema used in this file
-  authors:          # [list] Authors associated with this file
+  authors:          # [list] Optional authors associated with this file
   notes:            # [list] Optional notes of interest.
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
