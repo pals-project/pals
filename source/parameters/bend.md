@@ -61,16 +61,16 @@ D) Bend geometry for `ref_geometry` set to `exit_coords`.
 1. Consider three parameter sets: 
 
    {style=upper-alpha}
-   1. `g_ref` `Bn0_ref`, and `radius_ref`
-   1. `length` `L_chord`, and `L_rectangle`
+   1. `g_ref`, `Bn0_ref`, and `radius_ref`
+   1. `length`, `L_chord`, and `L_rectangle`
    1. `angle_ref`
 
    Of all the parameters listed, only two parameters may be specified in the PALS file and
    these two parameters must be from different sets. From these two parameters all others can
    be computed.
 
-2. Once the above parameters are computed, `e1_ref` can be computed from `e1` or vice versa
-as appropriate (see below). Similarly for `e2_ref` and `e2`.
+2. Once the above parameters are computed, `e1_rect` can be computed from `e1` or vice versa
+as appropriate (see below). Similarly for `e2_rect` and `e2`.
 
 ### `BendP` parameters
 
@@ -79,7 +79,7 @@ and {math}`p_0` is the reference momentum.
 
 - **angle_ref**
 
-  The total Reference bend angle. A positive `angle_ref` represents a
+  The total reference bend angle. A positive `angle_ref` represents a
 bend towards negative {math}`x` as shown in {numref}`f:bend`. 
 `angle_ref = length * g_ref`.
 %
@@ -91,7 +91,7 @@ The direction of the reference bend field is along the {math}`y`-axis.
   ```{math}
   :label: bff
 
-  \text{Bn0_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
+  \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
   ```
 %
 - **e1, e2**
@@ -134,7 +134,7 @@ the `e1` and `e2` documentation.
 
   The field integral for the entrance pole face `edge1_int` is given by
   ```{math}
-  \text{edge1\_int} = \int_{pole} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
+  \text{edge1\_int} = \int_{\text{pole}} \!\! ds \frac{B_y(s) (B_{y0} - B_y(s))}{2 B_{y0}^2}
   ```
   For the exit pole face there is a similar equation for `edge2_int`
 
@@ -219,16 +219,16 @@ equivalent to `vertically_pure`.
 %
 - **ref_geometry**
 
-  The `ref_geometry` component switch specifies the curvelinear reference coordinates that multipoles are
+  The `ref_geometry` component switch specifies the curvilinear reference coordinates that multipoles are
 calculated with respect to and sets the reference that `e1_rect` and `e2_rect` edge angles are measured
 with respect to. Possible settings are:
   ```{code} yaml
-  arc               # Default. Reference are the curvelinear arc coordinates.
+  arc               # Default. Reference are the curvilinear arc coordinates.
   chord             # Z-axis is the chord connecting the entrance origin point to the exit origin point.
   entrance_coords   # Rectangular coordinates commensurate with the entrance coordinates.
   exit_coords       # Rectangular coordinates commensurate with the exit coordinates.
   ```
-  In all cases, the reference coordinates {math}`y`-axis are parallel to the {math}`y`-axes of the 
+  In all cases, the reference coordinates {math}`y`-axis is parallel to the {math}`y`-axes of the 
 body coordinate system.
 %
 - **radius_ref**
