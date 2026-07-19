@@ -119,7 +119,16 @@ Include can appear at any level of the information tree but must be within the `
 files can be combined. A common use case is where one file defines the layout of a machine and another
 file defines the magnet and other settings for a given machine configuration. The final lattice
 is the union of these two files. This gives the flexibility where multiple settings files
-need only reference one layout file. For example a layout can look like:
+need only reference one layout file.
+
+While `load` and `include` both combine the contents of separate files, they differ in how the
+combination is done. An `include` inserts the contents of a file verbatim at the point where the
+`include` appears, and so can be used at any level of the information tree. A `load`, by contrast,
+merges whole files `PALS` subnode by `PALS` subnode at the `PALS` root level, following the rules given
+below. When both are present, `include` statements are resolved first so that each file is complete
+before the files are combined by `load`.
+
+For example, a layout can look like:
 ```{code} yaml
 # Layout file: layout.pals.yaml
 PALS:
