@@ -92,8 +92,8 @@ version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} YAML
-- MagneticMultipoleP:
-  - Kn3L: 0.3
+MagneticMultipoleP:
+  Kn3L: 0.3
 ```
 There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
