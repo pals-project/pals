@@ -25,7 +25,7 @@ BendP:
   multipole_geometry: follows_ref_geometry 
                            # [enum] Sets how multipoles are calculated.
   ref_geometry: arc        # [enum] Reference bend geometry.
-  radius_ref: null         # [m]s Reference bend radius.
+  radius_ref: null         # [m] Reference bend radius.
   tilt_ref: 0              # [radian] Reference tilt
 ```
 
@@ -66,8 +66,8 @@ D) Bend geometry for `ref_geometry` set to `exit_coords`.
    1. `angle_ref`
 
    Of all the parameters listed, only two parameters may be specified in the PALS file and
-these two parameters must be from different sets. From these two parameters all others can
-be computed.
+   these two parameters must be from different sets. From these two parameters all others can
+   be computed.
 
 2. Once the above parameters are computed, `e1_ref` can be computed from `e1` or vice versa
 as appropriate (see below). Similarly for `e2_ref` and `e2`.
@@ -91,7 +91,7 @@ The direction of the reference bend field is along the {math}`y`-axis.
   ```{math}
   :label: bff
 
-  \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
+  \text{Bn0_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
   ```
 %
 - **e1, e2**
@@ -151,7 +151,7 @@ the `e1` and `e2` documentation.
   The {math}`C_0` term simply shifts where the edge of the bend is. If all the {math}`C_n` are zero except for
   {math}`C_0` and {math}`C_1` then
   ```{math}
-  C_1 = \frac{1}{2 \cdot \text{field\_int}}
+  C_1 = \frac{1}{2 \cdot \text{edge\_int}}
   ```
 %
 - **g_ref**
@@ -164,7 +164,7 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   ```{math}
   :label: gqpb
 
-  \text{g\_ref} = \frac{q}{p_0} \cdot \mathrm{Bn0\_ref}
+  \text{g\_ref} = \frac{q}{p_0} \cdot \text{Bn0\_ref}
   ```
   One common mistake when creating orbit bumps using a bend is to vary
 `g_ref`. For this, `Kn0` should be varied.
@@ -191,7 +191,7 @@ The setting of `Kn0_from_g_ref` is irrelevant if either `Kn0` or `Bn0` is set.
 - **L_rectangle**
 
   "Rectangular" length of the bend. `L_rectangle` is depicted in figures {numref}`f:bend`C and {numref}`f:bend`D. 
-`L_rectangle = radius_ref / sin(angle)` independent of the setting of `ref_geometry`.
+`L_rectangle = radius_ref / sin(angle_ref)` independent of the setting of `ref_geometry`.
 %
 - **L_sagitta (output param)**
 
