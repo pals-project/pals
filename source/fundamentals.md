@@ -111,6 +111,9 @@ Other file endings indicate non-PALS data.
 
 Include can appear at any level of the information tree but must be within the `PALS` root node.
 
+A file path in an `include` is interpreted relative to the location of the file that contains the
+`include` node.
+
 %---------------------------------------------------------------------------------------------------
 (s:load)=
 ## Load Files
@@ -193,6 +196,13 @@ for all of the files. For any duplicate entries, the entry values must be the sa
 will discard the duplicates.
 - For the `version` subnode of `PALS`, if the version strings are not the same, the combined version
 will be a comma delimited list of the different versions with duplicates discarded.
+- A loaded file may itself contain a `load` node, so loading can be nested to any depth. It is
+easiest to think of the process from the bottom up: each loaded file is fully combined into a single
+`PALS` file before it, in turn, is loaded into the joiner file that references it. There is no
+ambiguity as to what `SELF` refers to; a `SELF` designation always refers to the joiner file in
+which it appears.
+- As with `include`, a file path in a `load` list is interpreted relative to the location of the
+file that contains the `load` node.
 
 Loading can also be useful in constructing "composite" accelerator complexes from individual machines.
 For example, a joiner file may look like:
