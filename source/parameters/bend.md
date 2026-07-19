@@ -60,19 +60,23 @@ D) Bend geometry for `ref_geometry` set to `exit_coords`.
 
 1. Consider three parameter sets: 
 
-  {style=upper-alpha}
-  1. `g_ref` `Bn0_ref`, and `radius_ref`
-  1. `length` `L_chord`, and `L_rectangle`
-  1. `angle_ref`
+   {style=upper-alpha}
+   1. `g_ref` `Bn0_ref`, and `radius_ref`
+   1. `length` `L_chord`, and `L_rectangle`
+   1. `angle_ref`
 
-Of all the parameters listed, only two parameters may be specified in the PALS file and
+   Of all the parameters listed, only two parameters may be specified in the PALS file and
 these two parameters must be from different sets. From these two parameters all others can
 be computed.
+
+2. Once the above parameters are computed, `e1_ref` can be computed from `e1` or vice versa
+as appropriate (see below). Similarly for `e2_ref` and `e2`.
+
+### `BendP` parameters
 
 **Note:** In the equations below, {math}`q` is the charge of the reference particle 
 and {math}`p_0` is the reference momentum.
 
-The `BendP` parameters are:
 - **angle_ref**
 
   The total Reference bend angle. A positive `angle_ref` represents a
