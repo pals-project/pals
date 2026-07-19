@@ -36,4 +36,8 @@ html_theme_options = {
     "repository_url": "https://github.com/pals-project/pals",
     "use_repository_button": True,
 }
-## html_static_path = ['_static']
+html_static_path = ['_static']
+
+# Route the theme search box to Read the Docs' server-side search.
+# See _static/rtd-search-override.js for details.
+html_js_files = ['rtd-search-override.js']
