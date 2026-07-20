@@ -46,8 +46,6 @@ The first lattice element of any root `BeamLine` line must be a `BeginningEle` e
 branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
 element, this element must be dropped from the branch line.
 
-The last lattice element of a branch line must be a `Marker` element.
-
 Notes:
 - When a lattice is expanded, 
 in any region of a `Branch` where the elements are not directionally reversed, the elements
