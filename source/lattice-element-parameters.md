@@ -41,7 +41,7 @@ These element parameters are:
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.
-  s_position: 0         # [m] The longitudinal position of the element.
+  s_position: 0         # [m] The longitudinal position of the element in the branch curvilinear coordinate system. 
 ```
 
 The setting of `field_master` matters when there is a change in reference energy during a simulation.
