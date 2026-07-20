@@ -20,7 +20,7 @@ Example:
           inherit: that_ring    # Inherit from that_ring BeamLine
           periodic: true
 ```
-In this example, `this_line` and `that_line` are the names of the root BeamLines
+In this example, `this_line` and `that_line` are the names of the root beamlines
 for the two `Branches` that will be created when the lattice is [expanded](#s:expansion.intro).
 Branches created due to `Fork` elements also have root `BeamLines`. `Branches` specified
 in the `Lattice` structure are called `root branches` of the `lattice`. Non-root branches
@@ -42,7 +42,7 @@ set in the root `BeamLine`. See [](#s:beamline.components) for documentation of 
 `Branch expansion` is the process, starting from the `root BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 That is, the definitions
-of any sublines is substituted into the branche and if the sublines have sublines, this process
+of any sublines are substituted into the branch and if the sublines have sublines, this process
 is repeated until there are no sublines left.
 
 The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
@@ -64,67 +64,68 @@ This mandate on element ordering ensures that the order of elements in a directi
 ## Lattice Expansion
 
 "Lattice expansion" is the process of creating 
-a "finished" lattice structure with all branches expanded and all parameters computed.
+a "finished" lattice structure with all branches expanded and all computable parameters computed.
 Note that it may well be that not all computations can be done. For example, if the beginning reference
-energy is not set, the reference energy though out the lattice can not be computed and any
-calculations depending upon the reference energy cannot be done. A PALS compliant parser will note
+energy is not set, the reference energy throughout the lattice cannot be computed and any
+calculations depending upon the reference energy cannot be done. A PALS compliant parser will flag
 such problems.
 
-"Full lattice expansion" involves lattice expansion and the processing of post-expansion commands
-if there is an [`expand_lattice`](#s:expand.lat) node. The steps used for full lattice expansion are:
+The steps used for lattice expansion are:
 
 * Start with the root PALS file and construct a tree that contains all `include` and `load` trees.
 This is the base tree for the lattice expansion.
 
 * Divide the `facility` list into three lists: The first list, called the "pre-expansion list"
-is everything, except overlays elements, that comes before a `lattice_expand` node. The second list, 
-called the "post-expansion" list is everything, except overlay elements, that comes after the 
-`lattice_expand` node. The third list, called the "controller list" is the coontroller elements. 
+is everything, except controller elements, that comes before an `expand_lattice` node. The second list, 
+called the "post-expansion" list is everything, except controller elements, that comes after the 
+`expand_lattice` node. The third list, called the "controller list" is the controller elements. 
 All lists preserve the order from the initial list.
-The post-expansion list will be empty if there is no `lattice_expand` node. 
+The post-expansion list will be empty if there is no `expand_lattice` node. 
 The post-expansion list is ignored until post lattice expansion.
 
 * Go through the pre-expansion list in order and node-by-node evaluate any expressions and execute any `set` commands.
-There is not distinction here between delayed expressions and immediate expressions. Both are evaluated.
+There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
+Both are evaluated.
 
-Set commands can only act on the parameters that have been defined up to that point in the 
-pre-expansion list. For example:
-```{code} yaml
-PALS:
-  facility:
-    - Q1:                       # Defined before the set
-        kind: Quadrupole
+  Set commands can only act on the parameters that have been defined up to that point in the 
+  pre-expansion list. For example:
+  ```{code} yaml
+  PALS:
+    facility:
+      - Q1:                       # Defined before the set
+          kind: Quadrupole
 
-    - set:
-        parameter: Q.*>MagneticMultipoleP.Kn0
-        value: PARAMETER + 0.02
+      - set:
+          parameter: Q.*>MagneticMultipoleP.Kn0
+          value: PARAMETER + 0.02
 
-    - Q2:                       # Defined after the set
-        kind: Quadrupole
-```
-In this case since `Q2` is defined after the set, its MagneticMultipoleP.Kn0 value is not affected
-by the set.
+      - Q2:                       # Defined after the set
+          kind: Quadrupole
+  ```
+  In this case since `Q2` is defined after the set, its MagneticMultipoleP.Kn0 value is not affected
+  by the set.
 
-Note: Some parameter values may not be calculable when an expression is evaluated. 
-If the expression value uses such a parameter, this is an error. For example:
-```{code} yaml
-PALS:
-  facility:
-    - Q1:                       # Defined before the set
-        kind: Quadrupole
-        MagneticMultipleP:
-          Ks1: 0.34
+  Note: Some parameter values may not be calculable when an expression is evaluated. 
+  If the expression value uses such a parameter, this is an error. For example:
+  ```{code} yaml
+  PALS:
+    facility:
+      - Q1:                       # Defined before the set
+          kind: Quadrupole
+          MagneticMultipoleP:
+            Ks1: 0.34
 
-    - set:
-        parameter: Q1>MagneticMultipoleP.Bn0
-        value: Q1>MagneticMultipoleP.Bs1        # Error! Bs1 not well defined!
-```
-Here the value of `Ks1` of element `Q1` is set and eventually the value of `Bs1` will be calculated
-based on the value of `Ks1`. But this calculation depends upon the reference momentum which is not
-yet known. Therefore `Bs1` is unknown and this is an error. Notice that if `Ks1` was not set,
-`Bs1` would default to zero and there would be no error.
+      - set:
+          parameter: Q2>MagneticMultipoleP.Bs1
+          value: Q1>MagneticMultipoleP.Bs1        # Error! Bs1 not well defined!
+  ```
+  Here the value of `Ks1` of element `Q1` is set in the element definition
+  and eventually the value of `Bs1` will be calculated based on the value of `Ks1`. 
+  But this calculation depends upon the reference momentum which is not
+  yet known. Therefore `Bs1` is unknown when the `set` command is processed and this is an error. 
+  Notice that if `Ks1` had not been set, `Bs1` would default to zero and there would be no error.
 
-* The root `Beamlines` of the root lattice branches are [expanded](#s:branch.expand). 
+* The root `BeamLines` of the root lattice branches are [expanded](#s:branch.expand). 
 
 * If `Fork` elements are present that fork to new beamlines, new branches are created for these
 new beamlines and branch expansion is performed on these new lines. 
@@ -138,7 +139,7 @@ has been set), floor positions, and s-positions.
 * Using the post-expansion list, node-by-node from the list beginning, 
 evaluate any expressions and execute any `set` commands.
 
-* Apply ABSOLUTE overlays.
+* Apply `ABSOLUTE` `Controllers`. `RELATIVE` `Controllers` are not involved in lattice expansion.
 
 Notes:
 - All branches must have unique names. However, different branches may use the same root `BeamLine`.
