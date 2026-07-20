@@ -67,7 +67,8 @@ D) Bend geometry for `ref_geometry` set to `exit_coords`.
 
    Of all the parameters listed, only two parameters may be specified in the PALS file and
    these two parameters must be from different sets. From these two parameters all others can
-   be computed.
+   be computed. If less than two parameters are set. Default values for parameters that cannot
+   be determined are zero.
 
 2. Once the above parameters are computed, `e1_rect` can be computed from `e1` or vice versa
 as appropriate (see below). Similarly for `e2_rect` and `e2`.
