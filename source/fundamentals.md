@@ -139,7 +139,7 @@ Notice that particle names must be quoted.
 
 Special values used in this document are:
 
-1. Boolean parameters can be one of three values:
+1. Logical parameters can be one of three values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
