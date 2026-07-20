@@ -78,5 +78,6 @@ An important concept is [`lattice expansion`](#s:lattice.expand) and `branch exp
 Branch expansion is the process, starting from the `root` `BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 `Lattice expansion` involves branch expansion along with things like
-calculating the reference energy for all elements.
-
+calculating the reference energy for all elements. Lattice expansion by default occurs
+at the end when the PALS file has been read or when there is a [`expand_lattice`](#s:expand.lat)
+command.
