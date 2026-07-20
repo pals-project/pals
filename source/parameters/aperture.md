@@ -203,6 +203,8 @@ the four possible solutions that connect the two vertex points at the ends of th
 the arc used is the arc of minimal length such that the center of the ellipse is on the same side
 as the `center` point with respect to a line drawn through the two points.
 
+Positive radius means that the arc is convex and negative radius means that the arc is concave.
+
 When using vertices, an efficient way to determine if a point {math}`(x, y)` is within the aperture
 is the following. Note: The computation is with respect to the `center` point.
 ```{code} yaml
