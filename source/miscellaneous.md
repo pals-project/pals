@@ -178,4 +178,7 @@ A given lattice parameter may be controlled by multiple `ABSOLUTE` controllers o
 controllers but may not (because it does not make sense) be controlled by both `ABSOLUTE` and
 `RELATIVE` controllers.
 
+A given lattice parameter may not be assigned a delayed evaluation expression and be controlled 
+by a controller.
+
 
