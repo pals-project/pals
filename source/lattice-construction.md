@@ -58,6 +58,8 @@ in increasing {math}`s`-position value. For a region where the elements are dire
 reversed, the downstream end of the elements must be ordered in increasing {math}`s`-position.
 This mandate on element ordering ensures that the order of elements in a directionally reversed
 `BeamLine` is always the reverse of the order of elements in the non-reversed `BeamLine`.
+- The order of `BeamLine` definitions within a `facility` list does not affect the expansion.
+In particular, the definition of a subline can come after it's use.
 
 %---------------------------------------------------------------------------------------------------
 (s:lattice.expand)=
@@ -81,7 +83,7 @@ called the "post-expansion" list is everything, except controller elements, that
 `expand_lattice` node. The third list, called the "controller list" is the controller elements. 
 All lists preserve the order from the initial list.
 The post-expansion list will be empty if there is no `expand_lattice` node. 
-The post-expansion list is ignored until post lattice expansion.
+The post-expansion list is ignored until after the branches have been expanded.
 
 * Go through the pre-expansion list in order and node-by-node evaluate any expressions and execute any `set` commands.
 There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
