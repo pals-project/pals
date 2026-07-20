@@ -81,11 +81,14 @@ when the `erl` lattice is expanded, `cavityA` will appear four times:
 ```{code}
 inj_line..., cavityA, cavityA, arc_line..., cavityA, cavityA, dump_line...
              (1)      (2)                   (1)      (2)
+Index        [1]      [1]                   [2]      [2]
 ```
 Each physical `cavityA` element appears twice in the expanded line. Explicitly, the two `cavityA`
 elements that are marked with a `(1)` underneath them represent the first of the `cavityA`
 elements in `linac_line` and the two that are marked with a `(2)` underneath them represent second
-`cavityA` element in `linac_line`. These indices are called the "multipass index" and
+`cavityA` element in `linac_line`. The indicies in square brackets `[]` are the "multipass index" and
+indicate the number of times are particle traveling through the line will have gone through the
+physical element in question.
 With a PALS compliant parser, multipass elements in the expanded lattice will be marked with a
 `multipass_index` component whose value is the multipass index.
 In a more complicated situation where the `linac_line` is traversed {math}`N` times,
