@@ -85,7 +85,9 @@ inj_line..., cavityA, cavityA, arc_line..., cavityA, cavityA, dump_line...
 Each physical `cavityA` element appears twice in the expanded line. Explicitly, the two `cavityA`
 elements that are marked with a `(1)` underneath them represent the first of the `cavityA`
 elements in `linac_line` and the two that are marked with a `(2)` underneath them represent second
-`cavityA` element in `linac_line`. 
+`cavityA` element in `linac_line`. These indices are called the "multipass index" and
+With a PALS compliant parser, multipass elements in the expanded lattice will be marked with a
+`multipass_index` component whose value is the multipass index.
 In a more complicated situation where the `linac_line` is traversed {math}`N` times,
 the two physical `cavityA` elements will each appear {math}`N` times in the expanded line.
 Sets of lattice elements that represent the same physical element are called "physical element" sets.
