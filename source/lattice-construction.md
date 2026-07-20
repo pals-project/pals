@@ -41,6 +41,9 @@ set in the root `BeamLine`. See [](#s:beamline.components) for documentation of 
 
 `Branch expansion` is the process, starting from the `root BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
+That is, the definitions
+of any sublines is substituted into the branche and if the sublines have sublines, this process
+is repeated until there are no sublines left.
 
 The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
 branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
@@ -49,8 +52,7 @@ element, this element must be dropped from the branch line.
 The last lattice element of a branch line must be a `Marker` element.
 
 Notes:
-- When a lattice is expanded, 
-in any region of a `Branch` where the elements are not directionally reversed, the elements
+- In any region of an expanded `Branch` where the elements are not directionally reversed, the elements
 must be ordered such that the longitudinal positions at the upstream end of the elements is ordered
 in increasing {math}`s`-position value. For a region where the elements are directionally
 reversed, the downstream end of the elements must be ordered in increasing {math}`s`-position.
@@ -61,13 +63,82 @@ This mandate on element ordering ensures that the order of elements in a directi
 (s:lattice.expand)=
 ## Lattice Expansion
 
-`Lattice expansion` is the process, starting from a `Lattice` structure instance, where:
-- The `root BeamLines` of the branches are expanded.
-- `Fork` elements contained in the root branches are used to construct new branches and, 
- if these new branches have `Fork` elements, 
-this process is repeated until no new branches need to be created.
-- The floor position along with the reference energy, species and time, of the lattice elements, is computed.
-- Mathematical expressions are evaluated.
+"Lattice expansion" is the process of creating 
+a "finished" lattice structure with all branches expanded and all parameters computed.
+Note that it may well be that not all computations can be done. For example, if the beginning reference
+energy is not set, the reference energy though out the lattice can not be computed and any
+calculations depending upon the reference energy cannot be done. A PALS compliant parser will note
+such problems.
+
+"Full lattice expansion" involves lattice expansion and the processing of post-expansion commands
+if there is an [`expand_lattice`](#s:expand.lat) node. The steps used for full lattice expansion are:
+
+* Start with the root PALS file and construct a tree that contains all `include` and `load` trees.
+This is the base tree for the lattice expansion.
+
+* Divide the `facility` list into three lists: The first list, called the "pre-expansion list"
+is everything, except overlays elements, that comes before a `lattice_expand` node. The second list, 
+called the "post-expansion" list is everything, except overlay elements, that comes after the 
+`lattice_expand` node. The third list, called the "controller list" is the coontroller elements. 
+All lists preserve the order from the initial list.
+The post-expansion list will be empty if there is no `lattice_expand` node. 
+The post-expansion list is ignored until post lattice expansion.
+
+* Go through the pre-expansion list in order and node-by-node evaluate any expressions and execute any `set` commands.
+There is not distinction here between delayed expressions and immediate expressions. Both are evaluated.
+
+Set commands can only act on the parameters that have been defined up to that point in the 
+pre-expansion list. For example:
+```{code} yaml
+PALS:
+  facility:
+    - Q1:                       # Defined before the set
+        kind: Quadrupole
+
+    - set:
+        parameter: Q.*>MagneticMultipoleP.Kn0
+        value: PARAMETER + 0.02
+
+    - Q2:                       # Defined after the set
+        kind: Quadrupole
+```
+In this case since `Q2` is defined after the set, its MagneticMultipoleP.Kn0 value is not affected
+by the set.
+
+Note: Some parameter values may not be calculable when an expression is evaluated. 
+If the expression value uses such a parameter, this is an error. For example:
+```{code} yaml
+PALS:
+  facility:
+    - Q1:                       # Defined before the set
+        kind: Quadrupole
+        MagneticMultipleP:
+          Ks1: 0.34
+
+    - set:
+        parameter: Q1>MagneticMultipoleP.Bn0
+        value: Q1>MagneticMultipoleP.Bs1        # Error! Bs1 not well defined!
+```
+Here the value of `Ks1` of element `Q1` is set and eventually the value of `Bs1` will be calculated
+based on the value of `Ks1`. But this calculation depends upon the reference momentum which is not
+yet known. Therefore `Bs1` is unknown and this is an error. Notice that if `Ks1` was not set,
+`Bs1` would default to zero and there would be no error.
+
+* The root `Beamlines` of the root lattice branches are [expanded](#s:branch.expand). 
+
+* If `Fork` elements are present that fork to new beamlines, new branches are created for these
+new beamlines and branch expansion is performed on these new lines. 
+The new branches may themselves have `Fork` elements that fork to new beamlines
+and this process is repeated until there are no new branches to be created.
+
+* For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
+species, time, etc.) are calculated along with dependent parameters (EG multipole `Ks1` if `Bs1`
+has been set), floor positions, and s-positions.
+
+* Using the post-expansion list, node-by-node from the list beginning, 
+evaluate any expressions and execute any `set` commands.
+
+* Apply ABSOLUTE overlays.
 
 Notes:
 - All branches must have unique names. However, different branches may use the same root `BeamLine`.
@@ -76,12 +147,7 @@ These `Fork` elements will not trigger new branch creation.
 - The PALS standard does not mandate how branches should be stored in memory after expansion.
 For example, branches could be stored using an array or a tree. 
 In any case, the root branches must be marked as such.
-- The order in which new branches are added to the lattice due to the presence of `Fork` elements 
-is not mandated by PALS. This can lead to the situation where connecting a `Fork` element to 
-what is designated as an existing branch is not possible since the branch being forked to 
-does not yet exist since
-the `Fork` element that instantiates this branch has not been processed yet. In this case,
-the first `Fork` element must be temporarily ignored until the branch is instantiated.
+
 
 %---------------------------------------------------------------------------------------------------
 (s:forking)=
