@@ -24,13 +24,16 @@ If `new_branch` is present and not `null`, a new branch is created in the lattic
 set of branches with
 the name given by `new_branch` and the `Fork` element will point to this new branch. 
 If `new_branch` is not present or is `null`, the destination element, specified by the 
-`destination_element` parameter, will be in an existing branch.
+`destination_element` parameter, must be in an existing branch.
+
+If and only if the destination element is the beginning element of a new branch, 
+the floor coordinates will be propagated from the `Fork` element to the beginning of the new branch.
 
 The optional `destination_element` component of `ForkP` gives the name of the destination element. 
 If not present, the default is the `Beginning` element.
 The name given by `destination_element` must be unique.
 The destination element may inherit the reference species and energy of the `Fork` element 
-if and only if the destination element is the `Beginning` element and
+if and only if the destination element is the beginning element of a new branch and
 the `propagate_reference` component is set to `true`. If the destination element is not
 the beginning element, `propagate_reference` is ignored and no reference parameters are
 propagated.
