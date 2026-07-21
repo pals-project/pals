@@ -44,7 +44,8 @@ of a branch, of constructing the ordered list of lattice elements contained in t
 
 The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
 branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
-element, this element must be dropped from the branch line.
+element, this element must be dropped from the branch line. A `BeginningEle` element at
+the start of non-root branches is optional.
 
 After a branch is expanded, a `Placeholder` element will be placed at the end to hold
 the final floor position and reference parameters (energy, species, etc.).
