@@ -24,7 +24,7 @@ If `new_branch` is present and not `null`, a new branch is created in the lattic
 set of branches with
 the name given by `new_branch` and the `Fork` element will point to this new branch. 
 If `new_branch` is not present or is `null`, the destination element, specified by the 
-`destination_element` parameter, will be in an existing branch.
+`destination_element` parameter, must be in an existing branch.
 
 The optional `destination_element` component of `ForkP` gives the name of the destination element. 
 If not present, the default is the `Beginning` element.
