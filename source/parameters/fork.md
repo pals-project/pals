@@ -63,7 +63,6 @@ Example `Fork` element:
 ```
 In this example, a `Fork` element connects to a new branch that will be instantiated using
 a `BeamLine` called `dump_beamline`. In the expanded lattice, the destination branch will be called
-`proton_dump`. The reference properties at the `dump_beginning` element that is forked to,
-assuming this is the `BeginningEle` element at the beginning of the branch, will be
-the reference properties at the `Fork` element.
+`proton_dump`. The reference properties at the `dump_beginning` element that is forked to
+will be the reference properties at the `Fork` element.
 
