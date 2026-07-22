@@ -545,10 +545,12 @@ structures defined by a program.
 
 `Placeholder` elements present in a PALS file will, as a part of lattice expansion, be removed.
 That is, `Placeholder` elements will never be present in the final expanded lattice and
-tracking through a `Placeholder` will never be needed.
+tracking through a `Placeholder` will never be needed. 
+The exception is that a `Placeholder` will be placed at the end of all branches to hold
+the final floor position and reference parameters (energy, species, etc.).
+This element will be called `branch_end`.
 
-This element does not have any associated parameter groups.
-
+The `Placeholder` element does not have any associated parameter groups.
 For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
 
 
