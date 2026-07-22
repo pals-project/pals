@@ -12,6 +12,7 @@ ForkP:
   direction: FORWARDS        # [enum] Longitudinal Direction of travel of injected beam.
   new_branch: SELF           # [string] Name to give newly created destination branch.
   propagate_reference: true  # [logical] Propagate reference species and energy.
+  forked_to:                 # [string] Output parameter. Name of the destination element.
 ```
 
 The `branch` containing a forking element is called the
@@ -65,4 +66,8 @@ In this example, a `Fork` element connects to a new branch that will be instanti
 a `BeamLine` called `dump_beamline`. In the expanded lattice, the destination branch will be called
 `proton_dump`. The reference properties at the `dump_beginning` element that is forked to
 will be the reference properties at the `Fork` element.
+
+The `forked_to` parameter is set by a PALS compliant parser to the name of the destination element
+using `{branch-name}>>{element-name}` syntax. In the above example, that name would be 
+`proton_dump>>dump_beginning`. 
 
