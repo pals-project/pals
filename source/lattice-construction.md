@@ -48,7 +48,8 @@ if a subline contains a `BeginningEle`
 element, this element is dropped from the branch line. The one exception that a `BeginningEle` 
 element must be at the start of a branch is if there is a `Fork` element forking to the beginning of the
 branch and `ForkP.propagete_reference` of the fork element is `true`. In this case, a `BeginningEle`
-element is not needed to set the beginning reference parameters of the branch.
+element is not needed to set the beginning reference parameters of the branch but the first element
+must be an element that can be pointed to by a `Fork` element ([](#:forking)).
 
 After a branch is expanded, a `Placeholder` element will be placed at the end to hold
 the final floor position and reference parameters (energy, species, etc.).
