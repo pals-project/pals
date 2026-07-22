@@ -42,10 +42,13 @@ set in the root `BeamLine`. See [](#s:beamline.components) for documentation of 
 `Branch expansion` is the process, starting from the `root BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 
-The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
-branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
-element, this element must be dropped from the branch line. A `BeginningEle` element at
-the start of non-root branches is optional.
+The first lattice element of a branch must be a `BeginningEle` element and the 
+branch line may only contain this one `BeginningEle` element. When expanding to form a branch,
+if a subline contains a `BeginningEle`
+element, this element is dropped from the branch line. The one exception that a `BeginningEle` 
+element must be at the start of a branch is if there is a `Fork` element forking to the beginning of the
+branch and `ForkP.propagete_reference` of the fork element is `true`. In this case, a `BeginningEle`
+element is not needed to set the beginning reference parameters of the branch.
 
 After a branch is expanded, a `Placeholder` element will be placed at the end to hold
 the final floor position and reference parameters (energy, species, etc.).
