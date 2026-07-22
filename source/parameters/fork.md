@@ -30,7 +30,7 @@ If and only if the destination element is the beginning element of a new branch,
 the floor coordinates will be propagated from the `Fork` element to the beginning of the new branch.
 
 The optional `destination_element` component of `ForkP` gives the name of the destination element. 
-If not present, the default is the `Beginning` element.
+If not present, the default is the first element of the line.
 The name given by `destination_element` must be unique.
 The destination element may inherit the reference species and energy of the `Fork` element 
 if and only if the destination element is the beginning element of a new branch and
