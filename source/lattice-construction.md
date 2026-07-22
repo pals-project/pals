@@ -129,7 +129,6 @@ To avoid ambiguities, a `Fork` element has zero length and unit transfer map and
 the kinds of destination element are restricted to be one of:
 - `Marker`
 - `BeginningEle`
-- `FloorShift`
 - `Fork`
 
 Notice that these kinds of elements have zero length and unit transfer maps.
