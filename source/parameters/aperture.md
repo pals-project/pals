@@ -143,6 +143,7 @@ Each entry of the `list` vector can have three keys:
 ```{code} yaml
 point        # [m] Vector of two real numbers.
 radius       # [m] Vector of single or two real numbers.
+convex: true # [logical] 
 tilt: 0      # [rad/2pi] Ellipse tilt angle.
 ```
 Example:
@@ -176,7 +177,7 @@ If only the `point` coordinates are given, the vertex is connected by a straight
 If the `radius` is given, the path follows a section of an ellipse with the first 
 `radius` value being the {math}`x`-axis half width and the second value being the {math}`y`-axis
 half width. Of the four possible arcs, only the two short ones are considered.
-Positive radius means that the arc is convex and negative radius means that the arc is concave.
+By default the convex arc, with center of the ellipse towards the aperture center is selected. To select the other arc set 'convex' to false.
 If `radius` is a single value, both half widths are the same and the ellipse is a circle.
 A non-zero `tilt` value rotates the ellipse by that amount counterclockwise. 
 
