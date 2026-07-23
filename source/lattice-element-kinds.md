@@ -309,7 +309,7 @@ floor coordinates of elements both upstream and downstream of the fiducial eleme
 See also the [`patch`](#s:patch) element.
 
 The length of this element is zero so if `length` is specified, it must be zero.
-Like a `Marker`, The transfer map through this element is unity.
+Like a `Marker`, the transfer map through this element is unity.
 
 Element parameter groups associated with this element kind are:
 - [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the element.
@@ -330,8 +330,8 @@ some section of a machine. The `Taylor` element gives the transport map through 
 and the `FloorShift` is used to correctly position the downstream lattice elements in the global
 coordinate system.
 
-Note: A `FloorShift` element, unlike a  [`fiducial`](#s:fiducial) element,
-will affect the placement of downstream elements in the global 
+Note: A `FloorShift` element, unlike a [`fiducial`](#s:fiducial) element,
+will affect the placement of downstream elements in the global
 coordinate system but will have no effect on upstream elements.
 See also the [`patch`](#s:patch) element.
 

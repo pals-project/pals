@@ -1,5 +1,5 @@
 (s:coordinate.set.params)=
-## CoordinateSetP:  Floor Shifting Parameters
+## CoordinateSetP:  Define Global Coordinate Position and Orientation Parameters
 
 The `CoordinateSetP` parameter group describes the position and orientation of the branch coordinates
 at some location. With a `FloorShift` element, this location is the exit end of the element.
@@ -13,7 +13,8 @@ CoordinateSetP:
   x_rot: 0                   # [rad] Rotation around x-axis.
   y_rot: 0                   # [rad] Rotation around y-axis.
   z_rot: 0                   # [rad] Rotation around z-axis.
-  origin_ele: null           # [string] Origin element name.
+  origin_ele: null           # [string] Origin element name. null -> previous element;
+                             #    GLOBAL_ORIGIN -> global coordinate origin.
   origin_ele_ref_pt: CENTER  # [enum] Reference point on origin_ele.
 ```
 The calculation of the coordinate system is as follows:
@@ -27,13 +28,16 @@ the "target" element where the target element is defined to be the element conta
 If the `origin_ele` value is set to `GLOBAL_ORIGIN`, the origin of the global coordinate system is used.
 If an `origin_ele` is specified and is not `GLOBAL_ORIGIN`, a PALS parser needs to be able to
 calculate the position of this lattice element before the position of the target element is calculated.
-For example, it is not generally possible to calculate the postion of elements downstream of
-the target element before the target element's position is calculated
+For example, it is not generally possible to calculate the position of elements downstream of
+the target element before the target element's position is calculated.
 
 If the `origin_ele` has a finite length, the reference point may be chosen using the
 `origin_ele_ref_pt` attribute which may be set to one of
 ```{code} yaml
   ENTRANCE_END
   CENTER               # Default
-  EXIT_END 
+  EXIT_END
 ```
+
+Note: To shift the reference energy, time, or species at this element, use the
+[ReferenceChangeP](#s:ref.change.params) parameter group.
