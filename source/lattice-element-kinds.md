@@ -303,28 +303,40 @@ Note: This element does not have a `length` nor an `s_position`.
 ### Fiducial Element
 
 A Fiducial element is used to fix the position and orientation of the reference orbit within the global
-coordinate system at the location of the fiducial element. A fiducial element will affect the global
+coordinate system at the location of the fiducial element. A fiducial element,
+unlike a [`FloorShift`](#s:floorshift) element, will affect the global
 floor coordinates of elements both upstream and downstream of the fiducial element.
+See also the [`patch`](#s:patch) element.
 
-Under Construction...
+The length of this element is zero so if `length` is specified, it must be zero.
+Like a `Marker`, The transfer map through this element is unity.
 
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
+Element parameter groups associated with this element kind are:
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the element.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 
 
 %---------------------------------------------------------------------------------------------------
 (s:floorshift)=
 ### FloorShift Element
 
-Global coordinates shift.
-
 A `FloorShift` element shifts the reference curve in the global coordinate system without
 affecting particle tracking. That is, in terms of tracking, a `FloorShift` element is equivalent
-to a `Marker` element where a particle's position is unchanged going through the element.
+to a `Marker` element where a particle's coordinates are unchanged going through the element.
 
-Also see [`patch`](#s:patch) and [`fiducial`](#s:fiducial) elements.
+A `FloorShift` element is useful, for example, in conjunction with a `Taylor` element to simulate
+some section of a machine. The `Taylor` element gives the transport map through the machine section
+and the `FloorShift` is used to correctly position the downstream lattice elements in the global
+coordinate system.
+
+Note: A `FloorShift` element, unlike a  [`fiducial`](#s:fiducial) element,
+will affect the placement of downstream elements in the global 
+coordinate system but will have no effect on upstream elements.
+See also the [`patch`](#s:patch) element.
 
 Element parameter groups associated with this element kind are:
-- [**FloorShiftP**](#s:floor.shift.params): Floor shift parameters.
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the exit end of the element.
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 
@@ -565,7 +577,6 @@ Under Construction...
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**PatchP**](#s:patch.params): Exit coordinates with respect to entrance coordinates.
