@@ -22,9 +22,9 @@ BendP:
   L_chord: null            # [m] Chord length. 
   L_sagitta:               # [m] Output parameter. Sagitta length.
   L_rectangle: null        # [m] Rectangular length. 
-  multipole_geometry: follows_ref_geometry 
+  multipole_geometry: FOLLOWS_REF_GEOMETRY 
                            # [enum] Sets how multipoles are calculated.
-  ref_geometry: arc        # [enum] Reference bend geometry.
+  ref_geometry: ARC        # [enum] Reference bend geometry.
   radius_ref: null         # [m] Reference bend radius.
   tilt_ref: 0              # [radian] Reference tilt
 ```
@@ -45,15 +45,15 @@ An exception to this is if `tilt_ref` is zero for all bends so that the
 machine lies in the "horizontal" plane and in this case all the bend axes will be in the {math}`y`
 direction.
 
-A) Bend geometry for `ref_geometry` set to `arc` or `chord`. For the geometry shown,
+A) Bend geometry for `ref_geometry` set to `ARC` or `CHORD`. For the geometry shown,
 `g_ref`, `angle_ref`, `radius_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all positive.
 
 B) Same as (A) but with a negative bend angle. For the geometry shown,
 `g_ref`, `angle_ref`, `radius_ref`, `e1`, `e2`, `e1_rect`, and `e2_rect` are all negative.
 
-C) Bend geometry for `ref_geometry` set to `entrance_coords`.
+C) Bend geometry for `ref_geometry` set to `ENTRANCE_COORDS`.
 
-D) Bend geometry for `ref_geometry` set to `exit_coords`.
+D) Bend geometry for `ref_geometry` set to `EXIT_COORDS`.
 ```
 
  Dependent parameters calculation:
@@ -101,17 +101,17 @@ The direction of the reference bend field is along the {math}`y`-axis.
 respectively with respect to the radial {math}`x_1` and {math}`x_2` axes as shown in {numref}`f:bend`.
 Zero `e1` and `e2` gives a wedge shaped magnet.
 Associated with these angles are the angles `e1_rect` and `e2_rect`.
-With `ref_geometry` set to `arc` or `chord`, the relationship, as shown in {numref}`f:bend`A is
+With `ref_geometry` set to `ARC` or `CHORD`, the relationship, as shown in {numref}`f:bend`A is
   ```{code} yaml
   e1 = e1_rect + angle_ref/2 
   e2 = e2_rect + angle_ref/2
   ```
-  With `ref_geometry` set to `entrance_coords`, the relationship, as shown in {numref}`f:bend`C, is
+  With `ref_geometry` set to `ENTRANCE_COORDS`, the relationship, as shown in {numref}`f:bend`C, is
   ```{code} yaml
   e1 = e1_rect
   e2 = e2_rect + angle_ref
   ```
-  With `ref_geometry` set to `exit_coords`, the relationship, as shown in {numref}`f:bend`D, is
+  With `ref_geometry` set to `EXIT_COORDS`, the relationship, as shown in {numref}`f:bend`D, is
   ```{code} yaml
   e1 = e1_rect + angle_ref
   e2 = e2_rect
@@ -120,7 +120,7 @@ With `ref_geometry` set to `arc` or `chord`, the relationship, as shown in {numr
   The default values for `e1` and `e2` are determined by the setting of `ref_geometry` and the 
 settings of `e1_rect` and `e2_rect`. If `e1_rect` is set, this determines the value of `e1` via
 the above equations and similarly for `e2` and `e2_rect`. If neither `e1` nor `e1_rect` are set,
-the value of `e1` is zero if `ref_geometry` is set to `arc` and `e1_rect` is zero if `ref_geometry`
+the value of `e1` is zero if `ref_geometry` is set to `ARC` and `e1_rect` is zero if `ref_geometry`
 is set to anything else. From this the angle not set can be determined from the above equations.
 %
 - **e1_rect, e2_rect**
@@ -205,18 +205,18 @@ from the midpoint of the reference arc curve to the midpoint of the chord).
   The `multipole_geometry` parameter sets the geometry used to calculate multipoles.
 Possible values of `multipole_geometry` are:
   ```{code} yaml
-  follows_ref_geometry  # Default. Use geometry equivalent to the setting of `ref_geometry`.
-  vertically_pure       # Vertically pure multipoles with arc geometry
-  horizontally_pure     # Horizontally pure multipoles with arc geometry
-  chord                 # Z-axis is the chord connecting the entrance origin point to the exit origin point.
-  entrance_coords       # Rectangular coordinates commensurate with the entrance coordinates.
-  exit_coords           # Rectangular coordinates commensurate with the exit coordinates.
+  FOLLOWS_REF_GEOMETRY  # Default. Use geometry equivalent to the setting of `ref_geometry`.
+  VERTICALLY_PURE       # Vertically pure multipoles with arc geometry
+  HORIZONTALLY_PURE     # Horizontally pure multipoles with arc geometry
+  CHORD                 # Z-axis is the chord connecting the entrance origin point to the exit origin point.
+  ENTRANCE_COORDS       # Rectangular coordinates commensurate with the entrance coordinates.
+  EXIT_COORDS           # Rectangular coordinates commensurate with the exit coordinates.
   ```
 See the [Exact Multipole Fields in a Bend](#s:bend.multipoles) section for documentation on horizontally
-and vertically pure multipoles. The `follows_ref_geometry` choice means the multipole geometry
-mirrors the setting of `ref_geometry`. Since `multipole_geometry` has no `arc` setting, if 
-`ref_geometry` is set to `arc`, a setting of `multipole_geometry` to `follows_ref_geometry` is
-equivalent to `vertically_pure`.
+and vertically pure multipoles. The `FOLLOWS_REF_GEOMETRY` choice means the multipole geometry
+mirrors the setting of `ref_geometry`. Since `multipole_geometry` has no `ARC` setting, if 
+`ref_geometry` is set to `ARC`, a setting of `multipole_geometry` to `FOLLOWS_REF_GEOMETRY` is
+equivalent to `VERTICALLY_PURE`.
 %
 - **ref_geometry**
 
@@ -224,10 +224,10 @@ equivalent to `vertically_pure`.
 calculated with respect to and sets the reference that `e1_rect` and `e2_rect` edge angles are measured
 with respect to. Possible settings are:
   ```{code} yaml
-  arc               # Default. Reference are the curvilinear arc coordinates.
-  chord             # Z-axis is the chord connecting the entrance origin point to the exit origin point.
-  entrance_coords   # Rectangular coordinates commensurate with the entrance coordinates.
-  exit_coords       # Rectangular coordinates commensurate with the exit coordinates.
+  ARC               # Default. Reference are the curvilinear arc coordinates.
+  CHORD             # Z-axis is the chord connecting the entrance origin point to the exit origin point.
+  ENTRANCE_COORDS   # Rectangular coordinates commensurate with the entrance coordinates.
+  EXIT_COORDS       # Rectangular coordinates commensurate with the exit coordinates.
   ```
   In all cases, the reference coordinates {math}`y`-axis is parallel to the {math}`y`-axes of the 
 body coordinate system.
@@ -247,6 +247,3 @@ physical element.
   Important! Do not use `tilt_ref` when doing misalignment studies for a machine. Trying to misalign
 a dipole by setting `tilt_ref` will affect the positions of all downstream elements! Rather, use the
 `z_rot` parameter in the `BodyShiftP` group.
-
-%---------------
-
