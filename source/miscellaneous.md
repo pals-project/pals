@@ -60,7 +60,7 @@ facility:
         description: Model Mitsubishi 800KL
       variables:
         cur1: 0.023
-        cur2: cur1 / c_light
+        cur2: 1e8 / c_light
         ...
       controls:
         - parameter: Qa.*>MagneticMultipoleP.Ks2L  # Parameter control specification.
