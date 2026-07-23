@@ -125,7 +125,6 @@ The difference between the two lists is simply that lines 2 and 3 are switched a
 ### material
 
 The `material` parameter sets the material of the aperture. 
-Using chemical formulas like `Cu` and `Fe` is the most portable.
 
 ### vertices component
 
@@ -135,16 +134,16 @@ Between vertex points, the aperture can follow a straight line or the arc of an 
 The vertex points are specified by setting the `vertices` parameter. This parameter has three
 subcomponents
 ```{code} yaml
-  verticies:
+  vertices:
     center: 0                 # [m] Vector of (x, y) center point.
     absolute_vertices: false  # [logical] Default is False.
     list: [{}]                # [List of dictionaries] Ordered list of vertex points.
 ```
-The `list` vector can have the components:
+Each entry of the `list` vector can have three keys:
 ```{code} yaml
-point       # [m] Vector of two real numbers.
-radius      # [m] Vector of single or two real numbers.
-tilt        # [rad/2pi] Ellipse tilt angle.
+point        # [m] Vector of two real numbers.
+radius       # [m] Vector of single or two real numbers.
+tilt: 0      # [rad/2pi] Ellipse tilt angle.
 ```
 Example:
 ```{code} yaml
@@ -155,8 +154,8 @@ ApertureP:
     list:
       - point: [0.023, 0.069]      # V1
       - point: [-0.025, 0.067]     # V2
-      - radius: [0.08, 0.04]
-      - tilt: 0.12
+        radius: [0.08, 0.04]
+        tilt: 0.12
       - point: [-0.088, 0.036]     # V3
       - point: [-0.088, -0.021]    # V4
       - point: [0.023, -0.033]     # V5
@@ -170,23 +169,16 @@ the position of the `center`. If `absolute_vertices` is `true`, the vertex point
 are independent of the `center` point. The default position of the `center` is the origin.
 
 The `list` component of `vertices` contains an ordered  list of vertex 
-`point`s with each one specifying an {math}`(x, y)` position. 
-In between any two `point`s, there can optionally be a single `radius` element.
-If there is a `radius` element, there can also be a  single `tilt` element between
-the `point`s but `tilt` can only be present if there is a `radius` present.
-There can also be a `radius` element and `tilt` element after the last `point` in the `list`. 
-If these are present, they are considered to be between the last and first `point`s in the list.
-
-The aperture is constructed by connecting consecutive `point`s in the `list` along with
-connecting the last `point` to the first. If there is no `radius` between consecutive `point`s,
-the aperture follows a straight line between the points. If there is a `radius` element between
-two points, the aperture is either a circular arc or a section of an ellipse. 
-A `radius` can have either a single value or a list of two values. If a `radius` has a single
-value, this is the radius of the circular arc connecting the vertices. In this case, the `tilt`
-element may not be present. If the `radius` has two values, these are the half lengths of the 
-principal diameters. If the `tilt` is zero (the default), the ellipse is upright with the first 
+`point`s with each one specifying an {math}`(x, y)` position and optionally a `radius` and `tilt` of the path to the point. 
+The aperture is constructed by connecting consecutive `point`s in the `list` along with 
+connecting the last `point` to the first. 
+If only the `point` coordinates are given, the vertex is connected by a straight line.
+If the `radius` is given, the path follows a section of an ellipse with the first 
 `radius` value being the {math}`x`-axis half width and the second value being the {math}`y`-axis
-half width. A non-zero `tilt` value rotates the ellipse by that amount. 
+half width. Of the four possible arcs, only the two short ones are considered.
+Positive radius means that the arc is convex and negative radius means that the arc is concave.
+If `radius` is a single value, both half widths are the same and the ellipse is a circle.
+A non-zero `tilt` value rotates the ellipse by that amount counterclockwise. 
 
 In order to be able to quickly calculate whether a particle is inside or outside the
 aperture, the aperture shape has some restrictions. For one, 
@@ -198,12 +190,7 @@ to the `center` point:
   0 < \theta_{i+1} - \theta_{i} \pmod{2\pi} < \pi
 ```
 Another restriction is that any half-line drawn from the `center` point out to infinity intersects
-the aperture at exactly one point. Finally, for a circular or elliptical arc, of
-the four possible solutions that connect the two vertex points at the ends of the arc, 
-the arc used is the arc of minimal length such that the center of the ellipse is on the same side
-as the `center` point with respect to a line drawn through the two points.
-
-Positive radius means that the arc is convex and negative radius means that the arc is concave.
+the aperture at exactly one point.
 
 When using vertices, an efficient way to determine if a point {math}`(x, y)` is within the aperture
 is the following. Note: The computation is with respect to the `center` point.
