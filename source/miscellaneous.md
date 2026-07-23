@@ -99,6 +99,7 @@ So, for example, with the above example, outside of the `ps27` controller the `c
 has the name `ps27>cur1`. While controllers can control the variables of other controllers,
 circular definitions are not allowed. The set of all controllers thus forms a hierarchy and
 controller evaluation works by starting at the top of the hierarchy and working downwards.
+The order in which controllers are defined in the PALS file is irrelevant to controller evaluation.
 
 There are two types of controllers that are differentiated by the setting of the controller's
 `control_type` parameter. The possible settings of `control_type`:
