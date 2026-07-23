@@ -64,6 +64,9 @@ The `shape` parameter selects the shape of the aperture. Possible values are:
   shape: VERTICES      # Shape defined by set of vertices.
   shape: CUSTOM_SHAPE  # Shape defined outside of the PALS standard.
 ```
+When the `shape` is set to `RECTANGULAR` or `ELLIPTICAL`, any vertex information is ignored.
+If `shape` is set to `VERTICES`, any `min`, `max`, `center` and `width` settings are ignored.
+This allows easy switching between shapes.
 
 ### Limit components
 
