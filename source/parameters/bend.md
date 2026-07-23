@@ -192,7 +192,7 @@ The setting of `Kn0_from_g_ref` is irrelevant if either `Kn0` or `Bn0` is set.
 - **L_rectangle**
 
   "Rectangular" length of the bend. `L_rectangle` is depicted in figures {numref}`f:bend`C and {numref}`f:bend`D. 
-`L_rectangle = radius_ref / sin(angle_ref)` independent of the setting of `ref_geometry`.
+`L_rectangle = radius_ref * sin(angle_ref)` independent of the setting of `ref_geometry`.
 %
 - **L_sagitta (output param)**
 
