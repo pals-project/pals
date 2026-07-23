@@ -125,6 +125,7 @@ The difference between the two lists is simply that lines 2 and 3 are switched a
 ### material
 
 The `material` parameter sets the material of the aperture. 
+Using chemical formulas like `Cu` and `Fe` is the most portable.
 
 ### vertices component
 
