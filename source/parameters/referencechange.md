@@ -21,9 +21,9 @@ Adjustments are only made if there are non-`null` parameters. Only one of `dE_re
 `dpc_ref`, `E_tot_ref`, and `pc_ref` may be present. 
 Similarly, only one of  `dtime_ref` and `time_ref` may be present.
 
-The `extra_dtime_ref` parameter in the above is ment as a correction to take into account
+The `dtime_ref` parameter in the above is ment as a correction to take into account
 for particle motion that is not straight or acceleration that is not linear in energy. For example,
-in a wiggler, `extra_dtime_ref` can be used to correct for the oscillatory nature of the
+in a wiggler, `dtime_ref` can be used to correct for the oscillatory nature of the
 particle trajectories.
-Since the PALS standard does not define how tracking is to be done, `extra_dtime_ref` and `dE_ref`
+Since the PALS standard does not define how tracking is to be done, `dtime_ref` and `dE_ref`
 must be calculated by the User.

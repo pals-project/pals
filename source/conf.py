@@ -35,8 +35,16 @@ html_theme_options = {
     "collapse_navbar": False,
     "repository_url": "https://github.com/pals-project/pals",
     "use_repository_button": True,
+    "logo": {
+        "image_light": "_static/pals-logo-light.png",
+        "image_dark": "_static/pals-logo-dark.png",
+        "alt_text": "Particle Accelerator Language Standard (PALS)",
+    },
 }
 html_static_path = ['_static']
+
+# Show only the logo in the top-left of the sidebar (replaces the title text).
+html_title = ""
 
 # Route the theme search box to Read the Docs' server-side search.
 # See _static/rtd-search-override.js for details.

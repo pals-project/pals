@@ -5,11 +5,11 @@
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary.
+The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
   version:          # [string] Version of the PALS schema used in this file
-  authors:          # [list] Authors associated with this file
+  authors:          # [list] Optional authors associated with this file
   notes:            # [list] Optional notes of interest.
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
@@ -92,8 +92,8 @@ version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} YAML
-- MagneticMultipoleP:
-  - Kn3L: 0.3
+MagneticMultipoleP:
+  Kn3L: 0.3
 ```
 There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
@@ -139,7 +139,7 @@ Notice that particle names must be quoted.
 
 Special values used in this document are:
 
-1. Boolean parameters can be one of three values:
+1. Logical parameters can be one of three values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.

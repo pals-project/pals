@@ -18,8 +18,8 @@ ApertureP:
   vertices: []                     # [array] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture
   thickness: 0                     # [m] Real number
-  aperture_shifts_with_body: false # [Boolean] See below.
-  aperture_active: true            # [Boolean] false implies aperture is not operating.
+  aperture_shifts_with_body: false # [logical] See below.
+  aperture_active: true            # [logical] false implies aperture is not operating.
 ```
 The horizontal aperture may be specified by setting `x_min` and `x_max` or by setting
 `x_center` and `x_width` but only one pair may be set. A Similar situation applies to
@@ -137,7 +137,7 @@ subcomponents
 ```{code} yaml
   verticies:
     center: 0                 # [m] Vector of (x, y) center point.
-    absolute_vertices: false  # [Boolean] Default is False.
+    absolute_vertices: false  # [logical] Default is False.
     list: [{}]                # [List of dictionaries] Ordered list of vertex points.
 ```
 The `list` vector can have the components:
@@ -163,7 +163,7 @@ ApertureP:
 ```
 This corresponds roughly to what is shown in {numref}`f:aperture`.
 
-If the boolean `absolute_vertices` is set `False`, which is the default,
+If the logical `absolute_vertices` is set `False`, which is the default,
 the vertex point positions are with respect to the `center` point. 
 That is, the vertex point positions in absolute terms are the positions given with each vertex plus
 the position of the `center`. If `absolute_vertices` is `true`, the vertex point positions 
@@ -202,6 +202,8 @@ the aperture at exactly one point. Finally, for a circular or elliptical arc, of
 the four possible solutions that connect the two vertex points at the ends of the arc, 
 the arc used is the arc of minimal length such that the center of the ellipse is on the same side
 as the `center` point with respect to a line drawn through the two points.
+
+Positive radius means that the arc is convex and negative radius means that the arc is concave.
 
 When using vertices, an efficient way to determine if a point {math}`(x, y)` is within the aperture
 is the following. Note: The computation is with respect to the `center` point.

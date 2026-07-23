@@ -29,7 +29,7 @@ are those branches created due to `Fork` elements.
 A branch has the optional components
 ```{code} yaml
 inherit   # [String] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
-periodic  # [Boolean] Optional. Are orbit and Twiss parameters periodic? 
+periodic  # [logical] Optional. Are orbit and Twiss parameters periodic? 
           #   Default is the setting of the root BeamLine.
 ```
 The setting of `periodic` for a `Branch` overrides the setting of `periodic`
@@ -45,8 +45,6 @@ of a branch, of constructing the ordered list of lattice elements contained in t
 The first lattice element of any root `BeamLine` line must be a `BeginningEle` element and the expanded
 branch line may only contain this one `BeginningEle` element. If a subline contains a `BeginningEle`
 element, this element must be dropped from the branch line.
-
-The last lattice element of a branch line must be a `Marker` element.
 
 Notes:
 - When a lattice is expanded, 
@@ -154,7 +152,7 @@ the reference properties at the `Fork` element.
 
 %---------------------------------------------------------------------------------------------------
 (s:use)=
-## Use statement
+## use Statement
 
 Multiple `Lattice`s can be defined in a PALS file. By default, the one that gets instantiated 
 is the last lattice. This default can be overridden by a `use` statement. Example:
@@ -171,4 +169,50 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
 
 - use: lat1
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:expand.lat)=
+## expand_lattice Statement
+
+By default, [lattice expansion](#s:expansion.intro) happens at the end when a PALS file has been read.
+Lattice expansion can be triggered before this if there is an `expand_lattice` statement.
+This statement must be a child of the `facility` node. Triggering lattice expansion is necessary
+when reference to the expanded lattice is needed. For example:
+```{code} yaml
+facility:
+  - q1:
+      kind: Quadrupole
+      MagneticMultipoleP:
+        Kn1L: 0.375
+
+  - bline:
+      kind: Beamline
+      line:
+        - q1:
+            repeat: 3
+
+  - lat:
+      kind: Lattice
+      branches: bline
+
+  - expand_lattice
+
+  - set:
+      parameter: lat>>q1>MagneticMultipoleP.Kn1L
+      value: parameter * (1 + 1e-4*random_gauss())
+```
+In this example, the expanded lattice has three elements named `q1`. 
+To add a random error to each of these, the lattice has to be expanded before a `set` command is used.
+
+If the `expand_lattice` command is removed from the above example, the three `q1` elements of `lat` have
+not yet been instantiated and the set command as written cannot be done. When there is no
+`expand_lattice` statement, trying to set the `Kn1L` parameter in the `q1` element definition as in:
+```{code} yaml
+  - set 
+      parameter: q1>MagneticMultipoleP.Kn1L
+      value: parameter * (1 + 1e-4*random_gauss())
+```
+will be successful but without `expand_lattice`, the set targets the single `q1` definition, 
+so `random_gauss()` is evaluated only once and all three expanded copies inherit that one value.
+
 
