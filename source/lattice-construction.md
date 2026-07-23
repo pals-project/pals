@@ -77,17 +77,16 @@ The steps used for lattice expansion are:
 * Start with the root PALS file and construct a tree that contains all `include` and `load` trees.
 This is the base tree for the lattice expansion.
 
-* Divide the `facility` list into three lists: The first list, called the "pre-expansion list"
-is everything, except controller elements, that comes before an `expand_lattice` node. The second list, 
-called the "post-expansion" list is everything, except controller elements, that comes after the 
-`expand_lattice` node. The third list, called the "controller list" is the controller elements. 
-All lists preserve the order from the initial list.
+* Divide the `facility` list into two lists: The first list, called the "pre-expansion list"
+is everything that comes before an `expand_lattice` node. The second list, 
+called the "post-expansion" list is everything that comes after the `expand_lattice` node. 
+Both lists preserve the order from the initial list.
 The post-expansion list will be empty if there is no `expand_lattice` node. 
 The post-expansion list is ignored until after the branches have been expanded.
 
 * Go through the pre-expansion list in order and node-by-node evaluate any expressions and execute any `set` commands.
 There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
-Both are evaluated.
+Both are evaluated. Controllers are ignored here.
 
   Set commands can only act on the parameters that have been defined up to that point in the 
   pre-expansion list. For example:
@@ -134,14 +133,20 @@ new beamlines and branch expansion is performed on these new lines.
 The new branches may themselves have `Fork` elements that fork to new beamlines
 and this process is repeated until there are no new branches to be created.
 
+* Apply the `ABSOLUTE` `Controllers` from the pre-expansion list.
+`RELATIVE` `Controllers` are not involved in lattice expansion.
+
 * For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
 species, time, etc.) are calculated along with dependent parameters (EG multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
 * Using the post-expansion list, node-by-node from the list beginning, 
-evaluate any expressions and execute any `set` commands.
+evaluate any expressions and execute any `set` commands. Controllers are ignored here.
 
-* Apply `ABSOLUTE` `Controllers`. `RELATIVE` `Controllers` are not involved in lattice expansion.
+* Apply `ABSOLUTE` `Controllers` from both lists. 
+`RELATIVE` `Controllers` are not involved in lattice expansion.
+
+* Recalculate floor and reference parameters as needed.
 
 Notes:
 - All branches must have unique names. However, different branches may use the same root `BeamLine`.
