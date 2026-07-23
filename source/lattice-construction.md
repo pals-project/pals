@@ -103,7 +103,7 @@ Both are evaluated. Controllers are ignored here.
       - Q2:                       # Defined after the set
           kind: Quadrupole
   ```
-  In this case since `Q2` is defined after the set, its MagneticMultipoleP.Kn0 value is not affected
+  In this case since `Q2` is defined after the set, its `MagneticMultipoleP.Kn0` value is not affected
   by the set.
 
   Note: Some parameter values may not be calculable when an expression is evaluated. 
