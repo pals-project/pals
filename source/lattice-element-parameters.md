@@ -58,32 +58,6 @@ cleo:             # [string] user-defined name
 ```
 
 %---------------------------------------------------------------------------------------------------
-(s:parameter.matching)=
-## Element Parameter Name Matching
-
-For element parameters, the general syntax is
-```{code} text
-{beamline}>>{element}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
-```
-where
-```{code} yaml
-{beamline}                      # Optional BeamLine or Branch name.
-{element}                       # Optional lattice element name.
-{parameter-group}               # Parameter group name.
-{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
-{parameter}                     # Parameter name.
-```
-Only `{beamline}` and `{element}` use PCRE2 syntax. 
-
-Example:
-```{code} yaml
-Qa.*>MagneticMultipoleP.Ks2L
-```
-This will match the `Ks2L` component of all elements whose name begins with `Qa`. Notice that
-since only `{beamline}` and `{element}` use PCRE2 syntax, the dot separating the parameter group
-and the parameter is unambiguous.
-
-%---------------------------------------------------------------------------------------------------
 (s:inherit.params)=
 ## Naming and Inheriting Parameters
 

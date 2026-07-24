@@ -134,8 +134,93 @@ charge_of(my_particle)       # The variable or constant can be used in an equati
 Notice that particle names must be quoted.
 
 %---------------------------------------------------------------------------------------------------
+(s:name.matching)=
+(s:parameter.matching)=
+## Name Matching
+
+Name matching is the process of finding the set of named constructs — lattice
+elements, element parameter groups, element parameters, constants, variables,
+etc. — that a given string is matched to. PALS defines a standard syntax for this.
+
+At its simplest, a string is matched against the `name` of a construct. For
+example, `qa.*` matches every element (or constant, variable, ...) whose name
+begins with `qa`. Names may be [PCRE2](https://www.pcre.org/) regular
+expressions. Regex matching is a whole-name (fully anchored) match — the pattern
+must match the entire name — so `qa.*` matches any name beginning with `qa`,
+while `qa` on its own matches only the exact name `qa`.
+
+Name matches may be restricted to a given construct kind using the notation
+```{code} yaml
+{kind}::{name}
+```
+where `{kind}` is the construct kind — for example a lattice element kind such as
+`Marker`, or a non-element kind such as `Controller` — and `{name}` is the name
+match. The `{kind}` selector resolves within the namespace of the given kind, so
+the same `{name}` may match different constructs depending on the kind supplied.
+Example:
+```{code} yaml
+Marker::bpm.
+```
+This will match to all `Marker` elements whose name is four characters starting with `bpm`
+(since a dot matches to any single character, see below).
+
+Element parameters are matched by appending the parameter path to an element name
+match, using a single `>` as the separator. A parameter that belongs to a
+[parameter group](#s:param.groups) is matched using the group path:
+```{code} text
+{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
+```
+while a parameter that is not in any group — for example `length`, `is_on`, or
+the element kind (see [Non-Group Parameters](#s:non.params)) — is matched
+directly:
+```{code} text
+{element-name}>{parameter}
+```
+where
+```{code} yaml
+{element-name}                  # Element name match, see below.
+{parameter-group}               # Parameter group name (for grouped parameters).
+{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
+{parameter}                     # Parameter name.
+```
+The `{element-name}` component is any element name match from
+[Element Name Matching](#s:element.matching) — including its kind (`::`),
+BeamLine/Branch (`>>`), and Lattice (`>>>`) qualifiers. The parameter path
+following the `>` is, unlike element names, matched exactly rather than with
+PCRE2; the dots within it are therefore unambiguous, and the single `>`
+separator is distinct from the `>>` and `>>>` qualifiers that may appear inside
+`{element-name}`.
+
+Example:
+```{code} yaml
+qa.*>MagneticMultipoleP.Ks2L
+Quadrupole::qa.*>MagneticMultipoleP.Ks2L
+Q1>length
+```
+The first line matches the `Ks2L` component of `MagneticMultipoleP` for all
+elements whose name begins with `qa`. The second is the same but restricted to
+elements of kind `Quadrupole`. The third matches the ungrouped `length`
+parameter of the element `Q1`.
+
+A trailing part of the path may be dropped to match the enclosing construct
+instead of a parameter: omit `{parameter}` to match a parameter group, or omit
+the `>{parameter-group}...` entirely to match the element itself. Example:
+```{code} yaml
+qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
+qa.*                       # Match the element.
+Controller::cd.t           # Match all Controllers whose four-character name starts with `cd` and ends with `t`.
+```
+
+Constructs that are not element parameters are matched by name in the same way.
+Top-level [constants and variables](#s:constants) are matched directly, with no
+`>`-qualified path. A variable that is owned by a controller, however, is matched
+through its controller using the same single `>` separator —
+`{controller-name}>{variable-name}` — just as an element parameter is reached
+through its element.
+
+%---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
-### Special Values
+## Special Values
 
 Special values used in this document are:
 
