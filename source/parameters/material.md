@@ -4,59 +4,36 @@
 ```{code} yaml
 MaterialP:
 - state:             # ["solid", "liquid", "gas"]
-- material:          # [CompoundP,ElementP] definiton of the material in terms of compounds or elements.
+- material:          # [CompoundP, string] definition of the material in terms of compounds or named elements.
 ```
 
-The definition of materials is inspired by Geant4's material handling. One can either use the name, which is the symbol of an element (`"Cu"`, `"H"`, ...) or compound (`"G4_STAINLESS-STEEL"`).
-In the future all elements and materials in the [G4 Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html) will be supported, without the `G4_`-prefix for elements.
+Materials can be accessed primarily by their name. Similar to the openPMD 2.0.0 specification, pure elements names are their symbols of the periodic table, specific isotopes are denoted by a pound symbol `#` followed by the isotopic number followed by an element, e.g.: `#3He` for Helium-3. Pure elements have their natural isotope ratios.
 
-Alternatively custom elements can be defined by
+Mixtures of multiple elements (or isotopes) in specific ratios can be accessed by their name according to Geant4's specifications [G4 Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html) or defined with a custom `CompoundP` object:
 
-```{code} yaml
-ElementP:
-- name:      # [string] The name of the material
-- density:   # [kg/m^3] The density of the material
-- Z:         # [int]    The atomic number
-- A:         # [int]    The mass number (equals Z+N)
-- N:         # [int]    The neutron number
-- m:         # [u]      The atomic mass
-```
-
-and compounds by
 
 ```{code} yaml
 CompoundP:
 - name:       # [string] The name of the material
 - density:    # [kg/m^3] The density of the material
-- elements:   # List of MaterialP or CompoundP of which the compound consists
+- elements:   # List of ElementP or CompoundP of which the compound consists
 - ratio:      # List of ratios of the elements
 - mass_ratio: # List of mass-ratios of the elements
 ```
-
 `ratio` describes the ratio in terms of atom/molecule count, while `mass_ratio` describes it int terms of mass fractions.
-If density is not given it will be inferred form the densities and mass fractions of the elements.
+If `density` is not given it will be inferred form the densities and mass fractions of the elements.
 
 
 ### Examples
-`material: "Cu"` or `material: "G4_STAINLESS-STEEL"` or define a new material.
+Materials can be the names of the material `material: "Cu"` or `material: "G4_STAINLESS-STEEL"` or defined in place:
 
-Liquid deuterium can be defined with the `ElementP` parameters:
 ```{code} yaml
-ElementP:
-- name: "Deuterium(l)"
-- density: 160
-- Z: 1
-- A: 1
-- m: 2.01
-```
-and deuterated polyethylene (C2H4) can be defined based on the previous definition
-```{code} yaml
-CompoundP:
-- name: "deutPE"
+material:
+- name: "deuterated polyethylene"
 - density: 1050
 - elements:
   - "C"
-  - "Deuterium(l)"
+  - "#2H"
 - ratio:
   - 2
   - 4
