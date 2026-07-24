@@ -21,7 +21,7 @@ Example:
 - B1a:
     kind: Bend
     BendP:
-      e1: 0.1
+      e1: 0.1 / c_light
       g_ref: 0.02
 
 - set:
