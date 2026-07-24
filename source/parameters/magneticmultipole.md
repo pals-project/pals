@@ -61,30 +61,10 @@ That is, it is not permitted for one component to be length integrated and the o
 as well as it is not permitted for one component to be a field and the other component to be normalized.
 However, the multipole components of different order do not have to be of the same type.
 
-When multipoles are specified for a `Bend` element, the calculation of the field is
-complicated by the curvilinear coordinate system.
-The `geometry` component switch can be used to specify how to calculate the multipole fields. 
-Possible settings for this component are:
-```{code} yaml
-vertically_pure
-horizontally_pure
-entrance_tangent
-exit_tangent
-chord_tangent
-```
-The `entrance_tangent` setting is used when the [reference curve](#s:coords) for the 
-multipole coordinate system is the straight line tangent to the entrance coordinates of the bend. 
-Similarly, the `exit_tangent` setting is used when the reference curve is the 
-straight line tangent to the exit coordinates of the bend. And the `chord_tangent` setting is used
-when the reference curve is the straight line connecting the entrance point to the
-exit point. In all these three cases, since the multipole reference curve is a straight line, 
-Eq. [](#bbmult) is valid.
-Note that for these cases, the multipole reference curve 
-is not the same as the [`branch` reference curve](#s:coords).
-
-If `geometry` is set to `vertically_pure` or `horizontally_pure`, the reference curve
-for the multipoles is the circular arc of the bend corresponding to the `branch` reference curve. 
-This is discussed in detail in [](#s:bend.multipoles).
+With a `bend` element, the reference line about which the multipoles are referenced to
+may be curved. This is set by the `ref_geometry` parameter of the [`BendP`](#s:bend.params)
+parameter group. If `ref_geometry` is set to `arc`, the `multipole_type` parameter of
+`BendP` will set how the multipoles are evaluated. See the `BendP` documentation for more details.
 
 "Tapering parameters" account for the fact that, due to synchrotron radiation, the energy of a
 beam at a particular point can be different from the reference value. There is an

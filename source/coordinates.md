@@ -28,7 +28,7 @@ In the PALS documentation, phase space coordinates are labeled `(x, px, y, py, z
 In all cases, `x` and `y` have their natural meaning.
 
 For `ANGLE_AND_ENERGY` and `ANGLE_AND_MOMENTUM` coordinate systems, `px` and `py` are defined to be
-{math}`dx/ds = P_x/P_s` and {math}`dx/ds = P_y/P_s` where {math}`(P_x, P_y, P_s)` are the
+{math}`dx/ds = P_x/P_s` and {math}`dy/ds = P_y/P_s` where {math}`(P_x, P_y, P_s)` are the
 momenta along the {math}`(x, y, s)`coordinates axes. 
 For the other two coordinate systems, `KINETIC_AND_ENERGY` and `KINETIC_AND_MOMENTUM`,
 `px` and `py` are defined to be {math}`P_x/P_0` and {math}`P_y/P_0` where {math}`P_0` is
@@ -68,7 +68,7 @@ alignment shifts (not "misaligned"), is the same as the `branch` coordinates.
 
 %---------------------------------------------------------------------------------------------------
 
-The PALS uses three coordinate systems to describe a machine as illustrated in the figure above. 
+PALS uses three coordinate systems to describe a machine as illustrated in the figure above. 
 First, the `floor` coordinates are rectangular coordinates independent of the accelerator.
 The position of the accelerator itself as well as external objects like the building the
 accelerator is in  may be described using `floor` coordinates.
@@ -113,7 +113,7 @@ fit together to form the branch coordinate system. How elements
 join together is determined in part by their entrance and exit coordinate frames. A) For
 straight line elements the entrance and exit frames are colinear. B) For bend elements, the 
 transformation from entrance to exit coordinates is a rotation about the bend center of curvature.
-C) For `Patch` and `floor_shift` elements the 
+C) For `Patch` and `FloorShift` elements the 
 exit frame may be arbitrarily positioned with respect to the entrance frame.
 ```
 
@@ -137,7 +137,7 @@ segment with the {math}`x` and {math}`y` axes always pointing in the same direct
 For a [Bend](#s:bend) element the reference curve is a segment of a circular arc as shown in
 {numref}`f:ele.coord.frame`B. With the `tilt_ref` parameter of a bend set to zero, the rotation axis
 between the entrance and exit frames is parallel to the {math}`y`-axis ([xxx](#s:floor)).
-For [Patch](#s:patch) and [floor_shift](#s:floorshift)
+For [Patch](#s:patch) and [FloorShift](#s:floorshift)
 elements ({numref}`f:ele.coord.frame`C), the exit face can be
 arbitrarily oriented with respect to the entrance end.
 For `FloorShift` elements the interior reference curve between the
@@ -210,7 +210,7 @@ with the downstream frame of element `A` mated to the upstream frame of element 
 The {math}`(x,z)` coordinates are drawn at the entrance end of the elements and {math}`z` will 
 always point towards the element's exit end.
 {numref}`f:patch.between`B shows a line
-with an normal (unreversed) orientation drift named `dft1` connected to a normal (unreversed) bend named
+with a normal (unreversed) orientation drift named `dft1` connected to a normal (unreversed) bend named
 `bnd1`. {numref}`f:patch.between`C shows the same line but with `bnd1` reversed.
 This gives an unphysical situation since a
 particle traveling through `dft1` will "fall off" when it gets to the drift's end.
@@ -224,7 +224,7 @@ Notes:
 - Irrespective of whether elements are reversed or not, the branch {math}`(x,y,z)` coordinate system
 at all {math}`s`-positions will always be a right-handed coordinate system.
 
-- Care must be take when using reversed elements. For example, if the field of the `bnd1` element in
+- Care must be taken when using reversed elements. For example, if the field of the `bnd1` element in
 the above example is appropriate for, say, electrons, that is, electrons will be bent in a clockwise
 fashion going through `bnd1`, an electron going in a forward direction through the
 line in {numref}`f:patch.between`D will be lost in the bend

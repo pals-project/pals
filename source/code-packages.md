@@ -2,7 +2,7 @@
 # Code Packages
 
 There are reference implementations of PALS "parsers". Here the word "parser" is used loosely since
-the parsers do much more than parse lattice files. All parsers will:
+the parsers do much more than parse PALS files. All parsers will:
 
 - Write and read from/to files.
 - Expand and evaluate expressions on lattices ( [`lattice expansion`](#s:lattice.expand)).

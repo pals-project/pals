@@ -5,11 +5,11 @@
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary.
+The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
   version:          # [string] Version of the PALS schema used in this file
-  authors:          # [list] Authors associated with this file
+  authors:          # [list] Optional authors associated with this file
   notes:            # [list] Optional notes of interest.
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
@@ -47,7 +47,7 @@ PALS:
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
-Information may appear in a lattice file outside of the `PALS` node but this information is considered
+Information may appear in a PALS file outside of the `PALS` node but this information is considered
 to be outside of the PALS standard and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
@@ -64,9 +64,9 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Including Other Files Within Lattice Files
+## Including Other Files Within PALS files
 
-A PALS lattice file can rely on includes from other files using the `include` command.
+A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
@@ -92,8 +92,8 @@ version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} YAML
-- MagneticMultipoleP:
-  - Kn3L: 0.3
+MagneticMultipoleP:
+  Kn3L: 0.3
 ```
 There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
@@ -121,13 +121,25 @@ to the following:
 - A name cannot start with a number
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 
+The exception is that particle species names, which are considered to be strings and not proper
+computer language variable names, follow the
+[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
+Examples:
+```{code} yaml
+charge_of("#3He+2")          # Helium with atomic number three.
+mass_of("anti-proton")       # Notice the dash.
+my_particle: "Au+79"         # Assign a species to a variable or constant.
+charge_of(my_particle)       # The variable or constant can be used in an equation.
+```
+Notice that particle names must be quoted.
+
 %---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
 ### Special Values
 
 Special values used in this document are:
 
-1. Boolean parameters can be one of three values:
+1. Logical parameters can be one of three values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
@@ -180,6 +192,7 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
+pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
@@ -192,22 +205,41 @@ classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
-The `classical_radius_factor` is a useful number when converting a formula that involve the classical
+The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants may be defined. Example:
+Other constants may be defined using `constant` as the `kind`.
+The parameters associated with a constant are:
+```{code} yaml
+  absolute_error: 0       # Absolute error.       
+  relative_error: 0       # Relative error.
+  value                   # Constant value.
+```
+If both `absolute_error` and `relative_error` are specified, 
+the true error is `absolute_error + relative_error * |value|`.
+Example:
 ```{code} yaml
 PALS:
   facility:
     - my_const:
         kind: constant
         value: 1.45 * c_light
+        relative_error: 0.02
     ...
 ```
 Constants must be defined directly under the `PALS` node or the `facility` node. 
 Constants may not be redefined.
 Exception: Since multiple include files may define the same constant, a redefinition of a constant
 with the **same value** as the original is valid.
+
+For constants that only have a value, an alternative compact form has the syntax:
+```{code} yaml
+  - constants:
+      - const_a: value_a        # Define const_a
+      - const_b: value_b        # Define const_b
+      - const_c:: pi * const_a  # Can use expressions.
+      ...
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=

@@ -1,19 +1,24 @@
 (s:bend.multipoles)=
 # Exact Multipole Fields in a Bend
-For static magnetic and electric multipole fields in a bend, the spatial dependence of the
+
+For static magnetic and electric multipole fields in a bend with `ref_geometry` set
+to `arc`, the spatial dependence of the
 field is different from multipole fields in an element with a straight geometry as given
 by Eqs. {eq}`bbmult` and {eq}`exiey`. The analysis of the multipole fields in a bend here follows
-McMillan {footcite:p}`McMillan:Multipoles`.
+McMillan {footcite:p}`McMillan:Multipoles`. Note: Whether the multipole coefficients represent
+vertically pure or horizontally pure multipoles (see below) is by the `multipole_type` switch
+of the [`BendP`](#s:bend.params) parameter group. See the `BendP` documentation for more details.
+
 
 In the rest of this section, normalized coordinates {math}`\widetilde r = r / \rho`,
-{math}`\widetilde x / = x / \rho`, and {math}`\widetilde y = y / \rho` will be used where 
+{math}`\widetilde x = x / \rho`, and {math}`\widetilde y = y / \rho` will be used where 
 {math}`\rho` is the bending radius of the reference coordinate system,
 {math}`r` is the distance, in the plane of the bend, from the bend center to the observation point, 
-{math}`x` is the distance, in the plane of the bend, from the referene coordinates to the observation point, 
+{math}`x` is the distance, in the plane of the bend, from the reference coordinates to the observation point, 
 and {math}`y` is the distance out-of-plane to the observation point. 
 With this convention {math}`\widetilde r = 1 + \widetilde x`.
 
-As McMillian shows, it is possible to calculate the magnetic field by constructing the
+As McMillan shows, it is possible to calculate the magnetic field by constructing the
 appropriate vector potential. However, from a practical point of view, it is simpler to use a
 scalar potential {math}`\phi` for both the magnetic and electric fields with
 the field given by {math}`-\nabla \phi`.  The potential is a solution to Laplace's equation
@@ -71,7 +76,7 @@ F_4 &= 3 [ \frac{1}{8} (\widetilde r^4 - 1) + \frac{1}{2} (\widetilde r^2 - 1) -
 \widetilde x^4 - \frac{2}{5} \widetilde x^5 + \frac{3}{10} \widetilde x^6 - \ldots \\
 &\text{Etc...}
 ```
-Note: Care must be take when evaluating these functions near {math}`\widetilde x = 0` using the exact
+Note: Care must be taken when evaluating these functions near {math}`\widetilde x = 0` using the exact
 {math}`\widetilde r`-dependent functions can be problematical due to round off error. 
 For example, Evaluating {math}`F_4(\widetilde r)` at {math}`\widetilde x = 10^{-4}` results
 in a complete loss of accuracy (no significant digits!) when using double precision numbers.
@@ -107,7 +112,7 @@ like {math}`dF_2/d\widetilde x` which has
 terms of all orders in {math}`\widetilde x`. In light of this, the solutions {math}`\phi_n^r` and 
 {math}`\phi_n^i` are called "vertically pure" solutions.
 
-The functions {math}`\phi_n^r` and {math}`\phi_n^i` form the a complete set of solutions but other
+The functions {math}`\phi_n^r` and {math}`\phi_n^i` form a complete set of solutions but other
 complete sets may be formed by defining basis functions which are linear combinations of 
 {math}`\phi_n^r` and {math}`\phi_n^i`. In particular, 
 it is possible to construct a complete set of "horizontally pure" solutions. 
@@ -153,15 +158,15 @@ pure solutions {math}`\psi_n` have an infinite number of terms.
 
 An important point: To properly simulate a machine, one must first of all
 understand whether the multipole values that have been handed to you are for horizontally
-pure multipoles, vertically, pure multipoles, or perhaps the values do not correspond to
+pure multipoles, vertically pure multipoles, or perhaps the values do not correspond to
 either horizontally pure nor vertically pure solutions! Failure to understand this point
 can lead to differing results. For example, the chromaticity induced by a horizontally
 pure quadrupole field will be different from the chromaticity of a vertically pure
 quadrupole field of the same strength.
 
 [^foot1]: Notice that here {math}`n` is related to {math}`m` in
-McMillian's paper by {math}`m = n + 1`. Also note that the {math}`\phi^r` and {math}`\phi^i` 
-here have a normalization factor that is different from McMillian.
+McMillan's paper by {math}`m = n + 1`. Also note that the {math}`\phi^r` and {math}`\phi^i` 
+here have a normalization factor that is different from McMillan.
 
 
 ```{footbibliography}

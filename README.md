@@ -5,7 +5,7 @@
 An effort to create a standard to promote information exchange for particle accelerators.
 PALS can also serve as the schema for new simulation programs and 
 the associated code that comes
-with PALS will be usable to read/validate/write lattice files thus saving considerable programming time.
+with PALS will be usable to read/validate/write PALS files thus saving considerable programming time.
 
 [Online documents.](https://pals-project.readthedocs.io)
 

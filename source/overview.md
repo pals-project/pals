@@ -9,7 +9,7 @@ particle accelerators and storage rings. PALS aims to promote:
  - A unified description for post-processing, visualization and analysis.
 
 Additionally, associated PALS code will be usable from within simulation programs to read and write
-lattice files thus relieving programmers from reinventing the wheel.
+PALS files thus relieving programmers from reinventing the wheel.
 
 PALS is able to describe the connections between various things
 from the connection of injection and extraction lines connected to a storage ring to the interaction region
@@ -20,7 +20,7 @@ single lattice to be used as the basis of start-to-end simulations.
 
 PALS is built to be easily customizable so that custom information may be inserted by a program into a lattice.
 This custom information is generally not usable by other programs but can be useful when a program accesses
-lattice files that it generated. 
+PALS files that it generated. 
 
 
 %---------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ connections, shielding wall geometries, etc.
 %---------------------------------------------------------------------------------------------------
 ## What PALS Is Not
 
-PALS does not do simulations and, in particular, does not do tracking. That said, PALS lattice files
+PALS does not do simulations and, in particular, does not do tracking. That said, a PALS file
 can store parameters that can be used to configure simulations. 
 
 %---------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ files is shown schematically below.
 :width: 70%
 :name: f:trans
 
-Schematic showing how a simulation program can interact with a PALS compliant lattice file.
+Schematic showing how a simulation program can interact with a PALS file.
 ```
 The components here are:
 - **Simulation program:** A simulation program.
@@ -60,19 +60,19 @@ information into an "expanded form".
 This includes expanding beam lines, evaluating expressions, etc.
 - **Reader / Writer:** Package to read/write files of a standard format (JSON, YAML, etc). 
 Packages to do this are widely available.
-- **Lattice File:** A PALS lattice file in a standard format such as JSON, YAML, etc.
+- **PALS File:** A file conforming to the PALS schema expressed in some standard format such as JSON, YAML, etc.
 
 The PALS standard can be divided into several pieces:
 - **Schema standard:** The schema defines, in a language neutral manner, the information that 
-can appear in a lattice file. This includes standardized names of lattice elements and 
+can appear in a PALS file. This includes standardized names of lattice elements and 
 lattice parameters, definitions of lattice parameters, how lattice elements can be organized
 into branches to describe the entire accelerator complex, etc.
 - **File format standards:** For various formats like YAML and Python there is a file format
-standard to ensure that different translators are able to read a PALS compliant lattice file.
-- **Translator standard:** After reading in a lattice file, a translator can present to
-a simulation program a data object that represents the lattice file. 
+standard to ensure that different translators are able to read a PALS file.
+- **Translator standard:** After reading in a PALS file, a translator can present to
+a simulation program a data object that represents the PALS file. 
 There are two basic representations that a PALS compliant translator must be able construct.
-The **exact** representation is a direct translation of the contents of the lattice file
+The **exact** representation is a direct translation of the contents of the PALS file
 without any lattice expansions or expression evaluations.
 The **expanded** representation has, among other things, all lines expanded into branches 
 and all expressions evaluated. 

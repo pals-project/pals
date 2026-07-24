@@ -10,6 +10,95 @@ For documentation on lattice elements in general see [here](#c:lat.ele).
 
 The following element kinds involve applied electromagnetic fields in vacuum.
 
+- [ACKicker](#s:ackicker)
+- [Bend](#s:bend)
+- [CrabCavity](#s:crabcavity)
+- [Drift](#s:drift)
+- [Kicker](#s:kicker)
+- [Multipole](#s:multipole)
+- [Octupole](#s:octupole)
+- [Quadrupole](#s:quadrupole)
+- [RFCavity](#s:rfcavity)
+- [Sextupole](#s:sextupole)
+- [Solenoid](#s:solenoid)
+- [Wiggler](#s:wiggler)
+
+%---------------------------------------------------------------------------------------------------
+(s:beam)=   
+## Beam and Plasma Elements 
+
+The following element kinds involve interactions with the mean field of a particle distribution.
+
+- [BeamBeam](#s:beambeam)
+
+%---------------------------------------------------------------------------------------------------
+(s:sources)=
+## Sources and Collimation  
+
+The following element kinds are for producing or removing beam particles. 
+
+- [Converter](#s:converter)
+- [EGun](#s:egun)
+- [Foil](#s:foil)
+- [Mask](#s:mask)
+
+%---------------------------------------------------------------------------------------------------
+(s:instrumentation)=
+## Instrumentation and Diagnostics
+
+The following element kinds are for instrumentation and diagnostics.
+
+- [Instrument](#s:instrument)
+
+%---------------------------------------------------------------------------------------------------
+(s:map)=
+## Map Elements
+
+The following element kinds specify transport maps through an element without regard to the physical fields
+present.
+
+- [Match](#s:match)
+- [Taylor](#s:taylor)
+
+%---------------------------------------------------------------------------------------------------
+
+(s:bookkeeping)=         
+## Bookkeeping Elements                
+
+The following element kinds provide relationships among branches and coordinate systems.
+
+- [BeginningEle](#s:beginningele)
+- [Fiducial](#s:fiducial)
+- [FloorShift](#s:floorshift)
+- [Fork](#s:fork)
+- [Marker](#s:marker)
+- [Patch](#s:patch)
+- [Placeholder](#s:placeholder)
+- [ReferenceChange](#s:reference.change)
+
+%---------------------------------------------------------------------------------------------------
+(s:grouping)=         
+## Structural and Grouping Elements
+
+The following element kinds describe composite elements and support structures.
+
+- [Girder](#s:girder)
+- [UnionEle](#s:unionele)
+
+%---------------------------------------------------------------------------------------------------
+(s:external)=
+## External Circuits
+
+The following element kinds describe machine components "external" to any beam lines. 
+For example, control or feedback circuits.
+
+- [Feedback](#s:feedback)
+
+%---------------------------------------------------------------------------------------------------
+(s:ele.kinds)=
+## Kinds Definitions
+
+
 %---------------------------------------------------------------------------------------------------
 (s:ackicker)=
 ### ACKicker Element
@@ -24,8 +113,10 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 Example:
 ```{code} yaml
@@ -35,14 +126,65 @@ ack1:
   ACKickerP:
 ```
 
+%---------------------------------------------------------------------------------------------------
+(s:beambeam)=
+### BeamBeam Element
+
+A BeamBeam element defines the parameters of an oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BeamBeamP**](#s:beambeam.params): Beam-beam interaction parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Example:
+```{code} yaml
+bb1:
+  kind: BeamBeam
+  BeamBeamP:
+    sigma_x: 0.1e-3
+    sigma_y: 0.1e-3
+    sigma_z: 5.0e-2
+    energy: 1.0e10
+    N_particle: 1.0e11
+```
+
+The length of this element is considered to be zero so if `length` is specified, it must be zero.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:beginningele)=
+### BeginningEle Element
+
+A BeginningEle element is an initial element at the start of a branch.
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): Twiss, coupling, and dispersion parameters.
+
+The length of this element is considered to be zero so if `length` is specified, it must be zero.
+
 
 %---------------------------------------------------------------------------------------------------
 (s:bend)=
-###  Bend Elements: RBend and SBend
+###  Bend Element
 
-Dipole bend. There are two kinds of bends depending upon the "logical shape". 
-The `RBend` element has a "rectangular" logical shape and the `SBend` element has a "sector"
-logical shape.
+Dipole bend. The major difference between this element and other physical elements is that with
+a `Bend` the curvilinear coordinate system is an arc with finite curvature and for the other elements
+the curvilinear coordinate system is straight. 
 
 Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
@@ -52,28 +194,40 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
-`RBend` and `SBend` elements are parameterized exactly the same way by the `BendP` parameter group. 
-For example, `e1` and `e1_rect` have the same meaning for both kinds of bends.
+%---------------------------------------------------------------------------------------------------
+(s:converter)=
+### Converter Element
 
-The logical shape of a bend, in most situations, is irrelevant.
-The only case where the logical shape can be used by a program is when the bend angle is varied.
-In this case, for a `SBend`, the face angles `e1` and `e2` can be
-held constant and `e1_rect` and `e2_rect` can be varied to keep the relationship
-between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied as discussed in the
-[`BendP`](#s:bend.params) documentation. Similarly, for a `RBend`,
-the face angles `e1_rect` and `e2_rect` can be
-held constant and `e1` and `e2` can be varied to keep the relationship
-between `e1` and `e1_rect`, and `e2` and `e2_rect` satisfied.
+A Converter element represents a target (plate) onto which 
+particles are slammed in order to generate
+particles of a different type. For example, a tungsten plate which is bombarded with electrons to generate positrons.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ConverterP**](#s:converter.params): Converter parameters.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 
 %---------------------------------------------------------------------------------------------------
 (s:crabcavity)=
 ### CrabCavity Element
 
-A CrabCavity element is an zero length RF cavity that gives a longitudinal dependent
+A CrabCavity element is a zero length RF cavity that gives a longitudinal dependent
 transverse kick. 
 
 Element parameter groups associated with this element kind are:
@@ -83,8 +237,10 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 Example:
 ```{code} yaml
@@ -107,8 +263,10 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 Example:
 ```{code} yaml
@@ -120,270 +278,9 @@ d01:
 ```
 
 %---------------------------------------------------------------------------------------------------
-(s:kicker)=
-### Kicker Element
-
-A Kicker element is an element that can deflect a beam transversely in both planes. 
-It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
-horizontal and vertical directions.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:multipole)=
-### Multipole Element
-
-A general multipole element.  The fields are assumed to be uniform along the longitudinal direction,
-and may contain (magnetic or electric) multipole contributions of any order.
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:octupole)=
-### Octupole Element
-
-An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
-Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
-In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Example:
-```{code} yaml
-oct01w:
-  kind: Octupole
-  length: 0.4
-  MagneticMultipoleP:
-    Kn3: 1.0
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:quadrupole)=
-### Quadrupole Element
-
-A `Quadrupole` is an element whose major field has a linear field dependence .with transverse offset.
-Both electric and magnetic fields can be defined and the field is not restricted to be linear.
-In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Example:
-```{code} yaml
-q01w:
-  kind: Quadrupole
-  length: 0.6
-  MagneticMultipoleP:
-    Kn1: 0.37
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:rfcavity)=
-### RFCavity Element
-
-An `RFCavity` element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**RFP**](#s:rf.params): RF parameters.
-- [**SolenoidP**](#s:solenoid.params): Solenoid field.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Note: Multipole parameters represent DC fields. A common example is a DC solenoid field which
-helps focusing.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:sextupole)=
-### Sextupole Element
-
-A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
-Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
-In terms of functionality, a `sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Example:
-```{code} yaml
-s01w:
-  kind: Sextupole
-  length: 0.5
-  MagneticMultipoleP:
-    Kn2: 0.28
-```
-
-
-%---------------------------------------------------------------------------------------------------
-(s:solenoid)=
-### Solenoid Element
-
-A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
-Additional magnetic (or electric) multipole contributions are allowed.
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**SolenoidP**](#s:solenoid.params): Solenoid field.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Example:
-```{code} yaml
-sol01w:
-  kind: Solenoid  
-  length: 3.74
-  SolenoidP:   
-    Ksol: -0.15
-```
-
-
-%---------------------------------------------------------------------------------------------------
-(s:wiggler)=
-### Wiggler Element
-A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-
-%---------------------------------------------------------------------------------------------------
----
-(s:beam)=   
-## Beam and Plasma Elements 
-
-The following element kinds involve interactions with the mean field of a particle distribution.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:beambeam)=
-### BeamBeam Element
-
-A BeamBeam element defines the parameters of a oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BeamBeamP**](#s:beambeam.params): Beam-beam interaction parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-Example:
-```{code} yaml
-bb1:
-  kind: BeamBeam
-  BeamBeamP:
-    sigma_x: 0.1e-3
-    sigma_y: 0.1e-3
-    sigma_z: 5.0e-2
-    energy: 1.0e10
-    N_particle: 1.0e11
-```
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-
-
-
-%---------------------------------------------------------------------------------------------------
----
-(s:sources)=
-## Sources and Collimation  
-
-The following element kinds are for producing or removing beam particles. 
-
-
-%---------------------------------------------------------------------------------------------------
-(s:converter)=
-### Converter Element
-
-A Converter element represents a target (plate) onto which 
-particles are slammed in order to generate
-particles of a different type. For example, a tungsten plate which is bombarded with electrons to generate positrons.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ConverterP**](#s:converter.params): Converter parameters.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------
 (s:egun)=
 ### EGun Element
-An EGun element represents an electron gun and encompasses a region starting from the cathode were
+An EGun element represents an electron gun and encompasses a region starting from the cathode where
 the electrons are generated.
 
 Under Construction...
@@ -395,152 +292,26 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 
 %---------------------------------------------------------------------------------------------------
-(s:foil)=
-### Foil Element
+(s:feedback)=
+### Feedback Circuit Element
 
-A `Foil` element represents a planar sheet of material which can strip electrons from a particle. In
-conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
-Material that can strip electrons from a particle
-will also cause energy loss and diffusion.
+A `Feedback` element is an element used to simulate a feedback circuit.
+It gathers information about particle trajectories from the inputs
+and uses this
+to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
+A feedback element could be used, for example, to simulate RF feedback systems or beam position
+feedback, or cooling of a proton beam by a beam of electrons.
 
 Under Construction...
 
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**FoilP**](#s:foil.params): Foil parameters.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------                      
-(s:mask)=
-### Mask Element
-
-A Mask element defines an aperture where the mask area can essentially have an arbitrary shape.
-It is a collimation element to remove unwanted particles.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:instrumentation)=
-## Instrumentation and Diagnostics
-
-The following element kinds are for instrumentation and diagnostics.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:instrument)=
-### Instrument Element
-
-An Instrument element is a measurement element for diagnostics.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-
-
-%---------------------------------------------------------------------------------------------------
-(s:map)=
-## Map Elements
-
-The following element kinds specify transport maps through an element without regard to the physical fields
-present.
-
-%---------------------------------------------------------------------------------------------------
-(s:match)=
-### Match Element
-
-A Match element is used to match the orbit, Twiss, and dispersion parameters
- between two locations.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:taylor)=
-### Taylor Element
-
-A Taylor element is a Taylor map that maps the input orbital phase space and possibly spin coordinates
-of a particle at the entrance end of the element to the output orbital phase space and spin coordinates at the exit
-end of the element. 
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TaylorP**](#s:taylor.params): Orbital and spin Taylor map.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
-
-
-
-%---------------------------------------------------------------------------------------------------
----
-(s:bookkeeping)=         
-## Bookkeeping Elements                
-
-The following element kinds provide relationships among branches and coordinate systems.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:beginningele)=
-### BeginningEle Element
-
-A BeginningEle element is an initial element at start of a branch.
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-
-The length of this element is considered to be zero so if `length` is specified, it must be zero.
+Note: This element does not have a `length` nor an `s_position`.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -571,7 +342,32 @@ Also see [`patch`](#s:patch) and [`fiducial`](#s:fiducial) elements.
 Element parameter groups associated with this element kind are:
 - [**FloorShiftP**](#s:floor.shift.params): Floor shift parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:foil)=
+### Foil Element
+
+A `Foil` element represents a planar sheet of material which can strip electrons from a particle. In
+conjunction, there will be scattering of the particle trajectory as well as an associated energy loss.
+Material that can strip electrons from a particle
+will also cause energy loss and diffusion.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**FoilP**](#s:foil.params): Foil parameters.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -592,9 +388,69 @@ Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**ForkP**](#s:fork.params): Required. Fork element parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
+
+%---------------------------------------------------------------------------------------------------
+(s:girder)=
+### Girder Element
+
+A Girder element is a support structure that orients the 
+elements that are attached to it in space. This element can
+be used to simulate any rigid support structure and there are 
+no restrictions on how the lattice elements
+that are supported are oriented with respect to one another.
+
+Under Construction...
+
+Note: This element does not have a `length` nor an `s_position`.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:instrument)=
+### Instrument Element
+
+An Instrument element is a measurement element for diagnostics.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:kicker)=
+### Kicker Element
+
+A Kicker element is an element that can deflect a beam transversely in both planes. 
+It uses a zero-order (electric or magnetic) multipole field, determined by parameters in MagneticMultipoleP or ElectricMultipoleP such as Kn0, to deflect the beam in
+horizontal and vertical directions.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -603,19 +459,115 @@ Element parameter groups associated with this element kind are:
 
 A Marker element is a zero length element to mark a particular position.
 The main purpose of this element is to name a position in the beamline.
-`Marker` elements has a unit transport map. That is, a particle's phase space coordinates
+`Marker` elements have a unit transport map. That is, a particle's phase space coordinates
 are not altered with passage through the element
 
 Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 The `length` of this element must be zero.
 
 `Marker` elements can be used, for example, to designate beam position monitor locations. In such
 a case, the `BodyShiftP` parameter group can be used to misalign the BPM.
+
+
+%---------------------------------------------------------------------------------------------------                      
+(s:mask)=
+### Mask Element
+
+A Mask element defines an aperture where the mask area can essentially have an arbitrary shape.
+It is a collimation element to remove unwanted particles.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:match)=
+### Match Element
+
+A Match element is used to match the orbit, Twiss, and dispersion parameters
+ between two locations.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+The length of this element is considered to be zero so if `length` is specified, it must be zero.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:multipole)=
+### Multipole Element
+
+A general multipole element.  The fields are assumed to be uniform along the longitudinal direction,
+and may contain (magnetic or electric) multipole contributions of any order.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:octupole)=
+### Octupole Element
+
+An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
+Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
+In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Example:
+```{code} yaml
+oct01w:
+  kind: Octupole
+  length: 0.4
+  MagneticMultipoleP:
+    Kn3: 1.0
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:placeholder)=
@@ -627,7 +579,7 @@ This element can be used as a [`base_item`](#s:placement) element for [superposi
 Additionally, this element can be used, for example, to denote an invalid element in the internal
 structures defined by a program.
 
-`Placeholder` elements present in a lattice file will, as a part of lattice expansion, be removed.
+`Placeholder` elements present in a PALS file will, as a part of lattice expansion, be removed.
 That is, `Placeholder` elements will never be present in the final expanded lattice and
 tracking through a `Placeholder` will never be needed.
 
@@ -652,12 +604,44 @@ Element parameter groups associated with this element kind are:
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**PatchP**](#s:meta.params): Exit coordinates with respect to entrance coordinates.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**PatchP**](#s:patch.params): Exit coordinates with respect to entrance coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
 This matters due to the dependence of the reference velocity on the the reference energy.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:quadrupole)=
+### Quadrupole Element
+
+A `Quadrupole` is an element whose major field has a linear field dependence with transverse offset.
+Both electric and magnetic fields can be defined and the field is not restricted to be linear.
+In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Example:
+```{code} yaml
+q01w:
+  kind: Quadrupole
+  length: 0.6
+  MagneticMultipoleP:
+    Kn1: 0.37
+```
 
 
 %---------------------------------------------------------------------------------------------------
@@ -671,31 +655,120 @@ the downstream elements of the `ReferenceChange` element.
 Element parameter groups associated with this element kind are:
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceChangeP**](#s:ref.change.params): Reference parameters adjustments.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 
 %---------------------------------------------------------------------------------------------------
-(s:grouping)=         
-## Structural and Grouping Elements
+(s:rfcavity)=
+### RFCavity Element
 
-The following element kinds describe composite elements and support structures.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:girder)=
-### Girder Element
-
-A Girder element is a support structure that orients the 
-elements that are attached to it in space. This element can
-be used to simulate any rigid support structure and there are 
-no restrictions on how the lattice elements
-that are supported are oriented with respect to one another.
+An `RFCavity` element represents an RF cavity that accelerates or decelerates, and focuses or defocuses, a charged particle beam longitudinally and transversely using RF fields.
 
 Under Construction...
 
-Note: This element does not have a `length` nor an `s_position`.
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**RFP**](#s:rf.params): RF parameters.
+- [**SolenoidP**](#s:solenoid.params): Solenoid field.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Note: Multipole parameters represent DC fields. A common example is a DC solenoid field which
+helps focusing.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:sextupole)=
+### Sextupole Element
+
+A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
+Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
+In terms of functionality, a `sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Example:
+```{code} yaml
+s01w:
+  kind: Sextupole
+  length: 0.5
+  MagneticMultipoleP:
+    Kn2: 0.28
+```
+
+
+%---------------------------------------------------------------------------------------------------
+(s:solenoid)=
+### Solenoid Element
+
+A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
+Additional magnetic (or electric) multipole contributions are allowed.
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**SolenoidP**](#s:solenoid.params): Solenoid field.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+Example:
+```{code} yaml
+sol01w:
+  kind: Solenoid  
+  length: 3.74
+  SolenoidP:   
+    Ksol: -0.15
+```
+
+%---------------------------------------------------------------------------------------------------
+(s:taylor)=
+### Taylor Element
+
+A Taylor element is a Taylor map that maps the input orbital phase space and possibly spin coordinates
+of a particle at the entrance end of the element to the output orbital phase space and spin coordinates at the exit
+end of the element. 
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TaylorP**](#s:taylor.params): Orbital and spin Taylor map.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -710,8 +783,10 @@ Element parameter groups associated with this element kind are:
 - **elements**: A list of contained element kinds.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
 - [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
 such that the center of the contained element is at the center of the `UnionEle` with the
@@ -745,25 +820,25 @@ Note: `UnionEle` shares the feature of describing elements that overlap physical
 together with the [`placement`](#s:placement) construct within a `BeamLine` and the
 [`superposition`](#s:superposition) construct.
 
-%---------------------------------------------------------------------------------------------------
-(s:external)=
-## External Circuits
-
-The following element kinds describe machine components "external" to any beam lines. 
-For example, control or feedback circuits.
 
 %---------------------------------------------------------------------------------------------------
-(s:feedback)=
-### Feedback Circuit 
-
-A `Feedback` element is an element used to simulate a feedback circuit.
-It gathers information about particle trajectories from the inputs
-and uses this
-to either adjust beam trajectories in the outputs and/or adjust parameters in the outputs.
-A feedback element could be used, for example, to simulate RF feedback systems or beam position
-feedback, or cooling of a proton beam by a beam of electrons.
+(s:wiggler)=
+### Wiggler Element
+A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
 
 Under Construction...
 
-Note: This element does not have a `length` nor an `s_position`.
+Element parameter groups associated with this element kind are:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
+- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+
 
