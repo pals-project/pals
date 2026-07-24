@@ -108,7 +108,8 @@ standard. For example, an included file may be an
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) section.
 Other file endings indicate non-PALS data.
 
-Include can appear at any level of the information tree but must be within the `PALS` root node.
+An include statement can appear at any level of the information tree but must be within the `PALS` root node.
+Note: with YAML files, the overall indentation of the included file is ignored.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
