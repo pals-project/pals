@@ -129,6 +129,18 @@ Name matching is the process of finding the set of named constructs — lattice
 elements, element parameter groups, element parameters, constants, variables,
 etc. — that a given string is matched to. PALS defines a standard syntax for this.
 
+Name matches may be restricted to a given element kind using the notation
+```{code} yaml
+{kind}::{name}
+```
+where `{kind}` is the element kind and `{name}` is the element name.
+Example:
+```{code} yaml
+Marker::bpm.
+```
+This will match to all `Marker` elements whose name is four characters starting with `bpm`
+(since a dot matches to any single character, see below).
+
 At its simplest, a string is matched against the `name` of a construct. For
 example, `qa.*` matches every element (or constant, variable, ...) whose name
 begins with `qa`. Names may be [PCRE2](https://www.pcre.org/) regular
@@ -144,7 +156,7 @@ match, using a single `>` as the separator:
 where
 ```{code} yaml
 {element-name}                  # Element name match, see below.
-{parameter-group}               # Parameter group name.
+{parameter-group}               # Parameter group name if it exists (EG length in not in a group).
 {sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
 {parameter}                     # Parameter name.
 ```
@@ -173,9 +185,6 @@ qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
 qa.*                       # Match the element.
 Controller::cd.t           # Match all Controllers whose four-character name starts with `cd` and ends with `t`.
 ```
-Constructs that are not element parameters — for example
-[constants and variables](#s:constants) — are matched directly by name, with no
-`>`-qualified parameter path.
 
 %---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
