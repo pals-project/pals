@@ -14,6 +14,7 @@ PALS:
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:         # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+  load:             # [list] Files to load. See the "Load Files" section.
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
@@ -64,7 +65,7 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Including Other Files Within PALS files
+## Including Other Files Within a PALS File
 
 A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
@@ -109,6 +110,139 @@ The recommended suffixes for PALS files is discussed in the [File Formats](#c:im
 Other file endings indicate non-PALS data.
 
 Include can appear at any level of the information tree but must be within the `PALS` root node.
+
+A file path in an `include` is interpreted relative to the location of the file that contains the
+`include` node.
+
+%---------------------------------------------------------------------------------------------------
+(s:load)=
+## Load Files
+
+"Loading" files is similar to [including files](#s:includefiles) in that the contents of several
+files can be combined. A common use case is where one file defines the layout of a machine and another
+file defines the magnet and other settings for a given machine configuration. The final lattice
+is the union of these two files. This gives the flexibility where multiple settings files
+need only reference one layout file.
+
+While `load` and `include` both combine the contents of separate files, they differ in how the
+combination is done. An `include` inserts the contents of a file verbatim at the point where the
+`include` appears, and so can be used at any level of the information tree. A `load`, by contrast,
+merges whole files `PALS` subnode by `PALS` subnode at the `PALS` root level, following the rules given
+below. When both are present, `include` statements are resolved first so that each file is complete
+before the files are combined by `load`.
+
+For example, a layout can look like:
+```{code} yaml
+# Layout file: layout.pals.yaml
+PALS:
+  notes:
+    - "Layout as of 03/12/2027"
+
+  facility:
+    - injector:
+        kind: Lattice
+        branches:
+          - ...
+```
+and a settings file could look like:
+```{code} yaml
+# Settings file: settings.pals.yaml
+PALS:
+  notes:
+    - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
+    - "This is a second note."
+
+  facility:
+    - sets:
+        - Q1a>MagneticMultipoleP.Kn1: 0.34
+        - ...
+```
+A "joiner" file that combined these files could look like:
+```{code} yaml
+# Joiner file
+PALS:
+  notes:
+    - "Lattice with orbit correction for blown chopper at B34W."
+  load:
+    - layout.pals.yaml
+    - settings.pals.yaml
+    - SELF
+  facility:
+    - sets:
+        - B35W>MagneticMultipole.Kn0L: 0.07
+        - ...
+```
+
+The rules for using `load` are as follows:
+- The `load` node must be a component of the `PALS` node. 
+- The top level of the joiner and loaded files must be `PALS`. 
+- A `SELF` designation in the `load` list indicates where the contents of
+the joiner file, if there is anything else other than a `load` node,
+are to be combined with the contents of the loaded files. If not present, contents of the joiner
+file are to be combined at the end. In the above example, the `SELF` line is not needed since it
+is last on the `load` list.
+- Contents from the joiner and loaded files are combined `PALS` subnode by `PALS` subnode. For list
+type subnodes, the combined list retains the order set by the `load` list and the order set within the files
+themselves. In the above example, the combined `notes` subnode will be:
+  ```{code} yaml
+  notes:
+    - "Layout as of 03/12/2027"
+    - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
+    - "This is a second note."
+    - "Lattice with orbit correction for blown chopper at B34W."
+  ```
+- For Dict type subnodes of `PALS`, the combined dict will be the union of all the dict entries
+for all of the files. For any duplicate entries, the entry values must be the same and the combined Dict
+will discard the duplicates.
+- For the `version` subnode of `PALS`, if the version strings are not the same, the combined version
+will be a comma delimited list of the different versions with duplicates discarded.
+- A loaded file may itself contain a `load` node, so loading can be nested to any depth. It is
+easiest to think of the process from the bottom up: each loaded file is fully combined into a single
+`PALS` file before it, in turn, is loaded into the joiner file that references it. There is no
+ambiguity as to what `SELF` refers to; a `SELF` designation always refers to the joiner file in
+which it appears.
+- As with `include`, a file path in a `load` list is interpreted relative to the location of the
+file that contains the `load` node.
+
+Loading can also be useful in constructing "composite" accelerator complexes from individual machines.
+For example, a joiner file may look like:
+```{code} yaml
+PALS:
+  load:
+    - Booster_to_AGS_line.pals.yaml
+    - AGS_ring.pals.yaml
+
+
+  facility:
+    - AGS_fork:
+        kind: Fork
+        to_line: AGS_ring           # Defined in AGS_ring.pals.yaml
+        destination_element: d24w   # AGS element at injection point
+
+    - AGS_inj_patch:
+        kind: Patch
+        ...
+
+    - AGS_inject:
+        kind: Beamline
+        line:
+          - Booster_to_AGS_line   # Defined in Booster_to_AGS_line.pals.yaml
+          - AGS_inj_patch         # Needed to adjust the branch reference geometry.
+          - AGS_fork              # And add a fork to the AGS at the end.
+
+    - Combined_Inject_and_AGS:
+        kind: Lattice
+        branches:
+          - AGS_inject
+```
+In this example, the file `Booster_to_AGS_line.pals.yaml` (not shown) contains the specification for the transfer
+line from the Booster ring to the AGS ring. The file `AGS_ring.pals.yaml` (also not shown) contains the specification
+for the AGS ring. The joiner file reads in these specifications and then creates a new transfer
+line called `AGS_inject` with a `Patch` element to shift the branch coordinate system from the transfer
+line coordinate system to the AGS coordinate system. The `Patch` element is followed by a `Fork` 
+element at the end to connect to the AGS. 
+The `Combined_Inject_and_AGS` lattice will have this extended transfer line and when the full 
+lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` element. 
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
