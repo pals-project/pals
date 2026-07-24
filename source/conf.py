@@ -14,7 +14,7 @@ author = 'Jean-Luc Vay, David Sagan, Chad Mitchell, Axel Huebl, David Bruhwihler
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['myst_parser', 'sphinx_design', 'sphinxcontrib.bibtex', 'sphinxcontrib.cairosvgconverter', 'sphinx_copybutton']
-myst_enable_extensions = ["colon_fence", "amsmath"]
+myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block"]
 numfig = True
 
 templates_path = ['_templates']
