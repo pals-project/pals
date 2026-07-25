@@ -15,7 +15,30 @@ PALS:
 
     - END:
         kind: Marker
-
+    - BeamInit:
+        kind: BeginningEle
+        ParticleP:
+          sigma_xx:      0.15e-4     # <x^2>
+          sigma_xpx:     0.0         # <x*px> 
+          sigma_xy:      0.0         # <x*y> 
+          sigma_xpy:     0.0         # <x*py> 
+          sigma_xz:      0.0         # <x*z> 
+          sigma_xpz:     0.0         # <x*pz> 
+          sigma_pxpx:    0.002       # <px^2>
+          sigma_pxy:     0.0         # <px*y> 
+          sigma_pxpy:    0.0         # <px*py> 
+          sigma_pxz:     0.0         # <px*z> 
+          sigma_pxpz:    0.0         # <px*pz> 
+          sigma_yy:      0.15e-4     # <y^2>
+          sigma_ypy:     0.0         # <y*py>
+          sigma_yz:      0.0         # <y*z>
+          sigma_ypz:     0.0         # <y*pz>
+          sigma_pypy:    0.002       # <py^2>
+          sigma_pyz:     0.0         # <py*z>
+          sigma_pypz:    0.0         # <py*pz>
+          sigma_zz:      0.071e-4    # <z^2>
+          sigma_zpz:     0.0         # <z*pz>
+          sigma_pzpz:    0.57        # <pz^2>
 # ------------------------------------------------------------------------------
 # Gun to Linac
 # ------------------------------------------------------------------------------
