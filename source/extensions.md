@@ -9,7 +9,8 @@ Maintenance of an extension schema falls outside of PALS governance.
 Extension maintainers can add extension documentation by submitting a [pull request](#s:contribute).
 If the amount of documentation is "large", it is encouraged that the documentation put in the PALS
 repository should be relatively brief and there should be a reference to full documentation maintained
-elsewhere. The advantage of this setup is that since the full documentation is external to the PALS repo,
+elsewhere, if such documentation exists.
+The advantage of this setup is that since the full documentation is external to the PALS repo,
 extension maintainers are not encumbered to use PALS pull requests when modifying the full documentation.
 
 Syntax for including extension data in a PALS file is in the 
