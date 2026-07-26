@@ -7,9 +7,8 @@ that has no analogue with other machines or simulation programs can be put in as
 
 Maintenance of an extension schema falls outside of PALS governance. 
 Extension maintainers can add documentation to this section by submitting a [pull request](#s:contribute).
-Documentation here should be brief and should have a reference to full documentation,
-if it exists, maintained elsewhere.
-The advantage of this setup is that since the full documentation is external to the PALS repo,
+Documentation here should be brief and should have a reference to full documentation maintained
+elsewhere. The advantage of this setup is that since the full documentation is external to the PALS repo,
 extension maintainers are not encumbered to use PALS pull requests when modifying the full documentation.
 
 Syntax for including extension data in a PALS file is in the 
