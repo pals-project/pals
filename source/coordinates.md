@@ -447,7 +447,7 @@ For a bend, {math}`\bf S` is given using Eq. [](#wctux2) with
 ```{math}
 :label: ustt
 
-  {\bf u} &= (-\sin\theta_{tr}, -\cos\theta_{tr}, 0) \\
+  {\bf u} &= (\sin\theta_{tr}, -\cos\theta_{tr}, 0) \\
   \beta &= \alpha_b
 ```
 where {math}`\theta_{tr}` is the `tilt_ref` angle. The {math}`\bf L` vector for a `bend` is given by 
