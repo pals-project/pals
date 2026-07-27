@@ -118,7 +118,4 @@ Conversion between PALS and [SciBmad](https://github.com/bmad-sim/SciBmad.jl):
 
 - Conversion from PALS to SciBmad is performed by the `pals_to_scibmad` function in `PALSJulia`.
 
-  SciBmad keeps the PALS parameter names and groups, so the conversion is largely a change of
-  syntax rather than of convention. `length` is the one element parameter that is not in a
-  parameter group and the one whose name differs, becoming `L`.
 
