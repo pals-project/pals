@@ -38,13 +38,10 @@ left corner of these documentation pages when the dark theme is selected.
 
 %---------------------------------------------------------------------------------------------------
 (s:logo.original)=
-## Logo with One Text Line
+## Logo with One Line Subtitle
 
-The one text line logo is meant for cases where the logo is displayed in a larger size
-and 
-[issue #251](https://github.com/pals-project/pals/issues/251), is kept here for reference. It has
-a single line subtitle and dark ink, so it is for use on light backgrounds. The two variants shown above, which
-superseded it in [PR #261](https://github.com/pals-project/pals/pull/261), are the ones to use.
+The one line subtitle logo is meant for cases where the logo is displayed in a larger size
+so having two subtitle lines is not needed.
 
 ```{image} _static/pals-logo-original.png
 :alt: Original PALS logo design with a white background and a single line subtitle
