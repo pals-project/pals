@@ -502,10 +502,8 @@ particle's position {math}`{\bf q} = (x,y,z)` and momentum {math}`{\bf P} = (P_x
 when the coordinate frame is transformed from frame
 {math}`({\bf V}_{i-1}, {\bf W}_{i-1})` to frame {math}`({\bf V}_i, {\bf W}_i)` is
 \begin{align}
-{\bf q}_i &= {\bf S}_i^{-1} \, \left( {\bf q}_{i-1} - {\bf L}_i \right),
-\label{rwlr} \\
+{\bf q}_i &= {\bf S}_i^{-1} \, \left( {\bf q}_{i-1} - {\bf L}_i \right), \\
 {\bf P}_i &= {\bf S}_i^{-1} \, {\bf P}_{i-1}
-\label{pps}
 \end{align}
 
 Notice that since {math}`{\bf S}` (and {math}`{\bf W}`) is the product of orthogonal 
@@ -588,7 +586,7 @@ for `ref_tilt` versus everything else means that five transformations are needed
 branch frame to the element body frame (see Eq. Eq. [](#llee)). Symbolically:
 ```{math}
   \Lambda_s \longrightarrow \Lambda_\text{mid-arc} \longrightarrow
-  \Omega_\text{mid-chord} \longrightarrow \Omega_\text{offset} \longrightarrow \Omega_\text{tilt_ref}
+  \Omega_\text{mid-chord} \longrightarrow \Omega_\text{offset} \longrightarrow \Omega_\text{tilt\_ref}
   \longrightarrow E_\text{mid-arc} \longrightarrow E_s
 ```
 All transformations use Eqs. [](#wws).
@@ -609,11 +607,11 @@ For this transformation, {math}`\bf S` is the unit matrix and
 3. {math}`\Omega_\text{mid-chord} \longrightarrow \Omega_\text{offset}`: Element misalignment.
 This transformation uses Eqs. [](#swww2).
 
-4. {math}`\Omega_\text{offset} \longrightarrow \Omega_\text{tilt_ref}`: Rotation by `tilt_ref`
+4. {math}`\Omega_\text{offset} \longrightarrow \Omega_\text{tilt\_ref}`: Rotation by `tilt_ref`
 to get the coordinate system aligned with body coordinates. This transformation uses
 {math}`{\bf L} = 0` and {math}`{\bf S} = {\bf R}_z(\theta_{tr})`.
 
-5. {math}`\Omega_\text{tilt_ref} \longrightarrow E_\text{mid-arc}`: Translation to the mid point
+5. {math}`\Omega_\text{tilt\_ref} \longrightarrow E_\text{mid-arc}`: Translation to the mid point
 on the arc. For this transformation, {math}`\bf S` is the unit matrix and
 {math}`{\bf L} = \rho(\cos(\alpha_b/2) - 1) \, (1, 0, 0)` 
 

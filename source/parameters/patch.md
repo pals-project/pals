@@ -39,10 +39,10 @@ with
 
   {\bf L} &= 
     \begin{pmatrix} 
-      \text{x_offset} \\ \text{y_offset} \\ \text{z_offset} 
+      \text{x\_offset} \\ \text{y\_offset} \\ \text{z\_offset} 
     \end{pmatrix}
     \\
-  {\bf S} &= {\bf R}_{y} (\text{y_rot}) \; {\bf R}_{x} (\text{x_rot}) \; {\bf R}_{z} (\text{z_rot}) 
+  {\bf S} &= {\bf R}_{y} (\text{y\_rot}) \; {\bf R}_{x} (\text{x\_rot}) \; {\bf R}_{z} (\text{z\_rot}) 
 ```
 
 A straight line element like a `Drift` or a `Quadrupole` has the exit face parallel to the
