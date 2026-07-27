@@ -142,6 +142,7 @@ For an element to inherit all parameter groups from another element, just inheri
 ```
 
 %---------------------------------------------------------------------------------------------------
+(s:io.params)=
 ## User Settable (Input) and Dependent (Output) parameters.
 
 Some parameters are set in the PALS file. These parameters are called "User settable" or "input". 
