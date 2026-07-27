@@ -128,5 +128,6 @@ extensions.md
 governance.md
 contributing.md
 how-to-write-docs.md
+logos.md
 ```
 

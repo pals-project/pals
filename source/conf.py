@@ -49,3 +49,7 @@ html_title = ""
 # Route the theme search box to Read the Docs' server-side search.
 # See _static/rtd-search-override.js for details.
 html_js_files = ['rtd-search-override.js']
+
+# Backdrops for the logo gallery on the Logos page.
+# See _static/logos.css for details.
+html_css_files = ['logos.css']
