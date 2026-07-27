@@ -44,7 +44,7 @@ The one line subtitle logo is meant for cases where the logo is displayed in a l
 so having two subtitle lines is not needed.
 
 ```{image} _static/pals-logo-original.png
-:alt: Original PALS logo design with a white background and a single line subtitle
+:alt: PALS logo, dark ink variant, with a single line subtitle
 :class: logo-plain
 :width: 90%
 ```
