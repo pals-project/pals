@@ -150,7 +150,7 @@ and a settings file could look like:
 PALS:
   notes:
     - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
-    - "This is a second note."
+    - "This is a second node."
 
   facility:
     - sets:
