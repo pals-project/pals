@@ -137,6 +137,22 @@ name with `">>>"` as a separator. There are several permutations where `>>` and 
 {branch-name}>>{element-name}
 ```
 
+If `NULL` is used as a branch name, the specified element is searched for outside of any lattices.
+For example
+```{code} text
+PALS:
+  facility:
+    - q1:
+        kind: Quadrupole
+
+    - myline:
+        kind: BeamLine
+        line:
+          - q1   
+```
+Here `NULL>>q1` would match to the definition of `q1` outside of `myline` while `myline>>q1`
+would match the instance of `q1` inside `myline`. The simple `q1` would match to both.
+
 Regular expressions can be used. 
 Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
 Regex matching is applied to the lattice name, branch name, and element name separately and
