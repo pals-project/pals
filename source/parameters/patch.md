@@ -116,7 +116,7 @@ exit face of the patch as shown in {numref}`f:patch`B. If `ref_coords` is set to
 the length is calculated as the perpendicular distance between the entrance face and the origin of
 the exit coordinate system. In this case, the length will be equal to `z_offset`.
 
-Note: To shift the reference energy, time, or species, use the 
+Note: To change the reference energy, time, or species, use the 
 [ReferenceChangeP](#s:ref.change.params) parameter group.
 The `dtime_ref` of the `ReferenceChangeP` group can be used to set
 the change in reference time through a patch. The difference between using `dtime_ref` and

@@ -39,5 +39,5 @@ If the `origin_ele` has a finite length, the reference point may be chosen using
   EXIT_END
 ```
 
-Note: To shift the reference energy, time, or species at this element, use the
+Note: To change the reference energy, time, or species at this element, use the
 [ReferenceChangeP](#s:ref.change.params) parameter group.
