@@ -31,6 +31,25 @@ Example:
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. 
 
+For any group of interdependent parameters, the set of one member of the group nullifies previous
+settings of all other members of the group. For example,
+```{code} yaml
+- s1:
+    kind: Sextupole
+    length: 0.27
+    MagneticMultipoleP:
+      Ks2: 0.34
+
+- set:
+    parameter: s1>MagneticMultipoleP.Ks2L
+    value: ...
+```
+Here the `Ks2` value of `s1` has been set in the definition of `s1`. When the
+`set` of `Ks2L` is done, this nullifies the setting of `Ks2` so that there
+is no inconsistance. Note that for the sextupole skew multipole, 
+there are four interdependent parameters: `Ks2`, `Ks2L`, `Bs2`, `Bs2L`.
+
+
 Note: Pattern matching is not supported in the `value` expression.
 
 For sets that only have a value, an alternative compact form has the syntax:
