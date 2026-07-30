@@ -1,0 +1,11 @@
+# Spliced into the `facility` list of machine.pals.yaml by its `include`
+# entry. An included file holds a YAML sequence of facility entries.
+- a:
+    kind: Drift
+    length: 1.0
+- b:
+    kind: Quadrupole
+    length: 0.5
+- c:
+    kind: Sextupole
+    length: 0.3

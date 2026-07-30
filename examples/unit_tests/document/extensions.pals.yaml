@@ -1,0 +1,44 @@
+# Extension data: `extension_labels` registers extension names, prefixes, and
+# suffixes. Data under a registered label -- the element kind `Rotator`, the
+# groups `SciBmad_connect` and `tuning_local`, and the facility-level
+# `extension` entry -- is not part of the standard vocabulary and is passed
+# through unchecked.
+#
+# Adapted from pals-cpp tests/test_check.cpp
+# ("extension data is exempt from the spelling checks"); a line, lattice, and
+# BeginningEle were added so the document expands.
+PALS:
+  extension_labels:
+    names:
+      Rotator: a new kind of element
+    prefixes:
+      SciBmad_: for the SciBmad ecosystem
+    suffixes:
+      _local: site-local data
+  facility:
+    - r23:
+        kind: Rotator
+    - q1:
+        kind: Quadrupole
+        length: 1
+        SciBmad_connect:
+          BogusP: anything at all
+        tuning_local:
+          AlsoBogusP: and here too
+    - synch_connect:
+        extension: Cornell_CESR_Connect
+        NotAGroupP: alarm system stuff
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

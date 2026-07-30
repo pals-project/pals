@@ -1,0 +1,8 @@
+# Nested loads: this joiner loads inner.pals.yaml, which loads a file of
+# its own. The notes record the resulting order.
+# From pals-cpp tests/lattices/load_nested.
+PALS:
+  notes:
+    - "joiner"
+  load:
+    - inner.pals.yaml

@@ -1,0 +1,30 @@
+# The compact `sets` form: a sequence of parameter/value pairs, each written
+# as one mapping entry. Values may be expressions.
+#
+# From pals-cpp tests/test_sets.cpp ("the compact sets form writes each pair").
+PALS:
+  facility:
+    - Q1:
+        kind: Quadrupole
+        length: 0.5
+    - D1:
+        kind: Drift
+        length: 1.0
+    - sets:
+        - Q1>MagneticMultipoleP.Kn1L: 0.25
+        - D1>length: 2 * 1.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - Q1
+          - D1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

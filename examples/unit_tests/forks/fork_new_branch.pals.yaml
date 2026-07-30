@@ -1,0 +1,34 @@
+# A Fork that names its new branch (`extraction`). The reference particle and
+# the floor position at the fork point propagate into the branch it creates.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("a Fork propagates reference and floor into its new branch").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        FloorP:
+          x: 1.5
+        ReferenceP:
+          species_ref: proton
+          E_tot_ref: 1.0e9
+    - m1:
+        kind: Marker
+    - ext_line:
+        kind: BeamLine
+        line:
+          - m1
+    - ring:
+        kind: BeamLine
+        line:
+          - begin
+          - f1:
+              kind: Fork
+              ForkP:
+                to_line: ext_line
+                new_branch: extraction
+    - lat1:
+        kind: Lattice
+        branches:
+          - ring
+    - use: "lat1"

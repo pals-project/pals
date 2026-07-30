@@ -1,0 +1,5 @@
+# Loaded last by joiner.pals.yaml, after its SELF.
+# From pals-cpp tests/lattices/load_self.
+PALS:
+  notes:
+    - "b"

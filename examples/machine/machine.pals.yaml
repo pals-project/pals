@@ -1,0 +1,76 @@
+# A small facility that exercises the heavier lattice constructs in one file:
+#
+# - a multipass injection line assembled from named and in-place elements
+# - `inherit` to derive one element (thingZ) from another (thingB)
+# - a sub-line (a_subline) spliced in three times with `repeat`
+# - a Fork into a dump line, creating the branch `this_dump`
+# - `include` to splice element definitions from another file into `facility`
+#   (subline_elements.subpals.yaml)
+# - two Lattices sharing the same line, selected as roots with `use`
+# - definitions appearing after their first use (generic_dump comes last)
+#
+# Adapted from the pals-cpp smoke-test lattice ex.pals.yaml.
+PALS:
+  facility:
+    - thingB:
+        kind: Sextupole
+        length: 2
+
+    - inj_line:
+        kind: BeamLine
+        multipass: true
+        length: 8.43           # the summed length of the line's elements
+        zero_point: Q1a
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: electron
+                E_tot_ref: 1.0e9
+          - thingZ:            # thingZ inherits its parameters from thingB
+              inherit: thingB
+          - Q1a:               # an element defined in place
+              kind: Quadrupole
+              length: 1.03
+              direction: -1
+          - a_subline:         # the sub-line, spliced in three times
+              repeat: 3
+          - to_dump:
+              kind: Fork
+              ForkP:
+                to_line: generic_dump
+                destination_element: dump_begin
+                new_branch: this_dump
+                propagate_reference: true
+
+    # Splice in the definitions of the elements a_subline uses.
+    - include: "subline_elements.subpals.yaml"
+
+    - a_subline:
+        kind: BeamLine
+        line:
+          - a
+          - b
+          - c
+
+    - lat1:
+        kind: Lattice
+        branches:
+          - inj_line
+    - lat2:
+        kind: Lattice
+        branches:
+          - inj_line
+
+    - use: lat2
+    - use: lat1
+
+    # The dump line the Fork feeds. Defined after the `use` entries: the order
+    # of facility entries does not matter for name resolution.
+    - generic_dump:
+        kind: BeamLine
+        line:
+          - dump_begin:
+              kind: Marker
+          - amarker:
+              kind: Marker

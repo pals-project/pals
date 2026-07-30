@@ -1,0 +1,31 @@
+# A BeginningEle carrying Twiss parameters, including their momentum
+# dependence: the d..._dpz derivatives of the a/b-mode Twiss functions and of
+# the x/y dispersion.
+#
+# From pals-cpp tests/test_check.cpp
+# ("the momentum dependence of the Twiss parameters is accepted").
+PALS:
+  facility:
+    - main:
+        kind: BeamLine
+        line:
+          - beg:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+              TwissP:
+                beta_a: 12.5
+                dbeta_a_dpz: 1.5
+                dalpha_a_dpz: 0.1
+                dbeta_b_dpz: -2.0
+                dalpha_b_dpz: 0.2
+                deta_x_dpz: 0.3
+                detap_x_dpz: 0.4
+                deta_y_dpz: 0.5
+                detap_y_dpz: 0.6
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

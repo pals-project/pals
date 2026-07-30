@@ -1,0 +1,41 @@
+# The documented keys of the PALS root node: version, authors, notes,
+# reminders, phase_space_coordinates, extension_labels, and facility. The
+# registered extension label `Bmad` lets the element q1 carry a `Bmad` block
+# of code-specific data.
+#
+# Adapted from pals-cpp tests/test_check.cpp
+# ("the documented keys of the PALS root node are not reported"); a line,
+# lattice, and BeginningEle were added so the document expands.
+PALS:
+  version: 1
+  authors:
+    - author:
+        name: Lastname, Firstname
+  notes:
+    - a note
+  reminders:
+    - a reminder
+  phase_space_coordinates: standard
+  extension_labels:
+    names:
+      Bmad: bmad-specific data
+  facility:
+    - q1:
+        kind: Quadrupole
+        length: 1
+        Bmad:
+          bmad_key: Quadrupole
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
