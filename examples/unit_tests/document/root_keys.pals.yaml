@@ -9,8 +9,8 @@
 PALS:
   version: 1
   authors:
-    - author:
-        name: Lastname, Firstname
+    - name: Lastname, Firstname
+    - name: Lastname2, Firstname2
   notes:
     - a note
   reminders:

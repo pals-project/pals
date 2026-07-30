@@ -36,13 +36,14 @@ PALS:
       my_extension: "See the PALS extensions chapter"
 
   authors:
-    - author:
-        name: Lastname, Firstname
-        orcid: AAAA-BBBB-CCCC-DDDD
-        affiliation: Affiliation Long Name
-        email: lastname@laboratory.gov
-    - author:
-        ...
+    - name: Lastname, Firstname
+      orcid: AAAA-BBBB-CCCC-DDDD
+      affiliation: Affiliation Long Name
+      email: lastname@laboratory.gov
+    - name: Lastname2, Firstname2
+      orcid: EEEE-FFFF-GGGG-HHHH
+      affiliation: Affiliation2 Long Name
+      email: lastname2@university.edu
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
