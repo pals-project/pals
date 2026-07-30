@@ -29,10 +29,11 @@ The `to_line` parameter is required and names the branch or beam line to fork to
 
 If and only if the destination element is the beginning element of a new branch, 
 the floor coordinates will be propagated from the `Fork` element to the beginning of the new branch.
+This is true even if the beginning element has a `FloorP` parameter group.
 
 The optional `destination_element` component of `ForkP` gives the name of the destination element. 
 If not present, the default is the first element of the line.
-The name given by `destination_element` must be unique.
+The name given by `destination_element` must be unique within the destination branch.
 The destination element may inherit the reference species and energy of the `Fork` element 
 if and only if the destination element is the beginning element of a new branch and
 the `propagate_reference` component is set to `true`. If the destination element is not
@@ -49,7 +50,7 @@ The `direction` component of `ForkP` indicates the direction that a particle mov
 the forked-to branch will travel. If `direction` is set to `FORWARDS` (the default)
 the direction of travel is downstream (`+s`-direction) and vice versa if `direction` is set to
 `BACKWARDS`. Note: It does not make sense to have `direction` set to `BACKWARDS` if the
-destination element is the `Beginning` element. Similarly, it does not make sense to have `direction`
+destination element is the beginning element. Similarly, it does not make sense to have `direction`
 set to `FORWARDS` if the destination element is the end element in the branch.
 
 Example `Fork` element:
