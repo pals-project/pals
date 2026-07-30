@@ -367,7 +367,7 @@ Element parameter groups associated with this element kind are:
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
 - [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**ForkFromP**](#s:fork.from): List of `Fork` elements forking to this element.
+- [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
 - [**ForkP**](#s:fork.params): Required. Fork element parameters.
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
