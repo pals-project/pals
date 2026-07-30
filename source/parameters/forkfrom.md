@@ -10,7 +10,7 @@ The components of `ForkFromP` are the names of the fork elements using
 Example: 
 ```{code} yaml
   ForkFromP:
-    - inject_line>>inj_fork: 134       
+    - inject_line>>inj_fork: 137
     - alt_line>>end_fork: 37
 ```
 In this case there are two `Fork` elements forking to this element. One `Fork` element is called
