@@ -137,21 +137,37 @@ name with `">>>"` as a separator. There are several permutations where `>>` and 
 {branch-name}>>{element-name}
 ```
 
-If `NULL` is used as a branch name, the specified element is searched for outside of any lattices.
+If `NULL` is used as a branch name, the specified element is searched for outside of any lattices
+or beanlines
 For example
-```{code} text
+```{code} yaml
 PALS:
   facility:
-    - q1:
+    - q1:                         # Definition of q1
         kind: Quadrupole
 
     - myline:
         kind: BeamLine
         line:
-          - q1   
+          - q1                    # q1 in the beamline myline
+
+    - mylat:
+        kind: Lattice
+        branches:
+          - mybranch              # mybranch branch will have a q1 element
+              inherit: myline     #   once the lattice is expanded.
+
+    - expand_lattice
+
+    - sets:
+        NULL>>q1.length: 0.4       # Matches to q1 definition block 
+        mybranch>>q1.length: 0.5   # Matches to q1 in mybranch branch
+        q1.length: 0.6             # Matches to all three q1 instances.
 ```
-Here `NULL>>q1` would match to the definition of `q1` outside of `myline` while `myline>>q1`
-would match the instance of `q1` inside `myline`. The simple `q1` would match to both.
+
+Here `NULL>>q1` would match to the definition of `q1` outside of `myline` and
+`mybranch` while `mybranch>>q1` would match the instance of `q1` inside `mybranch`.
+The simple `q1` would match to all three instances.
 
 Regular expressions can be used. 
 Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
