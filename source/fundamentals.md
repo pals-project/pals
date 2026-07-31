@@ -150,7 +150,7 @@ Example:
 Marker::bpm.
 ```
 This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character, see below).
+(since a dot matches to any single character).
 
 Element parameters are matched by appending the parameter path to an element name
 match, using a single `>` as the separator. A parameter that belongs to a
