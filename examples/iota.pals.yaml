@@ -1,0 +1,320 @@
+# The linear lattice of the Fermilab IOTA storage ring (bare lattice, no
+# nonlinear insert installed), translated from the ImpactX example
+# impactx/examples/iota_lattice/input_iotalattice.in.
+#
+# This example demonstrates:
+# - a storage ring built from a mirror-symmetric half:
+#   ring = monitor, half, qe3, reflected half, monitor
+#   The reflection uses `repeat: -1` (reversed element order, no direction
+#   reversal), matching the ImpactX `<line>.reverse = true` semantics.
+# - sector bends with fringe-field integrals: the ImpactX thin `dipedge`
+#   elements (psi = 0, gap g, fringe integral K2 = MAD-X FINT) flanking each
+#   `sbend` are folded into the Bend itself as
+#   edge1_int = edge2_int = K2 * g/2 (= FINT * HGAP).
+# - a registered `ImpactX` extension carrying data the PALS standard does not
+#   cover for run/algorithm configuration.
+PALS:
+  extension_labels:
+    names:
+      ImpactX: ImpactX-specific numerical simulation setup
+
+  facility:
+    # ImpactX simulation setup that has no PALS-standard representation.
+    # Everything in this entry is verbatim from input_iotalattice.in.
+    - impactx_setup:
+        ImpactX:
+          # initial beam distribution (waterbag, generated from the Twiss
+          # parameters on the `begin` element plus the emittances below;
+          # original input: lambdaX = 1.588960728035e-3,
+          # lambdaY = 2.496625268437e-3, lambdaPx = 2.8320397837724e-3,
+          # lambdaPy = 1.802433091137e-3, muxpx = muypy = mutpt = 0)
+          # (species and energy: see ReferenceP on the `begin` element)
+          units: static
+          npart: 10000
+          bunch_charge_C: 1.0e-9
+          distribution: waterbag
+          emitt_x: 4.5e-06  # [m rad] geometric, = lambdaX * lambdaPx
+          emitt_y: 4.5e-06  # [m rad] geometric, = lambdaY * lambdaPy
+          lambdaT: 1.0e-3                 # [m] bunch length; no Twiss form since
+          lambdaPt: 0.0                   #     zero momentum spread
+          # run and algorithm configuration
+          periods: 5
+          nslice: 10
+          space_charge: false
+          slice_step_diagnostics: true
+
+    # Drifts
+    - dra1:
+        kind: Drift
+        length: 0.9125
+    - dra2:
+        kind: Drift
+        length: 0.135
+    - dra3:
+        kind: Drift
+        length: 0.725
+    - dra4:
+        kind: Drift
+        length: 0.145
+    - dra5:
+        kind: Drift
+        length: 0.3405
+    - drb1:
+        kind: Drift
+        length: 0.3205
+    - drb2:
+        kind: Drift
+        length: 0.14
+    - drb3:
+        kind: Drift
+        length: 0.1525
+    - drb4:
+        kind: Drift
+        length: 0.31437095
+    - drc1:
+        kind: Drift
+        length: 0.42437095
+    - drc2:
+        kind: Drift
+        length: 0.355
+    - dnll:
+        kind: Drift
+        length: 1.8
+    - drd1:
+        kind: Drift
+        length: 0.62437095
+    - drd2:
+        kind: Drift
+        length: 0.42
+    - drd3:
+        kind: Drift
+        length: 1.625
+    - drd4:
+        kind: Drift
+        length: 0.6305
+    - dre1:
+        kind: Drift
+        length: 0.5305
+    - dre2:
+        kind: Drift
+        length: 1.235
+    - dre3:
+        kind: Drift
+        length: 0.8075
+
+    # Sector bends (30 and 60 degrees). The ImpactX dipedge elements
+    # (psi = 0, g = 0.058 m full gap, K2 = 0.5 = MAD-X FINT) are folded in:
+    # edge1_int = edge2_int = K2 * g/2 = 0.0145 m.
+    - sbend30:
+        kind: Bend
+        length: 0.4305191429
+        BendP:
+          radius_ref: 0.822230996255981
+          e1: 0.0
+          e2: 0.0
+          edge1_int: 0.0145
+          edge2_int: 0.0145
+    - sbend60:
+        kind: Bend
+        length: 0.8092963858
+        BendP:
+          radius_ref: 0.772821121503940
+          e1: 0.0
+          e2: 0.0
+          edge1_int: 0.0145
+          edge2_int: 0.0145
+
+    # Quadrupoles. Kn1 equals the ImpactX quad strength k [1/m^2]
+    # (MAD-X K1 convention: positive is horizontally focusing).
+    - qa1:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -8.78017699
+    - qa2:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 13.24451745
+    - qa3:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -13.65151327
+    - qa4:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 19.75138652
+    - qb1:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -10.84199727
+    - qb2:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 16.24844348
+    - qb3:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -8.27411104
+    - qb4:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -7.45719247
+    - qb5:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 14.03362243
+    - qb6:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -12.23595641
+    - qc1:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -13.18863768
+    - qc2:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 11.50601829
+    - qc3:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -11.10445869
+    - qd1:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -6.78179218
+    - qd2:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 5.19026998
+    - qd3:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -5.8586173
+    - qd4:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 4.62460039
+    - qe1:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -4.49607687
+    - qe2:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: 6.66737146
+    - qe3:
+        kind: Quadrupole
+        length: 0.21
+        MagneticMultipoleP:
+          Kn1: -6.69148177
+
+    # Beam monitor (ImpactX beam_monitor, zero length). The output backend and
+    # the nonlinear-optics invariant diagnostics are ImpactX-specific.
+    - monitor:
+        kind: Instrument
+        ImpactX:
+          backend: h5
+          nonlinear_lens_invariants: true
+
+    # One mirror-symmetric half of the ring (ImpactX line `first_half`).
+    - iota_half:
+        kind: BeamLine
+        line:
+          - dra1
+          - qa1
+          - dra2
+          - qa2
+          - dra3
+          - qa3
+          - dra4
+          - qa4
+          - dra5
+          - sbend30
+          - drb1
+          - qb1
+          - drb2
+          - qb2
+          - drb2
+          - qb3
+          - drb3
+          - dnll
+          - drb3
+          - qb4
+          - drb2
+          - qb5
+          - drb2
+          - qb6
+          - drb4
+          - sbend60
+          - drc1
+          - qc1
+          - drc2
+          - qc2
+          - drc2
+          - qc3
+          - drc1
+          - sbend60
+          - drd1
+          - qd1
+          - drd2
+          - qd2
+          - drd3
+          - qd3
+          - drd2
+          - qd4
+          - drd4
+          - sbend30
+          - dre1
+          - qe1
+          - dre2
+          - qe2
+          - dre3
+
+    # The full ring: half, central quad qe3, reflected half.
+    - iota_ring:
+        kind: BeamLine
+        periodic: true
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: proton
+                E_tot_ref: 940.77208816e6  # [eV] 2.5 MeV kinetic + 938.27208816 MeV rest energy
+              TwissP:
+                # uncoupled upright beam ellipse (ImpactX muxpx = muypy = 0)
+                alpha_a: 0.0
+                beta_a: 0.5610658215819395  # [m] = lambdaX / lambdaPx
+                alpha_b: 0.0
+                beta_b: 1.3851417179996923  # [m] = lambdaY / lambdaPy
+          - monitor
+          - iota_half
+          - qe3
+          - iota_half:
+              repeat: -1  # ImpactX `second_half.reverse = true`: mirrored element order
+          - monitor
+
+    - iota:
+        kind: Lattice
+        branches:
+          - iota_ring
+
+    - use: iota
