@@ -137,7 +137,7 @@ name with `">>>"` as a separator. There are several permutations where `>>` and 
 {branch-name}>>{element-name}
 ```
 
-If `FACILITY` is used as a branch name, the specified element is searched for under the `facility`
+If `facility` is used as a branch name, the specified element is searched for under the `facility`
 node. This will match to element definitions. For example:
 For example
 ```{code} yaml
@@ -160,15 +160,15 @@ PALS:
     - expand_lattice
 
     - sets:
-        - FACILITY>>q1>length: 0.4       # Matches to q1 definition in facility 
+        - facility>>q1>length: 0.4       # Matches to q1 definition in facility 
         - mybranch>>q1>length: 0.5   # Matches to q1 in mybranch branch
         - q1>length: 0.6             # Matches to all three q1 instances
 ```
 
-Here `FACILITY>>q1` would match to the definition of `q1` outside of `myline` and
+Here `facility>>q1` would match to the definition of `q1` outside of `myline` and
 `mybranch` while `mybranch>>q1` would match the instance of `q1` inside `mybranch`.
 The simple `q1` would match to all three instances. It is not allowed to use the word
-`FACILITY` as a name for any lattice element, `BeamLine`, or `Lattice`. 
+`facility` as a name for any lattice element, `BeamLine`, or `Lattice`. 
 
 Regular expressions can be used. 
 Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 
