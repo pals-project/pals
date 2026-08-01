@@ -154,7 +154,7 @@ PALS:
     - mylat:
         kind: Lattice
         branches:
-          - mybranch              # mybranch branch will have a q1 element
+          - mybranch:             # mybranch branch will have a q1 element
               inherit: myline     #   once the lattice is expanded.
 
     - expand_lattice
