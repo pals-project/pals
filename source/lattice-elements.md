@@ -160,9 +160,9 @@ PALS:
     - expand_lattice
 
     - sets:
-        NULL>>q1.length: 0.4       # Matches to q1 definition block 
-        mybranch>>q1.length: 0.5   # Matches to q1 in mybranch branch
-        q1.length: 0.6             # Matches to all three q1 instances.
+        - NULL>>q1>length: 0.4       # Matches to q1 definition in facility 
+        - mybranch>>q1>length: 0.5   # Matches to q1 in mybranch branch
+        - q1>length: 0.6             # Matches to all three q1 instances
 ```
 
 Here `NULL>>q1` would match to the definition of `q1` outside of `myline` and
