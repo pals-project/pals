@@ -138,7 +138,7 @@ name with `">>>"` as a separator. There are several permutations where `>>` and 
 ```
 
 If `NULL` is used as a branch name, the specified element is searched for outside of any lattices
-or beanlines
+or beamlines.
 For example
 ```{code} yaml
 PALS:
