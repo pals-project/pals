@@ -157,8 +157,6 @@ PALS:
           - mybranch:             # mybranch branch will have a q1 element
               inherit: myline     #   once the lattice is expanded.
 
-    - expand_lattice
-
     - sets:
         - facility>>q1>length: 0.4       # Matches to q1 definition in facility 
         - mybranch>>q1>length: 0.5   # Matches to q1 in mybranch branch
