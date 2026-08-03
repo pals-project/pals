@@ -46,7 +46,7 @@ settings of all other members of the group. For example,
 ```
 Here the `Ks2` value of `s1` has been set in the definition of `s1`. When the
 `set` of `Ks2L` is done, this nullifies the setting of `Ks2` so that there
-is no inconsistance. Note that for the sextupole skew multipole, 
+is no inconsistency. Note that for the sextupole skew multipole, 
 there are four interdependent parameters: `Ks2`, `Ks2L`, `Bs2`, `Bs2L`.
 
 
