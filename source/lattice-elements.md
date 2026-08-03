@@ -158,15 +158,20 @@ PALS:
               inherit: myline     #   once the lattice is expanded.
 
     - sets:
-        - facility>>q1>length: 0.4       # Matches to q1 definition in facility 
-        - mybranch>>q1>length: 0.5   # Matches to q1 in mybranch branch
-        - q1>length: 0.6             # Matches to all three q1 instances
+        - facility>>q1>length: 0.4           # Matches to q1 definition in facility
+        - myline>>q1>ApertureP.x_min: 0.5    # Matches to q1 in myline.
+        - q1>ApertureP.y_max: 0.6            # Matches to both q1 instances.
 ```
 
-Here `facility>>q1` would match to the definition of `q1` outside of `myline` and
-`mybranch` while `mybranch>>q1` would match the instance of `q1` inside `mybranch`.
-The simple `q1` would match to all three instances. It is not allowed to use the word
-`facility` as a name for any lattice element, `BeamLine`, or `Lattice`. 
+Here `facility>>q1` would match to the definition of `q1` in the `facility` list.
+while `myline>>q1` would match the instance of `q1` inside `myline`.
+The simple `q1` would match to both of these instances. Notice that 
+since lattice expansion has not yet been done, nothing within the `mylat` lattice
+is immediately affected. However, when lattice expansion is done, 
+the `mylat` lattice will have an instance of `q1` whose parameter values will be affected
+by the prior sets before lattice expansion.
+Note: It is not allowed to use the word
+`facility` as a name for any lattice element, branch, `BeamLine`, or `Lattice`. 
 
 Regular expressions can be used. 
 Regular expressions must conform to the [PCRE2](https://www.pcre.org/) standard. 

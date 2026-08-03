@@ -282,7 +282,7 @@ facility:
 
   - set:
       parameter: lat>>q1>MagneticMultipoleP.Kn1L
-      value: parameter * (1 + 1e-4*random_gauss())
+      value: PARAMETER * (1 + 1e-4*random_gauss())
 ```
 In this example, the expanded lattice has three elements named `q1`. 
 To add a random error to each of these, the lattice has to be expanded before a `set` command is used.
@@ -292,10 +292,10 @@ not yet been instantiated and the set command as written cannot be done. When th
 `expand_lattice` statement, trying to set the `Kn1L` parameter in the `q1` element definition as in:
 ```{code} yaml
   - set 
-      parameter: q1>MagneticMultipoleP.Kn1L
-      value: parameter * (1 + 1e-4*random_gauss())
+      parameter: bline>>q1>MagneticMultipoleP.Kn1L
+      value: PARAMETER * (1 + 1e-4*random_gauss())
 ```
-will be successful but without `expand_lattice`, the set targets the single `q1` definition, 
+will be successful but the set targets the single `q1` instance in `bline` 
 so `random_gauss()` is evaluated only once and all three expanded copies inherit that one value.
 
 
