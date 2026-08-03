@@ -24,13 +24,13 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```{include} parameters/converter.md
 ```
 
+```{include} parameters/coordinateset.md
+```
+
 ```{include} parameters/electricmultipole.md
 ```
 
 ```{include} parameters/floor.md
-```
-
-```{include} parameters/floorshift.md
 ```
 
 ```{include} parameters/foil.md
