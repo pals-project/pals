@@ -31,7 +31,7 @@ Example:
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. 
 
-For any group of interdependent parameters, the set of one member of the group nullifies previous
+For any group of interdependent parameters, the setting of one member of the group nullifies previous
 settings of all other members of the group. For example,
 ```{code} yaml
 - s1:
