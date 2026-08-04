@@ -29,7 +29,9 @@ Example:
     value: 2*PARAMETER + atan(SELF.BendP.g_ref)
 ```
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
-This includes element `B1a`. 
+This includes element `B1a`. Notice that when a set of parameters is being changed, as in this example,
+the value of `PARAMETER` used in computation of a given parameter in the set will be the value 
+of that parameter. Thus the value of `PARAMETER` can be different for different parameters in the set.
 
 Note: Pattern matching is not supported in the `value` expression.
 
