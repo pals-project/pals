@@ -11,6 +11,19 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 All keywords in this standard are case-sensitive.
 
+A PALS compliant parser will issue and error if a necessary condition of the PALS schema is
+not satisfied.
+
+%---------------------------------------------------------------------------------------------------
+(s:reserved)=
+## Reserved Words
+
+Reserved words which must not be used for the names of lattice elements, beam lines, etc are:
+```{code} yaml
+SELF
+PARAMETER
+```
+
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
 ## Syntax Used in this Document is YAML
