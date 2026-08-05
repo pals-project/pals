@@ -87,18 +87,6 @@ The simplest form of name matching is if the string matches
 the `name` field of an element or elements. 
 For example, the string `"Q1"` will match to all elements named `Q1`.
 
-Element matches may be restricted to a given element kind using the notation
-```{code} yaml
-{kind}::{name}
-```
-where `{kind}` is the element kind and `{name}` is the element name.
-Example:
-```{code} yaml
-Marker::bpm.
-```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character, see below).
-
 The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
 followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
 that matches `"Quadrupole::Q1"`. The `N`{sup}`th` instance selection is always applied last.
