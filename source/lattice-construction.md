@@ -297,5 +297,6 @@ not yet been instantiated and the set command as written cannot be done. When th
 ```
 will be successful but the set targets the single `q1` instance in `bline` 
 so `random_gauss()` is evaluated only once and all three expanded copies inherit that one value.
-
+There is a further problem here in that parameter values are not inherited until lattice expansion
+so the value of `PARAMETER` with this set is zero.
 
