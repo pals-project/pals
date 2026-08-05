@@ -11,7 +11,7 @@ PALS:
   authors:                  # [list] Authors associated with this file
   extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
-  include:                  # [
+  include:                  # [string] Optional literal insert of a file
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
   phase_space_coordinates:  # [enum] Type of phase space coordinates 
