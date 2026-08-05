@@ -72,8 +72,6 @@ standard to ensure that different translators are able to read a PALS file.
 - **Translator standard:** After reading in a PALS file, a translator can present to
 a simulation program a data object that represents the PALS file. 
 There are two basic representations that a PALS compliant translator must be able construct.
-The **exact** representation is a direct translation of the contents of the PALS file
-without any lattice expansions or expression evaluations.
 The **expanded** representation has, among other things, all lines expanded into branches 
 and all expressions evaluated. 
 
