@@ -240,7 +240,8 @@ Files are to be only loaded once and must be loaded at the first opertunity.
 For example, if A loads B and then C, and if B and C both load D, then when B is loaded into A,
 D will be included, and when C is loaded into A, D will not be loaded. 
 - As with `include`, a file path in a `load` list is interpreted relative to the location of the
-file that contains the `load` node.
+file that contains the `load` node (and not the location of the file including or loading the file
+that contains the `load` node).
 - Load nodes will not appear in the combinded tree.
 
 Loading can also be useful in constructing "composite" accelerator complexes from individual machines.
