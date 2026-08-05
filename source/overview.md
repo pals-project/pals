@@ -69,11 +69,6 @@ lattice parameters, definitions of lattice parameters, how lattice elements can 
 into branches to describe the entire accelerator complex, etc.
 - **File format standards:** For various formats like YAML and Python there is a file format
 standard to ensure that different translators are able to read a PALS file.
-- **Translator standard:** After reading in a PALS file, a translator can present to
-a simulation program a data object that represents the PALS file. 
-There are two basic representations that a PALS compliant translator must be able construct.
-The **expanded** representation has, among other things, all lines expanded into branches 
-and all expressions evaluated. 
 
 Note: Since the schema and translator parts are logically intertwined, there has been no attempt
 to separate these in the PALS documentation here.
