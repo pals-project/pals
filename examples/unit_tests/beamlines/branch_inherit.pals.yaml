@@ -1,0 +1,35 @@
+# An explicit branch `inherit` wins over the branch name: the branch is named
+# `alt`, but its contents come from the BeamLine `ring`. A BeamLine named
+# `alt` also exists and is not used.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("An explicit branch inherit wins over the branch name").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q_named:
+        kind: Quadrupole
+        length: 1
+    - s_wanted:
+        kind: Sextupole
+        length: 2
+    - alt:
+        kind: BeamLine
+        line:
+          - begin
+          - q_named
+    - ring:
+        kind: BeamLine
+        line:
+          - begin
+          - s_wanted
+    - machine:
+        kind: Lattice
+        branches:
+          - alt:
+              inherit: ring
+    - use: "machine"

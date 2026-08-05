@@ -4,6 +4,16 @@
 
 Typically this parameter group is used to specify the initial Twiss, coupling and dispersion
 parameters at the beginning of a lattice branch.
+For a [BeginningEle](#s:beginningele) element, `TwissP` is an input parameter group that sets these
+initial values.
+For all other element kinds that have a [ReferenceP](#s:ref.params) group, `TwissP` is an
+[output parameter](#s:io.params) group.
+
+Note that PALS itself does not define how any `TwissP` component is calculated: that is outside the
+scope of PALS.
+A program is free to compute the Twiss parameters and write them out for each element of an
+expanded lattice so that other programs may read them back in.
+
 The components if `TwissP` are:
 ```{code} yaml
 alpha_a       # [-] "a" mode alpha
@@ -22,6 +32,14 @@ deta_x_ds     # [-] x-axis dispersion derivative.
 deta_y_ds     # [-] y-axis dispersion derivative.
 phi_a         # [rad] "a" mode phase.
 phi_b         # [rad] "b" mode phase.
+dbeta_a_dpz   # [m/pz_units] Beta_a dependence on momentum.
+dalpha_a_dpz  # [m/pz_units] Alpha_a dependence on momentum.
+dbeta_b_dpz   # [m/pz_units] Beta_b dependence on momentum.
+dalpha_b_dpz  # [m/pz_units] Alpha_b dependence on momentum.
+deta_x_dpz    # [m/pz_units] eta_x dependence on momentum.
+detap_x_dpz   # [1/pz_units] etap_x dependence on momentum.
+deta_y_dpz    # [m/pz_units] eta_y dependence on momentum.
+detap_y_dpz   # [1/pz_units] etap_y dependence on momentum.
 ```
 Discussion of the normal mode decomposition is found in Sagan and Rubin {footcite:p}`Sagan:Coupling`.
 Dispersion parameters are documented in the [Dispersion](#s:dispersion) section.

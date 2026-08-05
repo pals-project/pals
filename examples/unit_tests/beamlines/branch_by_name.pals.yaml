@@ -1,0 +1,27 @@
+# A Lattice branch with no `inherit` takes its root BeamLine from its own
+# name: the branch `ln` is built from the BeamLine `ln`. The branch entry can
+# still carry branch parameters of its own, here `periodic`.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("A branch with no inherit takes its root BeamLine from its name").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q:
+        kind: Quadrupole
+        length: 1
+    - ln:
+        kind: BeamLine
+        line:
+          - begin
+          - q
+    - machine:
+        kind: Lattice
+        branches:
+          - ln:
+              periodic: false
+    - use: "machine"

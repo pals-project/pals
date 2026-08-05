@@ -1,0 +1,4 @@
+# Loaded by joiner.pals.yaml; states the same version.
+# From pals-cpp tests/lattices/load_version_same.
+PALS:
+  version: "1.0"

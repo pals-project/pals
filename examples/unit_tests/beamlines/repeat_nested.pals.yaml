@@ -1,0 +1,39 @@
+# `repeat` expands the copies it splices: the cell appears three times, and
+# each copy's own sub-line (`inner`) is expanded within it.
+#
+# Adapted from pals-cpp tests/test_expansion.cpp
+# ("repeat expands the copies it splices"); a BeginningEle was added so the
+# reference parameters can be computed.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - d1:
+        kind: Drift
+        length: 2.0
+    - q1:
+        kind: Quadrupole
+        length: 0.4
+    - inner:
+        kind: BeamLine
+        line:
+          - q1
+    - cell:
+        kind: BeamLine
+        line:
+          - d1
+          - inner
+    - main_line:
+        kind: BeamLine
+        line:
+          - begin
+          - cell:
+              repeat: 3
+    - lat1:
+        kind: Lattice
+        branches:
+          - main_line
+    - use: "lat1"

@@ -1,0 +1,10 @@
+# SELF placed between two loaded files: the combined document holds a, then
+# this file's own contents, then b. The notes record the order.
+# From pals-cpp tests/lattices/load_self.
+PALS:
+  notes:
+    - "joiner"
+  load:
+    - a.pals.yaml
+    - SELF
+    - b.pals.yaml

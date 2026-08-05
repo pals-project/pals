@@ -36,13 +36,15 @@ There are element parameters that are common and do not naturally fit into
 any of the parameter groups. These parameters are not grouped. 
 These element parameters are:
 ```{code} yaml
-  field_master: null    # [Boolean] See Below.
-  is_on: true           # [Boolean] Turns on or off the fields in an element. When off, the element looks like a drift.
+  field_master: null    # [logical] See Below.
+  is_on: true           # [logical] Turns on or off the fields in an element. When off, the element looks like a drift.
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.
-  s_position: 0         # [m] The longitudinal position of the element.
+  s_position: 0         # [m] The longitudinal position of the element in the branch curvilinear coordinate system. 
 ```
+The `s_position` is generally an output parameter except for the beginning element of a branch where
+it is an input parameter.
 
 The setting of `field_master` matters when there is a change in reference energy during a simulation.
 In this case, if `field_master` is `true`, magnetic multipoles, RF, and Bend unnormalized fields will be held constant
@@ -142,6 +144,7 @@ For an element to inherit all parameter groups from another element, just inheri
 ```
 
 %---------------------------------------------------------------------------------------------------
+(s:io.params)=
 ## User Settable (Input) and Dependent (Output) parameters.
 
 Some parameters are set in the PALS file. These parameters are called "User settable" or "input". 

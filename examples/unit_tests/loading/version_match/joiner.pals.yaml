@@ -1,0 +1,6 @@
+# Files combined by load must agree on the PALS version when both state one.
+# From pals-cpp tests/lattices/load_version_same.
+PALS:
+  version: "1.0"
+  load:
+    - a.pals.yaml

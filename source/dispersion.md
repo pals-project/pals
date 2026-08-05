@@ -29,7 +29,6 @@ some section of the lattice needs to be dispersion free, it is convenient to be 
 = \frac{d}{dp_z} \left( \frac{dy}{ds} \right)
 = \frac{d}{dp_z} \left( \frac{p_y}{1 + p_z} \right)
 = \frac{1}{1 + p_z} \, \eta_{py} - \frac{p_y}{(1 + p_z)^2}
-\label{dexds}
 \end{align}
 
 For a lattice branch which is [non-periodic](#s:lattice.construct), the dispersion of the {math}`z` phase space

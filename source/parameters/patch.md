@@ -29,7 +29,7 @@ PatchP:
                     #    true -> User sets offsets and rot. 
                     #    False -> Offsets and rot from branch layout.
   ref_coords        # [enum] Coordinate system defining the length
-  user_sets_length  # [logic] Default is False. Is the element length User set? 
+  user_sets_length  # [logical] Default is False. Is the element length User set? 
 ```
 
 The transformation from `Patch` entrance coordinates to exit coordinates is given by [](#wws)
@@ -39,10 +39,10 @@ with
 
   {\bf L} &= 
     \begin{pmatrix} 
-      \text{x_offset} \\ \text{y_offset} \\ \text{z_offset} 
+      \text{x\_offset} \\ \text{y\_offset} \\ \text{z\_offset} 
     \end{pmatrix}
     \\
-  {\bf S} &= {\bf R}_{y} (\text{y_rot}) \; {\bf R}_{x} (\text{x_rot}) \; {\bf R}_{z} (\text{z_rot}) 
+  {\bf S} &= {\bf R}_{y} (\text{y\_rot}) \; {\bf R}_{x} (\text{x\_rot}) \; {\bf R}_{z} (\text{z\_rot}) 
 ```
 
 A straight line element like a `Drift` or a `Quadrupole` has the exit face parallel to the
@@ -119,7 +119,7 @@ the exit coordinate system. In this case, the length will be equal to `z_offset`
 
 Note: To shift the reference energy, time, or species, use the 
 [ReferenceChangeP](#s:ref.change.params) parameter group.
-The `extra_dtime_ref` of the `ReferenceChageP` group can be used to set
-the change in reference time through a patch. The difference between using `extra_dtime_ref` and
-`length` is that the reference time change using `extra_dtime_ref` is independent of the reference 
+The `dtime_ref` of the `ReferenceChageP` group can be used to set
+the change in reference time through a patch. The difference between using `dtime_ref` and
+`length` is that the reference time change using `dtime_ref` is independent of the reference 
 velocity while with `length` there is a dependence upon the reference velocity. 

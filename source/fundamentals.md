@@ -5,7 +5,7 @@
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary.
+The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
   authors:                  # [list] Authors associated with this file
@@ -39,13 +39,14 @@ PALS:
       my_extension: "See the PALS extensions chapter"
 
   authors:
-    - author:
-        name: Lastname, Firstname
-        orcid: AAAA-BBBB-CCCC-DDDD
-        affiliation: Affiliation Long Name
-        email: lastname@laboratory.gov
-    - author:
-        ...
+    - name: Lastname, Firstname
+      orcid: AAAA-BBBB-CCCC-DDDD
+      affiliation: Affiliation Long Name
+      email: lastname@laboratory.gov
+    - name: Lastname2, Firstname2
+      orcid: EEEE-FFFF-GGGG-HHHH
+      affiliation: Affiliation2 Long Name
+      email: lastname2@university.edu
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
@@ -95,8 +96,8 @@ version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} YAML
-- MagneticMultipoleP:
-  - Kn3L: 0.3
+MagneticMultipoleP:
+  Kn3L: 0.3
 ```
 There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
@@ -111,7 +112,8 @@ standard. For example, an included file may be an
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) section.
 Other file endings indicate non-PALS data.
 
-Include can appear at any level of the information tree but must be within the `PALS` root node.
+An include statement can appear at any level of the information tree but must be within the `PALS` root node.
+Note: with YAML files, the overall indentation of the included file is ignored.
 
 A file path in an `include` is interpreted relative to the location of the file that contains the
 `include` node.
@@ -314,7 +316,7 @@ Notice that particle names must be quoted.
 
 Special values used in this document are:
 
-1. Boolean parameters can be one of three values:
+1. Logical parameters can be one of three values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
