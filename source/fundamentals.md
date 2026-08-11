@@ -13,11 +13,13 @@ PALS:
   notes:            # [list] Optional notes of interest.
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
-  facility:         # [list] Lattice elements, beamlines, lattices, parameter set commands, etc.
-  post_expansion:   # [list] Set commands, etc. for post-expansion setup.
+  facility:         # [list] Lattice elements, beamlines, lattices, set and use commands.
+  post_expansion:   # [list] Post-expansion setup. 
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
+The set of node types that can be used under the `post_expansion` node is the same as the
+`facility` node except for lattice and `use` nodes.
 
 Example:
 ```{code} YAML
@@ -67,7 +69,7 @@ Essentially, the information needed for the pre-expansion phase is put in the `f
 of `PALS` and the information for the post-expansion phase is put in the `post_expansion` sub-node.
 Example:
 ```{code} yaml
-PALS
+PALS:
   facility:
     - q1:
         kind: Quadrupole
@@ -94,7 +96,7 @@ To add a random error to each of these, the lattice has to be expanded before a 
 and this is accomplished by placing a `set` command under the `post_expansion` node.
 If the `set` command had appeared in the `facility` node, and not in the `post_expansion` node, then
 when the set command is executed, the set would be applied to the value of `Kn1L` in the definition
-of `q1`. In this case, result would be that all three of the `q1` elements in the expanded lattice would
+of `q1`. In this case, the result would be that all three of the `q1` elements in the expanded lattice would
 have the same value of `Kn1L`.
 
 %---------------------------------------------------------------------------------------------------
