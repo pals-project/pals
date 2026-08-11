@@ -59,12 +59,12 @@ Per author, the `name` is required; the `orcid`, `affiliation` and `email` field
 (s:facility)=
 ## `facility` and `post_expansion`
 
-The [lattice expansion](#s:lattice.expand) performed by a PALS parser can be divided into
-two phases. The first "expansion" phase basically involves constructing the ordered lists 
-of lattice  elements contained in all the branches of a lattice. The second "post-expansion"
-phase basically involves making modifications to the expanded lattice. 
-Essentially, the information needed to to the expansion phase is put in the `facility` sub-node
-of `PALS` and the information for the post-expansion work is put in the `post_expansion` sub-node.
+Constructing the lattice can be divided into two phases. 
+The first, "pre-expansion", phase basically involves defining lattice elements, controllers, 
+beam lines, etc., and ends with [lattice expansion](#s:lattice.expand).
+The second, "post-expansion", phase basically involves making modifications to the expanded lattice. 
+Essentially, the information needed for the pre-expansion phase is put in the `facility` sub-node
+of `PALS` and the information for the post-expansion phase is put in the `post_expansion` sub-node.
 Example:
 ```{code} yaml
 PALS
