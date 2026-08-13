@@ -29,7 +29,8 @@ The syntax is:
   extension: <extension-type>
   ... extension info ...
 ```
-where `<some_name>` is any name and `<extension-type>` is the type of the extension. Example:
+where `<some_name>` is any name containing a dict,
+and `<extension-type>` is the type of the extension. Example:
 ```{code} yaml
 synch_connect:                         # Extension name
   extension: Cornell_CESR_Connect      # Extension type
@@ -38,10 +39,10 @@ synch_connect:                         # Extension name
 ```
 In this example, the `synch_connect` dictionary key is the start of the extension. The type of extension is
 `Cornell_CESR_Connect`. Any further entries in `synch_connect` will be excluded from any
-PALS validation process. Either a dict or a list can be used for the children of `<some_name>`.
+PALS validation process. 
 
-Alternatively, extension metadata names may be "documented" using an `extension_labels` block.
-Registration means that a PALS parser can validate the extension name.
+Alternatively, extension metadata names may be declared using an `extension_labels` block.
+By declaring  metadata names, a PALS parser is prevented from incorrectly identifying such data as invalid.
 Extension metadata names appear at the start (top level) of an extension block.
 The `extension_labels` block must appear as a child of the `PALS` root node.
 The `extension_labels` block can also be used to define [enum](#s:enum) values.
