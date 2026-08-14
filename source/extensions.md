@@ -29,7 +29,7 @@ The syntax is:
   extension: <extension-type>
   ... extension info ...
 ```
-where `<some_name>` is any name containing a dict,
+ where <some_name> is an arbitrary key whose value is a dictionary,
 and `<extension-type>` is the type of the extension. Example:
 ```{code} yaml
 synch_connect:                         # Extension name
