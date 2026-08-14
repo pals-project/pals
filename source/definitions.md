@@ -84,7 +84,7 @@ calculating the reference energy for all elements.
 (s:enum)=
 ## Enum
 
-An `enum` (often called an "enumerated type") key is a parameter that has a set of named valid values. 
+An `enum` parameter (often called an "enumerated type") is one whose value must be one of a set of named values.
 For example, the `cavity_type` parameter of
 the [`RFP`](#s:rf.params) parameter group has valid values `STANDING_WAVE` and `TRAVELING_WAVE`.
 The advantage of designating a parameter as an enum is that the parameter value can be validated.
