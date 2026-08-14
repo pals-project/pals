@@ -42,7 +42,7 @@ In this example, the `synch_connect` dictionary key is the start of the extensio
 PALS validation process. 
 
 Alternatively, extension metadata names may be declared using an `extension_labels` block.
-By declaring  metadata names, a PALS parser is prevented from incorrectly identifying such data as invalid.
+By declaring metadata names, a PALS parser is prevented from incorrectly identifying such data as invalid.
 Extension metadata names appear at the start (top level) of an extension block.
 The `extension_labels` block must appear as a child of the `PALS` root node.
 The `extension_labels` block can also be used to define [enum](#s:enum) values.
