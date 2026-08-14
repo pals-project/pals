@@ -39,7 +39,7 @@ synch_connect:                         # Extension name
 ```
 In this example, the `synch_connect` dictionary key is the start of the extension. The type of extension is
 `Cornell_CESR_Connect`. Any further entries in `synch_connect` will be excluded from any
-PALS validation process. 
+PALS validation process.
 
 Alternatively, extension metadata names may be declared using an `extension_labels` block.
 By declaring metadata names, a PALS parser is prevented from incorrectly identifying such data as invalid.
