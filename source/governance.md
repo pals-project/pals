@@ -97,7 +97,7 @@ Contributions can be in many forms and not all need to be code contributions.
 Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
 Contributors can participate in developer meetings and weigh in on discussions.
 Contributors can "triage" (add labels) to pull requests, issues, and GitHub discussion pages.
-Contributors can comment and review PRs (but not merge).
+Contributors can review PRs (but not merge).
 
 ### Decision Process
 
@@ -109,6 +109,21 @@ Appointed after contributing to PALS (see above) by any member of the TC.
 
 The role can be lost by resigning or by decision of an individual TC or SC member, e.g., due to inactivity, bad acting or other.
 
+## Pull Request Discussion
+
+Anyone with an interest is invited to join the discussion of any Pull Request (PR).
+
+So that the standard can evolve at a reasonable pace, anyone who raises an issue in a PR
+discussion is encouraged to respond promptly to comments on the issue.
+It is recognized that vacations, scheduling conflicts, and the like, can make a timely
+response impossible. In that case, the person should post a note saying when they expect
+they can respond, and the discussion should wait for them accordingly.
+
+If someone who raised an issue does not respond in any way within two weeks of the last
+message in that discussion thread, the decision of whether to merge the PR shall proceed
+without further delay. That is, the unanswered issue is treated as resolved and is not
+grounds for postponing the merge decision to allow more time for a response.
+
 ## Former Members
 
 "Former members" are the giants on whose shoulders we stand.
@@ -116,3 +131,4 @@ But, for the purpose of PALS governance, they are *not* tracked as a governance 
 Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, the PALS documentation, references, citable Zenodo archives of releases, etc. as appropriate.
 
 Former members of SC, TC and Contributors are not kept in the roster, since committee role rosters shall reflect currently active members and the responsible governance body.
+
