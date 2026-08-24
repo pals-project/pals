@@ -115,8 +115,7 @@ Anyone with an interest is invited to join the discussion of any Pull Request (P
 
 So that the standard can evolve at a reasonable pace, anyone who raises an issue in a PR
 discussion is encouraged to respond promptly to comments on the issue.
-It is recognized that vacations, scheduling conflicts, and the like, can make a timely
-response impossible. In that case, the person should post a note saying when they expect
+If that is not possible, the person should post a note saying when they expect
 they can respond, and the discussion should wait for them accordingly.
 
 If someone who raised an issue does not respond in any way within two weeks of the last
