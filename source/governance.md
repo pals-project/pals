@@ -122,6 +122,8 @@ If someone who raised an issue does not respond in any way within two weeks of t
 message in that discussion thread, the decision of whether to merge the PR shall proceed
 without further delay. That is, the unanswered issue is treated as resolved and is not
 grounds for postponing the merge decision to allow more time for a response.
+Notice that this two week limit does not apply to cases where a comment raises an issue and
+that comment has not been replied to.
 
 ## Former Members
 
