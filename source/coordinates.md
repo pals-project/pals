@@ -16,7 +16,7 @@ Which phase space coordinates are used in a lattice is determined by the setting
 [option](#s:palsroot).
 ```{code} yaml
 PALS:
-  phase_space_coordinates: [string]
+  phase_space_coordinates: [enum]
 ```
 Possible settings are:
 * `ANGLE_AND_ENERGY`
