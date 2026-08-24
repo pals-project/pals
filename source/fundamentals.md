@@ -332,7 +332,7 @@ that are commonly called "immediate evaluation" and "delayed evaluation" express
 Immediate evaluation expressions are expressions that, once a PALS file is read in by a program,
 are meant to be immediately evaluated and never reevaluated. That is, what is stored is the
 value of the expression and the expression used to compute the value can be ignored thereafter. 
-Delayed evaluation on the other hand are meant to be retained by the program and, if any
+Delayed evaluation expressions, on the other hand, are meant to be retained by the program and, if any
 variables in the expression change, the program should update the value automatically.
 Delayed evaluation expressions are denoted in a PALS file using the `expr(...)` construct,
 as in the example above, where the expression for `Kn1` (`3.74 * a_var`) is a delayed
