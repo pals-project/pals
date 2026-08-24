@@ -190,7 +190,7 @@ PALS uses SI except for energy which uses `eV`.
 
 %---------------------------------------------------------------------------------------------------
 (s:constants)=
-## Constants
+## Constants and Variables
 
 Constants defined by PALS:
 ```{code} yaml
@@ -198,6 +198,7 @@ pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
+k_boltzmann               # [eV/K] Boltzmann's constant
 r_electron                # [m] Classical electron radius
 r_proton                  # [m] Classical proton radius
 e_charge                  # [Coul] Elementary charge
@@ -210,15 +211,17 @@ n_avogadro                # [-] Avogadro's constant
 The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants may be defined using `constant` as the `kind`.
-The parameters associated with a constant are:
+Other constants and variables may be defined using `constant` or `variable` as the `kind`.
+The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
   relative_error: 0       # Relative error.
-  value                   # Constant value.
+  value                   # Constant or variable value.
 ```
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
+
+Constants and variables must be defined directly under the `PALS` node or the `facility` node. 
 Example:
 ```{code} yaml
 PALS:
@@ -227,21 +230,42 @@ PALS:
         kind: constant
         value: 1.45 * c_light
         relative_error: 0.02
+    - my_var:
+        kind: variable
+        value: 37
     ...
 ```
-Constants must be defined directly under the `PALS` node or the `facility` node. 
-Constants may not be redefined.
-Exception: Since multiple include files may define the same constant, a redefinition of a constant
-with the **same value** as the original is valid.
 
-For constants that only have a value, an alternative compact form has the syntax:
+For constants or variables that only have a value, an alternative compact form has the syntax:
 ```{code} yaml
   - constants:
       - const_a: value_a        # Define const_a
       - const_b: value_b        # Define const_b
-      - const_c:: pi * const_a  # Can use expressions.
+      - const_c: pi * const_a   # Can use expressions.
+      ...
+  - variables:
+      - var_a: var_val_a        # Define var_a
       ...
 ```
+The difference between a constant and a variable is one of intent of the PALS file creator.
+That is, a constant is not supposed to be
+varied after a program reads a PALS file, while a variable can vary. For example, a constant could
+be the length of a magnet which will not change, while a variable could be a magnet strength which
+does vary.
+When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
+That is, the following is not valid:
+```{code} yaml
+- variables:
+    - my_var: 37.5
+
+...
+
+- variables:
+    - my_var: 0.13     # VALUE CHANGE NOT VALID!
+```
+It is sometimes convenient when there are include PALS files, to define the same constant or variable
+in multiple files. Multiple definitions of the same constant or variable are allowed with the 
+restriction that the value is always the same.
 
 Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
 `b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
@@ -251,7 +275,7 @@ involve `a` nor `b`.
 (s:functions)=
 ## Functions
 
-Functions defined by PALS:
+Functions that can be used in [](#s:expressions):
 ```{code} yaml
 sqrt(x)                  # Square Root
 log(x)                   # Logarithm
@@ -269,9 +293,9 @@ atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
 abs(x)                   # Absolute Value
 factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
-ran_gauss()              # Gaussian distributed random number
-ran_gauss(sig_cut)       # Gaussian distributed random number
-int(x)                   # Nearest integer with magnitude less then x
+random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
+random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
+int(x)                   # Nearest integer with magnitude less than x
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
 floor(x)                 # Nearest integer less than x
