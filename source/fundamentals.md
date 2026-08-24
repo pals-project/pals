@@ -361,7 +361,7 @@ RELATIVE controller variable that there is any effect). The ABSOLUTE controllers
 that can be evaluated from top to bottom.
 
 - For everything else, evaluation starts at the first `facility` child and works downward.
-delayed evaluation equations are evaluated along with all other equations. There is no difference
+Delayed evaluation equations are evaluated along with all other equations. There is no difference
 here.
 
 Note: A PALS parser will both compute parameter values and will preserve the underlying equations
