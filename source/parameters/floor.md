@@ -16,7 +16,7 @@ FloorP:
   theta: null                   # [radians] Orientation angle.
   phi: null                     # [radians] Orientation angle.
   psi: null                     # [radians] Orientation angle.
-  user_set: false               # [logic] Is placement set by the user or computed?
+  user_set: false               # [logical] Is placement set by the user or computed?
 ```
 
 When this group is contained in an element, the placement can either be set by the creator

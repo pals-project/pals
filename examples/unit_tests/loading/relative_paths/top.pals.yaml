@@ -1,0 +1,5 @@
+# Loaded by sub/inner.pals.yaml as ../top.pals.yaml.
+# From pals-cpp tests/lattices/load_relative.
+PALS:
+  notes:
+    - "top"

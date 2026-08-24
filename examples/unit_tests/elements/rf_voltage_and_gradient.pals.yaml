@@ -1,0 +1,26 @@
+# An RF cavity with both voltage and gradient set, and agreeing:
+# 2.0e7 * 0.4 = 8.0e6. Consistent redundant parameters are left untouched.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper accepts consistent RF voltage and gradient").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - cav:
+              kind: RFCavity
+              length: 0.4
+              RFP:
+                gradient: 2.0e7
+                voltage: 8.0e6
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

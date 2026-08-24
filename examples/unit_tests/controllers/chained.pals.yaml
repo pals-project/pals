@@ -1,0 +1,40 @@
+# A control hierarchy: the controller `high` drives the variable `cur` of the
+# controller `low`, which in turn drives Q1. The order the controllers are
+# written in does not matter.
+#
+# From pals-cpp tests/test_controllers.cpp
+# ("a controller drives another controller's variable").
+PALS:
+  facility:
+    - low:
+        kind: Controller
+        variables:
+          cur: 0.1
+        controls:
+          - parameter: Q1>MagneticMultipoleP.Kn1L
+            expression: 10 * cur
+    - high:
+        kind: Controller
+        variables:
+          knob: 3
+        controls:
+          - parameter: low>cur
+            expression: knob / 4
+    - lat1:
+        kind: Lattice
+        branches:
+          - main:
+              kind: BeamLine
+              line:
+                - begin:
+                    kind: BeginningEle
+                    ReferenceP:
+                      species_ref: "electron"
+                      E_tot_ref: 1.0e9
+                - Q1:
+                    kind: Quadrupole
+                    MagneticMultipoleP:
+                      Kn1L: 0.0
+                - fin:
+                    kind: Marker
+    - use: "lat1"

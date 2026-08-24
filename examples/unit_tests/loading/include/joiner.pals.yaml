@@ -1,0 +1,10 @@
+# load and include together: the loaded layout uses include to splice
+# facility entries from a sibling directory, and this joiner adds an
+# element of its own on top.
+# From pals-cpp tests/lattices/load_include.
+PALS:
+  load:
+    - sub/layout.pals.yaml
+  facility:
+    - m2:
+        kind: Marker

@@ -1,7 +1,7 @@
 (s:bend.multipoles)=
 # Exact Multipole Fields in a Bend
 
-For static magnetic and electric multipole fields in a bend with `ref_coords` set
+For static magnetic and electric multipole fields in a bend with `ref_geometry` set
 to `arc`, the spatial dependence of the
 field is different from multipole fields in an element with a straight geometry as given
 by Eqs. {eq}`bbmult` and {eq}`exiey`. The analysis of the multipole fields in a bend here follows

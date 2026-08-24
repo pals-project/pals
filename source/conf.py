@@ -14,7 +14,7 @@ author = 'Jean-Luc Vay, David Sagan, Chad Mitchell, Axel Huebl, David Bruhwihler
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['myst_parser', 'sphinx_design', 'sphinxcontrib.bibtex', 'sphinxcontrib.cairosvgconverter', 'sphinx_copybutton']
-myst_enable_extensions = ["colon_fence", "amsmath"]
+myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block"]
 numfig = True
 
 templates_path = ['_templates']
@@ -33,5 +33,23 @@ html_theme_options = {
     "show_toc_level": 3,
     "show_navbar_depth": 3,
     "collapse_navbar": False,
+    "repository_url": "https://github.com/pals-project/pals",
+    "use_repository_button": True,
+    "logo": {
+        "image_light": "_static/pals-logo-light.png",
+        "image_dark": "_static/pals-logo-dark.png",
+        "alt_text": "Particle Accelerator Language Standard (PALS)",
+    },
 }
-## html_static_path = ['_static']
+html_static_path = ['_static']
+
+# Show only the logo in the top-left of the sidebar (replaces the title text).
+html_title = ""
+
+# Route the theme search box to Read the Docs' server-side search.
+# See _static/rtd-search-override.js for details.
+html_js_files = ['rtd-search-override.js']
+
+# Backdrops for the logo gallery on the Logos page.
+# See _static/logos.css for details.
+html_css_files = ['logos.css']

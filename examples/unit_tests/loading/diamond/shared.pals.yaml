@@ -1,0 +1,5 @@
+# Loaded by both left.pals.yaml and right.pals.yaml; appears once.
+# From pals-cpp tests/lattices/load_diamond.
+PALS:
+  notes:
+    - "shared"

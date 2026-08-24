@@ -1,0 +1,5 @@
+# Loaded by inner.pals.yaml.
+# From pals-cpp tests/lattices/load_nested.
+PALS:
+  notes:
+    - "a"

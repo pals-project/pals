@@ -1,0 +1,6 @@
+# Load paths are resolved relative to the file naming them: this joiner
+# loads sub/inner.pals.yaml, which reaches back up with ../top.pals.yaml.
+# From pals-cpp tests/lattices/load_relative.
+PALS:
+  load:
+    - sub/inner.pals.yaml

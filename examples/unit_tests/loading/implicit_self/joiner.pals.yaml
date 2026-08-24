@@ -1,0 +1,8 @@
+# A load list without SELF: the joiner's own contents implicitly go last,
+# after everything loaded.
+# From pals-cpp tests/lattices/load_noself.
+PALS:
+  notes:
+    - "joiner"
+  load:
+    - a.pals.yaml

@@ -1,0 +1,25 @@
+# A bend given its curvature and its chord length. The bend angle and the arc
+# length follow from those two.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper derives the bend angle from its chord").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - bnd:
+              kind: Bend
+              BendP:
+                g_ref: 0.25
+                L_chord: 1.9
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

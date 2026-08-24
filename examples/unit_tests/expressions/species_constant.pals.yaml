@@ -1,0 +1,26 @@
+# A constant holding a species name ("#3He"), used both as a species
+# reference and inside mass_of(...) expressions.
+#
+# From pals-cpp tests/test_expressions.cpp
+# ("parse_and_expand_PALS resolves a species-name constant").
+PALS:
+  facility:
+    - constants:
+        species: "#3He"
+        b_const: 0.45 * mass_of(species)
+    - DH1A:
+        kind: Bend
+        ReferenceP:
+          species_ref: species
+          E_tot_ref: 1.0e10
+        BendP:
+          h1: 1.1 * mass_of(species)
+    - main_line:
+        kind: BeamLine
+        line:
+          - DH1A
+    - lat1:
+        kind: Lattice
+        branches:
+          - main_line
+    - use: "lat1"

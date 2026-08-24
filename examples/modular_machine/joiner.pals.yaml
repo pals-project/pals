@@ -1,0 +1,18 @@
+# A "joiner" file: the machine layout, then a settings file, then whatever
+# this file adds on top of both. `SELF` is where this file's own contents go --
+# here it is last, which is also where they would go had it been left out.
+#
+# Taken from the pals-cpp example lattice_files/load_joiner.pals.yaml.
+PALS:
+  notes:
+    - "Nominal configuration, with Q1b tweaked for the day's running."
+
+  load:
+    - layout.pals.yaml
+    - settings.pals.yaml
+    - SELF
+
+  facility:
+    - set:
+        parameter: Q1b>MagneticMultipoleP.Kn1
+        value: -0.36

@@ -1,0 +1,40 @@
+# A multipass line: `linac` is marked `multipass: true` and appears twice in
+# the ring, so its elements are shared between the two passes and each
+# instance is numbered with a multipass_index.
+#
+# Adapted from pals-cpp tests/test_multipass.cpp
+# ("Multipass sub-lines are numbered with a multipass_index"); a BeginningEle
+# was added so the reference parameters can be computed.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - cavA:
+        kind: Quadrupole
+    - mark:
+        kind: Marker
+    - inj:
+        kind: BeamLine
+        line:
+          - mark
+    - linac:
+        kind: BeamLine
+        multipass: true
+        line:
+          - cavA
+          - cavA
+    - ring:
+        kind: BeamLine
+        line:
+          - begin
+          - inj
+          - linac
+          - linac
+    - lat1:
+        kind: Lattice
+        branches:
+          - ring
+    - use: lat1

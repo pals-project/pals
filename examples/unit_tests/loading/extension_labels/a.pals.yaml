@@ -1,0 +1,6 @@
+# Loaded by joiner.pals.yaml; contributes its own extension labels.
+# From pals-cpp tests/lattices/load_dict.
+PALS:
+  extension_labels:
+    from_a: "A"
+    shared: "same"

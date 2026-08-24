@@ -1,0 +1,32 @@
+# The minimal Fork: only `to_line` is given. The destination element defaults
+# to the first element of the target line, and the new branch takes the target
+# line's name.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("a Fork needs only to_line; destination_element and new_branch default").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: proton
+          E_tot_ref: 1.0e9
+    - dump_begin:
+        kind: Marker
+    - dump_line:
+        kind: BeamLine
+        line:
+          - dump_begin
+    - ring:
+        kind: BeamLine
+        line:
+          - begin
+          - f1:
+              kind: Fork
+              ForkP:
+                to_line: dump_line
+    - lat1:
+        kind: Lattice
+        branches:
+          - ring
+    - use: "lat1"

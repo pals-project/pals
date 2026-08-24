@@ -1,0 +1,10 @@
+# Settings member of the basic load family: one set entry writing a
+# quadrupole strength of the layout. See joiner.pals.yaml.
+# From pals-cpp tests/lattices/load_basic.
+PALS:
+  notes:
+    - "settings note"
+  facility:
+    - set:
+        parameter: Q1a>MagneticMultipoleP.Kn1
+        value: 0.34

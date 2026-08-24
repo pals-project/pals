@@ -5,11 +5,11 @@
 (s:palsroot)=
 ## PALS Root Object
 
-The root of the PALS schema is given by this dictionary.
+The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
   version:          # [string] Version of the PALS schema used in this file
-  authors:          # [list] Authors associated with this file
+  authors:          # [list] Optional authors associated with this file
   notes:            # [list] Optional notes of interest.
   reminders:        # [list] Optional reminder messages to be printed when file is read.
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
@@ -36,13 +36,14 @@ PALS:
       my_extension: "See the PALS extensions chapter"
 
   authors:
-    - author:
-        name: Lastname, Firstname
-        orcid: AAAA-BBBB-CCCC-DDDD
-        affiliation: Affiliation Long Name
-        email: lastname@laboratory.gov
-    - author:
-        ...
+    - name: Lastname, Firstname
+      orcid: AAAA-BBBB-CCCC-DDDD
+      affiliation: Affiliation Long Name
+      email: lastname@laboratory.gov
+    - name: Lastname2, Firstname2
+      orcid: EEEE-FFFF-GGGG-HHHH
+      affiliation: Affiliation2 Long Name
+      email: lastname2@university.edu
 
   facility:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
@@ -92,8 +93,8 @@ version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} YAML
-- MagneticMultipoleP:
-  - Kn3L: 0.3
+MagneticMultipoleP:
+  Kn3L: 0.3
 ```
 There are two types of included files. One type of file contains a subpart of a compliant PALS file
 like in the example above. These "compliant format" files can be used to break up the lattice
@@ -108,7 +109,8 @@ standard. For example, an included file may be an
 The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) section.
 Other file endings indicate non-PALS data.
 
-Include can appear at any level of the information tree but must be within the `PALS` root node.
+An include statement can appear at any level of the information tree but must be within the `PALS` root node.
+Note: with YAML files, the overall indentation of the included file is ignored.
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
@@ -121,13 +123,25 @@ to the following:
 - A name cannot start with a number
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 
+The exception is that particle species names, which are considered to be strings and not proper
+computer language variable names, follow the
+[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
+Examples:
+```{code} yaml
+charge_of("#3He+2")          # Helium with atomic number three.
+mass_of("anti-proton")       # Notice the dash.
+my_particle: "Au+79"         # Assign a species to a variable or constant.
+charge_of(my_particle)       # The variable or constant can be used in an equation.
+```
+Notice that particle names must be quoted.
+
 %---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
 ### Special Values
 
 Special values used in this document are:
 
-1. Boolean parameters can be one of three values:
+1. Logical parameters can be one of three values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
@@ -253,6 +267,10 @@ It is sometimes convenient when there are include PALS files, to define the same
 in multiple files. Multiple definitions of the same constant or variable are allowed with the 
 restriction that the value is always the same.
 
+Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
+`b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
+involve `a` nor `b`.
+
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
 ## Functions
@@ -287,84 +305,13 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
-The `random_gauss(sig_cut)` function produces a Gaussian distributed random number with unit sigma
-and zero mean modified so that all random numbers will be in the range `[-sig_cut, sig_cut]`.
- 
-When `random` or `random_gauss` functions are used in a single expression that sets multiple parameters,
-a different random number is generated for each parameter. For example, 
-```{code} yaml
-- set:
-    parameter: B1.*>BendP.e1
-    value: 0.01 + 0.003 * random_gauss()
-```
-In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
-If there are {math}`N` lattice elements that match the name `B1.*`, {math}`N` different random
-numbers need to be generated for the calculation.
-
-In addition, there is the `expr()` construct which is used to designate 
-"delayed evaluation" expressions. See [](#s:expressions) for details.
 
 %---------------------------------------------------------------------------------------------------
 (s:expressions)=
 ## Mathematical Expressions
 
-Mathematical expressions can be used in place of real values. Expressions may use the functions 
-as listed in the [](#s:functions) section as well as [constants and variables](#s:constants). 
-Standard math symbols `+` plus, `-` minus, `*` times, `/` divide, and `^` power, along with
-parentheses `(...)`, are valid.
-Example:
-```{code} yaml
-- variables:
-    a_var: 3.75e7 / c_light^2
-    b_var: -0.34
+Mathematical expressions can be used in place of any real value.
+The expressions can involve the functions listed in the [Functions](#s:functions) section,
+constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
+[Lattice element parameter](#s:parameter.matching) values can also be incorporated.
 
-- cleo:            
-    kind: Solenoid
-    length: 0.1*log(abs(b_var))
-    MagneticMultipoleP:
-      Kn1: expr(3.74 * a_var)
-```
-This sets the length of the `cleo` element to `0.1*log(abs(b_var))` and the `Kn1` parameter
-to `3.74 * a_var`. 
-
-There are two types of expressions
-that are commonly called "immediate evaluation" and "delayed evaluation" expressions.
-Immediate evaluation expressions are expressions that, once a PALS file is read in by a program,
-are meant to be immediately evaluated and never reevaluated. That is, what is stored is the
-value of the expression and the expression used to compute the value can be ignored thereafter. 
-Delayed evaluation expressions, on the other hand, are meant to be retained by the program and, if any
-variables in the expression change, the program should update the value automatically.
-Delayed evaluation expressions are denoted in a PALS file using the `expr(...)` construct,
-as in the example above, where the expression for `Kn1` (`3.74 * a_var`) is a delayed
-expression. The `expr(...)` construct must enclose the entire expression. That is, something
-like `3.74 * expr(a_var)` is invalid. Note that whether an expression is delayed or immediate is
-determined solely by whether the expression is wrapped in `expr(...)` or not. The fact
-that an expression may contain a variable (see the `length` expression in the above example), 
-is not a consideration.
-The exception is that [controller](#s:controller) expressions are always considered to be delayed. 
-Also note that what a program actually does is outside of the PALS purview. The designation of
-immediate or delayed is only a "hint" to the program of what the lattice designer intends.
-
-%---------------------------------------------------------------------------------------------------
-(s:evaluation)=
-## Evaluation Order
-
-A PALS compliant parser will do the following when reading in a PALS file:
-As a PALS file is parsed, the order of evaluations of expressions, 
-[`expand_lattice`](#s:expand.lat) command, [controllers](#s:controller), etc. are as follows:
-
-- A "merged" tree is constructed where any include files are merged into the root file tree.
-
-- The controllers are evaluated last as a group. Controllers with a `RELATIVE` `control_type` do
-not initially affect any parameters (it is only if the program reading the PALS file later varies a 
-RELATIVE controller variable that there is any effect). The ABSOLUTE controllers form a hierarchy
-that can be evaluated from top to bottom.
-
-- For everything else, evaluation starts at the first `facility` child and works downward.
-Delayed evaluation equations are evaluated along with all other equations. There is no difference
-here.
-
-Note: A PALS parser will both compute parameter values and will preserve the underlying equations
-so a program that can use the equations will have them available but other programs can just
-use the values for lattice calculations. In any case, any program can do optimization on any set 
-of parameters (for tasks such as lattice design) independent of any expressions.

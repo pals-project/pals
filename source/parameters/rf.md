@@ -4,8 +4,8 @@
 The components of this group and their defaults are:
 ```{code} yaml
 RFP:
-  frequency: 0                  # [Hz] RF frequency
-  harmon: 0                     # [unitless] RF frequency harmonic number
+  frequency: null               # [Hz] RF frequency
+  harmon: null                  # [unitless] RF frequency harmonic number
   voltage: 0                    # [V] RF voltage
   gradient: 0                   # [V/m] RF gradient
   phase: 0                      # [rad/2pi] RF phase in 0 to 2*pi
@@ -49,3 +49,6 @@ where `phi0` is a phase determined by the setting of `zero_phase`.
 
 The reference energy at the downstream end of the RF element will be `E_tot_ref + dE_ref`
 where `E_tot_ref` is the upstream reference energy.
+
+The relationship between `harmon` and `frequency` is `frequency = harmon / t1_ref` where `t1_ref`
+is the change in reference time from the beginning to the end of the branch.
