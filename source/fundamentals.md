@@ -8,13 +8,6 @@
 The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
-  version:          # [string] Version of the PALS schema used in this file
-  authors:          # [list] Optional authors associated with this file
-  notes:            # [list] Optional notes of interest.
-  reminders:        # [list] Optional reminder messages to be printed when file is read.
-  extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
-  facility:         # [list] Lattice elements, beamlines, lattices, set and use commands.
-  post_expansion:   # [list] Post-expansion setup. 
   authors:                  # [list] Authors associated with this file
   extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
@@ -22,6 +15,7 @@ PALS:
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
   phase_space_coordinates:  # [enum] Type of phase space coordinates 
+  post_expansion:           # [list] Post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file
 ```
