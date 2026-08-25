@@ -15,6 +15,15 @@ PALS:
   extension_labels: # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:         # [list] Lattice elements, beamlines, lattices, set and use commands.
   post_expansion:   # [list] Post-expansion setup. 
+  authors:                  # [list] Authors associated with this file
+  extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
+  facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+  include:                  # [string] Optional literal insert of a file
+  load:                     # [list] Files to load. See the "Load Files" section.
+  notes:                    # [list] Optional notes of interest.
+  phase_space_coordinates:  # [enum] Type of phase space coordinates 
+  reminders:                # [list] Optional reminder messages to be printed when file is read.
+  version:                  # [string] Version of the PALS schema used in this file
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
@@ -110,7 +119,7 @@ Optional string parameters have a default value of blank unless otherwise stated
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
-## Including Other Files Within PALS files
+## Including Other Files Within a PALS File
 
 A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
@@ -156,6 +165,178 @@ Other file endings indicate non-PALS data.
 
 An include statement can appear at any level of the information tree but must be within the `PALS` root node.
 Note: with YAML files, the overall indentation of the included file is ignored.
+
+A file path in an `include` is interpreted relative to the location of the file that contains the
+`include` node.
+
+%---------------------------------------------------------------------------------------------------
+(s:load)=
+## Load Files
+
+"Loading" files is similar to [including files](#s:includefiles) in that the contents of several
+files can be combined. A common use case is where one file defines the layout of a machine and another
+file defines the magnet and other settings for a given machine configuration. The final lattice
+is the union of these two files. This gives the flexibility where multiple settings files
+need only reference one layout file.
+
+While `load` and `include` both combine the contents of separate files, they differ in how the
+combination is done. An `include` inserts the contents of a file verbatim at the point where the
+`include` appears, and so can be used at any level of the information tree. A `load`, by contrast,
+merges whole files `PALS` subnode by `PALS` subnode at the `PALS` root level, following the rules given
+below. When both are present, `include` statements are resolved first so that each file is complete
+before the files are combined by `load`.
+
+For example, a layout can look like:
+```{code} yaml
+# Layout file: layout.pals.yaml
+PALS:
+  notes:
+    - "Layout as of 03/12/2027"
+
+  extension_labels:
+    names:
+      a_ext: A-type extension
+      b_ext: B-type extension
+
+  facility:
+    - injector:
+        kind: Lattice
+        branches:
+          - ...
+```
+and a settings file could look like:
+```{code} yaml
+# Settings file: settings.pals.yaml
+PALS:
+  notes:
+    - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
+    - "This is a second node."
+
+  extension_labels:
+    names:
+      a_ext: A-type extension
+      c_ext: C-type extension
+
+  facility:
+    - sets:
+        - Q1a>MagneticMultipoleP.Kn1: 0.34
+        - ...
+```
+A "joiner" file that combined these files could look like:
+```{code} yaml
+# Joiner file
+PALS:
+  notes:
+    - "Lattice with orbit correction for blown chopper at B34W."
+
+  load:
+    - layout.pals.yaml
+    - settings.pals.yaml
+    - SELF
+
+  facility:
+    - sets:
+        - B35W>MagneticMultipoleP.Kn0L: 0.07
+        - ...
+```
+
+The rules for using `load` are as follows:
+- The `load` node must be a component of the `PALS` node. 
+- The joiner and loaded files must have a `PALS` node and only that node is merged so
+loading ignores custom data outside of the `PALS` tree. 
+- A `SELF` designation in the `load` list indicates where the contents of
+the joiner file, if there is anything else other than a `load` node,
+are to be combined with the contents of the loaded files. If not present, contents of the joiner
+file are to be combined at the end. In the above example, the `SELF` line is not needed since it
+is last on the `load` list.
+- Contents from the joiner and loaded files are combined `PALS` subnode by `PALS` subnode. 
+- For the `version` subnode of `PALS`, if the version strings are not the same, the combined version
+will be a comma delimited list of the different versions with duplicates discarded. It is an
+error for the versions to be incompatible. That is, if the major version is different.
+For example, version `1.4.2` is incompatible with `2.0.1`.
+- For other scalar `PALS` nodes (EG [`phase_space_coordinates`](#s:phase.space)) the values
+must be the same.
+- For list type subnodes, the combined list retains the order set by the `load` list and the order
+  set within the files themselves. In the above example, the combined `notes` subnode will be:
+  ```{code} yaml
+  notes:
+    - "Layout as of 03/12/2027"
+    - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
+    - "This is a second note."
+    - "Lattice with orbit correction for blown chopper at B34W."
+  ```
+  The one modification is that when combining a `facility` list, each list is considered to
+ have two parts: the part before any `expand_lattice` command and the part after any `expand_lattice`
+ command (this second part may be empty). The final `facility` list is the pre-`expand_lattice` 
+ parts, combined together, followed by an `expand_lattice` command, followed by the 
+ post-`expand_lattice` parts combined together.
+- For Dict type subnodes of `PALS`, the combined dict will be the union of all the dict entries
+for all of the files. If the dict entries are themselves a dict, this combining rule is applied
+to the subdicts. If the dict entries are lists, the lists are combined as discussed above.
+If the dict entries are scalars, the scalars are combined as discussed above.
+In the above example, the combinded `extension_labels` subnode will be
+  ```{code} yaml
+  # Settings file: settings.pals.yaml
+  PALS:
+
+    extension_labels:
+      names:
+        a_ext: A-type extension
+        b_ext: B-type extension
+        c_ext: C-type extension
+  ```
+- A loaded file may itself contain a `load` node, so loading can be nested to any depth. 
+There is no ambiguity as to what `SELF` refers to; a `SELF` designation always refers to the 
+joiner file in which it appears and there can be at most one SELF entry.
+Any combination of cirular and included loads (EG A loads B which includes A) are prohibited.
+Files are to be only loaded once and must be loaded at the first opertunity. 
+For example, if A loads B and then C, and if B and C both load D, then when B is loaded into A,
+D will be included, and when C is loaded into A, D will not be loaded. 
+- As with `include`, a file path in a `load` list is interpreted relative to the location of the
+file that contains the `load` node (and not the location of the file including or loading the file
+that contains the `load` node).
+- Load nodes will not appear in the combinded tree.
+
+Loading can also be useful in constructing "composite" accelerator complexes from individual machines.
+For example, a joiner file may look like:
+```{code} yaml
+PALS:
+  load:
+    - Booster_to_AGS_line.pals.yaml
+    - AGS_ring.pals.yaml
+
+
+  facility:
+    - AGS_fork:
+        kind: Fork
+        ForkP:
+          to_line: AGS_ring           # Defined in AGS_ring.pals.yaml
+          destination_element: d24w   # AGS element at injection point
+
+    - AGS_inj_patch:
+        kind: Patch
+        ...
+
+    - AGS_inject:
+        kind: BeamLine
+        line:
+          - Booster_to_AGS_line   # Defined in Booster_to_AGS_line.pals.yaml
+          - AGS_inj_patch         # Needed to adjust the branch reference geometry.
+          - AGS_fork              # And add a fork to the AGS at the end.
+
+    - Combined_Inject_and_AGS:
+        kind: Lattice
+        branches:
+          - AGS_inject
+```
+In this example, the file `Booster_to_AGS_line.pals.yaml` (not shown) contains the specification for the transfer
+line from the Booster ring to the AGS ring. The file `AGS_ring.pals.yaml` (also not shown) contains the specification
+for the AGS ring. The joiner file reads in these specifications and then creates a new transfer
+line called `AGS_inject` with a `Patch` element to shift the branch coordinate system from the transfer
+line coordinate system to the AGS coordinate system. The `Patch` element is followed by a `Fork` 
+element at the end to connect to the AGS. 
+The `Combined_Inject_and_AGS` lattice will have this extended transfer line and when the full 
+lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` element. 
 
 %---------------------------------------------------------------------------------------------------
 (s:names)=
@@ -235,7 +416,7 @@ PALS uses SI except for energy which uses `eV`.
 
 %---------------------------------------------------------------------------------------------------
 (s:constants)=
-## Constants
+## Constants and Variables
 
 Constants defined by PALS:
 ```{code} yaml
@@ -243,6 +424,7 @@ pi                        # Pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
+k_boltzmann               # [eV/K] Boltzmann's constant
 r_electron                # [m] Classical electron radius
 r_proton                  # [m] Classical proton radius
 e_charge                  # [Coul] Elementary charge
@@ -255,15 +437,17 @@ n_avogadro                # [-] Avogadro's constant
 The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants may be defined using `constant` as the `kind`.
-The parameters associated with a constant are:
+Other constants and variables may be defined using `constant` or `variable` as the `kind`.
+The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
   relative_error: 0       # Relative error.
-  value                   # Constant value.
+  value                   # Constant or variable value.
 ```
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
+
+Constants and variables must be defined directly under the `PALS` node or the `facility` node. 
 Example:
 ```{code} yaml
 PALS:
@@ -272,27 +456,52 @@ PALS:
         kind: constant
         value: 1.45 * c_light
         relative_error: 0.02
+    - my_var:
+        kind: variable
+        value: 37
     ...
 ```
-Constants must be defined directly under the `PALS` node or the `facility` node. 
-Constants may not be redefined.
-Exception: Since multiple include files may define the same constant, a redefinition of a constant
-with the **same value** as the original is valid.
 
-For constants that only have a value, an alternative compact form has the syntax:
+For constants or variables that only have a value, an alternative compact form has the syntax:
 ```{code} yaml
   - constants:
       - const_a: value_a        # Define const_a
       - const_b: value_b        # Define const_b
-      - const_c:: pi * const_a  # Can use expressions.
+      - const_c: pi * const_a   # Can use expressions.
+      ...
+  - variables:
+      - var_a: var_val_a        # Define var_a
       ...
 ```
+The difference between a constant and a variable is one of intent of the PALS file creator.
+That is, a constant is not supposed to be
+varied after a program reads a PALS file, while a variable can vary. For example, a constant could
+be the length of a magnet which will not change, while a variable could be a magnet strength which
+does vary.
+When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
+That is, the following is not valid:
+```{code} yaml
+- variables:
+    - my_var: 37.5
+
+...
+
+- variables:
+    - my_var: 0.13     # VALUE CHANGE NOT VALID!
+```
+It is sometimes convenient when there are include PALS files, to define the same constant or variable
+in multiple files. Multiple definitions of the same constant or variable are allowed with the 
+restriction that the value is always the same.
+
+Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
+`b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
+involve `a` nor `b`.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
 ## Functions
 
-Functions defined by PALS:
+Functions that can be used in [](#s:expressions):
 ```{code} yaml
 sqrt(x)                  # Square Root
 log(x)                   # Logarithm
@@ -310,9 +519,9 @@ atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
 abs(x)                   # Absolute Value
 factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
-ran_gauss()              # Gaussian distributed random number
-ran_gauss(sig_cut)       # Gaussian distributed random number
-int(x)                   # Nearest integer with magnitude less then x
+random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
+random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
+int(x)                   # Nearest integer with magnitude less than x
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
 floor(x)                 # Nearest integer less than x
@@ -322,3 +531,13 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:expressions)=
+## Mathematical Expressions
+
+Mathematical expressions can be used in place of any real value.
+The expressions can involve the functions listed in the [Functions](#s:functions) section,
+constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
+[Lattice element parameter](#s:parameter.matching) values can also be incorporated.
+
