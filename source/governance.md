@@ -116,12 +116,14 @@ Anyone with an interest is invited to join the discussion of any Pull Request (P
 So that the standard can evolve at a reasonable pace, anyone who raises an issue in a PR
 discussion is encouraged to respond promptly to comments on the issue.
 If that is not possible, the person should post a note saying when they expect
-they can respond, and the discussion should wait for them accordingly.
+they can respond, and the decision to merge the PR should wait for them accordingly.
 
-If someone who raised an issue does not respond in any way within two weeks of the last
-message in that discussion thread, the decision of whether to merge the PR shall proceed
-without further delay. That is, the unanswered issue is treated as resolved and is not
-grounds for postponing the merge decision to allow more time for a response.
+If an issue has been raised, and if 
+1) all the comments supporting the issue have been responded to, and
+2) over two weeks has passed since the last comment on this issue has been posted, and 
+3) no one has asked for further time to respond, 
+then for the purposes of deciding whether to merge the PR, the issue is to be treated as resolved. 
+That is, the merge decision is not to be postponed to allow more time for responses.
 Notice that this two week limit does not apply to cases where a comment raises an issue and
 that comment has not been replied to.
 
