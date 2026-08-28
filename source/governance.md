@@ -41,6 +41,7 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 
 - Jean-Luc Vay
 - David Sagan
+- Ji Qiang
 - Chad Mitchell
 - Axel Huebl
 - Remi Lehe
