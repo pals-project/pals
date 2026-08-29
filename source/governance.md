@@ -79,25 +79,48 @@ Steering committee members can also be TC members.
 
 TC members can resign or be removed by majority vote by either TC or SC, e.g., due to inactivity, bad acting or other reasons.
 
+## Community and Contributions
+
+Contributions from the community can be in many forms and not all need to be code contributions.
+Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
+Anyone in the community can participate in developer meetings and weigh in on discussions.
+Anyone in the community can comment and review PRs (but not merge).
+
 ## Contributors
 
 ### Current Roster
 
-- Jean-Luc Vay
+- Gianluca Martino
+- Yue Hao
 - David Sagan
-- Chad Mitchell
+- Nikita Kuklev
 - Axel Huebl
-- Remi Lehe
+- David Bruhwiler
+- He Zhang
+- Ziga zigabrencic
+- Jean-Luc Vay
+- Eric Stern
+- Michael Ehrlichman
+- Laurent Farvacque
+- Daniel Winklehner
+- Scott Berg
+- Ryan Roussel
+- Christopher Mayes
+- Claudio Emma
+- Nicholas Taylor
+- Ji Qiang
+- Chad Mitchell
+- Austin Hoover
 - Edoardo Zoni
+- Sergei Gukov
+- Alex He
+- Thorsten Hellert
 
 ### Role
 
-Contributors are valuable, vetted developers of PALS.
-Contributions can be in many forms and not all need to be code contributions.
-Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
-Contributors can participate in developer meetings and weigh in on discussions.
-Contributors can "triage" (add labels) to pull requests, issues, and GitHub discussion pages.
-Contributors can comment and review PRs (but not merge).
+Contributors have the "triage" role (bundle of permissions) for the GitHub `pals-project`.
+Contributors can add labels to pull requests, issues, and GitHub discussion pages.
+Contributors can review PRs (but not merge).
 
 ### Decision Process
 
