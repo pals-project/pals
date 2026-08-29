@@ -44,7 +44,6 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 - Ji Qiang
 - Chad Mitchell
 - Axel Huebl
-- Remi Lehe
 - Edoardo Zoni
 
 GitHub team [here](https://github.com/orgs/campa-consortium/teams/lattice-standard-technical-committee).
