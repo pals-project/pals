@@ -143,9 +143,7 @@ Name matches may be restricted to a given construct kind using the notation
 ```
 where `{kind}` is the construct kind — for example a lattice element kind such as
 `Marker`, or a non-element kind such as `Controller` — and `{name}` is the name
-match. The `{kind}` selector resolves within the namespace of the given kind, so
-the same `{name}` may match different constructs depending on the kind supplied.
-Example:
+match. Example:
 ```{code} yaml
 Marker::bpm.
 ```
