@@ -41,12 +41,10 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 
 - Jean-Luc Vay
 - David Sagan
+- Ji Qiang
 - Chad Mitchell
 - Axel Huebl
-- Remi Lehe
 - Edoardo Zoni
-
-GitHub team [here](https://github.com/orgs/campa-consortium/teams/lattice-standard-technical-committee).
 
 ### Role
 
@@ -111,6 +109,24 @@ Appointed after contributing to PALS (see above) by any member of the TC.
 
 The role can be lost by resigning or by decision of an individual TC or SC member, e.g., due to inactivity, bad acting or other.
 
+## Pull Request Discussion
+
+Anyone with an interest is invited to join the discussion of any Pull Request (PR).
+
+So that the standard can evolve at a reasonable pace, anyone who raises an issue in a PR
+discussion is encouraged to respond promptly to comments on the issue.
+If that is not possible, the person should post a note saying when they expect
+they can respond, and the decision to merge the PR should wait for them accordingly.
+
+If an issue has been raised, and if 
+1) all the comments supporting the issue have been responded to, and
+2) over two weeks has passed since the last comment on this issue has been posted, and 
+3) no one has asked for further time to respond, 
+then for the purposes of deciding whether to merge the PR, the issue is to be treated as resolved. 
+That is, the merge decision is not to be postponed to allow more time for responses.
+Notice that this two week limit does not apply to cases where a comment raises an issue and
+that comment has not been replied to.
+
 ## Former Members
 
 "Former members" are the giants on whose shoulders we stand.
@@ -118,3 +134,4 @@ But, for the purpose of PALS governance, they are *not* tracked as a governance 
 Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, the PALS documentation, references, citable Zenodo archives of releases, etc. as appropriate.
 
 Former members of SC, TC and Contributors are not kept in the roster, since committee role rosters shall reflect currently active members and the responsible governance body.
+
