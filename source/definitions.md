@@ -79,3 +79,21 @@ Branch expansion is the process, starting from the `root` `BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 `Lattice expansion` involves branch expansion along with things like
 calculating the reference energy for all elements.
+
+%---------------------------------------------------------------------------------------------------
+(s:enum)=
+## Enum
+
+An `enum` parameter (often called an "enumerated type") is one whose value must be one of a set of named values.
+For example, the `cavity_type` parameter of
+the [`RFP`](#s:rf.params) parameter group has valid values `STANDING_WAVE` and `TRAVELING_WAVE`.
+The advantage of designating a parameter as an enum is that the parameter value can be validated.
+
+%---------------------------------------------------------------------------------------------------
+(s:extensions)=
+## Extensions
+
+An Extension is data added to a PALS file that is not part of the PALS standard.
+For example, information specific to a particular machine or simulation program that has no analogue with other
+machines can be put in as an extension. A list of documented extensions is in the 
+[Extension](#c:extension) section.
