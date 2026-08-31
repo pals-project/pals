@@ -86,7 +86,7 @@ Examples include submitting pull requests to the specification, raising issues, 
 discussions, and improving documentation or examples. 
 
 All community members are welcome to attend developer meetings and weigh in on discussions; 
-while anyone may comment on PRs, merge authority is reserved for the steering committee.
+while anyone may comment on PRs, merge authority is reserved for the technical committee.
 
 ## Contributors
 
