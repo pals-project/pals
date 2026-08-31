@@ -90,31 +90,8 @@ Anyone in the community can comment on PRs (but not merge).
 
 ### Current Roster
 
-- Gianluca Martino
-- Yue Hao
-- David Sagan
-- Nikita Kuklev
-- Axel Huebl
-- David Bruhwiler
-- He Zhang
-- Ziga zigabrencic
-- Jean-Luc Vay
-- Eric Stern
-- Michael Ehrlichman
-- Laurent Farvacque
-- Daniel Winklehner
-- Scott Berg
-- Ryan Roussel
-- Christopher Mayes
-- Claudio Emma
-- Nicholas Taylor
-- Ji Qiang
-- Chad Mitchell
-- Austin Hoover
-- Edoardo Zoni
-- Sergei Gukov
-- Alex He
-- Thorsten Hellert
+Current roster of contributors can be seen at
+[https://github.com/orgs/pals-project/teams/pals-contributors](https://github.com/orgs/pals-project/teams/pals-contributors).
 
 ### Role
 
