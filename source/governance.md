@@ -46,8 +46,6 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 - Axel Huebl
 - Edoardo Zoni
 
-GitHub team [here](https://github.com/orgs/campa-consortium/teams/lattice-standard-technical-committee).
-
 ### Role
 
 The technical committee (TC) is the core governance body, where under normal operations most ideas are discussed and decisions are made.
