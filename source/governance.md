@@ -81,8 +81,8 @@ TC members can resign or be removed by majority vote by either TC or SC, e.g., d
 
 ## Community and Contributions
 
-Contributions from the community can be in many forms and not all need to be contributions.
-Examples include contributing to pull requests, issues, user discussions, documentation, examples, etc.
+Contributions from the community can be in many forms.
+examples include contributing to pull requests, issues, user discussions, documentation, examples, etc.
 Anyone in the community can participate in developer meetings and weigh in on discussions.
 Anyone in the community can comment on PRs (but not merge).
 
