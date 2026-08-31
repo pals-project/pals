@@ -15,14 +15,12 @@ PALS:
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
   phase_space_coordinates:  # [enum] Type of phase space coordinates 
-  post_expansion:           # [list] Post-expansion setup. 
+  post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
-The set of node types that can be used under the `post_expansion` node is the same as the
-`facility` node except for lattice and `use` nodes.
 
 Example:
 ```{code} YAML
@@ -101,6 +99,9 @@ If the `set` command had appeared in the `facility` node, and not in the `post_e
 when the set command is executed, the set would be applied to the value of `Kn1L` in the definition
 of `q1`. In this case, the result would be that all three of the `q1` elements in the expanded lattice would
 have the same value of `Kn1L`.
+
+The set of node types that can be used under the `post_expansion` node is the same as the
+`facility` node except for `lattice` and `use` nodes.
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
