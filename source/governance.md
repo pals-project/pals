@@ -49,7 +49,7 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 ### Role
 
 The technical committee (TC) is the core governance body, where under normal operations most ideas are discussed and decisions are made.
-Individual TC members can approve and merge code changes.
+Individual TC members can approve and merge changes.
 Usually, they seek approval by another maintainer for their own changes, too.
 TC members lead - and weigh in on - technical discussions and, if needed, can call for a vote between TC members for a technical decision.
 TC members merge/close PRs and issues, and moderate (including block/mute) bad actors.
@@ -77,24 +77,26 @@ Steering committee members can also be TC members.
 
 TC members can resign or be removed by majority vote by either TC or SC, e.g., due to inactivity, bad acting or other reasons.
 
+## Community and Contributions
+
+Community involvement takes many forms, ranging from formal proposals to general participation. 
+Examples include submitting pull requests to the specification, raising issues, engaging in user 
+discussions, and improving documentation or examples. 
+
+All community members are welcome to attend developer meetings and weigh in on discussions; 
+while anyone may comment on PRs, merge authority is reserved for the technical committee.
+
 ## Contributors
 
 ### Current Roster
 
-- Jean-Luc Vay
-- David Sagan
-- Chad Mitchell
-- Axel Huebl
-- Remi Lehe
-- Edoardo Zoni
+Current roster of contributors can be seen at
+[https://github.com/orgs/pals-project/teams/pals-contributors](https://github.com/orgs/pals-project/teams/pals-contributors).
 
 ### Role
 
-Contributors are valuable, vetted developers of PALS.
-Contributions can be in many forms and not all need to be code contributions.
-Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
-Contributors can participate in developer meetings and weigh in on discussions.
-Contributors can "triage" (add labels) to pull requests, issues, and GitHub discussion pages.
+Contributors have the "triage" role (bundle of permissions) for the GitHub `pals-project`.
+Contributors can add labels to pull requests, issues, and GitHub discussion pages.
 Contributors can review PRs (but not merge).
 
 ### Decision Process
