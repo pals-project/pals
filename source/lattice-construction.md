@@ -52,7 +52,7 @@ element, this element is dropped from the branch line. The one exception that a 
 element must be at the start of a branch is if there is a `Fork` element forking to the beginning of the
 branch and `ForkP.propagete_reference` of the fork element is `true`. In this case, a `BeginningEle`
 element is not needed to set the beginning reference parameters of the branch but the first element
-must be an element that can be pointed to by a `Fork` element ([](#:forking)).
+must be an element that can be pointed to by a `Fork` element ([](#s:forking)).
 
 After a branch is expanded, a `Placeholder` element will be placed at the end to hold
 the final floor position and reference parameters (energy, species, etc.).
@@ -84,14 +84,7 @@ The steps used for lattice expansion are:
 * Start with the root PALS file and construct a tree that contains all `include` and `load` trees.
 This is the base tree for the lattice expansion.
 
-* Divide the `facility` list into two lists: The first list, called the "pre-expansion list"
-is everything that comes before an `expand_lattice` node. The second list, 
-called the "post-expansion" list is everything that comes after the `expand_lattice` node. 
-Both lists preserve the order from the initial list.
-The post-expansion list will be empty if there is no `expand_lattice` node. 
-The post-expansion list is ignored until after the branches have been expanded.
-
-* Go through the pre-expansion list in order and node-by-node evaluate any expressions and execute any `set` commands.
+* Go through the `facility` list in order and node-by-node evaluate any expressions and execute any `set` commands.
 There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
 Both are evaluated. Controllers are ignored here.
 
@@ -140,14 +133,14 @@ new beamlines and branch expansion is performed on these new lines.
 The new branches may themselves have `Fork` elements that fork to new beamlines
 and this process is repeated until there are no new branches to be created.
 
-* Apply the `ABSOLUTE` `Controllers` from the pre-expansion list.
+* Apply the `ABSOLUTE` `Controllers` from the `facility` list.
 `RELATIVE` `Controllers` are not involved in lattice expansion.
 
 * For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
 species, time, etc.) are calculated along with dependent parameters (EG multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
-* Using the post-expansion list, node-by-node from the list beginning, 
+* Using the `post_expansion` list, node-by-node from the list beginning, 
 evaluate any expressions and execute any `set` commands. Controllers are ignored here.
 
 * Apply `ABSOLUTE` `Controllers` from both lists. 
@@ -252,49 +245,5 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
 - use: lat1
 ```
 
-%---------------------------------------------------------------------------------------------------
-(s:expand.lat)=
-## expand_lattice Statement
-
-By default, [lattice expansion](#s:expansion.intro) happens at the end when a PALS file has been read.
-Lattice expansion can be triggered before this if there is an `expand_lattice` statement.
-This statement must be a child of the `facility` node. Triggering lattice expansion is necessary
-when reference to the expanded lattice is needed. For example:
-```{code} yaml
-facility:
-  - q1:
-      kind: Quadrupole
-      MagneticMultipoleP:
-        Kn1L: 0.375
-
-  - bline:
-      kind: Beamline
-      line:
-        - q1:
-            repeat: 3
-
-  - lat:
-      kind: Lattice
-      branches: bline
-
-  - expand_lattice
-
-  - set:
-      parameter: lat>>q1>MagneticMultipoleP.Kn1L
-      value: parameter * (1 + 1e-4*random_gauss())
-```
-In this example, the expanded lattice has three elements named `q1`. 
-To add a random error to each of these, the lattice has to be expanded before a `set` command is used.
-
-If the `expand_lattice` command is removed from the above example, the three `q1` elements of `lat` have
-not yet been instantiated and the set command as written cannot be done. When there is no
-`expand_lattice` statement, trying to set the `Kn1L` parameter in the `q1` element definition as in:
-```{code} yaml
-  - set 
-      parameter: q1>MagneticMultipoleP.Kn1L
-      value: parameter * (1 + 1e-4*random_gauss())
-```
-will be successful but without `expand_lattice`, the set targets the single `q1` definition, 
-so `random_gauss()` is evaluated only once and all three expanded copies inherit that one value.
 
 

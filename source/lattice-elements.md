@@ -39,7 +39,8 @@ crab1:
     voltage: 1.0e6
 ```
 
-Lattice element definitions may only be placed as a child node of the [`facility`](#s:palsroot) node
+Lattice element definitions may only be placed as a child node of the [`facility`](#s:palsroot)
+or [`post_expansion`](#s:palsroot) nodes, 
 or "in place" in a `line` within a [`BeamLine`](#s:beamline.components). Example:
 ```{code} yaml
 PALS:
