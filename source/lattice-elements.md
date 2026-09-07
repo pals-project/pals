@@ -131,10 +131,16 @@ Regex matching is applied to the lattice name, branch name, and element name sep
 a match to the string requires all the individual names to match.
 When applying regex to a lattice name, any prefix (anything before and including a `"::"`) and
 any suffix (anything after and including a `"#"` character) is not included in the regex match.
-For example, `"B.4>>Quadrupole::Qaf.*"` would match to all Quadrupole elements in branches 
-which have three characters
-beginning in "B" and ending in "4" with the element name beginning with "Qaf". And 
-`"B.4>>Quadrupole::Qaf.*#2"` would match to the second element matched to.
+For example, with:
+```
+B.4>>Quadrupole::Qaf.*
+B.4>>Quadrupole::Qaf.*#2
+``` 
+For both lines, regex would be applied to the strings `B.4` and `Qaf.*`. 
+For the first line, this would match to all Quadrupole elements in branches 
+which have three characters beginning in "B" and ending in "4" with the element name 
+beginning with "Qaf".
+For the second line, this would match to the second element matched to in the first line.
 
 Elements can be matched using a range construct which has the form
 ```{code} yaml
