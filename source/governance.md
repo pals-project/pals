@@ -53,7 +53,6 @@ Individual TC members can approve and merge changes.
 Usually, they seek approval by another maintainer for their own changes, too.
 TC members lead - and weigh in on - technical discussions and, if needed, can call for a vote between TC members for a technical decision.
 TC members merge/close PRs and issues, and moderate (including block/mute) bad actors.
-The TC can propose governance changes to the SC.
 
 ### Decision Process
 
