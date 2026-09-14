@@ -1,0 +1,66 @@
+# A web of forks: two root branches, forks out of both, a fork inside a
+# forked-to line, and two forks naming the same line (`a_line`). A fork whose
+# new_branch is unset instantiates its own destination branch from the named
+# line, so a_line (and the b_line its fork feeds) appears once per fork that
+# names it.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("a destination_pointer survives expression substitution intact").
+PALS:
+  facility:
+    - begin1:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1e7
+    - m:
+        kind: Marker
+    - dft:
+        kind: Drift
+        length: 2
+    - pad1:
+        kind: Drift
+        length: 1
+    - pad2:
+        kind: Drift
+        length: 1
+    - pad3:
+        kind: Drift
+        length: 1
+    - a_fork:
+        kind: Fork
+        ForkP:
+          to_line: a_line
+    - b_fork:
+        kind: Fork
+        ForkP:
+          to_line: b_line
+    - c_fork:
+        kind: Fork
+        ForkP:
+          to_line: c_line
+    - a_back_fork:
+        kind: Fork
+        ForkP:
+          to_line: a_line
+    - zero_line:
+        kind: BeamLine
+        line: [begin1, dft, a_fork]
+    - one_line:
+        kind: BeamLine
+        line: [begin1, dft, c_fork]
+    - a_line:
+        kind: BeamLine
+        line: [m, dft, b_fork]
+    - b_line:
+        kind: BeamLine
+        line: [m, dft]
+    - c_line:
+        kind: BeamLine
+        line: [m, dft, a_back_fork]
+    - root_lat:
+        kind: Lattice
+        branches:
+          - zero_line
+          - one_line
+    - use: "root_lat"

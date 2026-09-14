@@ -1,0 +1,18 @@
+# Settings half of the load example: one configuration of the machine
+# layout.pals.yaml lays out. Several of these can share the one layout.
+#
+# Taken from the pals-cpp example lattice_files/load_settings.pals.yaml.
+PALS:
+  version: "0.1"
+
+  notes:
+    - "Settings for the nominal focusing configuration."
+
+  facility:
+    - set:
+        parameter: Q1a>MagneticMultipoleP.Kn1
+        value: 0.34
+
+    - set:
+        parameter: Q1b>MagneticMultipoleP.Kn1
+        value: -0.34

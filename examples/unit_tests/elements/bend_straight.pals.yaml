@@ -1,0 +1,26 @@
+# A bend with no curvature given: a straight bend. Its arc, chord, and
+# rectangle lengths are all equal to the element length, and the sagitta is
+# zero. The edge angle e1 is independent of the (absent) bending.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper gives a straight bend three equal lengths").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - bnd:
+              kind: Bend
+              length: 0.8
+              BendP:
+                e1: 0.01
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

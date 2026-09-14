@@ -1,0 +1,37 @@
+# `new_branch: null` forks into an already-existing branch instead of
+# creating one: `other` is a branch of the lattice in its own right, with its
+# own BeginningEle, and the Fork in `ring` connects to it.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("new_branch: null forks into an existing branch, creating none").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: proton
+          E_tot_ref: 1.0e9
+    - eb:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: electron
+          E_tot_ref: 5.0e8
+    - other:
+        kind: BeamLine
+        line:
+          - eb
+    - ring:
+        kind: BeamLine
+        line:
+          - begin
+          - f1:
+              kind: Fork
+              ForkP:
+                to_line: other
+                new_branch: null
+    - lat1:
+        kind: Lattice
+        branches:
+          - other
+          - ring
+    - use: "lat1"

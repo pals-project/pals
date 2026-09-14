@@ -1,0 +1,40 @@
+# A `set` entry writing every element its pattern matches: B1.* reaches B1a
+# and B1b but not Q1. In the value expression, `PARAMETER` is the current
+# value of the parameter being written and `SELF` reaches the rest of the
+# element being written.
+#
+# From pals-cpp tests/test_sets.cpp
+# ("a set writes every element its pattern matches").
+PALS:
+  facility:
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - B1a:
+              kind: Bend
+              length: 1.0
+              BendP:
+                e1: 0.1
+                g_ref: 0.02
+          - B1b:
+              kind: Bend
+              length: 1.0
+              BendP:
+                e1: 0.3
+                g_ref: 0.02
+          - Q1:
+              kind: Quadrupole
+              length: 0.5
+    - set:
+        parameter: B1.*>BendP.e1
+        value: 2*PARAMETER + atan(SELF.BendP.g_ref)
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

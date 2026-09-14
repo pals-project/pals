@@ -1,0 +1,41 @@
+# One branch stepping through the common element kinds: a BeginningEle that
+# sets the reference particle, drifts, a quadrupole with a field strength, and
+# a bend given by its reference angle. Expansion derives the dependent
+# parameters: reference energy/momentum/time, s positions, floor coordinates,
+# the equivalent bend strength/length forms, and the integrated and normalized
+# multipole forms.
+#
+# From pals-cpp tests/test_bookkeeper.cpp (BOOKKEEPER_YAML).
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - d1:
+              kind: Drift
+              length: 2.0
+          - q1:
+              kind: Quadrupole
+              length: 0.5
+              MagneticMultipoleP:
+                Bn1: 1.2
+          - b1:
+              kind: Bend
+              length: 1.5
+              BendP:
+                angle_ref: 0.15
+          - d2:
+              kind: Drift
+              length: 1.0
+          - end:
+              kind: Marker
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

@@ -1,0 +1,35 @@
+# Layout half of the load example: what the machine is made of.
+# See joiner.pals.yaml.
+#
+# Taken from the pals-cpp example lattice_files/load_layout.pals.yaml.
+PALS:
+  version: "0.1"
+
+  notes:
+    - "Layout only. Magnet settings live in settings.pals.yaml."
+
+  facility:
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - Q1a:
+              kind: Quadrupole
+              length: 0.5
+          - D1:
+              kind: Drift
+              length: 1.2
+          - Q1b:
+              kind: Quadrupole
+              length: 0.5
+
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+
+    - use: "lat1"

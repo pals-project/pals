@@ -41,21 +41,18 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 
 - Jean-Luc Vay
 - David Sagan
+- Ji Qiang
 - Chad Mitchell
 - Axel Huebl
-- Remi Lehe
 - Edoardo Zoni
-
-GitHub team [here](https://github.com/orgs/campa-consortium/teams/lattice-standard-technical-committee).
 
 ### Role
 
 The technical committee (TC) is the core governance body, where under normal operations most ideas are discussed and decisions are made.
-Individual TC members can approve and merge code changes.
+Individual TC members can approve and merge changes.
 Usually, they seek approval by another maintainer for their own changes, too.
 TC members lead - and weigh in on - technical discussions and, if needed, can call for a vote between TC members for a technical decision.
 TC members merge/close PRs and issues, and moderate (including block/mute) bad actors.
-The TC can propose governance changes to the SC.
 
 ### Decision Process
 
@@ -79,25 +76,27 @@ Steering committee members can also be TC members.
 
 TC members can resign or be removed by majority vote by either TC or SC, e.g., due to inactivity, bad acting or other reasons.
 
+## Community and Contributions
+
+Community involvement takes many forms, ranging from formal proposals to general participation. 
+Examples include submitting pull requests to the specification, raising issues, engaging in user 
+discussions, and improving documentation or examples. 
+
+All community members are welcome to attend developer meetings and weigh in on discussions; 
+while anyone may comment on PRs, merge authority is reserved for the technical committee.
+
 ## Contributors
 
 ### Current Roster
 
-- Jean-Luc Vay
-- David Sagan
-- Chad Mitchell
-- Axel Huebl
-- Remi Lehe
-- Edoardo Zoni
+Current roster of contributors can be seen at
+[https://github.com/orgs/pals-project/teams/pals-contributors](https://github.com/orgs/pals-project/teams/pals-contributors).
 
 ### Role
 
-Contributors are valuable, vetted developers of PALS.
-Contributions can be in many forms and not all need to be code contributions.
-Examples include contributing to pull requests, issues, user discussions, documentation, tutorials, etc.
-Contributors can participate in developer meetings and weigh in on discussions.
-Contributors can "triage" (add labels) to pull requests, issues, and GitHub discussion pages.
-Contributors can comment and review PRs (but not merge).
+Contributors have the "triage" role (bundle of permissions) for the GitHub `pals-project`.
+Contributors can add labels to pull requests, issues, and GitHub discussion pages.
+Contributors can review PRs (but not merge).
 
 ### Decision Process
 
@@ -109,6 +108,24 @@ Appointed after contributing to PALS (see above) by any member of the TC.
 
 The role can be lost by resigning or by decision of an individual TC or SC member, e.g., due to inactivity, bad acting or other.
 
+## Pull Request Discussion
+
+Anyone with an interest is invited to join the discussion of any Pull Request (PR).
+
+So that the standard can evolve at a reasonable pace, anyone who raises an issue in a PR
+discussion is encouraged to respond promptly to comments on the issue.
+If that is not possible, the person should post a note saying when they expect
+they can respond, and the decision to merge the PR should wait for them accordingly.
+
+If an issue has been raised, and if 
+1) all the comments supporting the issue have been responded to, and
+2) over two weeks has passed since the last comment on this issue has been posted, and 
+3) no one has asked for further time to respond, 
+then for the purposes of deciding whether to merge the PR, the issue is to be treated as resolved. 
+That is, the merge decision is not to be postponed to allow more time for responses.
+Notice that this two week limit does not apply to cases where a comment raises an issue and
+that comment has not been replied to.
+
 ## Former Members
 
 "Former members" are the giants on whose shoulders we stand.
@@ -116,3 +133,4 @@ But, for the purpose of PALS governance, they are *not* tracked as a governance 
 Instead, former (e.g., inactive) contributors are acknowledged separately in GitHub contributor tracking, the PALS documentation, references, citable Zenodo archives of releases, etc. as appropriate.
 
 Former members of SC, TC and Contributors are not kept in the roster, since committee role rosters shall reflect currently active members and the responsible governance body.
+

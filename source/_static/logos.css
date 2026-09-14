@@ -1,0 +1,28 @@
+/* Backdrops for the logo gallery on the Logos page.
+ *
+ * All three logo variants have transparent backgrounds, so each one is given an
+ * explicit backdrop. Otherwise the dark ink variants would be invisible when the
+ * page is viewed in dark mode, and the light ink variant would be invisible in
+ * light mode.
+ */
+
+img.logo-on-light,
+img.logo-on-dark,
+img.logo-plain {
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  max-width: 100%;
+}
+
+img.logo-on-light {
+  background-color: #ffffff;
+}
+
+img.logo-on-dark {
+  background-color: #14181f;
+}
+
+img.logo-plain {
+  background-color: #ffffff;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+}

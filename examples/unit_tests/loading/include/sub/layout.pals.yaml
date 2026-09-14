@@ -1,0 +1,8 @@
+# Loaded by ../joiner.pals.yaml; includes ../parts/extra.subpals.yaml
+# relative to itself.
+# From pals-cpp tests/lattices/load_include.
+PALS:
+  facility:
+    - m1:
+        kind: Marker
+    - include: "../parts/extra.subpals.yaml"

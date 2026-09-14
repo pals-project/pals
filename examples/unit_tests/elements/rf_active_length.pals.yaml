@@ -1,0 +1,26 @@
+# An RF cavity whose active length (0.25) differs from the element length
+# (0.4). The derived voltage follows the active length: 1.0e8 * 0.25 = 2.5e7.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper honors an explicit L_active for RF derivation").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - cav:
+              kind: RFCavity
+              length: 0.4
+              RFP:
+                gradient: 1.0e8
+                L_active: 0.25
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

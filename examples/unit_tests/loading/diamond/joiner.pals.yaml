@@ -1,0 +1,7 @@
+# A diamond of loads: left and right both load shared.pals.yaml, which is
+# included in the combined document only once.
+# From pals-cpp tests/lattices/load_diamond.
+PALS:
+  load:
+    - left.pals.yaml
+    - right.pals.yaml

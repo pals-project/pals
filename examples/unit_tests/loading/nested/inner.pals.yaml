@@ -1,0 +1,9 @@
+# Loaded by joiner.pals.yaml; loads a.pals.yaml itself, with its own SELF
+# placed first.
+# From pals-cpp tests/lattices/load_nested.
+PALS:
+  notes:
+    - "inner"
+  load:
+    - SELF
+    - a.pals.yaml

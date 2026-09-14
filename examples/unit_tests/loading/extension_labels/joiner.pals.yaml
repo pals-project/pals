@@ -1,0 +1,10 @@
+# Dictionary-valued root keys merge across loaded files: extension_labels
+# from this file and from a.pals.yaml combine; an identical value on the
+# shared key is not a clash.
+# From pals-cpp tests/lattices/load_dict.
+PALS:
+  extension_labels:
+    shared: "same"
+    from_joiner: "J"
+  load:
+    - a.pals.yaml

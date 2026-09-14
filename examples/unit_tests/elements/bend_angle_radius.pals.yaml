@@ -1,0 +1,28 @@
+# A bend given only its reference angle and radius. Those two are enough: the
+# arc length follows (1.0), and with it the chord, the rectangle length, and
+# the sagitta. An author may give any two of {curvature, a length, the angle}.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper derives the bend length from its angle and radius").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - bnd:
+              kind: Bend
+              BendP:
+                angle_ref: 0.2
+                radius_ref: 5.0
+          - after:
+              kind: Marker
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

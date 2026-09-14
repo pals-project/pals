@@ -1,0 +1,51 @@
+# Three forks and their destinations: f1 forks to a named destination element
+# in a new named branch, f2 takes every default, and f3 forks with
+# `new_branch: null` into the branch f1 created. Expansion records each
+# connection: a Fork names its destination in ForkP.forked_to, and a
+# destination element lists its incoming Forks in ForkFromP.
+#
+# From pals-cpp tests/test_expansion.cpp
+# ("a Fork names its destination in ForkP.forked_to").
+PALS:
+  facility:
+    - m0:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: proton
+          E_tot_ref: 1.0e9
+    - dump_begin:
+        kind: Marker
+    - alt_begin:
+        kind: Marker
+    - dump_line:
+        kind: BeamLine
+        line:
+          - dump_begin
+    - alt_line:
+        kind: BeamLine
+        line:
+          - alt_begin
+    - ring:
+        kind: BeamLine
+        line:
+          - m0
+          - f1:
+              kind: Fork
+              ForkP:
+                to_line: dump_line
+                destination_element: dump_begin
+                new_branch: proton_dump
+          - f2:
+              kind: Fork
+              ForkP:
+                to_line: alt_line
+          - f3:
+              kind: Fork
+              ForkP:
+                to_line: proton_dump
+                new_branch: null
+    - lat1:
+        kind: Lattice
+        branches:
+          - ring
+    - use: "lat1"

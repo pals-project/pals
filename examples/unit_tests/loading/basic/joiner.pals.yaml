@@ -1,0 +1,10 @@
+# The basic load family: a joiner pulling in a layout file and a settings
+# file, with SELF marking where the joiner's own contents go.
+# From pals-cpp tests/lattices/load_basic.
+PALS:
+  notes:
+    - "joiner note"
+  load:
+    - layout.pals.yaml
+    - settings.pals.yaml
+    - SELF

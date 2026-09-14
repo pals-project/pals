@@ -1,0 +1,34 @@
+# A RELATIVE controller: a knob whose contribution is added on top of the
+# value the lattice gives the parameter, rather than replacing it. With the
+# knob at its written setting the lattice keeps S1's own Kn2L.
+#
+# From pals-cpp tests/test_controllers.cpp
+# ("a RELATIVE controller leaves the lattice alone").
+PALS:
+  facility:
+    - chrom_a:
+        kind: Controller
+        control_type: RELATIVE
+        variables:
+          command: 0.4
+        controls:
+          - parameter: S1>MagneticMultipoleP.Kn2L
+            expression: 5.62 * command + 0.02 * command^2
+    - lat1:
+        kind: Lattice
+        branches:
+          - main:
+              kind: BeamLine
+              line:
+                - begin:
+                    kind: BeginningEle
+                    ReferenceP:
+                      species_ref: "electron"
+                      E_tot_ref: 1.0e9
+                - S1:
+                    kind: Sextupole
+                    MagneticMultipoleP:
+                      Kn2L: 0.33
+                - fin:
+                    kind: Marker
+    - use: "lat1"

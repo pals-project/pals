@@ -1,0 +1,5 @@
+# Loaded first by joiner.pals.yaml.
+# From pals-cpp tests/lattices/load_self.
+PALS:
+  notes:
+    - "a"

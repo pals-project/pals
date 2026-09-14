@@ -1,0 +1,41 @@
+# Several ABSOLUTE controllers on one parameter sum: a_kicker's Kn0 becomes
+# the sum of the two controller expressions, replacing the element's own
+# value. ps1 omits control_type, which defaults to ABSOLUTE.
+#
+# From pals-cpp tests/test_controllers.cpp
+# ("several ABSOLUTE controllers on one parameter sum").
+PALS:
+  facility:
+    - ps1:
+        kind: Controller
+        variables:
+          cur: 0.023
+        controls:
+          - parameter: a_kicker>MagneticMultipoleP.Kn0
+            expression: 0.075*sin(cur)
+    - ps2:
+        kind: Controller
+        control_type: ABSOLUTE
+        variables:
+          cur: 0.044
+        controls:
+          - parameter: a_kicker>MagneticMultipoleP.Kn0
+            expression: 0.123*cur
+    - lat1:
+        kind: Lattice
+        branches:
+          - main:
+              kind: BeamLine
+              line:
+                - begin:
+                    kind: BeginningEle
+                    ReferenceP:
+                      species_ref: "electron"
+                      E_tot_ref: 1.0e9
+                - a_kicker:
+                    kind: Kicker
+                    MagneticMultipoleP:
+                      Kn0: 9.9
+                - fin:
+                    kind: Marker
+    - use: "lat1"

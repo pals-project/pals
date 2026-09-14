@@ -8,7 +8,7 @@
 
 project = 'Particle Accelerator Language Standard (PALS)'
 copyright = '2025, under CC-BY 4.0 License'
-author = 'Jean-Luc Vay, David Sagan, Chad Mitchell, Axel Huebl, David Bruhwihler, Christopher Mayes, Eric Stern, Daniel Winklehner, Michael Ehrlichman, Martin Berz, Giovanni Iadarola, Ji Qiang, Edoardo Zoni, Laurent Deniau, et al.'
+author = 'The PALS team'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -49,3 +49,7 @@ html_title = ""
 # Route the theme search box to Read the Docs' server-side search.
 # See _static/rtd-search-override.js for details.
 html_js_files = ['rtd-search-override.js']
+
+# Backdrops for the logo gallery on the Logos page.
+# See _static/logos.css for details.
+html_css_files = ['logos.css']

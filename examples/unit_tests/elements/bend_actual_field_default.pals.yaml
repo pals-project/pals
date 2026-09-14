@@ -1,0 +1,27 @@
+# A bend given only its reference curvature g_ref. By default the actual
+# dipole field follows the reference field (Kn0_from_g_ref), so the expanded
+# element also carries the actual-field forms (Kn0, Bn0, ...) derived from
+# g_ref = 0.1.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper defaults the bend actual field from g_ref").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - bnd:
+              kind: Bend
+              length: 2.0
+              BendP:
+                g_ref: 0.1
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

@@ -1,0 +1,23 @@
+# Layout member of the basic load family: the machine, its lattice, and the
+# use entry. See joiner.pals.yaml.
+# From pals-cpp tests/lattices/load_basic.
+PALS:
+  notes:
+    - "layout note"
+  facility:
+    - main:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - Q1a:
+              kind: Quadrupole
+              length: 0.5
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

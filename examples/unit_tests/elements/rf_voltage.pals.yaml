@@ -1,0 +1,25 @@
+# An RF cavity given only its voltage. The gradient follows from the active
+# length, which defaults to the element length: gradient = 8.0e6 / 0.4 = 2.0e7.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper derives RF gradient from voltage and active length").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - cav:
+              kind: RFCavity
+              length: 0.4
+              RFP:
+                voltage: 8.0e6
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

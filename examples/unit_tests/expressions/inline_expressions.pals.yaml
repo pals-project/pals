@@ -1,0 +1,37 @@
+# Expressions in element parameters: constants and variables in their
+# sequence form, mathematical functions (log, abs), the explicit expr(...)
+# marker, a random draw (random_gauss), and a constant defined from a species
+# mass (mass_of).
+#
+# Adapted from pals-cpp tests/test_expressions.cpp
+# ("parse_and_expand_PALS evaluates expressions in the expanded tree"); a
+# BeginningEle was added so the reference parameters can be computed.
+PALS:
+  facility:
+    - variables:
+        - a_var: 3.75e7 / c_light^2
+        - b_var: -0.34
+    - m_e:
+        kind: constant
+        value: mass_of("electron")
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - cleo:
+        kind: Solenoid
+        length: 0.1*log(abs(b_var))
+        MagneticMultipoleP:
+          Kn1: expr(3.74 * a_var)
+          Kn2: 0.01 + 0.003*random_gauss()
+    - main_line:
+        kind: BeamLine
+        line:
+          - begin
+          - cleo
+    - lat1:
+        kind: Lattice
+        branches:
+          - main_line
+    - use: "lat1"

@@ -1,0 +1,4 @@
+# Facility entries spliced into sub/layout.pals.yaml by its include entry.
+# From pals-cpp tests/lattices/load_include.
+- extra_ele:
+    kind: Marker

@@ -1,0 +1,37 @@
+# A controller reaching an element inside a branch, with the branch defined
+# in place under the Lattice and carrying a branch parameter (periodic). Also
+# a controller with a MetaP-free compact body: one variable, one control.
+#
+# From pals-cpp tests/test_controllers.cpp
+# ("a controller reaches an element in a branch named by its key").
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q:
+        kind: Quadrupole
+        length: 1
+        MagneticMultipoleP:
+          Kn1: 256
+    - ln:
+        kind: BeamLine
+        line:
+          - begin
+          - q
+    - machine:
+        kind: Lattice
+        branches:
+          - ln:
+              periodic: false
+    - oo:
+        kind: Controller
+        control_type: ABSOLUTE
+        variables:
+          vv: 2
+        controls:
+          - parameter: q>MagneticMultipoleP.Kn1
+            expression: 4^vv
+    - use: "machine"

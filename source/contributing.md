@@ -3,18 +3,18 @@
 
 ## Follow these steps **only once**
 
-1. Go to [https://github.com/campa-consortium/pals](https://github.com/campa-consortium/pals).
+1. Go to [https://github.com/pals-project/pals](https://github.com/pals-project/pals).
 
 2. Click the pulldown arrow next to `Fork`, click `Create a new fork`, and specify your GitHub username in the `Owner` field (e.g., "username").
 
-3. Go back to [https://github.com/campa-consortium/pals](https://github.com/campa-consortium/pals), click `Code` > `SSH`, and copy the url of the repo:
-(e.g., `git@github.com:campa-consortium/pals.git`)
+3. Go back to [https://github.com/pals-project/pals](https://github.com/pals-project/pals), click `Code` > `SSH`, and copy the url of the repo:
+(e.g., `git@github.com:pals-project/pals.git`)
 
 The simpler option `Code` > `HTTPS` can be used if the user just want to look at the repo.  (This does not require a password setup.)
 
 4. On your local machine, from the terminal, clone the main repository:
 ```
-git clone git@github.com:campa-consortium/pals.git
+git clone git@github.com:pals-project/pals.git
 cd pals
 ```
 5. Rename what we just cloned:  call it "mainline":
@@ -65,6 +65,6 @@ git commit -m "Add element template."
 git push -u username add_template
 ```
 
-9. Follow the link that is generated to open a new pull request on GitHub that includes these changes, e.g., go to [https://github.com/campa-consortium/pals/compare](https://github.com/campa-consortium/pals/compare).
+9. Follow the link that is generated to open a new pull request on GitHub that includes these changes, e.g., go to [https://github.com/pals-project/pals/compare](https://github.com/pals-project/pals/compare).
 
 10. Add a title and additional information relevant to the pull request (as needed).

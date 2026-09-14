@@ -1,0 +1,25 @@
+# An electric multipole. Electric multipoles have no normalized form; only
+# length-integration ties En2 to En2L = length * En2 = 0.5 * 5 = 2.5.
+#
+# From pals-cpp tests/test_bookkeeper.cpp
+# ("Bookkeeper derives the integrated electric multipole").
+PALS:
+  facility:
+    - test_line:
+        kind: BeamLine
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: "electron"
+                E_tot_ref: 1.0e9
+          - em:
+              kind: Sextupole
+              length: 0.5
+              ElectricMultipoleP:
+                En2: 5.0
+    - lat:
+        kind: Lattice
+        branches:
+          - test_line
+    - use: lat

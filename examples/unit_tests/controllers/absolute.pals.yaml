@@ -1,0 +1,41 @@
+# An ABSOLUTE controller (the default control_type) driving every parameter
+# its pattern matches: Qa.* reaches Qa1 and Qa2 but not Qb1. The driven
+# parameters are completely determined by the controller expression.
+#
+# From pals-cpp tests/test_controllers.cpp
+# ("ABSOLUTE controllers drive the parameters they match").
+PALS:
+  facility:
+    - ps1:
+        kind: Controller
+        variables:
+          cur: 0.4
+        controls:
+          - parameter: Qa.*>MagneticMultipoleP.Kn1L
+            expression: 2 * cur
+    - lat1:
+        kind: Lattice
+        branches:
+          - main:
+              kind: BeamLine
+              line:
+                - begin:
+                    kind: BeginningEle
+                    ReferenceP:
+                      species_ref: "electron"
+                      E_tot_ref: 1.0e9
+                - Qa1:
+                    kind: Quadrupole
+                    MagneticMultipoleP:
+                      Kn1L: 0.11
+                - Qa2:
+                    kind: Quadrupole
+                    MagneticMultipoleP:
+                      Kn1L: 0.22
+                - Qb1:
+                    kind: Quadrupole
+                    MagneticMultipoleP:
+                      Kn1L: 0.33
+                - fin:
+                    kind: Marker
+    - use: "lat1"

@@ -1,0 +1,5 @@
+# Left side of the diamond; loads shared.pals.yaml.
+# From pals-cpp tests/lattices/load_diamond.
+PALS:
+  load:
+    - shared.pals.yaml

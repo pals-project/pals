@@ -1,0 +1,8 @@
+# Loaded by ../joiner.pals.yaml; loads ../top.pals.yaml relative to itself.
+# From pals-cpp tests/lattices/load_relative.
+PALS:
+  notes:
+    - "inner"
+  load:
+    - ../top.pals.yaml
+    - SELF

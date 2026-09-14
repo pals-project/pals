@@ -1,0 +1,38 @@
+# Nested multipass lines: `inner` is a multipass line inside the multipass
+# line `outer`. For the elements of `inner`, the nearest enclosing multipass
+# line wins the numbering.
+#
+# Adapted from pals-cpp tests/test_multipass.cpp
+# ("Nested multipass lines: the nearest multipass line wins"); a BeginningEle
+# was added so the reference parameters can be computed.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - x:
+        kind: Marker
+    - y:
+        kind: Marker
+    - inner:
+        kind: BeamLine
+        multipass: true
+        line:
+          - y
+          - y
+    - outer:
+        kind: BeamLine
+        multipass: true
+        line:
+          - begin
+          - x
+          - inner
+          - inner
+          - x
+    - lat1:
+        kind: Lattice
+        branches:
+          - outer
+    - use: lat1
