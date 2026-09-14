@@ -15,6 +15,7 @@ PALS:
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
   phase_space_coordinates:  # [enum] Type of phase space coordinates 
+  post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file
 ```
@@ -56,6 +57,51 @@ to be outside of the PALS standard and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
 Per author, the `name` is required; the `orcid`, `affiliation` and `email` fields are optional.
+
+%---------------------------------------------------------------------------------------------------
+(s:facility)=
+## `facility` and `post_expansion`
+
+Constructing the lattice can be divided into two phases. 
+The first, "pre-expansion", phase basically involves defining lattice elements, controllers, 
+beam lines, etc., and ends with [lattice expansion](#s:lattice.expand).
+The second, "post-expansion", phase basically involves making modifications to the expanded lattice. 
+Essentially, the information needed for the pre-expansion phase is put in the `facility` sub-node
+of `PALS` and the information for the post-expansion phase is put in the `post_expansion` sub-node.
+Example:
+```{code} yaml
+PALS:
+  facility:
+    - q1:
+        kind: Quadrupole
+        MagneticMultipoleP:
+          Kn1L: 0.375
+
+    - bline:
+        kind: Beamline
+        line:
+          - q1:
+              repeat: 3
+
+    - lat:
+        kind: Lattice
+        branches: bline
+
+  post_expansion:
+    - set:
+        parameter: q1>MagneticMultipoleP.Kn1L
+        value: PARAMETER * (1 + 1e-4*random_gauss())
+```
+In this example, the expanded lattice has three elements named `q1`. 
+To add a random error to each of these, the lattice has to be expanded before a `set` command is used,
+and this is accomplished by placing a `set` command under the `post_expansion` node.
+If the `set` command had appeared in the `facility` node, and not in the `post_expansion` node, then
+when the set command is executed, the set would be applied to the value of `Kn1L` in the definition
+of `q1`. In this case, the result would be that all three of the `q1` elements in the expanded lattice would
+have the same value of `Kn1L`.
+
+The set of node types that can be used under the `post_expansion` node is the same as the
+`facility` node except for `lattice` and `use` nodes.
 
 %---------------------------------------------------------------------------------------------------
 (s:parameters)=
