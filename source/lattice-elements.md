@@ -88,18 +88,6 @@ The simplest form of name matching is if the string matches
 the `name` field of an element or elements. 
 For example, the string `"Q1"` will match to all elements named `Q1`.
 
-Element matches may be restricted to a given element kind using the notation
-```{code} yaml
-{kind}::{name}
-```
-where `{kind}` is the element kind and `{name}` is the element name.
-Example:
-```{code} yaml
-Marker::bpm.
-```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character, see below).
-
 The `N`{sup}`th` element with a given name can be matched to by appending the character `"#"` 
 followed by an integer `N`. For example, `"Quadrupole::Q1#3"` will match to the third element
 that matches `"Quadrupole::Q1"`. The `N`{sup}`th` instance selection is always applied last.
@@ -144,10 +132,16 @@ Regex matching is applied to the lattice name, branch name, and element name sep
 a match to the string requires all the individual names to match.
 When applying regex to a lattice name, any prefix (anything before and including a `"::"`) and
 any suffix (anything after and including a `"#"` character) is not included in the regex match.
-For example, `"B.4>>Quadrupole::Qaf.*"` would match to all Quadrupole elements in branches 
-which have three characters
-beginning in "B" and ending in "4" with the element name beginning with "Qaf". And 
-`"B.4>>Quadrupole::Qaf.*#2"` would match to the second element matched to.
+For example, with:
+```
+B.4>>Quadrupole::Qaf.*
+B.4>>Quadrupole::Qaf.*#2
+``` 
+For both lines, regex would be applied to the strings `B.4` and `Qaf.*`. 
+For the first line, this would match to all Quadrupole elements in branches 
+which have three characters beginning in "B" and ending in "4" with the element name 
+beginning with "Qaf".
+For the second line, this would match to the second element matched to in the first line.
 
 Elements can be matched using a range construct which has the form
 ```{code} yaml
@@ -189,6 +183,7 @@ Order of precedence:
 ```{code}
 >>>     # Highest
 >>
+>
 ::      
 #
 :
