@@ -202,4 +202,7 @@ controllers but may not (because it does not make sense) be controlled by both `
 A given lattice parameter may not be assigned a delayed evaluation expression and be controlled 
 by a controller.
 
+%---------------------------------------------------------------------------------------------------
+(s:adjust)=
+## Adjustments
 

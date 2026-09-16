@@ -8,16 +8,17 @@
 The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 ```{code} YAML
 PALS:
-  authors:                  # [list] Authors associated with this file
+  adjustments:              # [list] Lattice parameter adjustments after lattice expansion.
+  authors:                  # [list] Authors associated with this file.
   extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
-  include:                  # [string] Optional literal insert of a file
+  include:                  # [string] Optional literal insert of a file.
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
-  phase_space_coordinates:  # [enum] Type of phase space coordinates 
+  phase_space_coordinates:  # [enum] Type of phase space coordinates.
   post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
-  version:                  # [string] Version of the PALS schema used in this file
+  version:                  # [string] Version of the PALS schema used in this file.
 ```
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
