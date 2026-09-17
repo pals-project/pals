@@ -6,7 +6,7 @@
 ## PALS Root Object
 
 The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
-```{code} YAML
+```{code} yaml
 PALS:
   adjustments:              # [list] Lattice parameter adjustments after lattice expansion.
   authors:                  # [list] Authors associated with this file.
@@ -24,7 +24,7 @@ The difference between `notes` and `reminders` is that reminder messages are mea
 printed (or otherwise communicated to the user) every time the file is read.
 
 Example:
-```{code} YAML
+```{code} yaml
 PALS:
   version: null  # version schema: defined later
 
@@ -121,7 +121,7 @@ A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
-```{code} YAML
+```{code} yaml
 PALS:
   include: "version-and-globals.subpals.yaml"
 
@@ -138,11 +138,11 @@ PALS:
 ```
 The information in an included file is inserted at the `include` point. In this example,
 the included file `version-and-globals.subpals.yaml` could look like, for example:
-```{code} YAML
+```{code} yaml
 version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
-```{code} YAML
+```{code} yaml
 MagneticMultipoleP:
   Kn3L: 0.3
 ```
