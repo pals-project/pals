@@ -35,7 +35,7 @@ Special values used in this document are:
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
 
-2. The standard defines the following symbols which can be used in place of a real or integer value:
+2. Symbols that can be used in place of a real or integer value:
 - `null`: Value has not been set.
 - `Inf`: Infinity.
 - `-Inf`: Negative infinity.
