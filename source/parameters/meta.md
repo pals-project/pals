@@ -8,9 +8,9 @@ MetaP:
   alias: ""         # [string] An alternate name for the element.
   ID: ""            # [string] Element identification.
   label: ""         # [string] A label string
-  description: ""   # A descriptive string
-  location: ""      # Element's location.
-  history: ""       # Element's history. 
+  description: ""   # [string] A descriptive string
+  location: ""      # [list] Element's location.
+  history: ""       # [list] Element's history. 
 ```
 In addition to an element's `name`, the three string components can be used for pattern matching
 when trying to locate all elements of a given type.
