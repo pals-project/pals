@@ -61,6 +61,31 @@ as explained in [](#s:element.sets). In this case the full form of a name match 
 where each member of `{element-set}` may carry its own lattice, branch, kind, and instance
 qualifiers, and the parameter path, if present, applies to every element in the set.
 
+Before [lattice expansion](#s:lattice.expand) is done, an element name without a `{lattice-name}` or
+a `{branch-or-beamline-name}`, will match to the names of any element that is defined under the
+`facility` node but will not match to elements in a lattice, branch, or beamline. For example:
+```{code} yaml
+facility:
+  - Q1:           # Define element named Q1 under the facility node
+      ...
+
+  - my_line:
+      kind: Beamline
+      line:
+        - Q1      # Define within the beamline.
+            ...
+
+  - set:
+      parameter: Q1>MagneticMultipoleP.Bs1
+      value: 0.45
+```
+In this example, The `set` will be applied to the `Q1` element defined under the facility node
+but not to the Q1 defined in the beamline.
+
+After lattice expansion, an element name without a `{lattice-name}` or
+a `{branch-or-beamline-name}`, will match to elements in the expanded lattice but will not match
+to any elements outside of the expanded lattice.
+
 %---------------------------------------------------------------------------------------------------
 (s:basic.matching)=
 ### Basic Name Matching
