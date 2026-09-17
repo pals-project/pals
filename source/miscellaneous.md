@@ -112,7 +112,7 @@ which aids in documentation and searching.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
 variable is:
-```{code} yaml
+```{code}
 {controller-name}>{variable-name}
 ```
 So, for example, with the above example, outside of the `ps27` controller the `cur1` variable
@@ -201,5 +201,68 @@ controllers but may not (because it does not make sense) be controlled by both `
 
 A given lattice parameter may not be assigned a delayed evaluation expression and be controlled 
 by a controller.
+
+%---------------------------------------------------------------------------------------------------
+(s:adjust)=
+## Adjustments
+
+The calculated value of a given quantity can vary from simulation program to simulation program
+due to differing physics models. An example is the tune of a machine. For some calculations, this
+variation may be problematical. To alleviate this, the `adjustments` construct can be used as
+a hint to a program as to how to correct a lattice before any simulations are done.
+An `adjustments` block is put as a sub-node of the `PALS` node. The syntax of this is:
+```{code} yaml
+PALS:
+  adjustment:
+    - optimize:
+        ...
+    - optimize:
+        ...
+```
+The `adjustmenet` block have a number of `optimize` subblocks. Each `optimize` subblock represents
+an optimization where a set of parameters are varied in order to get a set of target parameters
+to be specific values.
+
+Each `optimize` block has the syntax:
+```{code} yaml
+  - optimize:
+      - vary: 
+          parameter: <parameters-to-vary>   # [name] Parameter(s) to vary
+          weight: <weight>                  # [-] Optional variable weight. Default is 0.
+      - vary: 
+          ...
+      - target:
+          parameter: <target-parameter>     # Data Parameter(s) to optimize
+          value: <value>                    # Optimum value
+          weight: <weight>                  # [-] Optional datum weight. Default is 1.
+      - target:
+          ...
+```   
+The `vary` nodes specify the parameters to be varied and the `target` nodes specify the data target
+parameters and data target values to optimize. The merit function {math}`M` to minimize is:
+```{math}
+M = \sum_i w_i [\left[ \delta D_i \right]^3 + \sum_j w_j \left[ \delta V_j \right]^2
+```
+Where {math}`\delta D_i` is the difference between datum value and the target value, {math}`\delta V_j`
+is the difference between the varied variable value and its initial value before any optimization, and
+the {math}`w_i` and {math}`w_j` are the data and variable weights respectively which default to one
+and zero respectively.
+
+Example:
+```{code} yaml
+PALS:
+  - optimize:
+      - vary:
+          parameter: Qa,Qb>MagneticMultipoleP.Kn1
+      - target:
+          parameter: fractional_tune_a
+          value: 0.37*twopi
+      - target:
+          parameter: fractional_tune_b
+          value: 0.53*twopi
+
+
+          
+
 
 
