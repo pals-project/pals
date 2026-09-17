@@ -285,9 +285,3 @@ For sub-level [included](#s:includefiles) PALS format files, replace `.pals` wit
 
 Note: Not following the recommendation may lead to, for example, reader/visualization tools 
 not auto discovering the file as PALS, which can create friction for users.
-
-### Schema Files
-
-Schema files for validation have not yet been developed.
-A validation tool based on pydantic is in development.
-See the [Software Ecosystem](#c:software) section.

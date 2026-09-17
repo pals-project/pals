@@ -31,3 +31,8 @@ that implement non-PALS languages since these programs already have the ability 
 a non-PALS format.
 
 - Conversion between PALS and [Bmad/SciBmad](https://github.com/bmad-sim) is in the planning stages.
+
+### Schema Files
+
+Schema files for validation have not yet been developed.
+A validation tool based on pydantic is in development.
