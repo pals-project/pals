@@ -30,7 +30,7 @@ PARAMETER
 
 Special values used in this document:
 
-1. Logical parameters can be one of three values:
+1. Logical values:
 - `true`
 - `false`
 - `null`: Useful as a default value when neither `true` nor `false` is appropriate.
