@@ -22,7 +22,7 @@ to represent rotational errors.
 
 The components of `ElectricMultipoleP` for specifying a multipolar field of order `N` is:
 ```{code} yaml
-  tiltN: 0                  # [Radians] Tilt
+  tiltN: 0                  # [rad] Tilt
   EnN: 0                    # [V/m^(N+1)] Normal component
   EsN: 0                    # [V/m^(N+1)] Skew component
   EnNL: 0                   # [V/m^N] Length integrated normal component 

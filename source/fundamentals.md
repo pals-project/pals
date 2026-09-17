@@ -483,7 +483,7 @@ PALS uses SI except for energy which uses `eV`.
 * - voltage
   - Volts
 * - angles and phases
-  - radians / 2 {math}`\pi`
+  - radians
 * - magnetic field
   - Tesla
 * - frequency
@@ -498,7 +498,8 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
-pi                        # Pi
+pi                        # [-] Pi
+twopi                     # [-] 2*pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
