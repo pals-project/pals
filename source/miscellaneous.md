@@ -112,7 +112,7 @@ which aids in documentation and searching.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
 variable is:
-```{code} yaml
+```{code}
 {controller-name}>{variable-name}
 ```
 So, for example, with the above example, outside of the `ps27` controller the `cur1` variable
@@ -256,6 +256,12 @@ PALS:
           parameter: Qa,Qb>MagneticMultipoleP.Kn1
       - target:
           parameter: fractional_tune_a
+          value: 0.37*twopi
+      - target:
+          parameter: fractional_tune_b
+          value: 0.53*twopi
+
+
           
 
 
