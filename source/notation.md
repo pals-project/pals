@@ -28,7 +28,7 @@ PARAMETER
 (s:specialvalues)=
 ## Special Values
 
-Special values used in this document are:
+Special values used in this document:
 
 1. Logical parameters can be one of three values:
 - `true`
