@@ -109,7 +109,6 @@ dispersion.md
 :caption: Implementations
 
 code-packages.md
-simulations.md
 ```
 
 ```{toctree}
