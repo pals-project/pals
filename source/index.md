@@ -51,11 +51,11 @@ The standardized element kinds, their parameters, and how they are grouped.
 Organizing elements into lines and branches to describe an entire machine complex.
 :::
 
-:::{grid-item-card} 💻 Implementations
-:link: code-packages
+:::{grid-item-card} 💻 Software Ecosystem
+:link: tools
 :link-type: doc
 
-Code packages and simulation programs that read and write PALS files.
+Parsers, visualization tools, and language converters for working with PALS files.
 :::
 
 :::{grid-item-card} 🤝 Contributing
@@ -106,9 +106,9 @@ dispersion.md
 ```{toctree}
 :maxdepth: 2
 :hidden:
-:caption: Implementations
+:caption: Software Ecosystem
 
-code-packages.md
+tools.md
 simulations.md
 ```
 

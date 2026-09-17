@@ -290,4 +290,4 @@ not auto discovering the file as PALS, which can create friction for users.
 
 Schema files for validation have not yet been developed.
 A validation tool based on pydantic is in development.
-See the [Libraries](#c:impl.libs) section.
+See the [Software Ecosystem](#c:software) section.
