@@ -148,7 +148,7 @@ Each entry of the `list` vector can have three keys:
 point        # [m] Vector of two real numbers.
 radius       # [m] Vector of single or two real numbers.
 convex: true # [logical] 
-tilt: 0      # [rad/2pi] Ellipse tilt angle.
+tilt: 0      # [rad] Ellipse tilt angle.
 ```
 Example:
 ```{code} yaml

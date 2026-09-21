@@ -13,9 +13,9 @@ FloorP:
   x: null                       # [m] Global x-coordinate.
   y: null                       # [m] Global y-coordinate.
   z: null                       # [m] Global z-coordinate.
-  theta: null                   # [radians] Orientation angle.
-  phi: null                     # [radians] Orientation angle.
-  psi: null                     # [radians] Orientation angle.
+  theta: null                   # [rad] Orientation angle.
+  phi: null                     # [rad] Orientation angle.
+  psi: null                     # [rad] Orientation angle.
   user_set: false               # [logical] Is placement set by the user or computed?
 ```
 
