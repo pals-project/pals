@@ -260,11 +260,6 @@ must be the same.
     - "This is a second note."
     - "Lattice with orbit correction for blown chopper at B34W."
   ```
-  The one modification is that when combining a `facility` list, each list is considered to
- have two parts: the part before any `expand_lattice` command and the part after any `expand_lattice`
- command (this second part may be empty). The final `facility` list is the pre-`expand_lattice` 
- parts, combined together, followed by an `expand_lattice` command, followed by the 
- post-`expand_lattice` parts combined together.
 - For Dict type subnodes of `PALS`, the combined dict will be the union of all the dict entries
 for all of the files. If the dict entries are themselves a dict, this combining rule is applied
 to the subdicts. If the dict entries are lists, the lists are combined as discussed above.
