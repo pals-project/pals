@@ -441,24 +441,6 @@ through its controller using the same single `>` separator —
 through its element.
 
 %---------------------------------------------------------------------------------------------------
-(s:specialvalues)=
-## Special Values
-
-Special values used in this document are:
-
-1. Logical parameters can be one of three values:
-- `true`
-- `false`
-- `null`: Useful as a default value when neither `true` nor `false` is appropriate.
-
-2. The standard defines the following symbols which can be used in place of a real or integer value:
-- `null`: Value has not been set.
-- `Inf`: Infinity.
-- `-Inf`: Negative infinity.
-
-3. In general, `null` can be used to signify that any parameter does not have a specific default value.
-
-%---------------------------------------------------------------------------------------------------
 (s:units)=
 ## Units
 
