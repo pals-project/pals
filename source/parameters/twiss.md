@@ -9,7 +9,7 @@ initial values.
 For all other element kinds that have a [ReferenceP](#s:ref.params) group, `TwissP` is an
 [output parameter](#s:io.params) group.
 
-The components if `TwissP` are:
+The components of `TwissP` are:
 ```{code} yaml
 alpha_a       # [-] "a" mode alpha
 alpha_b       # [-] "b" mode alpha
