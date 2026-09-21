@@ -1,6 +1,6 @@
 %---------------------------------------------------------------------------------------------------
 (s:twiss.params)=
-## TwissP: Initial Twiss, coupling, and dispersion Parameters.
+## TwissP: Twiss, coupling, and dispersion Parameters.
 
 Typically this parameter group is used to specify the initial Twiss, coupling and dispersion
 parameters at the beginning of a lattice branch.
@@ -9,12 +9,7 @@ initial values.
 For all other element kinds that have a [ReferenceP](#s:ref.params) group, `TwissP` is an
 [output parameter](#s:io.params) group.
 
-Note that PALS itself does not define how any `TwissP` component is calculated: that is outside the
-scope of PALS.
-A program is free to compute the Twiss parameters and write them out for each element of an
-expanded lattice so that other programs may read them back in.
-
-The components if `TwissP` are:
+The components of `TwissP` are:
 ```{code} yaml
 alpha_a       # [-] "a" mode alpha
 alpha_b       # [-] "b" mode alpha
