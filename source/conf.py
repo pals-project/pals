@@ -52,7 +52,7 @@ html_js_files = ['rtd-search-override.js']
 
 # Backdrops for the logo gallery on the Logos page.
 # See _static/logos.css for details.
-# Text size classes. See _static/text.css for details.
+# Text size classes and horizontal rule style. See _static/text.css for details.
 html_css_files = ['logos.css', 'text.css']
 
 # LaTeX (PDF) versions of the text size classes in _static/text.css.
@@ -69,4 +69,6 @@ latex_elements = {
 \expandafter\newcommand\csname DUrole{cls}\endcsname[1]{{{{\{size} #1}}}}
 \newenvironment{{sphinxclass{cls}}}{{\{size}}}{{\par}}'''
         for cls, size in text_size_classes.items()),
+    # Thicker horizontal rules (`---` in Markdown) to match _static/text.css.
+    'transition': '\n\n\\bigskip\\hrule height 1.5pt\\bigskip\n\n',
 }

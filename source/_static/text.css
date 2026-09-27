@@ -18,3 +18,9 @@
 .large3 { font-size: 1.728em; }  /* \LARGE        17.28pt */
 .large4 { font-size: 2.074em; }  /* \huge         20.74pt */
 .large5 { font-size: 2.488em; }  /* \Huge         24.88pt */
+
+/* Horizontal rules (`---` in Markdown) are drawn thicker than the theme default.
+ * The theme draws them at 25% opacity, so opacity is raised too.
+ * The LaTeX (PDF) equivalent is the 'transition' entry of latex_elements in conf.py.
+ */
+hr.docutils { border-top-width: 3px; opacity: 0.6; }
