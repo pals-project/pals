@@ -414,6 +414,12 @@ Under Construction...
 
 Note: This element does not have a `length` nor an `s_position`.
 
+Element parameter groups associated with this element kind are:
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the exit end of the element.
+- [**FloorP**](#s:floor.params): Floor position and orientation without any `CoordinateSetP` or `Girder` alignment shifts.
+- [**GirderP**](#s:girder.params): Girder parameters.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `CoordinateSetP` and/or `Girder` alignment shifts included.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
