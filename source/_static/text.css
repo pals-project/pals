@@ -1,10 +1,20 @@
 /* Text size classes.
  *
- * Inline text:  [these words]{.large}
- * Block text:   :::{container} large
+ * Inline text:  [these words]{.large2}
+ * Block text:   :::{container} large2
  *               ...
  *               :::
  *
+ * Sizes are relative to normal text and match the ratios of the LaTeX size
+ * commands for a 10pt document (Sphinx's default LaTeX point size).
  * The LaTeX (PDF) equivalents are defined in latex_elements in conf.py.
  */
-.large { font-size: 1.25em; }
+.small4 { font-size: 0.5em; }    /* \tiny         5pt    */
+.small3 { font-size: 0.7em; }    /* \scriptsize   7pt    */
+.small2 { font-size: 0.8em; }    /* \footnotesize 8pt    */
+.small  { font-size: 0.9em; }    /* \small        9pt    */
+.large  { font-size: 1.2em; }    /* \large        12pt   */
+.large2 { font-size: 1.44em; }   /* \Large        14.4pt */
+.large3 { font-size: 1.728em; }  /* \LARGE        17.28pt */
+.large4 { font-size: 2.074em; }  /* \huge         20.74pt */
+.large5 { font-size: 2.488em; }  /* \Huge         24.88pt */

@@ -56,11 +56,17 @@ html_js_files = ['rtd-search-override.js']
 html_css_files = ['logos.css', 'text.css']
 
 # LaTeX (PDF) versions of the text size classes in _static/text.css.
-# Inline text `[text]{.large}` uses \DUrolelarge.
-# Block text `:::{container} large` uses the sphinxclasslarge environment.
+# Inline text `[text]{.large2}` uses \DUrolelarge2.
+# Block text `:::{container} large2` uses the sphinxclasslarge2 environment.
+# The \csname form is needed since LaTeX command names cannot contain digits.
+text_size_classes = {
+    'small4': 'tiny', 'small3': 'scriptsize', 'small2': 'footnotesize', 'small': 'small',
+    'large': 'large', 'large2': 'Large', 'large3': 'LARGE', 'large4': 'huge', 'large5': 'Huge',
+}
 latex_elements = {
-    'preamble': r'''
-\newcommand{\DUrolelarge}[1]{{\large #1}}
-\newenvironment{sphinxclasslarge}{\large}{\par}
-''',
+    'preamble': ''.join(
+        rf'''
+\expandafter\newcommand\csname DUrole{cls}\endcsname[1]{{{{\{size} #1}}}}
+\newenvironment{{sphinxclass{cls}}}{{\{size}}}{{\par}}'''
+        for cls, size in text_size_classes.items()),
 }
