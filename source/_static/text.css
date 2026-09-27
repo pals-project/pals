@@ -1,0 +1,10 @@
+/* Text size classes.
+ *
+ * Inline text:  [these words]{.large}
+ * Block text:   :::{container} large
+ *               ...
+ *               :::
+ *
+ * The LaTeX (PDF) equivalents are defined in latex_elements in conf.py.
+ */
+.large { font-size: 1.25em; }

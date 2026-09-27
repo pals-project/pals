@@ -14,7 +14,7 @@ author = 'The PALS team'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['myst_parser', 'sphinx_design', 'sphinxcontrib.bibtex', 'sphinxcontrib.cairosvgconverter', 'sphinx_copybutton']
-myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block"]
+myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block", "attrs_inline"]
 numfig = True
 
 templates_path = ['_templates']
@@ -52,4 +52,15 @@ html_js_files = ['rtd-search-override.js']
 
 # Backdrops for the logo gallery on the Logos page.
 # See _static/logos.css for details.
-html_css_files = ['logos.css']
+# Text size classes. See _static/text.css for details.
+html_css_files = ['logos.css', 'text.css']
+
+# LaTeX (PDF) versions of the text size classes in _static/text.css.
+# Inline text `[text]{.large}` uses \DUrolelarge.
+# Block text `:::{container} large` uses the sphinxclasslarge environment.
+latex_elements = {
+    'preamble': r'''
+\newcommand{\DUrolelarge}[1]{{\large #1}}
+\newenvironment{sphinxclasslarge}{\large}{\par}
+''',
+}
