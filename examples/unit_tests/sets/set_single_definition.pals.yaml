@@ -2,7 +2,7 @@
 # definition, and all three expanded copies inherit the new value.
 #
 # From pals-cpp tests/test_sets.cpp
-# ("without expand_lattice a set writes the single definition").
+
 PALS:
   facility:
     - q1:
