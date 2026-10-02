@@ -13,6 +13,7 @@ dependencies:
   - python
   - myst-parser
   - pip
+  - pre-commit
   - pybtex
   - pygments
   - recommonmark
