@@ -6,7 +6,17 @@ position. The nominal position is set by the [branch coordinate system](#c:coord
 This parameter group can be used to simulate positional errors. See section [](#s:lab.body.transform)
 for documentation on the body shift transformation equations.
 
-The components of this group and their defaults are:
+The exceptions to the above description come when an element has a `CoordinateSetP` parameter group.
+In this case, the shift is in respect to the coordinate system established by `CoordinateSetP`
+and not the coordinate system of the element itself. The elements that have a `CoordinateSetP`
+group are:
+```{code} yaml
+Fiducial
+FloorShift
+Girder
+```
+
+The components of `BodyShiftP` and their defaults are:
 ```{code} yaml
 BodyShiftP:
   x_offset: 0       # [m] Offset along x-axis
