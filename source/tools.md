@@ -37,9 +37,6 @@ a non-PALS format.
 Schema files for validation have not yet been developed.
 A validation tool based on pydantic is in development.
 
-## List of Interfaced Programs
-
-List of programs that are currently interfaced directly to PALS.
+## List of Simulation Codes Interfaced to PALS
 
 - [BLAST ImpactX](https://impactx.readthedocs.io)
-
