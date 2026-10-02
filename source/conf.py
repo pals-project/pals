@@ -14,7 +14,7 @@ author = 'The PALS team'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['myst_parser', 'sphinx_design', 'sphinxcontrib.bibtex', 'sphinxcontrib.cairosvgconverter', 'sphinx_copybutton']
-myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block"]
+myst_enable_extensions = ["colon_fence", "amsmath", "attrs_block", "attrs_inline"]
 numfig = True
 
 templates_path = ['_templates']
@@ -52,4 +52,23 @@ html_js_files = ['rtd-search-override.js']
 
 # Backdrops for the logo gallery on the Logos page.
 # See _static/logos.css for details.
-html_css_files = ['logos.css']
+# Text size classes and horizontal rule style. See _static/text.css for details.
+html_css_files = ['logos.css', 'text.css']
+
+# LaTeX (PDF) versions of the text size classes in _static/text.css.
+# Inline text `[text]{.large2}` uses \DUrolelarge2.
+# Block text `:::{container} large2` uses the sphinxclasslarge2 environment.
+# The \csname form is needed since LaTeX command names cannot contain digits.
+text_size_classes = {
+    'small4': 'tiny', 'small3': 'scriptsize', 'small2': 'footnotesize', 'small': 'small',
+    'large': 'large', 'large2': 'Large', 'large3': 'LARGE', 'large4': 'huge', 'large5': 'Huge',
+}
+latex_elements = {
+    'preamble': ''.join(
+        rf'''
+\expandafter\newcommand\csname DUrole{cls}\endcsname[1]{{{{\{size} #1}}}}
+\newenvironment{{sphinxclass{cls}}}{{\{size}}}{{\par}}'''
+        for cls, size in text_size_classes.items()),
+    # Thicker horizontal rules (`---` in Markdown) to match _static/text.css.
+    'transition': '\n\n\\bigskip\\hrule height 1.5pt\\bigskip\n\n',
+}
