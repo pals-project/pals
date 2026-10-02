@@ -78,7 +78,19 @@ An important concept is [`lattice expansion`](#s:lattice.expand) and `branch exp
 Branch expansion is the process, starting from the `root` `BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 `Lattice expansion` involves branch expansion along with things like
-calculating the reference energy for all elements.
+calculating the reference energy for all elements. The result is a [Expanded Lattice](#s:expanded.lat.intro).
+
+%---------------------------------------------------------------------------------------------------
+(s:expanded.lat.intro)=
+## Expanded Lattice
+
+The "expanded lattice" is the lattice that is the result of [lattice expansion](#s:expansion.intro).
+This lattice is a structure with all branches expanded and all computable parameters computed.
+These computable parameters include:
+- Element reference energy and reference species.
+- Element longitudinal s-position.
+- Element floor coordinates both nominal and with alignment shifts.
+- Element dependent parameters (for example, `L_sagitta` for a bend).
 
 %---------------------------------------------------------------------------------------------------
 (s:enum)=
@@ -97,3 +109,14 @@ An Extension is data added to a PALS file that is not part of the PALS standard.
 For example, information specific to a particular machine or simulation program that has no analogue with other
 machines can be put in as an extension. A list of documented extensions is in the 
 [Extension](#c:extension) section.
+
+%---------------------------------------------------------------------------------------------------
+(s:parser.intro)=
+## PALS Compliant Parser
+
+A PALS compliant parser is a parser that can read in PALS file(ss) (plural if there contained
+or included files) and can construct an "appropriate" information tree (or trees) in memory. 
+To be compliant, the constructed information tree must contain the information to construct the 
+original PALS files. 
+The information tree must also contain the [expanded lattice](#s:expanded.lat.intro).
+
