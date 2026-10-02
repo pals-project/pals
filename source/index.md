@@ -83,6 +83,7 @@ definitions.md
 
 notation.md
 fundamentals.md
+names.md
 coordinates.md
 lattice-elements.md
 lattice-element-kinds.md
