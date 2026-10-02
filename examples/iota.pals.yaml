@@ -17,7 +17,6 @@ PALS:
   extension_labels:
     names:
       ImpactX: ImpactX-specific numerical simulation setup
-
   facility:
     # ImpactX simulation setup that has no PALS-standard representation.
     # Everything in this entry is verbatim from input_iotalattice.in.
@@ -33,16 +32,15 @@ PALS:
           npart: 10000
           bunch_charge_C: 1.0e-9
           distribution: waterbag
-          emitt_x: 4.5e-06  # [m rad] geometric, = lambdaX * lambdaPx
-          emitt_y: 4.5e-06  # [m rad] geometric, = lambdaY * lambdaPy
-          lambdaT: 1.0e-3                 # [m] bunch length; no Twiss form since
-          lambdaPt: 0.0                   #     zero momentum spread
+          emitt_x: 4.5e-06 # [m rad] geometric, = lambdaX * lambdaPx
+          emitt_y: 4.5e-06 # [m rad] geometric, = lambdaY * lambdaPy
+          lambdaT: 1.0e-3 # [m] bunch length; no Twiss form since
+          lambdaPt: 0.0 #     zero momentum spread
           # run and algorithm configuration
           periods: 5
           nslice: 10
           space_charge: false
           slice_step_diagnostics: true
-
     # Drifts
     - dra1:
         kind: Drift
@@ -101,7 +99,6 @@ PALS:
     - dre3:
         kind: Drift
         length: 0.8075
-
     # Sector bends (30 and 60 degrees). The ImpactX dipedge elements
     # (psi = 0, g = 0.058 m full gap, K2 = 0.5 = MAD-X FINT) are folded in:
     # edge1_int = edge2_int = K2 * g/2 = 0.0145 m.
@@ -123,7 +120,6 @@ PALS:
           e2: 0.0
           edge1_int: 0.0145
           edge2_int: 0.0145
-
     # Quadrupoles. Kn1 equals the ImpactX quad strength k [1/m^2]
     # (MAD-X K1 convention: positive is horizontally focusing).
     - qa1:
@@ -226,7 +222,6 @@ PALS:
         length: 0.21
         MagneticMultipoleP:
           Kn1: -6.69148177
-
     # Beam monitor (ImpactX beam_monitor, zero length). The output backend and
     # the nonlinear-optics invariant diagnostics are ImpactX-specific.
     - monitor:
@@ -234,7 +229,6 @@ PALS:
         ImpactX:
           backend: h5
           nonlinear_lens_invariants: true
-
     # One mirror-symmetric half of the ring (ImpactX line `first_half`).
     - iota_half:
         kind: BeamLine
@@ -288,7 +282,6 @@ PALS:
           - dre2
           - qe2
           - dre3
-
     # The full ring: half, central quad qe3, reflected half.
     - iota_ring:
         kind: BeamLine
@@ -298,23 +291,21 @@ PALS:
               kind: BeginningEle
               ReferenceP:
                 species_ref: proton
-                E_tot_ref: 940.77208816e6  # [eV] 2.5 MeV kinetic + 938.27208816 MeV rest energy
+                E_tot_ref: 940.77208816e6 # [eV] 2.5 MeV kinetic + 938.27208816 MeV rest energy
               TwissP:
                 # uncoupled upright beam ellipse (ImpactX muxpx = muypy = 0)
                 alpha_a: 0.0
-                beta_a: 0.5610658215819395  # [m] = lambdaX / lambdaPx
+                beta_a: 0.5610658215819395 # [m] = lambdaX / lambdaPx
                 alpha_b: 0.0
-                beta_b: 1.3851417179996923  # [m] = lambdaY / lambdaPy
+                beta_b: 1.3851417179996923 # [m] = lambdaY / lambdaPy
           - monitor
           - iota_half
           - qe3
           - iota_half:
-              repeat: -1  # ImpactX `second_half.reverse = true`: mirrored element order
+              repeat: -1 # ImpactX `second_half.reverse = true`: mirrored element order
           - monitor
-
     - iota:
         kind: Lattice
         branches:
           - iota_ring
-
     - use: iota
