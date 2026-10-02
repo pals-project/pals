@@ -61,6 +61,14 @@ That is, it is not permitted for one component to be length integrated and the o
 as well as it is not permitted for one component to be a field and the other component to be normalized.
 However, the multipole components of different order do not have to be of the same type.
 
+When there is a change in reference energy or element length during a simulation
+(something that happens after the PALS file has been parsed), the relationship
+between normalized, unnormalized, length integrated, and non-length integrated components changes.
+In this case, the components that has been specified in the PALS file should remain constant
+and the other components calculated appropriately. For example, if `Bn4` is set to `4.0`, and
+`L` is set to `2.0`, then the value of `Bn4L` is `8.0`. Now if `L` is set to `3.0`, the value
+of `Bn4` should remain at `4.0` and `Bn4L` should have a value of `12.0`.
+
 With a `bend` element, the reference line about which the multipoles are referenced to
 may be curved. This is set by the `ref_geometry` parameter of the [`BendP`](#s:bend.params)
 parameter group. If `ref_geometry` is set to `arc`, the `multipole_type` parameter of
