@@ -22,7 +22,7 @@ FloorP:
 
 When this group is contained in an element, the placement can either be set by the creator
 of the lattice if `user_set` is set to `true`, or can be computed based upon the placement
-of the upstream lattice elements of the branch the element is in. That is `user_set`
+of the upstream lattice elements of the branch the element is in. That is, `user_set`
 determines whether the `FloorP` parameters are inputs or outputs.
 
 Also see [`ShiftedFloorP`](#s:shifted.floor.params) parameter group.
