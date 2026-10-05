@@ -30,8 +30,8 @@ exclude_patterns = ['parameters']
 
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
-    "show_toc_level": 2,             # On right. Shows "on this page" contents.
-    "show_navbar_depth": 3,          # On left.
+    "show_toc_level": 2,     # levels of TOC items in the right sidebar (in-page TOC)
+    "show_navbar_depth": 3,  # levels of TOC items in the left sidebar
     "collapse_navbar": False,
     "repository_url": "https://github.com/pals-project/pals",
     "use_repository_button": True,
