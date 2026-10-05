@@ -1,17 +1,16 @@
 (s:coordinate.set.params)=
 ## CoordinateSetP:  Define Reference Coordinates
 
-The `CoordinateSetP` parameter group defines a reference coordinate system that is used with the `BodyShiftP` 
-parameter group to specify positioning with respect with respect to the reference coordinate system.
-
+The `CoordinateSetP` parameter group defines a reference coordinate system that is used with 
+the `BodyShiftP` parameter group to specify positioning of the lattice element.
 The elements that have a `CoordinateSetP` group are:
 ```{code} yaml
 Fiducial
 FloorShift
 Girder
 ```
-For other elements that have a `BodyShiftP` group, the reference coordinates are automatically the
-branch coordinates of the element.
+For other elements that have a `BodyShiftP` group, see the 
+[`BodyShiftP` documentation](#s:bodyshift.params) for documentation on the reference coordinate system.
 
 For a `FloorShift` or `Fiducial` element, `CoordinateSetP` with `BodyShiftP` sets the location of 
 the exit end of the element.
