@@ -12,21 +12,20 @@ See [TwissP](#s:twiss.params) for more on the normal mode decomposition.
 Except for the emittances, these parameters are properties of a [periodic](#s:beamline.components)
 branch such as a storage ring.
 
-Derivatives with respect to momentum are taken with respect to
-{math}`\delta = \Delta P/P_0`, the momentum deviation relative to the reference momentum {math}`P_0`,
-whatever the setting of [`phase_space_coordinates`](#s:phase.space).
+Derivatives with respect to momentum are taken with respect to phase space
+{math}`p_z` (See [`phase_space_coordinates`](#s:phase.space)).
 
 - `chromaticity_a`, `chromaticity_b` [rad]
 
   The linear chromaticities of the `a` and `b` modes. The chromaticity is the derivative of the tune
-  with respect to {math}`\delta`, evaluated at {math}`\delta = 0`:
+  with respect to {math}`p_z`, evaluated at {math}`p_z = 0`:
   ```{math}
-    \text{chromaticity\_a} = \frac{d \, (\text{tune\_a})}{d\delta}, \qquad
-    \text{chromaticity\_b} = \frac{d \, (\text{tune\_b})}{d\delta}
+    \text{chromaticity\_a} = \frac{d \, (\text{tune\_a})}{dp_z}, \qquad
+    \text{chromaticity\_b} = \frac{d \, (\text{tune\_b})}{dp_z}
   ```
-  Here the tune at a given {math}`\delta` is the tune about the periodic orbit of a particle with
+  Here the tune at a given {math}`p_z` is the tune about the periodic orbit of a particle with
   that constant momentum deviation (that is, with RF cavities off). Since tunes are in radians,
-  these chromaticities are {math}`2\pi` times the chromaticity {math}`dQ/d\delta`, where {math}`Q`
+  these chromaticities are {math}`2\pi` times the chromaticity {math}`dQ/dp_z`, where {math}`Q`
   is the tune in units of {math}`2\pi`.
 
 - `emittance_a`, `emittance_b`, `emittance_c` [m]
@@ -70,10 +69,10 @@ whatever the setting of [`phase_space_coordinates`](#s:phase.space).
 - `momentum_compaction` [-]
 
   The momentum compaction factor {math}`\alpha_p`. This is the fractional change, per unit
-  {math}`\delta`, in the length {math}`L` of the periodic orbit for one pass, evaluated at
-  {math}`\delta = 0` with RF cavities off:
+  {math}`p_z`, in the length {math}`L` of the periodic orbit for one pass, evaluated at
+  {math}`p_z = 0` with RF cavities off:
   ```{math}
-    \alpha_p = \frac{1}{L} \frac{dL}{d\delta}
+    \alpha_p = \frac{1}{L} \frac{dL}{dp_z}
   ```
   To linear order, for a lattice that bends only in the horizontal plane,
   ```{math}
@@ -96,11 +95,11 @@ whatever the setting of [`phase_space_coordinates`](#s:phase.space).
 
 - `slip_factor` [-]
 
-  The phase slip factor {math}`\eta_p`. This is the fractional change, per unit {math}`\delta`,
+  The phase slip factor {math}`\eta_p`. This is the fractional change, per unit {math}`p_z`,
   in the time {math}`T` for a particle on the periodic orbit to make one pass, evaluated at
-  {math}`\delta = 0` with RF cavities off:
+  {math}`p_z = 0` with RF cavities off:
   ```{math}
-    \eta_p = \frac{1}{T} \frac{dT}{d\delta}
+    \eta_p = \frac{1}{T} \frac{dT}{dp_z}
   ```
   To first order the slip factor is related to the momentum compaction by
   ```{math}
