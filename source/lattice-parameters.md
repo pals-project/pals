@@ -24,9 +24,7 @@ Derivatives with respect to momentum are taken with respect to phase space
     \text{chromaticity\_b} = \frac{d \, (\text{tune\_b})}{dp_z}
   ```
   Here the tune at a given {math}`p_z` is the tune about the periodic orbit of a particle with
-  that constant momentum deviation (that is, with RF cavities off). Since tunes are in radians,
-  these chromaticities are {math}`2\pi` times the chromaticity {math}`dQ/dp_z`, where {math}`Q`
-  is the tune in units of {math}`2\pi`.
+  that constant momentum deviation (that is, with RF cavities off).
 
 - `emittance_a`, `emittance_b`, `emittance_c` [m]
 
@@ -45,23 +43,12 @@ Derivatives with respect to momentum are taken with respect to phase space
       0 & 0 & 0 & 0 &-1 & 0
     \end{pmatrix}
   ```
-  Each eigenvalue pair is assigned to a mode using its eigenvectors.
-
-  Unlike the other lattice parameters, the emittance is a property of the beam and not of the
-  lattice alone. It may be set as an input, for example the design emittance of a proton ring, or
-  written as an output by a program that computes it, for example the equilibrium emittance of an
-  electron ring set by the balance between radiation damping and quantum excitation.
-  Emittances do not change under linear symplectic transport. Where they do vary along a branch,
-  for example with acceleration in a linac, the values refer to the start of the branch.
+  Each eigenvalue pair is assigned to mode {math}`a`, {math}`b`, or {math}`c`
+  using its eigenvectors.
 
 - `fractional_tune_a`, `fractional_tune_b`, `fractional_tune_c` [rad/2pi]
 
   The fractional part of the tune, in the range {math}`[0, 1)`:
-  The
-  eigenvalues of this matrix come in pairs {math}`e^{\pm i \theta}`, and {math}`\theta`, with its
-  sign fixed by the clockwise convention described under `tune_a`, is the fractional tune.
-  Since `tune_c` is negative above transition, `fractional_tune_c` is then just below
-  {math}`2\pi`.
 
 - `momentum_compaction` [-]
 
@@ -127,8 +114,7 @@ Derivatives with respect to momentum are taken with respect to phase space
   orbit. For the `a` and `b` modes, this is the change in the [TwissP](#s:twiss.params) phases
   `phi_a` and `phi_b` from the start to the end of the branch. The tune includes the whole number
   of oscillations. For example, a mode that completes 10.3 oscillations per pass has a tune of
-  {math}`10.3 \cdot 2\pi \approx 64.72` radians. See `fractional_tune_a` for the part in
-  {math}`[0, 2\pi)`. Tunes are defined only when the motion is stable.
+  {math}`10.3 \cdot 2\pi \approx 64.72` radians. Also see `fractional_tune` above.
 
   A positive tune is a clockwise rotation in phase space, for example in the {math}`(x, p_x)` plane
   plotted with {math}`x` on the horizontal axis. PALS uses this convention for all three modes.
