@@ -469,6 +469,13 @@ PALS uses SI except for energy which uses `eV`.
   - Volts/m
 ```
 
+Exceptions where the units are radians/2pi are:
+```{code} yaml
+tune
+spin_tune
+chromaticity
+```
+
 %---------------------------------------------------------------------------------------------------
 (s:constants)=
 ## Constants and Variables

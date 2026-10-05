@@ -1,4 +1,4 @@
-## Lattice parameters
+# Lattice parameters
 
 Lattice parameters are parameters that are not associated with any lattice element but with the
 lattice as a whole. This section standardizes the names and meanings of such.
@@ -15,7 +15,7 @@ branch such as a storage ring.
 Derivatives with respect to momentum are taken with respect to phase space
 {math}`p_z` (See [`phase_space_coordinates`](#s:phase.space)).
 
-- `chromaticity_a`, `chromaticity_b` [rad]
+- `chromaticity_a`, `chromaticity_b` [rad/2pi]
 
   The linear chromaticities of the `a` and `b` modes. The chromaticity is the derivative of the tune
   with respect to {math}`p_z`, evaluated at {math}`p_z = 0`:
@@ -54,13 +54,10 @@ Derivatives with respect to momentum are taken with respect to phase space
   Emittances do not change under linear symplectic transport. Where they do vary along a branch,
   for example with acceleration in a linac, the values refer to the start of the branch.
 
-- `fractional_tune_a`, `fractional_tune_b`, `fractional_tune_c` [rad]
+- `fractional_tune_a`, `fractional_tune_b`, `fractional_tune_c` [rad/2pi]
 
-  The fractional part of the tune, in the range {math}`[0, 2\pi)`:
-  ```{math}
-    \text{fractional\_tune} = \text{tune} - 2\pi \left\lfloor \frac{\text{tune}}{2\pi} \right\rfloor
-  ```
-  Unlike the tune, the fractional tune can be found from the one-pass transfer matrix alone. The
+  The fractional part of the tune, in the range {math}`[0, 1)`:
+  The
   eigenvalues of this matrix come in pairs {math}`e^{\pm i \theta}`, and {math}`\theta`, with its
   sign fixed by the clockwise convention described under `tune_a`, is the fractional tune.
   Since `tune_c` is negative above transition, `fractional_tune_c` is then just below
@@ -109,7 +106,7 @@ Derivatives with respect to momentum are taken with respect to phase space
   the transition energy {math}`\gamma_t = 1/\sqrt{\alpha_p}`, negative below transition, and
   positive above. Some authors use the opposite sign.
 
-- `spin_tune` [rad]
+- `spin_tune` [rad/2pi]
 
   The closed orbit spin tune {math}`\nu_0`. This is the angle by which a spin on the periodic
   orbit rotates about the closed orbit invariant spin direction {math}`{\bf n}_0` over one pass.
@@ -124,7 +121,7 @@ Derivatives with respect to momentum are taken with respect to phase space
   PALS resolves this by requiring the spin tune to be in the range {math}`[0, \pi]`, with
   {math}`{\bf n}_0` chosen to match. The formulas above follow this convention.
 
-- `tune_a`, `tune_b`, `tune_c` [rad]
+- `tune_a`, `tune_b`, `tune_c` [rad/2pi]
 
   The normal mode tunes. The tune of a mode is its phase advance over one pass along the periodic
   orbit. For the `a` and `b` modes, this is the change in the [TwissP](#s:twiss.params) phases
