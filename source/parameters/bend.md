@@ -73,7 +73,7 @@ D) Bend geometry for `ref_geometry` set to `EXIT_COORDS`.
 2. Once the above parameters are computed, `e1_rect` can be computed from `e1` or vice versa
 as appropriate (see below). Similarly for `e2_rect` and `e2`.
 
-[`BendP` parameters:]{.large2}
+### `BendP` parameters
 
 **Note:** In the equations below, {math}`q` is the charge of the reference particle 
 and {math}`p_0` is the reference momentum.

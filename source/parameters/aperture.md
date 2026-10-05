@@ -33,7 +33,7 @@ the vertical aperture. The conversion between the two is
 If there is only an aperture on one side, the min or max must be set as it does not make
 sense to set center and width in this case.
 
-[**Location Component**]{.large3}
+### Location component
 
 The aperture location is set by the `location` parameter. Possible values are
 ```{code} yaml
@@ -46,7 +46,7 @@ The aperture location is set by the `location` parameter. Possible values are
 ```
 The default is `ENTRANCE_END`.
 
-[**Shape Component**]{.large3}
+### Shape component
 
 ```{figure} figures/apertures.svg
 :width: 90%
@@ -68,7 +68,7 @@ When the `shape` is set to `RECTANGULAR` or `ELLIPTICAL`, any vertex information
 If `shape` is set to `VERTICES`, any `min`, `max`, `center` and `width` settings are ignored.
 This allows easy switching between shapes.
 
-[**Limit Components**]{.large3}
+### Limit components
 
 For `RECTANGULAR` and `ELLIPTICAL` shapes the limit parameters are
 used to calculate the aperture as shown in {numref}`f:aperture`A. 
@@ -95,7 +95,7 @@ four conditions is true:
 If center and width are specified, the equivalent min and max are calculated to be used in the
 above inequalities. 
 
-[**aperture_shifts_with_body**]{.large3}
+### aperture_shifts_with_body
 
 The `aperture_shifts_with_body` parameter determines whether misaligning an element 
 affects the placement of the aperture. The default is `False`. 
@@ -125,12 +125,12 @@ With `aperture_shifts_with_body` set to `true`, the computation order could be
 The difference between the two lists is simply that lines 2 and 3 are switched along with lines
 5 and 6.
 
-[**material**]{.large3}
+### material
 
 The `material` parameter sets the material of the aperture. 
 Using chemical formulas like `Cu` and `Fe` is the most portable.
 
-[**vertices component**]{.large3}
+### vertices component
 
 The `VERTICES` setting for `shape` is for defining an aperture using a 
 set of vertex points as illustrated in {numref}`f:aperture`B. 
