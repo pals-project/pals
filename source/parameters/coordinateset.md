@@ -27,7 +27,7 @@ The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see
 below). The coordinate system described by `CoordinateSetP` are these
 coordinates [shifted](#wws) using the offset and rot parameters of the
-`CoordinateSetP` group.
+`BodyShiftP` group.
 
 `origin_ele` is either an element name or one of
 ```{code} yaml
@@ -35,8 +35,8 @@ GLOBAL_ORIGIN             # Default.
 PREVIOUS_ELEMENT
 ```
 If `origin_ele` is set to `GLOBAL_ORIGIN` (the default), the origin of the global coordinate system is used.
-If `origin_ele` is set to `PREVIOUS_ELEMENT`, the lattice element previous to the lattice element before
-the "target" element where the target element is defined to be the element containing the `CoordinateSetP` group.
+If `origin_ele` is set to `PREVIOUS_ELEMENT`, the lattice element before
+the "target" element where the target element is the element containing the `CoordinateSetP` group.
 Since `Girder` elements are considered to exist outside of any lattice branches, a setting of 
 `PREVIOUS_ELEMENT` is not allowed for this type of element.
 
