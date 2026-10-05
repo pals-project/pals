@@ -8,7 +8,7 @@ The `ShiftedFloorP` parameter group holds parameters that describe the position 
 
 The components of this group are:
 ```{code} yaml
-FloorP:
+ShiftedFloorP:
   x                       # [m] Global x-coordinate.
   y                       # [m] Global y-coordinate.
   z                       # [m] Global z-coordinate.
