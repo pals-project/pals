@@ -6,12 +6,10 @@
 PALS:
   notes:
     - "Nominal configuration, with Q1b tweaked for the day's running."
-
   load:
     - layout.pals.yaml
     - settings.pals.yaml
     - SELF
-
   facility:
     - set:
         parameter: Q1b>MagneticMultipoleP.Kn1

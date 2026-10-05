@@ -13,8 +13,8 @@ BendP:
   e2: null                 # [radian] Exit end pole face rotation with respect to a sector geometry
   e1_rect: null            # [radian] Entrance end pole face rotation with respect to a rectangular geometry
   e2_rect: null            # [radian] Exit end pole face rotation with respect to a rectangular geometry
-  edge1_int: 0             # [T*m] Entrance end fringe field integral
-  edge2_int: 0             # [T*m] Exit end fringe field integral
+  edge1_int: 0             # [m] Entrance end fringe field integral
+  edge2_int: 0             # [m] Exit end fringe field integral
   g_ref: null              # [1/m] Reference bend strength = 1/radius_ref
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature

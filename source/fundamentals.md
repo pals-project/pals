@@ -260,11 +260,6 @@ must be the same.
     - "This is a second note."
     - "Lattice with orbit correction for blown chopper at B34W."
   ```
-  The one modification is that when combining a `facility` list, each list is considered to
- have two parts: the part before any `expand_lattice` command and the part after any `expand_lattice`
- command (this second part may be empty). The final `facility` list is the pre-`expand_lattice` 
- parts, combined together, followed by an `expand_lattice` command, followed by the 
- post-`expand_lattice` parts combined together.
 - For Dict type subnodes of `PALS`, the combined dict will be the union of all the dict entries
 for all of the files. If the dict entries are themselves a dict, this combining rule is applied
 to the subdicts. If the dict entries are lists, the lists are combined as discussed above.
@@ -440,24 +435,6 @@ through its controller using the same single `>` separator —
 through its element.
 
 %---------------------------------------------------------------------------------------------------
-(s:specialvalues)=
-## Special Values
-
-Special values used in this document are:
-
-1. Logical parameters can be one of three values:
-- `true`
-- `false`
-- `null`: Useful as a default value when neither `true` nor `false` is appropriate.
-
-2. The standard defines the following symbols which can be used in place of a real or integer value:
-- `null`: Value has not been set.
-- `Inf`: Infinity.
-- `-Inf`: Negative infinity.
-
-3. In general, `null` can be used to signify that any parameter does not have a specific default value.
-
-%---------------------------------------------------------------------------------------------------
 (s:units)=
 ## Units
 
@@ -483,7 +460,7 @@ PALS uses SI except for energy which uses `eV`.
 * - voltage
   - Volts
 * - angles and phases
-  - radians / 2 {math}`\pi`
+  - radians
 * - magnetic field
   - Tesla
 * - frequency
@@ -498,7 +475,8 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
-pi                        # Pi
+pi                        # [-] Pi
+twopi                     # [-] 2*pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
