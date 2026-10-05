@@ -169,7 +169,7 @@ or `MetaP` prefix and optional instance suffix — will be called an "element na
 The names of an element may be "qualified" by prepending a `branch` or `BeamLine` name
 (henceforth just referred to as a branch name) to the string,
 using the string `>>` as a separator. For example, `B1>>Sextupole::Saf` would match
-to all `Sextupole` elements in a branch or `BeamLine` named `B1` whose name was `Saf`.
+to all `Sextupole` elements in a branch or `BeamLine` named `B1` whose name is `Saf`.
 This includes sublines of BeamLines. Thus if `B1` is a BeamLine that contains a subline `B2`
 that in turn contains a Sextupole element named `Saf`, the string `B1>>Sextupole::Saf`
 will match to this element. An element name without a branch or lattice qualifier is
