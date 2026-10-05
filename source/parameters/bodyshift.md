@@ -7,7 +7,7 @@ This parameter group can be used to simulate positional errors. See section [](#
 for documentation on the body shift transformation equations.
 
 The exceptions to the above description come when an element has a `CoordinateSetP` parameter group.
-In this case, the shift is in respect to the coordinate system established by `CoordinateSetP`
+In this case, the shift is with respect to the coordinate system established by `CoordinateSetP`
 and not the coordinate system of the element itself. The elements that have a `CoordinateSetP`
 group are:
 ```{code} yaml
