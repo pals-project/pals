@@ -1,5 +1,0 @@
-/* Horizontal rules (`---` in Markdown) are drawn thicker than the theme default.
- * The theme draws them at 25% opacity, so opacity is raised too.
- * The LaTeX (PDF) equivalent is the 'transition' entry of latex_elements in conf.py.
- */
-hr.docutils { border-top-width: 3px; opacity: 0.6; }

@@ -50,11 +50,6 @@ html_title = ""
 # See _static/rtd-search-override.js for details.
 html_js_files = ['rtd-search-override.js']
 
-# Backdrops for the logo gallery on the Logos page.
-# See _static/logos.css for details.
-html_css_files = ['logos.css', 'hr.css']
-
-# Thicker horizontal rules (`---` in Markdown) in PDF output to match _static/hr.css.
-latex_elements = {
-    'transition': '\n\n\\bigskip\\hrule height 1.5pt\\bigskip\n\n',
-}
+# Backdrops for the logo gallery on the Logos page (see _static/logos.css).
+# Site-wide style tweaks (see _static/custom.css).
+html_css_files = ['logos.css', 'custom.css']
