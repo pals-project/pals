@@ -5,7 +5,7 @@ The `FloorP` parameter group holds parameters that describe the position and ori
 (collectively called "placement") of some
 coordinate system in [global coordinates](#s:floor). When this group is contained in an element, 
 the coordinate system described is the branch coordinate system whose origin point is at the 
-upstream edge of the element. That is, the position of the element without any `FloorShiftP` or
+upstream edge of the element. That is, the position of the element without any `BodyShiftP` or
 `Girder` alignment shifts.
 
 The components of this group are:
