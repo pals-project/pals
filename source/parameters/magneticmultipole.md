@@ -64,7 +64,7 @@ However, the multipole components of different order do not have to be of the sa
 When there is a change in reference energy or element length during a simulation
 (something that happens after the PALS file has been parsed), the relationship
 between normalized, unnormalized, length integrated, and non-length integrated components changes.
-In this case, the components that has been specified in the PALS file should remain constant
+In this case, the components that have been specified in the PALS file should remain constant
 and the other components calculated appropriately. For example, if `Bn4` is set to `4.0`, and
 `L` is set to `2.0`, then the value of `Bn4L` is `8.0`. Now if `L` is set to `3.0`, the value
 of `Bn4` should remain at `4.0` and `Bn4L` should have a value of `12.0`.
