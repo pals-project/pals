@@ -243,7 +243,7 @@ parameters and data target values to optimize. The merit function {math}`M` to m
 ```{math}
 M = \sum_i w_i \left[ \delta D_i \right]^2 + \sum_j w_j \left[ \delta V_j \right]^2
 ```
-Where {math}`\delta D_i` is the difference between datum value and the target value, {math}`\delta V_j`
+where {math}`\delta D_i` is the difference between datum value and the target value, {math}`\delta V_j`
 is the difference between the varied variable value and its initial value before any optimization, and
 the {math}`w_i` and {math}`w_j` are the data and variable weights respectively which default to one
 and zero respectively.
