@@ -30,8 +30,8 @@ exclude_patterns = ['parameters']
 
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
-    "show_toc_level": 3,
-    "show_navbar_depth": 3,
+    "show_toc_level": 2,     # levels of TOC items in the right sidebar (in-page TOC)
+    "show_navbar_depth": 3,  # levels of TOC items in the left sidebar
     "collapse_navbar": False,
     "repository_url": "https://github.com/pals-project/pals",
     "use_repository_button": True,
@@ -50,6 +50,6 @@ html_title = ""
 # See _static/rtd-search-override.js for details.
 html_js_files = ['rtd-search-override.js']
 
-# Backdrops for the logo gallery on the Logos page.
-# See _static/logos.css for details.
-html_css_files = ['logos.css']
+# Backdrops for the logo gallery on the Logos page (see _static/logos.css).
+# Site-wide style tweaks (see _static/custom.css).
+html_css_files = ['logos.css', 'custom.css']
