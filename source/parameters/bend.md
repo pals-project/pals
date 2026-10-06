@@ -95,7 +95,7 @@ bend towards negative {math}`x` as shown in {numref}`f:bend`.
   \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
   ```
   If `Bn0_ref` is specified in the PALS file, and a simulation program varies {math}`p_0`,
-  The value of `Bn0_ref` should remain constant and `g_ref` calculated appropriately from
+  the value of `Bn0_ref` should remain constant and `g_ref` calculated appropriately from
   the above equation.
 %
 - **e1, e2**
