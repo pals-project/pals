@@ -171,7 +171,7 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   \text{g\_ref} = \frac{q}{p_0} \cdot \text{Bn0\_ref}
   ```
   If `g_ref` is specified in the PALS file, and a simulation program varies {math}`p_0`,
-  The value of `g_ref` should remain constant and `Bn0_ref` calculated appropriately from
+  the value of `g_ref` should remain constant and `Bn0_ref` calculated appropriately from
   the above equation.
 
   One common mistake when creating orbit bumps using a bend is to vary
