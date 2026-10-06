@@ -109,7 +109,6 @@ dispersion.md
 :caption: Software Ecosystem
 
 tools.md
-simulations.md
 ```
 
 ```{toctree}

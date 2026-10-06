@@ -1,4 +1,5 @@
 [![Documentation Status](https://readthedocs.org/projects/pals-project/badge/?version=latest)](https://pals-project.readthedocs.io)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pals-project/pals/main.svg)](https://results.pre-commit.ci/latest/github/pals-project/pals/main)
 
 # Particle Accelerator Language Standard (PALS)
 
