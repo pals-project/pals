@@ -219,7 +219,7 @@ PALS:
     - optimize:
         ...
 ```
-The `adjustmenets` block has a number of `optimize` subblocks. Each `optimize` subblock represents
+The `adjustments` block has a number of `optimize` subblocks. Each `optimize` subblock represents
 an optimization where a set of parameters are varied in order to get a set of target parameters
 to be specific values.
 
