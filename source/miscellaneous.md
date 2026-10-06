@@ -213,13 +213,13 @@ a hint to a program as to how to correct a lattice before any simulations are do
 An `adjustments` block is put as a sub-node of the `PALS` node. The syntax of this is:
 ```{code} yaml
 PALS:
-  adjustment:
+  adjustments:
     - optimize:
         ...
     - optimize:
         ...
 ```
-The `adjustmenet` block have a number of `optimize` subblocks. Each `optimize` subblock represents
+The `adjustmenets` block has a number of `optimize` subblocks. Each `optimize` subblock represents
 an optimization where a set of parameters are varied in order to get a set of target parameters
 to be specific values.
 
@@ -241,7 +241,7 @@ Each `optimize` block has the syntax:
 The `vary` nodes specify the parameters to be varied and the `target` nodes specify the data target
 parameters and data target values to optimize. The merit function {math}`M` to minimize is:
 ```{math}
-M = \sum_i w_i [\left[ \delta D_i \right]^3 + \sum_j w_j \left[ \delta V_j \right]^2
+M = \sum_i w_i \left[ \delta D_i \right]^2 + \sum_j w_j \left[ \delta V_j \right]^2
 ```
 Where {math}`\delta D_i` is the difference between datum value and the target value, {math}`\delta V_j`
 is the difference between the varied variable value and its initial value before any optimization, and
@@ -251,18 +251,14 @@ and zero respectively.
 Example:
 ```{code} yaml
 PALS:
-  - optimize:
-      - vary:
-          parameter: Qa,Qb>MagneticMultipoleP.Kn1
-      - target:
-          parameter: fractional_tune_a
-          value: 0.37*twopi
-      - target:
-          parameter: fractional_tune_b
-          value: 0.53*twopi
-
-
-          
-
-
-
+  adjustments:
+    - optimize:
+        - vary:
+            parameter: Qa,Qb>MagneticMultipoleP.Kn1
+        - target:
+            parameter: fractional_tune_a
+            value: 0.37*twopi
+        - target:
+            parameter: fractional_tune_b
+            value: 0.53*twopi
+```
