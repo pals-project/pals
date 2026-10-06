@@ -20,8 +20,8 @@ the entrance end location.
 Components of this group are:
 ```{code} yaml
 CoordinateSetP:
-  origin_ele: GLOBAL_ORIGIN  # [string] Origin element name. GLOBAL_ORIGIN -> global coordinate origin.
-  origin_ele_ref_pt: CENTER  # [enum] Reference point on origin_ele.
+  origin_ele: GLOBAL_ORIGIN    # [string] Origin element name. GLOBAL_ORIGIN -> global coordinate origin.
+  origin_ele_ref_pt: EXIT_END  # [enum] Reference point on origin_ele.
 ```
 The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see
@@ -35,20 +35,24 @@ GLOBAL_ORIGIN             # Default.
 PREVIOUS_ELEMENT
 ```
 If `origin_ele` is set to `GLOBAL_ORIGIN` (the default), the origin of the global coordinate system is used.
-If `origin_ele` is set to `PREVIOUS_ELEMENT`, the lattice element before
-the "target" element where the target element is the element containing the `CoordinateSetP` group.
+If `origin_ele` is set to `PREVIOUS_ELEMENT`, the coordinate system at the downstream end of the
+lattice element just before the element containing the `CoordinateSetP` group is used.
 Since `Girder` elements are considered to exist outside of any lattice branches, a setting of 
 `PREVIOUS_ELEMENT` is not allowed for this type of element.
 
 If `origin_ele` is set to a lattice element, a PALS parser needs to be able to calculate the 
-position of this element before the position of the target element is calculated.
-For example, it is not generally possible to calculate the position of elements downstream of
-the target element before the target element's position is calculated.
+position of this element before the position of the "target element"
+(the element containing the `CoordinateSetP` group) is calculated.
+For example, it is not generally possible (but there are exceptions) to calculate the position 
+of elements downstream of the target element before the target element's position is calculated.
+
 
 If the `origin_ele` has a finite length, the reference point may be chosen using the
-`origin_ele_ref_pt` attribute which may be set to one of
+`origin_ele_ref_pt` attribute which may be set to one of:
 ```{code} yaml
   ENTRANCE_END
-  CENTER               # Default
-  EXIT_END
+  CENTER
+  EXIT_END             # Default
 ```
+If `origin_ele` is set to `GLOBAL_ORIGIN`, there is no reference element and `origin_ele_ref_pt`
+is ignored.
