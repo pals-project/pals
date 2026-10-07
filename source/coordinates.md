@@ -289,9 +289,10 @@ These three angles are defined as follows:
 - **{math}`\theta(s)` Azimuth (yaw) angle:**
 Angle in the {math}`(X, Z)` plane between the {math}`Z`--axis and the projection of the 
 {math}`z`--axis onto the {math}`(X, Z)` plane.
-A positive angle of
-{math}`\theta = \pi/2` corresponds to the projected {math}`z`--axis pointing in the positive 
-{math}`X`-direction.
+A bend with a positive bend angle (and zero `tilt_ref`) rotates the {math}`z`--axis toward the 
+negative {math}`X`-direction, which makes {math}`\theta` negative. For example, starting with the
+{math}`z`--axis along {math}`Z`, after a bend with a bend angle of {math}`\pi/2` the {math}`z`--axis 
+points in the negative {math}`X`-direction and {math}`\theta = -\pi/2`.
 
 - **{math}`\phi(s)` Pitch (elevation) angle:**
 Angle between the {math}`z`-axis and the {math}`(X,Z)` plane. 
