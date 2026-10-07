@@ -273,7 +273,7 @@ to form an effective {math}`\bf S` which can then be used with Eq. {eq}`s330`.
 The branch coordinate system (purple), which is a function of {math}`s` along the branch reference
 curve, is described in the floor coordinate system (black) by a position {math}`(X(s), Y(s), Z(s))` and
 and by angles {math}`\theta(s)`, {math}`\phi(s)`, and {math}`\psi(s)`. The figure shows an
-orientation with positive {math}`\theta(s)` and {math}`\psi(s)` but with negative {math}`\phi(s)`.
+orientation with positive {math}`\theta(s)`, {math}`\phi(s)`, and {math}`\psi(s)`.
 ```
 
 The Cartesian `floor` coordinate system is the
@@ -290,13 +290,13 @@ These three angles are defined as follows:
 Angle in the {math}`(X, Z)` plane between the {math}`Z`--axis and the projection of the 
 {math}`z`--axis onto the {math}`(X, Z)` plane.
 A positive angle of
-{math}`\theta = \pi/2` corresponds to the projected {math}`z`--axis pointing in the negative 
+{math}`\theta = \pi/2` corresponds to the projected {math}`z`--axis pointing in the positive 
 {math}`X`-direction.
 
 - **{math}`\phi(s)` Pitch (elevation) angle:**
 Angle between the {math}`z`-axis and the {math}`(X,Z)` plane. 
 A positive angle of {math}`\phi = \pi/2` corresponds to the {math}`z`--axis pointing in the
-negative {math}`Y` direction.
+positive {math}`Y` direction.
 %
 - **{math}`\psi(s)` Roll angle:**
 Angle of the {math}`x`--axis with respect to the line formed by the intersection of the 
@@ -329,14 +329,14 @@ the order {math}`(x, y, z)`. {math}`\bf W` can be expressed in terms of the
 orientation angles {math}`\theta`, {math}`\phi`, and {math}`\psi` via the formula
 ```{math}
 :label: www
-  {\bf W} &= {\bf R}_{y}(\theta) \; {\bf R}_{x}(\phi) \; {\bf R}_{z}(\psi) \\
+  {\bf W} &= {\bf R}_{y}(\theta) \; {\bf R}_{x}(-\phi) \; {\bf R}_{z}(\psi) \\
   &= \begin{pmatrix}
-    \cos\theta \cos\psi + \sin\theta \sin\phi \sin\psi & 
-        -\cos\theta \sin\psi + \sin\theta \sin\phi \cos\psi & 
+    \cos\theta \cos\psi - \sin\theta \sin\phi \sin\psi & 
+        -\cos\theta \sin\psi - \sin\theta \sin\phi \cos\psi & 
          \sin\theta \cos\phi \\
-    \cos\phi \sin\psi & \cos\phi \cos\psi & -\sin\phi \\
-    \cos\theta \sin\phi \sin\psi - \sin\theta \cos\psi & 
-         \sin\theta \sin\psi + \cos\theta \sin\phi \cos\psi & 
+    \cos\phi \sin\psi & \cos\phi \cos\psi & \sin\phi \\
+    -\cos\theta \sin\phi \sin\psi - \sin\theta \cos\psi & 
+         \sin\theta \sin\psi - \cos\theta \sin\phi \cos\psi & 
          \cos\theta \cos\phi 
   \end{pmatrix}
 ```
@@ -362,7 +362,9 @@ where
     0        &  0        & 1                
   \end{pmatrix}
 ```
-Notice that these are Tait-Bryan angles and not Euler angles.
+Notice that these are Tait-Bryan angles and not Euler angles. Also notice that, with
+{math}`\phi` defined so that a positive {math}`\phi` tilts the {math}`z`-axis upward, 
+the rotation about the {math}`x`-axis in Eq. {eq}`www` is {math}`{\bf R}_{x}(-\phi)`.
 
 An alternative representation of the {math}`\bf W` matrix (or any other rotation matrix) is to specify the
 axis {math}`\bf u` (normalized to 1) and angle of rotation {math}`\beta`
