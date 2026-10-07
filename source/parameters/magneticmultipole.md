@@ -66,7 +66,7 @@ When there is a change in reference energy or element length during a simulation
 between normalized, unnormalized, length integrated, and non-length integrated components changes.
 In this case, the components that have not been been specified in the PALS file
 should be calculated appropriately based upon the component that is specified in the file.
-In the above example, `Bn3` is set to `27.0` so `Bn3` becomes the "master" parameter 
+In the above example, `Bn3` is set to `27.0` so `Bn3` becomes the independent parameter 
 and the dependent parameters `Bn3L`, `Kn3`, and `Kn3L` are calculated based on the
 value of `Bn3`, `length`, and the reference momentum {math}`P_0`. 
 Notice that this guideline is not something that PALS can in any way "enforce".
