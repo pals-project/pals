@@ -46,7 +46,7 @@ Integrated values are specified with the letter
 ```{code} yaml
 MagneticMultipoleP:
   tilt7: 0.7        # Tilt of 7th order multipole
-  Bn3: 27.3         # Normal multipole component of order 3.
+  Bn3: 27.0         # Normal multipole component of order 3.
   Bn2L: 3.47e1      # length integrated normal multipole component of order 2.
 ```
 The length integrated values are related to the non-integrated values via
@@ -64,10 +64,13 @@ However, the multipole components of different order do not have to be of the sa
 When there is a change in reference energy or element length during a simulation
 (something that happens after the PALS file has been parsed), the relationship
 between normalized, unnormalized, length integrated, and non-length integrated components changes.
-In this case, the components that have been specified in the PALS file should remain constant
-and the other components calculated appropriately. For example, if `Bn4` is set to `4.0`, and
-`L` is set to `2.0`, then the value of `Bn4L` is `8.0`. Now if `L` is set to `3.0`, the value
-of `Bn4` should remain at `4.0` and `Bn4L` should have a value of `12.0`.
+In this case, the components that have not been been specified in the PALS file
+should be calculated appropriately based upon the the component that is specified in the file.
+In the above example, `Bn3` is set to `27.0` so `Bn3` becomes the "master" parameter 
+and the dependent parameters `Bn3L`, `Kn3`, and `Kn3L` are calculated based on the
+value of `Bn3`, `length`, and the reference momentum {math}`P_0`. 
+Notice that this guideline is not something that PALS can in any way "enforce".
+It is merely a "suggestion" from the lattice designer on how a simulation program should behave. 
 
 With a `bend` element, the reference line about which the multipoles are referenced to
 may be curved. This is set by the `ref_geometry` parameter of the [`BendP`](#s:bend.params)
