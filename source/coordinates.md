@@ -96,7 +96,8 @@ coordinates which are attached to the physical element, and the electric and mag
 fields of an element are described with respect to `body` coordinates.  
 If an element has no
 alignment shifts, the `body` coordinates of the element are aligned with the 
-`branch` coordinates.
+`branch` coordinates. Exception: a `Bend` element with a finite `BendP.tilt_ref` has
+body coordinates different from the branch coordinates.
 The transformation between `branch` and `body` coordinates is given in
 [xxx](#s:lab.body.transform).
 
