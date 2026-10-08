@@ -76,7 +76,7 @@ as appropriate (see below). Similarly for `e2_rect` and `e2`.
 ### `BendP` parameters
 
 **Note:** In the equations below, {math}`q` is the charge of the reference particle 
-and {math}`p_0` is the reference momentum.
+and {math}`P_0` is the reference momentum.
 
 - **angle_ref**
 
@@ -92,9 +92,9 @@ bend towards negative {math}`x` as shown in {numref}`f:bend`.
   ```{math}
   :label: bff
 
-  \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
+  \text{Bn0\_ref} = \frac{P_0}{q} \cdot \text{g\_ref}
   ```
-  If `Bn0_ref` is specified in the PALS file, and a simulation program varies {math}`p_0`,
+  If `Bn0_ref` is specified in the PALS file, and a simulation program varies {math}`P_0`,
   the value of `Bn0_ref` should remain constant and `g_ref` calculated appropriately from
   the above equation.
 %
@@ -168,9 +168,9 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   ```{math}
   :label: gqpb
 
-  \text{g\_ref} = \frac{q}{p_0} \cdot \text{Bn0\_ref}
+  \text{g\_ref} = \frac{q}{P_0} \cdot \text{Bn0\_ref}
   ```
-  If `g_ref` is specified in the PALS file, and a simulation program varies {math}`p_0`,
+  If `g_ref` is specified in the PALS file, and a simulation program varies {math}`P_0`,
   the value of `g_ref` should remain constant and `Bn0_ref` calculated appropriately from
   the above equation.
 
