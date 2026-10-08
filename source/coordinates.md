@@ -96,7 +96,8 @@ coordinates which are attached to the physical element, and the electric and mag
 fields of an element are described with respect to `body` coordinates.  
 If an element has no
 alignment shifts, the `body` coordinates of the element are aligned with the 
-`branch` coordinates.
+`branch` coordinates. Exception: a `Bend` element with a finite `BendP.tilt_ref` has
+body coordinates different from the branch coordinates.
 The transformation between `branch` and `body` coordinates is given in
 [xxx](#s:lab.body.transform).
 
@@ -613,7 +614,7 @@ to get the coordinate system aligned with body coordinates. This transformation 
 
 5. {math}`\Omega_\text{tilt\_ref} \longrightarrow E_\text{mid-arc}`: Translation to the mid point
 on the arc. For this transformation, {math}`\bf S` is the unit matrix and
-{math}`{\bf L} = \rho(\cos(\alpha_b/2) - 1) \, (1, 0, 0)` 
+{math}`{\bf L} = \rho(1 - \cos(\alpha_b/2)) \, (1, 0, 0)` 
 
 6. {math}` E_\text{mid-arc} \longrightarrow E_s`: Transformation along the bend arc to {math}`E_s`.
 This is a rotation around the center of curvature of the bend and is given by 
