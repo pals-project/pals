@@ -66,6 +66,9 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```{include} parameters/rf.md
 ```
 
+```{include} parameters/shiftedfloor.md
+```
+
 ```{include} parameters/solenoid.md
 ```
 

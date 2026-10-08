@@ -1,43 +1,58 @@
 (s:coordinate.set.params)=
-## CoordinateSetP:  Define Global Coordinate Position and Orientation Parameters
+## CoordinateSetP:  Define Reference Coordinates
 
-The `CoordinateSetP` parameter group describes the position and orientation of the branch coordinates
-at some location. With a `FloorShift` element, this location is the exit end of the element.
-For a `Fiducial` element, this location is the whole element itself (since this element has no length).
+The `CoordinateSetP` parameter group defines a reference coordinate system that is used with 
+the `BodyShiftP` parameter group to specify positioning of the lattice element.
+The elements that have a `CoordinateSetP` group are:
+```{code} yaml
+Fiducial
+FloorShift
+Girder
+```
+For other elements that have a `BodyShiftP` group, see the 
+[`BodyShiftP` documentation](#s:bodyshift.params) for documentation on the reference coordinate system.
+
+For a `FloorShift` or `Fiducial` element, `CoordinateSetP` with `BodyShiftP` sets the location of 
+the exit end of the element.
+For a `Fiducial` element, since this element has zero length, the exit end location is also
+the entrance end location.
+
 Components of this group are:
 ```{code} yaml
 CoordinateSetP:
-  x_offset: 0                # [m] Offset in x-direction.
-  y_offset: 0                # [m] Offset in y-direction.
-  z_offset: 0                # [m] Offset in z-direction.
-  x_rot: 0                   # [rad] Rotation around x-axis.
-  y_rot: 0                   # [rad] Rotation around y-axis.
-  z_rot: 0                   # [rad] Rotation around z-axis.
-  origin_ele: null           # [string] Origin element name. null -> previous element;
-                             #    GLOBAL_ORIGIN -> global coordinate origin.
-  origin_ele_ref_pt: CENTER  # [enum] Reference point on origin_ele.
+  origin_ele: GLOBAL_ORIGIN    # [string] Origin element name. GLOBAL_ORIGIN -> global coordinate origin.
+  origin_ele_ref_pt: EXIT_END  # [enum] Reference point on origin_ele.
 ```
 The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see
 below). The coordinate system described by `CoordinateSetP` are these
 coordinates [shifted](#wws) using the offset and rot parameters of the
-`CoordinateSetP` group.
+`BodyShiftP` group.
 
-If an `origin_ele` is not specified or `null`, the `origin_ele` is the lattice element before
-the "target" element where the target element is defined to be the element containing the `CoordinateSetP` group.
-If the `origin_ele` value is set to `GLOBAL_ORIGIN`, the origin of the global coordinate system is used.
-If an `origin_ele` is specified and is not `GLOBAL_ORIGIN`, a PALS parser needs to be able to
-calculate the position of this lattice element before the position of the target element is calculated.
-For example, it is not generally possible to calculate the position of elements downstream of
-the target element before the target element's position is calculated.
+`origin_ele` is either an element name or one of
+```{code} yaml
+GLOBAL_ORIGIN             # Default.
+PREVIOUS_ELEMENT
+```
+If `origin_ele` is set to `GLOBAL_ORIGIN` (the default), the origin of the global coordinate system is used.
+If `origin_ele` is set to `PREVIOUS_ELEMENT`, the coordinate system at the downstream end of the
+lattice element just before the element containing the `CoordinateSetP` group is used.
+Since `Girder` elements are considered to exist outside of any lattice branches, a setting of 
+`PREVIOUS_ELEMENT` is not allowed for this type of element.
+
+If `origin_ele` is set to a lattice element, a PALS parser needs to be able to calculate the 
+position of this element before the position of the "target element"
+(the element containing the `CoordinateSetP` group) is calculated.
+For example, it is not generally possible (but there are exceptions) to calculate the position 
+of elements downstream of the target element before the target element's position is calculated.
+
 
 If the `origin_ele` has a finite length, the reference point may be chosen using the
-`origin_ele_ref_pt` attribute which may be set to one of
+`origin_ele_ref_pt` attribute which may be set to one of:
 ```{code} yaml
   ENTRANCE_END
-  CENTER               # Default
-  EXIT_END
+  CENTER
+  EXIT_END             # Default
 ```
-
-Note: To change the reference energy, time, or species at this element, use the
-[ReferenceChangeP](#s:ref.change.params) parameter group.
+If `origin_ele` is set to `GLOBAL_ORIGIN`, there is no reference element and `origin_ele_ref_pt`
+is ignored.

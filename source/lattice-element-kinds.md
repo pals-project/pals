@@ -95,6 +95,46 @@ For example, control or feedback circuits.
 - [Feedback](#s:feedback)
 
 %---------------------------------------------------------------------------------------------------
+(s:super.groups)=
+## Parameter Group Collections
+
+To keep the parameter group lists in the [Kinds Definitions](#s:ele.kinds) section short,
+parameter groups that are commonly found together are bundled into the collections defined below.
+These collections are a documentation convenience only. They are not parameter groups themselves
+and never appear in a lattice file.
+
+(s:ftm.groups)=
+### Floor-Tracking-Meta parameter groups
+
+Bookkeeping, global position, and tracking method parameters:
+- [**FloorP**](#s:floor.params): Floor position and orientation without any `BodyShiftP` or `Girder` alignment shifts.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `BodyShiftP` and/or `Girder` alignment shifts included.
+- [**TrackingP**](#s:tracking.params): Tracking parameters.
+
+(s:body.groups)=
+### Body parameter groups
+
+Parameters describing the physical body of an element:
+- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+
+(s:multipole.groups)=
+### Multipole parameter groups
+
+Multipole fields in addition to any fields specific to the element kind:
+- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
+- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles.
+
+(s:output.groups)=
+### Output parameter groups
+
+Parameters computed by a program and not set by the user:
+- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+
+%---------------------------------------------------------------------------------------------------
 (s:ele.kinds)=
 ## Kinds Definitions
 
@@ -108,15 +148,11 @@ It is like a Kicker element except that the field varies in time.
 This element requires a user supplied time-dependent expression.
 
 Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**ACKickerP**](#s:ackicker.params): AC kicker parameters.
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -133,15 +169,11 @@ ack1:
 A BeamBeam element defines the parameters of an oppositely moving "strong" beam that generates electromagnetic fields at the interaction point. This strong beam is assumed to have a three-dimensional (3D) Gaussian density distribution.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**BeamBeamP**](#s:beambeam.params): Beam-beam interaction parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -171,15 +203,11 @@ element in the branch is a `BeginningEle` element. For all other branches,
 the beginning element must be a `BeginningEle`.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
@@ -193,17 +221,12 @@ a `Bend` the curvilinear coordinate system is an arc with finite curvature and f
 the curvilinear coordinate system is straight. 
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**BendP**](#s:bend.params): Bend parameters
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 %---------------------------------------------------------------------------------------------------
 (s:converter)=
@@ -216,17 +239,12 @@ particles of a different type. For example, a tungsten plate which is bombarded 
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**ConverterP**](#s:converter.params): Converter parameters.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -237,16 +255,11 @@ A CrabCavity element is a zero length RF cavity that gives a longitudinal depend
 transverse kick. 
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -265,14 +278,10 @@ cc1:
 A `Drift` element is a space free and clear of any fields.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -292,16 +301,11 @@ the electrons are generated.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -334,10 +338,13 @@ The length of this element is zero so if `length` is specified, it must be zero.
 Like a `Marker`, the transfer map through this element is unity.
 
 Element parameter groups associated with this element kind are:
-- [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the element.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
+For this element, `FloorP` and `ShiftedFloorP` parameter values will be the same.
 
 %---------------------------------------------------------------------------------------------------
 (s:floorshift)=
@@ -358,11 +365,13 @@ coordinate system but will have no effect on upstream elements.
 See also the [`patch`](#s:patch) element.
 
 Element parameter groups associated with this element kind are:
-- [**CoordinateSetP**](#s:coordinate.set.params): Sets global coordinates at the exit end of the element.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+
+For this element, `FloorP` and `ShiftedFloorP` parameter values will be the same.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -377,15 +386,11 @@ will also cause energy loss and diffusion.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**FoilP**](#s:foil.params): Foil parameters.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -401,16 +406,12 @@ Besides the `ForkP` documentation, see the [](#s:forking) section for more detai
 
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
 - [**ForkP**](#s:fork.params): Required. Fork element parameters.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -427,6 +428,13 @@ Under Construction...
 
 Note: This element does not have a `length` nor an `s_position`.
 
+Element parameter groups associated with this element kind are:
+- [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
+- [**BodyShiftP**](#s:bodyshift.params): Orientation of element.
+- [**FloorP**](#s:floor.params): Floor position and orientation without any `CoordinateSetP` or supporting `Girder` alignment shifts.
+- [**GirderP**](#s:girder.params): Girder parameters.
+- [**MetaP**](#s:meta.params): Meta parameters.
+- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `CoordinateSetP` and/or `Girder` alignment shifts included.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
@@ -437,16 +445,11 @@ An Instrument element is a measurement element for diagnostics.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -460,16 +463,11 @@ horizontal and vertical directions.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -482,14 +480,11 @@ The main purpose of this element is to name a position in the beamline.
 are not altered with passage through the element
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The `length` of this element must be zero.
 
@@ -507,16 +502,11 @@ It is a collimation element to remove unwanted particles.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -529,14 +519,10 @@ A Match element is used to match the orbit, Twiss, and dispersion parameters
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
@@ -549,16 +535,11 @@ A general multipole element.  The fields are assumed to be uniform along the lon
 and may contain (magnetic or electric) multipole contributions of any order.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -570,16 +551,11 @@ Both electric and magnetic fields can be defined and additional multipole contri
 In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -623,14 +599,11 @@ to orient an injection line with the ring it is injecting into.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**PatchP**](#s:patch.params): Exit coordinates with respect to entrance coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
 This matters due to the dependence of the reference velocity on the the reference energy.
@@ -645,16 +618,11 @@ Both electric and magnetic fields can be defined and the field is not restricted
 In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -675,13 +643,10 @@ These adjusted reference parameters will then be used to calculate the reference
 the downstream elements of the `ReferenceChange` element.
 
 Element parameter groups associated with this element kind are:
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**ReferenceChangeP**](#s:ref.change.params): Reference parameters adjustments.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -693,18 +658,13 @@ An `RFCavity` element represents an RF cavity that accelerates or decelerates, a
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**RFP**](#s:rf.params): RF parameters.
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Note: Multipole parameters represent DC fields. A common example is a DC solenoid field which
 helps focusing.
@@ -719,16 +679,11 @@ Both electric and magnetic fields can be defined and additional multipole contri
 In terms of functionality, a `sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -748,17 +703,12 @@ A `solenoid` is an element whose magnetic field is dominated by a field whose di
 Additional magnetic (or electric) multipole contributions are allowed.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
 ```{code} yaml
@@ -780,15 +730,11 @@ end of the element.
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**TaylorP**](#s:taylor.params): Orbital and spin Taylor map.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
 
@@ -800,15 +746,11 @@ The length of this element is considered to be zero so if `length` is specified,
 The `UnionEle` element holds a set of overlapping elements.
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - **elements**: A list of contained element kinds.
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
 such that the center of the contained element is at the center of the `UnionEle` with the
@@ -846,21 +788,16 @@ together with the [`placement`](#s:placement) construct within a `BeamLine` and 
 %---------------------------------------------------------------------------------------------------
 (s:wiggler)=
 ### Wiggler Element
-A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
+A Wiggler element consists of a periodic array of alternating bending magnets. From a particle tracking perspective, 
+it is equivalent to an undulator. Hereafter, the term "wiggler" will be used to denote either a wiggler or an undulator.
 
 Under Construction...
 
 Element parameter groups associated with this element kind are:
-- [**ApertureP**](#s:aperture.params): Aperture parameters.
-- [**BodyShiftP**](#s:bodyshift.params): Orientation of element with respect to its nominal position.
-- [**ElectricMultipoleP**](#s:elec.mult.params): Electric multipoles
-- [**FloorP**](#s:floor.params): Floor position and orientation.
-- [**MagneticMultipoleP**](#s:mag.mult.params): Magnetic multipoles.
-- [**MetaP**](#s:meta.params): Meta parameters.
-- [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
-- [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
-- [**TrackingP**](#s:tracking.params): Tracking parameters.
-- [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
 
