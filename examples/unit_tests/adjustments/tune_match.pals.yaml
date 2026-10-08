@@ -1,0 +1,65 @@
+# An `adjustments` block that matches the tunes of a ring. The ring is eight
+# identical FODO cells closed on itself. As written, the quadrupoles give both
+# planes a tune of about 1.36. The single `optimize` block varies the focusing
+# strength Kn1 of both quadrupoles so that the fractional tunes become 0.31
+# (horizontal) and 0.42 (vertical).
+#
+# The `vary` entry for qd carries a small weight, so the merit function also
+# penalizes large changes in qd's Kn1 from its starting value; the qf entry
+# uses the default weight of zero. Tunes are in radians, hence the `twopi`.
+#
+# With linear thick-lens transfer matrices the adjusted strengths come out near
+# qf Kn1 = 4.438 and qd Kn1 = -4.598 [1/m^2]. A program with a different
+# physics model may land on slightly different values; that difference is
+# exactly what the adjustment is there to absorb.
+PALS:
+  adjustments:
+    - optimize:
+        - vary:
+            parameter: qf>MagneticMultipoleP.Kn1
+        - vary:
+            parameter: qd>MagneticMultipoleP.Kn1
+            weight: 1.0e-4
+        - target:
+            parameter: fractional_tune_a
+            value: 0.31*twopi
+        - target:
+            parameter: fractional_tune_b
+            value: 0.42*twopi
+  facility:
+    - qf:
+        kind: Quadrupole
+        length: 0.2
+        MagneticMultipoleP:
+          Kn1: 4.5
+    - qd:
+        kind: Quadrupole
+        length: 0.2
+        MagneticMultipoleP:
+          Kn1: -4.5
+    - d:
+        kind: Drift
+        length: 1.0
+    - cell:
+        kind: BeamLine
+        line:
+          - qf
+          - d
+          - qd
+          - d
+    - ring:
+        kind: BeamLine
+        periodic: true
+        line:
+          - begin:
+              kind: BeginningEle
+              ReferenceP:
+                species_ref: proton
+                E_tot_ref: 1.0e9
+          - cell:
+              repeat: 8
+    - ring_lat:
+        kind: Lattice
+        branches:
+          - ring
+    - use: ring_lat

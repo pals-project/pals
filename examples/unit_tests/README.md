@@ -23,6 +23,7 @@ left behind.
 | `expressions/` | Expressions: constants and variables (map and sequence forms), mathematical functions, `expr(...)`, `random_gauss()`, references to other elements' parameters, and species-name constants with `mass_of(...)`. |
 | `controllers/` | Controllers: ABSOLUTE (single, summed, pattern-matched targets), RELATIVE, a controller driving another controller's variable, and a controller reaching into a branch. |
 | `sets/` | `set` and the compact `sets` form: pattern-matched targets, `PARAMETER` and `SELF` in value expressions, and a set on a later-repeated definition. |
+| `adjustments/` | Post-expansion `adjustments`: an `optimize` block that varies quadrupole strengths to match the fractional tunes of a ring. |
 | `loading/` | Families of files combined with `load`: SELF placement (explicit and implicit), nested and diamond-shaped load graphs, relative path resolution, merging of dictionary-valued root keys, version agreement, and `load` combined with `include`. |
 
 ## Validation
