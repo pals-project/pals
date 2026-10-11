@@ -167,6 +167,7 @@ A common example is using a `Fork` element to connect from a storage ring to
 an extraction line or an X-ray beam line. Similarly, a `Fork` can be used to connect 
 from the end of an injection line to some place in a ring.
 Beam travel is always from the `Fork` element to another point in the machine.
+
 Using `Fork` elements, complex machine layouts may be constructed.
 An example is shown in figure {numref}`f:fork`. See the [ForkP](#s:fork.params) documentation
 for more details.
@@ -209,6 +210,11 @@ the kinds of destination element are restricted to be one of:
 - `Fork`
 
 Notice that these kinds of elements have zero length and unit transfer maps.
+When the lattice is constructed and the destination element is in a branch not
+already incorporated into the lattice, the floor coordinates of the destination element
+are set equal to the floor coordinates of the `Fork` element. If the destination is
+in a branch that already exists in the lattice, it is up to the lattice designer to make sure
+that the floor coordinates of the `Fork` element and destination element match.
 
 Example `Fork` element:
 ```{code} yaml
