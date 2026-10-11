@@ -17,7 +17,7 @@ dependencies:
   - recommonmark
   - sphinx
   - sphinx-autobuild
-  - sphinx-book-theme
+  - sphinx-book-theme>=1.4
   - sphinx-copybutton
   - sphinx-design
   - sphinxcontrib-bibtex
