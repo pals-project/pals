@@ -563,14 +563,14 @@ For this transformation, {math}`\bf S` is the unit matrix and {math}`{\bf L} = (
 \text{x}\_\text{offset} \\ \text{y}\_\text{offset} \\ \text{z}\_\text{offset}
 \end{pmatrix},
 \qquad
-{\bf S} = {\bf R}_y (\text{y}\_\text{rot}) \; {\bf R}_x (\text{x}\_\text{rot}) \; {\bf R}_z (\text{tilt})
+{\bf S} = {\bf R}_y (\text{y}\_\text{rot}) \; {\bf R}_x (\text{x}\_\text{rot}) \; {\bf R}_z (\text{z}\_\text{rot})
 ```
 
 1. {math}`E_\text{mid} \longrightarrow E_s`: Translation to body coordinates {math}`E_s`.
 For this transformation, {math}`\bf S` is the unit matrix and {math}`{\bf L} = (0, 0, s - L/2)`.
 
 Notice that with this definition of how elements are misaligned, the position of the center of a
-non-bend misaligned element depends only on the offsets, and is independent of the pitches and tilt.
+non-bend misaligned element depends only on the offsets, and is independent of the rotations.
 
 %-----------------------------------------------------------------------------
 (s:bend.mis)=
@@ -579,11 +579,12 @@ non-bend misaligned element depends only on the offsets, and is independent of t
 For `Bend` element positioning, besides the standard `BodyShiftP` parameters, there is the
 `tilt_ref` ({math}`\theta_{tr}`) parameter (see [](#s:bend.params)). 
 The latter affects both the reference orbit and the bend position. 
-Furthermore, `ref_tilt` is calculated with respect to
-the coordinates at the beginning of the bend while, like straight elements, `roll`, offsets, and
-pitches are calculated with respect to the center of the bend. The different reference frame used
-for `ref_tilt` versus everything else means that five transformations are needed to get from the
-branch frame to the element body frame (see Eq. Eq. [](#llee)). Symbolically:
+Furthermore, `tilt_ref` is calculated with respect to
+the coordinates at the beginning of the bend while, like straight elements, the offsets and
+the rotations `x_rot`, `y_rot`, and `z_rot` are calculated with respect to the center of the bend. 
+The different reference frame used
+for `tilt_ref` versus everything else means that six transformations are needed to get from the
+branch frame to the element body frame (see Eq. [](#llee)). Symbolically:
 ```{math}
   \Lambda_s \longrightarrow \Lambda_\text{mid-arc} \longrightarrow
   \Omega_\text{mid-chord} \longrightarrow \Omega_\text{offset} \longrightarrow \Omega_\text{tilt\_ref}
@@ -623,7 +624,69 @@ and {math}`\theta_{tr} = 0`.
 Notice that with this definition of how elements are misaligned, the position of the center of a
 misaligned element depends only on the offsets and is independent of the rotations.
 
+%-----------------------------------------------------------------------------
+(s:girder.mis)=
+### Girder Supported Element Misalignment Transformation
 
+When an element is supported by a [`Girder`](#s:girder), the position and orientation of the element
+body is determined by both the `BodyShiftP` parameters of the `Girder` and the `BodyShiftP` parameters
+of the element (ignore for now the possibility that the `Grider` is supported by another `Girder`). 
+The `Girder` alignment shift is applied first and the element `BodyShiftP`
+alignment shift is applied second. That is, the element `BodyShiftP` parameters are
+interpreted as a shift with respect to where the element would be if
+the only shift were the shift due to the `Girder`.
+The calculation proceeds as follows:
 
+Let {math}`({\bf V}_{E0}, {\bf W}_{E0})` be the unshifted (branch) frame of the 
+supported element with respect to floor coordinates about which `BodyShiftP` shifts are measured.
+For a straight element this is the frame {math}`\Lambda_\text{mid}` at the center of the
+element (see [](#s:straight.mis)). For a bend this is the frame {math}`\Omega_\text{mid-chord}`
+at the center of the bend chord (see [](#s:bend.mis)).
 
+Let {math}`{\bf W}_{G0}` be the unshifted girder frame with respect to floor coordinates
+as determined by the girder's [`CoordinateSetP`](#s:coordinate.set.params) parameters (the 
+`Girder` position {math}`{\bf V}_{G0}` does not play a role in the equations).
 
+Let {math}`({\bf L}_E, {\bf S}_E)` be the element shift and let 
+{math}`({\bf L}_G, {\bf S}_G)` be the `Girder` shift asgiven by Eq. [](#swww2) using the 
+element's and `Girder`'s `BodyShiftP` parameters respectively.
+
+In the girder frame of reference, the element shift
+{math}`({\bf L}_{E|G}, {\bf S}_{E|G})` is
+```{math}
+:label: lwwl
+  {\bf L}_{E|G} &= {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf L}_E, \\
+  {\bf S}_{E|G} &= {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf S}_E
+```
+
+The supported element moves rigidly with the girder. Applying the girder shift
+using [](#wws) and converting back to element coordinates gives for the shifts 
+{math}`({\bf L}_{\text{tot}}, {\bf S}_{\text{tot}})` in body coordinates
+taking into account both element and girder shifts is
+```{math}
+:label: legseg
+  {\bf L}_{\text{tot}} &= {\bf W}_{E0}^{-1} \; {\bf W}_{G0} 
+    \left( {\bf L}_{G} + {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf L}_{E} \right), \\
+  {\bf S}_{\text{tot}} &= {\bf W}_{E0}^{-1} \; {\bf W}_{G0} \; {\bf S}_G \; {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf S}_{E}
+```
+
+In floor coordinates the shifted element position
+{math}`({\bf V}_{\text{tot}|F}, {\bf W}_{\text{tot}|F})` 
+with both element and girder shifts is
+```{math}
+:label: vewe
+  {\bf V}_{\text{tot}|F} &= {\bf W}_{E0} \; {\bf L}_{\text{tot}} + {\bf V}_{E0}, \\
+  {\bf W}_{\text{tot}|F} &= {\bf W}_{E0} \; {\bf S}_{\text{tot}}
+```
+
+When tracking through an element supported by a girder, {math}`({\bf L}_\text{tot}, {\bf S}_\text{tot})`
+is used in place of the {math}`({\bf L}, {\bf S})` of Eq. [](#swww2) in the 
+{math}`\Lambda_\text{mid} \longrightarrow E_\text{mid}` transformation for a straight element or the 
+{math}`\Omega_\text{mid-chord} \longrightarrow \Omega_\text{offset}` transformation for a bend.
+
+If the element is not supported by a girder, {math}`{\bf L}_{G} = 0` and {math}`{\bf S}_{G}` is
+the unit matrix, and the above reduces to the standard misalignment transformation.
+
+If a girder is itself supported by another girder, the shifted frame
+{math}`({\bf L}_{G}, {\bf S}_{G})` of the supported girder is computed using the above procedure
+with the supported girder taking the role of the supported element.
