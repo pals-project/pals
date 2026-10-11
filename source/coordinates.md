@@ -630,7 +630,7 @@ misaligned element depends only on the offsets and is independent of the rotatio
 
 When an element is supported by a [`Girder`](#s:girder), the position and orientation of the element
 body is determined by both the `BodyShiftP` parameters of the `Girder` and the `BodyShiftP` parameters
-of the element (ignore for now the possibility that the `Grider` is supported by another `Girder`). 
+of the element (ignore for now the possibility that the `Girder` is supported by another `Girder`). 
 The `Girder` alignment shift is applied first and the element `BodyShiftP`
 alignment shift is applied second. That is, the element `BodyShiftP` parameters are
 interpreted as a shift with respect to where the element would be if
@@ -643,31 +643,35 @@ For a straight element this is the frame {math}`\Lambda_\text{mid}` at the cente
 element (see [](#s:straight.mis)). For a bend this is the frame {math}`\Omega_\text{mid-chord}`
 at the center of the bend chord (see [](#s:bend.mis)).
 
-Let {math}`{\bf W}_{G0}` be the unshifted girder frame with respect to floor coordinates
-as determined by the girder's [`CoordinateSetP`](#s:coordinate.set.params) parameters (the 
-`Girder` position {math}`{\bf V}_{G0}` does not play a role in the equations).
+Let {math}`({\bf V}_{G0}, {\bf W}_{G0})` be the unshifted girder frame with respect to floor coordinates
+as determined by the girder's [`CoordinateSetP`](#s:coordinate.set.params) parameters.
+Girder rotations are about the origin {math}`{\bf V}_{G0}` of this frame.
 
 Let {math}`({\bf L}_E, {\bf S}_E)` be the element shift and let 
-{math}`({\bf L}_G, {\bf S}_G)` be the `Girder` shift asgiven by Eq. [](#swww2) using the 
+{math}`({\bf L}_G, {\bf S}_G)` be the `Girder` shift as given by Eq. [](#swww2) using the 
 element's and `Girder`'s `BodyShiftP` parameters respectively.
 
-In the girder frame of reference, the element shift
-{math}`({\bf L}_{E|G}, {\bf S}_{E|G})` is
+The position {math}`{\bf L}_{E|G}` and orientation {math}`{\bf S}_{E|G}` of the element body, 
+with the element shift but without the girder shift, expressed in the unshifted girder frame is
 ```{math}
 :label: lwwl
-  {\bf L}_{E|G} &= {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf L}_E, \\
+  {\bf L}_{E|G} &= {\bf W}_{G0}^{-1} \left( {\bf V}_{E0} - {\bf V}_{G0} + {\bf W}_{E0} \; {\bf L}_E \right), \\
   {\bf S}_{E|G} &= {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf S}_E
 ```
 
 The supported element moves rigidly with the girder. Applying the girder shift
-using [](#wws) and converting back to element coordinates gives for the shifts 
-{math}`({\bf L}_{\text{tot}}, {\bf S}_{\text{tot}})` in body coordinates
-taking into account both element and girder shifts is
+using Eq. [](#wws) gives the element body position and orientation in the girder frame as
+{math}`{\bf L}_G + {\bf S}_G \, {\bf L}_{E|G}` and {math}`{\bf S}_G \, {\bf S}_{E|G}`.
+Converting back to the unshifted element frame gives the shifts
+{math}`({\bf L}_{\text{tot}}, {\bf S}_{\text{tot}})` of the element body
+taking into account both element and girder shifts:
 ```{math}
 :label: legseg
-  {\bf L}_{\text{tot}} &= {\bf W}_{E0}^{-1} \; {\bf W}_{G0} 
-    \left( {\bf L}_{G} + {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf L}_{E} \right), \\
-  {\bf S}_{\text{tot}} &= {\bf W}_{E0}^{-1} \; {\bf W}_{G0} \; {\bf S}_G \; {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf S}_{E}
+  {\bf L}_{\text{tot}} &= {\bf W}_{E0}^{-1} 
+    \left[ {\bf W}_{G0} \left( {\bf L}_{G} + {\bf S}_G \; {\bf L}_{E|G} \right) - 
+    \left( {\bf V}_{E0} - {\bf V}_{G0} \right) \right], \\
+  {\bf S}_{\text{tot}} &= {\bf W}_{E0}^{-1} \; {\bf W}_{G0} \; {\bf S}_G \; {\bf S}_{E|G}
+    = {\bf W}_{E0}^{-1} \; {\bf W}_{G0} \; {\bf S}_G \; {\bf W}_{G0}^{-1} \; {\bf W}_{E0} \; {\bf S}_{E}
 ```
 
 In floor coordinates the shifted element position
@@ -687,6 +691,8 @@ is used in place of the {math}`({\bf L}, {\bf S})` of Eq. [](#swww2) in the
 If the element is not supported by a girder, {math}`{\bf L}_{G} = 0` and {math}`{\bf S}_{G}` is
 the unit matrix, and the above reduces to the standard misalignment transformation.
 
-If a girder is itself supported by another girder, the shifted frame
-{math}`({\bf L}_{G}, {\bf S}_{G})` of the supported girder is computed using the above procedure
-with the supported girder taking the role of the supported element.
+If a girder is itself supported by another girder, the above procedure is used with
+the supported girder taking the role of the supported element and with the unshifted frame 
+{math}`({\bf V}_{E0}, {\bf W}_{E0})` being the frame set by the supported girder's `CoordinateSetP` parameters. 
+The resulting effective shift {math}`({\bf L}_\text{tot}, {\bf S}_\text{tot})` of the supported girder
+is then used as the girder shift {math}`({\bf L}_{G}, {\bf S}_{G})` for the elements it supports.

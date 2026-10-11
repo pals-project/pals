@@ -443,8 +443,7 @@ The "nominal" orientation of a `Girder` is determined by the settings of the `Co
 parameter group. The settings of the `BodyShiftP` group then determine the change is position
 and orientation of the girder `Girder` in the coordinate system set by the `CoordinateSetP`
 parameters. This change in position and orientation can then be applied to all the supported elements
-by first transforming to Global coordinates and then transforming to the supported
-elements coordinate system. 
+as documented in [](#s:girder.mis).
 
 Note: Girders do not have a `length` nor an `s_position`.
 
