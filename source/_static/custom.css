@@ -1,0 +1,5 @@
+/* Rule above second-level headings to visually separate sections. */
+.bd-article h2 {
+  border-top: 3px solid var(--pst-color-text-muted);
+  padding-top: 0.6em;
+}
