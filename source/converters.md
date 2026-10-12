@@ -1,3 +1,4 @@
+(s:language.covert)=
 # Language converters.
 
 Language converters between PALS and other accelerator simulation languages are in development.
@@ -8,6 +9,7 @@ can be done by extending the code of a PALS parser since the parser can provide 
 be useful.
 
 %---------------------------------------------------------------------------------------------------
+(s:bmad.covert)=
 ## Bmad Conversion
 
 Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
@@ -23,8 +25,8 @@ Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
 
   The Bmad to PALS conversion uses the following conventions:
   - Bmad extension information uses `Bmad` for an extension name and `Bmad_` for an extension prefix.
-  - If the PALS lattice element kind does not correspond to the Bmad kind, the Bmad kind is
-    recorded in a `Bmad.Bmad_key` node.
+  - If the PALS lattice element kind does not correspond to the Bmad kind, in the PALS file 
+    the Bmad kind is recorded in a `Bmad.Bmad_key` node.
   - Bmad `overlay` elements are translated to PALS ABSOLUTE `Controllers` and Bmad `group` elements
     are translated to PALS RELATIVE `Controllers`.
   - Bmad `alias`, `type` and `descrip` attributes are translated to PALS `MetaP.alias`, 
@@ -53,18 +55,20 @@ Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
     Bmad `group` elements, the reverse of the Bmad to PALS direction above.
 
 %---------------------------------------------------------------------------------------------------
+(s:madx.covert)=
 ## MAD-X Conversion
 
 Conversion between PALS and [MAD-X](https://mad.web.cern.ch/mad/):
 
-- Conversion from MAD-X to PALS is not yet available.
+- Direct conversion from MAD-X to PALS is not yet available but an indirect path is to
+  convert from MAD-X to Bmad using the madx_to_bmad.py script in the Bmad ecosystem and
+  then converting from [Bmad to PALS](#s:bmad.covert)
 
 - Conversion from PALS to MAD-X is performed by the `pals_to_madx` function.
   A Julia based version of this function is in the `PALSParserJ.jl` repository 
   and a Python based version is in the `PALSParserPy` repository.
 
-  MAD-X is a narrower language than PALS, so the converter reports what it cannot carry rather
-  than approximating it. The conversion uses the following conventions:
+The conversion uses the following conventions:
   - MAD-X has no field-valued attribute, so a stated field is normalized by the reference
     rigidity. `beam->brho` is unsigned where the rigidity that normalizes a field is signed, so
     the converter defines its own `pals_brho` constant and divides by that.
@@ -87,6 +91,7 @@ Conversion between PALS and [MAD-X](https://mad.web.cern.ch/mad/):
     used -- so a branch's `periodic` setting is carried across as a comment.
 
 %---------------------------------------------------------------------------------------------------
+(s:scibmad.covert)=
 ## SciBmad Conversion
 
 Conversion between PALS and [SciBmad](https://github.com/bmad-sim/SciBmad.jl):
