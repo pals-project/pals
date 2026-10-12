@@ -3,16 +3,15 @@
 # To activate this environment, use:
 #   conda activate pals
 name: pals
-
 channels:
   - conda-forge
   - nodefaults
-
 dependencies:
   - docutils
   - python
   - myst-parser
   - pip
+  - pre-commit
   - pybtex
   - pygments
   - recommonmark

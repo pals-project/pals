@@ -12,9 +12,9 @@ BodyShiftP:
   x_offset: 0       # [m] Offset along x-axis
   y_offset: 0       # [m] Offset along y-axis
   z_offset: 0       # [m] Offset along z-axis
-  x_rot: 0          # [radians] Rotation around x-axis
-  y_rot: 0          # [radians] Rotation around y-axis
-  z_rot: 0          # [radians] Rotation around z-axis
+  x_rot: 0          # [rad] Rotation around x-axis
+  y_rot: 0          # [rad] Rotation around y-axis
+  z_rot: 0          # [rad] Rotation around z-axis
 ```
 
 ```{figure} figures/straight-align.svg

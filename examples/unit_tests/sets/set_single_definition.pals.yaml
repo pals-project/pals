@@ -2,7 +2,6 @@
 # definition, and all three expanded copies inherit the new value.
 #
 # From pals-cpp tests/test_sets.cpp
-
 PALS:
   facility:
     - q1:

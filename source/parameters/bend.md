@@ -13,8 +13,8 @@ BendP:
   e2: null                 # [radian] Exit end pole face rotation with respect to a sector geometry
   e1_rect: null            # [radian] Entrance end pole face rotation with respect to a rectangular geometry
   e2_rect: null            # [radian] Exit end pole face rotation with respect to a rectangular geometry
-  edge1_int: 0             # [T*m] Entrance end fringe field integral
-  edge2_int: 0             # [T*m] Exit end fringe field integral
+  edge1_int: 0             # [m] Entrance end fringe field integral
+  edge2_int: 0             # [m] Exit end fringe field integral
   g_ref: null              # [1/m] Reference bend strength = 1/radius_ref
   h1: 0                    # [1/m] Entrance end pole face curvature
   h2: 0                    # [1/m] Exit end pole face curvature
@@ -76,7 +76,7 @@ as appropriate (see below). Similarly for `e2_rect` and `e2`.
 ### `BendP` parameters
 
 **Note:** In the equations below, {math}`q` is the charge of the reference particle 
-and {math}`p_0` is the reference momentum.
+and {math}`P_0` is the reference momentum.
 
 - **angle_ref**
 
@@ -92,7 +92,7 @@ The direction of the reference bend field is along the {math}`y`-axis.
   ```{math}
   :label: bff
 
-  \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
+  \text{Bn0\_ref} = \frac{P_0}{q} \cdot \text{g\_ref}
   ```
 %
 - **e1, e2**
@@ -165,7 +165,7 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   ```{math}
   :label: gqpb
 
-  \text{g\_ref} = \frac{q}{p_0} \cdot \text{Bn0\_ref}
+  \text{g\_ref} = \frac{q}{P_0} \cdot \text{Bn0\_ref}
   ```
   One common mistake when creating orbit bumps using a bend is to vary
 `g_ref`. For this, `Kn0` should be varied.

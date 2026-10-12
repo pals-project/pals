@@ -1,8 +1,9 @@
 (s:logos)=
 # Logos
 
-The PALS logo is available in three variants. All are PNG images with a transparent
-background so that they can be placed on top of any backdrop. 
+The PALS logo is available in three variants. Each variant is provided both as a PNG image and
+as an SVG vector image. All have a transparent background so that they can be placed on top of
+any backdrop.
 The logos are licensed, like the rest of this documentation, under
 [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
@@ -10,7 +11,7 @@ The logos are licensed, like the rest of this documentation, under
 (s:logo.light)=
 ## Logo for Light Backgrounds - Two Line Subtitle
 
-The [line dark ink variant](_static/pals-logo-light.png), 
+The [line dark ink variant](_static/pals-logo-light.png) (also available as an [SVG image](_static/pals-logo-light.svg)), 
 with a two line subtitle, is used for
 placement on white or other light colored backgrounds. This is the variant shown in the upper
 left corner of these documentation pages when the light theme is selected.
@@ -25,7 +26,7 @@ left corner of these documentation pages when the light theme is selected.
 (s:logo.dark)=
 ## Logo for Dark Backgrounds - Two Line Subtitle
 
-The [light ink variant](_static/pals-logo-dark.png), 
+The [light ink variant](_static/pals-logo-dark.png) (also available as an [SVG image](_static/pals-logo-dark.svg)), 
 with a two line subtitle is used for
 placement on black or other dark colored backgrounds. This is the variant shown in the upper
 left corner of these documentation pages when the dark theme is selected.
@@ -40,7 +41,7 @@ left corner of these documentation pages when the dark theme is selected.
 (s:logo.original)=
 ## Logo with One Line Subtitle
 
-The [one line subtitle variant](_static/pals-logo-original.png) is meant for cases where the logo is displayed in a larger size
+The [one line subtitle variant](_static/pals-logo-original.png) (also available as an [SVG image](_static/pals-logo-original.svg)) is meant for cases where the logo is displayed in a larger size
 so having two subtitle lines is not needed.
 
 ```{image} _static/pals-logo-original.png
