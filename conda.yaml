@@ -3,22 +3,21 @@
 # To activate this environment, use:
 #   conda activate pals
 name: pals
-
 channels:
   - conda-forge
   - nodefaults
-
 dependencies:
   - docutils
   - python
   - myst-parser
   - pip
+  - pre-commit
   - pybtex
   - pygments
   - recommonmark
   - sphinx
   - sphinx-autobuild
-  - sphinx-book-theme
+  - sphinx-book-theme>=1.4
   - sphinx-copybutton
   - sphinx-design
   - sphinxcontrib-bibtex

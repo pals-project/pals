@@ -16,3 +16,4 @@ ShiftedFloorP:
   phi                     # [radians] Orientation angle.
   psi                     # [radians] Orientation angle.
 ```
+All of these parameters are output parameters.
