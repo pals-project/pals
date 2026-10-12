@@ -83,6 +83,7 @@ definitions.md
 
 notation.md
 fundamentals.md
+names.md
 coordinates.md
 lattice-elements.md
 lattice-element-kinds.md
@@ -109,7 +110,6 @@ dispersion.md
 :caption: Software Ecosystem
 
 tools.md
-simulations.md
 ```
 
 ```{toctree}

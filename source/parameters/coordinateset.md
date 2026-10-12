@@ -22,6 +22,12 @@ Components of this group are:
 CoordinateSetP:
   origin_ele: GLOBAL_ORIGIN    # [string] Origin element name. GLOBAL_ORIGIN -> global coordinate origin.
   origin_ele_ref_pt: EXIT_END  # [enum] Reference point on origin_ele.
+  x_offset: 0                # [m] Offset of the coordinates in the x-direction.
+  y_offset: 0                # [m] Offset of the coordinates in the y-direction.
+  z_offset: 0                # [m] Offset of the coordinates in the z-direction.
+  x_rot: 0                   # [rad] Rotation of the coordinates around x-axis.
+  y_rot: 0                   # [rad] Rotation of the coordinates around y-axis.
+  z_rot: 0                   # [rad] Rotation of the coordinates around z-axis.
 ```
 The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see

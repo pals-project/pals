@@ -10,19 +10,16 @@
 #   - repeats a line (fodo_cell) three times
 #
 PALS:
-  version: null  # later, we will put the version of the PALS standard here
-
+  version: null # later, we will put the version of the PALS standard here
   facility:
     - drift1:
         kind: Drift
         length: 0.25
-  
     - quad1:
         kind: Quadrupole
         MagneticMultipoleP:
           Bn1: 1.0
         length: 1.0
-  
     - fodo_cell:
         kind: BeamLine
         line:
@@ -36,16 +33,13 @@ PALS:
               MagneticMultipoleP:
                 Bn1: -1.0
           - drift1
-  
     - fodo_channel:
         kind: BeamLine
         line:
           - fodo_cell:
               repeat: 3
-
     - fodo_lattice:
         kind: Lattice
         branches:
           - fodo_channel
-
     - use: fodo_lattice

@@ -112,7 +112,7 @@ which aids in documentation and searching.
 
 Controllers can control the variables of other controllers. The syntax for a controller 
 variable is:
-```{code} yaml
+```{code} text
 {controller-name}>{variable-name}
 ```
 So, for example, with the above example, outside of the `ps27` controller the `cur1` variable
