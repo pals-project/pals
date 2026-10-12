@@ -418,21 +418,40 @@ Element parameter groups associated with this element kind are:
 (s:girder)=
 ### Girder Element
 
-A Girder element is a support structure that orients the 
-elements that are attached to it in space. This element can
-be used to simulate any rigid support structure and there are 
-no restrictions on how the lattice elements
-that are supported are oriented with respect to one another.
+A Girder element is a support structure that orients the elements that are attached to it in space. 
+This element can be used to simulate any rigid support structure 
+ 
+Girder elements live outside of the expanded lattice tree. In a PALS file, the girder elements
+are specified in a `girders` node underneath the `PALS` node. Example:
+```{code} yaml
+PALS:
+  girders:
+    support1:
+      kind: Girder
+      GirderP:
+        elements: Q1:Q5,sy7
+    ...
+```
+In this example, a girder called `support1` supports lattice elements `Q1` and `Q5` and all
+elements in between plus an element called `sy7`.
 
-Under Construction...
+`Girders` can support other `Girders` which can in turn can support other `Girders`, etc.
+The one restrictions is that a circular chain of support is forbidden.
 
-Note: This element does not have a `length` nor an `s_position`.
+How a `Girder` moves supported elements is as follows: 
+The "nominal" orientation of a `Girder` is determined by the settings of the `CoordinateSetP`
+parameter group. The settings of the `BodyShiftP` group then determine the change is position
+and orientation of the girder `Girder` in the coordinate system set by the `CoordinateSetP`
+parameters. This change in position and orientation can then be applied to all the supported elements
+as documented in [](#s:girder.mis).
+
+Note: Girders do not have a `length` nor an `s_position`.
 
 Element parameter groups associated with this element kind are:
 - [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element.
 - [**FloorP**](#s:floor.params): Floor position and orientation without any `CoordinateSetP` or supporting `Girder` alignment shifts.
-- [**GirderP**](#s:girder.params): Girder parameters.
+- [**GirderP**](#s:girder.params): List of supported elements..
 - [**MetaP**](#s:meta.params): Meta parameters.
 - [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `CoordinateSetP` and/or `Girder` alignment shifts included.
 
