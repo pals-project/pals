@@ -261,11 +261,6 @@ must be the same.
     - "This is a second note."
     - "Lattice with orbit correction for blown chopper at B34W."
   ```
-  The one modification is that when combining a `facility` list, each list is considered to
- have two parts: the part before any `expand_lattice` command and the part after any `expand_lattice`
- command (this second part may be empty). The final `facility` list is the pre-`expand_lattice` 
- parts, combined together, followed by an `expand_lattice` command, followed by the 
- post-`expand_lattice` parts combined together.
 - For Dict type subnodes of `PALS`, the combined dict will be the union of all the dict entries
 for all of the files. If the dict entries are themselves a dict, this combining rule is applied
 to the subdicts. If the dict entries are lists, the lists are combined as discussed above.
@@ -335,130 +330,6 @@ The `Combined_Inject_and_AGS` lattice will have this extended transfer line and 
 lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` element. 
 
 %---------------------------------------------------------------------------------------------------
-(s:names)=
-## Names
-
-Many constructs in the standard like lattice elements, branches, parameter groups, etc., may have
-an associated name. To ensure seamless translation to particular languages, all names must conform
-to the following:
-- A name must start with a letter or the underscore character
-- A name cannot start with a number
-- A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
-
-The exception is that particle species names, which are considered to be strings and not proper
-computer language variable names, follow the
-[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
-Examples:
-```{code} yaml
-charge_of("#3He+2")          # Helium with atomic number three.
-mass_of("anti-proton")       # Notice the dash.
-my_particle: "Au+79"         # Assign a species to a variable or constant.
-charge_of(my_particle)       # The variable or constant can be used in an equation.
-```
-Notice that particle names must be quoted.
-
-%---------------------------------------------------------------------------------------------------
-(s:name.matching)=
-(s:parameter.matching)=
-## Name Matching
-
-Name matching is the process of finding the set of named constructs — lattice
-elements, element parameter groups, element parameters, constants, variables,
-etc. — that a given string is matched to. PALS defines a standard syntax for this.
-
-At its simplest, a string is matched against the `name` of a construct. For
-example, `qa.*` matches every element (or constant, variable, ...) whose name
-begins with `qa`. Names may be [PCRE2](https://www.pcre.org/) regular
-expressions. Regex matching is a whole-name (fully anchored) match — the pattern
-must match the entire name — so `qa.*` matches any name beginning with `qa`,
-while `qa` on its own matches only the exact name `qa`.
-
-Name matches may be restricted to a given construct kind using the notation
-```{code} yaml
-{kind}::{name}
-```
-where `{kind}` is the construct kind — for example a lattice element kind such as
-`Marker`, or a non-element kind such as `Controller` — and `{name}` is the name
-match. Example:
-```{code} yaml
-Marker::bpm.
-```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character).
-
-Element parameters are matched by appending the parameter path to an element name
-match, using a single `>` as the separator. A parameter that belongs to a
-[parameter group](#s:param.groups) is matched using the group path:
-```{code} text
-{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
-```
-while a parameter that is not in any group — for example `length`, `is_on`, or
-the element kind (see [Non-Group Parameters](#s:non.params)) — is matched
-directly:
-```{code} text
-{element-name}>{parameter}
-```
-where
-```{code} yaml
-{element-name}                  # Element name match, see below.
-{parameter-group}               # Parameter group name (for grouped parameters).
-{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
-{parameter}                     # Parameter name.
-```
-The `{element-name}` component is any element name match from
-[Element Name Matching](#s:element.matching) — including its kind (`::`),
-BeamLine/Branch (`>>`), and Lattice (`>>>`) qualifiers. The parameter path
-following the `>` is, unlike element names, matched exactly rather than with
-PCRE2; the dots within it are therefore unambiguous, and the single `>`
-separator is distinct from the `>>` and `>>>` qualifiers that may appear inside
-`{element-name}`.
-
-Example:
-```{code} yaml
-qa.*>MagneticMultipoleP.Ks2L
-Quadrupole::qa.*>MagneticMultipoleP.Ks2L
-Q1>length
-```
-The first line matches the `Ks2L` component of `MagneticMultipoleP` for all
-elements whose name begins with `qa`. The second is the same but restricted to
-elements of kind `Quadrupole`. The third matches the ungrouped `length`
-parameter of the element `Q1`.
-
-A trailing part of the path may be dropped to match the enclosing construct
-instead of a parameter: omit `{parameter}` to match a parameter group, or omit
-the `>{parameter-group}...` entirely to match the element itself. Example:
-```{code} yaml
-qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
-qa.*                       # Match the element.
-Controller::cd.t           # Match all Controllers whose four-character name starts with `cd` and ends with `t`.
-```
-
-Constructs that are not element parameters are matched by name in the same way.
-Top-level [constants and variables](#s:constants) are matched directly, with no
-`>`-qualified path. A variable that is owned by a controller, however, is matched
-through its controller using the same single `>` separator —
-`{controller-name}>{variable-name}` — just as an element parameter is reached
-through its element.
-
-%---------------------------------------------------------------------------------------------------
-(s:specialvalues)=
-## Special Values
-
-Special values used in this document are:
-
-1. Logical parameters can be one of three values:
-- `true`
-- `false`
-- `null`: Useful as a default value when neither `true` nor `false` is appropriate.
-
-2. The standard defines the following symbols which can be used in place of a real or integer value:
-- `null`: Value has not been set.
-- `Inf`: Infinity.
-- `-Inf`: Negative infinity.
-
-3. In general, `null` can be used to signify that any parameter does not have a specific default value.
-
-%---------------------------------------------------------------------------------------------------
 (s:units)=
 ## Units
 
@@ -484,7 +355,7 @@ PALS uses SI except for energy which uses `eV`.
 * - voltage
   - Volts
 * - angles and phases
-  - radians / 2 {math}`\pi`
+  - radians
 * - magnetic field
   - Tesla
 * - frequency
@@ -499,7 +370,8 @@ PALS uses SI except for energy which uses `eV`.
 
 Constants defined by PALS:
 ```{code} yaml
-pi                        # Pi
+pi                        # [-] Pi
+twopi                     # [-] 2*pi
 c_light                   # [ m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant

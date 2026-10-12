@@ -8,8 +8,8 @@ RFP:
   harmon: null                  # [unitless] RF frequency harmonic number
   voltage: 0                    # [V] RF voltage
   gradient: 0                   # [V/m] RF gradient
-  phase: 0                      # [rad/2pi] RF phase in 0 to 2*pi
-  multipass_phase: 0            # [rad/2pi] RF Phase added to multipass elements
+  phase: 0                      # [rad] RF phase
+  multipass_phase: 0            # [rad] RF Phase added to multipass elements
   cavity_type: STANDING_WAVE    # [enum] Cavity type
   num_cells: null               # [-] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
@@ -41,9 +41,9 @@ BELOW_TRANSITION          # Zero phase is at the stable zero crossing for partic
 ABOVE_TRANSITION          # Zero phase is at the stable zero crossing for particles above transition.
 ```
 
-The RF phase `phase_RF`, in units of `rad/2pi`, at time `t` will be
+The RF phase `phase_RF`, in units of `radians`, at time `t` will be
 ```{code} yaml
-phase_RF = t*frequency + phase + phi0
+phase_RF = 2*pi*t*frequency + phase + phi0
 ```
 where `phi0` is a phase determined by the setting of `zero_phase`. 
 

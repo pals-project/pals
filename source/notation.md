@@ -25,6 +25,24 @@ PARAMETER
 ```
 
 %---------------------------------------------------------------------------------------------------
+(s:specialvalues)=
+## Special Values
+
+Special values used in this document:
+
+1. Logical values:
+- `true`
+- `false`
+- `null`: Useful as a default value when neither `true` nor `false` is appropriate.
+
+2. Symbols that can be used in place of a real or integer value:
+- `null`: Value has not been set.
+- `Inf`: Infinity.
+- `-Inf`: Negative infinity.
+
+3. In general, `null` can be used to signify that any parameter does not have a specific default value.
+
+%---------------------------------------------------------------------------------------------------
 (s:syntax)=
 ## Syntax Used in this Document is YAML
 
@@ -285,9 +303,3 @@ For sub-level [included](#s:includefiles) PALS format files, replace `.pals` wit
 
 Note: Not following the recommendation may lead to, for example, reader/visualization tools 
 not auto discovering the file as PALS, which can create friction for users.
-
-### Schema Files
-
-Schema files for validation have not yet been developed.
-A validation tool based on pydantic is in development.
-See the [Libraries](#c:impl.libs) section.

@@ -81,7 +81,8 @@ such problems.
 
 The steps used for lattice expansion are:
 
-* Start with the root PALS file and construct a tree that contains all `include` and `load` trees.
+* Start with the root PALS file and construct an information tree that contains all the data from
+any [`include`](#s:includefiles) and [`load`](#s:load) files.
 This is the base tree for the lattice expansion.
 
 * Go through the `facility` list in order and node-by-node evaluate any expressions and execute any `set` commands.
