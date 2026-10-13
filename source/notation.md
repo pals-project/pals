@@ -15,16 +15,6 @@ A PALS compliant parser will issue and error if a necessary condition of the PAL
 not satisfied.
 
 %---------------------------------------------------------------------------------------------------
-(s:reserved)=
-## Reserved Words
-
-Reserved words which must not be used for the names of lattice elements, beam lines, etc are:
-```{code} yaml
-SELF
-PARAMETER
-```
-
-%---------------------------------------------------------------------------------------------------
 (s:specialvalues)=
 ## Special Values
 
@@ -41,6 +31,16 @@ Special values used in this document:
 - `-Inf`: Negative infinity.
 
 3. In general, `null` can be used to signify that any parameter does not have a specific default value.
+
+%---------------------------------------------------------------------------------------------------
+(s:reserved)=
+## Reserved Words
+
+Reserved words which must not be used for the names of lattice elements, beam lines, etc are:
+```{code} yaml
+SELF
+PARAMETER
+```
 
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
