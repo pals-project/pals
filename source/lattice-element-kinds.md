@@ -440,8 +440,8 @@ The one restrictions is that a circular chain of support is forbidden.
 
 How a `Girder` moves supported elements is as follows: 
 The "nominal" orientation of a `Girder` is determined by the settings of the `CoordinateSetP`
-parameter group. The settings of the `BodyShiftP` group then determine the change is position
-and orientation of the girder `Girder` in the coordinate system set by the `CoordinateSetP`
+parameter group. The settings of the `BodyShiftP` group then determines the change is position
+and orientation of the `Girder` in the coordinate system set by the `CoordinateSetP`
 parameters. This change in position and orientation can then be applied to all the supported elements
 as documented in [](#s:girder.mis).
 
@@ -450,10 +450,10 @@ Note: Girders do not have a `length` nor an `s_position`.
 Element parameter groups associated with this element kind are:
 - [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element.
-- [**FloorP**](#s:floor.params): Floor position and orientation without any `CoordinateSetP` or supporting `Girder` alignment shifts.
+- [**FloorP**](#s:floor.params): Floor position and orientation without any `BodyShiftP` or supporting girder alignment shifts.
 - [**GirderP**](#s:girder.params): List of supported elements..
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `CoordinateSetP` and/or `Girder` alignment shifts included.
+- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `BodyShiftP` and/or supporting `Girder` alignment shifts included.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
