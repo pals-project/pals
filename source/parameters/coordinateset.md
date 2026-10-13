@@ -32,8 +32,8 @@ CoordinateSetP:
 The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see
 below). The coordinate system described by `CoordinateSetP` are these
-coordinates [shifted](#wws) using the offset and rot parameters of the
-`BodyShiftP` group.
+coordinates [shifted](#wws) using the offset and rot parameters of the `CoordinateSetP` group 
+(not to be confused with the offset and rotation parameters of the `BodyShiftP` group).
 
 `origin_ele` is either an element name or one of
 ```{code} yaml
@@ -51,7 +51,6 @@ position of this element before the position of the "target element"
 (the element containing the `CoordinateSetP` group) is calculated.
 For example, it is not generally possible (but there are exceptions) to calculate the position 
 of elements downstream of the target element before the target element's position is calculated.
-
 
 If the `origin_ele` has a finite length, the reference point may be chosen using the
 `origin_ele_ref_pt` attribute which may be set to one of:
