@@ -30,11 +30,11 @@ lattice. PALS itself does not perform simulations or tracking; it is the standar
 What PALS is, what it is not, and how simulation programs interact with a PALS file.
 :::
 
-:::{grid-item-card} 📐 Fundamentals
+:::{grid-item-card} 📐 Top Level Structure
 :link: top-level
 :link-type: doc
 
-Core concepts, notation, and coordinate conventions used throughout the schema.
+The PALS root object, the `facility` and `post_expansion` lists, and combining files with `include` and `load`.
 :::
 
 :::{grid-item-card} 🧩 Lattice Elements
