@@ -72,7 +72,7 @@ Derivatives with respect to momentum are taken with respect to phase space
     \epsilon_N = \beta \gamma \, \epsilon = \frac{P_0}{m \, c} \, \epsilon
   ```
   where {math}`\beta` and {math}`\gamma` are the relativistic factors of the reference particle
-  and {math}`m` is its mass. The values refer to the same place as the emittances do. Under
+  and {math}`m` is its mass. Under
   acceleration the emittance shrinks as {math}`1/\beta\gamma` (adiabatic damping) while the
   normalized emittance stays constant, which is why the normalized emittance is normally used for
   linacs.
