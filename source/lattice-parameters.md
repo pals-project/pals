@@ -48,7 +48,7 @@ Derivatives with respect to momentum are taken with respect to phase space
 
 - `fractional_tune_a`, `fractional_tune_b`, `fractional_tune_c` [rad/2pi]
 
-  The fractional part of the tune, in the range {math}`[0, 1)`:
+  The fractional part of the tune, in the range {math}`[0, 1)`.
 
 - `momentum_compaction` [-]
 
