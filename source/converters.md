@@ -1,7 +1,7 @@
 (s:language.covert)=
-# Language converters.
+# Conversion between PALS format and other formats.
 
-Language converters between PALS and other accelerator simulation languages are in development.
+Language converters between PALS and other accelerator simulation languages (MAD, SciBmad, etc.) are in development.
 It is envisaged that converting to PALS format will be handled by the individual programs
 that implement non-PALS languages since these programs already have the ability to read in
 a non-PALS format. A simple way to develop conversion from PALS to other formats 
