@@ -107,6 +107,8 @@ Derivatives with respect to momentum are taken with respect to phase space
   valid tune, and replacing {math}`{\bf n}_0` with {math}`-{\bf n}_0` changes the sign of the tune.
   PALS resolves this by requiring the spin tune to be in the range {math}`[0, \pi]`, with
   {math}`{\bf n}_0` chosen to match. The formulas above follow this convention.
+  Discussion of the invariant spin field and the spin tune is found in
+  Hoffstaetter {footcite:p}`Hoffstaetter:Polarized`.
 
 - `tune_a`, `tune_b`, `tune_c` [rad/2pi]
 
@@ -120,3 +122,7 @@ Derivatives with respect to momentum are taken with respect to phase space
   plotted with {math}`x` on the horizontal axis. PALS uses this convention for all three modes.
   With it, the synchrotron tune `tune_c` is positive below transition and negative above
   transition.
+
+
+```{footbibliography}
+```
