@@ -100,12 +100,12 @@ Derivatives with respect to momentum are taken with respect to phase space
   If {math}`(q_1, q_x, q_y, q_z)` is the [spin quaternion](#s:spin) for one pass along the periodic
   orbit, then
   ```{math}
-    \nu_0 = 2 \, \text{atan2} \left( |(q_x, q_y, q_z)|, \, |q_1| \right), \qquad
+    \nu_0 = \frac{1}{\pi} \, \text{atan2} \left( |(q_x, q_y, q_z)|, \, |q_1| \right), \qquad
     {\bf n}_0 = \frac{\text{sign}(q_1)}{|(q_x, q_y, q_z)|} \, (q_x, q_y, q_z)
   ```
-  The spin tune is ambiguous in two ways. Adding any multiple of {math}`2\pi` gives an equally
+  The spin tune is ambiguous in two ways. Adding any integer gives an equally
   valid tune, and replacing {math}`{\bf n}_0` with {math}`-{\bf n}_0` changes the sign of the tune.
-  PALS resolves this by requiring the spin tune to be in the range {math}`[0, \pi]`, with
+  PALS resolves this by requiring the spin tune to be in the range {math}`[0, 0.5]`, with
   {math}`{\bf n}_0` chosen to match. The formulas above follow this convention.
   Discussion of the invariant spin field and the spin tune is found in
   Hoffstaetter {footcite:p}`Hoffstaetter:Polarized`.
@@ -116,7 +116,7 @@ Derivatives with respect to momentum are taken with respect to phase space
   orbit. For the `a` and `b` modes, this is the change in the [TwissP](#s:twiss.params) phases
   `phi_a` and `phi_b` from the start to the end of the branch. The tune includes the whole number
   of oscillations. For example, a mode that completes 10.3 oscillations per pass has a tune of
-  {math}`10.3 \cdot 2\pi \approx 64.72` radians. Also see `fractional_tune` above.
+  10.3. Also see `fractional_tune` above.
 
   A positive tune is a clockwise rotation in phase space, for example in the {math}`(x, p_x)` plane
   plotted with {math}`x` on the horizontal axis. PALS uses this convention for all three modes.
