@@ -271,7 +271,7 @@ to form an effective {math}`\bf S` which can then be used with Eq. {eq}`s330`.
 :name: f:floor.coords
 
 The branch coordinate system (purple), which is a function of {math}`s` along the branch reference
-curve, is described in the floor coordinate system (black) by a position {math}`(X(s), Y(s), Z(s))` and
+curve, is described in the floor coordinate system (black) by a position {math}`(X(s), Y(s), Z(s))`
 and by angles {math}`\theta(s)`, {math}`\phi(s)`, and {math}`\psi(s)`. The figure shows an
 orientation with positive {math}`\theta(s)`, {math}`\phi(s)`, and {math}`\psi(s)`.
 ```
@@ -344,23 +344,23 @@ orientation angles {math}`\theta`, {math}`\phi`, and {math}`\psi` via the formul
 where
 ```{math}
 :label: wtt0t
-  {\bf R}_{y}(\theta) &= 
+  {\bf R}_{y}(\alpha) &= 
   \begin{pmatrix}
-    \cos\theta  & 0 & \sin\theta \\
+    \cos\alpha  & 0 & \sin\alpha \\
     0           & 1 & 0          \\
-    -\sin\theta & 0 & \cos\theta 
+    -\sin\alpha & 0 & \cos\alpha 
   \end{pmatrix}, \\
-  {\bf R}_{x}(\phi) &= 
+  {\bf R}_{x}(\alpha) &= 
   \begin{pmatrix}
-    1 & 0 & 0                \\
-    0 & \cos\phi & -\sin\phi \\
-    0 & \sin\phi &  \cos\phi 
+    1 & 0          & 0           \\
+    0 & \cos\alpha & -\sin\alpha \\
+    0 & \sin\alpha &  \cos\alpha 
   \end{pmatrix}, \\
-  {\bf R}_{z}(\psi) &= 
+  {\bf R}_{z}(\alpha) &= 
   \begin{pmatrix}
-    \cos\psi & -\sin\psi & 0 \\
-    \sin\psi &  \cos\psi & 0 \\
-    0        &  0        & 1                
+    \cos\alpha & -\sin\alpha & 0 \\
+    \sin\alpha &  \cos\alpha & 0 \\
+    0          &  0          & 1                
   \end{pmatrix}
 ```
 Notice that these are Tait-Bryan angles and not Euler angles. Also notice that, with
