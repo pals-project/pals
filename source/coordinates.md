@@ -129,7 +129,7 @@ These coordinate frames are attached to the element and are part of the `element
 `Fiducial` elements only have a single coordinate frame that is tied to floor coordinates 
 and construction of the branch coordinate system starts at this coordinate system. 
 See [xxx](#s:fiducial) for more details.
-Note that `Girder` elements ([xxx](#s:girder)) also only have a single coordinate frame but they
+Note that `Girder` elements ([](#s:girder)) also only have a single coordinate frame but they
 are not included in any branch.
 
 Most element kinds have a "straight" geometry as shown in
@@ -627,15 +627,15 @@ misaligned element depends only on the offsets and is independent of the rotatio
 
 %-----------------------------------------------------------------------------
 (s:girder.mis)=
-### Girder Supported Element Misalignment Transformation
+### Girder-Supported Element Misalignment Transformation
 
 When an element is supported by a [`Girder`](#s:girder), the position and orientation of the element
-body is determined by both the `BodyShiftP` parameters of the `Girder` and the `BodyShiftP` parameters
-of the element (ignore for now the possibility that the `Girder` is supported by another `Girder`). 
-The `Girder` alignment shift is applied first and the element `BodyShiftP`
+body is determined by both the `BodyShiftP` parameters of the girder and the `BodyShiftP` parameters
+of the element (ignore for now the possibility that the girder is supported by another girder). 
+The girder alignment shift is applied first and the element `BodyShiftP`
 alignment shift is applied second. That is, the element `BodyShiftP` parameters are
 interpreted as a shift with respect to where the element would be if
-the only shift were the shift due to the `Girder`.
+the only shift were the shift due to the girder.
 The calculation proceeds as follows:
 
 Let {math}`({\bf V}_{E0}, {\bf W}_{E0})` be the unshifted (branch) frame of the 
@@ -649,8 +649,8 @@ as determined by the girder's [`CoordinateSetP`](#s:coordinate.set.params) param
 Girder rotations are about the origin {math}`{\bf V}_{G0}` of this frame.
 
 Let {math}`({\bf L}_E, {\bf S}_E)` be the element shift and let 
-{math}`({\bf L}_G, {\bf S}_G)` be the `Girder` shift as given by Eq. [](#swww2) using the 
-element's and `Girder`'s `BodyShiftP` parameters respectively.
+{math}`({\bf L}_G, {\bf S}_G)` be the girder shift as given by Eq. [](#swww2) using the 
+element's and girder's `BodyShiftP` parameters respectively.
 
 The position {math}`{\bf L}_{E|G}` and orientation {math}`{\bf S}_{E|G}` of the element body, 
 with the element shift but without the girder shift, expressed in the unshifted girder frame is
