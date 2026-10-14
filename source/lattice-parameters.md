@@ -67,7 +67,7 @@ Derivatives with respect to momentum are taken with respect to phase space
 
 - `normalized_emittance_a`, `normalized_emittance_b`, `normalized_emittance_c` [m]
 
-  The normal mode emittances scaled by the reference momentum:
+  The linear normal mode emittances scaled by the reference momentum:
   ```{math}
     \epsilon_N = \beta \gamma \, \epsilon = \frac{P_0}{m \, c} \, \epsilon
   ```
