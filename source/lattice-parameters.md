@@ -110,7 +110,7 @@ Derivatives with respect to momentum are taken with respect to phase space
 
 - `tune_a`, `tune_b`, `tune_c` [rad/2pi]
 
-  The normal mode tunes. The tune of a mode is its phase advance over one pass along the periodic
+  The normal mode linear tunes. The tune of a mode is its phase advance over one pass along the periodic
   orbit. For the `a` and `b` modes, this is the change in the [TwissP](#s:twiss.params) phases
   `phi_a` and `phi_b` from the start to the end of the branch. The tune includes the whole number
   of oscillations. For example, a mode that completes 10.3 oscillations per pass has a tune of
