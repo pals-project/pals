@@ -28,9 +28,9 @@ Derivatives with respect to momentum are taken with respect to phase space
 
 - `emittance_a`, `emittance_b`, `emittance_c` [m]
 
-  The normal mode emittances (also called eigen emittances) of the beam. If {math}`\Sigma` is the
+  The normal mode emittances (also called eigen emittances). If {math}`\Sigma` is the
   {math}`6 \times 6` matrix of second moments of the phase space coordinates
-  `(x, px, y, py, z, pz)` about the beam centroid, then the eigenvalues of {math}`\Sigma \, S` are
+  `(x, px, y, py, z, pz)`, then the eigenvalues of {math}`\Sigma \, S` are
   {math}`\pm i \epsilon_a`, {math}`\pm i \epsilon_b`, and {math}`\pm i \epsilon_c`, where
   {math}`S` is the block diagonal matrix
   ```{math}
