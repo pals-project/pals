@@ -39,7 +39,7 @@ set in the root `BeamLine`. See [](#s:beamline.components) for documentation of 
 (s:branch.expand)=
 ## Branch Expansion
 
-`Branch expansion` is the process, starting from the `root BeamLine`
+`Branch expansion` is the process, starting from the root `BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 That is, the definitions
 of any sublines are substituted into the branch and if the sublines have sublines, this process
@@ -52,21 +52,23 @@ element, this element is dropped from the branch line. The one exception that a 
 element must be at the start of a branch is if there is a `Fork` element forking to the beginning of the
 branch and `ForkP.propagete_reference` of the fork element is `true`. In this case, a `BeginningEle`
 element is not needed to set the beginning reference parameters of the branch but the first element
-must be an element that can be pointed to by a `Fork` element ([](#s:forking)).
+must be an element that can be pointed to by a `Fork` element (see [](#s:forking)).
 
-After a branch is expanded, a `Placeholder` element will be placed at the end to hold
-the final floor position and reference parameters (energy, species, etc.).
+After a branch is expanded, a PALS compliant parser will place a `Placeholder` element at the
+end to hold the final floor position and reference parameters (energy, species, etc.).
 This element will be called `branch_end`.
 
-Notes:
-- In any region of an expanded `Branch` where the elements are not directionally reversed, the elements
-must be ordered such that the longitudinal positions at the upstream end of the elements is ordered
-in increasing {math}`s`-position value. For a region where the elements are directionally
-reversed, the downstream end of the elements must be ordered in increasing {math}`s`-position.
+A PALS compliant parser will order lattice elements in a branch such that
+in any region of a `Branch` where the elements are not directionally reversed, the elements
+in the branch list will be ordered such that the longitudinal positions at the upstream end of the 
+elements are ordered in increasing {math}`s`-position. 
+Since element lengths vary from element to element, the downstream {math}`s`-positions may
+not be ordered.
+
+For a region where the elements are directionally
+reversed, the downstream end of the elements will be ordered in increasing {math}`s`-position.
 This mandate on element ordering ensures that the order of elements in a directionally reversed
 `BeamLine` is always the reverse of the order of elements in the non-reversed `BeamLine`.
-- The order of `BeamLine` definitions within a `facility` list does not affect the expansion.
-In particular, the definition of a subline can come after it's use.
 
 %---------------------------------------------------------------------------------------------------
 (s:lattice.expand)=
@@ -90,7 +92,7 @@ There is no distinction here between delayed evaluation and immediate evaluation
 Both are evaluated. Controllers are ignored here.
 
   Set commands can only act on the parameters that have been defined up to that point in the 
-  pre-expansion list. For example:
+  `facility` list. For example:
   ```{code} yaml
   PALS:
     facility:
