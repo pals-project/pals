@@ -59,17 +59,30 @@ PALS:
 
 Element parameters from one element may be inherited by another using an `inherit` node. Example:
 ```{code} yaml
-S2: 
-  kind: Sextupole
-  length: 0.45
-  MagneticMultipoleP:
-    Kn2L: 0.56
-    tilt2: 0.12
+facility:
+  - S2: 
+      kind: Sextupole
+      length: 0.45
+      MagneticMultipoleP:
+        Kn2L: 0.56
+         tilt2: expr(0.45 * h_planck)
 
-S3:
-  inherit: S2        # Inherits parameters from S2
-  length: 0.55       # And any inherited parameter may be modified.
+  - S3:
+      inherit: S2        # Inherits parameters from S2
+      length: 0.55       # And any inherited parameter may be modified.
+
+  - set:                 # A set of S2 parameter does not affect S3
+      parameter: s2>MagneticMultipoleP:Kn2L
+      value: 0.1 
+
 ```
+Both values and expressions are inherited. Inheritance does not affect when expressions are 
+evaluated (which will happen when the lattice is expanded).
+An element immediately inherits parameters. That is, the parameter values and/or expressions
+are immediately stored in the new element (`S3` in the above example) upon definition.
+This means that the element inherited from (`S2` in the above example) must have been defined previously.
+Additionally, after the inheritance is done, modifications of the element inherited from
+do not affect the element who inherited the parameters (inheritance does not link elements).
 Inheritance may also be done on the parameter group level. See [here](#s:inherit.params).
 
 To avoid confusion, lattice elements may not be redefined. That is, two lattice element definitions
