@@ -85,6 +85,7 @@ notation.md
 fundamentals.md
 names.md
 coordinates.md
+lattice-parameters.md
 lattice-elements.md
 lattice-element-kinds.md
 lattice-element-parameters.md
