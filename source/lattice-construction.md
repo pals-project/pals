@@ -58,10 +58,9 @@ After a branch is expanded, a PALS compliant parser will place a `Placeholder` e
 end to hold the final floor position and reference parameters (energy, species, etc.).
 This element will be called `branch_end`.
 
-A PALS compliant parser will order lattice elements in a branch such that
-in any region of a `Branch` where the elements are not directionally reversed, the elements
-in the branch list will be ordered such that the longitudinal positions at the upstream end of the 
-elements are ordered in increasing {math}`s`-position. 
+In any region of a `Branch` where the elements are not directionally reversed,
+a PALS-compliant parser will order the elements in the branch list such that
+the longitudinal positions at their upstream ends are in increasing {math}`s`-position.
 Since element lengths vary from element to element, the downstream {math}`s`-positions may
 not be ordered.
 
