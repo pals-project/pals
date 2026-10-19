@@ -144,11 +144,11 @@ factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
 random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
 random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
-int(x)                   # Nearest integer with magnitude less than x
+int(x)                   # Nearest integer with magnitude less than or equal to x
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
-floor(x)                 # Nearest integer less than x
-ceiling(x)               # Nearest integer greater than x
+floor(x)                 # Nearest integer less than or equal to x
+ceiling(x)               # Nearest integer greater than or equal to x
 modulo(a, p)             # a - floor(a/p) * p. Will be in range [0, p).
 mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 

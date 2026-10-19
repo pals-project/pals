@@ -11,6 +11,7 @@ to the following:
 - A name must start with a letter or the underscore character
 - A name cannot start with a digit
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
+- A name cannot be a [reserved word](#s:reserved).
 
 The exception is that particle species names, which are considered to be strings and not proper
 computer language variable names, follow the
