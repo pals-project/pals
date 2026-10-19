@@ -57,24 +57,36 @@ needs to use some syntax and this syntax is based upon YAML.
 YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
 
 %---------------------------------------------------------------------------------------------------
-(c:yaml101)=
-### YAML 101
+(c:data-structures)=
+### Representing Data Structures
 
-In particular, there are dictionaries, which are unordered sets of key-value pairs, e.g.:
+The examples below compare how dictionaries, lists, and nested data are written in YAML, JSON, TOML, Python, C++17, and Julia.
+For YAML, JSON, and TOML, each tab shows two layouts of the same data: an expanded layout with one item per line, and a compact layout that puts multiple items on a line.
+Expanded layouts are usually easier to read, especially for nested data.
+The Python, C++17, and Julia tabs show a single idiomatic form.
+
+Dictionaries are unordered sets of key-value pairs, e.g.:
 
 ::::{tab-set}
 
 :::{tab-item} YAML
 :sync: yaml
+**Expanded**
 ```{code} yaml
 this_dictionary:
   key1: value1
   key2: 2.0
   key3: true
 ```
+**Compact**
+```{code} yaml
+this_dictionary: { key1: value1, key2: 2.0, key3: true }
+```
 :::
+
 :::{tab-item} JSON
 :sync: json
+**Expanded**
 ```{code} json
 {"this_dictionary": {
   "key1": "value1",
@@ -82,16 +94,27 @@ this_dictionary:
   "key3": true
 }}
 ```
+**Compact**
+```{code} json
+{ "this_dictionary": { "key1": "value1", "key2": 2.0, "key3": true } }
+```
 :::
+
 :::{tab-item} TOML
 :sync: toml
+**Expanded**
 ```{code} toml
 [this_dictionary]
 key1 = "value1"
 key2 = 2.0
 key3 = true
 ```
+**Compact**
+```{code} toml
+this_dictionary = { key1 = "value1", key2 = 2.0, key3 = true }
+```
 :::
+
 :::{tab-item} Python
 :sync: python
 ```{code} python
@@ -102,6 +125,7 @@ key3 = true
 }}
 ```
 :::
+
 :::{tab-item} C++17
 :sync: cpp
 ```{code} c++
@@ -116,6 +140,7 @@ Dict this_dictionary = {
 };
 ```
 :::
+
 :::{tab-item} Julia
 :sync: julia
 ```{code} julia
@@ -131,21 +156,28 @@ this_dictionary = OrderedDict(
 
 ::::
 
-And lists, which are ordered sets of items, e.g.:
+Lists are ordered sets of items, e.g.:
 
 ::::{tab-set}
 
 :::{tab-item} YAML
 :sync: yaml
+**Expanded**
 ```{code} yaml
 this_list:
   - entry1
   - entry2
   - more_entries
 ```
+**Compact**
+```{code} yaml
+this_list: [entry1, entry2, more_entries]
+```
 :::
+
 :::{tab-item} JSON
 :sync: json
+**Expanded**
 ```{code} json
 {"this_list": [
   "entry1",
@@ -153,9 +185,15 @@ this_list:
   "more_entries"
 ]}
 ```
+**Compact**
+```{code} json
+{ "this_list": ["entry1", "entry2", "more_entries"] }
+```
 :::
+
 :::{tab-item} TOML
 :sync: toml
+**Expanded**
 ```{code} toml
 this_list = [
   "entry1",
@@ -163,7 +201,12 @@ this_list = [
   "more_entries"
 ]
 ```
+**Compact**
+```{code} toml
+this_list = ["entry1", "entry2", "more_entries"]
+```
 :::
+
 :::{tab-item} Python
 :sync: python
 ```{code} python
@@ -174,6 +217,7 @@ this_list = [
 ]}
 ```
 :::
+
 :::{tab-item} C++17
 :sync: cpp
 ```{code} c++
@@ -184,6 +228,7 @@ std::vector<std::string> this_list = {
 };
 ```
 :::
+
 :::{tab-item} Julia
 :sync: julia
 ```{code} julia
@@ -203,6 +248,7 @@ One can nest dictionaries into lists and other dictionaries, e.g.:
 
 :::{tab-item} YAML
 :sync: yaml
+**Expanded**
 ```{code} yaml
 this_list:
   - key1: value1
@@ -211,9 +257,15 @@ this_list:
       key3: value3
       key4: value4
 ```
+**Compact**
+```{code} yaml
+this_list: [{ key1: value1, key2: value2 }, { named_dictionary: { key3: value3, key4: value4 } }]
+```
 :::
+
 :::{tab-item} JSON
 :sync: json
+**Expanded**
 ```{code} json
 {"this_list": [
   {"key1": "value1",
@@ -224,9 +276,15 @@ this_list:
   }}
 ]}
 ```
+**Compact**
+```{code} json
+{ "this_list": [{ "key1": "value1", "key2": "value2" }, { "named_dictionary": { "key3": "value3", "key4": "value4" } }] }
+```
 :::
+
 :::{tab-item} TOML
 :sync: toml
+**Expanded**
 ```{code} toml
 [[this_list]]
 key1 = "value1"
@@ -237,7 +295,12 @@ key2 = "value2"
 key3 = "value3"
 key4 = "value4"
 ```
+**Compact**
+```{code} toml
+this_list = [{ key1 = "value1", key2 = "value2" }, { named_dictionary = { key3 = "value3", key4 = "value4" } }]
+```
 :::
+
 :::{tab-item} Python
 :sync: python
 ```{code} python
@@ -253,6 +316,7 @@ key4 = "value4"
 }
 ```
 :::
+
 :::{tab-item} C++17
 :sync: cpp
 ```{code} c++
@@ -264,6 +328,7 @@ std::vector<std::any> this_list = {
 };
 ```
 :::
+
 :::{tab-item} Julia
 :sync: julia
 ```{code} julia
