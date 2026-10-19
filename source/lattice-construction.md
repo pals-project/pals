@@ -50,7 +50,7 @@ branch line may only contain this one `BeginningEle` element. When expanding to 
 if a subline contains a `BeginningEle`
 element, this element is dropped from the branch line. The one exception that a `BeginningEle` 
 element must be at the start of a branch is if there is a `Fork` element forking to the beginning of the
-branch and `ForkP.propagete_reference` of the fork element is `true`. In this case, a `BeginningEle`
+branch and `ForkP.propagate_reference` of the fork element is `true`. In this case, a `BeginningEle`
 element is not needed to set the beginning reference parameters of the branch but the first element
 must be an element that can be pointed to by a `Fork` element (see [](#s:forking)).
 
