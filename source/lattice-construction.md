@@ -66,7 +66,7 @@ Since element lengths vary from element to element, the downstream {math}`s`-pos
 not be ordered.
 
 For a region where the elements are directionally
-reversed, the downstream end of the elements will be ordered in increasing {math}`s`-position.
+reversed, the downstream ends of the elements will be ordered in increasing {math}`s`-position.
 This mandate on element ordering ensures that the order of elements in a directionally reversed
 `BeamLine` is always the reverse of the order of elements in the non-reversed `BeamLine`.
 
