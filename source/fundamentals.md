@@ -438,7 +438,7 @@ through its element.
 (s:units)=
 ## Units
 
-PALS uses SI except for energy which uses `eV`.
+PALS uses the following units:
 ```{list-table} Units used by the Standard
 :width: 60%
 :header-rows: 1
@@ -469,7 +469,7 @@ PALS uses SI except for energy which uses `eV`.
   - Volts/m
 ```
 
-Exceptions where the units are radians/2pi are:
+Exceptions where the units are radians/2pi and not radians are:
 ```{code} yaml
 tune
 spin_tune
