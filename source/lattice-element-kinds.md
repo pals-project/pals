@@ -404,7 +404,6 @@ This element is used to connect lattice branches together.
 A `Fork` element has zero length and must always have a [`ForkP`](#s:fork.params) parameter group.
 Besides the `ForkP` documentation, see the [](#s:forking) section for more details.
 
-
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
@@ -418,10 +417,10 @@ Element parameter groups associated with this element kind are:
 (s:girder)=
 ### Girder Element
 
-A Girder element is a support structure that orients the elements that are attached to it in space. 
-This element can be used to simulate any rigid support structure 
+A `Girder` element is a support structure that orients the elements that are attached to it in space. 
+This element can be used to simulate any rigid support structure.
  
-Girder elements live outside of the expanded lattice tree. In a PALS file, the girder elements
+`Girder` elements live outside of the expanded lattice tree. In a PALS file, the girder elements
 are specified in a `girders` node underneath the `PALS` node. Example:
 ```{code} yaml
 PALS:
@@ -435,25 +434,25 @@ PALS:
 In this example, a girder called `support1` supports lattice elements `Q1` and `Q5` and all
 elements in between plus an element called `sy7`.
 
-`Girders` can support other `Girders` which can in turn can support other `Girders`, etc.
-The one restrictions is that a circular chain of support is forbidden.
+A `Girder` can support other `Girder` elements, which can in turn support other `Girder` elements, etc.
+The one restriction is that a circular chain of support is forbidden.
 
 How a `Girder` moves supported elements is as follows: 
 The "nominal" orientation of a `Girder` is determined by the settings of the `CoordinateSetP`
-parameter group. The settings of the `BodyShiftP` group then determine the change is position
-and orientation of the girder `Girder` in the coordinate system set by the `CoordinateSetP`
+parameter group. The settings of the `BodyShiftP` group then determine the change in position
+and orientation of the `Girder` in the coordinate system set by the `CoordinateSetP`
 parameters. This change in position and orientation can then be applied to all the supported elements
 as documented in [](#s:girder.mis).
 
-Note: Girders do not have a `length` nor an `s_position`.
+Note: `Girder` elements do not have a `length` nor an `s_position`.
 
 Element parameter groups associated with this element kind are:
 - [**CoordinateSetP**](#s:coordinate.set.params): Sets coordinates used with `BodyShiftP`.
 - [**BodyShiftP**](#s:bodyshift.params): Orientation of element.
-- [**FloorP**](#s:floor.params): Floor position and orientation without any `CoordinateSetP` or supporting `Girder` alignment shifts.
-- [**GirderP**](#s:girder.params): List of supported elements..
+- [**FloorP**](#s:floor.params): Floor position and orientation without any `BodyShiftP` or supporting `Girder` alignment shifts.
+- [**GirderP**](#s:girder.params): List of supported elements.
 - [**MetaP**](#s:meta.params): Meta parameters.
-- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `CoordinateSetP` and/or `Girder` alignment shifts included.
+- [**ShiftedFloorP**](#s:shifted.floor.params): Floor position and orientation with `BodyShiftP` and/or supporting `Girder` alignment shifts included.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=

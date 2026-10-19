@@ -43,7 +43,6 @@ SC members can resign or be removed by majority vote, e.g., due to inactivity, b
 - David Sagan
 - Ji Qiang
 - Chad Mitchell
-- Axel Huebl
 - Edoardo Zoni
 
 ### Role

@@ -22,7 +22,7 @@ PALS:
   version:                  # [string] Version of the PALS schema used in this file.
 ```
 The `adjustments` list is documented in section [](#s:adjust).
-The `girders` list is documented with the [`Girders`](#s:girder) element documentation.
+The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
 
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
