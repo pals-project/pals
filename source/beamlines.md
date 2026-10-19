@@ -13,7 +13,7 @@ Each element of a `BeamLine` is either a lattice element or another `BeamLine`.
   of the containing BeamLine.
 - Since [branch expansion](#s:branch.expand) happens after the [`facility`](#s:facility) list has been read,
   the order of `BeamLine` definitions within a `facility` list is not important.
-  In particular, the definition of a subline can come after it's use as a subline in a different `BeamLine`.
+  In particular, the definition of a subline can come after its use as a subline in a different `BeamLine`.
 
 The components of a BeamLine are:
 ```{code} yaml
