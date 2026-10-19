@@ -9,8 +9,8 @@ A lattice [`branch`](#s:branches.intro) is constructed from a `BeamLine`. A Beam
 an ordered array of elements. 
 Each element of a `BeamLine` is either a lattice element or another `BeamLine`. 
 - The top level `BeamLine` from which a branch is constructed is called a root `BeamLine`. 
-- A BeamLine that is contained within another BeamLine is called a `subline`
-  of the containing BeamLine.
+- A `BeamLine` that is contained within another `BeamLine` is called a `subline`
+  of the containing `BeamLine`.
 - Since [branch expansion](#s:branch.expand) happens after the [`facility`](#s:facility) list has been read,
   the order of `BeamLine` definitions within a `facility` list is not important.
   In particular, the definition of a subline can come after its use as a subline in a different `BeamLine`.
