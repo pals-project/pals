@@ -53,7 +53,7 @@ PALS:
         kind: BeamLine
         line:
           - thingT:     # An element defined within a line.
-             kind: Marker
+              kind: Marker
           ...
 ```
 
@@ -65,7 +65,7 @@ facility:
       length: 0.45
       MagneticMultipoleP:
         Kn2L: 0.56
-         tilt2: expr(0.45 * h_planck)
+        tilt2: expr(0.45 * h_planck)
 
   - S3:
       inherit: S2        # Inherits parameters from S2
