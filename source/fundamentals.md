@@ -336,7 +336,7 @@ lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` eleme
 (s:units)=
 ## Units
 
-PALS uses SI except for energy which uses `eV`.
+PALS uses the following units:
 ```{list-table} Units used by the Standard
 :width: 60%
 :header-rows: 1
@@ -365,6 +365,13 @@ PALS uses SI except for energy which uses `eV`.
   - Hz
 * - electric field
   - Volts/m
+```
+
+Exceptions where the units are radians/2pi and not radians are:
+```{code} yaml
+tune
+spin_tune
+chromaticity
 ```
 
 %---------------------------------------------------------------------------------------------------
