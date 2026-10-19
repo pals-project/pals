@@ -9,7 +9,6 @@ The components of the `ForkP` group are:
 ForkP:
   to_line                    # [string] Required. Name of branch or beam line to fork to.
   destination_element        # [string] Destination element to fork to. Default is the beginning element.
-  direction: FORWARDS        # [enum] Longitudinal Direction of travel of injected beam.
   new_branch: SELF           # [string] Name to give newly created destination branch.
   propagate_reference: true  # [logical] Propagate reference species and energy.
   forked_to:                 # [string] Output parameter. Name of the destination element.
@@ -39,19 +38,6 @@ if and only if the destination element is the beginning element of a new branch 
 the `propagate_reference` component is set to `true`. If the destination element is not
 the beginning element, `propagate_reference` is ignored and no reference parameters are
 propagated.
-
-The possible values of the optional `direction` switch are:
-```{code} yaml
-FORWARDS            # Injected particle propagates in the forward (+s) direction. Default.
-BACKWARDS           # Injected particle propagates in the backward (-s) direction.
-```
-
-The `direction` component of `ForkP` indicates the direction that a particle moving into
-the forked-to branch will travel. If `direction` is set to `FORWARDS` (the default)
-the direction of travel is downstream (`+s`-direction) and vice versa if `direction` is set to
-`BACKWARDS`. Note: It does not make sense to have `direction` set to `BACKWARDS` if the
-destination element is the beginning element. Similarly, it does not make sense to have `direction`
-set to `FORWARDS` if the destination element is the end element in the branch.
 
 Example `Fork` element:
 ```{code} yaml
