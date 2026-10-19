@@ -21,7 +21,8 @@ PALS:
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file.
 ```
-The `girders` node is documented with the [`Girders` element](#s:girder) documentation.
+The `adjustments` list is documented in section [](#s:adjust).
+The `girders` list is documented with the [`Girders`](#s:girder) element documentation.
 
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.

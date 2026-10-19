@@ -42,7 +42,7 @@ These element parameters are:
   name: ""              # [string] The name of element.
   s_position: 0         # [m] The longitudinal position of the element in the branch curvilinear coordinate system. 
 ```
-The `s_position` is generally an output parameter except for the beginning element of a branch where
+The `s_position` is generally an [output parameter](#s:io.params) except for the beginning element of a branch where
 it is an input parameter.
 
 Example:
