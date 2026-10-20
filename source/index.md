@@ -34,7 +34,6 @@ What PALS is, what it is not, and how simulation programs interact with a PALS f
 :link: top-level
 :link-type: doc
 
-Core concepts, notation, and coordinate conventions used throughout the schema.
 This section introduces the PALS root object, the `facility` and `post_expansion` lists, and combining files with `include` and `load`.
 :::
 
