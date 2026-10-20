@@ -30,11 +30,11 @@ lattice. PALS itself does not perform simulations or tracking; it is the standar
 What PALS is, what it is not, and how simulation programs interact with a PALS file.
 :::
 
-:::{grid-item-card} 📐 Fundamentals
-:link: fundamentals
+:::{grid-item-card} 📐 Top Level Structure
+:link: top-level
 :link-type: doc
 
-Core concepts, notation, and coordinate conventions used throughout the schema.
+This section introduces the PALS root object, the `facility` and `post_expansion` lists, and combining files with `include` and `load`.
 :::
 
 :::{grid-item-card} 🧩 Lattice Elements
@@ -82,8 +82,9 @@ definitions.md
 :caption: Schema
 
 notation.md
-fundamentals.md
+top-level.md
 names.md
+parameter-values-and-controllers.md
 coordinates.md
 lattice-elements.md
 lattice-element-kinds.md
@@ -92,7 +93,6 @@ lattice-element-parameter-groups.md
 beamlines.md
 lattice-construction.md
 multipass.md
-miscellaneous.md
 ```
 
 ```{toctree}
