@@ -1,5 +1,5 @@
-(c:fundamentals)=
-# Fundamental Structure
+(c:top.level)=
+# Top Level Structure
 
 %---------------------------------------------------------------------------------------------------
 (s:palsroot)=
@@ -21,6 +21,7 @@ PALS:
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file.
 ```
+The `adjustments` list is documented in section [](#s:adjust).
 The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
 
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
@@ -64,7 +65,7 @@ Per author, the `name` is required; the `orcid`, `affiliation` and `email` field
 
 %---------------------------------------------------------------------------------------------------
 (s:facility)=
-## `facility` and `post_expansion`
+## facility and post_expansion
 
 Constructing the lattice can be divided into two phases. 
 The first, "pre-expansion", phase basically involves defining lattice elements, controllers, 
@@ -107,14 +108,6 @@ have the same value of `Kn1L`.
 The set of node types that can be used under the `post_expansion` node is the same as the
 `facility` node except for `lattice` and `use` nodes.
 
-%---------------------------------------------------------------------------------------------------
-(s:parameters)=
-## Parameters
-
-All parameters (both element parameters and non-element parameters) are optional unless 
-explicitly stated otherwise.
-Optional real or integer parameters have a default value of zero unless otherwise stated.
-Optional string parameters have a default value of blank unless otherwise stated.
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
@@ -331,167 +324,3 @@ line coordinate system to the AGS coordinate system. The `Patch` element is foll
 element at the end to connect to the AGS. 
 The `Combined_Inject_and_AGS` lattice will have this extended transfer line and when the full 
 lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` element. 
-
-%---------------------------------------------------------------------------------------------------
-(s:units)=
-## Units
-
-PALS uses SI except for energy which uses `eV`.
-```{list-table} Units used by the Standard
-:width: 60%
-:header-rows: 1
-
-* - Quantity
-  - Units
-* - charge
-  - fundamental charge
-* - length
-  - meters
-* - time
-  - seconds
-* - energy
-  - eV
-* - momentum
-  - eV/c
-* - mass
-  - eV/c^2
-* - voltage
-  - Volts
-* - angles and phases
-  - radians
-* - magnetic field
-  - Tesla
-* - frequency
-  - Hz
-* - electric field
-  - Volts/m
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:constants)=
-## Constants and Variables
-
-Constants defined by PALS:
-```{code} yaml
-pi                        # [-] Pi
-twopi                     # [-] 2*pi
-c_light                   # [ m/sec] Speed of light
-h_planck                  # [eV*sec] Planck's constant
-hbar                      # [eV*sec] Reduced Planck's constant
-k_boltzmann               # [eV/K] Boltzmann's constant
-r_electron                # [m] Classical electron radius
-r_proton                  # [m] Classical proton radius
-e_charge                  # [Coul] Elementary charge
-mu_0                      # [eV*sec^2/m] Vacuum permeability
-epsilon_0                 # [1/eV*m] Permittivity of free space
-classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c^2)
-fine_structure            # [-] Fine structure constant
-n_avogadro                # [-] Avogadro's constant
-```
-The `classical_radius_factor` is a useful number when converting a formula that involves the classical
-electron or proton radius to a formula for something other than an electron or proton.
-
-Other constants and variables may be defined using `constant` or `variable` as the `kind`.
-The parameters associated with a constant or variable are:
-```{code} yaml
-  absolute_error: 0       # Absolute error.       
-  relative_error: 0       # Relative error.
-  value                   # Constant or variable value.
-```
-If both `absolute_error` and `relative_error` are specified, 
-the true error is `absolute_error + relative_error * |value|`.
-
-Constants and variables must be defined directly under the `PALS` node or the `facility` node. 
-Example:
-```{code} yaml
-PALS:
-  facility:
-    - my_const:
-        kind: constant
-        value: 1.45 * c_light
-        relative_error: 0.02
-    - my_var:
-        kind: variable
-        value: 37
-    ...
-```
-
-For constants or variables that only have a value, an alternative compact form has the syntax:
-```{code} yaml
-  - constants:
-      - const_a: value_a        # Define const_a
-      - const_b: value_b        # Define const_b
-      - const_c: pi * const_a   # Can use expressions.
-      ...
-  - variables:
-      - var_a: var_val_a        # Define var_a
-      ...
-```
-The difference between a constant and a variable is one of intent of the PALS file creator.
-That is, a constant is not supposed to be
-varied after a program reads a PALS file, while a variable can vary. For example, a constant could
-be the length of a magnet which will not change, while a variable could be a magnet strength which
-does vary.
-When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
-That is, the following is not valid:
-```{code} yaml
-- variables:
-    - my_var: 37.5
-
-...
-
-- variables:
-    - my_var: 0.13     # VALUE CHANGE NOT VALID!
-```
-It is sometimes convenient when there are include PALS files, to define the same constant or variable
-in multiple files. Multiple definitions of the same constant or variable are allowed with the 
-restriction that the value is always the same.
-
-Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
-`b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
-involve `a` nor `b`.
-
-%---------------------------------------------------------------------------------------------------
-(s:functions)=
-## Functions
-
-Functions that can be used in [](#s:expressions):
-```{code} yaml
-sqrt(x)                  # Square Root
-log(x)                   # Logarithm
-exp(x)                   # Exponential
-sin(x), cos(x)           # Sine and cosine
-tan(x), cot(x)           # Tangent and cotangent
-sinc(x)                  # Sin(x)/x Function
-asin(x), acos(x)         # Arc sine and Arc cosine
-atan(x)                  # Arc tangent
-atan2(y, x)              # Arc tangent of y/x
-sinh(x), cosh(x)         # Hyperbolic sine and cosine
-tanh(x), coth(x)         # Hyperbolic tangent and cotangent
-asinh(x), acosh(x)       # Hyperbolic arc sine and Arc cosine
-atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
-abs(x)                   # Absolute Value
-factorial(n)             # Factorial
-random()                 # Uniform random number between 0 and 1
-random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
-random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
-int(x)                   # Nearest integer with magnitude less than x
-nint(x)                  # Nearest integer to x
-sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
-floor(x)                 # Nearest integer less than x
-ceiling(x)               # Nearest integer greater than x
-modulo(a, p)             # a - floor(a/p) * p. Will be in range [0, p).
-mass_of(A)               # Mass of particle A
-charge_of(A)             # Charge, in units of the elementary charge, of particle A 
-anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:expressions)=
-## Mathematical Expressions
-
-Mathematical expressions can be used in place of any real value.
-The expressions can involve the functions listed in the [Functions](#s:functions) section,
-constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
-[Lattice element parameter](#s:parameter.matching) values can also be incorporated.
-
