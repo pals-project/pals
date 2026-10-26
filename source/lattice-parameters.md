@@ -9,9 +9,6 @@ represents vertical motion.
 The `c`-mode is identified as the longitudinal (synchrotron) mode. 
 See [TwissP](#s:twiss.params) for more on the normal mode decomposition.
 
-Except for the emittances, these parameters are properties of a [periodic](#s:beamline.components)
-branch such as a storage ring.
-
 Derivatives with respect to momentum are taken with respect to phase space
 {math}`p_z` (See [`phase_space_coordinates`](#s:phase.space)).
 
