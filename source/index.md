@@ -86,6 +86,7 @@ top-level.md
 names.md
 parameter-values-and-controllers.md
 coordinates.md
+lattice-parameters.md
 lattice-elements.md
 lattice-element-kinds.md
 lattice-element-parameters.md
