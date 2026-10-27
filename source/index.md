@@ -110,6 +110,7 @@ dispersion.md
 :hidden:
 :caption: Software Ecosystem
 
+converters.md
 tools.md
 ```
 
