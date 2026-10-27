@@ -76,7 +76,7 @@ as appropriate (see below). Similarly for `e2_rect` and `e2`.
 ### `BendP` parameters
 
 **Note:** In the equations below, {math}`q` is the charge of the reference particle 
-and {math}`p_0` is the reference momentum.
+and {math}`P_0` is the reference momentum.
 
 - **angle_ref**
 
@@ -87,13 +87,16 @@ bend towards negative {math}`x` as shown in {numref}`f:bend`.
 - **Bn0_ref**
 
   The `Bn0_ref` parameter is the reference magnetic bending field which is the field
-that is needed for the reference particle to be bent in a circle of radius `radius_ref`.
-The direction of the reference bend field is along the {math}`y`-axis.
+  that is needed for the reference particle to be bent in a circle of radius `radius_ref`.
+  The direction of the reference bend field is along the {math}`y`-axis.
   ```{math}
   :label: bff
 
-  \text{Bn0\_ref} = \frac{p_0}{q} \cdot \text{g\_ref}
+  \text{Bn0\_ref} = \frac{P_0}{q} \cdot \text{g\_ref}
   ```
+  If `Bn0_ref` is specified in the PALS file, and a simulation program varies {math}`P_0`,
+  the value of `Bn0_ref` should remain constant and `g_ref` calculated appropriately from
+  the above equation.
 %
 - **e1, e2**
 
@@ -165,12 +168,16 @@ A positive `g_ref`, corresponds to the reference orbit bending in the {math}`-x`
   ```{math}
   :label: gqpb
 
-  \text{g\_ref} = \frac{q}{p_0} \cdot \text{Bn0\_ref}
+  \text{g\_ref} = \frac{q}{P_0} \cdot \text{Bn0\_ref}
   ```
+  If `g_ref` is specified in the PALS file, and a simulation program varies {math}`P_0`,
+  the value of `g_ref` should remain constant and `Bn0_ref` calculated appropriately from
+  the above equation.
+
   One common mistake when creating orbit bumps using a bend is to vary
-`g_ref`. For this, `Kn0` should be varied.
-The reason why changing `g_ref` is wrong is that variations in `g_ref` will change the 
-[branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.
+  `g_ref`. For this, `Kn0` should be varied.
+  The reason why changing `g_ref` is wrong is that variations in `g_ref` will change the 
+  [branch reference orbit](#s:ref.construct) and hence will move all downstream lattice elements in space.
 %
 - **h1, h2**
 

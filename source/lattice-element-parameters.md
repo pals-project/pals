@@ -36,19 +36,14 @@ There are element parameters that are common and do not naturally fit into
 any of the parameter groups. These parameters are not grouped. 
 These element parameters are:
 ```{code} yaml
-  field_master: null    # [logical] See Below.
   is_on: true           # [logical] Turns on or off the fields in an element. When off, the element looks like a drift.
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.
   s_position: 0         # [m] The longitudinal position of the element in the branch curvilinear coordinate system. 
 ```
-The `s_position` is generally an output parameter except for the beginning element of a branch where
+The `s_position` is generally an [output parameter](#s:io.params) except for the beginning element of a branch where
 it is an input parameter.
-
-The setting of `field_master` matters when there is a change in reference energy during a simulation.
-In this case, if `field_master` is `true`, magnetic multipoles, RF, and Bend unnormalized fields will be held constant
-and normalized field strengths will be varied. And vice versa when `field_master` is `false`. 
 
 Example:
 ```{code} yaml
@@ -116,16 +111,3 @@ For an element to inherit all parameter groups from another element, just inheri
     kind: Quadrupole
     inherit: q2
 ```
-
-%---------------------------------------------------------------------------------------------------
-(s:io.params)=
-## User Settable (Input) and Dependent (Output) parameters.
-
-Some parameters are set in the PALS file. These parameters are called "User settable" or "input". 
-Some parameters will be computed by the Translator during lattice expansion. These parameters are called "dependent" or "output" parameters. There is a third class of parameters that can be an input
-parameter if it is set in the PALS file or will be an output parameter if not set.
-
-For example, the `FloorP` parameters can be set for the `BeginningEle` element which is the
-first element of any branch line. For most other elements, the `FloorP` parameters can
-be calculated starting at the `BeginningEle` and working forward computing the floor parameters
-element-by-element.

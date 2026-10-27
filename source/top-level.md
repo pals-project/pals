@@ -1,29 +1,34 @@
-(c:fundamentals)=
-# Fundamental Structure
+(c:top.level)=
+# Top Level Structure
 
 %---------------------------------------------------------------------------------------------------
 (s:palsroot)=
 ## PALS Root Object
 
 The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
-```{code} YAML
+```{code} yaml
 PALS:
-  authors:                  # [list] Authors associated with this file
+  adjustments:              # [list] Lattice parameter adjustments after lattice expansion.
+  authors:                  # [list] Authors associated with this file.
   extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
+  girders:                  # [Dict] Girder elements.
   include:                  # [string] Optional literal insert of a file
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
-  phase_space_coordinates:  # [enum] Type of phase space coordinates 
+  phase_space_coordinates:  # [enum] Type of phase space coordinates.
   post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
-  version:                  # [string] Version of the PALS schema used in this file
+  version:                  # [string] Version of the PALS schema used in this file.
 ```
+The `adjustments` list is documented in section [](#s:adjust).
+The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
+
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
 
 Example:
-```{code} YAML
+```{code} yaml
 PALS:
   version: null  # version schema: defined later
 
@@ -60,7 +65,7 @@ Per author, the `name` is required; the `orcid`, `affiliation` and `email` field
 
 %---------------------------------------------------------------------------------------------------
 (s:facility)=
-## `facility` and `post_expansion`
+## facility and post_expansion
 
 Constructing the lattice can be divided into two phases. 
 The first, "pre-expansion", phase basically involves defining lattice elements, controllers, 
@@ -103,14 +108,6 @@ have the same value of `Kn1L`.
 The set of node types that can be used under the `post_expansion` node is the same as the
 `facility` node except for `lattice` and `use` nodes.
 
-%---------------------------------------------------------------------------------------------------
-(s:parameters)=
-## Parameters
-
-All parameters (both element parameters and non-element parameters) are optional unless 
-explicitly stated otherwise.
-Optional real or integer parameters have a default value of zero unless otherwise stated.
-Optional string parameters have a default value of blank unless otherwise stated.
 
 %---------------------------------------------------------------------------------------------------
 (s:includefiles)=
@@ -120,7 +117,7 @@ A PALS file can rely on includes from other files using the `include` command.
 Included file data will be included verbatim at the current level of nesting.
 
 Example:
-```{code} YAML
+```{code} yaml
 PALS:
   include: "version-and-globals.subpals.yaml"
 
@@ -137,11 +134,11 @@ PALS:
 ```
 The information in an included file is inserted at the `include` point. In this example,
 the included file `version-and-globals.subpals.yaml` could look like, for example:
-```{code} YAML
+```{code} yaml
 version: null  # version schema: defined later
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
-```{code} YAML
+```{code} yaml
 MagneticMultipoleP:
   Kn3L: 0.3
 ```
@@ -327,280 +324,3 @@ line coordinate system to the AGS coordinate system. The `Patch` element is foll
 element at the end to connect to the AGS. 
 The `Combined_Inject_and_AGS` lattice will have this extended transfer line and when the full 
 lattice is constructed, the `AGS_ring` will be pulled in due to the `Fork` element. 
-
-%---------------------------------------------------------------------------------------------------
-(s:names)=
-## Names
-
-Many constructs in the standard like lattice elements, branches, parameter groups, etc., may have
-an associated name. To ensure seamless translation to particular languages, all names must conform
-to the following:
-- A name must start with a letter or the underscore character
-- A name cannot start with a number
-- A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
-
-The exception is that particle species names, which are considered to be strings and not proper
-computer language variable names, follow the
-[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
-Examples:
-```{code} yaml
-charge_of("#3He+2")          # Helium with atomic number three.
-mass_of("anti-proton")       # Notice the dash.
-my_particle: "Au+79"         # Assign a species to a variable or constant.
-charge_of(my_particle)       # The variable or constant can be used in an equation.
-```
-Notice that particle names must be quoted.
-
-%---------------------------------------------------------------------------------------------------
-(s:name.matching)=
-(s:parameter.matching)=
-## Name Matching
-
-Name matching is the process of finding the set of named constructs — lattice
-elements, element parameter groups, element parameters, constants, variables,
-etc. — that a given string is matched to. PALS defines a standard syntax for this.
-
-At its simplest, a string is matched against the `name` of a construct. For
-example, `qa.*` matches every element (or constant, variable, ...) whose name
-begins with `qa`. Names may be [PCRE2](https://www.pcre.org/) regular
-expressions. Regex matching is a whole-name (fully anchored) match — the pattern
-must match the entire name — so `qa.*` matches any name beginning with `qa`,
-while `qa` on its own matches only the exact name `qa`.
-
-Name matches may be restricted to a given construct kind using the notation
-```{code} yaml
-{kind}::{name}
-```
-where `{kind}` is the construct kind — for example a lattice element kind such as
-`Marker`, or a non-element kind such as `Controller` — and `{name}` is the name
-match. Example:
-```{code} yaml
-Marker::bpm.
-```
-This will match to all `Marker` elements whose name is four characters starting with `bpm`
-(since a dot matches to any single character).
-
-Element parameters are matched by appending the parameter path to an element name
-match, using a single `>` as the separator. A parameter that belongs to a
-[parameter group](#s:param.groups) is matched using the group path:
-```{code} text
-{element-name}>{parameter-group}.{sub-group1}. ... .{sub-groupN}.{parameter}
-```
-while a parameter that is not in any group — for example `length`, `is_on`, or
-the element kind (see [Non-Group Parameters](#s:non.params)) — is matched
-directly:
-```{code} text
-{element-name}>{parameter}
-```
-where
-```{code} yaml
-{element-name}                  # Element name match, see below.
-{parameter-group}               # Parameter group name (for grouped parameters).
-{sub-group1}. ... .{sub-groupN} # Subgroups if they exist.
-{parameter}                     # Parameter name.
-```
-The `{element-name}` component is any element name match from
-[Element Name Matching](#s:element.matching) — including its kind (`::`),
-BeamLine/Branch (`>>`), and Lattice (`>>>`) qualifiers. The parameter path
-following the `>` is, unlike element names, matched exactly rather than with
-PCRE2; the dots within it are therefore unambiguous, and the single `>`
-separator is distinct from the `>>` and `>>>` qualifiers that may appear inside
-`{element-name}`.
-
-Example:
-```{code} yaml
-qa.*>MagneticMultipoleP.Ks2L
-Quadrupole::qa.*>MagneticMultipoleP.Ks2L
-Q1>length
-```
-The first line matches the `Ks2L` component of `MagneticMultipoleP` for all
-elements whose name begins with `qa`. The second is the same but restricted to
-elements of kind `Quadrupole`. The third matches the ungrouped `length`
-parameter of the element `Q1`.
-
-A trailing part of the path may be dropped to match the enclosing construct
-instead of a parameter: omit `{parameter}` to match a parameter group, or omit
-the `>{parameter-group}...` entirely to match the element itself. Example:
-```{code} yaml
-qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
-qa.*                       # Match the element.
-Controller::cd.t           # Match all Controllers whose four-character name starts with `cd` and ends with `t`.
-```
-
-Constructs that are not element parameters are matched by name in the same way.
-Top-level [constants and variables](#s:constants) are matched directly, with no
-`>`-qualified path. A variable that is owned by a controller, however, is matched
-through its controller using the same single `>` separator —
-`{controller-name}>{variable-name}` — just as an element parameter is reached
-through its element.
-
-%---------------------------------------------------------------------------------------------------
-(s:units)=
-## Units
-
-PALS uses the following units:
-```{list-table} Units used by the Standard
-:width: 60%
-:header-rows: 1
-
-* - Quantity
-  - Units
-* - charge
-  - fundamental charge
-* - length
-  - meters
-* - time
-  - seconds
-* - energy
-  - eV
-* - momentum
-  - eV/c
-* - mass
-  - eV/c^2
-* - voltage
-  - Volts
-* - angles and phases
-  - radians
-* - magnetic field
-  - Tesla
-* - frequency
-  - Hz
-* - electric field
-  - Volts/m
-```
-
-Exceptions where the units are radians/2pi and not radians are:
-```{code} yaml
-tune
-spin_tune
-chromaticity
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:constants)=
-## Constants and Variables
-
-Constants defined by PALS:
-```{code} yaml
-pi                        # [-] Pi
-twopi                     # [-] 2*pi
-c_light                   # [ m/sec] Speed of light
-h_planck                  # [eV*sec] Planck's constant
-hbar                      # [eV*sec] Reduced Planck's constant
-k_boltzmann               # [eV/K] Boltzmann's constant
-r_electron                # [m] Classical electron radius
-r_proton                  # [m] Classical proton radius
-e_charge                  # [Coul] Elementary charge
-mu_0                      # [eV*sec^2/m] Vacuum permeability
-epsilon_0                 # [1/eV*m] Permittivity of free space
-classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c^2)
-fine_structure            # [-] Fine structure constant
-n_avogadro                # [-] Avogadro's constant
-```
-The `classical_radius_factor` is a useful number when converting a formula that involves the classical
-electron or proton radius to a formula for something other than an electron or proton.
-
-Other constants and variables may be defined using `constant` or `variable` as the `kind`.
-The parameters associated with a constant or variable are:
-```{code} yaml
-  absolute_error: 0       # Absolute error.       
-  relative_error: 0       # Relative error.
-  value                   # Constant or variable value.
-```
-If both `absolute_error` and `relative_error` are specified, 
-the true error is `absolute_error + relative_error * |value|`.
-
-Constants and variables must be defined directly under the `PALS` node or the `facility` node. 
-Example:
-```{code} yaml
-PALS:
-  facility:
-    - my_const:
-        kind: constant
-        value: 1.45 * c_light
-        relative_error: 0.02
-    - my_var:
-        kind: variable
-        value: 37
-    ...
-```
-
-For constants or variables that only have a value, an alternative compact form has the syntax:
-```{code} yaml
-  - constants:
-      - const_a: value_a        # Define const_a
-      - const_b: value_b        # Define const_b
-      - const_c: pi * const_a   # Can use expressions.
-      ...
-  - variables:
-      - var_a: var_val_a        # Define var_a
-      ...
-```
-The difference between a constant and a variable is one of intent of the PALS file creator.
-That is, a constant is not supposed to be
-varied after a program reads a PALS file, while a variable can vary. For example, a constant could
-be the length of a magnet which will not change, while a variable could be a magnet strength which
-does vary.
-When a PALS file is read in, neither constants nor variables may be redefined to have a different value. 
-That is, the following is not valid:
-```{code} yaml
-- variables:
-    - my_var: 37.5
-
-...
-
-- variables:
-    - my_var: 0.13     # VALUE CHANGE NOT VALID!
-```
-It is sometimes convenient when there are include PALS files, to define the same constant or variable
-in multiple files. Multiple definitions of the same constant or variable are allowed with the 
-restriction that the value is always the same.
-
-Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
-`b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
-involve `a` nor `b`.
-
-%---------------------------------------------------------------------------------------------------
-(s:functions)=
-## Functions
-
-Functions that can be used in [](#s:expressions):
-```{code} yaml
-sqrt(x)                  # Square Root
-log(x)                   # Logarithm
-exp(x)                   # Exponential
-sin(x), cos(x)           # Sine and cosine
-tan(x), cot(x)           # Tangent and cotangent
-sinc(x)                  # Sin(x)/x Function
-asin(x), acos(x)         # Arc sine and Arc cosine
-atan(x)                  # Arc tangent
-atan2(y, x)              # Arc tangent of y/x
-sinh(x), cosh(x)         # Hyperbolic sine and cosine
-tanh(x), coth(x)         # Hyperbolic tangent and cotangent
-asinh(x), acosh(x)       # Hyperbolic arc sine and Arc cosine
-atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
-abs(x)                   # Absolute Value
-factorial(n)             # Factorial
-random()                 # Uniform random number between 0 and 1
-random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
-random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
-int(x)                   # Nearest integer with magnitude less than x
-nint(x)                  # Nearest integer to x
-sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
-floor(x)                 # Nearest integer less than x
-ceiling(x)               # Nearest integer greater than x
-modulo(a, p)             # a - floor(a/p) * p. Will be in range [0, p).
-mass_of(A)               # Mass of particle A
-charge_of(A)             # Charge, in units of the elementary charge, of particle A 
-anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
-```
-
-%---------------------------------------------------------------------------------------------------
-(s:expressions)=
-## Mathematical Expressions
-
-Mathematical expressions can be used in place of any real value.
-The expressions can involve the functions listed in the [Functions](#s:functions) section,
-constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
-[Lattice element parameter](#s:parameter.matching) values can also be incorporated.
-
