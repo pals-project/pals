@@ -65,10 +65,9 @@ is just treated as zero for a closed branch.
 Note: For a periodic branch with RF on, it is possible to define dispersions. If {math}`{\bf v}` is
 the eigenvector of the eigenmode associated with longitudinal oscillations, the dispersion {math}`\eta_x`
 can be defined by {math}`{\bf v}(1) / {\bf v}(6)` with similar definitions for the other dispersion components.
-With this definition, the dispersion become complex. In the low RF limit, the dispersions {math}`\eta_x`,
+With this definition, the dispersion becomes complex. In the low RF limit, the dispersions {math}`\eta_x`,
 {math}`\eta_{px}`, {math}`\eta_y`, {math}`\eta_{py}` converge to the standard (real) values and {math}`\eta_z` diverges
-to infinity.\footnote
-{
-This is assuming a linear system. In practice, the motion will become unstable due to
+to infinity.[^foot-linear]
+
+[^foot-linear]: This is assuming a linear system. In practice, the motion will become unstable due to
 the finite size of the RF bucket.
-}
