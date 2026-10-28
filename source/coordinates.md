@@ -29,7 +29,7 @@ In all cases, `x` and `y` have their natural meaning.
 
 For `ANGLE_AND_ENERGY` and `ANGLE_AND_MOMENTUM` coordinate systems, `px` and `py` are defined to be
 {math}`dx/ds = P_x/P_s` and {math}`dy/ds = P_y/P_s` where {math}`(P_x, P_y, P_s)` are the
-momenta along the {math}`(x, y, s)`coordinates axes. 
+momenta along the {math}`(x, y, s)` coordinate axes. 
 For the other two coordinate systems, `KINETIC_AND_ENERGY` and `KINETIC_AND_MOMENTUM`,
 `px` and `py` are defined to be {math}`P_x/P_0` and {math}`P_y/P_0` where {math}`P_0` is
 the reference momentum.
@@ -260,7 +260,7 @@ Using Eq. {eq}`wws` gives, after some simple algebra, this condition is equivale
 
   \cos(\text{x}\_\text{rot}) \, \cos(\text{y}\_\text{rot}) < 0
 ```
-When there are a series of patches, The transformations of all the patches are concatenated together
+When there are a series of patches, the transformations of all the patches are concatenated together
 to form an effective {math}`\bf S` which can then be used with Eq. {eq}`s330`.
 
 %---------------------------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ orientation with positive {math}`\theta(s)`, {math}`\phi(s)`, and {math}`\psi(s)
 
 The Cartesian `floor` coordinate system is the
 coordinate system "attached to the earth" that is used to describe the branch coordinate
-system. Following the MAD convention, the `floor` coordinate axis are labeled {math}`(X, Y,
+system. Following the MAD convention, the `floor` coordinate axes are labeled {math}`(X, Y,
 Z)`. Conventionally, {math}`Y` is the "vertical" coordinate and {math}`(X, Z)` are the "horizontal"
 coordinates. To describe how the branch coordinate system is oriented within the floor coordinate
 system, each point on the {math}`s`-axis of the branch coordinate system is characterized by its 
@@ -443,8 +443,8 @@ direction for `tilt_ref` = 0 and is offset by the bend radius `rho`. Here {math}
 are the branch coordinates at the entrance end of the bend with the {math}`z_0` axis being directed into
 the page in the figure.  For a non-zero `tilt_ref`, the rotation axis is itself rotated about the
 `z_0` axis by the value of `tilt_ref`. {numref}`f:tilt.bend`B shows the exit coordinates for four
-different values of `tilt_ref` and for a bend angle `angle` of {math}`\pi/2`.  Notice that for a
-bend in the horizontal {math}`X-Z` plane, a positive bend `angle` will result in a decreasing azimuth
+different values of `tilt_ref` and for a bend angle `angle_ref` of {math}`\pi/2`.  Notice that for a
+bend in the horizontal {math}`X-Z` plane, a positive bend `angle_ref` will result in a decreasing azimuth
 angle {math}`\theta`.
 
 For a bend, {math}`\bf S` is given using Eq. [](#wctux2) with 
@@ -463,8 +463,8 @@ where {math}`\theta_{tr}` is the `tilt_ref` angle. The {math}`\bf L` vector for 
     \rho (\cos\alpha_b - 1) \\ 0 \\ \rho \, \sin\alpha_b
   \end{pmatrix}
 ```
-where {math}`\alpha_b` is the bend [angle](#s:bend) and {math}`\rho` being the bend radius
-({math}`\rho`). Notice that since {math}`\bf u` is perpendicular to {math}`z`, the curvilinear reference coordinate
+where {math}`\alpha_b` is the bend angle [`angle_ref`](#s:bend.params) and {math}`\rho` is the bend radius
+[`radius_ref`](#s:bend.params). Notice that since {math}`\bf u` is perpendicular to {math}`z`, the curvilinear reference coordinate
 system has no "torsion". Note: The branch coordinate system can be related to a Frenet-Serret coordinate system, but 
 the two coordinate systems do not coincide.
 Frenet-Serret coordinates use the radial direction in a bend as a coordinate axis while
@@ -544,7 +544,7 @@ in a field free drift space to the nominal downstream edge.
 For straight line elements, given a branch coordinate frame {math}`\Lambda_s` with an origin a distance
 {math}`s` from the beginning of the element, misalignments will shift the coordinates to a new reference
 frame denoted {math}`E_s`. Since misalignments are defined with respect to the middle of the element, the
-transformation from {math}`\Lambda_s` and {math}`E_s` can be accomplished using a three step process:
+transformation from {math}`\Lambda_s` to {math}`E_s` can be accomplished using a three step process:
 ```{math}
 :label: llee
   \Lambda_s \longrightarrow \Lambda_\text{mid} 
