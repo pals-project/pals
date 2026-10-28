@@ -22,7 +22,7 @@ The SC can change the governance structure, but only in a unanimous vote.
 
 ### Decision Process
 
-Decision of the SC usually happen in the weekly developer meetings, via e-mail or public chat.
+Decisions of the SC usually happen in the weekly developer meetings, via e-mail or public chat.
 
 Decisions are made in a non-confidential manner, by majority on the cast votes of SC members.
 Votes can be cast in asynchronous manner, e.g., over the time of one to two weeks.
@@ -118,7 +118,7 @@ they can respond, and the decision to merge the PR should wait for them accordin
 
 If an issue has been raised, and if 
 1) all the comments supporting the issue have been responded to, and
-2) over two weeks has passed since the last comment on this issue has been posted, and 
+2) over two weeks have passed since the last comment on this issue has been posted, and 
 3) no one has asked for further time to respond, 
 then for the purposes of deciding whether to merge the PR, the issue is to be treated as resolved. 
 That is, the merge decision is not to be postponed to allow more time for responses.

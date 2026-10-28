@@ -10,7 +10,7 @@
 3. Go back to [https://github.com/pals-project/pals](https://github.com/pals-project/pals), click `Code` > `SSH`, and copy the url of the repo:
 (e.g., `git@github.com:pals-project/pals.git`)
 
-The simpler option `Code` > `HTTPS` can be used if the user just want to look at the repo.  (This does not require a password setup.)
+The simpler option `Code` > `HTTPS` can be used if the user just wants to look at the repo.  (This does not require a password setup.)
 
 4. On your local machine, from the terminal, clone the main repository:
 ```
