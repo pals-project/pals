@@ -60,7 +60,7 @@ r_proton                  # [m] Classical proton radius
 e_charge                  # [Coul] Elementary charge
 mu_0                      # [eV*sec^2/m] Vacuum permeability
 epsilon_0                 # [1/eV*m] Permittivity of free space
-classical_radius_factor   # [m*eV] Classical Radius Factor: 1/(4 pi epsilon_0 c^2)
+classical_radius_factor   # [m*eV] Classical Radius Factor: e^2/(4 pi epsilon_0)
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
 ```
