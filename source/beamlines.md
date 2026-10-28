@@ -18,18 +18,18 @@ Each element of a `BeamLine` is either a lattice element or another `BeamLine`.
 The components of a BeamLine are:
 ```{code} yaml
 name        # [string] Name of the BeamLine.
-multipass   # [logical] Multipass line or not. Default is False.
-length      # [m]: Length of the BeamLine.
+multipass   # [logical] Multipass line or not. Default is false.
+length      # [m] Length of the BeamLine.
 line        # [list] List of elements.
 zero_point  # [string] Name of a line item used as a reference point when
             #  the BeamLine is used as a subline.
-periodic    # [logical] Are orbit and Twiss parameters periodic? Default is False.
+periodic    # [logical] Are orbit and Twiss parameters periodic? Default is false.
 ```
 
 The `name` component is a string that can be used to reference the `BeamLine`.
 
 The optional `multipass` component is a logical describing whether the `BeamLine` is part of 
-a [multipass construct](#c:multipass). The default is False.
+a [multipass construct](#c:multipass). The default is false.
 
 The optional `length` component gives the length of the `BeamLine`. 
 If `length` is not given, the BeamLine ends at the downstream end of the final
@@ -41,7 +41,7 @@ To make things unambiguous, the reference line element must have zero length.
 
 Setting optional `periodic` logical to `true` indicates that the `BeamLine` is something like a 
 storage ring where the particle beam recirculates through the `BeamLine` multiple times.
-Setting `periodic` to `False` is used to indicate that the `BeamLine` is something like a 
+Setting `periodic` to `false` is used to indicate that the `BeamLine` is something like a 
 Linac or any other line that is "single pass". 
 
 Notice that a setting `periodic` to `true` does **not** mean that the downstream end of
@@ -53,9 +53,9 @@ parameters based upon orbit and Twiss parameters set by the User for the beginni
 Indeed, it is sometimes convenient to treat `BeamLines` as periodic even though there is no 
 closure in the floor coordinate sense.
 For example, when a storage ring has a number of repeating "periods", it may be
-convenient, for speed reasons, to calculate the periodic functions using only use one period.
+convenient, for speed reasons, to calculate the periodic functions using only one period.
 
-The default value of `False` for a given `BeamLine` is not affected by any 
+The default value of `false` for a given `BeamLine` is not affected by any 
 setting of `periodic` in any subline of the `Beamline`. When constructing lattice `branches`,
 the setting of `periodic` in a [root](#s:lattice.construct) `BeamLine` can be overridden
 by setting the `periodic` component of the `branch`. See [](#s:lattice.construct) for
@@ -104,7 +104,7 @@ Example:
 ```
 There are four items in the `line`. The second item is an element `thingZ` which inherits the 
 properties of `thingB`. To avoid confusion, if the `inherit` value is just an 
-[unqualified](#s:element.matching) element name, 
+[unqualified](#s:qualified.names) element name, 
 what is inherited is the definition outside of any beam line. 
 Thus in the above example, since the inherit string is the unqualified element name `thingB`,
 `thingZ` will inherit from the definition of `thingB` that happens before `inj_line` is defined
@@ -112,7 +112,7 @@ and will, for example, have a length of 0.73 meters. To inherit from the `thingB
 the first element in the line, a qualified name would have to be used. For this `inj_line>>thingB`
 would work if `thingB` only appeared once in the line. In any case, `inj_line>>thingB#1` 
 (first `thingB` in the line) or `inj_line>>1` (first item in the line) will always work even when
-there are multiple `thingB` element in the line.
+there are multiple `thingB` elements in the line.
 
 %---------------------------------------------------------------------------------------------------
 (s:line.construction)=
@@ -161,7 +161,7 @@ A line item may be a subline:
     kind: BeamLine
     line:
       - linac_line:          # linac_line is used as a subline
-          direction: -1      #  parameters like reflection, etc can be used.
+          direction: -1      #  line item components like direction, etc. can be used.
 ```
 
 Restriction: Infinite recursion of sublines is not allowed. 
@@ -196,14 +196,14 @@ then the expanded `full_line` will look like:
 A, B, C, A, B, C, A, B, C
 ```
 
-repetition counts can be negative. In this case, the elements are taken to occur in reverse order.
+Repetition counts can be negative. In this case, the elements are taken to occur in reverse order.
 Thus, in the above example, if the `repeat` count was `-3`, the expanded `full_line` will
 look like:
 ```{code} yaml
 C, B, A, C, B, A, C, B, A
 ```
 
-Notice that reverse order does not mean true [direction reversal](#s:ref.construct). 
+Notice that reverse order does not mean true [direction reversal](#s:direction). 
 For elements that have longitudinal symmetry, this does not matter. 
 However, for example, for a `Bend` element that is in a line with reversed order,
 the edge angle `e1` will still represent the edge of the upstream side and `e2` will represent the edge 
@@ -214,7 +214,7 @@ at the downstream side.
 ## Direction reversal
 
 The optional `direction` component of an item can be used for true [direction reversal](#s:ref.construct).
-Possible values are `+1` and `-1`. The Default is `+1` which represents an unreversed element
+Possible values are `+1` and `-1`. The default is `+1` which represents an unreversed element
 or BeamLine. BeamLine reversal involves both reversed order of the line and direction reversal of
 the individual line items. Example:
 ```{code} yaml
@@ -310,7 +310,7 @@ the `to_point` being at the exit end of `thingA`.
 
 The value of `offset` may be negative as well as positive. With negative offsets, 
 the [lattice expansion](#s:expansion.intro) calculation may become recursive but, in any case, placement
-must be computable. That is, situations where there is infinite recursion is forbidden.
+must be computable. That is, situations where there is infinite recursion are forbidden.
 
 In a section of a line where the lattice elements are not reversed, a positive `offset` moves
 the element being placed downstream. If there is reversal, a positive `offset` moves
@@ -327,7 +327,7 @@ then the following
      - ABC_line:
          repeat: -1
 ```
-Would expand to
+would expand to
 ```{code} yaml
 thingC, thingB, thingA
 ```
@@ -339,7 +339,7 @@ with the same relative distances between elements. Similarly, this:
       - ABC_line:
           direction: -1
 ```
-Would expand to
+would expand to
 ```{code} yaml
 -thingC, -thingB, -thingA
 ```
@@ -348,7 +348,7 @@ again with the same relative distances between elements.
 Lattice elements are allowed to overlap but it should be kept in mind that 
 some programs will not be able to handle overlapping fields. 
 To remove an ambiguity, if two zero length elements are next to each other in a `line`, the order of the
-elements determines the order in which they should tracked through. For example,
+elements determines the order in which they should be tracked through. For example,
 if a line contains the two zero length elements:
 ```{code} yaml
 - d_line:
@@ -385,13 +385,13 @@ to position the element within the beamline. Example:
 In this example, the superposition places an element named `q10w` with respect to the
 element `markerA`. This superposition will apply to any `markerA` elements that exist in
 any beamline. To restrict where the superposition is applied, use the appropriate 
-[qualified name](#s:element.matching). For example:
+[qualified name](#s:qualified.names). For example:
 ```{code} yaml
-superimpose:
-  place: q10w
-  placement:
-    base_item: this_line>>markerA
-    ...
+- superimpose:
+    place: q10w
+    placement:
+      base_item: this_line>>markerA
+      ...
 ```
 With this example, superposition would be restricted to `markerA` elements that exist in
 the beamline `this_line`.
