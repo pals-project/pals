@@ -7,8 +7,8 @@ The `SolenoidP` parameter group describes a magnetic solenoid.
 The components of `SolenoidP` are:
 ```{code} yaml
 SolenoidP:
-  Ksol      # Normalized solenoid strength.
-  Bsol      # Solenoid field.
+  Ksol      # [1/m] Normalized solenoid strength.
+  Bsol      # [T] Solenoid field.
 ```
 The conversion between the field and normalized components is
 ```{math}
