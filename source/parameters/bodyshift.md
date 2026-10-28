@@ -37,7 +37,7 @@ elements. A) Effect of `x_offset` and `y_rot`, B) Effect of `z_rot`.
 
 For straight-line elements, that is for all elements where the curvilinear coordinate system
 through the element is a straight line, 
-positioning is measured using a with respect to the center of the element.
+positioning is measured with respect to the center of the element.
 This is illustrated in figure {numref}`f:straight-align`. {numref}`f:straight-align`A shows the
 effect of `x_offset` and `y_rot` parameters. {numref}`f:straight-align`B shows the effect of `z_rot`.
 
