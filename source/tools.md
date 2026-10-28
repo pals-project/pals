@@ -5,7 +5,7 @@ There are reference implementations of PALS "parsers". Here the word "parser" is
 the parsers do much more than parse PALS files. All parsers will:
 
 - Write and read from/to files.
-- Expand and evaluate expressions on lattices ( [`lattice expansion`](#s:lattice.expand)).
+- Expand and evaluate expressions on lattices ([`lattice expansion`](#s:lattice.expand)).
 - Validate existing files.
 - Calculate the [floor coordinates](#s:floor) of all elements, both nominal and "misaligned" positions.
 - Evaluate dependent (output) parameter values.
@@ -23,9 +23,12 @@ uses the C++ parser as a back end.
 A 3D Visualization package is in development.
 Xelera Research LLC is working to develop an open-source extension to the widely used graphics program Blender that will provide an intuitive graphical user-interface for accelerator modeling in 3D. The extension will support lattice editing in both a 2D graphical node-based layout as well as in the 3D view, and it will include support for importing and exporting the PALS standard format. The goal is for this software to enable viewing, editing, or constructing beamline models with a 3D layout that can include realistic physical constraints and infrastructure. Xelera also plans to explore incorporating external signals into the software to permit integration with control systems at accelerator facilities. This would enable such signals to be coupled with a model to permit continuously updated output in the 3D view. This work is supported by the U.S. Department of Energy SBIR program.
 
-- Conversion between PALS and [Bmad/SciBmad](https://github.com/bmad-sim) is in the planning stages.
+## Language Converters
 
-### Schema Files
+Conversion between PALS and other lattice formats, including Bmad, SciBmad, and MAD-X, is
+documented in the [Language Converters](#s:language.covert) section.
+
+## Schema Files
 
 Schema files for validation have not yet been developed.
 A validation tool based on pydantic is in development.
