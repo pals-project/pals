@@ -56,7 +56,7 @@ For example, when a storage ring has a number of repeating "periods", it may be
 convenient, for speed reasons, to calculate the periodic functions using only one period.
 
 The default value of `false` for a given `BeamLine` is not affected by any 
-setting of `periodic` in any subline of the `Beamline`. When constructing lattice `branches`,
+setting of `periodic` in any subline of the `BeamLine`. When constructing lattice `branches`,
 the setting of `periodic` in a [root](#s:lattice.construct) `BeamLine` can be overridden
 by setting the `periodic` component of the `branch`. See [](#s:lattice.construct) for
 details.
