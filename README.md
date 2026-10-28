@@ -31,7 +31,7 @@ about PALS. Additionally, seek involvement from the community.
 
 2. **Develop the PALS standard.** 
 
-3. **[Develop Libraries and tools to read/write/visualize/manipulate PALS lattices.](https://pals-project.readthedocs.io/en/latest/lattice.html)**
+3. **[Develop Libraries and tools to read/write/visualize/manipulate PALS lattices.](https://pals-project.readthedocs.io/en/latest/tools.html)**
 
 4. **Develop translators between PALS and other simulation formats.**
 
