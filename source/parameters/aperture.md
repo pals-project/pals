@@ -22,7 +22,7 @@ ApertureP:
   aperture_active: true            # [logical] false implies aperture is not operating.
 ```
 The horizontal aperture may be specified by setting `x_min` and `x_max` or by setting
-`x_center` and `x_width` but only one pair may be set. A Similar situation applies to
+`x_center` and `x_width` but only one pair may be set. A similar situation applies to
 the vertical aperture. The conversion between the two is 
 ```{code}
   x_min = x_center - x_width/2, 
@@ -98,11 +98,11 @@ above inequalities.
 ### aperture_shifts_with_body
 
 The `aperture_shifts_with_body` parameter determines whether misaligning an element 
-affects the placement of the aperture. The default is `False`. 
-A common case where `aperture_shifts_with_body` would be `False` is when a beam pipe,
+affects the placement of the aperture. The default is `false`. 
+A common case where `aperture_shifts_with_body` would be `false` is when a beam pipe,
 which incorporates the aperture, is not physically touching the surrounding magnet element. 
 When tracking a particle, assuming that there are only apertures at the element ends, 
-the order of computation with `aperture_shifts_with_body` set to `False` could be
+the order of computation with `aperture_shifts_with_body` set to `false` could be
 ```{code} yaml
   1) Start at upstream end of element
   2) Check upstream aperture if there is one.
@@ -113,7 +113,7 @@ the order of computation with `aperture_shifts_with_body` set to `False` could b
   7) End at downstream end of element.
 ```
 With `aperture_shifts_with_body` set to `true`, the computation order could be
-```{code} YAML
+```{code} yaml
   1) Start at upstream end of element
   2) Convert from branch coordinates to body coordinates.
   3) Check upstream aperture if there is one.
@@ -140,10 +140,10 @@ subcomponents
 ```{code} yaml
   vertices:
     center: 0                 # [m] Vector of (x, y) center point.
-    absolute_vertices: false  # [logical] Default is False.
+    absolute_vertices: false  # [logical] Default is false.
     list: [{}]                # [List of dictionaries] Ordered list of vertex points.
 ```
-Each entry of the `list` vector can have three keys:
+Each entry of the `list` vector can have four keys:
 ```{code} yaml
 point        # [m] Vector of two real numbers.
 radius       # [m] Vector of single or two real numbers.
@@ -167,13 +167,13 @@ ApertureP:
 ```
 This corresponds roughly to what is shown in {numref}`f:aperture`.
 
-If the logical `absolute_vertices` is set `False`, which is the default,
+If the logical `absolute_vertices` is set `false`, which is the default,
 the vertex point positions are with respect to the `center` point. 
 That is, the vertex point positions in absolute terms are the positions given with each vertex plus
 the position of the `center`. If `absolute_vertices` is `true`, the vertex point positions 
 are independent of the `center` point. The default position of the `center` is the origin.
 
-The `list` component of `vertices` contains an ordered  list of vertex 
+The `list` component of `vertices` contains an ordered list of vertex 
 `point`s with each one specifying an {math}`(x, y)` position and optionally a `radius` and `tilt` of the path to the point. 
 The aperture is constructed by connecting consecutive `point`s in the `list` along with 
 connecting the last `point` to the first. 
@@ -181,7 +181,7 @@ If only the `point` coordinates are given, the vertex is connected by a straight
 If the `radius` is given, the path follows a section of an ellipse with the first 
 `radius` value being the {math}`x`-axis half width and the second value being the {math}`y`-axis
 half width. Of the four possible arcs, only the two short ones are considered.
-By default the convex arc, with center of the ellipse towards the aperture center is selected. To select the other arc set 'convex' to false.
+By default the convex arc, with center of the ellipse towards the aperture center is selected. To select the other arc set `convex` to false.
 If `radius` is a single value, both half widths are the same and the ellipse is a circle.
 A non-zero `tilt` value rotates the ellipse by that amount counterclockwise. 
 
@@ -200,7 +200,7 @@ the aperture at exactly one point.
 When using vertices, an efficient way to determine if a point {math}`(x, y)` is within the aperture
 is the following. Note: The computation is with respect to the `center` point.
 ```{code} yaml
-  0) Determine the polar coordinate angles {math}`\theta_i` of the vertices. These angles can be 
+  0) Determine the polar coordinate angles theta_i of the vertices. These angles can be 
 stored so this computation only has to be done once.
   1) Determine the angle of the particle.
   2) A simple binary search will give the neighboring pair of vertices the particle's angle falls between.
