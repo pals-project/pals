@@ -18,7 +18,7 @@ computer language variable names, follow the
 [OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
 Examples:
 ```{code} yaml
-charge_of("#3He+2")          # Helium with atomic number three.
+charge_of("#3He+2")          # Helium-3 (mass number three), fully ionized.
 mass_of("anti-proton")       # Notice the dash.
 my_particle: "Au+79"         # Assign a species to a variable or constant.
 charge_of(my_particle)       # The variable or constant can be used in an equation.
@@ -80,7 +80,7 @@ facility:
       parameter: Q1>MagneticMultipoleP.Bs1
       value: 0.45
 ```
-In this example, The `set` will be applied to the `Q1` element defined under the facility node
+In this example, the `set` will be applied to the `Q1` element defined under the facility node
 but not to the Q1 defined in the beamline.
 
 After lattice expansion, an element name without a `{lattice-name}` or
