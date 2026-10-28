@@ -3,24 +3,24 @@
 
 The `ElectricMultipoleP` parameter group describes electric multipoles associated with the lattice
 element. For a multipole of order `N`, the electric field {math}`(E_x, E_y)`
-at a point {math}`\bf r` in terms of the points polar coordinates {math}`(r, \theta)` is
+at a point {math}`\bf r` in terms of the point's polar coordinates {math}`(r, \theta)` is
 ```{math}
 :label: exiey
   E_x({\bf r}) - i \, E_y({\bf r}) = 
   \frac{1}{N!}(E_n - i \, E_s) \, e^{-i(N+1)T} \, e^{iN\theta} \, r^N
 ```
-where {math}`T` is the "tilt" of the `N`{sup}`th` multipole and {Math}`E_n` and {math}`E_s` are
+where {math}`T` is the "tilt" of the `N`{sup}`th` multipole and {math}`E_n` and {math}`E_s` are
 the normal and skew components of the field. `N` is defined such that 
 {math}`N = 0` describes a dipolar multipole, {math}`N = 1` describes a quadrupolar multipole, etc.
 
-The three parameters, {math}`T`, {Math}`E_n` and {math}`E_s` are not independent and only two
+The three parameters, {math}`T`, {math}`E_n` and {math}`E_s` are not independent and only two
 are needed to specify a multipole. 
 However, it is sometimes convenient to use all three. 
-For example, {Math}`E_n` and {math}`E_s` with {math}`N=0` can be used to describe 
+For example, {math}`E_n` and {math}`E_s` with {math}`N=0` can be used to describe 
 an element with independent horizontal and vertical steerings while {math}`T` can be used
 to represent rotational errors.
 
-The components of `ElectricMultipoleP` for specifying a multipolar field of order `N` is:
+The components of `ElectricMultipoleP` for specifying a multipolar field of order `N` are:
 ```{code} yaml
   tiltN: 0                  # [rad] Tilt
   EnN: 0                    # [V/m^(N+1)] Normal component
@@ -35,12 +35,11 @@ Integrated values are specified with the letter
 ```{code} yaml
 emp1:
   kind: Bend
-  length = 0.86
+  length: 0.86
   ElectricMultipoleP:
-    tilt7: 0.7        # Tilt in raidians of 7th order multiple
+    tilt7: 0.7        # Tilt in radians of 7th order multipole
     En3: 27.3         # Normal multipole component of order 3 in V/m^4
     En2L: 3.47e1      # Length integrated normal multipole component of order 2 in V/m^2
-    geometry: vertically_pure   # See below
 ```
 The length integrated values are related to the non-integrated values via
 ```{code} yaml
@@ -50,7 +49,7 @@ where `length` is the length of the element.
 
 For a given element, when specifying a multipole of a given order, 
 the two strength components must be of the same type.
-That is, it is not permitted for one component to be length integrated and the other not,
+That is, it is not permitted for one component to be length integrated and the other not.
 However, the multipole components of different order do not have to be of the same type.
 
 With a `bend` element, the reference line about which the multipoles are referenced to
