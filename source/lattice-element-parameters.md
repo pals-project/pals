@@ -8,10 +8,10 @@ For details on the different parameter groups see [here](#c:ele.param.groups).
 (s:param.groups)=
 ## Parameter Groups
 
-Lattice elements parameters are organized into **parameter groups**. 
+Lattice element parameters are organized into **parameter groups**. 
 All groups are organized as dictionaries (structures) and lists.
 At the top level, there are the groups with names like 
-`MagneticMultipoleP`, `ElectricMultipoleP`, `MetaP`, `AlignmentP`, etc. 
+`MagneticMultipoleP`, `ElectricMultipoleP`, `MetaP`, `BodyShiftP`, etc. 
 By convention, group names use upper camel case and it is highly recommended that this convention
 be followed but it is not mandatory. Also, by convention, parameter groups end with a `P`.
 This is to distinguish between element kinds and parameter groups which might
@@ -48,7 +48,7 @@ it is an input parameter.
 Example:
 ```{code} yaml
 cleo:             # [string] user-defined name
-  kind: Solenoid  # [string] element switch
+  kind: Solenoid  # [enum] element kind
   length: 3.74
   SolenoidP:
     Ksol: -0.15
@@ -63,7 +63,7 @@ Parameters from one element may be inherited by another element wholesale as doc
 as follows.
 
 Any group can be given a **name** and the values can be used in another group of the same type
-using **import**.
+using **inherit**.
 For example:
 ```{code} yaml
 - ap1:

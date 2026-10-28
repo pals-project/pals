@@ -26,7 +26,7 @@ does not affect tracking in simulations.
 Also, program specific (as opposed to machine specific) information should be stored elsewhere.
 ```{code} yaml
 quad1:                  # user-defined name
-  kind: Quadrupole      # element switch
+  kind: Quadrupole      # element kind
   MetaP:
     ID: 0137-85
     location: East transfer line
