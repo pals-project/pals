@@ -14,8 +14,8 @@ quadrupole, or a diffracting crystal. A lattice element may define a region in s
 distinguished by the presence of (possibly time-varying) electromagnetic fields,
 materials, apertures and other possible engineered structures. However, lattice elements
 are not restricted to being something physical and may, for example, just mark a particular point 
-in space (EG: `Marker` elements), or may designate where beamlines intersect (`Fork` elements).
-By convention, element names in PALS will be upper camel case.
+in space (e.g., `Marker` elements), or may designate where beamlines intersect (`Fork` elements).
+By convention, the names of element kinds in PALS are upper camel case (for example, `RFCavity`).
 The different kinds of elements are discussed in the [Element Kinds](#c:ele.kinds) section.
 
 %---------------------------------------------------------------------------------------------------
