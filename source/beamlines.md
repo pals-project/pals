@@ -291,7 +291,7 @@ Example:
     kind: BeamLine
     line:
       - thingA
-      - extract_line:
+      - extract_subline:
           placement:
             offset: 37.5
             base_item: thingA
@@ -304,9 +304,9 @@ Example:
     line:
         ...
 ```
-In this example, the `to_point` is the `zero_point` of `extract_subline`.
-The `from_point` of `thingA` is placed `37.5` meters from the `to_point` point with
-the `to_point` being at the exit end of `thingA`.
+In this example, the `to_point` is the `zero_point` of `extract_subline` and
+the `from_point` is the exit end of `thingA`. The `extract_subline` is positioned so that its
+`zero_point` is `37.5` meters from the exit end of `thingA`.
 
 The value of `offset` may be negative as well as positive. With negative offsets, 
 the [lattice expansion](#s:expansion.intro) calculation may become recursive but, in any case, placement
