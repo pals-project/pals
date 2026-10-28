@@ -78,10 +78,10 @@ A particle with position {math}`(x, y)` is outside of the aperture if:
 ```{code}
   ((x - x0) / xw)^2 + ((y - y0) / yw)^2 > 1 
 where
-  x0 = (x_max - x_min) / 2
-  y0 = (y_max - y_min) / 2
+  x0 = (x_max + x_min) / 2
+  y0 = (y_max + y_min) / 2
   xw = (x_max - x_min) / 2
-  yw = (y_max + y_min) / 2
+  yw = (y_max - y_min) / 2
 ```
 
 For a `RECTANGULAR` aperture, a particle is outside of the aperture if any of the following
