@@ -4,8 +4,8 @@
 By default, elements in a lattice are considered to be physically distinct from each other
 even if they have the same name.
 For example:
-```{code} YAML
-- this_line
+```{code} yaml
+- this_line:
     kind: BeamLine
     line:
       - EleA
@@ -22,7 +22,7 @@ Consider the Energy Recovery Linac (ERL) example shown in {numref}`f:erl`.
 Example Energy Recovery Linac (ERL): Particle beams are injected
 into the linac line from the injection line. After acceleration from the linac, the beams
 are transferred through the arc back to the linac where they are decelerated to recover
-their energy and then transfered to the dump line.
+their energy and then transferred to the dump line.
 ```
 
 In this example, a particle beam will:
@@ -38,7 +38,7 @@ up in the [expanded lattice](#s:expansion.intro) twice.
 To mark pairs of elements in the lattice as the same physical element, 
 PALS has the [`multipass`](#s:beamline.components) flag which can be applied to beam lines. 
 The ERL may then be constructed like:
-```{code} YAML
+```{code} yaml
 - inj_line:
     kind: BeamLine
     line: 
@@ -56,7 +56,7 @@ The ERL may then be constructed like:
 
 - linac_line:
     kind: BeamLine
-    multipass: True
+    multipass: true
     line:
       - cavityA
       - cavityA
@@ -86,7 +86,7 @@ Index        [1]      [1]                   [2]      [2]
 Each physical `cavityA` element appears twice in the expanded line. Explicitly, the two `cavityA`
 elements that are marked with a `(1)` underneath them represent the first of the `cavityA`
 elements in `linac_line` and the two that are marked with a `(2)` underneath them represent second
-`cavityA` element in `linac_line`. The indicies in square brackets `[]` are the "multipass index" and
+`cavityA` element in `linac_line`. The indices in square brackets `[]` are the "multipass index" and
 indicate the number of times the particle traveling through the line will have gone through the
 physical element in question.
 With a PALS compliant parser, multipass elements in the expanded lattice will be marked with a
@@ -108,7 +108,7 @@ For elements that have an associated {math}`L_m` multipass line,
 all elements that have a common {math}`L_m` line and have the same
 element index[^foot-ix] when {math}`L_m` is expanded are taken to represent the same physical element.
 In the example above, the chain for both `cavityA` physical elements is 
-```{code} YAML
+```{code} yaml
 linac_line, erl_line
 ```
 and `linac_line` is the {math}`L_m` line (*first* line in the chain that is marked as `multipass`) for both.
@@ -124,7 +124,7 @@ element set are not constrained by the `multipass` construction to be the same.
 It is up to the lattice designer to make
 sure that the floor positions of the elements in the set make sense (that is, are all the same).
 
-[^foot-ix]: for a given line the
+[^foot-ix]: For a given line the
 element index with respect to that line is 1 for the first element in the expanded line, the second
 element has index 2, etc.
 
