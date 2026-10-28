@@ -18,11 +18,11 @@ can be used to define an entire accelerator complex.
 - `Lattice expansion`: This includes `branch expansion` along with connecting branches
 together via `Fork` elements, expression evaluations, 
 and floor position and reference species and energy calculation. 
+- `Lattice element`: Basic building block of a lattice most often representing something
+physical like a quadrupole magnet or an RF cavity.
 - `Root BeamLine`: A `BeamLine` that is used as the basis for creating a branch.
 - `Root branch`: A branch that is specified in a `Lattice` structure. Non-root branches
 are branches that are formed due to the presence of `Fork` elements.
-- `Lattice element`: Basic building block of a lattice most often representing something
-physical like a quadrupole magnet or an RF cavity.
 
 %---------------------------------------------------------------------------------------------------
 (s:elements.intro)=
@@ -54,11 +54,11 @@ lines, etc.
 Essentially a `lattice` has an array of `branches` with each branch describing part of the
 machine. Branches can be interconnected to form a unified whole.
 Branches can be interconnected using `Fork` elements. 
-This is used to simulate forking beamlines such as a connections to a transfer line, dump line, or an
+This is used to simulate forking beamlines such as a connection to a transfer line, dump line, or an
 X-ray beamline.
 
 Besides `branches`, a lattice will hold information like details of any support girders that are
-present and `multipass` information in the case where elements are transversed multiple times 
+present and `multipass` information in the case where elements are traversed multiple times 
 as in an ERL or in opposite directions as in a colliding beam machine.
 
 %---------------------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ An important concept is [`lattice expansion`](#s:lattice.expand) and `branch exp
 Branch expansion is the process, starting from the `root` `BeamLine`
 of a branch, of constructing the ordered list of lattice elements contained in that branch.
 `Lattice expansion` involves branch expansion along with things like
-calculating the reference energy for all elements. The result is a [Expanded Lattice](#s:expanded.lat.intro).
+calculating the reference energy for all elements. The result is an [Expanded Lattice](#s:expanded.lat.intro).
 
 %---------------------------------------------------------------------------------------------------
 (s:expanded.lat.intro)=
@@ -114,8 +114,8 @@ machines can be put in as an extension. A list of documented extensions is in th
 (s:parser.intro)=
 ## PALS Compliant Parser
 
-A PALS compliant parser is a parser that can read in PALS file(ss) (plural if there contained
-or included files) and can construct an "appropriate" information tree (or trees) in memory. 
+A PALS compliant parser is a parser that can read in PALS file(s) (plural if there are
+included or loaded files) and can construct an "appropriate" information tree (or trees) in memory. 
 To be compliant, the constructed information tree must contain the information to construct the 
 original PALS files. 
 The information tree must also contain the [expanded lattice](#s:expanded.lat.intro).
