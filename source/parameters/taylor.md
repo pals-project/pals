@@ -19,7 +19,7 @@ TaylorP:
   ref_in:     # [Struct] Input orbital reference point for the map. 
 ```
 Here "input" refers to the starting coordinates at the beginning of the element,
-and "output" referes to the ending coordinates at the end of the element.
+and "output" refers to the ending coordinates at the end of the element.
 The particular definition of the orbital components is given by the 
 [`phase_space_coordinates`](#s:phase.space) node. The spin rotation map is represented
 using [quaternions](#s:spin).
@@ -52,7 +52,7 @@ Note that the spin transport is independent of the input spin coordinates.
 In other words, Stern-Gerlach effects are ignored.
 
 The `ref_in` component of `TaylorP` gives the orbital reference point about which the
-taylor map is constructed. The components of `ref_in` are:
+Taylor map is constructed. The components of `ref_in` are:
 ```{code} yaml
 x:      # x orbital component
 px:     # px orbital component
