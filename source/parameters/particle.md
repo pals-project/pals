@@ -23,9 +23,9 @@ ParticleP:                    # <> denotes average over distribution
   py:            0            # <py> py phase space component
   z:             0            # <z>  z  phase space component
   pz:            0            # <pz> pz phase space component
-  spin_x         0            # <Sx> Spin x-component
-  spin_y         0            # <Sy> Spin y-component
-  spin_z         0            # <Sz> Spin z-component
+  spin_x:        0            # <Sx> Spin x-component
+  spin_y:        0            # <Sy> Spin y-component
+  spin_z:        0            # <Sz> Spin z-component
   sigma_xx:      null         # <x^2>
   sigma_xpx:     null         # <x*px> 
   sigma_xy:      null         # <x*y> 
