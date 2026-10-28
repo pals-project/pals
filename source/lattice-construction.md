@@ -139,7 +139,7 @@ and this process is repeated until there are no new branches to be created.
 `RELATIVE` `Controllers` are not involved in lattice expansion.
 
 * For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
-species, time, etc.) are calculated along with dependent parameters (EG multipole `Ks1` if `Bs1`
+species, time, etc.) are calculated along with dependent parameters (e.g., multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
 * Using the `post_expansion` list, node-by-node from the list beginning, 
@@ -187,7 +187,7 @@ Gradient (FFAG) arc, and splitter sections.
 
 Shown in the main body of the figure is a blowup of the region where the injection line connects 
 to the Linac along with the diagnostic line and the end of the FFAG arc.
-The injection line and the ERL was modeled as a single lattice branch which contained all 8 passes.
+The injection line and the ERL were modeled as a single lattice branch which contained all 8 passes.
 `Fork` elements were used to connect the injection line to the diagnostic line and ERL to the 
 beam stop line.
 The geometry of the splitter sections, used to correct the timings of the beams with 
