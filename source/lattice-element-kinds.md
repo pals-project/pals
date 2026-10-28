@@ -332,7 +332,7 @@ A Fiducial element is used to fix the position and orientation of the reference 
 coordinate system at the location of the fiducial element. A fiducial element,
 unlike a [`FloorShift`](#s:floorshift) element, will affect the global
 floor coordinates of elements both upstream and downstream of the fiducial element.
-See also the [`patch`](#s:patch) element.
+See also the [`Patch`](#s:patch) element.
 
 The length of this element is zero so if `length` is specified, it must be zero.
 Like a `Marker`, the transfer map through this element is unity.
@@ -359,10 +359,10 @@ some section of a machine. The `Taylor` element gives the transport map through 
 and the `FloorShift` is used to correctly position the downstream lattice elements in the global
 coordinate system.
 
-Note: A `FloorShift` element, unlike a [`fiducial`](#s:fiducial) element,
+Note: A `FloorShift` element, unlike a [`Fiducial`](#s:fiducial) element,
 will affect the placement of downstream elements in the global
 coordinate system but will have no effect on upstream elements.
-See also the [`patch`](#s:patch) element.
+See also the [`Patch`](#s:patch) element.
 
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
@@ -495,12 +495,12 @@ Element parameter groups associated with this element kind are:
 A Marker element is a zero length element to mark a particular position.
 The main purpose of this element is to name a position in the beamline.
 `Marker` elements have a unit transport map. That is, a particle's phase space coordinates
-are not altered with passage through the element
+are not altered with passage through the element.
 
 Element parameter groups associated with this element kind are:
-- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
@@ -564,9 +564,9 @@ Element parameter groups associated with this element kind are:
 (s:octupole)=
 ### Octupole Element
 
-An `octupole` is an element whose major field has a cubic field dependence with transverse offset.
+An `Octupole` is an element whose major field has a cubic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
-In terms of functionality, an `octupole` is equivalent to a [`Multipole`](#s:multipole) element.
+In terms of functionality, an `Octupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
@@ -624,7 +624,7 @@ Element parameter groups associated with this element kind are:
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
-This matters due to the dependence of the reference velocity on the the reference energy.
+This matters due to the dependence of the reference velocity on the reference energy.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -633,7 +633,7 @@ This matters due to the dependence of the reference velocity on the the referenc
 
 A `Quadrupole` is an element whose major field has a linear field dependence with transverse offset.
 Both electric and magnetic fields can be defined and the field is not restricted to be linear.
-In terms of functionality, a `quadrupole` is equivalent to a [`Multipole`](#s:multipole) element
+In terms of functionality, a `Quadrupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
@@ -684,17 +684,17 @@ Element parameter groups associated with this element kind are:
 - [**SolenoidP**](#s:solenoid.params): Solenoid field.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
-Note: Multipole parameters represent DC fields. A common example is a DC solenoid field which
-helps focusing.
+Note: Multipole and `SolenoidP` parameters represent DC fields. A common example is a DC solenoid
+field which helps focusing.
 
 
 %---------------------------------------------------------------------------------------------------
 (s:sextupole)=
 ### Sextupole Element
 
-A `sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
+A `Sextupole` is an element whose major field has a quadratic field dependence with transverse offset.
 Both electric and magnetic fields can be defined and additional multipole contributions are allowed.
-In terms of functionality, a `sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
+In terms of functionality, a `Sextupole` is equivalent to a [`Multipole`](#s:multipole) element.
 
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
@@ -717,7 +717,7 @@ s01w:
 (s:solenoid)=
 ### Solenoid Element
 
-A `solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
+A `Solenoid` is an element whose magnetic field is dominated by a field whose direction is aligned with the magnetic axis.
 Additional magnetic (or electric) multipole contributions are allowed.
 
 Element parameter groups associated with this element kind are:
