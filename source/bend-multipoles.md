@@ -146,7 +146,7 @@ are combined
 a_n &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, C_{nk} \, \alpha_k, \quad
 &a_{en} &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, D_{nk} \, \alpha_{ek}, \nonumber \\
 b_n &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, D_{nk} \, \beta_k, \quad
-&b_{en} &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, D_{nk} \, \beta_{ek}
+&b_{en} &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, C_{nk} \, \beta_{ek}
 \end{alignat}
 where {math}`\alpha_k`, {math}`\beta_k`, {math}`\alpha_{ek}`, and {math}`\beta_{ek}` are the corresponding coefficients
 for the horizontally pure solutions.
