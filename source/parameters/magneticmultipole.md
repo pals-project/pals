@@ -72,9 +72,9 @@ value of `Bn3`, `length`, and the reference momentum {math}`P_0`.
 Notice that this guideline is not something that PALS can in any way "enforce".
 It is merely a "suggestion" from the lattice designer on how a simulation program should behave. 
 
-With a `bend` element, the reference line about which the multipoles are referenced to
+With a `Bend` element, the reference line about which the multipoles are referenced to
 may be curved. This is set by the `ref_geometry` parameter of the [`BendP`](#s:bend.params)
-parameter group. If `ref_geometry` is set to `arc`, the `multipole_type` parameter of
+parameter group. If `ref_geometry` is set to `ARC`, the `multipole_geometry` parameter of
 `BendP` will set how the multipoles are evaluated. See the `BendP` documentation for more details.
 
 "Tapering parameters" account for the fact that, due to synchrotron radiation, the energy of a
