@@ -1,5 +1,5 @@
 (s:fork.from.params)=
-## ForkFromP: List of names of Fork elements forking to this element.
+## ForkFromP: List of Fork Elements Forking to This Element
 
 The `ForkFromP` parameter group gives a list of Fork elements forking to the element containing
 the `ForkFromP` group. This list is constructed by a PALS compliant parser and included in the
