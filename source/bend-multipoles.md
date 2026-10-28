@@ -28,7 +28,7 @@ the field given by {math}`-\nabla \phi`.  The potential is a solution to Laplace
   \frac{\partial^2 \phi}{\partial \, \widetilde y^2} = 0
 ```
 
-Solutions to Laplace's equation can be written in form
+Solutions to Laplace's equation can be written in the form
 ```{math}
 :label: pspn1
   \phi_{n}^r = \frac{-1}{1+n} \sum_{p = 0}^{2p \le n+1} 
@@ -76,9 +76,9 @@ F_4 &= 3 [ \frac{1}{8} (\widetilde r^4 - 1) + \frac{1}{2} (\widetilde r^2 - 1) -
 \widetilde x^4 - \frac{2}{5} \widetilde x^5 + \frac{3}{10} \widetilde x^6 - \ldots \\
 &\text{Etc...}
 ```
-Note: Care must be taken when evaluating these functions near {math}`\widetilde x = 0` using the exact
+Note: Care must be taken when evaluating these functions near {math}`\widetilde x = 0` since using the exact
 {math}`\widetilde r`-dependent functions can be problematical due to round off error. 
-For example, Evaluating {math}`F_4(\widetilde r)` at {math}`\widetilde x = 10^{-4}` results
+For example, evaluating {math}`F_4(\widetilde r)` at {math}`\widetilde x = 10^{-4}` results
 in a complete loss of accuracy (no significant digits!) when using double precision numbers.
 
 For magnetic fields, the "real" {math}`\phi_n^r` solutions will correspond to skew fields and the
@@ -159,7 +159,7 @@ pure solutions {math}`\psi_n` have an infinite number of terms.
 An important point: To properly simulate a machine, one must first of all
 understand whether the multipole values that have been handed to you are for horizontally
 pure multipoles, vertically pure multipoles, or perhaps the values do not correspond to
-either horizontally pure nor vertically pure solutions! Failure to understand this point
+either horizontally pure or vertically pure solutions! Failure to understand this point
 can lead to differing results. For example, the chromaticity induced by a horizontally
 pure quadrupole field will be different from the chromaticity of a vertically pure
 quadrupole field of the same strength.
