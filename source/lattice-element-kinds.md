@@ -259,6 +259,7 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
+- [**RFP**](#s:rf.params): RF parameters.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
