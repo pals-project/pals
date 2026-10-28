@@ -6,7 +6,7 @@
 #
 # The `vary` entry for qd carries a small weight, so the merit function also
 # penalizes large changes in qd's Kn1 from its starting value; the qf entry
-# uses the default weight of zero. Tunes are in radians, hence the `twopi`.
+# uses the default weight of zero. Tunes are in units of radians/2pi.
 #
 # With linear thick-lens transfer matrices the adjusted strengths come out near
 # qf Kn1 = 4.438 and qd Kn1 = -4.598 [1/m^2]. A program with a different
@@ -22,10 +22,10 @@ PALS:
             weight: 1.0e-4
         - target:
             parameter: fractional_tune_a
-            value: 0.31*twopi
+            value: 0.31
         - target:
             parameter: fractional_tune_b
-            value: 0.42*twopi
+            value: 0.42
   facility:
     - qf:
         kind: Quadrupole

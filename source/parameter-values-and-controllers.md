@@ -446,8 +446,8 @@ PALS:
             parameter: Qa,Qb>MagneticMultipoleP.Kn1
         - target:
             parameter: fractional_tune_a
-            value: 0.37*twopi
+            value: 0.37
         - target:
             parameter: fractional_tune_b
-            value: 0.53*twopi
+            value: 0.53
 ```
