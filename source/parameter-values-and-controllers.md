@@ -51,7 +51,7 @@ Constants defined by PALS:
 ```{code} yaml
 pi                        # [-] Pi
 twopi                     # [-] 2*pi
-c_light                   # [ m/sec] Speed of light
+c_light                   # [m/sec] Speed of light
 h_planck                  # [eV*sec] Planck's constant
 hbar                      # [eV*sec] Reduced Planck's constant
 k_boltzmann               # [eV/K] Boltzmann's constant
@@ -72,7 +72,7 @@ The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
   relative_error: 0       # Relative error.
-  value                   # Constant or variable value.
+  value:                  # Constant or variable value.
 ```
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
@@ -119,7 +119,7 @@ That is, the following is not valid:
 - variables:
     - my_var: 0.13     # VALUE CHANGE NOT VALID!
 ```
-It is sometimes convenient when there are include PALS files, to define the same constant or variable
+It is sometimes convenient when there are included PALS files, to define the same constant or variable
 in multiple files. Multiple definitions of the same constant or variable are allowed with the 
 restriction that the value is always the same.
 
@@ -144,14 +144,14 @@ atan(x)                  # Arc tangent
 atan2(y, x)              # Arc tangent of y/x
 sinh(x), cosh(x)         # Hyperbolic sine and cosine
 tanh(x), coth(x)         # Hyperbolic tangent and cotangent
-asinh(x), acosh(x)       # Hyperbolic arc sine and Arc cosine
+asinh(x), acosh(x)       # Hyperbolic arc sine and arc cosine
 atanh(x), acoth(x)       # Hyperbolic arc tangent and cotangent
 abs(x)                   # Absolute Value
 factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
 random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
-random_gauss(sig_cut)    # Same random_gauss() but with a probability tail cutoff.
-int(x)                   # Nearest integer with magnitude less than or equal to x
+random_gauss(sig_cut)    # Same as random_gauss() but with a probability tail cutoff.
+int(x)                   # Nearest integer with magnitude less than or equal to |x| (truncation toward zero)
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
 floor(x)                 # Nearest integer less than or equal to x
@@ -168,12 +168,13 @@ anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 
 Mathematical expressions can be used in place of any real value.
 The expressions can involve the functions listed in the [Functions](#s:functions) section,
-constants as listed in the [Constants](#s:constants) section, and [user defined constants](#s:constants).
+and the PALS defined constants and the user defined constants and variables documented in the
+[Constants and Variables](#s:constants) section.
 [Lattice element parameter](#s:parameter.matching) values can also be incorporated.
 
 %---------------------------------------------------------------------------------------------------
 (s:io.params)=
-## User Settable (Input) and Dependent (Output) parameters.
+## User Settable (Input) and Dependent (Output) Parameters
 
 All parameters (both element parameters and non-element parameters) are optional unless 
 explicitly stated otherwise.
@@ -196,7 +197,7 @@ element-by-element.
 
 The `set` command is used for setting parameters. The components of `set` are:
 ```{code} yaml
-parameter               # [String] Parameter(s) to vary.
+parameter               # [string] Parameter(s) to vary.
 value                   # [Expression] Value to set.
 absolute_error: 0       # Absolute error.       
 relative_error: 0       # [-] Relative error.
