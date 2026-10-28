@@ -53,7 +53,7 @@ the two strength components must be of the same type.
 That is, it is not permitted for one component to be length integrated and the other not,
 However, the multipole components of different order do not have to be of the same type.
 
-With a `bend` element, the reference line about which the multipoles are referenced to
+With a `Bend` element, the reference line about which the multipoles are referenced to
 may be curved. This is set by the `ref_geometry` parameter of the [`BendP`](#s:bend.params)
-parameter group. If `ref_geometry` is set to `arc`, the `multipole_type` parameter of
+parameter group. If `ref_geometry` is set to `ARC`, the `multipole_geometry` parameter of
 `BendP` will set how the multipoles are evaluated. See the `BendP` documentation for more details.
