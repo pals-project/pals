@@ -202,7 +202,7 @@ and a settings file could look like:
 PALS:
   notes:
     - "Settings for 12 mrad crossing angle, 0.23 m beta_y at IP."
-    - "This is a second node."
+    - "This is a second note."
 
   extension_labels:
     names:
@@ -233,7 +233,7 @@ PALS:
 ```
 
 The rules for using `load` are as follows:
-- The `load` node must be a component of the `PALS` node. 
+- The `load` node must be a component of the `PALS` node.
 - The joiner and loaded files must have a `PALS` node and only that node is merged so
 loading ignores custom data outside of the `PALS` tree. 
 - A `SELF` designation in the `load` list indicates where the contents of
@@ -246,7 +246,7 @@ is last on the `load` list.
 will be a comma delimited list of the different versions with duplicates discarded. It is an
 error for the versions to be incompatible. That is, if the major version is different.
 For example, version `1.4.2` is incompatible with `2.0.1`.
-- For other scalar `PALS` nodes (EG [`phase_space_coordinates`](#s:phase.space)) the values
+- For other scalar `PALS` nodes (e.g., [`phase_space_coordinates`](#s:phase.space)) the values
 must be the same.
 - For list type subnodes, the combined list retains the order set by the `load` list and the order
   set within the files themselves. In the above example, the combined `notes` subnode will be:
@@ -261,11 +261,9 @@ must be the same.
 for all of the files. If the dict entries are themselves a dict, this combining rule is applied
 to the subdicts. If the dict entries are lists, the lists are combined as discussed above.
 If the dict entries are scalars, the scalars are combined as discussed above.
-In the above example, the combinded `extension_labels` subnode will be
+In the above example, the combined `extension_labels` subnode will be
   ```{code} yaml
-  # Settings file: settings.pals.yaml
   PALS:
-
     extension_labels:
       names:
         a_ext: A-type extension
@@ -275,14 +273,14 @@ In the above example, the combinded `extension_labels` subnode will be
 - A loaded file may itself contain a `load` node, so loading can be nested to any depth. 
 There is no ambiguity as to what `SELF` refers to; a `SELF` designation always refers to the 
 joiner file in which it appears and there can be at most one SELF entry.
-Any combination of cirular and included loads (EG A loads B which includes A) are prohibited.
-Files are to be only loaded once and must be loaded at the first opertunity. 
+Any combination of circular loads and includes (e.g., A loads B which includes A) is prohibited.
+Files are to be only loaded once and must be loaded at the first opportunity. 
 For example, if A loads B and then C, and if B and C both load D, then when B is loaded into A,
-D will be included, and when C is loaded into A, D will not be loaded. 
+D will be loaded, and when C is loaded into A, D will not be loaded again. 
 - As with `include`, a file path in a `load` list is interpreted relative to the location of the
 file that contains the `load` node (and not the location of the file including or loading the file
 that contains the `load` node).
-- Load nodes will not appear in the combinded tree.
+- Load nodes will not appear in the combined tree.
 
 Loading can also be useful in constructing "composite" accelerator complexes from individual machines.
 For example, a joiner file may look like:
