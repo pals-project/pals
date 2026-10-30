@@ -5,7 +5,7 @@ The components of this group and their defaults are:
 ```{code} yaml
 RFP:
   frequency: null               # [Hz] RF frequency
-  harmon: null                  # [unitless] RF frequency harmonic number
+  harmonic_number: null         # [unitless] RF frequency harmonic_number
   voltage: 0                    # [V] RF voltage
   gradient: 0                   # [V/m] RF gradient
   phase: 0                      # [rad] RF phase
@@ -16,8 +16,8 @@ RFP:
   L_active: L                   # [m] Active acceleration length.
   dE_ref: 0                     # [eV] Change in reference energy.
 ```
-Either `frequency` or `harmon` should be set but not both. The 
-relationship between the two is `frequency = harmon / t1_ref` where
+Either `frequency` or `harmonic_number` should be set but not both. The 
+relationship between the two is `frequency = harmonic_number / t1_ref` where
 `t1_ref` is the 1-turn reference time.
 
 The `L_active` length is the longitudinal length over which there is an RF field. The active
@@ -49,6 +49,3 @@ where `phi0` is a phase determined by the setting of `zero_phase`.
 
 The reference energy at the downstream end of the RF element will be `E_tot_ref + dE_ref`
 where `E_tot_ref` is the upstream reference energy.
-
-The relationship between `harmon` and `frequency` is `frequency = harmon / t1_ref` where `t1_ref`
-is the change in reference time from the beginning to the end of the branch.
