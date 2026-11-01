@@ -141,7 +141,7 @@ subcomponents
   vertices:
     center: 0                 # [m] Vector of (x, y) center point.
     absolute_vertices: false  # [logical] Default is false.
-    list: [{}]                # [List of dictionaries] Ordered list of vertex points.
+    list: [{}]                # [list of dictionaries] Ordered list of vertex points.
 ```
 Each entry of the `list` vector can have four keys:
 ```{code} yaml
