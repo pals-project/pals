@@ -10,9 +10,9 @@ The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 PALS:
   adjustments:              # [list] Lattice parameter adjustments after lattice expansion.
   authors:                  # [list] Authors associated with this file.
-  extension_labels:         # [Dict] Optional extensions to PALS that the standard shall ignore.
+  extension_labels:         # [dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
-  girders:                  # [Dict] Girder elements.
+  girders:                  # [dict] Girder elements.
   include:                  # [string] Optional literal insert of a file
   load:                     # [list] Files to load. See the "Load Files" section.
   notes:                    # [list] Optional notes of interest.
