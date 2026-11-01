@@ -6,17 +6,17 @@ and spin components of the particle.
 The components of `TaylorP` are:
 ```{code} yaml
 TaylorP:
-  x_out:      # [Struct] Taylor series for output x orbital component.
-  px_out:     # [Struct] Taylor series for output px orbital component.
-  y_out:      # [Struct] Taylor series for output y orbital component.
-  py_out:     # [Struct] Taylor series for output py orbital component.
-  z_out:      # [Struct] Taylor series for output z orbital component.
-  pz_out:     # [Struct] Taylor series for output pz orbital component.
-  S_q1_out:   # [Struct] Taylor series for output spin q1 quaternion component.
-  S_qx_out:   # [Struct] Taylor series for output spin qx quaternion component.
-  S_qy_out:   # [Struct] Taylor series for output spin qy quaternion component.
-  S_qz_out:   # [Struct] Taylor series for output spin qz quaternion component.
-  ref_in:     # [Struct] Input orbital reference point for the map. 
+  x_out:      # [struct] Taylor series for output x orbital component.
+  px_out:     # [struct] Taylor series for output px orbital component.
+  y_out:      # [struct] Taylor series for output y orbital component.
+  py_out:     # [struct] Taylor series for output py orbital component.
+  z_out:      # [struct] Taylor series for output z orbital component.
+  pz_out:     # [struct] Taylor series for output pz orbital component.
+  S_q1_out:   # [struct] Taylor series for output spin q1 quaternion component.
+  S_qx_out:   # [struct] Taylor series for output spin qx quaternion component.
+  S_qy_out:   # [struct] Taylor series for output spin qy quaternion component.
+  S_qz_out:   # [struct] Taylor series for output spin qz quaternion component.
+  ref_in:     # [struct] Input orbital reference point for the map. 
 ```
 Here "input" refers to the starting coordinates at the beginning of the element,
 and "output" refers to the ending coordinates at the end of the element.
