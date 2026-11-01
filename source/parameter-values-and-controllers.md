@@ -198,7 +198,7 @@ element-by-element.
 The `set` command is used for setting parameters. The components of `set` are:
 ```{code} yaml
 parameter               # [string] Parameter(s) to vary.
-value                   # [Expression] Value to set.
+value                   # [expression] Value to set.
 absolute_error: 0       # Absolute error.       
 relative_error: 0       # [-] Relative error.
 ```
