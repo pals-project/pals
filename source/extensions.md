@@ -57,7 +57,7 @@ PALS:
 The `names` section contains a dictionary of extension names. 
 The key of each entry of the dictionary is an extension name and the value of each
 entry being a short description.
-Any key name or enum value in the PALS file that match one of these names is considered an extension.
+Any key name or enum value in the PALS file that matches one of these names is considered an extension.
 Similarly, the `prefixes` and `suffixes` sections contain dictionaries of extension prefixes and suffixes as keys, and their descriptions as values.
 Any key name or enum value in the PALS file that has a prefix or suffix that matches one of these 
 is considered an extension.

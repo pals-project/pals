@@ -7,7 +7,7 @@
 
 A `Lattice` contains a set of branches. The component of `Lattice` is:
 ```{code} yaml
-branches        # [List] List of branches.
+branches        # [list] List of branches.
 ```
 Each branch is instantiated from a `BeamLine` that is called the `root BeamLine`.
 Example:
@@ -28,7 +28,7 @@ are those branches created due to `Fork` elements.
 
 A branch has the optional components
 ```{code} yaml
-inherit   # [String] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
+inherit   # [string] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
 periodic  # [logical] Optional. Are orbit and Twiss parameters periodic? 
           #   Default is the setting of the root BeamLine.
 ```
@@ -139,7 +139,7 @@ and this process is repeated until there are no new branches to be created.
 `RELATIVE` `Controllers` are not involved in lattice expansion.
 
 * For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
-species, time, etc.) are calculated along with dependent parameters (EG multipole `Ks1` if `Bs1`
+species, time, etc.) are calculated along with dependent parameters (e.g., multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
 * Using the `post_expansion` list, node-by-node from the list beginning, 
@@ -187,7 +187,7 @@ Gradient (FFAG) arc, and splitter sections.
 
 Shown in the main body of the figure is a blowup of the region where the injection line connects 
 to the Linac along with the diagnostic line and the end of the FFAG arc.
-The injection line and the ERL was modeled as a single lattice branch which contained all 8 passes.
+The injection line and the ERL were modeled as a single lattice branch which contained all 8 passes.
 `Fork` elements were used to connect the injection line to the diagnostic line and ERL to the 
 beam stop line.
 The geometry of the splitter sections, used to correct the timings of the beams with 
