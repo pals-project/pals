@@ -7,7 +7,7 @@ The components of this group and their defaults are:
 ```{code} yaml
 ReferenceP:
   species_ref: ""   # [string] Reference species
-  pc_ref: 0         # [momentum*c] Reference momentum times speed of light
+  pc_ref: 0         # [eV] Reference momentum times speed of light
   E_tot_ref: 0      # [eV] Reference total energy
   time_ref: 0       # [s] Reference time
 ```

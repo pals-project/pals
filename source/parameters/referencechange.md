@@ -11,7 +11,7 @@ ReferenceChangeP:
   dtime_ref: null      # [sec] Reference time adjustment
   dE_ref: null         # [eV] Reference energy adjustment.
   dpc_ref: null        # [eV] Reference momentum adjustment.
-  time_ref: null       # [eV] Set reference time.
+  time_ref: null       # [sec] Set reference time.
   E_tot_ref: null      # [eV] Set reference energy.
   pc_ref: null         # [eV] Set reference momentum.
   species_ref: null    # [species] Set reference species.
