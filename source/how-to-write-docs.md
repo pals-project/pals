@@ -35,12 +35,12 @@ make latexpdf
 Open the file `build/html/index.html` with your web browser to visualize.
 You are now ready to edit the markdown files that compose the documentation!
 
-If you like to atuomatically rebuild changes on save of edited files, 
-run in your particle-accelerator-lattice-standard directory:
+If you would like to automatically rebuild changes on save of edited files, 
+run in the root directory of your `pals` repository clone:
 ```{code} bash
 sphinx-autobuild source/ build/html
 ```
 and open the URL shown in the terminal, usually [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-If you add new markdown files, do not forget to add them to the table of contents defined `source/index.md`.
+If you add new markdown files, do not forget to add them to the table of contents defined in `source/index.md`.
 Finally, once you are happy with your changes, do not forget to commit and push them to your branch and open a pull request on GitHub.
