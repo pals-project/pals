@@ -3,7 +3,7 @@
 
 The `BendP` group stores the parameters that characterize the shape of a [`Bend`](#s:bend) element. 
 The only relevant shape parameter that is not in the `BendP` is the
-length `length` parameter.
+`length` parameter.
 
 ```{code} yaml
 BendP:
@@ -67,7 +67,7 @@ D) Bend geometry for `ref_geometry` set to `EXIT_COORDS`.
 
    Of all the parameters listed, only two parameters may be specified in the PALS file and
    these two parameters must be from different sets. From these two parameters all others can
-   be computed. If less than two parameters are set. Default values for parameters that cannot
+   be computed. If fewer than two parameters are set, default values for parameters that cannot
    be determined are zero.
 
 2. Once the above parameters are computed, `e1_rect` can be computed from `e1` or vice versa
@@ -249,7 +249,7 @@ to work with `g_ref`.
 
   The `tilt_ref` attribute rotates a bend about the longitudinal axis at the entrance face of the
 bend as explained in [](#s:ent.exi). It is important to understand that `tilt_ref`,
-unlike the `tilt` attribute of other elements, bends both the reference orbit along with the
+unlike the `BodyShiftP` `z_rot` parameter, rotates both the reference orbit and the
 physical element.
   Important! Do not use `tilt_ref` when doing misalignment studies for a machine. Trying to misalign
 a dipole by setting `tilt_ref` will affect the positions of all downstream elements! Rather, use the
