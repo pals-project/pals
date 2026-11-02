@@ -1,5 +1,5 @@
 (s:language.covert)=
-# Conversion between PALS format and other formats.
+# Conversion between PALS format and other formats
 
 Language converters between PALS and other accelerator simulation languages (MAD, SciBmad, etc.) are in development.
 It is envisaged that converting to PALS format will be handled by the individual programs
@@ -14,7 +14,7 @@ be useful.
 
 Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
 
-- Conversion from Bmad to PALS can be done with using the `Tao` program which
+- Conversion from Bmad to PALS can be done using the `Tao` program which
   is a program in the Bmad ecosystem. Run `Tao` with a
   Bmad lattice and then a PALS YAML file can be created using the command:
   ```{code} yaml
@@ -62,7 +62,7 @@ Conversion between PALS and [MAD-X](https://mad.web.cern.ch/mad/):
 
 - Direct conversion from MAD-X to PALS is not yet available but an indirect path is to
   convert from MAD-X to Bmad using the madx_to_bmad.py script in the Bmad ecosystem and
-  then converting from [Bmad to PALS](#s:bmad.covert)
+  then converting from [Bmad to PALS](#s:bmad.covert).
 
 - Conversion from PALS to MAD-X is performed by the `pals_to_madx` function.
   A Julia based version of this function is in the `PALSParserJ.jl` repository 
