@@ -12,7 +12,7 @@ Additionally, associated PALS code will be usable from within simulation program
 PALS files thus relieving programmers from reinventing the wheel.
 
 PALS is able to describe the connections between various things
-from the connection of injection and extraction lines connected to a storage ring to the interaction region
+from the connection of injection and extraction lines to a storage ring to the interaction region
 of colliding beam storage rings where particles are moving through magnets in opposite directions. A PALS
 based lattice is able to
 hold all the information about an entire machine complex from beam creation to dump lines enabling a 
