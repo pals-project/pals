@@ -151,7 +151,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **AC kicker parameters**: [`ACKickerP`](#s:ackicker.params).
+- AC kicker parameters: [`ACKickerP`](#s:ackicker.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
@@ -172,7 +172,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Beam-beam interaction parameters**: [`BeamBeamP`](#s:beambeam.params).
+- Beam-beam interaction parameters: [`BeamBeamP`](#s:beambeam.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
@@ -206,7 +206,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Fork-from parameters**: [`ForkFromP`](#s:fork.from.params). List of `Fork` elements forking to this element.
+- Fork-from parameters: [`ForkFromP`](#s:fork.from.params). List of `Fork` elements forking to this element.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
@@ -225,7 +225,7 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
-- **Bend parameters**: [`BendP`](#s:bend.params).
+- Bend parameters: [`BendP`](#s:bend.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 %---------------------------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
-- **Converter parameters**: [`ConverterP`](#s:converter.params).
+- Converter parameters: [`ConverterP`](#s:converter.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
@@ -259,7 +259,7 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
-- **RF parameters**: [`RFP`](#s:rf.params).
+- RF parameters: [`RFP`](#s:rf.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
@@ -342,7 +342,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Coordinate set parameters**: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
+- Coordinate set parameters: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 For this element, `FloorP` and `ShiftedFloorP` parameter values will be the same.
@@ -369,7 +369,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Coordinate set parameters**: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
+- Coordinate set parameters: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 For this element, `FloorP` and `ShiftedFloorP` parameter values will be the same.
@@ -390,7 +390,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Foil parameters**: [`FoilP`](#s:foil.params).
+- Foil parameters: [`FoilP`](#s:foil.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
@@ -409,8 +409,8 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Fork-from parameters**: [`ForkFromP`](#s:fork.from.params). List of `Fork` elements forking to this element.
-- **Fork parameters**: [`ForkP`](#s:fork.params). Required.
+- Fork-from parameters: [`ForkFromP`](#s:fork.from.params). List of `Fork` elements forking to this element.
+- Fork parameters: [`ForkP`](#s:fork.params). Required.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
@@ -448,12 +448,12 @@ as documented in [](#s:girder.mis).
 Note: `Girder` elements do not have a `length` nor an `s_position`.
 
 Element parameter groups associated with this element kind are:
-- **Coordinate set parameters**: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
-- **Body shift parameters**: [`BodyShiftP`](#s:bodyshift.params). Orientation of element.
-- **Floor parameters**: [`FloorP`](#s:floor.params). Floor position and orientation without any `BodyShiftP` or supporting `Girder` alignment shifts.
-- **Girder parameters**: [`GirderP`](#s:girder.params). List of supported elements.
-- **Meta parameters**: [`MetaP`](#s:meta.params).
-- **Shifted floor parameters**: [`ShiftedFloorP`](#s:shifted.floor.params). Floor position and orientation with `BodyShiftP` and/or supporting `Girder` alignment shifts included.
+- Coordinate set parameters: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
+- Body shift parameters: [`BodyShiftP`](#s:bodyshift.params). Orientation of element.
+- Floor parameters: [`FloorP`](#s:floor.params). Floor position and orientation without any `BodyShiftP` or supporting `Girder` alignment shifts.
+- Girder parameters: [`GirderP`](#s:girder.params). List of supported elements.
+- Meta parameters: [`MetaP`](#s:meta.params).
+- Shifted floor parameters: [`ShiftedFloorP`](#s:shifted.floor.params). Floor position and orientation with `BodyShiftP` and/or supporting `Girder` alignment shifts included.
 
 %---------------------------------------------------------------------------------------------------
 (s:instrument)=
@@ -620,8 +620,8 @@ Under Construction...
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
-- **Aperture parameters**: [`ApertureP`](#s:aperture.params).
-- **Patch parameters**: [`PatchP`](#s:patch.params). Exit coordinates with respect to entrance coordinates.
+- Aperture parameters: [`ApertureP`](#s:aperture.params).
+- Patch parameters: [`PatchP`](#s:patch.params). Exit coordinates with respect to entrance coordinates.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
@@ -664,7 +664,7 @@ the downstream elements of the `ReferenceChange` element.
 Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
-- **Reference change parameters**: [`ReferenceChangeP`](#s:ref.change.params). Reference parameters adjustments.
+- Reference change parameters: [`ReferenceChangeP`](#s:ref.change.params). Reference parameters adjustments.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 
@@ -681,8 +681,8 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
-- **RF parameters**: [`RFP`](#s:rf.params).
-- **Solenoid parameters**: [`SolenoidP`](#s:solenoid.params).
+- RF parameters: [`RFP`](#s:rf.params).
+- Solenoid parameters: [`SolenoidP`](#s:solenoid.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Note: Multipole parameters represent DC fields. A common example is a DC solenoid field which
@@ -726,7 +726,7 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
-- **Solenoid parameters**: [`SolenoidP`](#s:solenoid.params).
+- Solenoid parameters: [`SolenoidP`](#s:solenoid.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 Example:
@@ -752,7 +752,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **Taylor map parameters**: [`TaylorP`](#s:taylor.params). Orbital and spin Taylor map.
+- Taylor map parameters: [`TaylorP`](#s:taylor.params). Orbital and spin Taylor map.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The length of this element is considered to be zero so if `length` is specified, it must be zero.
@@ -768,7 +768,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- **elements**: A list of contained element kinds.
+- elements**: A list of contained element kinds.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
