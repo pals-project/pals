@@ -3,25 +3,25 @@
 
 The `MagneticMultipoleP` parameter group describes magnetic multipoles associated with the lattice
 element. For a multipole of order `N`, the magnetic field {math}`(B_x, B_y)`
-at a point {math}`\bf r` in terms of the points polar coordinates {math}`(r, \theta)` is
+at a point {math}`\bf r` in terms of the point's polar coordinates {math}`(r, \theta)` is
 ```{math}
 :label: bbmult
 
 B_y({\bf r}) + i \, B_x({\bf r}) = 
 \frac{1}{N!}(B_n + i \, B_s) \, e^{-i(N+1)T} \, e^{iN\theta} \, r^N
 ```
-where {math}`T` is the "tilt" of the `N`{sup}`th` multipole and {Math}`B_n` and {math}`B_s` are
+where {math}`T` is the "tilt" of the `N`{sup}`th` multipole and {math}`B_n` and {math}`B_s` are
 the normal and skew components of the field. `N` is defined such that 
 {math}`N = 0` describes a dipolar multipole, {math}`N = 1` describes a quadrupolar multipole, etc.
 
-The three parameters, {math}`T`, {Math}`B_n` and {math}`B_s` are not independent and only two
+The three parameters, {math}`T`, {math}`B_n` and {math}`B_s` are not independent and only two
 are needed to specify a multipole. 
 However, it is sometimes convenient to use all three. 
-For example, {Math}`B_n` and {math}`B_s` with {math}`N=0` can be used to describe 
+For example, {math}`B_n` and {math}`B_s` with {math}`N=0` can be used to describe 
 an element with independent horizontal and vertical steerings while {math}`T` can be used
 to represent rotational errors.
 
-The components of `MagneticMultipoleP` for specifying a multipolar field of order `N` is:
+The components of `MagneticMultipoleP` for specifying a multipolar field of order `N` are:
 ```{code} yaml
 tiltN     # Tilt
 BnN       # Normal component 
@@ -47,7 +47,7 @@ Integrated values are specified with the letter
 MagneticMultipoleP:
   tilt7: 0.7        # Tilt of 7th order multipole
   Bn3: 27.0         # Normal multipole component of order 3.
-  Bn2L: 3.47e1      # length integrated normal multipole component of order 2.
+  Bn2L: 3.47e1      # Length integrated normal multipole component of order 2.
 ```
 The length integrated values are related to the non-integrated values via
 ```{code} yaml
