@@ -11,7 +11,7 @@ The logos are licensed, like the rest of this documentation, under
 (s:logo.light)=
 ## Logo for Light Backgrounds - Two Line Subtitle
 
-The [line dark ink variant](_static/pals-logo-light.png) (also available as an [SVG image](_static/pals-logo-light.svg)), 
+The [dark ink variant](_static/pals-logo-light.png) (also available as an [SVG image](_static/pals-logo-light.svg)), 
 with a two line subtitle, is used for
 placement on white or other light colored backgrounds. This is the variant shown in the upper
 left corner of these documentation pages when the light theme is selected.
