@@ -5,7 +5,7 @@ The components of this group and their defaults are:
 ```{code} yaml
 RFP:
   frequency: null               # [Hz] RF frequency
-  harmon: null                  # [unitless] RF frequency harmonic number
+  harmonic_number: null         # [unitless] RF frequency harmonic number
   voltage: 0                    # [V] RF voltage
   gradient: 0                   # [V/m] RF gradient
   phase: 0                      # [rad] RF phase
@@ -13,22 +13,22 @@ RFP:
   cavity_type: STANDING_WAVE    # [enum] Cavity type
   num_cells: null               # [-] Number of cavity cells
   zero_phase: ACCELERATING      # [enum] Sets what phase = 0 means.
-  L_active: L                   # [m] Active acceleration length.
+  L_active: length              # [m] Active acceleration length.
   dE_ref: 0                     # [eV] Change in reference energy.
 ```
-Either `frequency` or `harmon` should be set but not both. The 
-relationship between the two is `frequency = harmon / t1_ref` where
-`t1_ref` is the 1-turn reference time.
+Either `frequency` or `harmonic_number` should be set but not both. The 
+relationship between the two is `frequency = harmonic_number / t1_ref` where `t1_ref`
+is the change in reference time from the beginning to the end of the branch.
 
 The `L_active` length is the longitudinal length over which there is an RF field. The active
-length can be different from the element length `L` since `L` can include the entire RF vessel.
-Especially with cryo-modules, `L_active` can be quite different from `L`. 
-If not given, the value of `L_active` defaults to the value of `L`.
+length can be different from the element `length` since `length` can include the entire RF vessel.
+Especially with cryo-modules, `L_active` can be quite different from `length`. 
+If not given, the value of `L_active` defaults to the value of `length`.
 
 Either `voltage` or `gradient` should be set but not both. The two are related by the active length
 `voltage = gradient * L_active`.
 
-The `cavity_type` parameters sets the kind of cavity under consideration. Possible settings are:
+The `cavity_type` parameter sets the kind of cavity under consideration. Possible settings are:
 ```{code} yaml
 STANDING_WAVE             # Default
 TRAVELING_WAVE
@@ -49,6 +49,3 @@ where `phi0` is a phase determined by the setting of `zero_phase`.
 
 The reference energy at the downstream end of the RF element will be `E_tot_ref + dE_ref`
 where `E_tot_ref` is the upstream reference energy.
-
-The relationship between `harmon` and `frequency` is `frequency = harmon / t1_ref` where `t1_ref`
-is the change in reference time from the beginning to the end of the branch.
