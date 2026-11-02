@@ -83,14 +83,15 @@ PALS:
           Kn1L: 0.375
 
     - bline:
-        kind: Beamline
+        kind: BeamLine
         line:
           - q1:
               repeat: 3
 
     - lat:
         kind: Lattice
-        branches: bline
+        branches:
+          - bline
 
   post_expansion:
     - set:

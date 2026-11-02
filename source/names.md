@@ -71,7 +71,7 @@ facility:
       ...
 
   - my_line:
-      kind: Beamline
+      kind: BeamLine
       line:
         - Q1      # Define within the beamline.
             ...
