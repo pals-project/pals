@@ -76,9 +76,7 @@ The parameters associated with a constant or variable are:
 ```
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
-
-Constants and variables must be defined directly under the `PALS`, the `facility`,
-or the `post_expansion` node. Example:
+Example:
 ```{code} yaml
 PALS:
   facility:
@@ -126,6 +124,10 @@ restriction that the value is always the same.
 Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
 `b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
 involve `a` nor `b`.
+
+Constants and variables must be defined directly under the `PALS`, the `facility`,
+or the `post_expansion` node. If defined under the `PALS` node, a `constants` or `variables`
+node construct must be used.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
