@@ -77,8 +77,8 @@ The parameters associated with a constant or variable are:
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
 
-Constants and variables must be defined directly under the `PALS` node or the `facility` node. 
-Example:
+Constants and variables must be defined directly under the `PALS`, the `facility`,
+or the `post_expansion` node. Example:
 ```{code} yaml
 PALS:
   facility:
