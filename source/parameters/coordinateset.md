@@ -31,7 +31,7 @@ CoordinateSetP:
 ```
 The calculation of the coordinate system is as follows:
 Start with the reference coordinates at the `origin_ele` reference point (see
-below). The coordinate system described by `CoordinateSetP` are these
+below). The coordinate system described by `CoordinateSetP` is these
 coordinates [shifted](#wws) using the offset and rot parameters of the `CoordinateSetP` group 
 (not to be confused with the offset and rotation parameters of the `BodyShiftP` group).
 

@@ -65,8 +65,9 @@ as in an ERL or in opposite directions as in a colliding beam machine.
 (s:root.intro)=
 ## Root branch
 
-The `branch` from which other `branches` fork but is not forked to by any
-other branch is called a `root` branch.
+A `branch` that is listed in the `branches` component of a `Lattice` is called a `root` branch
+(see [](#s:lattice.construct)). Branches that are created due to the presence of `Fork` elements
+are non-root branches.
 A lattice may contain multiple `root` branches. For example, a pair of intersecting storage
 rings will generally have two root branches, one for each ring.
 
