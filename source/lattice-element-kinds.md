@@ -502,7 +502,7 @@ Element parameter groups associated with this element kind are:
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
-- [**ForkFromP**](#s:fork.from.params): List of `Fork` elements forking to this element.
+- [`ForkFromP`](#s:fork.from.params): List of `Fork` elements forking to this element.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 The `length` of this element must be zero.
@@ -768,8 +768,9 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- elements**: A list of contained element kinds.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+
+Additionally, the `UnionEle` element has an `elements` subnode.
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
 such that the center of the contained element is at the center of the `UnionEle` with the
