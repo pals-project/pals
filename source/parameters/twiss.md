@@ -1,6 +1,6 @@
 %---------------------------------------------------------------------------------------------------
 (s:twiss.params)=
-## TwissP: Twiss, coupling, and dispersion Parameters.
+## TwissP: Twiss, Coupling, and Dispersion Parameters
 
 Typically this parameter group is used to specify the initial Twiss, coupling and dispersion
 parameters at the beginning of a lattice branch.
