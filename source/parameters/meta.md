@@ -12,7 +12,7 @@ MetaP:
   location: ""      # [list] Element's location.
   history: ""       # [list] Element's history. 
 ```
-In addition to an element's `name`, the three string components can be used for pattern matching
+In addition to an element's `name`, the three string components `alias`, `ID`, and `label` can be used for pattern matching
 when trying to locate all elements of a given type.
 
 Besides the six standard components, the `MetaP` parameter group can be used to store metadata 
