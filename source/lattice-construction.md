@@ -86,6 +86,8 @@ The steps used for lattice expansion are:
 any [`include`](#s:includefiles) and [`load`](#s:load) files.
 This is the base tree for the lattice expansion.
 
+* Evaluate the [`constants` and `variables`](#s:constants) nodes that are directly under the `PALS` node.
+
 * Go through the `facility` list in order and node-by-node evaluate any expressions and execute any `set` commands.
 There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
 Both are evaluated. Controllers are ignored here.

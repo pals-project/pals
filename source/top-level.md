@@ -25,7 +25,7 @@ PALS:
 ```
 The `adjustments` list is documented in section [](#s:adjust).
 The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
-`constants` and `variables` are defined in [](#s:constants)
+The `constants` and `variables` nodes are documented in section [](#s:constants).
 
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.

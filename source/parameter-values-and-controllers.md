@@ -76,6 +76,7 @@ The parameters associated with a constant or variable are:
 ```
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
+
 Example:
 ```{code} yaml
 PALS:
@@ -101,6 +102,24 @@ For constants or variables that only have a value, an alternative compact form h
       - var_a: var_val_a        # Define var_a
       ...
 ```
+Under the `facility` and `post_expansion` nodes, the entries of a `constants` or `variables` node
+may be given as a dict instead of a list:
+```{code} yaml
+  - constants:
+      const_a: value_a
+      const_b: value_b
+```
+Directly under the `PALS` node, `constants` and `variables` are subnodes and not list entries,
+so there is no leading dash. Here the entries must be given as a list and the dict form is not allowed:
+```{code} yaml
+PALS:
+  constants:
+    - const_a: value_a
+    - const_b: value_b
+  variables:
+    - var_a: var_val_a
+```
+
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
 varied after a program reads a PALS file, while a variable can vary. For example, a constant could
@@ -126,8 +145,8 @@ Circular definitions are not allowed. For example, if constant `a` is defined in
 involve `a` nor `b`.
 
 Constants and variables must be defined directly under the `PALS`, the `facility`,
-or the `post_expansion` node. If defined under the `PALS` node, a `constants` or `variables`
-node construct must be used.
+or the `post_expansion` node. If defined under the `PALS` node, the compact `constants` or
+`variables` form must be used.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
