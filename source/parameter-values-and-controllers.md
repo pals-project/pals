@@ -91,23 +91,25 @@ PALS:
     ...
 ```
 
-For constants or variables that only have a value, an alternative compact form has the syntax:
+For constants or variables that only have a value, an alternative compact list form can
+be used. For example:
 ```{code} yaml
-  - constants:
-      - const_a: value_a        # Define const_a
-      - const_b: value_b        # Define const_b
-      - const_c: pi * const_a   # Can use expressions.
-      ...
-  - variables:
-      - var_a: var_val_a        # Define var_a
-      ...
+PALS:
+  constants:
+    - const_a: value_a        # Define const_a
+    - const_b: value_b        # Define const_b
+    - const_c: pi * const_a   # Can use expressions.
+    ...
+  variables:
+    - var_a: var_val_a        # Define var_a
+    ...
 ```
 Under the `facility` and `post_expansion` nodes, the entries of a `constants` or `variables` node
 may be given as a dict instead of a list:
 ```{code} yaml
   - constants:
-      const_a: value_a
-      const_b: value_b
+      - const_a: value_a
+      - const_b: value_b
 ```
 Directly under the `PALS` node, `constants` and `variables` are subnodes and not list entries,
 so there is no leading dash. Here the entries must be given as a list and the dict form is not allowed:
