@@ -99,7 +99,7 @@ alignment shifts, the `body` coordinates of the element are aligned with the
 `branch` coordinates. Exception: a `Bend` element with a finite `BendP.tilt_ref` has
 body coordinates different from the branch coordinates.
 The transformation between `branch` and `body` coordinates is given in
-[xxx](#s:lab.body.transform).
+[](#s:lab.body.transform).
 
 %---------------------------------------------------------------------------------------------------
 (s:ent.exi)=
@@ -125,10 +125,10 @@ element in a branch and then building up the coordinate system element-by-elemen
 Most elements have an "`entrance`" and an "`exit`" coordinate frame as
 illustrated in the above figure.
 These coordinate frames are attached to the element and are part of the `element body coordinates`. 
-`Fiducial` elements ([xxx](#s:fiducial)) are an exception.
+`Fiducial` elements ([](#s:fiducial)) are an exception.
 `Fiducial` elements only have a single coordinate frame that is tied to floor coordinates 
 and construction of the branch coordinate system starts at this coordinate system. 
-See [xxx](#s:fiducial) for more details.
+See [](#s:fiducial) for more details.
 Note that `Girder` elements ([](#s:girder)) also only have a single coordinate frame but they
 are not included in any branch.
 
@@ -137,13 +137,13 @@ Most element kinds have a "straight" geometry as shown in
 segment with the {math}`x` and {math}`y` axes always pointing in the same direction.
 For a [Bend](#s:bend) element the reference curve is a segment of a circular arc as shown in
 {numref}`f:ele.coord.frame`B. With the `tilt_ref` parameter of a bend set to zero, the rotation axis
-between the entrance and exit frames is parallel to the {math}`y`-axis ([xxx](#s:floor)).
+between the entrance and exit frames is parallel to the {math}`y`-axis ([](#s:floor)).
 For [Patch](#s:patch) and [FloorShift](#s:floorshift)
 elements ({numref}`f:ele.coord.frame`C), the exit face can be
 arbitrarily oriented with respect to the entrance end.
 For `FloorShift` elements the interior reference curve between the
 entrance and exit faces is not defined. For the `Patch` element, the interior reference curve 
-is dependent upon certain `Patch` element parameter settings ([xxx](#s:patch)) and, in general,
+is dependent upon certain `Patch` element parameter settings ([](#s:patch)) and, in general,
 will have a discontinuity.
 
 %---------------------------------------------------------------------------------------------------
