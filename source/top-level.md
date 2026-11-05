@@ -10,7 +10,6 @@ The root of the PALS schema is given by a `PALS` node. Possible subnodes are:
 PALS:
   adjustments:              # [list] Lattice parameter adjustments after lattice expansion.
   authors:                  # [list] Authors associated with this file.
-  constants:                # [list] User defined constants.
   extension_labels:         # [dict] Optional extensions to PALS that the standard shall ignore.
   facility:                 # [list] lattice elements, beamlines, lattices, parameter set commands, etc.
   girders:                  # [dict] Girder elements.
@@ -20,12 +19,10 @@ PALS:
   phase_space_coordinates:  # [enum] Type of phase space coordinates.
   post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
-  variables:                # [list] User defined variables.
   version:                  # [string] Version of the PALS schema used in this file.
 ```
 The `adjustments` list is documented in section [](#s:adjust).
 The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
-The `constants` and `variables` nodes are documented in section [](#s:constants).
 
 The difference between `notes` and `reminders` is that reminder messages are meant to be 
 printed (or otherwise communicated to the user) every time the file is read.
