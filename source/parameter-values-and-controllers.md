@@ -77,6 +77,7 @@ The parameters associated with a constant or variable are:
 If both `absolute_error` and `relative_error` are specified, 
 the true error is `absolute_error + relative_error * |value|`.
 
+Constants and variables must be defined directly under the `facility` or `post_expansion` nodes. 
 Example:
 ```{code} yaml
 PALS:
@@ -91,25 +92,20 @@ PALS:
     ...
 ```
 
-For constants or variables that only have a value, an alternative compact list form can
-be used using a `constants` or `variables` list with each list item being a key/value pair
-with the key being the constant or variable name and the value being a mathematical expression.
-For example:
+For a set of constants or variables that only have values, an alternative compact form
+is to use a `constants` or `variables` list. Each item of
+the list is a key/value pair where the key is the constant or variable name and the value is
+the constant or variable value. For example: 
 ```{code} yaml
-PALS:
-  constants:
-    - const_a: value_a        # Define const_a
-    - const_b: value_b        # Define const_b
-    - const_c: pi * const_a   # Can use expressions.
-    ...
-  variables:
-    - var_a: var_val_a        # Define var_a
-    ...
+  - constants:
+      - const_a: value_a        # Define const_a
+      - const_b: value_b        # Define const_b
+      - const_c: pi * const_a   # Can use expressions.
+      ...
+  - variables:
+      - var_a: var_val_a        # Define var_a
+      ...
 ```
-
-A `constants` or `variables` constructs can only appear under the `PALS` node or under the `facility` 
-and/or `post_expansion` nodes. Since the `facility` and `post_expansion` are list nodes, there
-can be multiple `constants` and/or `variables` subnodes under either `facility` and `post_expansion`.
 
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
@@ -134,10 +130,6 @@ restriction that the value is always the same.
 Circular definitions are not allowed. For example, if constant `a` is defined in terms of constant
 `b`, and constant `b` is defined in terms of constant `c`, then the expression for `c` cannot
 involve `a` nor `b`.
-
-Constants and variables must be defined directly under the `PALS`, the `facility`,
-or the `post_expansion` node. If defined under the `PALS` node, the compact `constants` or
-`variables` form must be used.
 
 %---------------------------------------------------------------------------------------------------
 (s:functions)=
