@@ -1,4 +1,4 @@
-# Constants and variables in their compact map form, used in element
+# Constants and variables in their compact form, used in element
 # parameters. Constants may build on physical constants (r_electron) and on
 # each other; variables may reference constants; an element length may be an
 # expression over both.
@@ -9,11 +9,11 @@
 PALS:
   facility:
     - constants:
-        a_const: 0.3 * r_electron
-        b_const: 0.45
+        - a_const: 0.3 * r_electron
+        - b_const: 0.45
     - variables:
-        a_var: a_const^2
-        b_var: 0.37 * atan2(0.1, 0.2)
+        - a_var: a_const^2
+        - b_var: 0.37 * atan2(0.1, 0.2)
     - begin:
         kind: BeginningEle
         ReferenceP:
