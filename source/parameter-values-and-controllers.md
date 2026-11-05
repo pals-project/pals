@@ -92,7 +92,9 @@ PALS:
 ```
 
 For constants or variables that only have a value, an alternative compact list form can
-be used. For example:
+be used using a `constants` or `variables` list with each list item being a key/value pair
+with the key being the constant or variable name and the value being a mathematical expression.
+For example:
 ```{code} yaml
 PALS:
   constants:
@@ -104,23 +106,10 @@ PALS:
     - var_a: var_val_a        # Define var_a
     ...
 ```
-Under the `facility` and `post_expansion` nodes, the entries of a `constants` or `variables` node
-may be given as a dict instead of a list:
-```{code} yaml
-  - constants:
-      - const_a: value_a
-      - const_b: value_b
-```
-Directly under the `PALS` node, `constants` and `variables` are subnodes and not list entries,
-so there is no leading dash. Here the entries must be given as a list and the dict form is not allowed:
-```{code} yaml
-PALS:
-  constants:
-    - const_a: value_a
-    - const_b: value_b
-  variables:
-    - var_a: var_val_a
-```
+
+A `constants` or `variables` constructs can only appear under the `PALS` node or under the `facility` 
+and/or `post_expansion` nodes. Since the `facility` and `post_expansion` are list nodes, there
+can be multiple `constants` and/or `variables` subnodes under either `facility` and `post_expansion`.
 
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
