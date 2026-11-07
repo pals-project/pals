@@ -290,17 +290,6 @@ qa.*                       # Match the element.
 ```
 
 %---------------------------------------------------------------------------------------------------
-(s:constant.matching)=
-### Constant and Variable Matching
-
-Constructs that are not element parameters are matched by name in the same way.
-Top-level [constants and variables](#s:constants) are matched directly, with no
-`>`-qualified path. A variable that is owned by a controller, however, is matched
-through its controller using the same single `>` separator —
-`{controller-name}>{variable-name}` — just as an element parameter is reached
-through its element.
-
-%---------------------------------------------------------------------------------------------------
 (s:matching.precedence)=
 ### Order of Precedence
 

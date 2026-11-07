@@ -20,7 +20,7 @@ left behind.
 | `beamlines/` | Lattice branches and line construction: a branch taking its root BeamLine from its name, an explicit branch `inherit`, and `repeat` with nested sub-lines. |
 | `multipass/` | Multipass lines, flat and nested. |
 | `forks/` | Forks: the minimal form, named new branches, forking into an existing branch, destination bookkeeping (`forked_to` / `ForkFromP`), a forked-to line with its own BeginningEle, and a web of forks across two root branches. |
-| `expressions/` | Expressions: constants and variables (map and sequence forms), mathematical functions, `expr(...)`, `random_gauss()`, references to other elements' parameters, and species-name constants with `mass_of(...)`. |
+| `expressions/` | Expressions: constants and variables (long and compact forms), mathematical functions, `expr(...)`, `random_gauss()`, references to other elements' parameters, and species-name constants with `mass_of(...)`. |
 | `controllers/` | Controllers: ABSOLUTE (single, summed, pattern-matched targets), RELATIVE, a controller driving another controller's variable, and a controller reaching into a branch. |
 | `sets/` | `set` and the compact `sets` form: pattern-matched targets, `PARAMETER` and `SELF` in value expressions, and a set on a later-repeated definition. |
 | `adjustments/` | Post-expansion `adjustments`: an `optimize` block that varies quadrupole strengths to match the fractional tunes of a ring. |
