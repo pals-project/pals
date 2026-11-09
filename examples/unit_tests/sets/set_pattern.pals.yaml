@@ -32,7 +32,7 @@ PALS:
               length: 0.5
     - set:
         parameter: B1.*>BendP.e1
-        value: 2*PARAMETER + atan(SELF.BendP.g_ref)
+        value: 2*PARAMETER + atan(SELF>BendP.g_ref)
     - lat1:
         kind: Lattice
         branches:

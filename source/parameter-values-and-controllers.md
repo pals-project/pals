@@ -220,7 +220,7 @@ Example:
 
 - set:
     parameter: B1.*>BendP.e1
-    value: 2*PARAMETER + atan(SELF.BendP.g_ref)
+    value: 2*PARAMETER + atan(SELF>BendP.g_ref)
 ```
 In this example, the `BendP.e1` parameter of all elements whose name begins with `B1` is modified.
 This includes element `B1a`. Notice that when a set of parameters is being changed, as in this example,
