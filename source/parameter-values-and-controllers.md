@@ -176,6 +176,32 @@ and the PALS defined constants and the user defined constants and variables docu
 [Constants and Variables](#s:constants) section.
 [Lattice element parameter](#s:parameter.matching) values can also be incorporated.
 
+The operators, from lowest to highest precedence, are:
+```{code} yaml
++  -        # Addition and subtraction. Left associative.
+*  /        # Multiplication and division. Left associative.
++  -        # Unary plus and minus.
+^           # Exponentiation. Right associative.
+```
+Parentheses `( )` can be used for grouping. Exponentiation is right associative so
+`2^3^2` is `2^(3^2)` = 512. Unary minus binds less tightly than exponentiation so `-2^2` is
+`-(2^2)` = -4, and the exponent may itself carry a sign: `2^-1` = 0.5.
+Numbers may be written in integer, decimal, or exponential form (`3`, `0.45`, `3.75e7`).
+Example:
+```{code} yaml
+- a_var: 3.75e7 / c_light^2
+```
+
+An expression may optionally be wrapped in `expr(...)`. The wrapper has no effect on
+the value: `expr(a + b)` is the same as `a + b`. 
+The `expr` wrapper, if used, must enclose the entire expression. 
+That is, `expr` is not a function and must never appear as part of an expression. 
+For example, `2 * expr(a + b)` is invalid. Example:
+```{code} yaml
+MagneticMultipoleP:
+  Kn1: expr(3.74 * a_var)    # Same as: Kn1: 3.74 * a_var
+```
+
 %---------------------------------------------------------------------------------------------------
 (s:io.params)=
 ## User Settable (Input) and Dependent (Output) Parameters
