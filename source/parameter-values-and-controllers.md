@@ -211,6 +211,19 @@ MagneticMultipoleP:
 Expressions that are not wrapped using  `expr(...)` are immediate expressions with the exception
 that any expression in a [controller](#s:controller) construct is automatically a delayed expression.
 
+An immediate expression is evaluated only once even if it uses a variable that is defined
+by a delayed expression. Changing that variable afterwards does not change the value of the
+immediate expression. Example:
+```{code} yaml
+- variables:
+    - var_a: expr(0.3 * c_light)    # Delayed
+    - var_b: 2 * var_a              # Immediate. Keeps the value var_a has when var_b is evaluated.
+    - var_c: expr(2 * var_a)        # Delayed. Follows any later change of var_a.
+```
+Similarly, while a constant may not be defined with a delayed expression, the expression
+defining a constant may use a variable that is defined with a delayed expression.
+The constant's value is then fixed by the value that variable has when the constant is evaluated.
+
 %---------------------------------------------------------------------------------------------------
 (s:io.params)=
 ## User Settable (Input) and Dependent (Output) Parameters
