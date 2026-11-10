@@ -168,8 +168,8 @@ charge_of(A)             # Charge, in units of the elementary charge, of particl
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
 
-There is also `expr(...)` which is used to denote delayed expressions as documented in the
-[](#s:expressions) section.
+There is also the `expr(...)` construct which is used to denote delayed expressions as 
+documented in the [](#s:expressions) section.
 
 %---------------------------------------------------------------------------------------------------
 (s:expressions)=
@@ -201,13 +201,12 @@ Expressions can be divided into two categories called "delayed" and "immediate".
 Immediate expressions are expressions that are evaluated once.
 Delayed expressions can be evaluated multiple times as conditions change after a lattice has
 been read in. Delayed expressions are denoted by wrapping the expression using
-`expr(...)`. The wrapper has no effect on the value: `expr(a + b)` is the same as `a + b`. 
+`expr(...)`. The wrapper has no effect on evaluation: `expr(a + b)` evaluates the same as `a + b`. 
 The `expr` wrapper, if used, must enclose the entire expression. 
-That is, `expr` is not a function and must never appear as part of an expression. 
 For example, `2 * expr(a + b)` is invalid. Example:
 ```{code} yaml
 MagneticMultipoleP:
-  Kn1: expr(3.74 * a_var)    # Same as: Kn1: 3.74 * a_var
+  Kn1: expr(3.74 * a_var)    # Evaluates the same as: Kn1: 3.74 * a_var
 ```
 Expressions that are not wrapped using  `expr(...)` are immediate expressions with the exception
 that any expression in a [controller](#s:controller) construct is automatically a delayed expression.
