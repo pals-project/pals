@@ -91,6 +91,8 @@ PALS:
         value: 37
     ...
 ```
+A [delayed expression](#s:expressions) may not be used to define a constant but
+may be used for a variable.
 
 For a set of constants or variables that only have values, an alternative compact form
 is to use a `constants` or `variables` list. Each item of
