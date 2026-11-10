@@ -87,11 +87,9 @@ any [`include`](#s:includefiles) and [`load`](#s:load) files.
 This is the base tree for the lattice expansion.
 
 * Go through the `facility` list in order and node-by-node evaluate 
-  [immediate expressions](#s:expressions)  and execute any `set` commands.
-  [delayed expressions](#s:expressions) (including controllers) are evaluated as needed for the
+  [immediate expressions](#s:expressions) and execute any `set` commands.
+  [Delayed expressions](#s:expressions) (including controllers) are evaluated as needed for the
   evaluation of immediate expressions. 
-  Note: only `ABSOLUTE` `Controllers` are involved.
-  `RELATIVE` `Controllers` are not involved in lattice expansion.
 
   Set commands can only act on the parameters that have been defined up to that point in the 
   `facility` list. For example:
