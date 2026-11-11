@@ -7,8 +7,8 @@ the `Fork` element is connected to.
 The components of the `ForkP` group are:
 ```{code} yaml
 ForkP:
-  to_line                    # [string] Required. Name of branch or beam line to fork to.
-  destination_element        # [string] Destination element to fork to. Default is the beginning element.
+  to_line:                   # [string] Required. Name of branch or beam line to fork to.
+  destination_element:       # [string] Destination element to fork to. Default is the beginning element.
   new_branch: SELF           # [string] Name to give newly created destination branch.
   propagate_reference: true  # [logical] Propagate reference species and energy.
   forked_to:                 # [string] Output parameter. Name of the destination element.
