@@ -20,7 +20,7 @@ BendP:
   h2: 0                    # [1/m] Exit end pole face curvature
   Kn0_from_g_ref: true     # [logical] Default `Kn0` and `Bn0` values computed from `g_ref` and `Bn0_ref`?
   L_chord: null            # [m] Chord length. 
-  L_sagitta:               # [m] Output parameter. Sagitta length.
+  L_sagitta: null          # [m] Output parameter. Sagitta length.
   L_rectangle: null        # [m] Rectangular length. 
   multipole_geometry: FOLLOWS_REF_GEOMETRY 
                            # [enum] Sets how multipoles are calculated.
