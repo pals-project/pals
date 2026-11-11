@@ -11,30 +11,30 @@ For all other element kinds that have a [ReferenceP](#s:ref.params) group, `Twis
 
 The components of `TwissP` are:
 ```{code} yaml
-alpha_a       # [-] "a" mode alpha
-alpha_b       # [-] "b" mode alpha
-beta_a        # [m] "a" mode beta
-beta_b        # [m] "b" mode beta
-cmat11        # [-] c[1,1] coupling matrix component.
-cmat12        # [m] c[1,2] coupling matrix component.
-cmat21        # [1/m] c[2,1] coupling matrix component.
-cmat22        # [-] c[2,2] coupling matrix component.
-eta_x         # [m] x-axis dispersion
-eta_y         # [m] y-axis dispersion
-etap_x        # [-] x-axis momentum dispersion.
-etap_y        # [-] y-axis momentum dispersion.
-deta_x_ds     # [-] x-axis dispersion derivative.
-deta_y_ds     # [-] y-axis dispersion derivative.
-phi_a         # [rad] "a" mode phase.
-phi_b         # [rad] "b" mode phase.
-dbeta_a_dpz   # [m/pz_units] Beta_a dependence on momentum.
-dalpha_a_dpz  # [1/pz_units] Alpha_a dependence on momentum.
-dbeta_b_dpz   # [m/pz_units] Beta_b dependence on momentum.
-dalpha_b_dpz  # [1/pz_units] Alpha_b dependence on momentum.
-deta_x_dpz    # [m/pz_units] eta_x dependence on momentum.
-detap_x_dpz   # [1/pz_units] etap_x dependence on momentum.
-deta_y_dpz    # [m/pz_units] eta_y dependence on momentum.
-detap_y_dpz   # [1/pz_units] etap_y dependence on momentum.
+alpha_a:      # [-] "a" mode alpha
+alpha_b:      # [-] "b" mode alpha
+beta_a:       # [m] "a" mode beta
+beta_b:       # [m] "b" mode beta
+cmat11:       # [-] c[1,1] coupling matrix component.
+cmat12:       # [m] c[1,2] coupling matrix component.
+cmat21:       # [1/m] c[2,1] coupling matrix component.
+cmat22:       # [-] c[2,2] coupling matrix component.
+eta_x:        # [m] x-axis dispersion
+eta_y:        # [m] y-axis dispersion
+etap_x:       # [-] x-axis momentum dispersion.
+etap_y:       # [-] y-axis momentum dispersion.
+deta_x_ds:    # [-] x-axis dispersion derivative.
+deta_y_ds:    # [-] y-axis dispersion derivative.
+phi_a:        # [rad] "a" mode phase.
+phi_b:        # [rad] "b" mode phase.
+dbeta_a_dpz:  # [m/pz_units] Beta_a dependence on momentum.
+dalpha_a_dpz: # [1/pz_units] Alpha_a dependence on momentum.
+dbeta_b_dpz:  # [m/pz_units] Beta_b dependence on momentum.
+dalpha_b_dpz: # [1/pz_units] Alpha_b dependence on momentum.
+deta_x_dpz:   # [m/pz_units] eta_x dependence on momentum.
+detap_x_dpz:  # [1/pz_units] etap_x dependence on momentum.
+deta_y_dpz:   # [m/pz_units] eta_y dependence on momentum.
+detap_y_dpz:  # [1/pz_units] etap_y dependence on momentum.
 ```
 Discussion of the normal mode decomposition is found in Sagan and Rubin {footcite:p}`Sagan:Coupling`.
 Dispersion parameters are documented in the [Dispersion](#s:dispersion) section.
