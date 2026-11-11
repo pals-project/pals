@@ -41,12 +41,12 @@ T9:               # Taylor element
   kind: Taylor
   TaylorP:
     x_out:
-      term 3.4 1 0 0 2 0 1
-      term ...
+      term: [3.4, 1, 0, 0, 2, 0, 1]
+      term: ...
     y_out:
       ...
 ```
-The term `term 3.4 1 0 0 2 0 1` represents the monomial {math}`3.4 \cdot x \cdot p_y^2 \cdot p_z`
+The term `term: [3.4, 1, 0, 0, 2, 0, 1]` represents the monomial {math}`3.4 \cdot x \cdot p_y^2 \cdot p_z`
 for the Taylor series for the output value of the orbital {math}`x` component. 
 Note that the spin transport is independent of the input spin coordinates. 
 In other words, Stern-Gerlach effects are ignored.
