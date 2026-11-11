@@ -178,7 +178,10 @@ called "unqualified".
 
 Lattice elements can also be referred to by the index in which they appear in a branch
 with the first element having index one, etc. For example, `B1>>7` matches the seventh
-element in branch `B1`.
+element in branch `B1`. The first element of a branch is its beginning element (normally a
+`BeginningEle`), so that element has index one.
+When `B1` is a `BeamLine`, the index counts elements of the expanded `BeamLine`, that is, after
+sublines and `repeat` counts have been expanded.
 
 Branches do not get an index since the
 PALS standard does not mandate that the branches of a lattice be stored in an array (it
