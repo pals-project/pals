@@ -17,13 +17,13 @@ Each element of a `BeamLine` is either a lattice element or another `BeamLine`.
 
 The components of a BeamLine are:
 ```{code} yaml
-name        # [string] Name of the BeamLine.
-multipass   # [logical] Multipass line or not. Default is false.
-length      # [m] Length of the BeamLine.
-line        # [list] List of elements.
-zero_point  # [string] Name of a line item used as a reference point when
+name:       # [string] Name of the BeamLine.
+multipass:  # [logical] Multipass line or not. Default is false.
+length:     # [m] Length of the BeamLine.
+line:       # [list] List of elements.
+zero_point: # [string] Name of a line item used as a reference point when
             #  the BeamLine is used as a subline.
-periodic    # [logical] Are orbit and Twiss parameters periodic? Default is false.
+periodic:   # [logical] Are orbit and Twiss parameters periodic? Default is false.
 ```
 
 The `name` component is a string that can be used to reference the `BeamLine`.
@@ -67,11 +67,11 @@ BeamLine.
 
 A line item can have components
 ```{code} yaml
-repeat          # [integer] Repetition count. Default is 1.
-direction       # [switch] +1 or -1. Longitudinal orientation. Default is +1.
-placement       # [struct] Shifts element or subline longitudinally.
-inherit         # [string] of lattice element or subline defined outside the line
-kind            # [enum] Type of element.
+repeat:         # [integer] Repetition count. Default is 1.
+direction:      # [switch] +1 or -1. Longitudinal orientation. Default is +1.
+placement:      # [struct] Shifts element or subline longitudinally.
+inherit:        # [string] of lattice element or subline defined outside the line
+kind:           # [enum] Type of element.
 ```
 A line item which is an element can also have components that define the properties of the element. 
 For example, a `MagneticMultipoleP` component to define multipoles.
@@ -266,10 +266,10 @@ is positioned with respect to a `"base"` line item.
 
 The components of `placement` are:
 ```{code} yaml
-offset       # Optional Real [m]. Longitudinal offset of the line item. Default is zero.
-to_point     # Optional switch. Line item offset end point. Default is ENTRANCE_END.
-base_item    # Optional string. Line item containing the `from_point`.  
-from_point   # Optional switch. Base line item offset beginning point. Default is EXIT_END.
+offset:      # Optional Real [m]. Longitudinal offset of the line item. Default is zero.
+to_point:    # Optional switch. Line item offset end point. Default is ENTRANCE_END.
+base_item:   # Optional string. Line item containing the `from_point`.  
+from_point:  # Optional switch. Base line item offset beginning point. Default is EXIT_END.
 ```
 If the `base_item` is not specified, the default is the previous element or the beginning 
 of the `line` if there is no previous element.
