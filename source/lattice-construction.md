@@ -88,7 +88,7 @@ This is the base tree for the lattice expansion.
 
 * Go through the `facility` list in order and node-by-node evaluate 
   [immediate expressions](#s:expressions) and execute any `set` commands.
-  [Delayed expressions](#s:expressions) (including controllers) are evaluated as needed for the
+  [Delayed expressions](#s:expressions) (including controller expressions) are evaluated as needed for the
   evaluation of immediate expressions. 
 
   Set commands can only act on the parameters that have been defined up to that point in the 
@@ -157,7 +157,7 @@ Notes:
 - When the `facility` list is expanded, no reference to constructs in the `post_expansion` list
   is allowed.
 - Controllers and [variables](#s:constants) that are defined with delayed expressions 
-  in the `facility` list may appear in any order in this list. Similarly for for controllers
+  in the `facility` list may appear in any order in this list. Similarly for controllers
   and variables in the `post_expansion` list.
 
 %---------------------------------------------------------------------------------------------------

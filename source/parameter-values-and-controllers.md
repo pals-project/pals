@@ -215,7 +215,7 @@ An immediate expression is evaluated only once even if it uses a variable whose 
 Example:
 ```{code} yaml
 - variables:
-    - var_a: expr(0.3 * c_light)    # Delayed
+    - var_a: 0.3                    # May be varied after the lattice is read in.
     - var_b: 2 * var_a              # Immediate. Keeps the value var_a has when var_b is evaluated.
     - var_c: expr(2 * var_a)        # Delayed. Follows any later change of var_a.
 ```
@@ -303,11 +303,11 @@ For sets that only have a value, an alternative compact form has the syntax:
 ```
 
 Delayed expressions may be used as `set` values. In this case, the expression cannot be self-referential
-which would create and endless evaluation loop. Example:
+which would create an endless evaluation loop. Example:
 ```{code} yaml
-- sets:
+- set:
     parameter: B1>BendP.e1
-    value: expr(2*PARAMETER)    # Error! Enless loop.
+    value: expr(2*PARAMETER)    # Error! Endless loop.
 ```
 
 %---------------------------------------------------------------------------------------------------
