@@ -52,7 +52,7 @@ The base name can be one of:
 - A lattice element index. See [](#s:qualified.names).
 - A controller name
 - A constant or variable name
-- A value associated with a [MetaP](#s:meta.params) string component. See [](#s:kind.matching).
+- A value of the `alias`, `ID`, or `label` [MetaP](#s:meta.params) component. See [](#s:kind.matching).
 
 Lattice elements may also be combined into sets using ranges, unions, and intersections
 as explained in [](#s:element.sets). In this case the full form of a name match string is
@@ -138,7 +138,7 @@ where `{name}` is the base name and
 `{kind}` is one of:
 - An element kind
 - The name `Controller`
-- The name of a [MetaP](#s:meta.params) string component.
+- The name of a [MetaP](#s:meta.params) component used for matching: `alias`, `ID`, or `label`.
 
 Examples:
 ```{code} yaml
