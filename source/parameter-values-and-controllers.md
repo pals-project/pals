@@ -310,6 +310,10 @@ which would create an endless evaluation loop. Example:
     value: expr(2*PARAMETER)    # Error! Endless loop.
 ```
 
+A `set` replaces the existing value of a parameter with the `set` value.
+This is true whether the existing value is an immediate or a delayed expression, and
+whether the `set` value is an immediate or a delayed expression.
+
 %---------------------------------------------------------------------------------------------------
 (s:controller)=
 ## Controllers
