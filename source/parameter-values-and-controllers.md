@@ -354,6 +354,7 @@ is `0.075*sin(cur1) + 0.3*cur2`.
 
 Initial values for controller variables may be expressions. These are
 [immediate expressions](#s:expressions) and are evaluated once when the lattice is expanded.
+Wrapping an initial value with `expr(...)` is an error.
 
 Note: All controller `expression`s are implicitly considered to be ["delayed evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
