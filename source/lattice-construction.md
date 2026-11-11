@@ -157,7 +157,8 @@ Notes:
 - When the `facility` list is expanded, no reference to constructs in the `post_expansion` list
   is allowed.
 - Controllers and [variables](#s:constants) that are defined with delayed expressions 
-  may appear in any order in the `facility` list or the `post_expansion` list.
+  in the `facility` list may appear in any order in this list. Similarly for for controllers
+  and variables in the `post_expansion` list.
 
 %---------------------------------------------------------------------------------------------------
 (s:forking)=

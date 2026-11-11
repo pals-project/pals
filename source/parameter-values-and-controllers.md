@@ -198,7 +198,7 @@ Example:
 ```
 
 Expressions can be divided into two categories called "delayed" and "immediate". 
-Immediate expressions are expressions that are evaluated once.
+Immediate expressions are expressions that are evaluated once during [lattice expansion](#s:lattice.expand).
 Delayed expressions can be evaluated multiple times as conditions change after a lattice has
 been read in. Delayed expressions are denoted by wrapping the expression using
 `expr(...)`. The wrapper has no effect on evaluation: `expr(a + b)` evaluates the same as `a + b`. 
@@ -208,12 +208,11 @@ For example, `2 * expr(a + b)` is invalid. Example:
 MagneticMultipoleP:
   Kn1: expr(3.74 * a_var)    # Evaluates the same as: Kn1: 3.74 * a_var
 ```
-Expressions that are not wrapped using  `expr(...)` are immediate expressions with the exception
+Expressions that are not wrapped using `expr(...)` are immediate expressions with the exception
 that any expression in a [controller](#s:controller) construct is automatically a delayed expression.
 
-An immediate expression is evaluated only once even if it uses a variable that is defined
-by a delayed expression. Changing that variable afterwards does not change the value of the
-immediate expression. Example:
+An immediate expression is evaluated only once even if it uses a variable whose value later changes. 
+Example:
 ```{code} yaml
 - variables:
     - var_a: expr(0.3 * c_light)    # Delayed
@@ -303,6 +302,14 @@ For sets that only have a value, an alternative compact form has the syntax:
     ...
 ```
 
+Delayed expressions may be used as `set` values. In this case, the expression cannot be self-referential
+which would create and endless evaluation loop. Example:
+```{code} yaml
+- sets:
+    parameter: B1>BendP.e1
+    value: expr(2*PARAMETER)    # Error! Enless loop.
+```
+
 %---------------------------------------------------------------------------------------------------
 (s:controller)=
 ## Controllers
@@ -346,8 +353,9 @@ used for `expression`s are not allowed
 to contain lattice parameters nor variables as this could greatly complicate the problem of 
 evaluation order.
 
-Note: All controller `expression`s are considered to be ["delayed evaluation"](#s:expressions)
+Note: All controller `expression`s are implicitly considered to be ["delayed evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
+Wrapping the expression with `expr(...)` is redundant and will be ignored.
 
 Besides control information, a controller can contain a [`MetaP`](#s:meta.params) parameter group
 which aids in documentation and searching.
