@@ -48,9 +48,6 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```{include} parameters/magneticmultipole.md
 ```
 
-```{include} parameters/material.md
-```
-
 ```{include} parameters/meta.md
 ```
 
