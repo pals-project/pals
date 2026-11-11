@@ -57,15 +57,22 @@ hbar                      # [eV*sec] Reduced Planck's constant
 k_boltzmann               # [eV/K] Boltzmann's constant
 r_electron                # [m] Classical electron radius
 r_proton                  # [m] Classical proton radius
-e_charge                  # [Coul] Elementary charge
+e_charge                  # [Coul] Conversion factor from PALS charge units to Coulombs
 mu_0                      # [eV*sec^2/m] Vacuum permeability
 epsilon_0                 # [1/eV*m] Permittivity of free space
 classical_radius_factor   # [m*eV] Classical Radius Factor: e^2/(4 pi epsilon_0)
 fine_structure            # [-] Fine structure constant
 n_avogadro                # [-] Avogadro's constant
+degrees                   # [rad] Conversion factor from degrees to radians: pi/180
+amu                       # [eV/c^2] Atomic mass unit
 ```
 The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
+
+The `e_charge` constant converts from PALS charge units (the elementary charge) to Coulombs.
+Since energy is in eV, `e_charge` is also the number of Joules in one eV.
+The `degrees` constant converts an angle in degrees to radians. For example, `angle: 15*degrees`.
+The `amu` constant can be used to specify masses of ions. For example, `208*amu`.
 
 Other constants and variables may be defined using `constant` or `variable` as the `kind`.
 The parameters associated with a constant or variable are:
