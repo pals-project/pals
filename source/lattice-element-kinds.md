@@ -770,8 +770,8 @@ Element parameter groups associated with this element kind are:
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
-Additionally, the `UnionEle` element has an `elements` subnode. This is a dict whose keys are the
-names of the contained elements and whose values are the element definitions.
+Additionally, the `UnionEle` element has an `elements` subnode. This is a list of contained elements.
+The order of the list is not important but may give a hint as to how elements are aligned longitudinally.
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
 such that the center of the contained element is at the center of the `UnionEle` with the
@@ -782,23 +782,27 @@ Any contained element can be shifted from the nominal position by setting the co
 
 Example:
 ```{code} yaml
+Sa:
+  kind: Solenoid  
+  length: 1.3
+    ...
+
+Ra:
+  kind: RFCavity
+  BodyShiftP:       # Orient the RFCavity
+    y_rot: 0.012
+    ...
+
 MMM:
   kind: UnionEle
   length: 2.1
   BodyShiftP:           # The UnionEle itself can be oriented.
     ...
   elements:
-    Sa:
-      kind: Solenoid    # Contained elements can be named.
-      length: 1.3
-      BodyShiftP:       # Orient the Solenoid
-        x_offset: 0.03
-        ...
-    Ra:
-      kind: RFCavity
-      BodyShiftP:       # Orient the RFCavity
-        y_rot: 0.012
-        ...
+    - Sa:
+        BodyShiftP:       # Orient the Solenoid
+          x_offset: 0.03
+    - Ra
 ```
 
 Note: `UnionEle` shares the feature of describing elements that overlap physically, 
