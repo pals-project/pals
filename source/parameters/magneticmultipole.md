@@ -23,15 +23,15 @@ to represent rotational errors.
 
 The components of `MagneticMultipoleP` for specifying a multipolar field of order `N` are:
 ```{code} yaml
-tiltN     # [rad] Tilt
-BnN       # [T/m^N] Normal component 
-BsN       # [T/m^N] Skew component
+tiltN:    # [rad] Tilt
+BnN:      # [T/m^N] Normal component 
+BsN:      # [T/m^N] Skew component
 ```
 
 Alternatively, the field components can be specified using normalized values
 ```{code} yaml
-KnN       # [1/m^(N+1)] Normalized normal component 
-KsN       # [1/m^(N+1)] Normalized skew component
+KnN:      # [1/m^(N+1)] Normalized normal component 
+KsN:      # [1/m^(N+1)] Normalized skew component
 ```
 where the conversion between field and normalized components is:
 ```{math}
