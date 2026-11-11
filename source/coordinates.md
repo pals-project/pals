@@ -82,7 +82,7 @@ system defines the nominal position of the lattice elements. The relationship be
 The `branch reference curve` is the {math}`x = y = 0` curve of the curvilinear coordinate system. 
 The branch reference curve does not have to be continuous and, in particular, the coordinate
 system through a `Patch` element will generally be discontinuous. If there are no bends with a finite
-`tilt_ref` [](#s:bend), and if the beginning element in the branch does not have any orientation
+`tilt_ref` (see [](#s:bend)), and if the beginning element in the branch does not have any orientation
 shifts, the branch reference curve will be in the {math}`(x,z)` plane with {math}`y = 0`. Since 
 most machines are essentially horizontal, the {math}`x` coordinate is typically thought of as the
 "horizontal" coordinate and the {math}`y` coordinate is typically thought of as the "vertical"
@@ -193,7 +193,7 @@ elements working both forwards and backwards along the branch.
 If there are multiple `Fiducial` elements in a branch, there must be a flexible [Patch](#s:patch)
 element between them.
 
-If an element is not [reversed](#s:ref.construct),
+If an element is not [reversed](#s:direction),
 the element's `upstream` end is the same as the element's `entrance` end 
 ({numref}`f:ele.coord.frame`) and the `downstream` end is the same 
 as the element's `exit`. If the element is reversed, the `entrance` and `exit` ends are switched.
@@ -217,7 +217,7 @@ This gives an unphysical situation since a
 particle traveling through `dft1` will "fall off" when it gets to the drift's end.
 {numref}`f:patch.between`D shows the same line as in {numref}`f:patch.between`C with the addition
 of a [`reflection patch`](#s:patch.params) `P` between `dft1` and `bnd1` to give a plausible geometry. 
-In this case, the patch rotates the coordinate system around the {math}`y`-axis by 180{math}`^o` 
+In this case, the patch rotates the coordinate system around the {math}`y`-axis by 180{math}`^\circ` 
 (in this example leaving the {math}`y`-axis invariant). This illustrates why
 a reflection patch is always needed between normal and reversed elements.
 
@@ -235,7 +235,7 @@ bent counterclockwise to get through the bend).
 That is, to get a particle going forward through the bend in {numref}`f:patch.between`D, positrons must be used.
 
 - A `reflection Patch` that rotated the coordinates, for example, 
-around the {math}`x`-axis by 180{math}`^o`  would also produce a plausible geometry.
+around the {math}`x`-axis by 180{math}`^\circ` would also produce a plausible geometry.
 
 %---------------------------------------------------------------------------------------------------
 (s:reflect.patch)=
@@ -325,7 +325,7 @@ Following MAD, the floor position of an element is characterized by a vector {ma
   \end{pmatrix}
 ```
  
-The orientation of an element is described by a unitary rotation matrix {math}`\bf W`. 
+The orientation of an element is described by an orthogonal rotation matrix {math}`\bf W`. 
 The column vectors of {math}`\bf W` are the unit vectors spanning the branch coordinate axes in
 the order {math}`(x, y, z)`. {math}`\bf W` can be expressed in terms of the
 orientation angles {math}`\theta`, {math}`\phi`, and {math}`\psi` via the formula
@@ -390,7 +390,7 @@ axis {math}`\bf u` (normalized to 1) and angle of rotation {math}`\beta`
 ## Lattice Element Positioning
 
 PALS, again following MAD, computes {math}`\bf V` and {math}`\bf W`
-by starting at the first element of the lattice and iteratively using the equations
+by starting at the first element of the branch and iteratively using the equations
 ```{math}
 :label: wws
 
