@@ -602,7 +602,9 @@ The exception is that a `Placeholder` will be placed at the end of all branches 
 the final floor position and reference parameters (energy, species, etc.).
 This element will be called `branch_end`.
 
-The `Placeholder` element does not have any associated parameter groups.
+Except for `branch_end`, the `Placeholder` element does not have any associated parameter groups.
+The `branch_end` element has [`FloorP`](#s:floor.params) and [`ReferenceP`](#s:ref.params)
+groups to hold the final floor position and reference parameters.
 For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
 
 
