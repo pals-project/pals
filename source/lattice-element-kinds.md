@@ -586,27 +586,6 @@ oct01w:
 ```
 
 %---------------------------------------------------------------------------------------------------
-(s:placeholder)=
-### Placeholder Element
-
-Placeholder element used for bookkeeping when constructing the expanded lattice.
-This element has zero length and does nothing.
-This element can be used as a [`base_item`](#s:placement) element for [superpositions](#s:superposition). 
-Additionally, this element can be used, for example, to denote an invalid element in the internal
-structures defined by a program.
-
-`Placeholder` elements present in a PALS file will, as a part of lattice expansion, be removed.
-That is, `Placeholder` elements will never be present in the final expanded lattice and
-tracking through a `Placeholder` will never be needed. 
-The exception is that a `Placeholder` will be placed at the end of all branches to hold
-the final floor position and reference parameters (energy, species, etc.).
-This element will be called `branch_end`.
-
-The `Placeholder` element does not have any associated parameter groups.
-For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
-
-
-%---------------------------------------------------------------------------------------------------
 (s:patch)=
 ### Patch Element
 
@@ -626,6 +605,27 @@ Element parameter groups associated with this element kind are:
 
 Important: By convention, the energy shift is applied after a particle reaches the exit face.
 This matters due to the dependence of the reference velocity on the reference energy.
+
+
+%---------------------------------------------------------------------------------------------------
+(s:placeholder)=
+### Placeholder Element
+
+Placeholder element used for bookkeeping when constructing the expanded lattice.
+This element has zero length and does nothing.
+This element can be used as a [`base_item`](#s:placement) element for [superpositions](#s:superposition). 
+Additionally, this element can be used, for example, to denote an invalid element in the internal
+structures defined by a program.
+
+`Placeholder` elements present in a PALS file will, as a part of lattice expansion, be removed.
+That is, `Placeholder` elements will never be present in the final expanded lattice and
+tracking through a `Placeholder` will never be needed. 
+The exception is that a `Placeholder` will be placed at the end of all branches to hold
+the final floor position and reference parameters (energy, species, etc.).
+This element will be called `branch_end`.
+
+The `Placeholder` element does not have any associated parameter groups.
+For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
 
 
 %---------------------------------------------------------------------------------------------------
