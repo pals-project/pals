@@ -129,7 +129,8 @@ Multipole fields in addition to any fields specific to the element kind:
 (s:output.groups)=
 ### Output parameter groups
 
-Parameters computed by a program and not set by the user:
+Parameters computed by a program and not set by the user. The exception is a
+[`BeginningEle`](#s:beginningele) element where these groups are inputs that set initial values:
 - [**ParticleP**](#s:particle.params): **Output Parameters.** Particle coordinates.
 - [**ReferenceP**](#s:ref.params): **Output Parameters.** Reference parameters.
 - [**TwissP**](#s:twiss.params): **Output Parameters.** Twiss, coupling, and dispersion parameters.
