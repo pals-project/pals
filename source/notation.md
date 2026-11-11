@@ -51,9 +51,9 @@ a lattice. While the PALS standard itself is language agnostic, this document th
 needs to use some syntax and this syntax is based upon YAML.
 YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
 
-since the PALS schema itself is written in YAML,
-no separate standard for this format is needed. Standards for other formats like JSON are contemplated
-but have not yet been developed.
+Since the examples in this document are written in YAML, a PALS file written in YAML
+follows the examples directly and no separate YAML format standard is needed.
+Standards for other formats like JSON are contemplated but have not yet been developed.
 
 %---------------------------------------------------------------------------------------------------
 (c:data-structures)=
