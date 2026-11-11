@@ -86,7 +86,7 @@ For magnetic fields, the "real" {math}`\phi_n^r` solutions will correspond to sk
 ```{math}
 :label: bpql
 
-  {\bf B} = -\frac{P_0}{q \, L} \, 
+  {\bf B} = -\frac{P_0}{q \, length} \, 
     \sum_{n = 0}^\infty \rho^n \, \left[ a_n \, \widetilde \nabla \phi_n^r + b_n \, \widetilde \nabla \phi_n^i \right]
 ```
 where the gradient derivatives of {math}`\widetilde \nabla` are with respect to the normalized
