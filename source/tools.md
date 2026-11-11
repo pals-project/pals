@@ -12,10 +12,10 @@ the parsers do much more than parse PALS files. All parsers will:
 
 ## Parsers
 
-- A Python [parser](https://github.com/pals-project/pals-python) is in development.
-- A C/C++ [parser](https://github.com/pals-project/pals-cpp) is in development.
+- A Python [parser](https://github.com/pals-project/PALSParserPy) is in development.
+- A C/C++ [parser](https://github.com/pals-project/PALSParserCpp) is in development.
 Currently supporting only YAML files, other formats will be added as needed.
-- A Julia [parser](https://github.com/pals-project/pals-julia) is in development. This parser
+- A Julia [parser](https://github.com/pals-project/PALSParserJ.jl) is in development. This parser
 uses the C++ parser as a back end.
 
 ## Visualization
