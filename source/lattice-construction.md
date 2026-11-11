@@ -20,8 +20,9 @@ Example:
           inherit: that_ring    # Inherit from that_ring BeamLine
           periodic: true
 ```
-In this example, `this_line` and `that_line` are the names of the root beamlines
-for the two `Branches` that will be created when the lattice is [expanded](#s:expansion.intro).
+In this example, two `Branches` named `this_line` and `that_line` will be created when the lattice
+is [expanded](#s:expansion.intro). The root beamline of `this_line` is the `BeamLine` named `this_line`
+and the root beamline of `that_line` is the `BeamLine` named `that_ring`.
 Branches created due to `Fork` elements also have root `BeamLines`. `Branches` specified
 in the `Lattice` structure are called `root branches` of the `lattice`. Non-root branches
 are those branches created due to `Fork` elements.
