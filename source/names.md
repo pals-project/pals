@@ -73,15 +73,15 @@ facility:
   - my_line:
       kind: BeamLine
       line:
-        - Q1      # Define within the beamline.
-            ...
+        - Q1:     # Instance of Q1 within the beamline.
+            length: 0.3   # This instance can have its own parameter values.
 
   - set:
       parameter: Q1>MagneticMultipoleP.Bs1
       value: 0.45
 ```
 In this example, the `set` will be applied to the `Q1` element defined under the facility node
-but not to the Q1 defined in the beamline.
+but not to the Q1 instance in the beamline.
 
 After lattice expansion, an element name without a `{lattice-name}` or
 a `{branch-or-beamline-name}`, will match to elements in the expanded lattice but will not match
