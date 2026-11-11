@@ -1,4 +1,4 @@
-(s:language.covert)=
+(s:language.convert)=
 # Conversion between PALS format and other formats
 
 Language converters between PALS and other accelerator simulation languages (MAD, SciBmad, etc.) are in development.
@@ -9,7 +9,7 @@ can be done by extending the code of a PALS parser since the parser can provide 
 be useful.
 
 %---------------------------------------------------------------------------------------------------
-(s:bmad.covert)=
+(s:bmad.convert)=
 ## Bmad Conversion
 
 Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
@@ -55,14 +55,14 @@ Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
     Bmad `group` elements, the reverse of the Bmad to PALS direction above.
 
 %---------------------------------------------------------------------------------------------------
-(s:madx.covert)=
+(s:madx.convert)=
 ## MAD-X Conversion
 
 Conversion between PALS and [MAD-X](https://mad.web.cern.ch/mad/):
 
 - Direct conversion from MAD-X to PALS is not yet available but an indirect path is to
   convert from MAD-X to Bmad using the madx_to_bmad.py script in the Bmad ecosystem and
-  then converting from [Bmad to PALS](#s:bmad.covert).
+  then converting from [Bmad to PALS](#s:bmad.convert).
 
 - Conversion from PALS to MAD-X is performed by the `pals_to_madx` function.
   A Julia based version of this function is in the `PALSParserJ.jl` repository 
@@ -91,7 +91,7 @@ The conversion uses the following conventions:
     used -- so a branch's `periodic` setting is carried across as a comment.
 
 %---------------------------------------------------------------------------------------------------
-(s:scibmad.covert)=
+(s:scibmad.convert)=
 ## SciBmad Conversion
 
 Conversion between PALS and [SciBmad](https://github.com/bmad-sim/SciBmad.jl):
