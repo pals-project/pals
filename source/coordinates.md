@@ -82,7 +82,7 @@ system defines the nominal position of the lattice elements. The relationship be
 The `branch reference curve` is the {math}`x = y = 0` curve of the curvilinear coordinate system. 
 The branch reference curve does not have to be continuous and, in particular, the coordinate
 system through a `Patch` element will generally be discontinuous. If there are no bends with a finite
-`tilt_ref` (see [](#s:bend)), and if the beginning element in the branch does not have any orientation
+[`tilt_ref`](#s:bend), and if the beginning element in the branch does not have any orientation
 shifts, the branch reference curve will be in the {math}`(x,z)` plane with {math}`y = 0`. Since 
 most machines are essentially horizontal, the {math}`x` coordinate is typically thought of as the
 "horizontal" coordinate and the {math}`y` coordinate is typically thought of as the "vertical"
