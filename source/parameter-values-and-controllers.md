@@ -209,7 +209,7 @@ MagneticMultipoleP:
   Kn1: expr(3.74 * a_var)    # Evaluates the same as: Kn1: 3.74 * a_var
 ```
 Expressions that are not wrapped using `expr(...)` are immediate expressions with the exception
-that any expression in a [controller](#s:controller) construct is automatically a delayed expression.
+that the `expression` components of a [controller](#s:controller) are automatically delayed expressions.
 
 An immediate expression is evaluated only once even if it uses a variable whose value later changes. 
 Example:
@@ -352,7 +352,9 @@ In the above example, the first `controls` entry will match to the `Ks2L`
 component of all elements whose name begins with `Qa`, and the associated expression
 is `0.075*sin(cur1) + 0.3*cur2`.
 
-Initial values for controller variables may be equations.
+Initial values for controller variables may be expressions. These are
+[immediate expressions](#s:expressions) and are evaluated once when the lattice is expanded.
+
 Note: All controller `expression`s are implicitly considered to be ["delayed evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
 Wrapping the expression with `expr(...)` is redundant and will be ignored.
