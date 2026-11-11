@@ -47,14 +47,13 @@ PARAMETER
 ## Syntax Used in this Document is YAML
 
 The PALS [schema standard](#s:std.components) does not define any particular language to implement 
-a lattice. Rather, there are associated
-language specific standards that define grammars for YAML, JSON, Python, etc. Along with these
-associated standards, there are packages that implement translation between PALS files and a 
-representational internal format defined by the package.
-
-While the standard itself is language agnostic, this document that describes the standard
+a lattice. While the PALS standard itself is language agnostic, this document that describes the standard
 needs to use some syntax and this syntax is based upon YAML.
 YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
+
+since the PALS schema itself is written in YAML,
+no separate standard for this format is needed. Standards for other formats like JSON are contemplated
+but have not yet been developed.
 
 %---------------------------------------------------------------------------------------------------
 (c:data-structures)=
