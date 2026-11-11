@@ -6,10 +6,10 @@ species, and time at the upstream end of the element.
 The components of this group and their defaults are:
 ```{code} yaml
 ReferenceP:
-  species_ref: ""   # [species] Reference species
-  pc_ref: 0         # [eV] Reference momentum times speed of light
-  E_tot_ref: 0      # [eV] Reference total energy
-  time_ref: 0       # [s] Reference time
+  species_ref: null   # [species] Reference species
+  pc_ref: 0           # [eV] Reference momentum times speed of light
+  E_tot_ref: 0        # [eV] Reference total energy
+  time_ref: 0         # [s] Reference time
 ```
 
 Except for `time_ref`, the reference parameters are generally the same at the
