@@ -315,7 +315,7 @@ must be computable. That is, situations where there is infinite recursion are fo
 In a section of a line where the lattice elements are not reversed, a positive `offset` moves
 the element being placed downstream. If there is reversal, a positive `offset` moves
 the element being placed upstream. That is, placement will not affect the relative distances
-of items if a line is reversed. In the above example, if `ABC_line` expands to:
+of items if a line is reversed. For example, if a `BeamLine` named `ABC_line` expands to:
 ```{code} yaml
 thingA, thingB, thingC
 ```
