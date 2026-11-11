@@ -14,7 +14,7 @@ ReferenceP:
 
 Except for `time_ref`, the reference parameters are generally the same at the
 upstream and downstream ends of the element. However, there are exceptions.
-For example, the upstream and downstream `species_ref` for a `Foil` element 
+For example, the upstream and downstream `species_ref` for a `Converter` element 
 will generally be different. And the reference energy will change if the element has a
 `dE_ref` as in an `RFCavity` element.
 
