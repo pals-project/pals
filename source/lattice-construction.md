@@ -154,8 +154,7 @@ Notes:
 - The PALS standard does not mandate how branches should be stored in memory after expansion.
   For example, branches could be stored using an array or a tree. 
   In any case, the root branches must be marked as such.
-- When the `facility` list is expanded, no reference to constructs in the `post_expansion` list
-  is allowed.
+- Nothing in the `facility` list may reference constructs in the `post_expansion` list.
 - Controllers and [variables](#s:constants) that are defined with delayed expressions 
   in the `facility` list may appear in any order in this list. Similarly for controllers
   and variables in the `post_expansion` list.
