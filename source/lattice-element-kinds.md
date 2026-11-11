@@ -770,7 +770,8 @@ Element parameter groups associated with this element kind are:
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
-Additionally, the `UnionEle` element has an `elements` subnode.
+Additionally, the `UnionEle` element has an `elements` subnode. This is a dict whose keys are the
+names of the contained elements and whose values are the element definitions.
 
 For each element contained in the `UnionEle`, the nominal position of the contained element is
 such that the center of the contained element is at the center of the `UnionEle` with the
