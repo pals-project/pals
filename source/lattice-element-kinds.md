@@ -390,7 +390,7 @@ Element parameter groups associated with this element kind are:
 - [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
-- Foil parameters: [`FoilP`](#s:foil.params).
+- Foil parameters: [`FoilP`](#s:foil.params), [`MaterialP`](#s:material.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
 

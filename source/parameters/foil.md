@@ -7,12 +7,8 @@ The components of this group and their defaults are:
 ```{code} yaml
 FoilP:
   dE_ref: 0                # [eV] Reference energy change.
-  material: ""             # [string] Foil material. Elemental or compound.
   thickness: 0             # [m] Material thickness at (x, y) = (0, 0).
   dthickness_dx: 0         # [-] Thickness slope for a wedge shaped foil.
-  density: []              # [kg/m^3] Material density.
-  area_density: []         # [kg/m^2] Material area density at (x, y) = (0, 0).
-  radiation_length: []     # [kg/m^2] Material radiation length.
   final_charge: null       # [-] Charge state after stripping. null means fully stripped.
   x_min: null              # [m] Foil edge in the -x direction.
   x_max: null              # [m] Foil edge in the +x direction.
@@ -25,32 +21,20 @@ where `E_tot_ref` is the upstream reference energy.
 
 ### Material
 
-The `material` is the name of the foil material. This may be an element (for example `"Cu"`)
-or a compound (for example `"B4C"`). A compound has one component for each element in its formula.
-In the `"B4C"` example, the components are Boron and Carbon, in that order.
-
-The `density`, `area_density` and `radiation_length` parameters may each be a single number
-or a list with one value per component, in the order the components appear in `material`.
-For `density` and `area_density`, a single value for a compound is the sum of the component values.
-`radiation_length` for a compound must be a list with one value per component.
+The foil material is given by the [`MaterialP`](#s:material.params) group of the `Foil` element.
+`FoilP` gives the geometry. For a `Foil`, `MaterialP.area_density` is the area density at
+`(x, y) = (0, 0)`.
 Example:
 ```{code} yaml
-- f1:
+- stripper:
     kind: Foil
     FoilP:
-      material: "B4C"
-      thickness: 1.0e-2
-      density: [2.0e3, 1.0e3]           # Boron: 2e3, Carbon: 1e3
-      radiation_length: [527, 427]      # Boron: 527, Carbon: 427
+      thickness: 1.0e-6
+      x_min: -0.03
+    MaterialP:
+      name: "C"
+      density: 2.0e3
 ```
-
-The amount of material a particle passes through is given by the area density.
-If `thickness` or `dthickness_dx` is non-zero, the area density is `density * thickness`
-(with `thickness` given by the equation below) and `area_density` is not used.
-If both are zero, the `area_density` value is used.
-
-When `density` or `radiation_length` is not set, a program may use tabulated values for
-an elemental material. For a compound, either `density` or `area_density` must be set.
 
 ### Thickness
 
@@ -60,8 +44,16 @@ point `(x, y)` in body coordinates is
   t = thickness + x * dthickness_dx
 ```
 To orient the wedge in the transverse plane, use the `z_rot` parameter of
-[`BodyShiftP`](#s:bodyshift.params). If `dthickness_dx` is non-zero and `area_density` is set
-instead of `density`, `thickness` must be non-zero.
+[`BodyShiftP`](#s:bodyshift.params).
+
+The amount of material a particle passes through is given by the area density at the
+particle position:
+- If `thickness` is non-zero, the area density is `density * t`. If `MaterialP.area_density`
+  is set instead of `MaterialP.density`, the density is `area_density / thickness`.
+- If `thickness` is zero and `dthickness_dx` is non-zero, `MaterialP.density` must be set
+  and the area density is `density * t`.
+- If `thickness` and `dthickness_dx` are both zero, `MaterialP.area_density` must be set
+  and is used everywhere on the foil.
 
 ### Charge stripping
 
