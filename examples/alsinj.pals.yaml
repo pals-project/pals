@@ -12,6 +12,9 @@ PALS:
         kind: Marker
     - BeamInit:
         kind: BeginningEle
+        ReferenceP:
+          species_ref: electron
+          E_tot_ref: 50.51099895e6 # [eV] 50 MeV kinetic (ALS linac) + 0.51099895 MeV rest energy
         ParticleP:
           sigma_xx: 0.15e-4 # <x^2>
           sigma_xpx: 0.0 # <x*px> 
