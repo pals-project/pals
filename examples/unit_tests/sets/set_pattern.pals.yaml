@@ -31,7 +31,7 @@ PALS:
               kind: Quadrupole
               length: 0.5
     - set:
-        parameter: main>>B1.*>BendP.e1
+        parameter: B1.*>BendP.e1
         value: 2*PARAMETER + atan(SELF>BendP.g_ref)
     - lat1:
         kind: Lattice
