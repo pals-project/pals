@@ -6,8 +6,8 @@
 # - a Fork into a dump line, creating the branch `this_dump`
 # - `include` to splice element definitions from another file into `facility`
 #   (subline_elements.subpals.yaml)
-# - two Lattices sharing the same line, selected as roots with `use`
-# - definitions appearing after their first use (generic_dump comes last)
+# - two Lattices sharing the same line, with `use` selecting lat1
+# - a BeamLine definition appearing after its first use (generic_dump comes last)
 #
 # Adapted from the pals-cpp smoke-test lattice ex.pals.yaml.
 PALS:
@@ -57,10 +57,9 @@ PALS:
         kind: Lattice
         branches:
           - inj_line
-    - use: lat2
     - use: lat1
-    # The dump line the Fork feeds. Defined after the `use` entries: the order
-    # of facility entries does not matter for name resolution.
+    # The dump line the Fork feeds. Defined after the `use` entry: a BeamLine
+    # definition may come after the BeamLine is used.
     - generic_dump:
         kind: BeamLine
         line:
