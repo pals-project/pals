@@ -69,7 +69,7 @@ lattice parameters, definitions of lattice parameters, how lattice elements can 
 into branches to describe the entire accelerator complex, etc.
 - **File format standards:** There needs to be
 standards to ensure that different translators are able to read and write a PALS file
-in various formats like YAML and JSON. Currently, since the PALS schema itself is written in YAML,
-no separate standard for this format is needed. Standards for other formats are contemplated
-but have not yet been developed.
+in various formats like YAML and JSON. Currently, since the examples in this document are written
+in YAML, a PALS file written in YAML follows the examples directly and no separate standard for this
+format is needed. Standards for other formats are contemplated but have not yet been developed.
 
