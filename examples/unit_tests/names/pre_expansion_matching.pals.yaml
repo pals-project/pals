@@ -1,0 +1,50 @@
+# Name matching before branch expansion. An unqualified name matches the
+# construct that defines an element, whether under `facility` or in place in a
+# BeamLine, but not line items that only use an element defined elsewhere.
+# Line items that only use an element get its parameters at branch expansion,
+# after the `facility` list (and so the `sets` below) has been processed.
+# Defined elements inherit immediately.
+#
+# Expanded values of MagneticMultipoleP.Bs1 and length:
+# - first Q1:  Bs1 = 0.45 (the definition, as changed by the set)
+# - second Q1: Bs1 = 0.7 (its own instance value); length 0.5 from the definition
+# - Q2:        Bs1 = 0.2 (inherited from Q1 when my_line was defined, before the set)
+# - both S2:   length = 0.3 (the first S2 item is the definition the set changes)
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - Q1:
+        kind: Quadrupole
+        length: 0.5
+        MagneticMultipoleP:
+          Bs1: 0.2
+    - d:
+        kind: Drift
+        length: 1.0
+    - my_line:
+        kind: BeamLine
+        line:
+          - begin
+          - Q1          # Uses Q1.
+          - Q1:         # Uses Q1 with an instance value of Bs1.
+              MagneticMultipoleP:
+                Bs1: 0.7
+          - Q2:         # Defines Q2 in place by inheriting from Q1.
+              inherit: Q1
+          - S2:         # Defines S2 and uses it.
+              kind: Sextupole
+              length: 0.2
+          - d
+          - S2          # Uses S2.
+    - sets:
+        - Q1>MagneticMultipoleP.Bs1: 0.45
+        - S2>length: 0.3
+    - lat1:
+        kind: Lattice
+        branches:
+          - my_line
+    - use: "lat1"
