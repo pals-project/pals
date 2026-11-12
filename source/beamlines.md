@@ -104,10 +104,14 @@ Example:
 ```
 There are four items in the `line`. The second item is an element `thingZ` which inherits the 
 properties of `thingB`. To avoid confusion, if the `inherit` value is just an 
-[unqualified](#s:qualified.names) element name, what is inherited is the parameters from
+[unqualified](#s:qualified.names) element name, the parameters are inherited from
 the definition of the element. 
 Thus in the above example, since the inherit string is the unqualified element name `thingB`,
 `thingZ` will inherit from the definition of `thingB` a length of 0.73 meters. 
+Since `thingZ` is defined in the line, it inherits immediately when `inj_line` is defined.
+By contrast, a line item like the first `thingB`, which uses but does not define an element,
+gets the parameters of the element when the branch is [expanded](#s:branch.expand)
+(see [](#s:names)).
 To inherit from the `thingB` which is 
 the first element in the line, a qualified name would have to be used. For this `inj_line>>thingB`
 would work if `thingB` only appeared once in the line. In any case, `inj_line>>thingB#1` 

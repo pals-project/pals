@@ -128,7 +128,8 @@ Both are evaluated. Controllers are ignored here.
   yet known. Therefore `Bs1` is unknown when the `set` command is processed and this is an error. 
   Notice that if `Ks1` had not been set, `Bs1` would default to zero and there would be no error.
 
-* The root `BeamLines` of the root lattice branches are [expanded](#s:branch.expand). 
+* The root `BeamLines` of the root lattice branches are [expanded](#s:branch.expand).
+Line items that use, but do not define, an element get the parameters of that element at this point. 
 
 * If `Fork` elements are present that fork to new beamlines, new branches are created for these
 new beamlines and branch expansion is performed on these new lines. 
