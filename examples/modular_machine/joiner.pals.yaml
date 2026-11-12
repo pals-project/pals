@@ -12,5 +12,5 @@ PALS:
     - SELF
   facility:
     - set:
-        parameter: Q1b>MagneticMultipoleP.Kn1
+        parameter: main>>Q1b>MagneticMultipoleP.Kn1
         value: -0.36

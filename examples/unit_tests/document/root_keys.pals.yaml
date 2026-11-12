@@ -15,7 +15,7 @@ PALS:
     - a note
   reminders:
     - a reminder
-  phase_space_coordinates: standard
+  phase_space_coordinates: KINETIC_AND_MOMENTUM
   extension_labels:
     names:
       Bmad: bmad-specific data
