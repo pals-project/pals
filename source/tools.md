@@ -15,7 +15,7 @@ the parsers do much more than parse PALS files. All parsers will:
 - A C/C++ based package [PALSParserCpp](https://github.com/pals-project/PALSParserCpp) 
   which includes a parser has been developed.
   Currently supporting only YAML files, other formats will be added as needed.
-- A Python based package [PALSParserPy] (https://github.com/pals-project/PALSParserPy) ,
+- A Python based package [PALSParserPy](https://github.com/pals-project/PALSParserPy),
   which includes the PALSParserCpp parser, has been developed.
 - A Julia based package [PALSParserJ](https://github.com/pals-project/PALSParserJ.jl),
   which includes the PALSParserCpp parser, has been developed.
