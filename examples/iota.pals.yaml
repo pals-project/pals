@@ -21,6 +21,7 @@ PALS:
     # ImpactX simulation setup that has no PALS-standard representation.
     # Everything in this entry is verbatim from input_iotalattice.in.
     - impactx_setup:
+        extension: ImpactX
         ImpactX:
           # initial beam distribution (waterbag, generated from the Twiss
           # parameters on the `begin` element plus the emittances below;
