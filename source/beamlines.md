@@ -108,7 +108,7 @@ properties of `thingB`. To avoid confusion, if the `inherit` value is just an
 the definition of the element. 
 Thus in the above example, since the inherit string is the unqualified element name `thingB`,
 `thingZ` will inherit from the definition of `thingB` a length of 0.73 meters. 
-Since this `thingZ` defines `thingZ`, it inherits immediately when `inj_line` is defined.
+Since this line item defines `thingZ`, it inherits immediately when `inj_line` is defined.
 By contrast, a line item like the first `thingB`, which uses but does not define an element,
 gets the parameters of the element when the branch is [expanded](#s:branch.expand)
 (see [](#s:names)).
