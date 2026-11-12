@@ -62,45 +62,45 @@ as explained in [](#s:element.sets). In this case the full form of a name match 
 where each member of `{element-set}` may carry its own lattice, branch, kind, and instance
 qualifiers, and the parameter path, if present, applies to every element in the set.
 
-Up until the point in [lattice expansion](#s:lattice.expand) when the branches are expanded
-(which happens at after the `facility` node has been processed and before the `post_expansion`
-note is processing begins), an element name without a `{lattice-name}` or
-a `{branch-or-beamline-name}`, will match to the names of the constructs that defines the elements
-but will not match to elements in a beamline if the beamline element does not define the element. 
-For example:
+Up until the point in [lattice expansion](#s:lattice.expand) when the branches are
+[expanded](#s:branch.expand) (which happens after the `facility` node has been processed and before
+the `post_expansion` node is processed), an element name without a `{lattice-name}` or
+a `{branch-or-beamline-name}` will match the construct that defines the element, whether under
+`facility` or in place in a `BeamLine`, but will not match line items that only use an element
+defined elsewhere. For example:
 ```{code} yaml
 facility:
-  - Q1:           # Define element named Q1
+  - Q1:           # Define element named Q1.
       kind: Quadrupole
       ...
 
   - my_line:
       kind: BeamLine
       line:
-        - Q1      # Use (but not define) in the beamline.
-        - Q1:     # Use (but not define) in the beamline.
+        - Q1      # Use Q1.
+        - Q1:     # Use Q1 with an instance value of Bs1.
             MagneticMultipoleP:
               Bs1: 0.7
-        - S2      # This both defines S2 and uses in the beamline
-           kind: Sextupole
-           ...
+        - S2:     # This both defines S2 and uses it in the beamline.
+            kind: Sextupole
+            ...
         ...
-        - S2      # Use (but not define) in the beamline
+        - S2      # Use S2.
 
   - sets:
       Q1>MagneticMultipoleP.Bs1: 0.45
-      S2>length: 0.45
+      S2>length: 0.3
 ```
-In this example, the first `set` will be applied to the `Q1` element defined under the facility node
-but not to the two `Q1` elements used in the beamline. When branch expansion happens, the first
-`Q1` in the beamline will inherit the value of `MagneticMultipoleP.Bs1` in the definition which
-has been set to 0.45. The second `Q1` in the beamline, since it overrides the value of `MagneticMultipoleP.Bs1`
-will have a value of 0.7.
-For the `S2` set, the set is applied to the first `S2` in the beamline since that defines `S2`.
+In this example, the `Q1>MagneticMultipoleP.Bs1` entry will be applied to the `Q1` element defined
+under the facility node but not to the two `Q1` items in the beamline. When branch expansion happens,
+the first `Q1` in the beamline will inherit the value of `MagneticMultipoleP.Bs1` from the definition,
+which has been set to 0.45. The second `Q1` in the beamline overrides the value of
+`MagneticMultipoleP.Bs1` and will have a value of 0.7.
+The `S2>length` entry is applied to the first `S2` in the beamline since that item defines `S2`.
 When branch expansion happens, the second `S2` will inherit the length of the first `S2`.
 
-After lattice expansion, an element name without a `{lattice-name}` or
-a `{branch-or-beamline-name}`, will match to elements in the expanded lattice but will not match
+Once the branches are expanded, an element name without a `{lattice-name}` or
+a `{branch-or-beamline-name}` will match to elements in the expanded lattice but will not match
 to any elements outside of the expanded lattice.
 
 %---------------------------------------------------------------------------------------------------
