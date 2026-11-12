@@ -82,7 +82,7 @@ system defines the nominal position of the lattice elements. The relationship be
 The `branch reference curve` is the {math}`x = y = 0` curve of the curvilinear coordinate system. 
 The branch reference curve does not have to be continuous and, in particular, the coordinate
 system through a `Patch` element will generally be discontinuous. If there are no bends with a finite
-[`tilt_ref`](#s:bend), and if the beginning element in the branch does not have any orientation
+[`tilt_ref`](#s:bend.params), and if the beginning element in the branch does not have any orientation
 shifts, the branch reference curve will be in the {math}`(x,z)` plane with {math}`y = 0`. Since 
 most machines are essentially horizontal, the {math}`x` coordinate is typically thought of as the
 "horizontal" coordinate and the {math}`y` coordinate is typically thought of as the "vertical"
@@ -308,7 +308,7 @@ A positive {math}`\psi` forms a right--handed screw with the {math}`z`--axis.
 By default, at {math}`s = 0`, the branch reference curve's origin coincides with the {math}`(X, Y, Z)` 
 origin and the {math}`x`, {math}`y`, and {math}`z` axes correspond to the 
 {math}`X`, {math}`Y`, and {math}`Z` axes respectively. If the lattice has no
-vertical bends (the [tilt_ref](#s:bend) parameter of all bends are zero), the {math}`y`--axis
+vertical bends (the [tilt_ref](#s:bend.params) parameter of all bends are zero), the {math}`y`--axis
 will always be in the vertical {math}`Y` direction and the {math}`x`--axis will lie in the 
 horizontal {math}`(X,Z)` plane.
 In this case, {math}`\theta` decreases as one follows the branch reference curve when going through a
