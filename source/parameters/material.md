@@ -19,7 +19,8 @@ MaterialP:
 
 A `null` value means the parameter is not set. If a parameter is not set and the material is
 given by name (an element, isotope, chemical formula, or Geant4 material), a program may use
-tabulated values for that material.
+tabulated values for that material. A value that is set replaces the tabulated value. For example,
+with `name: "G4_WATER"` and `density: 990`, the density is 990 kg/m^3.
 
 ### Material name
 
@@ -31,7 +32,8 @@ The `name` component may be one of the following:
   notation used for particle species names (see [](#s:names)). Since `#` starts a YAML comment,
   the name must be quoted.
 - **Chemical formula.** A compound written as element symbols each followed by an optional count,
-  for example `"B4C"` or `"Al2O3"`. Element symbols are case sensitive: `"CO"` is
+  for example `"B4C"` or `"Al2O3"`. A group of symbols may be put in parentheses followed
+  by an optional count, for example `"Ca(OH)2"`. Element symbols are case sensitive: `"CO"` is
   carbon monoxide and `"Co"` is cobalt.
 - **Geant4 material.** A name from the
   [Geant4 material database](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html),
@@ -55,6 +57,9 @@ components:
 ```
 The component `material` is a material name (any of the forms above, including a Geant4 material)
 or a `MaterialP` group. This allows a compound to be built from other compounds.
+A `MaterialP` group used as a component describes only what the component is made of.
+Its `name`, `state`, `radiation_length`, `mean_excitation_energy`, and `components` apply.
+Its `density` and `area_density` must not be set; the density is that of the whole material.
 
 Each component sets either `atoms` or `mass_fraction`, and all components of a material must use
 the same one. `atoms` values are relative and need not sum to one. `mass_fraction` values must sum to one.
@@ -66,15 +71,17 @@ radiation length of the material, if not set directly, is
 ```
 where the mass fractions are computed from `atoms` if `atoms` is used.
 
-The `density` of a user defined material must be set, unless `area_density` is set and the
-element does not need the density.
+A user defined material that is not itself a component must set either `density` or `area_density`.
 
 ### Density and area density
 
 The `density` is the mass density of the material. The `area_density` is the mass per unit area
-seen by a particle going through the material at normal incidence. It is used when the
-element does not otherwise give the thickness of the material. If the element gives a thickness,
-the area density is `area_density = density * thickness`.
+seen by a particle going through the material at normal incidence. At most one of the two may be
+set. Setting both is an error. If `area_density` is set, a tabulated density is not used.
+
+If the element gives a thickness, the two are related by `area_density = density * thickness`, so
+either one determines the other. If the element does not give a thickness, only `area_density`
+can describe how much material a particle passes through.
 The description of each element kind that uses `MaterialP` says which applies.
 
 ### Radiation length
@@ -84,7 +91,7 @@ a distance is `radiation_length / density`.
 
 ### Examples
 
-A copper sheet using tabulated values:
+Copper using tabulated values:
 ```{code} yaml
 MaterialP:
   name: "Cu"
@@ -113,12 +120,9 @@ MaterialP:
 Liquid deuterium:
 ```{code} yaml
 MaterialP:
-  name: "liquid_deuterium"
+  name: "#2H"
   state: LIQUID
   density: 162.4
-  components:
-    - material: "#2H"
-      atoms: 1
 ```
 
 A mixture of Geant4 materials by mass:
