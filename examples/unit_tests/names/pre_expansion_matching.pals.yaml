@@ -29,17 +29,17 @@ PALS:
         kind: BeamLine
         line:
           - begin
-          - Q1          # Uses Q1.
-          - Q1:         # Uses Q1 with an instance value of Bs1.
+          - Q1 # Uses Q1.
+          - Q1: # Uses Q1 with an instance value of Bs1.
               MagneticMultipoleP:
                 Bs1: 0.7
-          - Q2:         # Defines Q2 in place by inheriting from Q1.
+          - Q2: # Defines Q2 in place by inheriting from Q1.
               inherit: Q1
-          - S2:         # Defines S2 and uses it.
+          - S2: # Defines S2 and uses it.
               kind: Sextupole
               length: 0.2
           - d
-          - S2          # Uses S2.
+          - S2 # Uses S2.
     - sets:
         - Q1>MagneticMultipoleP.Bs1: 0.45
         - S2>length: 0.3
