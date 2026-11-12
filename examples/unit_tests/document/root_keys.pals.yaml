@@ -7,7 +7,7 @@
 # ("the documented keys of the PALS root node are not reported"); a line,
 # lattice, and BeginningEle were added so the document expands.
 PALS:
-  version: 1
+  version: "1"
   authors:
     - name: Lastname, Firstname
     - name: Lastname2, Firstname2
