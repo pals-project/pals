@@ -71,11 +71,14 @@ facility:
       inherit: S2        # Inherits parameters from S2
       length: 0.55       # And any inherited parameter may be modified.
 
-  - set:                 # A set of an S2 parameter does not affect S3
+  - set:                 # A set of an S2 parameter does affect S3
       parameter: S2>MagneticMultipoleP.Kn2L
       value: 0.1 
 
 ```
+Since inheritance happens at branch expansion time after the `facility` node has been processed
+(see [](#s:lattice.expand)) which is after the `set` node has been applied, `S3` will inherit the
+set value of `S2>MagneticMultipoleP.Kn2L` which is 0.1.
 Both values and expressions are inherited. Inheritance does not affect when expressions are 
 evaluated (which will happen when the lattice is expanded).
 
