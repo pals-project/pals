@@ -62,7 +62,7 @@ This includes expanding beam lines, evaluating expressions, etc.
 Packages to do this are widely available.
 - **PALS File:** A file conforming to the PALS schema expressed in some standard format such as JSON, YAML, etc.
 
-The PALS standard can be divided into several pieces:
+PALS can be divided into several pieces:
 - **PALS Schema:** The schema defines, in a language neutral manner, the information that 
 can appear in a PALS file. This includes standardized names of lattice elements and 
 lattice parameters, definitions of lattice parameters, how lattice elements can be organized

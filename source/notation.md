@@ -47,7 +47,7 @@ PARAMETER
 ## Syntax Used in this Document is YAML
 
 The [PALS schema](#s:std.components) does not define any particular language to implement 
-a lattice. While the PALS standard itself is language agnostic, this document that describes the standard
+a lattice. While PALS itself is language agnostic, this document that describes the standard
 needs to use some syntax and this syntax is based upon YAML.
 YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
 
