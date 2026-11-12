@@ -91,7 +91,7 @@ Example:
     line:
       - thingB:               # This instance of thingB is not the definition of thingB.
           length: 0.45        # This instance of thingB can have differing parameter values.
-      - thingZ:               
+      - thingZ:               # This defines thingZ and uses it in the beamline
           inherit: thingB     # thingZ inherits parameters from thingB
       - Q1a:                  # Define an element in place called Q1a
           kind: Quadrupole
@@ -108,7 +108,7 @@ properties of `thingB`. To avoid confusion, if the `inherit` value is just an
 the definition of the element. 
 Thus in the above example, since the inherit string is the unqualified element name `thingB`,
 `thingZ` will inherit from the definition of `thingB` a length of 0.73 meters. 
-Since `thingZ` is defined in the line, it inherits immediately when `inj_line` is defined.
+Since this `thingZ` defines `thingZ`, it inherits immediately when `inj_line` is defined.
 By contrast, a line item like the first `thingB`, which uses but does not define an element,
 gets the parameters of the element when the branch is [expanded](#s:branch.expand)
 (see [](#s:names)).
