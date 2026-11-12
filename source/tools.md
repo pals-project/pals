@@ -12,18 +12,26 @@ the parsers do much more than parse PALS files. All parsers will:
 
 ## Parsers
 
-- C/C++ parser [PALSParserCpp](https://github.com/pals-project/PALSParserCpp) has been developed.
+- A C/C++ based package [PALSParserCpp](https://github.com/pals-project/PALSParserCpp) 
+  which includes a parser has been developed.
   Currently supporting only YAML files, other formats will be added as needed.
-- Python parser [PALSParserPy] (https://github.com/pals-project/PALSParserPy) has been developed.
-  This parser uses the PALSParserCpp as a back end.
-- Julia parser [PALSParserJ](https://github.com/pals-project/PALSParserJ.jl) has been developed. 
-  This parser uses the PALSParserCpp as a back end.
-- Python parser [pals-python](https://github.com/pals-project/pals-python) is in development.
+- A Python based package [PALSParserPy] (https://github.com/pals-project/PALSParserPy) ,
+  which includes the PALSParserCpp parser, has been developed.
+- A Julia based package [PALSParserJ](https://github.com/pals-project/PALSParserJ.jl),
+  which includes the PALSParserCpp parser, has been developed.
+- A Python parser [pals-python](https://github.com/pals-project/pals-python) is in development.
+
+All the parsers mentioned above can be used standalone or integrated into a program.
 
 ## Visualization
 
-A 3D Visualization package is in development.
-Xelera Research LLC is working to develop an open-source extension to the widely used graphics program Blender that will provide an intuitive graphical user-interface for accelerator modeling in 3D. The extension will support lattice editing in both a 2D graphical node-based layout as well as in the 3D view, and it will include support for importing and exporting the PALS standard format. The goal is for this software to enable viewing, editing, or constructing beamline models with a 3D layout that can include realistic physical constraints and infrastructure. Xelera also plans to explore incorporating external signals into the software to permit integration with control systems at accelerator facilities. This would enable such signals to be coupled with a model to permit continuously updated output in the 3D view. This work is supported by the U.S. Department of Energy SBIR program.
+Both the PALSParserPy and PALSParserJ packages mentioned above have 2D and 3D visualization
+components. 
+
+Xelera Research LLC is working to develop an open-source 3D Visualization package
+based upon the Blender graphics program. 
+This package will provide an intuitive graphical user-interface for accelerator modeling in 3D. 
+This work is supported by the U.S. Department of Energy SBIR program.
 
 ## Language Converters
 
