@@ -81,6 +81,8 @@ facility:
         - Q1:     # Use Q1 with an instance value of Bs1.
             MagneticMultipoleP:
               Bs1: 0.7
+        - Q2:
+            inherit: Q1
         - S2:     # This both defines S2 and uses it in the beamline.
             kind: Sextupole
             ...
@@ -95,7 +97,9 @@ In this example, the `Q1>MagneticMultipoleP.Bs1` entry will be applied to the `Q
 under the facility node but not to the two `Q1` items in the beamline. When branch expansion happens,
 the first `Q1` in the beamline will inherit the value of `MagneticMultipoleP.Bs1` from the definition,
 which has been set to 0.45. The second `Q1` in the beamline overrides the value of
-`MagneticMultipoleP.Bs1` and will have a value of 0.7.
+`MagneticMultipoleP.Bs1` and will have a value of 0.7. Like the `Q1` elements in the beamline,
+the `Q2` element in the beamline inherits its parameters from `Q1` when branch expansion happens.
+Thus `Q2` will inherit the value of 0.45 for `MagneticMultipoleP.Bs1`. 
 The `S2>length` entry is applied to the first `S2` in the beamline since that item defines `S2`.
 When branch expansion happens, the second `S2` will inherit the length of the first `S2`.
 
