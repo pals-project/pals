@@ -1,0 +1,46 @@
+# A controller with a MetaP group and two variables, one of them given by an
+# equation (cur2 = 1e8 / c_light). The first control drives Ks2L of every
+# element whose name begins with Qa; the second drives Kn1L of Qb1.
+#
+# Adapted from the Controllers section of the standard.
+PALS:
+  facility:
+    - ps27:
+        kind: Controller
+        control_type: ABSOLUTE
+        MetaP:
+          description: "Model Mitsubishi 800KL"
+        variables:
+          cur1: 0.023
+          cur2: 1e8 / c_light
+        controls:
+          - parameter: Qa.*>MagneticMultipoleP.Ks2L
+            expression: 0.075*sin(cur1) + 0.3*cur2
+          - parameter: Qb1>MagneticMultipoleP.Kn1L
+            expression: 2 * cur1
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - Qa1:
+        kind: Quadrupole
+        length: 0.5
+    - Qa2:
+        kind: Quadrupole
+        length: 0.5
+    - Qb1:
+        kind: Quadrupole
+        length: 0.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - Qa1
+          - Qa2
+          - Qb1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
