@@ -78,7 +78,7 @@ For example, a `MagneticMultipoleP` component to define multipoles.
 
 Example:
 ```{code} yaml
-- thingB:
+- thingB:              # This defines thingB
     kind: Sextupole
     length: 0.73
     ...
@@ -89,7 +89,7 @@ Example:
     length: 37.8
     zero_point: thingC
     line:
-      - thingB:               # This item refers to the name of an element or BeamLine defined elsewhere.
+      - thingB:               # This instance of thingB is not the definition of thingB.
           length: 0.45        # This instance of thingB can have differing parameter values.
       - thingZ:               
           inherit: thingB     # thingZ inherits parameters from thingB
@@ -104,11 +104,11 @@ Example:
 ```
 There are four items in the `line`. The second item is an element `thingZ` which inherits the 
 properties of `thingB`. To avoid confusion, if the `inherit` value is just an 
-[unqualified](#s:qualified.names) element name, 
-what is inherited is the definition outside of any beam line. 
+[unqualified](#s:qualified.names) element name, what is inherited is the parameters from
+the definition of the element. 
 Thus in the above example, since the inherit string is the unqualified element name `thingB`,
-`thingZ` will inherit from the definition of `thingB` that happens before `inj_line` is defined
-and will, for example, have a length of 0.73 meters. To inherit from the `thingB` which is 
+`thingZ` will inherit from the definition of `thingB` a length of 0.73 meters. 
+To inherit from the `thingB` which is 
 the first element in the line, a qualified name would have to be used. For this `inj_line>>thingB`
 would work if `thingB` only appeared once in the line. In any case, `inj_line>>thingB#1` 
 (first `thingB` in the line) or `inj_line>>1` (first item in the line) will always work even when

@@ -78,12 +78,7 @@ facility:
 ```
 Both values and expressions are inherited. Inheritance does not affect when expressions are 
 evaluated (which will happen when the lattice is expanded).
-An element immediately inherits parameters. That is, the parameter values and/or expressions
-are immediately stored in the new element (`S3` in the above example) upon definition.
-This means that the element inherited from (`S2` in the above example) must have been defined previously.
-Additionally, after the inheritance is done, modifications of the element inherited from
-do not affect the element that inherited the parameters (inheritance does not link elements).
-Inheritance may also be done on the parameter group level. See [here](#s:inherit.params).
+
 
 To avoid confusion, lattice elements may not be redefined. That is, two lattice element definitions
 that use the same element name are not allowed.
