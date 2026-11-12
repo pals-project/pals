@@ -92,8 +92,8 @@ facility:
         - S2      # Use S2.
 
   - sets:
-      Q1>MagneticMultipoleP.Bs1: 0.45
-      S2>length: 0.3
+      - Q1>MagneticMultipoleP.Bs1: 0.45
+      - S2>length: 0.3
 ```
 In this example, the `Q1>MagneticMultipoleP.Bs1` entry will be applied to the `Q1` element defined
 under the facility node but not to the two `Q1` items in the beamline. When branch expansion happens,
