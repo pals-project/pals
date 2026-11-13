@@ -1,0 +1,35 @@
+# A branch qualifier with `>>`: both root branches contain the element q, and
+# the post_expansion set `ring_a>>q>...` reaches only the q in branch ring_a.
+# After expansion, q in ring_a has Kn1L = 0.2 and q in ring_b keeps 0.1.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q:
+        kind: Quadrupole
+        length: 0.5
+        MagneticMultipoleP:
+          Kn1L: 0.1
+    - ring_a:
+        kind: BeamLine
+        line:
+          - begin
+          - q
+    - ring_b:
+        kind: BeamLine
+        line:
+          - begin
+          - q
+    - lat1:
+        kind: Lattice
+        branches:
+          - ring_a
+          - ring_b
+    - use: "lat1"
+  post_expansion:
+    - set:
+        parameter: ring_a>>q>MagneticMultipoleP.Kn1L
+        value: 0.2

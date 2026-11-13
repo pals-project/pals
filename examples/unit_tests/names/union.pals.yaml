@@ -1,0 +1,35 @@
+# A union of element names with `,`: `QA, QC` reaches QA and QC but not QB.
+# QA and QC get Kn1 = 0.4; QB keeps Kn1 = 0.1.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - QA:
+        kind: Quadrupole
+        length: 0.5
+    - QB:
+        kind: Quadrupole
+        length: 0.5
+        MagneticMultipoleP:
+          Kn1: 0.1
+    - QC:
+        kind: Quadrupole
+        length: 0.5
+    - set:
+        parameter: QA, QC>MagneticMultipoleP.Kn1
+        value: 0.4
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - QA
+          - QB
+          - QC
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

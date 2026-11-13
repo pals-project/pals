@@ -1,0 +1,42 @@
+# MetaP matching with `alias::{value}`: the set reaches every element whose
+# MetaP.alias is "black". Q1 and Q3 get Kn1 = 0.3; Q2 (alias "white") keeps
+# its own value.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - Q1:
+        kind: Quadrupole
+        length: 0.5
+        MetaP:
+          alias: "black"
+    - Q2:
+        kind: Quadrupole
+        length: 0.5
+        MetaP:
+          alias: "white"
+        MagneticMultipoleP:
+          Kn1: -0.3
+    - Q3:
+        kind: Quadrupole
+        length: 0.5
+        MetaP:
+          alias: "black"
+    - set:
+        parameter: alias::black>MagneticMultipoleP.Kn1
+        value: 0.3
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - Q1
+          - Q2
+          - Q3
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

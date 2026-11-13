@@ -1,0 +1,45 @@
+# Ranges with `{ele1}:{ele2}`, matched in the expanded branch.
+# - `qb:qc` reaches qb and qc: they get Kn1L = 0.1.
+# - `qd:qb` has its end before its start, so it wraps around the branch:
+#   qd to the end of the branch, then the start of the branch to qb. The
+#   intersection with `Quadrupole::.*` (`&`) keeps only the quadrupoles in it,
+#   qd, qa, and qb, which get Ks1L = 0.05. qc is not in the wrapped range.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - qa:
+        kind: Quadrupole
+        length: 0.5
+    - qb:
+        kind: Quadrupole
+        length: 0.5
+    - qc:
+        kind: Quadrupole
+        length: 0.5
+    - qd:
+        kind: Quadrupole
+        length: 0.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - qa
+          - qb
+          - qc
+          - qd
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
+  post_expansion:
+    - set:
+        parameter: qb:qc>MagneticMultipoleP.Kn1L
+        value: 0.1
+    - set:
+        parameter: Quadrupole::.* & qd:qb>MagneticMultipoleP.Ks1L
+        value: 0.05

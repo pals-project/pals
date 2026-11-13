@@ -1,0 +1,33 @@
+# Kind matching with `{kind}::{name}`: `Quadrupole::Q.*` reaches the
+# quadrupoles QA and QB but not the Marker QM, whose name also starts with Q.
+# QA and QB get Kn1 = 0.5; QM is unchanged.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - QA:
+        kind: Quadrupole
+        length: 0.5
+    - QM:
+        kind: Marker
+    - QB:
+        kind: Quadrupole
+        length: 0.5
+    - set:
+        parameter: Quadrupole::Q.*>MagneticMultipoleP.Kn1
+        value: 0.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - QA
+          - QM
+          - QB
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
