@@ -21,7 +21,7 @@ PALS:
           E_tot_ref: 1.0e9
     - cleo:
         kind: Solenoid
-        length: 0.1*log(abs(b_var))
+        length: -0.1*log(abs(b_var))
         MagneticMultipoleP:
           Kn1: expr(3.74 * a_var)
           Kn2: 0.01 + 0.003*random_gauss()
