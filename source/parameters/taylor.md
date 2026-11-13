@@ -24,9 +24,9 @@ The particular definition of the orbital components is given by the
 [`phase_space_coordinates`](#s:phase.space) node. The spin rotation map is represented
 using [quaternions](#s:spin).
 
-Each Taylor series structure has a set of monomial `term` nodes with the syntax:
+Each Taylor series structure has a list of monomial `term` nodes with the syntax:
 ```{code} yaml
-term <coef> <e1> <e2> <e3> <e4> <e5> <e6>
+term: [<coef>, <e1>, <e2>, <e3>, <e4>, <e5>, <e6>]
 ```
 Each `term` specifies a real valued coefficient `<coef>` and six integer exponents 
 `<e1>` through `<e6>`. The monomial represented by a `term` is:
@@ -35,21 +35,24 @@ Each `term` specifies a real valued coefficient `<coef>` and six integer exponen
               \cdot y^{\text{<e3>}} \cdot p_y^{\text{<e4>}}
               \cdot z^{\text{<e5>}} \cdot p_z^{\text{<e6>}}
 ```
+where {math}`(x, p_x, y, p_y, z, p_z)` are the input phase space coordinates.
+Each output component has a number of monomial terms that are added together.
 Example:
 ```{code} yaml
 T9:               # Taylor element
   kind: Taylor
   TaylorP:
     x_out:
-      term 3.4 1 0 0 2 0 1
-      term ...
+      - term: [3.4, 1, 0, 0, 2, 0, 1]
+      - term: ...
     y_out:
       ...
 ```
-The term `term 3.4 1 0 0 2 0 1` represents the monomial {math}`3.4 \cdot x \cdot p_y^2 \cdot p_z`
+The term `term: [3.4, 1, 0, 0, 2, 0, 1]` represents the monomial {math}`3.4 \cdot x \cdot p_y^2 \cdot p_z`
 for the Taylor series for the output value of the orbital {math}`x` component. 
 Note that the spin transport is independent of the input spin coordinates. 
 In other words, Stern-Gerlach effects are ignored.
+The order of the terms is not important. A list is used here since a dict does not allow duplicate keys.
 
 The `ref_in` component of `TaylorP` gives the orbital reference point about which the
 Taylor map is constructed. The components of `ref_in` are:
