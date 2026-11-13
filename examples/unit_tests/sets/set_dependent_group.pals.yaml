@@ -1,0 +1,30 @@
+# Setting one member of a group of interdependent parameters nullifies earlier
+# settings of the others. s1 is defined with Ks2 = 0.34; the set of Ks2L
+# replaces it, so after expansion Ks2L = 0.1 and Ks2 = 0.1 / 0.27 = 0.37037...
+#
+# From the Setting Parameters section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - s1:
+        kind: Sextupole
+        length: 0.27
+        MagneticMultipoleP:
+          Ks2: 0.34
+    - set:
+        parameter: s1>MagneticMultipoleP.Ks2L
+        value: 0.1
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - s1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
