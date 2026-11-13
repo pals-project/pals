@@ -94,11 +94,11 @@ Derivatives with respect to momentum are taken with respect to phase space
 
   The closed orbit spin tune {math}`\nu_0`. This is the angle by which a spin on the periodic
   orbit rotates about the closed orbit invariant spin direction {math}`{\bf n}_0` over one pass.
-  If {math}`(q_1, q_x, q_y, q_z)` is the [spin quaternion](#s:spin) for one pass along the periodic
+  If {math}`(S_{q1}, S_{qx}, S_{qy}, S_{qz})` is the [spin quaternion](#s:spin) for one pass along the periodic
   orbit, then
   ```{math}
-    \nu_0 = \frac{1}{\pi} \, \text{atan2} \left( |(q_x, q_y, q_z)|, \, |q_1| \right), \qquad
-    {\bf n}_0 = \frac{\text{sign}(q_1)}{|(q_x, q_y, q_z)|} \, (q_x, q_y, q_z)
+    \nu_0 = \frac{1}{\pi} \, \text{atan2} \left( |(S_{qx}, S_{qy}, S_{qz})|, \, |S_{q1}| \right), \qquad
+    {\bf n}_0 = \frac{\text{sign}(S_{q1})}{|(S_{qx}, S_{qy}, S_{qz})|} \, (S_{qx}, S_{qy}, S_{qz})
   ```
   The spin tune is ambiguous in two ways. Adding any integer gives an equally
   valid tune, and replacing {math}`{\bf n}_0` with {math}`-{\bf n}_0` changes the sign of the tune.
