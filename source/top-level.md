@@ -153,7 +153,7 @@ standard. For example, an included file may be an
 [OpenPMD](https://github.com/openPMD/openPMD-standard) compliant file coded in 
 [HDF5](https://www.hdfgroup.org/solutions/hdf5/). 
 
-The recommended suffixes for PALS files is discussed in the [File Formats](#c:impl.fileformats) section.
+The recommended suffixes for PALS files are discussed in the [File Formats](#c:impl.fileformats) section.
 Other file endings indicate non-PALS data.
 
 An include statement can appear at any level of the information tree but must be within the `PALS` root node.
@@ -245,7 +245,7 @@ is last on the `load` list.
 - Contents from the joiner and loaded files are combined `PALS` subnode by `PALS` subnode. 
 - For the `version` subnode of `PALS`, if the version strings are not the same, the combined version
 will be a comma delimited list of the different versions with duplicates discarded. It is an
-error for the versions to be incompatible. That is, if the major version is different.
+error for the versions to be incompatible, that is, if the major versions are different.
 For example, version `1.4.2` is incompatible with `2.0.1`.
 - For other scalar `PALS` nodes (e.g., [`phase_space_coordinates`](#s:phase.space)) the values
 must be the same.
