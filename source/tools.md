@@ -24,9 +24,8 @@ All the parsers mentioned above can be used standalone or integrated into a prog
 
 Both the PALSParserPy and PALSParserJ packages mentioned above have 2D and 3D visualization components. 
 
-Xelera Research LLC is working to develop an open-source 3D Visualization package
-based upon the Blender graphics program. 
-This package will provide an intuitive graphical user-interface for accelerator modeling in 3D. 
+Xelera Research LLC is developing an open-source 3D visualization package that reads PALS files, based upon the Blender graphics program. 
+This package will provide an intuitive graphical user interface for accelerator modeling in 3D. 
 This work is supported by the U.S. Department of Energy SBIR program.
 
 ## Language Converters
