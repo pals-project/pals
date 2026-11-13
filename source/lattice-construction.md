@@ -7,7 +7,7 @@
 
 A `Lattice` contains a set of branches. The component of `Lattice` is:
 ```{code} yaml
-branches        # [list] List of branches.
+branches:       # [list] List of branches.
 ```
 Each branch is instantiated from a `BeamLine` that is called the `root BeamLine`.
 Example:
@@ -28,8 +28,8 @@ are those branches created due to `Fork` elements.
 
 A branch has the optional components
 ```{code} yaml
-inherit   # [string] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
-periodic  # [logical] Optional. Are orbit and Twiss parameters periodic? 
+inherit:  # [string] Optional. Name of the root BeamLine for the branch. Default is the name of the Branch.
+periodic: # [logical] Optional. Are orbit and Twiss parameters periodic? 
           #   Default is the setting of the root BeamLine.
 ```
 The setting of `periodic` for a `Branch` overrides the setting of `periodic`

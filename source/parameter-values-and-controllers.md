@@ -201,8 +201,8 @@ element-by-element.
 
 The `set` command is used for setting parameters. The components of `set` are:
 ```{code} yaml
-parameter               # [string] Parameter(s) to vary.
-value                   # [expression] Value to set.
+parameter:              # [string] Parameter(s) to vary.
+value:                  # [expression] Value to set.
 absolute_error: 0       # Absolute error.       
 relative_error: 0       # [-] Relative error.
 ```
@@ -283,10 +283,10 @@ facility:
           expression: ...   
         ...
 ```
-In this example, a controller called `ps27` has two variables used to control parameters called
-`cur1` and `cur2`. Initial values can be set for variables. The default value of a variable is zero.
+In this example, a controller called `ps27` has two variables, named
+`cur1` and `cur2`, used to control parameters. Initial values can be set for variables. The default value of a variable is zero.
 The parameters controlled are set by the `controls` component. Each entry has a 
-`parameter` component giving the [regular expression](#s:parameter.matching) to 
+`parameter` component giving the [name match string](#s:parameter.matching) to 
 match parameters to and an `expression` component that gives the arithmetic expression
 used in setting the parameters matched to. 
 In the above example, the first `controls` entry will match to the `Ks2L` 

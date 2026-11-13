@@ -26,7 +26,7 @@ Xelera Research LLC is working to develop an open-source extension to the widely
 ## Language Converters
 
 Conversion between PALS and other lattice formats, including Bmad, SciBmad, and MAD-X, is
-documented in the [Language Converters](#s:language.covert) section.
+documented in the [Language Converters](#s:language.convert) section.
 
 ## Schema Files
 

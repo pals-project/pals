@@ -18,17 +18,17 @@ to change reference time and/or energy.
 The components of `PatchP` are:
 ```{code} yaml
 PatchP:
-  x_offset          # [m] Offset in x-direction.
-  y_offset          # [m] Offset in y-direction.
-  z_offset          # [m] Offset in z-direction.
-  x_rot             # [rad] Rotation around x-axis.
-  y_rot             # [rad] Rotation around y-axis.
-  z_rot             # [rad] Rotation around z-axis.
-  flexible          # [logical] Default is false.
+  x_offset:         # [m] Offset in x-direction.
+  y_offset:         # [m] Offset in y-direction.
+  z_offset:         # [m] Offset in z-direction.
+  x_rot:            # [rad] Rotation around x-axis.
+  y_rot:            # [rad] Rotation around y-axis.
+  z_rot:            # [rad] Rotation around z-axis.
+  flexible:         # [logical] Default is false.
                     #    false -> User sets offsets and rot. 
                     #    true -> Offsets and rot from branch layout.
-  ref_coords        # [enum] Coordinate system defining the length
-  user_sets_length  # [logical] Default is false. Is the element length user set? 
+  ref_coords:       # [enum] Coordinate system defining the length
+  user_sets_length: # [logical] Default is false. Is the element length user set? 
 ```
 
 The transformation from `Patch` entrance coordinates to exit coordinates is given by [](#wws)

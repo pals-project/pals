@@ -586,6 +586,28 @@ oct01w:
 ```
 
 %---------------------------------------------------------------------------------------------------
+(s:patch)=
+### Patch Element
+
+A Patch element is an element used to shift the reference orbit and time. 
+A common application of this element is to orient two lines with respect 
+to each other. For example,
+to orient an injection line with the ring it is injecting into.
+
+Under Construction...
+
+Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- Aperture parameters: [`ApertureP`](#s:aperture.params).
+- Patch parameters: [`PatchP`](#s:patch.params). Exit coordinates with respect to entrance coordinates.
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+
+Important: By convention, the energy shift is applied after a particle reaches the exit face.
+This matters due to the dependence of the reference velocity on the reference energy.
+
+
+%---------------------------------------------------------------------------------------------------
 (s:placeholder)=
 ### Placeholder Element
 
@@ -606,28 +628,6 @@ Except for `branch_end`, the `Placeholder` element does not have any associated 
 The `branch_end` element has [`FloorP`](#s:floor.params) and [`ReferenceP`](#s:ref.params)
 groups to hold the final floor position and reference parameters.
 For other purposes, for example, to mark reference points, [Marker](#s:marker) elements may be used.
-
-
-%---------------------------------------------------------------------------------------------------
-(s:patch)=
-### Patch Element
-
-A Patch element is an element used to shift the reference orbit and time. 
-A common application of this element is to orient two lines with respect 
-to each other. For example,
-to orient an injection line with the ring it is injecting into.
-
-Under Construction...
-
-Element parameter groups associated with this element kind are:
-- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
-  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
-- Aperture parameters: [`ApertureP`](#s:aperture.params).
-- Patch parameters: [`PatchP`](#s:patch.params). Exit coordinates with respect to entrance coordinates.
-- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
-
-Important: By convention, the energy shift is applied after a particle reaches the exit face.
-This matters due to the dependence of the reference velocity on the reference energy.
 
 
 %---------------------------------------------------------------------------------------------------
