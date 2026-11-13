@@ -22,8 +22,7 @@ All the parsers mentioned above can be used standalone or integrated into a prog
 
 ## Visualization
 
-Both the PALSParserPy and PALSParserJ packages mentioned above have 2D and 3D visualization
-components. 
+Both the PALSParserPy and PALSParserJ packages mentioned above have 2D and 3D visualization components. 
 
 Xelera Research LLC is working to develop an open-source 3D Visualization package
 based upon the Blender graphics program. 
