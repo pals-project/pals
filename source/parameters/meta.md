@@ -16,7 +16,7 @@ In addition to an element's `name`, the three string components `alias`, `ID`, a
 when trying to locate all elements of a given type.
 
 Besides the six standard components, the `MetaP` parameter group can be used to store metadata 
-that describes the lattice element but is not part of the PALS standard. 
+that describes the lattice element but is not part of PALS. 
 Example metadata could be blueprint information, information on power supply connections, etc.
 
 The `description`, `location`, and `history` components of `MetaP` are not limited to being 

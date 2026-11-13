@@ -1,7 +1,7 @@
 (c:extension)=
 # Extensions
 
-An Extension is data added to a PALS file that is not part of the PALS standard.
+An Extension is data added to a PALS file that is not part of PALS.
 For example, information specific to a particular machine or simulation program
 that has no analogue with other machines or simulation programs can be put in as an extension. 
 

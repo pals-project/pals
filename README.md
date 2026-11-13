@@ -29,7 +29,7 @@ please contact [Jean-Luc Vay](https://github.com/jlvay) to be put on the mailing
 1. **Community outreach:** Through papers, talks and other avenues, inform the accelerator community
 about PALS. Additionally, seek involvement from the community.
 
-2. **Develop the PALS standard.** 
+2. **Develop the PALS schema.** 
 
 3. **[Develop Libraries and tools to read/write/visualize/manipulate PALS lattices.](https://pals-project.readthedocs.io/en/latest/tools.html)**
 
