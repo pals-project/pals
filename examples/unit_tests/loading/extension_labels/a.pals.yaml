@@ -2,5 +2,6 @@
 # From pals-cpp tests/lattices/load_dict.
 PALS:
   extension_labels:
-    from_a: "A"
-    shared: "same"
+    names:
+      from_a: "A"
+      shared: "same"
