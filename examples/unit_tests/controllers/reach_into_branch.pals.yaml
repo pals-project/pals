@@ -1,6 +1,6 @@
-# A controller reaching an element inside a branch, with the branch defined
-# in place under the Lattice and carrying a branch parameter (periodic). Also
-# a controller with a MetaP-free compact body: one variable, one control.
+# A controller reaching an element inside a branch. The Lattice names the
+# BeamLine `ln` as a branch and gives it a branch parameter (periodic). The
+# controller has a minimal body: one variable and one control, with no MetaP.
 #
 # From pals-cpp tests/test_controllers.cpp
 # ("a controller reaches an element in a branch named by its key").
