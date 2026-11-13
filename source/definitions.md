@@ -47,11 +47,11 @@ However, lattice elements may overlap which will naturally complicate tracking.
 ## Lattices
 
 A `lattice` is the root structure holding the information about a
-``machine``. A machine may be as simple as a line of elements (like the elements of a Linac) or
+"machine". A machine may be as simple as a line of elements (like the elements of a Linac) or
 as complicated as an entire accelerator complex with multiple storage rings, Linacs, transfer
 lines, etc.
 
-Essentially a `lattice` has an array of `branches` with each branch describing part of the
+Essentially a `lattice` has a set of `branches` with each branch describing part of the
 machine. Branches can be interconnected to form a unified whole.
 Branches can be interconnected using `Fork` elements. 
 This is used to simulate forking beamlines such as a connection to a transfer line, dump line, or an
