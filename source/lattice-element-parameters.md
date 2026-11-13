@@ -102,7 +102,7 @@ And an element can inherit a parameter group from another element:
 - q2:
     kind: Quadrupole
     ApertureP:
-      inherit: q1.ApertureP
+      inherit: q1>ApertureP
 ```
 
 For an element to inherit all parameter groups from another element, just inherit the element itself:
