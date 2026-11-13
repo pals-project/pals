@@ -35,6 +35,8 @@ Each `term` specifies a real valued coefficient `<coef>` and six integer exponen
               \cdot y^{\text{<e3>}} \cdot p_y^{\text{<e4>}}
               \cdot z^{\text{<e5>}} \cdot p_z^{\text{<e6>}}
 ```
+where {math}`(x, p_x, y, p_y, z, p_z)` are the input phase space coordinates.
+Each output component has a number of monomial terms that are added together.
 Example:
 ```{code} yaml
 T9:               # Taylor element
