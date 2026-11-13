@@ -107,7 +107,7 @@ of `q1`. In this case, the result would be that all three of the `q1` elements i
 have the same value of `Kn1L`.
 
 The set of node types that can be used under the `post_expansion` node is the same as the
-`facility` node except for `lattice` and `use` nodes.
+`facility` node except for [`Lattice`](#s:lattice.construct) definitions and [`use`](#s:use) statements.
 
 
 %---------------------------------------------------------------------------------------------------
