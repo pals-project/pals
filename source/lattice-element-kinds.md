@@ -8,7 +8,8 @@ For documentation on lattice elements in general see [here](#c:lat.ele).
 (s:magnets)=
 ## Magnets and RF Cavities
 
-The following element kinds involve applied electromagnetic fields in vacuum.
+The following element kinds involve external electromagnetic fields,
+along with the field-free `Drift`.
 
 - [ACKicker](#s:ackicker)
 - [Bend](#s:bend)
