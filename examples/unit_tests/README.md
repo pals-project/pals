@@ -24,6 +24,7 @@ left behind.
 | `controllers/` | Controllers: ABSOLUTE (single, summed, pattern-matched targets), RELATIVE, a controller driving another controller's variable, and a controller reaching into a branch. |
 | `sets/` | `set` and the compact `sets` form: pattern-matched targets, `PARAMETER` and `SELF` in value expressions, and a set on a later-repeated definition. |
 | `adjustments/` | Post-expansion `adjustments`: an `optimize` block that varies quadrupole strengths to match the fractional tunes of a ring. |
+| `groups/` | Parameter groups: named groups and group-level `inherit`, `BodyShiftP` misalignments, and `MetaP`. |
 | `loading/` | Families of files combined with `load`: SELF placement (explicit and implicit), nested and diamond-shaped load graphs, relative path resolution, merging of dictionary-valued root keys, version agreement, and `load` combined with `include`. |
 
 ## Validation

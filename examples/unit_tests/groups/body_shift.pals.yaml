@@ -1,0 +1,25 @@
+# BodyShiftP misalignments on a quadrupole: an x offset and a rotation
+# about the y-axis, measured with respect to the center of the element.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        BodyShiftP:
+          x_offset: 2.0e-4
+          y_rot: 1.0e-4
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
