@@ -1,0 +1,40 @@
+# A UnionEle holding two overlapping elements, a solenoid and an RF cavity.
+# Each contained element is centered in the UnionEle and can be shifted with
+# its own BodyShiftP; the UnionEle's BodyShiftP moves the whole collection.
+#
+# Adapted from the UnionEle Element section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - MMM:
+        kind: UnionEle
+        length: 2.1
+        BodyShiftP:
+          y_offset: 1.0e-4
+        elements:
+          Sa:
+            kind: Solenoid
+            length: 1.3
+            BodyShiftP:
+              x_offset: 0.03
+          Ra:
+            kind: RFCavity
+            length: 1.0
+            RFP:
+              voltage: 1.0e6
+            BodyShiftP:
+              y_rot: 0.012
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - MMM
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
