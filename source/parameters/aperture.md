@@ -15,7 +15,7 @@ ApertureP:
   y_width: null                    # [m] Vertical aperture full width.
   shape: ELLIPTICAL                # [enum] Aperture shape switch
   location: ENTRANCE_END           # [enum] Aperture location switch
-  vertices: []                     # [array] Array of vertex points. See below.
+  vertices: null                   # [struct] Array of vertex points. See below.
   material: ""                     # [string] Material of the Aperture
   thickness: 0                     # [m] Real number
   aperture_shifts_with_body: false # [logical] See below.
@@ -139,7 +139,7 @@ The vertex points are specified by setting the `vertices` parameter. This parame
 subcomponents
 ```{code} yaml
   vertices:
-    center: 0                 # [m] Vector of (x, y) center point.
+    center: [0, 0]            # [m] Vector of [x, y] center point.
     absolute_vertices: false  # [logical] Default is false.
     list: [{}]                # [list of dictionaries] Ordered list of vertex points.
 ```
