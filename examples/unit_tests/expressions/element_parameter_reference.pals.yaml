@@ -11,17 +11,20 @@ PALS:
         length: 0.3
         MagneticMultipoleP:
           Kn2L: 0.1
-    - DH1A:
-        kind: Bend
-        length: 0.2
+    - begin:
+        kind: BeginningEle
         ReferenceP:
           species_ref: proton
           E_tot_ref: 1.0e9
+    - DH1A:
+        kind: Bend
+        length: 0.2
         BendP:
           edge2_int: 0.02 * thingB>MagneticMultipoleP.Kn2L
     - main_line:
         kind: BeamLine
         line:
+          - begin
           - DH1A
     - lat1:
         kind: Lattice
