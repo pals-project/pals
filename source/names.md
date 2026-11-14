@@ -301,7 +301,7 @@ Some references must match exactly one construct. These include:
 
 It is an error if such a reference matches no construct or more than one. A parser must not pick
 one of the matches, such as the first. For example, if element `Q1` appears more than once in a
-branch, perhaps because of a `repeat`, then `Q1` alone cannot be used as the end of a range in
+branch, `Q1` alone cannot be used as the end of a range in
 that branch. The match can be made unique using a qualifier or instance selection, for example
 `B1>>Q1#2`.
 
