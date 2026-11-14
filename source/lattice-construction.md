@@ -142,6 +142,8 @@ and this process is repeated until there are no new branches to be created.
 species, time, etc.) are calculated along with dependent parameters (e.g., multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
+* Girder elements are matched to the elements they support. 
+
 * Using the `post_expansion` list, node-by-node from the list beginning, 
 evaluate any expressions and execute any `set` commands. Controllers are ignored here.
 
