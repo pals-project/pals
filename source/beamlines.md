@@ -203,8 +203,8 @@ However, for example, for a `Bend` element that is in a line with reversed order
 the edge angle `e1` will still represent the edge of the upstream side and `e2` will represent the edge 
 at the downstream side.
 
-When a line item with a `repeat` count has parameter values of its own.
-These values apply to every copy. Example:
+When a line item with a `repeat` count has parameter values of its own,
+these values apply to every copy. Example:
 ```{code} yaml
 - my_line:
     kind: BeamLine
