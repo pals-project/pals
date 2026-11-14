@@ -226,6 +226,43 @@ In this example, the `BendP.e1` parameter of all elements whose name begins with
 This includes element `B1a`. Notice that when a set of parameters is being changed, as in this example,
 the value of `PARAMETER` used can be different for different parameters in the set. 
 
+Before the branches are [expanded](#s:branch.expand), a lattice element used, but not defined,
+in a `BeamLine` has parameter values that are the [default](#s:io.params) or are explicitly
+set where the element is used in the `BeamLine`.
+The parameter values of such a lattice element are independent of the parameter values set in the
+definition of the element. Such an element will inherit the parameter values in the definition
+when the branch is expanded.
+If such an element is the target of a `set` done before branch expansion, `PARAMETER` is the
+value of the parameter of the element. Example:
+```{code} yaml
+facility:
+  - q1:                      # Defines q1
+      kind: Quadrupole
+      MagneticMultipoleP:
+        Kn1L: 0.375
+
+  - bline:
+      kind: BeamLine
+      line:
+        - q1                # Use (but not define) q1. Kn1L is not set.
+        - q1:               # Uses q1 and sets Kn1L.
+            MagneticMultipoleP:
+              Kn1L: 0.7
+
+  - set:
+      parameter: bline>>q1>MagneticMultipoleP.Kn1L
+      value: PARAMETER + 0.01
+```
+Here the `set` matches both `q1` line items. For the first `q1`, `PARAMETER` is the default
+value of `Kn1L`, which is zero, so the set gives this `q1` a `Kn1L` of 0.01.
+For the second `q1`, `PARAMETER` is 0.7 and the set gives a `Kn1L` of 0.71.
+In both cases, the value of `Kn1L` set on the `q1` in the line overrides the value of 0.375 from the
+definition of `q1` when the branch is expanded.
+To modify the parameter values that elements get from an element definition, put the
+`set` under the [`post_expansion`](#s:facility) node.
+Note: It is an error if `PARAMETER` is used when the parameter value being set is `null` (which
+is the default for some parameters).
+
 For any group of interdependent parameters, the setting of one member of the group nullifies previous
 settings of all other members of the group. For example,
 ```{code} yaml
