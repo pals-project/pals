@@ -184,13 +184,22 @@ Branches do not get an index since the
 PALS standard does not mandate that the branches of a lattice be stored in an array (it
 could, for example, be a linked list).
 
-If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified
-using the lattice name with `>>>` as a separator. There are several permutations where `>>` and `>>>` are used:
+The element name may also be qualified using the name of a [`Lattice`](#s:lattice.construct)
+construct with `>>>` as a separator. There are several permutations where `>>` and `>>>` are used:
 ```{code} text
 {lattice-name}>>>{branch-or-beamline-name}>>{element-name}
 {lattice-name}>>>{element-name}
 {branch-or-beamline-name}>>{element-name}
 ```
+
+A lattice qualifier is mainly of use before [lattice expansion](#s:lattice.expand), when
+multiple [`Lattice`](#s:lattice.construct) constructs may be defined. At that point any `Lattice`
+construct may be named. The qualifier restricts the match to the root `BeamLines` of that
+lattice's branches, and their sublines, in the same way that a `{branch-or-beamline-name}>>`
+qualifier naming a `BeamLine` does. For example, `lat1>>>Q1` matches `Q1` in the root
+`BeamLines` of `lat1` but not in a `BeamLine` used only by another lattice.
+After lattice expansion, only the instantiated lattice exists (see [](#s:use)), so a lattice
+qualifier naming any other lattice matches nothing.
 
 %---------------------------------------------------------------------------------------------------
 (s:element.sets)=
