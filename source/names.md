@@ -290,6 +290,22 @@ qa.*                       # Match the element.
 ```
 
 %---------------------------------------------------------------------------------------------------
+(s:unique.matching)=
+### Unique Matches
+
+Some references must match exactly one construct. These include:
+- An element parameter used in an expression. For example, `Q1>length` in the expression `2 * Q1>length`.
+- The `origin_ele` component of [`CoordinateSetP`](#s:coordinate.set.params).
+- The `to_line` and `destination_element` components of [`ForkP`](#s:fork.params).
+- The start and end elements `{ele1}` and `{ele2}` of a [range](#s:element.sets) `{ele1}:{ele2}`.
+
+It is an error if such a reference matches no construct or more than one. A parser must not pick
+one of the matches, such as the first. For example, if element `Q1` appears more than once in a
+branch, `Q1` alone cannot be used as the end of a range in
+that branch. The match can be made unique using a qualifier or instance selection, for example
+`B1>>Q1#2`.
+
+%---------------------------------------------------------------------------------------------------
 (s:matching.precedence)=
 ### Order of Precedence
 
