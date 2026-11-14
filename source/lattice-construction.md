@@ -144,8 +144,7 @@ has been set), floor positions, and s-positions.
 
 * Match each `Girder` to the elements it supports. The `GirderP.elements` of a `Girder` is
 [matched](#s:name.matching) against the elements of the expanded lattice and the other `Girder`
-elements under the `girders` node. The `ShiftedFloorP` parameters of the supported elements, which
-include the girder shifts, are then calculated.
+elements under the `girders` node.
 
 * Using the `post_expansion` list, node-by-node from the list beginning, 
 evaluate any expressions and execute any `set` commands. Controllers are ignored here.
