@@ -85,7 +85,9 @@ but not to the Q1 defined in the beamline.
 
 After lattice expansion, an element name without a `{lattice-name}` or
 a `{branch-or-beamline-name}`, will match to elements in the expanded lattice but will not match
-to any elements outside of the expanded lattice.
+to any elements outside of the expanded lattice. The exception is [`Girder`](#s:girder) elements.
+These are not in any branch but remain in the expanded tree under the `girders` node, and an
+element name will match to them.
 
 %---------------------------------------------------------------------------------------------------
 (s:basic.matching)=

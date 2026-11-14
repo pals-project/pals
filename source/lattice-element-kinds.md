@@ -449,6 +449,25 @@ as documented in [](#s:girder.mis).
 
 Note: `Girder` elements do not have a `length` nor an `s_position`.
 
+After lattice expansion, each `Girder` has a `supported` output parameter listing the elements and
+`Girder`s it directly supports. Elements supported by a `Girder` that is itself supported are
+listed on that `Girder`'s own `supported` list. Each lattice element is listed using
+`{branch-name}>>{element-name}` with a value equal to the index of the element in the branch,
+as in [`ForkFromP`](#s:fork.from.params). The lattice elements come first, in lattice order,
+followed by the supported `Girder`s by name. Example:
+```{code} yaml
+support1:
+  kind: Girder
+  GirderP:
+    elements: Q1:Q5,sy7,support2
+  supported:
+    - ring>>Q1: 12
+    - ring>>D3: 13
+    - ring>>Q5: 14
+    - ring>>sy7: 31
+    - support2
+```
+
 Element parameter groups associated with this element kind are:
 - Coordinate set parameters: [`CoordinateSetP`](#s:coordinate.set.params). Sets coordinates used with `BodyShiftP`.
 - Body shift parameters: [`BodyShiftP`](#s:bodyshift.params). Orientation of element.
