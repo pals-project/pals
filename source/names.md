@@ -299,7 +299,7 @@ Some references must match exactly one construct. These include:
 - The `to_line` and `destination_element` components of [`ForkP`](#s:fork.params).
 - The start and end elements `{ele1}` and `{ele2}` of a [range](#s:element.sets) `{ele1}:{ele2}`.
 
-It is an error if such a reference matches more than one construct. A parser must not pick
+It is an error if such a reference matches no construct or more than one. A parser must not pick
 one of the matches, such as the first. For example, if element `Q1` appears more than once in a
 branch, perhaps because of a `repeat`, then `Q1` alone cannot be used as the end of a range in
 that branch. The match can be made unique using a qualifier or instance selection, for example
