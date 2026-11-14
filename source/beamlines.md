@@ -209,6 +209,26 @@ However, for example, for a `Bend` element that is in a line with reversed order
 the edge angle `e1` will still represent the edge of the upstream side and `e2` will represent the edge 
 at the downstream side.
 
+A line item with a `repeat` count can also have parameter values of its own.
+These values apply to every copy. Example:
+```{code} yaml
+- q1:
+    kind: Quadrupole
+    length: 0.5
+    MagneticMultipoleP:
+      Kn1L: 0.375
+
+- my_line:
+    kind: BeamLine
+    line:
+      - q1:
+          repeat: 3
+          length: 0.8
+```
+When `my_line` is expanded, there are three elements named `q1`, each with a length of 0.8 and
+a `Kn1L` of 0.375 from the definition of `q1`.
+This is the same as writing the `q1` line item, with its `length` of 0.8, three times in the line.
+
 %---------------------------------------------------------------------------------------------------
 (s:direction)=
 ## Direction reversal
