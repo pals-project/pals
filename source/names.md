@@ -184,13 +184,22 @@ Branches do not get an index since the
 PALS standard does not mandate that the branches of a lattice be stored in an array (it
 could, for example, be a linked list).
 
-If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified
-using the lattice name with `>>>` as a separator. There are several permutations where `>>` and `>>>` are used:
+The element name may also be qualified using the name of a [`Lattice`](#s:lattice.construct)
+construct with `>>>` as a separator. There are several permutations where `>>` and `>>>` are used:
 ```{code} text
 {lattice-name}>>>{branch-or-beamline-name}>>{element-name}
 {lattice-name}>>>{element-name}
 {branch-or-beamline-name}>>{element-name}
 ```
+
+A lattice qualifier is mainly of use before [lattice expansion](#s:lattice.expand), when
+multiple [`Lattice`](#s:lattice.construct) constructs may be defined. At that point any `Lattice`
+construct may be named. The qualifier restricts the match to the root `BeamLines` of that
+lattice's branches, and their sublines, in the same way that a `{branch-or-beamline-name}>>`
+qualifier naming a `BeamLine` does. For example, `lat1>>>Q1` matches `Q1` in the root
+`BeamLines` of `lat1` but not in a `BeamLine` used only by another lattice.
+After lattice expansion, only the instantiated lattice exists (see [](#s:use)), so a lattice
+qualifier naming any other lattice matches nothing.
 
 %---------------------------------------------------------------------------------------------------
 (s:element.sets)=
@@ -288,6 +297,22 @@ the `>{parameter-group}...` entirely to match the element itself. Example:
 qa.*>MagneticMultipoleP    # Match the MagneticMultipoleP parameter group.
 qa.*                       # Match the element.
 ```
+
+%---------------------------------------------------------------------------------------------------
+(s:unique.matching)=
+### Unique Matches
+
+Some references must match exactly one construct. These include:
+- An element parameter used in an expression. For example, `Q1>length` in the expression `2 * Q1>length`.
+- The `origin_ele` component of [`CoordinateSetP`](#s:coordinate.set.params).
+- The `to_line` and `destination_element` components of [`ForkP`](#s:fork.params).
+- The start and end elements `{ele1}` and `{ele2}` of a [range](#s:element.sets) `{ele1}:{ele2}`.
+
+It is an error if such a reference matches no construct or more than one. A parser must not pick
+one of the matches, such as the first. For example, if element `Q1` appears more than once in a
+branch, `Q1` alone cannot be used as the end of a range in
+that branch. The match can be made unique using a qualifier or instance selection, for example
+`B1>>Q1#2`.
 
 %---------------------------------------------------------------------------------------------------
 (s:matching.precedence)=
