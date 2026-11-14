@@ -226,6 +226,39 @@ In this example, the `BendP.e1` parameter of all elements whose name begins with
 This includes element `B1a`. Notice that when a set of parameters is being changed, as in this example,
 the value of `PARAMETER` used can be different for different parameters in the set. 
 
+Before the branches are [expanded](#s:branch.expand), a `BeamLine` line item that uses,
+but does not define, an element has only the parameter values written on the line item itself.
+It gets the rest of its parameter values from the element definition when the branch is expanded.
+So if such a line item is the target of a `set` done before branch expansion, `PARAMETER` is the
+value of the parameter on the line item. If the parameter is not set on the line item, `PARAMETER` 
+is the [default value](#s:io.params) of the parameter. If the default value is `null`, 
+using `PARAMETER` is an error. Example:
+```{code} yaml
+- q1:
+    kind: Quadrupole
+    MagneticMultipoleP:
+      Kn1L: 0.375
+
+- bline:
+    kind: BeamLine
+    line:
+      - q1                # Uses q1. Kn1L is not set on this line item.
+      - q1:               # Uses q1 and sets Kn1L on this line item.
+          MagneticMultipoleP:
+            Kn1L: 0.7
+
+- set:
+    parameter: bline>>q1>MagneticMultipoleP.Kn1L
+    value: PARAMETER + 0.01
+```
+Here the `set` matches both `q1` line items. For the first item, `PARAMETER` is the default
+value of `Kn1L`, which is zero, so the set gives this item a `Kn1L` of 0.01.
+For the second item, `PARAMETER` is 0.7 and the set gives a `Kn1L` of 0.71.
+In both cases, the value of `Kn1L` set on the line item overrides the value of 0.375 from the
+definition of `q1` when the branch is expanded.
+To modify the parameter values that line items get from an element definition, put the
+`set` under the [`post_expansion`](#s:facility) node.
+
 For any group of interdependent parameters, the setting of one member of the group nullifies previous
 settings of all other members of the group. For example,
 ```{code} yaml
