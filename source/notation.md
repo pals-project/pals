@@ -40,6 +40,8 @@ Reserved words which must not be used for the names of lattice elements, beam li
 ```{code} yaml
 SELF
 PARAMETER
+GLOBAL_ORIGIN
+PREVIOUS_ELEMENT
 ```
 
 %---------------------------------------------------------------------------------------------------
