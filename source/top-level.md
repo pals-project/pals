@@ -20,6 +20,7 @@ PALS:
   post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file.
+  version_lowest:           # [string] Lowest version of the files combined by load.
 ```
 The `adjustments` list is documented in section [](#s:adjust).
 The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
@@ -30,7 +31,7 @@ printed (or otherwise communicated to the user) every time the file is read.
 Example:
 ```{code} yaml
 PALS:
-  version: null  # version schema: defined later
+  version: "1.4.2"
 
   notes:
     - "Extraction transfer line will be added to lattice in next iteration."
@@ -62,6 +63,16 @@ to be outside of the PALS standard and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
 Per author, the `name` is required; the `orcid`, `affiliation` and `email` fields are optional.
+
+The `version` is a string of the form `MAJOR.MINOR.PATCH`, for example `"1.4.2"`, following
+[Semantic Versioning](https://semver.org). `MAJOR`, `MINOR`, and `PATCH` are non-negative
+integers. Changes to the standard increment them as follows:
+- `MAJOR`: A change after which files written for the old version may no longer be valid.
+- `MINOR`: An addition to the standard, such as a new element kind or parameter.
+- `PATCH`: A correction or clarification that does not change what is valid.
+
+The `version_lowest` node is set when files with different versions are combined
+using [`load`](#s:load).
 
 %---------------------------------------------------------------------------------------------------
 (s:facility)=
@@ -136,7 +147,7 @@ PALS:
 The information in an included file is inserted at the `include` point. In this example,
 the included file `version-and-globals.subpals.yaml` could look like, for example:
 ```{code} yaml
-version: null  # version schema: defined later
+version: "1.4.2"
 ```
 and the file `include-Q-params.subpals.yaml` could look like:
 ```{code} yaml
@@ -243,10 +254,13 @@ are to be combined with the contents of the loaded files. If not present, conten
 file are to be combined at the end. In the above example, the `SELF` line is not needed since it
 is last on the `load` list.
 - Contents from the joiner and loaded files are combined `PALS` subnode by `PALS` subnode. 
-- For the `version` subnode of `PALS`, if the version strings are not the same, the combined version
-will be a comma delimited list of the different versions with duplicates discarded. It is an
-error for the versions to be incompatible, that is, if the major versions are different.
-For example, version `1.4.2` is incompatible with `2.0.1`.
+- For the `version` subnode of `PALS`, if the version strings are not the same, the combined
+`version` is the highest of the versions and `version_lowest` is set to the lowest of the
+versions. For example, combining files with versions `1.2.0`, `1.4.1`, and `1.3.5` gives
+`version: "1.4.1"` and `version_lowest: "1.2.0"`. If the versions are all the same,
+`version_lowest` is not set. If a combined file has a `version_lowest`, that version is
+included when finding the lowest. It is an error for the versions to be incompatible, that is,
+if the major versions are different. For example, version `1.4.2` is incompatible with `2.0.1`.
 - For other scalar `PALS` nodes (e.g., [`phase_space_coordinates`](#s:phase.space)) the values
 must be the same.
 - For list type subnodes, the combined list retains the order set by the `load` list and the order
