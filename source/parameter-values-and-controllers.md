@@ -138,7 +138,7 @@ involve `a` nor `b`.
 Functions that can be used in [](#s:expressions):
 ```{code} yaml
 sqrt(x)                  # Square Root
-log(x)                   # Logarithm
+log(x)                   # Natural logarithm
 exp(x)                   # Exponential
 sin(x), cos(x)           # Sine and cosine
 tan(x), cot(x)           # Tangent and cotangent
@@ -154,7 +154,7 @@ abs(x)                   # Absolute Value
 factorial(n)             # Factorial
 random()                 # Uniform random number between 0 and 1
 random_gauss()           # Gaussian distributed random number with unit sigma and zero mean
-random_gauss(sig_cut)    # Same as random_gauss() but with a probability tail cutoff.
+random_gauss(sig_cut)    # Same as random_gauss() but with the tails cut off at sig_cut sigmas.
 int(x)                   # Nearest integer with magnitude less than or equal to |x| (truncation toward zero)
 nint(x)                  # Nearest integer to x
 sign(x)                  # 1 if x positive, -1 if negative, 0 if zero
@@ -165,6 +165,14 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
+
+Each evaluation of a random number function, `random()`, `random_gauss()`, or
+`random_gauss(sig_cut)`, draws a new number. Thus:
+- A [delayed expression](#s:expressions) (one wrapped in `expr(...)`) that uses a random number
+  function draws a new number every time the expression is evaluated.
+- A [`set`](#s:set) whose `parameter` matches many parameters draws a separate number for each
+  parameter. For example, a `set` of `q.*>MagneticMultipoleP.Kn1L` with a value of
+  `PARAMETER * (1 + 1e-4*random_gauss())` gives each matched element its own random error.
 
 %---------------------------------------------------------------------------------------------------
 (s:expressions)=
