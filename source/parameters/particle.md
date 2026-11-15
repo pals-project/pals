@@ -26,26 +26,27 @@ ParticleP:                    # <> denotes average over distribution
   spin_x:        0            # <Sx> Spin x-component
   spin_y:        0            # <Sy> Spin y-component
   spin_z:        0            # <Sz> Spin z-component
-  sigma_xx:      null         # <x^2>
-  sigma_xpx:     null         # <x*px> 
-  sigma_xy:      null         # <x*y> 
-  sigma_xpy:     null         # <x*py> 
-  sigma_xz:      null         # <x*z> 
-  sigma_xpz:     null         # <x*pz> 
-  sigma_pxpx:    null         # <px^2>
-  sigma_pxy:     null         # <px*y> 
-  sigma_pxpy:    null         # <px*py> 
-  sigma_pxz:     null         # <px*z> 
-  sigma_pxpz:    null         # <px*pz> 
-  sigma_yy:      null         # <y^2>
-  sigma_ypy:     null         # <y*py>
-  sigma_yz:      null         # <y*z>
-  sigma_ypz:     null         # <y*pz>
-  sigma_pypy:    null         # <py^2>
-  sigma_pyz:     null         # <py*z>
-  sigma_pypz:    null         # <py*pz>
-  sigma_zz:      null         # <z^2>
-  sigma_zpz:     null         # <z*pz>
-  sigma_pzpz:    null         # <pz^2>
+  sigma_xx:      null         # <x_bar^2>
+  sigma_xpx:     null         # <x_bar*px_bar> 
+  sigma_xy:      null         # <x_bar*y_bar> 
+  sigma_xpy:     null         # <x_bar*py_bar> 
+  sigma_xz:      null         # <x_bar*z_bar> 
+  sigma_xpz:     null         # <x_bar*pz_bar> 
+  sigma_pxpx:    null         # <px_bar^2>
+  sigma_pxy:     null         # <px_bar*y_bar> 
+  sigma_pxpy:    null         # <px_bar*py_bar> 
+  sigma_pxz:     null         # <px_bar*z_bar> 
+  sigma_pxpz:    null         # <px_bar*pz_bar> 
+  sigma_yy:      null         # <y_bar^2>
+  sigma_ypy:     null         # <y_bar*py_bar>
+  sigma_yz:      null         # <y_bar*z_bar>
+  sigma_ypz:     null         # <y_bar*pz_bar>
+  sigma_pypy:    null         # <py_bar^2>
+  sigma_pyz:     null         # <py_bar*z_bar>
+  sigma_pypz:    null         # <py_bar*pz_bar>
+  sigma_zz:      null         # <z_bar^2>
+  sigma_zpz:     null         # <z_bar*pz_bar>
+  sigma_pzpz:    null         # <pz_bar^2>
 ```
+where `x_bar = x - <x>` is the deviation from the average, etc.
 When describing a single particle, the `sigma` parameters are not relevant. 
