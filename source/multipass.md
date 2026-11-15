@@ -124,6 +124,14 @@ element set are not constrained by the `multipass` construction to be the same.
 It is up to the lattice designer to make
 sure that the floor positions of the elements in the set make sense (that is, are all the same).
 
+The elements of a physical element set share their physical fields. These include the
+magnetic and electric multipole fields, such as `MagneticMultipoleP.Bn1`, and bend fields, such as
+`BendP.Bn0_ref`. Setting a field in one element of the set sets it in all of them. For example,
+if a quadrupole is in a multipass line, a [`set`](#s:set) of `Bn1` in the quadrupole's second pass
+element also changes `Bn1` in its first pass element. Normalized strengths, such as `MagneticMultipoleP.Kn1`, are not shared.
+They are computed from the shared field and the reference momentum of each element, so they
+will differ from pass to pass when the reference energy differs.
+
 [^foot-ix]: For a given line the
 element index with respect to that line is 1 for the first element in the expanded line, the second
 element has index 2, etc.
