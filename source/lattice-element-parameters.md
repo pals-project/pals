@@ -40,10 +40,18 @@ These element parameters are:
   kind: ""              # [enum] Kind of element (Quadrupole, etc.).
   length: 0             # [m] Length of element. For bends this is the arc length.
   name: ""              # [string] The name of element.
+  s_offset: 0           # [m] Longitudinal gap from the downstream end of the preceding element.
   s_position: 0         # [m] The longitudinal position of the element in the branch curvilinear coordinate system. 
 ```
 The `s_position` is generally an [output parameter](#s:io.params) except for the beginning element of a branch where
 it is an input parameter.
+
+The `s_offset` is an output parameter set by the parser during [branch expansion](#s:branch.expand).
+Its value is the {math}`s`-position of the upstream end of the element minus the {math}`s`-position
+of the downstream end of the preceding element in the branch. A positive value is a gap between
+the two elements and a negative value is an overlap. The `s_offset` is used when
+[placement](#s:placement) or [superposition](#s:superposition) moves elements away from
+end-to-end alignment.
 
 Example:
 ```{code} yaml
