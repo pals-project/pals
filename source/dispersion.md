@@ -21,14 +21,8 @@ derivative of the dispersion {math}`d\eta/ds`. This becomes a factor when design
 some section of the lattice needs to be dispersion free, it is convenient to be able to optimize
 {math}`d\eta/ds` to zero. The dispersion derivative is related to the momentum dispersion by
 \begin{align}
-\text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds}
-= \frac{d}{dp_z} \left( \frac{dx}{ds} \right)
-= \frac{d}{dp_z} \left( \frac{p_x}{1 + p_z} \right)
-= \frac{1}{1 + p_z} \, \eta_{px} - \frac{p_x}{(1 + p_z)^2}  \nonumber \\
+\text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds} \nonumber \\
 \text{deta\_y\_ds} &\equiv \frac{d\eta_y}{ds}
-= \frac{d}{dp_z} \left( \frac{dy}{ds} \right)
-= \frac{d}{dp_z} \left( \frac{p_y}{1 + p_z} \right)
-= \frac{1}{1 + p_z} \, \eta_{py} - \frac{p_y}{(1 + p_z)^2}
 \end{align}
 
 For a lattice branch which is [non-periodic](#s:lattice.construct), the dispersion of the {math}`z` phase space
