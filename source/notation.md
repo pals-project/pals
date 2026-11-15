@@ -30,6 +30,8 @@ Special values used in this document:
 - `Inf`: Infinity.
 - `-Inf`: Negative infinity.
 
+`Inf` and `-Inf` are [reserved words](#s:reserved).
+
 3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
 %---------------------------------------------------------------------------------------------------
@@ -40,6 +42,8 @@ Reserved words which must not be used for the names of lattice elements, beam li
 ```{code} yaml
 SELF
 PARAMETER
+Inf
+-Inf
 ```
 
 %---------------------------------------------------------------------------------------------------
