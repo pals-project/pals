@@ -605,9 +605,8 @@ Element parameter groups associated with this element kind are:
 - Patch parameters: [`PatchP`](#s:patch.params). Exit coordinates with respect to entrance coordinates.
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
-Important: By convention, the energy shift is applied after a particle reaches the exit face.
-This matters due to the dependence of the reference velocity on the reference energy.
-
+Note: For `Patch` elements there are no  `BodyShiftP` and/or `Girder` shifts so `ShiftedFloorP` will
+have the same parameter values as `FloorP`.
 
 %---------------------------------------------------------------------------------------------------
 (s:placeholder)=
