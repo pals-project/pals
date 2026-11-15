@@ -19,7 +19,7 @@ The components of a BeamLine are:
 ```{code} yaml
 name:             # [string] Name of the BeamLine.
 multipass:        # [logical] Multipass line or not. Default is false.
-pc_ref: null      # [eV] Reference momentum * c_light. Only used with multipass
+pc_ref: null      # [eV] Reference momentum * c_light. Only used with multipass.
 E_tot_ref: null   # [eV] Reference total energy. Only used with multipass.
 length:           # [m] Length of the BeamLine.
 line:             # [list] List of elements.
@@ -32,6 +32,10 @@ The `name` component is a string that can be used to reference the `BeamLine`.
 
 The optional `multipass` component is a logical describing whether the `BeamLine` is part of 
 a [multipass construct](#c:multipass). The default is false.
+
+The optional `pc_ref` and `E_tot_ref` components set the reference momentum used to convert
+normalized strengths to fields for the elements of a multipass `BeamLine`. They are only used if `multipass`
+is true, and it is an error to set both. See the [multipass](#c:multipass) chapter for details.
 
 The optional `length` component gives the length of the `BeamLine`. 
 If `length` is not given, the BeamLine ends at the downstream end of the final
