@@ -10,7 +10,7 @@ PALS:
         kind: Controller
         control_type: RELATIVE
         variables:
-          command: 0.4
+          - command: 0.4
         controls:
           - parameter: S1>MagneticMultipoleP.Kn2L
             expression: 5.62 * command + 0.02 * command^2

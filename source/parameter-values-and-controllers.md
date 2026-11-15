@@ -273,9 +273,9 @@ facility:
       MetaP:
         description: Model Mitsubishi 800KL
       variables:
-        cur1: 0.023
-        cur2: 1e8 / c_light
-        ...
+        - cur1: 0.023
+        - cur2: 1e8 / c_light
+        - ...
       controls:
         - parameter: Qa.*>MagneticMultipoleP.Ks2L  # Parameter control specification.
           expression: 0.075*sin(cur1) + 0.3*cur2
@@ -284,7 +284,9 @@ facility:
         ...
 ```
 In this example, a controller called `ps27` has two variables, named
-`cur1` and `cur2`, used to control parameters. Initial values can be set for variables. The default value of a variable is zero.
+`cur1` and `cur2`, used to control parameters. The `variables` component is a list in the same
+form as the compact [`variables` list](#s:constants): each item is a key/value pair of a variable
+name and its initial value. Initial values can be set for variables. The default value of a variable is zero.
 The parameters controlled are set by the `controls` component. Each entry has a 
 `parameter` component giving the [name match string](#s:parameter.matching) to 
 match parameters to and an `expression` component that gives the arithmetic expression
@@ -331,7 +333,7 @@ facility:
       kind: Controller
       control_type: RELATIVE
       variables:
-        command: 0.4
+        - command: 0.4
       controls:
         - parameter: S1>MagneticMultipoleP.Kn2L
           expression: 5.62 * command + 0.02 * command^2
@@ -365,7 +367,7 @@ facility:
       kind: Controller
       control_type: ABSOLUTE
       variables:
-        cur: 0.023
+        - cur: 0.023
       controls:
         - parameter: a_kicker>MagneticMultipoleP.Kn0
           expression: 0.075*sin(cur)
@@ -375,7 +377,7 @@ facility:
       kind: Controller
       control_type: ABSOLUTE
       variables:
-        cur: 0.044
+        - cur: 0.044
       controls:
         - parameter: a_kicker>MagneticMultipoleP.Kn0
           expression: 0.123*cur
