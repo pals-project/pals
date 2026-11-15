@@ -107,6 +107,19 @@ the constant or variable value. For example:
       ...
 ```
 
+The value of a constant or variable may also be a string, such as a particle species name.
+Wherever a value may be an expression, such as the value of a constant, a variable, or a
+[`set`](#s:set), a string value must be quoted. An unquoted value there is read as an expression.
+Example:
+```{code} yaml
+  - constants:
+      - my_particle: "Au+79"           # String.
+      - my_mass: mass_of(my_particle)  # Expression.
+```
+In YAML, either single or double quotes may be used. A YAML reader will normally return
+`"Au+79"` and `Au+79` as the same string, so a parser must keep track of whether a value
+was quoted in the file.
+
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
 varied after a program reads a PALS file, while a variable can vary. For example, a constant could
