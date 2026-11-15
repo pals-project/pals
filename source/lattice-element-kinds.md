@@ -449,9 +449,9 @@ as documented in [](#s:girder.mis).
 
 Note: `Girder` elements do not have a `length` nor an `s_position`.
 
-After lattice expansion, each `Girder` has a `supported` output parameter listing the elements and
-`Girder`s it directly supports. Elements supported by a `Girder` that is itself supported are
-listed on that `Girder`'s own `supported` list. Each lattice element is listed using
+After lattice expansion, a PALS compliant parser will construct for each `Girder` a `supported` 
+output parameter listing the lattice elements and
+`Girder`s it directly supports. Each lattice element is listed using
 `{branch-name}>>{element-name}` with a value equal to the index of the element in the branch,
 as in [`ForkFromP`](#s:fork.from.params). The lattice elements come first, in lattice order,
 followed by the supported `Girder`s by name. Example:
