@@ -27,10 +27,8 @@ Special values used in this document:
 
 2. Symbols that can be used in place of a real or integer value:
 - `null`: Value has not been set.
-- `Inf`: Infinity.
-- `-Inf`: Negative infinity.
-
-`Inf` and `-Inf` are [reserved words](#s:reserved).
+- `Inf`: Infinity. A [reserved word](#s:reserved).
+- `-Inf`: Negative infinity. A [reserved word](#s:reserved).
 
 3. In general, `null` can be used to signify that any parameter does not have a specific default value.
 
