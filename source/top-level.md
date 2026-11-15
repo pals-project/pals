@@ -105,6 +105,7 @@ If the `set` command had appeared in the `facility` node, and not in the `post_e
 when the set command is executed, the set would be applied to the value of `Kn1L` in the definition
 of `q1`. In this case, the result would be that all three of the `q1` elements in the expanded lattice would
 have the same value of `Kn1L`.
+To make the random errors reproducible, a [`random_seed`](#s:random.seed) statement can be used.
 
 The set of node types that can be used under the `post_expansion` node is the same as the
 `facility` node except for [`Lattice`](#s:lattice.construct) definitions and [`use`](#s:use) statements.

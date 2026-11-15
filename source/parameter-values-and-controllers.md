@@ -165,6 +165,40 @@ mass_of(A)               # Mass of particle A
 charge_of(A)             # Charge, in units of the elementary charge, of particle A 
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
+The random number functions `random()`, `random_gauss()`, and `random_gauss(sig_cut)` draw from
+a random number sequence whose starting point can be set with a
+[`random_seed` statement](#s:random.seed).
+
+%---------------------------------------------------------------------------------------------------
+(s:random.seed)=
+## Random Number Seed
+
+The seed of the random number sequence used by the random number functions (see [](#s:functions))
+can be set with a `random_seed` statement. The value is an integer. Example:
+```{code} yaml
+PALS:
+  facility:
+    - random_seed: 1234
+    ...
+
+  post_expansion:
+    - random_seed: 5678
+    - set:
+        parameter: q1>MagneticMultipoleP.Kn1L
+        value: PARAMETER * (1 + 1e-4*random_gauss())
+```
+A `random_seed` statement may appear under the [`facility`](#s:facility) node, the
+`post_expansion` node, or both, and may appear more than once. Each `random_seed` statement
+resets the random number sequence, so random numbers drawn after the statement depend only
+on the seed it gives.
+
+If no `random_seed` statement is given, or a seed of zero is given, the seed is chosen "at random"
+by the parser, for example from the system clock. In this case, the results will generally
+differ from run to run.
+
+With a given seed, a given parser must produce the same results each time it is run.
+Different parsers need not produce the same random numbers for the same seed, so results
+will generally vary from parser to parser.
 
 %---------------------------------------------------------------------------------------------------
 (s:expressions)=
