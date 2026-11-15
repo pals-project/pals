@@ -49,8 +49,8 @@ PARAMETER
 The PALS [schema standard](#s:std.components) does not define any particular language to implement 
 a lattice. Rather, there are associated
 language specific standards that define grammars for YAML, JSON, Python, etc. Along with these
-associated standards, there are packages that implement translation between PALS files and a 
-representational internal format defined by the package.
+associated standards, there are [parsers](#s:parser.intro) that read and write PALS files and construct a
+representational internal format defined by the parser.
 
 While the standard itself is language agnostic, this document that describes the standard
 needs to use some syntax and this syntax is based upon YAML.

@@ -28,7 +28,7 @@ Xelera Research LLC is developing an open-source 3D visualization package that r
 This package will provide an intuitive graphical user interface for accelerator modeling in 3D. 
 This work is supported by the U.S. Department of Energy SBIR program.
 
-## Language Converters
+## Translators
 
 Conversion between PALS and other lattice formats, including Bmad, SciBmad, and MAD-X, is
 documented in the [Language Converters](#s:language.convert) section.

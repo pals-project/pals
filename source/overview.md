@@ -52,11 +52,11 @@ Schematic showing how a simulation program can interact with a PALS file.
 The components here are:
 - **Simulation program:** A simulation program.
 - **Interface layer:** Code to interface between the structures defined by the program and the 
-lattice structure defined by the Translator. This code will be program specific and outside the
+lattice structure defined by the parser. This code will be program specific and outside the
 scope of the standard. However, structure translation should (hopefully) be 
 relatively straightforward.
-- **Translator:** Package supplied with PALS. The Translator has code to put
-information into an "expanded form".
+- **Parser:** Package supplied with PALS. A [parser](#s:parser.intro) reads and writes PALS files
+and puts information into an "expanded form".
 This includes expanding beam lines, evaluating expressions, etc.
 - **Reader / Writer:** Package to read/write files of a standard format (JSON, YAML, etc). 
 Packages to do this are widely available.
@@ -68,9 +68,9 @@ can appear in a PALS file. This includes standardized names of lattice elements 
 lattice parameters, definitions of lattice parameters, how lattice elements can be organized
 into branches to describe the entire accelerator complex, etc.
 - **File format standards:** For various formats like YAML and Python there is a file format
-standard to ensure that different translators are able to read a PALS file.
+standard to ensure that different parsers are able to read a PALS file.
 
-Note: Since the schema and translator parts are logically intertwined, there has been no attempt
+Note: Since the schema and parser parts are logically intertwined, there has been no attempt
 to separate these in the PALS documentation here.
 The file formats for the various languages like YAML, etc. are separately documented.
 

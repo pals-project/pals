@@ -1,7 +1,8 @@
 (s:language.convert)=
 # Conversion between PALS format and other formats
 
-Language converters between PALS and other accelerator simulation languages (MAD, SciBmad, etc.) are in development.
+A translator translates between PALS and another lattice format such as Bmad or MAD-X.
+Translators between PALS and other accelerator simulation languages (MAD, SciBmad, etc.) are in development.
 It is envisaged that converting to PALS format will be handled by the individual programs
 that implement non-PALS languages since these programs already have the ability to read in
 a non-PALS format. A simple way to develop conversion from PALS to other formats 
