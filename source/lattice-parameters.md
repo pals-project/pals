@@ -1,7 +1,10 @@
+(c:lattice.params)=
 # Lattice parameters
 
-Lattice parameters are parameters that are not associated with any lattice element but with the
-lattice as a whole. This section standardizes the names and meanings of such.
+Lattice parameters are parameters that are not associated with any lattice element but with a
+lattice branch, such as the tunes of a ring, or with the lattice as a whole.
+This section standardizes the names and meanings of such.
+An [`adjustments`](#s:adjust) target can name the branch of a lattice parameter.
 
 The suffixes `_a`, `_b`, and `_c` refer to the three normal modes of oscillation. 
 Without coupling, the `a`-mode represents horizontal motion and the `b`-mode

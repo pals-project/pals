@@ -427,6 +427,7 @@ Each `optimize` block has the syntax:
           ...
       - target:
           parameter: <target-parameter>     # Data Parameter(s) to optimize
+          branch: <branch-name>             # [name] Optional branch of the target parameter.
           value: <value>                    # Optimum value
           weight: <weight>                  # [-] Optional datum weight. Default is 1.
       - target:
@@ -441,6 +442,12 @@ where {math}`\delta D_i` is the difference between datum value and the target va
 is the difference between the variable's value and its initial value before any optimization, and
 the {math}`w_i` and {math}`w_j` are the data and variable weights respectively which default to one
 and zero respectively.
+
+Some [lattice parameters](#c:lattice.params), such as tunes and chromaticities, belong to a
+branch of the lattice rather than to the lattice as a whole, and a lattice can have more than one
+such branch, for example two rings. The optional `branch` component of a `target` names the
+branch that the target parameter belongs to. It is needed only when the target parameter
+could belong to more than one branch.
 
 Example:
 ```{code} yaml
