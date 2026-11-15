@@ -115,9 +115,7 @@ Example:
       - my_particle: "Au+79"           # String.
       - my_mass: mass_of(my_particle)  # Expression.
 ```
-In YAML, either single or double quotes may be used. A YAML reader will normally return
-`"Au+79"` and `Au+79` as the same string, so a parser must keep track of whether a value
-was quoted in the file.
+How quoting is done in YAML is covered in [](#s:yaml.format).
 
 The difference between a constant and a variable is one of intent of the PALS file creator.
 That is, a constant is not supposed to be
