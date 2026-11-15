@@ -48,7 +48,7 @@ Converting between PALS and [Bmad](https://github.com/bmad-sim/bmad-ecosystem):
     from the axis, so the low-side limits change sign: PALS `x_min: -0.03` becomes
     `x1_limit = 0.03`.
   - A branch's `periodic` setting becomes Bmad's `geometry`, `closed` or `open`.
-  - PALS `constant` and `variable` definitions become Bmad definitions written above the
+  - PALS `Constant` and `Variable` definitions become Bmad definitions written above the
     elements that use them, Bmad resolving a name against what the file has defined *above* the
     point of use rather than anywhere in the file.
   - ABSOLUTE `Controllers` become Bmad `overlay` elements and RELATIVE `Controllers` become

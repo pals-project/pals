@@ -67,7 +67,7 @@ n_avogadro                # [-] Avogadro's constant
 The `classical_radius_factor` is a useful number when converting a formula that involves the classical
 electron or proton radius to a formula for something other than an electron or proton.
 
-Other constants and variables may be defined using `constant` or `variable` as the `kind`.
+Other constants and variables may be defined using `Constant` or `Variable` as the `kind`.
 The parameters associated with a constant or variable are:
 ```{code} yaml
   absolute_error: 0       # Absolute error.       
@@ -83,11 +83,11 @@ Example:
 PALS:
   facility:
     - my_const:
-        kind: constant
+        kind: Constant
         value: 1.45 * c_light
         relative_error: 0.02
     - my_var:
-        kind: variable
+        kind: Variable
         value: 37
     ...
 ```

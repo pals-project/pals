@@ -12,7 +12,7 @@ PALS:
         - a_var: 3.75e7 / c_light^2
         - b_var: -0.34
     - m_e:
-        kind: constant
+        kind: Constant
         value: mass_of("electron")
     - begin:
         kind: BeginningEle
