@@ -49,7 +49,8 @@ it is an input parameter.
 The `s_offset` is an output parameter set by the parser during [branch expansion](#s:branch.expand).
 Its value is the {math}`s`-position of the upstream end of the element minus the {math}`s`-position
 of the downstream end of the preceding element in the branch. A positive value is a gap between
-the two elements and a negative value is an overlap. The `s_offset` is used when
+the two elements and a negative value is an overlap. The parser need only set `s_offset` when the
+value is nonzero. The `s_offset` is used when
 [placement](#s:placement) or [superposition](#s:superposition) moves elements away from
 end-to-end alignment.
 
