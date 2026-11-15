@@ -108,9 +108,7 @@ the constant or variable value. For example:
 ```
 
 The value of a constant or variable may also be a string, such as a particle species name.
-A string value must be quoted. Otherwise it is read as an expression. This applies to
-any value that may be an expression, for example the `value` of a constant or variable, or the
-`value` given in a [`set`](#s:set) command.
+A string value must be quoted. Otherwise it is read as an expression.
 Example:
 ```{code} yaml
   - constants:
