@@ -57,6 +57,7 @@ The ERL may then be constructed like:
 - linac_line:
     kind: BeamLine
     multipass: true
+    E_ref: 1.7e9
     line:
       - cavityA
       - cavityA
@@ -113,6 +114,24 @@ linac_line, erl_line
 ```
 and `linac_line` is the {math}`L_m` line (*first* line in the chain that is marked as `multipass`) for both.
 
+A reference energy or reference momentum may be set for a multipass `BeamLine`. The reference
+energy/momentum is used to convert from normalized to unnormalized (physical) fields in the
+multipass elements. Otherwise 
+this reference energy/momentum has no effect on the lattice. The reference energy/momentum set
+is for the upstream end of the beamline and the reference can change element-to-element if, 
+for example, there are cavity elements in the line. If no reference energy/momentum is set,
+the default is the reference computed during branch expansion for the first pass. 
+For a given lattice element, the reference energy/momentum is computed from the reference
+set at the lowest end of the chain of lines.
+
+The elements of a physical element set share their physical fields. These include the
+magnetic and electric multipole fields, such as `MagneticMultipoleP.Bn1`, and bend fields, such as
+`BendP.Bn0_ref`. Setting a field in one element of the set sets it in all of them. For example,
+if a quadrupole is in a multipass line, a [`set`](#s:set) of `Bn1` in the quadrupole's second pass
+element also changes `Bn1` in its first pass element. Normalized strengths, such as `MagneticMultipoleP.Kn1`, are not shared.
+They are computed from the shared field and the reference momentum of each element, so they
+will differ from pass to pass when the reference energy differs.
+
 The elements of a physical element set do not have to all be in the same lattice branch.
 For example, in a colliding beam machine with two intersecting rings, the machine can be
 represented with two branches, one for each ring. The interaction region where
@@ -123,14 +142,6 @@ It is important to note that the [floor](#s:floor) coordinates of the elements i
 element set are not constrained by the `multipass` construction to be the same. 
 It is up to the lattice designer to make
 sure that the floor positions of the elements in the set make sense (that is, are all the same).
-
-The elements of a physical element set share their physical fields. These include the
-magnetic and electric multipole fields, such as `MagneticMultipoleP.Bn1`, and bend fields, such as
-`BendP.Bn0_ref`. Setting a field in one element of the set sets it in all of them. For example,
-if a quadrupole is in a multipass line, a [`set`](#s:set) of `Bn1` in the quadrupole's second pass
-element also changes `Bn1` in its first pass element. Normalized strengths, such as `MagneticMultipoleP.Kn1`, are not shared.
-They are computed from the shared field and the reference momentum of each element, so they
-will differ from pass to pass when the reference energy differs.
 
 [^foot-ix]: For a given line the
 element index with respect to that line is 1 for the first element in the expanded line, the second
