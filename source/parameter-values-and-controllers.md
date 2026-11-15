@@ -247,6 +247,9 @@ there are four interdependent parameters: `Ks2`, `Ks2L`, `Bs2`, `Bs2L`.
 
 Note: Pattern matching is not supported in the `value` expression.
 
+It is an error for a `set` to target a parameter that is controlled by an `ABSOLUTE`
+[controller](#s:controller).
+
 For sets that only have a value, an alternative compact form has the syntax:
 ```{code} yaml
 - sets:
@@ -395,6 +398,9 @@ controllers but may not (because it does not make sense) be controlled by both `
 
 A given lattice parameter may not be assigned a delayed evaluation expression and be controlled 
 by a controller.
+
+It is an error for a [`set`](#s:set) to target a parameter that is controlled by an `ABSOLUTE`
+controller.
 
 %---------------------------------------------------------------------------------------------------
 (s:adjust)=
