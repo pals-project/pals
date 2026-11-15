@@ -196,7 +196,7 @@ If no `random_seed` statement is given, or a seed of zero is given, the seed is 
 by the parser, for example from the system clock. In this case, the results will generally
 differ from run to run.
 
-With a given seed, a given parser must produce the same results each time it is run.
+With a given seed, a given PALS compliant parser will produce the same results each time it is run.
 Different parsers need not produce the same random numbers for the same seed, so results
 will generally vary from parser to parser.
 
