@@ -6,5 +6,7 @@
 ## YAML
 
 In YAML, either single or double quotes may be used to [quote a string value](#s:constants).
-A YAML reader will normally return `"Au+79"` and `Au+79` as the same string, so a parser must
-keep track of whether a value was quoted in the file.
+Many YAML readers will, by default, return `"Au+79"` (with quotes) and 
+`Au+79` (no quotes) as the same string. 
+Since the PALS standard relies on distinguishing the two to disambiguate between names and 
+expressions, a parser must avoid readers that do not preserve quotation marks.
