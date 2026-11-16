@@ -20,7 +20,7 @@ PALS:
   post_expansion:           # [list] Optional post-expansion setup. 
   reminders:                # [list] Optional reminder messages to be printed when file is read.
   version:                  # [string] Version of the PALS schema used in this file.
-  version_lowest:           # [string] Lowest version of the files combined by load.
+  version_lowest:           # [string] Lowest version of the files combined by load. Output parameter.
 ```
 The `adjustments` list is documented in section [](#s:adjust).
 The `girders` node is documented with the [`Girder` element](#s:girder) documentation.
