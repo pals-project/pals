@@ -25,8 +25,4 @@ of the lattice if `user_set` is set to `true`, or can be computed based upon the
 of the upstream lattice elements of the branch the element is in. That is, `user_set`
 determines whether the `FloorP` parameters are inputs or outputs.
 
-The position components are capitalized, `X`, `Y`, and `Z`, to distinguish the
-[global coordinates](#s:floor) from the other coordinate systems, such as the branch
-coordinates {math}`(x, y, z)`.
-
 Also see [`ShiftedFloorP`](#s:shifted.floor.params) parameter group.
