@@ -9,9 +9,9 @@ Unlike `FloorP`, whose parameters can be user set, all of the `ShiftedFloorP` pa
 The components of this group are:
 ```{code} yaml
 ShiftedFloorP:
-  x:                      # [m] Global x-coordinate.
-  y:                      # [m] Global y-coordinate.
-  z:                      # [m] Global z-coordinate.
+  X:                      # [m] Global X-coordinate.
+  Y:                      # [m] Global Y-coordinate.
+  Z:                      # [m] Global Z-coordinate.
   theta:                  # [rad] Orientation angle.
   phi:                    # [rad] Orientation angle.
   psi:                    # [rad] Orientation angle.

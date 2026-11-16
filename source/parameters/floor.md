@@ -11,9 +11,9 @@ upstream edge of the element. That is, the position of the element without any `
 The components of this group are:
 ```{code} yaml
 FloorP:
-  x: null                       # [m] Global x-coordinate.
-  y: null                       # [m] Global y-coordinate.
-  z: null                       # [m] Global z-coordinate.
+  X: null                       # [m] Global X-coordinate.
+  Y: null                       # [m] Global Y-coordinate.
+  Z: null                       # [m] Global Z-coordinate.
   theta: null                   # [rad] Orientation angle.
   phi: null                     # [rad] Orientation angle.
   psi: null                     # [rad] Orientation angle.
@@ -24,5 +24,9 @@ When this group is contained in an element, the placement can either be set by t
 of the lattice if `user_set` is set to `true`, or can be computed based upon the placement
 of the upstream lattice elements of the branch the element is in. That is, `user_set`
 determines whether the `FloorP` parameters are inputs or outputs.
+
+The position components are capitalized, `X`, `Y`, and `Z`, to distinguish the
+[global coordinates](#s:floor) from the other coordinate systems, such as the branch
+coordinates {math}`(x, y, z)`.
 
 Also see [`ShiftedFloorP`](#s:shifted.floor.params) parameter group.
