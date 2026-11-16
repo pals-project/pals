@@ -446,8 +446,11 @@ In this example, a girder called `support1` supports lattice elements `Q1` and `
 elements in between plus an element called `sy7`.
 
 A `Girder` can support other `Girder` elements, which can in turn support other `Girder` elements, etc.
-The one restriction is that a circular chain of support is forbidden. `Girder`s can only support
-elements that have a `BodyShiftP` parameter group.
+A circular chain of support is forbidden. `Girder`s can only support
+elements that have a `BodyShiftP` parameter group. 
+When a PALS compliant parser calculates the supported elements, and there is a construct like `Q1:Q5` 
+where there are unsupportable elements in the list, this is not an error andthe unsupportable 
+elements will be automatically dropped from the list.
 
 How a `Girder` moves supported elements is as follows: 
 The "nominal" orientation of a `Girder` is determined by the settings of the `CoordinateSetP`
