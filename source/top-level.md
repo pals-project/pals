@@ -278,6 +278,18 @@ Any combination of circular loads and includes (e.g., A loads B which includes A
 Files are to be only loaded once and must be loaded at the first opportunity. 
 For example, if A loads B and then C, and if B and C both load D, then when B is loaded into A,
 D will be loaded, and when C is loaded into A, D will not be loaded again. 
+Two `load` entries refer to the same file if their paths resolve to the same absolute path.
+Files at different paths are different files, even if their contents are identical.
+
+  Since a file's contents are placed where it is first loaded, a later `load` of the same file
+  has no effect, even where its position in that file's `load` list would have placed it elsewhere.
+  In the above example, D is placed with B, ahead of the contents of C. This holds even if C has
+  `load: [SELF, D]`, which on its own would put D after the contents of C. Since `set` commands and
+  definitions depend on order, a file may therefore give different results when loaded by another
+  file than when it is used on its own.
+
+  The load-once rule does not apply to [`include`](#s:includefiles). An `include` inserts the
+  contents of a file verbatim each time it appears, so a file that is included twice is inserted twice.
 - As with `include`, a file path in a `load` list is interpreted relative to the location of the
 file that contains the `load` node (and not the location of the file including or loading the file
 that contains the `load` node).
