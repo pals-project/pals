@@ -38,6 +38,6 @@ detap_y_dpz:  # [1/pz_units] etap_y dependence on momentum.
 ```
 Discussion of the normal mode decomposition is found in Sagan and Rubin {footcite:p}`Sagan:Coupling`.
 Dispersion parameters are documented in the [Dispersion](#s:dispersion) section.
-The `d*_dpz` parameters are derivatives with respect to the phase space {math}`p_z` set by
+The parameters ending in `dpz`  are derivatives with respect to the phase space {math}`p_z` set by
 [`phase_space_coordinates`](#s:phase.space), so their values depend upon that setting.
 
