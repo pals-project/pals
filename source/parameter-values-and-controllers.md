@@ -57,7 +57,7 @@ hbar                      # [eV*s] Reduced Planck's constant
 k_boltzmann               # [eV/K] Boltzmann's constant
 r_electron                # [m] Classical electron radius
 r_proton                  # [m] Classical proton radius
-e_charge                  # [Coul] Conversion factor from PALS charge units to Coulombs
+e_charge                  # [Coul] Elementary charge.
 mu_0                      # [eV*s^2/m] Vacuum permeability
 epsilon_0                 # [1/(eV*m)] Permittivity of free space
 classical_radius_factor   # [m*eV] Classical Radius Factor: e^2/(4 pi epsilon_0)
@@ -72,7 +72,7 @@ electron or proton radius to a formula for something other than an electron or p
 The units of `mu_0` and `epsilon_0` are PALS units where charge is in units of the elementary
 charge. For example, the `[1/(eV*m)]` of `epsilon_0` is short for `[e^2/(eV*m)]`.
 
-The `e_charge` constant converts from PALS charge units (the elementary charge) to Coulombs.
+The `e_charge` constant converts from PALS charge units (unitary elementary charge) to Coulombs.
 Since energy is in eV, `e_charge` is also the number of Joules in one eV.
 The `degrees` constant converts an angle in degrees to radians. For example, `angle: 15*degrees`.
 The `amu` constant can be used to specify masses of ions. For example, `208*amu`.
