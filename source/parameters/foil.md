@@ -81,4 +81,3 @@ the element with no change in charge or trajectory.
 These edges are separate from any [`ApertureP`](#s:aperture.params) limits.
 A particle outside an aperture is lost. A particle outside the foil edges is not affected by the foil.
 
-In Construction...
