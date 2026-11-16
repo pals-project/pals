@@ -3,7 +3,7 @@
 
 The `FoilP` parameter group contains parameters for describing foil elements.
 
-The components of this group and their defaults are:
+The components of this group are:
 ```{code} yaml
 FoilP:
   dE_ref: 0                # [eV] Reference energy change.
