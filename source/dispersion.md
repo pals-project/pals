@@ -40,8 +40,8 @@ where {math}`{\bf M}_{21}` is the transfer matrix between points {math}`s_1` and
 For a non-periodic lattice branch, there are two ways one can imagine
 defining the dispersion: Either with respect to changes in energy at the beginning of the machine or
 with respect to the local change in energy at the point of measurement. The former definition will
-be called "non-local dispersion" and the latter definition will be called "local dispersion",
-which is what Bmad calculates. The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
+be called "non-local dispersion" and the latter definition will be called "local dispersion".
+The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
 related to the local dispersion {math}`{\bf\eta}(s_1)` via
 ```{math}
   \widetilde{\bf\eta}(s_1) = \frac{dp_{z1}}{dp_{z0}} \, {\bf\eta}(s_1)
