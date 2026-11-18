@@ -849,7 +849,7 @@ Element parameter groups associated with this element kind are:
 (s:wire)=
 ### Wire Element
 
-A Wire element is a wire scanner: a transverse profile monitor that steps a thin wire across a
+A Wire element is a wire scanner: a transverse profile monitor that moves a thin wire across a
 particle beam to measure a one-dimensional projection of the transverse distribution.
 
 Element parameter groups associated with this element kind are:
@@ -857,4 +857,4 @@ Element parameter groups associated with this element kind are:
   [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
-- Wire parameters: [`WireP`](#s:wire.params). Wire angle, scan range, and wire width.
+- Wire parameters: [`WireP`](#s:wire.params). Wire angle, scan range, scan positions, and wire width.
