@@ -91,7 +91,7 @@ PALS:
         value: 37
     ...
 ```
-A [delayed expression](#s:expressions) may not be used to define a constant but
+A [deferred expression](#s:expressions) may not be used to define a constant but
 may be used for a variable.
 
 For a set of constants or variables that only have values, an alternative compact form
@@ -168,7 +168,7 @@ charge_of(A)             # Charge, in units of the elementary charge, of particl
 anomalous_moment_of(A)   # Anomalous magnetic moment of particle A
 ```
 
-There is also the `expr(...)` construct which is used to denote delayed expressions as 
+There is also the `expr(...)` construct which is used to denote deferred expressions as 
 documented in the [](#s:expressions) section.
 
 %---------------------------------------------------------------------------------------------------
@@ -197,10 +197,10 @@ Example:
 - a_var: 3.75e7 / c_light^2
 ```
 
-Expressions can be divided into two categories called "delayed" and "immediate". 
+Expressions can be divided into two categories called "deferred" and "immediate". 
 Immediate expressions are expressions that are evaluated once during [lattice expansion](#s:lattice.expand).
-Delayed expressions can be evaluated multiple times as conditions change after a lattice has
-been read in. Delayed expressions are denoted by wrapping the expression using
+Deferred expressions can be evaluated multiple times as conditions change after a lattice has
+been read in. Deferred expressions are denoted by wrapping the expression using
 `expr(...)`. The wrapper has no effect on evaluation: `expr(a + b)` evaluates the same as `a + b`. 
 The `expr` wrapper, if used, must enclose the entire expression. 
 For example, `2 * expr(a + b)` is invalid. Example:
@@ -209,7 +209,7 @@ MagneticMultipoleP:
   Kn1: expr(3.74 * a_var)    # Evaluates the same as: Kn1: 3.74 * a_var
 ```
 Expressions that are not wrapped using `expr(...)` are immediate expressions with the exception
-that the `expression` components of a [controller](#s:controller) are automatically delayed expressions.
+that the `expression` components of a [controller](#s:controller) are automatically deferred expressions.
 
 An immediate expression is evaluated only once even if it uses a variable whose value later changes. 
 Example:
@@ -217,10 +217,10 @@ Example:
 - variables:
     - var_a: 0.3                    # May be varied after the lattice is read in.
     - var_b: 2 * var_a              # Immediate. Keeps the value var_a has when var_b is evaluated.
-    - var_c: expr(2 * var_a)        # Delayed. Follows any later change of var_a.
+    - var_c: expr(2 * var_a)        # Deferred. Follows any later change of var_a.
 ```
-Similarly, while a constant may not be defined with a delayed expression, the expression
-defining a constant may use a variable that is defined with a delayed expression.
+Similarly, while a constant may not be defined with a deferred expression, the expression
+defining a constant may use a variable that is defined with a deferred expression.
 The constant's value is then fixed by the value that variable has when the constant is evaluated.
 
 %---------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ For sets that only have a value, an alternative compact form has the syntax:
     ...
 ```
 
-Delayed expressions may be used as `set` values. In this case, the expression cannot be self-referential
+Deferred expressions may be used as `set` values. In this case, the expression cannot be self-referential
 which would create an endless evaluation loop. Example:
 ```{code} yaml
 - set:
@@ -311,8 +311,8 @@ which would create an endless evaluation loop. Example:
 ```
 
 A `set` replaces the existing value of a parameter with the `set` value.
-This is true whether the existing value is an immediate or a delayed expression, and
-whether the `set` value is an immediate or a delayed expression.
+This is true whether the existing value is an immediate or a deferred expression, and
+whether the `set` value is an immediate or a deferred expression.
 
 %---------------------------------------------------------------------------------------------------
 (s:controller)=
@@ -356,7 +356,7 @@ Initial values for controller variables may be expressions. These are
 [immediate expressions](#s:expressions) and are evaluated once when the lattice is expanded.
 Wrapping an initial value with `expr(...)` is an error.
 
-Note: All controller `expression`s are implicitly considered to be ["delayed evaluation"](#s:expressions)
+Note: All controller `expression`s are implicitly considered to be ["deferred evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
 Wrapping the expression with `expr(...)` is redundant and will be ignored.
 
@@ -452,7 +452,7 @@ A given lattice parameter may be controlled by multiple `ABSOLUTE` controllers o
 controllers but may not (because it does not make sense) be controlled by both `ABSOLUTE` and
 `RELATIVE` controllers.
 
-A given lattice parameter may not be assigned a delayed evaluation expression and be controlled 
+A given lattice parameter may not be assigned a deferred evaluation expression and be controlled 
 by a controller.
 
 %---------------------------------------------------------------------------------------------------

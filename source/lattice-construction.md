@@ -88,7 +88,7 @@ This is the base tree for the lattice expansion.
 
 * Go through the `facility` list in order and node-by-node evaluate 
   [immediate expressions](#s:expressions) and execute any `set` commands.
-  [Delayed expressions](#s:expressions) (including controller expressions) are evaluated as needed for the
+  [Deferred expressions](#s:expressions) (including controller expressions) are evaluated as needed for the
   evaluation of immediate expressions. 
 
   Set commands can only act on the parameters that have been defined up to that point in the 
@@ -143,7 +143,7 @@ has been set), floor positions, and s-positions.
 * Using the `post_expansion` list, node-by-node from the list beginning, 
 evaluate any immediate expressions and execute any `set` commands.
 
-* Evaluate the delayed expressions.
+* Evaluate the deferred expressions.
 
 * Recalculate floor and reference parameters as needed.
 
@@ -155,7 +155,7 @@ Notes:
   For example, branches could be stored using an array or a tree. 
   In any case, the root branches must be marked as such.
 - Nothing in the `facility` list may reference constructs in the `post_expansion` list.
-- Controllers and [variables](#s:constants) that are defined with delayed expressions 
+- Controllers and [variables](#s:constants) that are defined with deferred expressions 
   in the `facility` list may appear in any order in this list. Similarly for controllers
   and variables in the `post_expansion` list.
 
