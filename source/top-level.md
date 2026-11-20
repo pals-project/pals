@@ -81,7 +81,9 @@ treats it as written for the highest version the parser implements, and may warn
 version is missing.
 
 The `version_lowest` node is set when files with different versions are combined
-using [`load`](#s:load).
+using [`load`](#s:load). It only records where the parts of the file came from, and a parser
+may ignore it. Since `load` cannot combine files with different major versions, a parser that
+implements the file's `version` can read all of the file.
 
 %---------------------------------------------------------------------------------------------------
 (s:facility)=
