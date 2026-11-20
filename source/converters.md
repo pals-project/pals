@@ -99,3 +99,31 @@ Conversion between PALS and [SciBmad](https://github.com/bmad-sim/SciBmad.jl):
 - Conversion from SciBmad to PALS is experimental. Code is at: [https://github.com/bmad-sim/Beamlines.jl/pull/114](https://github.com/bmad-sim/Beamlines.jl/pull/114).
 
 - Conversion from PALS to SciBmad is performed by the `pals_to_scibmad` function in `PALSParserJ.jl`.
+
+%---------------------------------------------------------------------------------------------------
+(s:cosy.convert)=
+## COSY INFINITY Conversion
+
+Conversion between PALS and [COSY INFINITY](https://cosyinfinity.org):
+
+- Conversion from COSY INFINITY to PALS is not available.
+
+- Conversion from PALS to COSY INFINITY is performed by the Python package
+  [pals2cosy](https://github.com/evvaletov/pals2cosy) (`pip install pals2cosy`), which writes a
+  COSYScript program that computes the transfer map of one lattice branch. Each release names the
+  commit of the standard it targets and is tested against the `examples/` files at that commit.
+
+  The PALS to COSY INFINITY conversion uses the following conventions:
+  - PALS multipole coefficients are plain field derivatives while COSY INFINITY's multipole
+    elements take the field at the pole tip of a bore of radius `r`, so the two differ by `r^N/N!`.
+  - COSY INFINITY bends a negative angle through its `CB` command, which mirrors `x`, so the face
+    angles of a negative bend change sign.
+  - With fringe fields on, a bend's half-gap is chosen so that COSY INFINITY's default Enge field
+    has the `edge1_int` and `edge2_int` of the PALS file; without fringe fields the bend has hard
+    edges.
+  - COSY INFINITY's `RF` element is a thin kick, so a cavity becomes a kick between two drifts of
+    half its length. The phase is taken relative to the arrival of the reference particle.
+  - COSY INFINITY's solenoid has soft edges, so its focusing is weaker than that of the hard-edged
+    PALS solenoid by about the ratio of the fringe length to the solenoid length.
+  - `load`, `include`, `set`, ABSOLUTE `Controllers` and superposition are reported as errors;
+    misalignments, forks and electric multipoles are reported as warnings.

@@ -30,7 +30,7 @@ This work is supported by the U.S. Department of Energy SBIR program.
 
 ## Language Converters
 
-Conversion between PALS and other lattice formats, including Bmad, SciBmad, and MAD-X, is
+Conversion between PALS and other lattice formats, including Bmad, SciBmad, MAD-X and COSY INFINITY, is
 documented in the [Language Converters](#s:language.convert) section.
 
 ## Schema Files
@@ -41,3 +41,4 @@ A validation tool based on pydantic is in development.
 ## List of Simulation Codes Interfaced to PALS
 
 - [BLAST ImpactX](https://impactx.readthedocs.io)
+- [COSY INFINITY](https://cosyinfinity.org), through [pals2cosy](https://github.com/evvaletov/pals2cosy)
