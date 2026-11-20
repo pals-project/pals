@@ -80,15 +80,16 @@ energy is not set, the reference energy throughout the lattice cannot be compute
 calculations depending upon the reference energy cannot be done. A PALS compliant parser will flag
 such problems.
 
-The steps used for lattice expansion are:
+The lattice expansion procedure is:
 
 * Start with the root PALS file and construct an information tree that contains all the data from
 any [`include`](#s:includefiles) and [`load`](#s:load) files.
 This is the base tree for the lattice expansion.
 
-* Go through the `facility` list in order and node-by-node evaluate any expressions and execute any `set` commands.
-There is no distinction here between delayed evaluation and immediate evaluation [expressions](#s:expressions). 
-Both are evaluated. Controllers are ignored here.
+* Go through the `facility` list in order and node-by-node evaluate 
+  [immediate expressions](#s:expressions) and execute any `set` commands.
+  [Delayed expressions](#s:expressions) (including controller expressions) are evaluated as needed for the
+  evaluation of immediate expressions. 
 
   Set commands can only act on the parameters that have been defined up to that point in the 
   `facility` list. For example:
@@ -135,29 +136,28 @@ new beamlines and branch expansion is performed on these new lines.
 The new branches may themselves have `Fork` elements that fork to new beamlines
 and this process is repeated until there are no new branches to be created.
 
-* Apply the `ABSOLUTE` `Controllers` from the `facility` list.
-`RELATIVE` `Controllers` are not involved in lattice expansion.
-
 * For each branch, element-by-element, starting at the beginning, the reference parameters (energy, 
 species, time, etc.) are calculated along with dependent parameters (e.g., multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
 * Using the `post_expansion` list, node-by-node from the list beginning, 
-evaluate any expressions and execute any `set` commands. Controllers are ignored here.
+evaluate any immediate expressions and execute any `set` commands.
 
-* Apply `ABSOLUTE` `Controllers` from both lists. 
-`RELATIVE` `Controllers` are not involved in lattice expansion.
+* Evaluate the delayed expressions.
 
 * Recalculate floor and reference parameters as needed.
 
 Notes:
 - All branches must have unique names. However, different branches may use the same root `BeamLine`.
 - As detailed in [](#s:forking), some `Fork` elements may connect to an existing branch.
-These `Fork` elements will not trigger new branch creation. 
+  These `Fork` elements will not trigger new branch creation. 
 - The PALS standard does not mandate how branches should be stored in memory after expansion.
-For example, branches could be stored using an array or a tree. 
-In any case, the root branches must be marked as such.
-
+  For example, branches could be stored using an array or a tree. 
+  In any case, the root branches must be marked as such.
+- Nothing in the `facility` list may reference constructs in the `post_expansion` list.
+- Controllers and [variables](#s:constants) that are defined with delayed expressions 
+  in the `facility` list may appear in any order in this list. Similarly for controllers
+  and variables in the `post_expansion` list.
 
 %---------------------------------------------------------------------------------------------------
 (s:forking)=
