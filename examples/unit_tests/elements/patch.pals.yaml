@@ -1,0 +1,29 @@
+# A Patch element shifting the reference orbit: its exit coordinates are
+# offset 0.01 m in x and rotated 0.02 rad about z with respect to its entrance.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - d1:
+        kind: Drift
+        length: 1.0
+    - p1:
+        kind: Patch
+        PatchP:
+          x_offset: 0.01
+          z_rot: 0.02
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - d1
+          - p1
+          - d1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
