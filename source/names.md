@@ -180,8 +180,8 @@ Lattice elements can also be referred to by the index in which they appear in a 
 with the first element having index one, etc. For example, `B1>>7` matches the seventh
 element in branch `B1`.
 
-Branches do not get an index since the
-PALS standard does not mandate that the branches of a lattice be stored in an array (it
+Branches do not get an index since
+PALS does not mandate that the branches of a lattice be stored in an array (it
 could, for example, be a linked list).
 
 If there are multiple [`Lattice`](#s:lattice.construct) constructs, the element name may be qualified

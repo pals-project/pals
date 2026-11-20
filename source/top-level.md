@@ -58,7 +58,7 @@ PALS:
     - ...  # lattice elements, beamlines, lattices, parameter set commands, etc.
 ```
 Information may appear in a PALS file outside of the `PALS` node but this information is considered
-to be outside of the PALS standard and will be ignored by a PALS parser.
+to be outside of PALS and will be ignored by a PALS parser.
 
 PALS file `authors` are optional, but recommended to enable data provenance and contacts.
 Per author, the `name` is required; the `orcid`, `affiliation` and `email` fields are optional.
