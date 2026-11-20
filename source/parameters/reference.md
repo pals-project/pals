@@ -7,8 +7,8 @@ The components of this group and their defaults are:
 ```{code} yaml
 ReferenceP:
   species_ref: null   # [species] Reference species
-  pc_ref: 0           # [eV] Reference momentum times speed of light
-  E_tot_ref: 0        # [eV] Reference total energy
+  pc_ref: null        # [eV] Reference momentum times speed of light
+  E_tot_ref: null     # [eV] Reference total energy
   time_ref: 0         # [s] Reference time
 ```
 
@@ -20,7 +20,9 @@ will generally be different. And the reference energy will change if the element
 
 For a `BeginningEle` element, parameters of this group are user settable.
 For all other element kinds, the parameters of this
-group are calculated (output parameters) and are not user settable. 
+group are calculated (output parameters) and are not user settable.
+If used as an input parameter group, either `pc_ref` can be set or `E_tot_ref` can be
+set but not both.
 The reference parameters at the upstream end of any non-`BeginningEle` element will be the 
 same as the reference parameters at the downstream end of the previous element.
 To adjust reference parameters at any point in a lattice branch, use the `ReferenceChange` element.
