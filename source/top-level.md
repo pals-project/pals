@@ -71,6 +71,15 @@ integers. Changes to the standard increment them as follows:
 - `MINOR`: An addition to the standard, such as a new element kind or parameter.
 - `PATCH`: A correction or clarification that does not change what is valid.
 
+All three parts must be present. A short form such as `1.0` or `1` is not a valid `version`.
+Besides lacking parts, a short form is read by YAML as a number, so that `1.10` becomes `1.1`.
+Quoting the value, as in the examples here, keeps it a string.
+
+A program that writes a PALS file must write the `version`. A file may still lack a `version`,
+or have `version: null`, for example when it is written by hand. A parser reading such a file
+treats it as written for the highest version the parser implements, and may warn that the
+version is missing.
+
 The `version_lowest` node is set when files with different versions are combined
 using [`load`](#s:load).
 
@@ -259,8 +268,10 @@ is last on the `load` list.
 versions. For example, combining files with versions `1.2.0`, `1.4.1`, and `1.3.5` gives
 `version: "1.4.1"` and `version_lowest: "1.2.0"`. If the versions are all the same,
 `version_lowest` is not set. If a combined file has a `version_lowest`, that version is
-included when finding the lowest. It is an error for the versions to be incompatible, that is,
-if the major versions are different. For example, version `1.4.2` is incompatible with `2.0.1`.
+included when finding the lowest. A file with no `version`, or with `version: null`, is left
+out when finding the highest and lowest. If no file has a version, the combined file has none.
+It is an error for the versions to be incompatible, that is, if the major versions are
+different. For example, version `1.4.2` is incompatible with `2.0.1`.
 - For other scalar `PALS` nodes (e.g., [`phase_space_coordinates`](#s:phase.space)) the values
 must be the same.
 - For list type subnodes, the combined list retains the order set by the `load` list and the order
