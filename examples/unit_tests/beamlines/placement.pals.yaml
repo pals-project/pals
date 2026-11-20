@@ -1,0 +1,43 @@
+# Line item placement. The subline zsub has a zero_point (the marker zm), and
+# its placement puts that zero point 3.0 m past the exit end of thingA:
+# thingA ends at s = 2.0, so zm is at s = 5.0 and zsub starts at s = 4.0.
+#
+# Adapted from the Line item placement section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - thingA:
+        kind: Drift
+        length: 2.0
+    - d_sub:
+        kind: Drift
+        length: 1.0
+    - zm:
+        kind: Marker
+    - zsub:
+        kind: BeamLine
+        zero_point: zm
+        line:
+          - d_sub
+          - zm
+          - d_sub
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - thingA
+          - zsub:
+              placement:
+                offset: 3.0
+                base_item: thingA
+                from_point: EXIT_END
+                to_point: ZERO_POINT
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

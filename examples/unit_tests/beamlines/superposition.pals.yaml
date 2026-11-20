@@ -1,0 +1,33 @@
+# Superposition of a Marker at the center of a drift. The `superimpose`
+# entry places m_mid with its center at the center of d_long, so m_mid is at
+# s = 2.0. Superposition does not change the length of the line (4.0 m).
+#
+# Adapted from the Superposition section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - d_long:
+        kind: Drift
+        length: 4.0
+    - m_mid:
+        kind: Marker
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - d_long
+    - superimpose:
+        place: m_mid
+        placement:
+          base_item: d_long
+          from_point: CENTER
+          to_point: CENTER
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

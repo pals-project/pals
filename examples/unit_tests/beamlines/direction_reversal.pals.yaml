@@ -1,0 +1,40 @@
+# Direction reversal of a subline. `sub` holds a bend and a quadrupole; the
+# second use of `sub` has `direction: -1`, so its items come in reverse order
+# and are each direction reversed: the expanded branch is
+#   begin, b1, q1, -q1, -b1
+# where a minus sign marks a reversed element.
+#
+# Adapted from the Direction reversal section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - b1:
+        kind: Bend
+        length: 1.0
+        BendP:
+          angle_ref: 0.1
+          e1: 0.05
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+    - sub:
+        kind: BeamLine
+        line:
+          - b1
+          - q1
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - sub
+          - sub:
+              direction: -1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
