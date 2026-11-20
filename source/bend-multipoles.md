@@ -31,23 +31,23 @@ the field given by {math}`-\nabla \phi`.  The potential is a solution to Laplace
 Solutions to Laplace's equation can be written in the form
 ```{math}
 :label: pspn1
-  \phi_{n}^r = \frac{-1}{1+n} \sum_{p = 0}^{2p \le n+1} 
-             \begin{pmatrix} n + 1 \cr 2 \, p \end{pmatrix} \,
-             (-1)^{p} \, F_{n+1-2p}(\widetilde r) \, \widetilde y^{2p}
+  \phi_{N}^r = \frac{-1}{1+N} \sum_{p = 0}^{2p \le N+1} 
+             \begin{pmatrix} N + 1 \cr 2 \, p \end{pmatrix} \,
+             (-1)^{p} \, F_{N+1-2p}(\widetilde r) \, \widetilde y^{2p}
 ```
 and in the form
 ```{math}
 :label: pspn2
-  \phi_{n}^i = \frac{-1}{1+n} \sum_{p = 0}^{2p \le n}
-             \begin{pmatrix} n + 1 \cr 2p +1 \end{pmatrix} \,
-             (-1)^{p} \, F_{n-2p}(\widetilde r) \, \widetilde y^{2p+1}
+  \phi_{N}^i = \frac{-1}{1+N} \sum_{p = 0}^{2p \le N}
+             \begin{pmatrix} N + 1 \cr 2p +1 \end{pmatrix} \,
+             (-1)^{p} \, F_{N-2p}(\widetilde r) \, \widetilde y^{2p+1}
 ```
-where {math}`\binom{a}{b}` ("a choose b") denotes a binomial coefficient, and {math}`n` is the order
-number which can range from 0 to infinity.[^foot1] The functions {math}`\phi_{n}^r` and 
-{math}`\phi_{n}^i` together form a complete set of solutions.
+where {math}`\binom{a}{b}` ("a choose b") denotes a binomial coefficient, and {math}`N` is the order
+number which can range from 0 to infinity.[^foot1] The functions {math}`\phi_N^r` and 
+{math}`\phi_N^i` together form a complete set of solutions.
 That is, any given field that satisfies
 Maxwell's equations and is independent of {math}`z` can be expressed as a linear combination of
-{math}`\phi_n^r` and {math}`\phi_n^i`. 
+{math}`\phi_N^r` and {math}`\phi_N^i`. 
 
 In {eq}`pspn1` and {eq}`pspn2` the {math}`F_p(\widetilde r)` are related by
 ```{math}
@@ -81,13 +81,14 @@ Note: Care must be taken when evaluating these functions near {math}`\widetilde 
 For example, evaluating {math}`F_4(\widetilde r)` at {math}`\widetilde x = 10^{-4}` results
 in a complete loss of accuracy (no significant digits!) when using double precision numbers.
 
-For magnetic fields, the "real" {math}`\phi_n^r` solutions will correspond to skew fields and the
-"imaginary" {math}`\phi_n^i` solutions will correspond to normal fields
+For magnetic fields, the "real" {math}`\phi_N^r` solutions will correspond to skew fields and the
+"imaginary" {math}`\phi_N^i` solutions will correspond to normal fields
 ```{math}
 :label: bpql
 
-  {\bf B} = -\frac{P_0}{q \, length} \, 
-    \sum_{n = 0}^\infty \rho^n \, \left[ a_n \, \widetilde \nabla \phi_n^r + b_n \, \widetilde \nabla \phi_n^i \right]
+  {\bf B} = -\frac{P_0}{q} \, 
+    \sum_{N = 0}^\infty \frac{\rho^N}{N!} \, 
+    \left[ K_{sN} \, \widetilde \nabla \phi_N^r + K_{nN} \, \widetilde \nabla \phi_N^i \right]
 ```
 where the gradient derivatives of {math}`\widetilde \nabla` are with respect to the normalized
 coordinates. In the limit of infinite bending radius {math}`\rho`, the above equations converge
@@ -98,41 +99,41 @@ For electric fields, the "real" solutions will correspond to normal fields and t
 ```{math}
 :label: enrn
 
-  {\bf E} = -\sum_{n = 0}^\infty \rho^n \, \left[ a_{en} \, \widetilde \nabla \phi_n^i + 
-  b_{en} \, \widetilde \nabla \phi_n^r \right]
+  {\bf E} = -\sum_{N = 0}^\infty \frac{\rho^N}{N!} \, 
+  \left[ E_{sN} \, \widetilde \nabla \phi_N^i + E_{nN} \, \widetilde \nabla \phi_N^r \right]
 ```
 And this will converge to Eq. {eq}`exiey` in the straight line limit.
 
-In the vertical plane, with {math}`\widetilde x = 0`, the solutions {math}`\phi_n^r` and {math}`\phi_n^i` have the same
+In the vertical plane, with {math}`\widetilde x = 0`, the solutions {math}`\phi_N^r` and {math}`\phi_N^i` have the same
 variation in {math}`\widetilde y` as the multipole fields with a straight geometry. For example, the field
 strength of an {math}`n = 1` (quadrupole) multipole will be linear in {math}`\widetilde y` 
 for {math}`\widetilde x = 0`. However, in the
 horizontal direction, with {math}`\widetilde y = 0`, the multipole field will vary 
 like {math}`dF_2/d\widetilde x` which has
-terms of all orders in {math}`\widetilde x`. In light of this, the solutions {math}`\phi_n^r` and 
-{math}`\phi_n^i` are called "vertically pure" solutions.
+terms of all orders in {math}`\widetilde x`. In light of this, the solutions {math}`\phi_N^r` and 
+{math}`\phi_N^i` are called "vertically pure" solutions.
 
-The functions {math}`\phi_n^r` and {math}`\phi_n^i` form a complete set of solutions but other
+The functions {math}`\phi_N^r` and {math}`\phi_N^i` form a complete set of solutions but other
 complete sets may be formed by defining basis functions which are linear combinations of 
-{math}`\phi_n^r` and {math}`\phi_n^i`. In particular, 
+{math}`\phi_N^r` and {math}`\phi_N^i`. In particular, 
 it is possible to construct a complete set of "horizontally pure" solutions. 
 That is, it is possible to
-construct solutions {math}`\psi_n^r` and {math}`\psi_n^i` that in the horizontal plane, 
+construct solutions {math}`\psi_N^r` and {math}`\psi_N^i` that in the horizontal plane, 
 with {math}`\widetilde y = 0`, behave the same as the corresponding
 multipole fields with a straight geometry. The relationship between the vertically pure solutions
 and the horizontally pure solutions can be written in the form
 ```{math}
 :label: p1rc
 
-  \psi_n^r = \sum_{k = n}^\infty C_{nk} \, \phi_k^r, \qquad
-  \psi_n^i = \sum_{k = n}^\infty D_{nk} \, \phi_k^i
+  \psi_N^r = \sum_{k = n}^\infty C_{nk} \, \phi_k^r, \qquad
+  \psi_N^i = \sum_{k = n}^\infty D_{nk} \, \phi_k^i
 ```
 For any given order {math}`n`, the {math}`C_{nk}` and {math}`D_{nk}` are determined up to an 
 overall scaling factor. PALS sets this scaling factor by demanding
 {math}`C_{nn} = D_{nn} = 1`.
 
 The {math}`C_{nk}` and {math}`D_{nk}` are chosen, order
-by order, so that {math}`\psi_n^r` and {math}`\psi_n^i` are horizontally pure. For the real
+by order, so that {math}`\psi_N^r` and {math}`\psi_N^i` are horizontally pure. For the real
 potentials, the {math}`C_{nk}`, are obtained from a matrix {math}`{\bf M}` where {math}`M_{ij}` is the
 coefficient of the {math}`\widetilde x^j` term of {math}`(dF_i/d\widetilde x)`
 when {math}`F_i` is expressed as an expansion in
@@ -140,21 +141,13 @@ when {math}`F_i` is expressed as an expansion in
 are the row vectors of the inverse matrix {math}`{\bf M}^{-1}`. 
 For the imaginary potentials, the {math}`D_{nk}` are constructed similarly
 but in this case the rows of {math}`{\bf M}` are the coefficients in {math}`\widetilde x` for the functions {math}`F_i`.
-To convert between field strength coefficients, Eqs. {eq}`bpql` and {eq}`enrn` and Eqs. {eq}`p1rc`
-are combined
-\begin{alignat}{3}
-a_n &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, C_{nk} \, \alpha_k, \quad
-&a_{en} &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, D_{nk} \, \alpha_{ek}, \nonumber \\
-b_n &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, D_{nk} \, \beta_k, \quad
-&b_{en} &= \sum_{k = n}^\infty \frac{1}{\rho^{k-n}} \, C_{nk} \, \beta_{ek}
-\end{alignat}
-where {math}`\alpha_k`, {math}`\beta_k`, {math}`\alpha_{ek}`, and {math}`\beta_{ek}` are the corresponding coefficients
-for the horizontally pure solutions.
+To convert between horizontally pure and vertically pure field strength coefficients, 
+Eqs. {eq}`bpql`, {eq}`enrn` and Eqs. {eq}`p1rc` can be combined appropriately.
 
 When expressed as a function of {math}`\widetilde r` and {math}`\widetilde y`, 
-the vertically pure solutions {math}`\phi_n` have a
+the vertically pure solutions {math}`\phi_N` have a
 finite number of terms (Eqs. {eq}`pspn1` and {eq}`pspn2`). On the other hand, the horizontally
-pure solutions {math}`\psi_n` have an infinite number of terms.
+pure solutions {math}`\psi_N` have an infinite number of terms.
 
 An important point: To properly simulate a machine, one must first of all
 understand whether the multipole values that have been handed to you are for horizontally
