@@ -1,0 +1,25 @@
+# `include` at three levels of the tree. The PALS root includes a notes block
+# (notes.subpals.yaml), the element q1 includes its MagneticMultipoleP group
+# (q1_params.subpals.yaml), and the facility list includes the BeamLine
+# definition (line.subpals.yaml). Each included file's contents are inserted
+# at its include point; paths are relative to this file.
+#
+# Adapted from the Including Other Files section of the standard.
+PALS:
+  include: "notes.subpals.yaml"
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        include: "q1_params.subpals.yaml"
+    - include: "line.subpals.yaml"
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
