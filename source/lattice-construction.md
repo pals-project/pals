@@ -142,6 +142,10 @@ and this process is repeated until there are no new branches to be created.
 species, time, etc.) are calculated along with dependent parameters (e.g., multipole `Ks1` if `Bs1`
 has been set), floor positions, and s-positions.
 
+* Match each `Girder` to the elements it supports. The `GirderP.elements` of a `Girder` is
+[matched](#s:name.matching) against the elements of the expanded lattice and the other `Girder`
+elements under the `girders` node.
+
 * Using the `post_expansion` list, node-by-node from the list beginning, 
 evaluate any expressions and execute any `set` commands. Controllers are ignored here.
 
