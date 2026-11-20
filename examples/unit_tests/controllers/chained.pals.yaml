@@ -9,14 +9,14 @@ PALS:
     - low:
         kind: Controller
         variables:
-          cur: 0.1
+          - cur: 0.1
         controls:
           - parameter: Q1>MagneticMultipoleP.Kn1L
             expression: 10 * cur
     - high:
         kind: Controller
         variables:
-          knob: 3
+          - knob: 3
         controls:
           - parameter: low>cur
             expression: knob / 4

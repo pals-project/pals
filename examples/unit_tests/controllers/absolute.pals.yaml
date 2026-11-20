@@ -9,7 +9,7 @@ PALS:
     - ps1:
         kind: Controller
         variables:
-          cur: 0.4
+          - cur: 0.4
         controls:
           - parameter: Qa.*>MagneticMultipoleP.Kn1L
             expression: 2 * cur
