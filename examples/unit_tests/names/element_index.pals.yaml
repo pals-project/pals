@@ -1,0 +1,32 @@
+# Matching by element index: `main>>3` is the third element of branch main.
+# The first element of a branch has index one, so here index 1 is `begin`,
+# 2 is the first d1, and 3 is q1. After expansion q1 has Kn1L = 0.25.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - d1:
+        kind: Drift
+        length: 1.0
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - d1
+          - q1
+          - d1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
+  post_expansion:
+    - set:
+        parameter: main>>3>MagneticMultipoleP.Kn1L
+        value: 0.25
