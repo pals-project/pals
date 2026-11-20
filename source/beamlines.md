@@ -263,6 +263,9 @@ To adjust the longitudinal placement of an item,
 the `placement` component of an item can be used.
 When there is a `placement` component, figure {numref}`f:superposition` shows how the line item 
 is positioned with respect to a `"base"` line item. 
+Placement is done during [branch expansion](#s:branch.expand). Any longitudinal gap or overlap
+between the downstream end of an element and the upstream end of the next element is recorded
+in the [`s_offset`](#s:non.params) parameter of the second element.
 
 The components of `placement` are:
 ```{code} yaml
@@ -365,6 +368,10 @@ then the order of tracking will be `markerA` followed by `markerB`.
 
 The superposition construct is used to add elements to a beamline after the beamline has been defined.
 Superposition does not change the length of the beamline.
+Superposition is done at the end of [branch expansion](#s:branch.expand) and is considered to be
+part of branch expansion. A superimposed element is inserted into the branch and the
+[`s_offset`](#s:non.params) parameters of it and the element following it are set to position
+the elements. An element that is superimposed upon is not split.
 
 A superposition specifies an element to place on the beamline and a [`placement`](#s:placement) construct
 to position the element within the beamline. Example:
