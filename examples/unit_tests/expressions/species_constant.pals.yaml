@@ -8,16 +8,19 @@ PALS:
     - constants:
         - species: "#3He"
         - b_const: 0.45 * mass_of(species)
-    - DH1A:
-        kind: Bend
+    - begin:
+        kind: BeginningEle
         ReferenceP:
           species_ref: species
           E_tot_ref: 1.0e10
+    - DH1A:
+        kind: Bend
         BendP:
           h1: 1.1 * mass_of(species)
     - main_line:
         kind: BeamLine
         line:
+          - begin
           - DH1A
     - lat1:
         kind: Lattice
