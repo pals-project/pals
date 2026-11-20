@@ -156,7 +156,12 @@ named `cdt`. The third example matches to all lattice elements with `MetaP.alias
 
 The `N`{sup}`th` element with a given name can be matched to by appending the character `#`
 followed by an integer `N`. For example, `Quadrupole::Q1#3` will match to the third element
-that matches `Quadrupole::Q1`. The `N`{sup}`th` instance selection is always applied last.
+that matches `Quadrupole::Q1`.
+Instances are counted separately in each branch, in the order of the branch's element list.
+Thus, if a lattice has more than one branch, `Q1#3` matches the third `Q1` in each branch that
+has at least three `Q1` elements. To select a single element, add a branch qualifier, as in
+`B1>>Q1#3`.
+The `N`{sup}`th` instance selection is always applied last.
 Thus with this example, the element kind selector `::` is applied first to get a list of all
 quadrupole elements named `Q1` and then the `#3` selection is used to get the third instance.
 
