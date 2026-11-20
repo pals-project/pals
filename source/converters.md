@@ -112,6 +112,8 @@ Conversion between PALS and [COSY INFINITY](https://cosyinfinity.org):
   [pals2cosy](https://github.com/evvaletov/pals2cosy) (`pip install pals2cosy`), which writes a
   COSYScript program that computes the transfer map of one lattice branch. Each release names the
   commit of the standard it targets and is tested against the `examples/` files at that commit.
+  Some PALS features are not currently translated; they are listed in the
+  [pals2cosy README](https://github.com/evvaletov/pals2cosy#unsupported-constructs).
 
   The PALS to COSY INFINITY conversion uses the following conventions:
   - PALS multipole coefficients are plain field derivatives while COSY INFINITY's multipole
