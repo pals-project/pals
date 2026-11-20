@@ -115,9 +115,17 @@ machines can be put in as an extension. A list of documented extensions is in th
 (s:parser.intro)=
 ## PALS Compliant Parser
 
-A PALS compliant parser is a parser that can read in PALS file(s) (plural if there are
+A PALS compliant parser is a package that reads and writes PALS files and does
+[lattice expansion](#s:lattice.expand). A parser can read in PALS file(s) (plural if there are
 included or loaded files) and can construct an "appropriate" information tree (or trees) in memory. 
 To be compliant, the constructed information tree must contain the information to construct the 
 original PALS files. 
 The information tree must also contain the [expanded lattice](#s:expanded.lat.intro).
 
+
+%---------------------------------------------------------------------------------------------------
+(s:translator.intro)=
+## Translator
+
+A translator is a package that translates between PALS and some other lattice format,
+such as Bmad or MAD-X. See [](#s:language.convert).

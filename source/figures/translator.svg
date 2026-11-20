@@ -62,8 +62,8 @@
   </defs>
   <rect class="st4" x="45.6" y="79.72" width="268.56" height="53.36"/>
   <g>
-    <rect class="st9" x="36.17" y="283.6" width="343.16" height="51.01"/>
-    <path d="M378.32,284.6v49.01H37.17v-49.01h341.16M380.32,282.6H35.17v53.01h345.16v-53.01h0Z"/>
+    <rect class="st9" x="36.17" y="283.6" width="315.37" height="51.01"/>
+    <path d="M350.53,284.6v49.01H37.17v-49.01h313.37M352.53,282.6H35.17v53.01h317.37v-53.01h0Z"/>
   </g>
   <rect class="st6" x="45.6" y="2.81" width="268.56" height="53.36"/>
   <text class="st0" transform="translate(79.6 35.78)"><tspan x="0" y="0">Simulation Program</tspan></text>
@@ -78,7 +78,7 @@
   <text class="st0" transform="translate(118.27 254.68)"><tspan x="0" y="0">Reader / Writer</tspan></text>
   <text class="st2" transform="translate(366.88 254.85)"><tspan x="0" y="0" xml:space="preserve">(Such packages are widely available)  </tspan></text>
   <rect class="st5" x="126.97" y="144.98" width="268.56" height="53.36"/>
-  <text class="st0" transform="translate(201.57 178.45)"><tspan x="0" y="0">Translator</tspan></text>
+  <text class="st0" transform="translate(221.57 178.45)"><tspan x="0" y="0">Parser</tspan></text>
   <g>
     <line class="st7" x1="69.79" y1="140.79" x2="109.97" y2="160.72"/>
     <polygon points="70.64 146.89 55.9 133.9 75.15 137.78 70.64 146.89"/>
@@ -100,5 +100,5 @@
     <polygon points="75.2 211.36 55.96 215.3 70.65 202.27 75.2 211.36"/>
     <polygon points="109.11 194.4 123.81 181.37 104.57 185.31 109.11 194.4"/>
   </g>
-  <text class="st1" transform="translate(51.71 316.15)"><tspan x="0" y="0">PALS PALS file (YAML, JSON, etc.)</tspan></text>
+  <text class="st1" transform="translate(68.71 316.15)"><tspan x="0" y="0">PALS file (YAML, JSON, etc.)</tspan></text>
 </svg>
