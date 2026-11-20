@@ -252,6 +252,9 @@ is the last lattice. This default can be overridden by a `use` statement. Exampl
 
 - use: lat1
 ```
+If there are multiple `use` statements, the last one sets the default.
+In any case, the parser may let the user choose the lattice to instantiate,
+and the user's choice overrides the default.
 
 
 
