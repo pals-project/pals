@@ -4,7 +4,8 @@
 # From pals-cpp tests/lattices/load_dict.
 PALS:
   extension_labels:
-    shared: "same"
-    from_joiner: "J"
+    names:
+      shared: "same"
+      from_joiner: "J"
   load:
     - a.pals.yaml
