@@ -175,6 +175,10 @@ Also sublines must be defined externally and not in place.
 For any line item, a `repeat` count component can be used to represent multiple copies
 of the item. Example:
 ```{code} yaml
+- short_line:
+    kind: BeamLine
+    line: [A, B, C]
+
 - full_line:
     kind: BeamLine
     line:
@@ -182,16 +186,7 @@ of the item. Example:
           repeat: 3
 ```
 In this case, `short_line` is repeated three times when the BeamLine is expanded to form a lattice
-branch. For example, if `short_line` is a beamline defined by:
-```{code} yaml
-- short_line:
-    kind: BeamLine
-    line:
-      - A
-      - B
-      - C
-```
-then the expanded `full_line` will look like:
+branch. The expanded `full_line` will look like:
 ```{code} yaml
 A, B, C, A, B, C, A, B, C
 ```
@@ -202,12 +197,24 @@ look like:
 ```{code} yaml
 C, B, A, C, B, A, C, B, A
 ```
-
 Notice that reverse order does not mean true [direction reversal](#s:direction). 
 For elements that have longitudinal symmetry, this does not matter. 
 However, for example, for a `Bend` element that is in a line with reversed order,
 the edge angle `e1` will still represent the edge of the upstream side and `e2` will represent the edge 
 at the downstream side.
+
+When a line item with a `repeat` count has parameter values of its own,
+these values apply to every copy. Example:
+```{code} yaml
+- my_line:
+    kind: BeamLine
+    line:
+      - q1:
+          kind: Quadrupole
+          repeat: 3
+          length: 0.8
+```
+When `my_line` is expanded, there are three elements named `q1`, each with a length of 0.8.
 
 %---------------------------------------------------------------------------------------------------
 (s:direction)=
