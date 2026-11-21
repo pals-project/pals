@@ -59,6 +59,9 @@ After a branch is expanded, a PALS compliant parser will place a `Placeholder` e
 end to hold the final floor position and reference parameters (energy, species, etc.).
 This element will be called `branch_end`.
 
+During branch expansion, a PALS compliant parser also marks the elements of multipass lines with
+their `multipass_index` (see [](#c:multipass)).
+
 In any region of a `Branch` where the elements are not directionally reversed,
 a PALS-compliant parser will order the elements in the branch list such that
 the longitudinal positions at their upstream ends are in increasing {math}`s`-position.

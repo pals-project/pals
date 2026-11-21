@@ -89,8 +89,6 @@ elements in `linac_line` and the two that are marked with a `(2)` underneath the
 `cavityA` element in `linac_line`. The indices in square brackets `[]` are the "multipass index" and
 indicate the number of times the particle traveling through the line will have gone through the
 physical element in question.
-With a PALS compliant parser, multipass elements in the expanded lattice will be marked with a
-`multipass_index` component whose value is the multipass index.
 In a more complicated situation where the `linac_line` is traversed {math}`N` times,
 the two physical `cavityA` elements will each appear {math}`N` times in the expanded line.
 Sets of lattice elements that represent the same physical element are called "physical element" sets.
@@ -113,11 +111,18 @@ linac_line, erl_line
 ```
 and `linac_line` is the {math}`L_m` line (*first* line in the chain that is marked as `multipass`) for both.
 
+During branch expansion, a PALS compliant parser marks each element of a physical element set
+with a `multipass_index` component. The elements of a set are grouped by branch, and within each
+branch they are indexed 1, 2, 3, ... in the order of the branch's element list (the order in which
+a particle goes through them when tracking). For example, in the colliding beam machine described
+below, each physical element set has two elements, one in each ring's branch, and both get index 1.
+
 The elements of a physical element set do not have to all be in the same lattice branch.
 For example, in a colliding beam machine with two intersecting rings, the machine can be
 represented with two branches, one for each ring. The interaction region where
 both beams are passing through common elements can be a beam line that
 is marked multipass. In this case, physical element sets will all have two elements, one from each branch.
+Since the two elements of each set are in different branches, both have a `multipass_index` of 1.
 
 It is important to note that the [floor](#s:floor) coordinates of the elements in a physical 
 element set are not constrained by the `multipass` construction to be the same. 
