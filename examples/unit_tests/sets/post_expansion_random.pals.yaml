@@ -1,0 +1,33 @@
+# A set under `post_expansion` acts on the expanded lattice. The three copies
+# of q1 are separate elements after expansion, so each gets its own random
+# error on Kn1L. The same set under `facility` would change the one q1
+# definition, and all three copies would share one value.
+#
+# From the facility and post_expansion section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        MagneticMultipoleP:
+          Kn1L: 0.375
+    - bline:
+        kind: BeamLine
+        line:
+          - begin
+          - q1:
+              repeat: 3
+    - lat1:
+        kind: Lattice
+        branches:
+          - bline
+    - use: "lat1"
+  post_expansion:
+    - set:
+        parameter: q1>MagneticMultipoleP.Kn1L
+        value: PARAMETER * (1 + 1e-4*random_gauss())

@@ -1,0 +1,28 @@
+# A set with both `absolute_error` and `relative_error`. The value is 0.5 and
+# the error is absolute_error + relative_error * |value| = 0.001 + 0.01 * 0.5
+# = 0.006.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+    - set:
+        parameter: q1>MagneticMultipoleP.Kn1
+        value: 0.5
+        absolute_error: 0.001
+        relative_error: 0.01
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
