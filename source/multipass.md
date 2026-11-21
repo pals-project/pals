@@ -57,6 +57,7 @@ The ERL may then be constructed like:
 - linac_line:
     kind: BeamLine
     multipass: true
+    E_tot_ref: 1.7e9
     line:
       - cavityA
       - cavityA
@@ -112,6 +113,30 @@ In the example above, the chain for both `cavityA` physical elements is
 linac_line, erl_line
 ```
 and `linac_line` is the {math}`L_m` line (*first* line in the chain that is marked as `multipass`) for both.
+
+A reference momentum may be set for a multipass `BeamLine`. It is given with either the
+`pc_ref` or the `E_tot_ref` [component](#s:beamline.components) of the line, and it is an error
+to set both. This reference is used to convert normalized strengths, such as
+`MagneticMultipoleP.Kn1`, given in the definitions of the line's elements into the physical
+fields, such as `MagneticMultipoleP.Bn1`, that are shared by the elements of each physical element set.
+This reference has no other effect on the lattice. The reference set is for the upstream end
+of the line, and it can change from element to element if, for example, there are RF cavities
+in the line. For a given element, the reference is taken from the first line in the chain
+{math}`L_0`, {math}`L_1`, ... that is marked `multipass` and has `pc_ref` or `E_tot_ref` set.
+If no such line exists, the default is the reference computed during branch expansion for the
+first pass.
+
+The elements of a physical element set share their physical fields. These include the
+magnetic and electric multipole fields, such as `MagneticMultipoleP.Bn1`, and bend fields, such as
+`BendP.Bn0_ref`. Setting a field in one element of the set sets it in all of them. For example,
+if a quadrupole is in a multipass line, a [`set`](#s:set) of `Bn1` in the quadrupole's second pass
+element also changes `Bn1` in its first pass element. Normalized strengths, such as `MagneticMultipoleP.Kn1`, are not shared.
+They are computed from the shared field and the reference momentum of each element, so they
+will differ from pass to pass when the reference energy differs.
+Each element in the expanded lattice has its own reference momentum, independent of any
+reference set for a multipass `BeamLine`, and that reference momentum is the one used in
+conversions for that element. For example, a `set` of `Kn1` in the quadrupole's second pass
+element is converted to `Bn1` using the reference momentum of the second pass element.
 
 The elements of a physical element set do not have to all be in the same lattice branch.
 For example, in a colliding beam machine with two intersecting rings, the machine can be
