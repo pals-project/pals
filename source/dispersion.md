@@ -16,20 +16,13 @@ The associated momentum dispersion is:
 The momentum dispersion is useful when constructing particle bunch distributions and for
 various calculations like for calculating radiation integrals.
 
-The one drawback with the momentum dispersion is that it is not always simply related to the
-derivative of the dispersion {math}`d\eta/ds`. This becomes a factor when designing lattices where, if
-some section of the lattice needs to be dispersion free, it is convenient to be able to optimize
-{math}`d\eta/ds` to zero. The dispersion derivative is related to the momentum dispersion by
+The dispersion derivative is:
 \begin{align}
-\text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds}
-= \frac{d}{dp_z} \left( \frac{dx}{ds} \right)
-= \frac{d}{dp_z} \left( \frac{p_x}{1 + p_z} \right)
-= \frac{1}{1 + p_z} \, \eta_{px} - \frac{p_x}{(1 + p_z)^2}  \nonumber \\
+\text{deta\_x\_ds} &\equiv \frac{d\eta_x}{ds} \nonumber \\
 \text{deta\_y\_ds} &\equiv \frac{d\eta_y}{ds}
-= \frac{d}{dp_z} \left( \frac{dy}{ds} \right)
-= \frac{d}{dp_z} \left( \frac{p_y}{1 + p_z} \right)
-= \frac{1}{1 + p_z} \, \eta_{py} - \frac{p_y}{(1 + p_z)^2}
 \end{align}
+The dispersion derivatives are convenient to be able to optimize
+{math}`d\eta/ds` to zero in some given region.
 
 For a lattice branch which is [non-periodic](#s:lattice.construct), the dispersion of the {math}`z` phase space
 coordinate, {math}`\eta_z` can be defined similar to the dispersion of the other coordinates. In this
@@ -46,8 +39,8 @@ where {math}`{\bf M}_{21}` is the transfer matrix between points {math}`s_1` and
 For a non-periodic lattice branch, there are two ways one can imagine
 defining the dispersion: Either with respect to changes in energy at the beginning of the machine or
 with respect to the local change in energy at the point of measurement. The former definition will
-be called "non-local dispersion" and the latter definition will be called "local dispersion",
-which is what Bmad calculates. The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
+be called "non-local dispersion" and the latter definition will be called "local dispersion".
+The non-local dispersion {math}`\widetilde{\bf\eta}(s_1)` at some point {math}`s_1` is
 related to the local dispersion {math}`{\bf\eta}(s_1)` via
 ```{math}
   \widetilde{\bf\eta}(s_1) = \frac{dp_{z1}}{dp_{z0}} \, {\bf\eta}(s_1)
