@@ -46,6 +46,12 @@ That is, the definitions
 of any sublines are substituted into the branch and if the sublines have sublines, this process
 is repeated until there are no sublines left.
 
+Branch expansion includes [line item placement](#s:placement). The last step of branch
+expansion is [superposition](#s:superposition). Where placement or superposition leaves a
+longitudinal gap or overlap between the downstream end of one element and the upstream end of
+the next, the parser sets the [`s_offset`](#s:non.params) parameter of the second element to the
+difference between the two ends.
+
 The first lattice element of a branch must be a `BeginningEle` element and the 
 branch line may only contain this one `BeginningEle` element. When expanding to form a branch,
 if a subline contains a `BeginningEle`
