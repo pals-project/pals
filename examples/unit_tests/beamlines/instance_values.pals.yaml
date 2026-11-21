@@ -1,0 +1,29 @@
+# A line item can give its own parameter values. The middle q1 sets Kn1 to
+# -0.3; that changes only Kn1, so it keeps length = 0.5 from the definition.
+# The other two q1 items have the definition's Kn1 = 0.3.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        MagneticMultipoleP:
+          Kn1: 0.3
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q1
+          - q1:
+              MagneticMultipoleP:
+                Kn1: -0.3
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
