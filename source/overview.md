@@ -58,18 +58,20 @@ relatively straightforward.
 - **Translator:** Package supplied with PALS. The Translator has code to put
 information into an "expanded form".
 This includes expanding beam lines, evaluating expressions, etc.
-- **Reader / Writer:** Package to read/write files of a standard format (JSON, YAML, etc). 
+- **Reader / Writer:** Package to read/write files in a common file format (YAML, JSON, TOML, etc.).
 Packages to do this are widely available.
-- **PALS File:** A file conforming to the PALS schema expressed in some standard format such as JSON, YAML, etc.
+- **PALS File:** A file conforming to the PALS schema, written in a file format such as YAML, JSON, TOML, etc.
 
 PALS can be divided into several pieces:
-- **PALS Schema:** The schema defines, in a language neutral manner, the information that 
+- **PALS Schema:** The schema defines, in a language agnostic manner, the information that
 can appear in a PALS file. This includes standardized names of lattice elements and 
 lattice parameters, definitions of lattice parameters, how lattice elements can be organized
 into branches to describe the entire accelerator complex, etc.
-- **File format standards:** There needs to be
-standards to ensure that different translators are able to read and write a PALS file
-in various formats like YAML and JSON. Currently, since the examples in this document are written
-in YAML, a PALS file written in YAML follows the examples directly and no separate standard for this
-format is needed. Standards for other formats are contemplated but have not yet been developed.
+- **File formats:** PALS data consists of dictionaries, lists, strings, numbers, and booleans,
+which YAML, JSON, TOML, and similar formats all represent natively.
+Converting a PALS file between these formats is therefore generally straightforward.
+Some values, however, are not supported in the same way by every format.
+For example, the [special values](#s:specialvalues) `null` and `Inf` have no direct equivalent
+in some formats, and PALS does not yet specify how to write them there
+(see [Data Formats](#s:syntax)).
 

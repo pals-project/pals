@@ -44,16 +44,17 @@ PARAMETER
 
 %---------------------------------------------------------------------------------------------------
 (s:syntax)=
-## Syntax Used in this Document is YAML
+## Data Formats
 
-The [PALS schema](#s:std.components) does not define any particular language to implement 
-a lattice. While PALS itself is language agnostic, this document that describes the standard
-needs to use some syntax and this syntax is based upon YAML.
-YAML is [formally defined](https://yaml.org) and there are [tutorials to learn YAML](https://learnxinyminutes.com/yaml/).
+PALS is a [schema](#s:std.components): it defines the structure and meaning of lattice data,
+not the file format or language used to write it down.
+In this sense, PALS is language agnostic.
+A lattice can be written in any format that can represent the data structures defined by the schema,
+such as YAML, JSON, or TOML.
+Which formats a given PALS parser actually reads and writes is up to that parser's implementation.
 
-Since the examples in this document are written in YAML, a PALS file written in YAML
-follows the examples directly and no separate YAML format standard is needed.
-Standards for other formats like JSON are contemplated but have not yet been developed.
+For concreteness, this document uses YAML for all examples and code snippets.
+Readers new to YAML may find this [tutorial](https://learnxinyminutes.com/yaml/) helpful.
 
 %---------------------------------------------------------------------------------------------------
 (c:data-structures)=
@@ -353,10 +354,9 @@ this_list = [
 ```
 
 (c:impl.fileformats)=
-## File Formats
+### File Formats
 
-The PALS schema can be implemented in a variety of file formats.
-It is highly recommended that the following self-describing file suffixes be used for 
+It is highly recommended that the following self-describing file suffixes be used for
 top-level PALS files (files that contain the root `PALS` node):
 
 * [YAML](https://yaml.org): `.pals.yaml`
