@@ -66,6 +66,9 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```{include} parameters/rf.md
 ```
 
+```{include} parameters/screen.md
+```
+
 ```{include} parameters/shiftedfloor.md
 ```
 
@@ -79,5 +82,8 @@ See the [Element Parameters](#s:ele.params) section for documentation on element
 ```
 
 ```{include} parameters/twiss.md
+```
+
+```{include} parameters/wire.md
 ```
 

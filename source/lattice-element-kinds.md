@@ -50,6 +50,8 @@ The following element kinds are for producing or removing beam particles.
 The following element kinds are for instrumentation and diagnostics.
 
 - [Instrument](#s:instrument)
+- [Screen](#s:screen)
+- [Wire](#s:wire)
 
 %---------------------------------------------------------------------------------------------------
 (s:map)=
@@ -693,6 +695,21 @@ field which helps focusing.
 
 
 %---------------------------------------------------------------------------------------------------
+(s:screen)=
+### Screen Element
+
+A Screen element is a transverse profile monitor that records a two-dimensional image of
+the {math}`x`-{math}`y` distribution of a particle beam. Examples are scintillating (YAG) and
+optical transition radiation (OTR) screens.
+
+Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+- Screen parameters: [`ScreenP`](#s:screen.params). Image size, pixel size, and orientation.
+
+%---------------------------------------------------------------------------------------------------
 (s:sextupole)=
 ### Sextupole Element
 
@@ -827,5 +844,16 @@ Element parameter groups associated with this element kind are:
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
 
+%---------------------------------------------------------------------------------------------------
+(s:wire)=
+### Wire Element
 
+A Wire element is a wire scanner: a transverse profile monitor that moves a thin wire across a
+particle beam to measure a one-dimensional projection of the transverse distribution.
 
+Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+- Wire parameters: [`WireP`](#s:wire.params). Wire angle, scan range, scan positions, and wire width.
