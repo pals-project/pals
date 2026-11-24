@@ -359,6 +359,7 @@ Wrapping an initial value with `expr(...)` is an error.
 Note: All controller `expression`s are implicitly considered to be ["deferred evaluation"](#s:expressions)
 as it does not make sense for these expressions to be considered immediate.
 Wrapping the expression with `expr(...)` is redundant and will be ignored.
+For example, the expression `0.075*sin(cur1) + 0.3*cur2` in the example above is a deferred expression.
 
 Besides control information, a controller can contain a [`MetaP`](#s:meta.params) parameter group
 which aids in documentation and searching.
