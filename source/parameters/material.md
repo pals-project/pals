@@ -36,11 +36,11 @@ The `name` component must be quoted and may be one of the following:
 - **User defined material.** Any other name, with the composition given by `components`.
   In this case the name is a label only.
 
-If `components` is set, `name` cannot be an element, isotope, chemical formula, or Geant4 material.
+If the `components` list is set, `name` cannot be an element, chemical formula, or Geant4 material.
 
 ### Components
 
-A user defined material is built from a list of components. Each component is a dict:
+A user defined material can be built from a list of components. Each component is a dict:
 ```{code} yaml
 components:
   - material:          # [string or MaterialP] Component material.
@@ -48,17 +48,10 @@ components:
     mass_fraction:     # [-] Fraction of the total mass in this component.
     radiation_length:  # [kg/m^2] Radiation length of this component.
 ```
-The component `material` is a material name (any of the forms above, including a Geant4 material)
-or a `MaterialP` group. This allows a compound to be built from other compounds.
-A `MaterialP` group used as a component gives only what the component is made of, through its
-`name` and `components`. Its other parameters must not be set: `state`, `density`, `area_density`,
-and `mean_excitation_energy` belong to the whole material, and the radiation length of the
-component is the `radiation_length` of the component, not of its `MaterialP` group.
-Likewise, a component given by name, such as `"G4_WATER"`, adds only its composition. Its
-tabulated density and other values are not used.
-
+The value of `material` is a material name (any of the forms above for `name`) or a `MaterialP` group.
 Each component sets either `atoms` or `mass_fraction`, and all components of a material must use
-the same one. `atoms` values are relative and need not sum to one. `mass_fraction` values must sum to one.
+the same one. If `mass_fraction` is used, the values must sum to one.
+`atoms` values are relative to the total sum of `atoms` and need not sum to one. 
 
 The component `radiation_length` is optional. If all components set it, the
 radiation length of the material, if not set directly, is
