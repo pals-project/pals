@@ -8,6 +8,9 @@ The dispersion {math}`\eta` is defined in the standard way
   \text{eta\_y} = \eta_y(s) \equiv \left. \frac{dy}{dp_z} \right|_s
 ```
 
+Here {math}`p_z` is the phase space {math}`p_z` set by
+[`phase_space_coordinates`](#s:phase.space), so the dispersion values depend upon that setting.
+
 The associated momentum dispersion is:
 ```{math}
   \text{etap\_x} = \eta_{px} \equiv \left. \frac{dp_x}{dp_z} \right|_s, \qquad 

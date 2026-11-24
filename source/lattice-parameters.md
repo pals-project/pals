@@ -14,6 +14,9 @@ See [TwissP](#s:twiss.params) for more on the normal mode decomposition.
 
 Derivatives with respect to momentum are taken with respect to phase space
 {math}`p_z` (See [`phase_space_coordinates`](#s:phase.space)).
+Since {math}`p_z` is either {math}`\Delta E/P_0 c` or {math}`\Delta P/P_0` depending upon the
+`phase_space_coordinates` setting, the values of these derivatives,
+such as the chromaticities and the momentum compaction, depend upon that setting.
 
 - `chromaticity_a`, `chromaticity_b` [rad/2pi]
 
