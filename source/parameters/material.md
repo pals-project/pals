@@ -38,7 +38,8 @@ The description of each element kind that uses `MaterialP` says which applies.
 The `radiation_length` is the mass radiation length, in mass per unit area. The radiation length as
 a distance is `radiation_length / density`. The radiation length is defined in section 34.4.2 of
 the Review of Particle Physics {footcite:p}`PDG:2026`, which gives Tsai's formula for an element
-{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used above.
+{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used in
+[Components](#s:material.components) below.
 
 ### Mean excitation energy
 
@@ -46,6 +47,12 @@ The `mean_excitation_energy` is the mean excitation energy {math}`I` of the Beth
 energy loss of a charged particle by ionization. It is discussed in section 34.2.4 of the Review of
 Particle Physics {footcite:p}`PDG:2026`. Values for elements and many compounds are tabulated in
 ICRU Report 37 {footcite:p}`ICRU:37`.
+
+The mean excitation energy of a mixture or compound can be computed from those of its components by
+Bragg additivity, as given in [Components](#s:material.components) below. Bragg additivity with the
+values for free atoms underestimates {math}`I` of a compound, because the electrons in a compound
+are more tightly bound (section 34.2.10 of the Review of Particle Physics {footcite:p}`PDG:2026`).
+When a tabulated value for the compound exists, it is better to set `mean_excitation_energy` directly.
 
 
 ### Material name
@@ -64,15 +71,17 @@ The `name` component must be quoted and may be one of the following:
 
 If the `components` list is set, `name` cannot be an element, chemical formula, or Geant4 material.
 
+(s:material.components)=
 ### Components
 
 A user defined material can be built from a list of components. Each component is a dict:
 ```{code} yaml
 components:
-  - material:          # [string or MaterialP] Component material.
-    atoms:             # [-] Relative number of atoms (or molecules) of this component.
-    mass_fraction:     # [-] Fraction of the total mass in this component.
-    radiation_length:  # [kg/m^2] Radiation length of this component.
+  - material:                # [string or MaterialP] Component material.
+    atoms:                   # [-] Relative number of atoms (or molecules) of this component.
+    mass_fraction:           # [-] Fraction of the total mass in this component.
+    radiation_length:        # [kg/m^2] Radiation length of this component.
+    mean_excitation_energy:  # [eV] Mean excitation energy of this component.
 ```
 The value of `material` is a material name (any of the forms above for `name`) or a `MaterialP` group.
 Each component sets either `atoms` or `mass_fraction`, and all components of a material must use
@@ -85,6 +94,15 @@ radiation length of the material, if not set directly, is
   1 / radiation_length = sum over components of (mass_fraction / radiation_length)
 ```
 where the mass fractions are computed from `atoms` if `atoms` is used.
+
+The component `mean_excitation_energy` is also optional. If all components set it, the mean
+excitation energy of the material, if not set directly, is given by Bragg additivity:
+```{code}
+  ln(mean_excitation_energy) = sum over components of (w * ln(mean_excitation_energy)) / sum over components of w
+```
+where, for each component, `w = mass_fraction * Z/A`. The `Z/A` of a component is its number of
+electrons divided by its mass in atomic mass units, computed from its composition. For an element,
+this is the atomic number divided by the atomic mass.
 
 A user defined material that is not itself a component must set either `density` or `area_density`.
 
