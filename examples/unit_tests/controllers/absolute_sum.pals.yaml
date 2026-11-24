@@ -9,7 +9,7 @@ PALS:
     - ps1:
         kind: Controller
         variables:
-          cur: 0.023
+          - cur: 0.023
         controls:
           - parameter: a_kicker>MagneticMultipoleP.Kn0
             expression: 0.075*sin(cur)
@@ -17,7 +17,7 @@ PALS:
         kind: Controller
         control_type: ABSOLUTE
         variables:
-          cur: 0.044
+          - cur: 0.044
         controls:
           - parameter: a_kicker>MagneticMultipoleP.Kn0
             expression: 0.123*cur

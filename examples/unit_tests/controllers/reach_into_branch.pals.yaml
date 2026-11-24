@@ -30,7 +30,7 @@ PALS:
         kind: Controller
         control_type: ABSOLUTE
         variables:
-          vv: 2
+          - vv: 2
         controls:
           - parameter: q>MagneticMultipoleP.Kn1
             expression: 4^vv
