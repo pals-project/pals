@@ -76,7 +76,16 @@ The description of each element kind that uses `MaterialP` says which applies.
 ### Radiation length
 
 The `radiation_length` is the mass radiation length, in mass per unit area. The radiation length as
-a distance is `radiation_length / density`.
+a distance is `radiation_length / density`. The radiation length is defined in section 34.4.2 of
+the Review of Particle Physics {footcite:p}`PDG:2026`, which gives Tsai's formula for an element
+{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used above.
+
+### Mean excitation energy
+
+The `mean_excitation_energy` is the mean excitation energy {math}`I` of the Bethe formula for the
+energy loss of a charged particle by ionization. It is discussed in section 34.2.4 of the Review of
+Particle Physics {footcite:p}`PDG:2026`. Values for elements and many compounds are tabulated in
+ICRU Report 37 {footcite:p}`ICRU:37`.
 
 ### Examples
 
