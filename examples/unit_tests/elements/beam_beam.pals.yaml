@@ -1,0 +1,29 @@
+# A BeamBeam element describing the opposing "strong" beam at an interaction
+# point. The element has zero length.
+#
+# From the BeamBeam Element section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - bb1:
+        kind: BeamBeam
+        BeamBeamP:
+          sigma_x: 0.1e-3
+          sigma_y: 0.1e-3
+          sigma_z: 5.0e-2
+          energy: 1.0e10
+          N_particle: 1.0e11
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - bb1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

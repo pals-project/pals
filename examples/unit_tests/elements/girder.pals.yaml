@@ -1,0 +1,41 @@
+# A Girder supporting a range of elements. Girders live under the `girders`
+# node, outside the expanded lattice. The girder `support1` supports q1, d1,
+# and q2 (the range q1:q2) and is offset 1.0e-4 m in y, which moves the
+# supported elements with it.
+#
+# Adapted from the Girder Element section of the standard.
+PALS:
+  girders:
+    support1:
+      kind: Girder
+      GirderP:
+        elements: "q1:q2"
+      BodyShiftP:
+        y_offset: 1.0e-4
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+    - d1:
+        kind: Drift
+        length: 1.0
+    - q2:
+        kind: Quadrupole
+        length: 0.5
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q1
+          - d1
+          - q2
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
