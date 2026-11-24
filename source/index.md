@@ -83,6 +83,7 @@ definitions.md
 
 notation.md
 top-level.md
+species.md
 names.md
 parameter-values-and-controllers.md
 coordinates.md
