@@ -55,7 +55,7 @@ Organizing elements into lines and branches to describe an entire machine comple
 :link: tools
 :link-type: doc
 
-Parsers, visualization tools, and language converters for working with PALS files.
+Parsers, visualization tools, and translators for working with PALS files.
 :::
 
 :::{grid-item-card} 🤝 Contributing
