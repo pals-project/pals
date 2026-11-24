@@ -22,6 +22,32 @@ given by name (an element, isotope, chemical formula, or Geant4 material), a pro
 tabulated values for that material. A value that is set replaces the tabulated value. For example,
 with `name: "G4_WATER"` and `density: 990`, the density is 990 kg/m^3.
 
+### Density and area density
+
+The `density` is the mass density of the material. The `area_density` is the mass per unit area
+seen by a particle going through the material at normal incidence. At most one of the two may be
+set. Setting both is an error. If `area_density` is set, a tabulated density is not used.
+
+If the element gives a thickness, the two are related by `area_density = density * thickness`, so
+either one determines the other. If the element does not give a thickness, only `area_density`
+can describe how much material a particle passes through.
+The description of each element kind that uses `MaterialP` says which applies.
+
+### Radiation length
+
+The `radiation_length` is the mass radiation length, in mass per unit area. The radiation length as
+a distance is `radiation_length / density`. The radiation length is defined in section 34.4.2 of
+the Review of Particle Physics {footcite:p}`PDG:2026`, which gives Tsai's formula for an element
+{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used above.
+
+### Mean excitation energy
+
+The `mean_excitation_energy` is the mean excitation energy {math}`I` of the Bethe formula for the
+energy loss of a charged particle by ionization. It is discussed in section 34.2.4 of the Review of
+Particle Physics {footcite:p}`PDG:2026`. Values for elements and many compounds are tabulated in
+ICRU Report 37 {footcite:p}`ICRU:37`.
+
+
 ### Material name
 
 The `name` component must be quoted and may be one of the following:
@@ -61,31 +87,6 @@ radiation length of the material, if not set directly, is
 where the mass fractions are computed from `atoms` if `atoms` is used.
 
 A user defined material that is not itself a component must set either `density` or `area_density`.
-
-### Density and area density
-
-The `density` is the mass density of the material. The `area_density` is the mass per unit area
-seen by a particle going through the material at normal incidence. At most one of the two may be
-set. Setting both is an error. If `area_density` is set, a tabulated density is not used.
-
-If the element gives a thickness, the two are related by `area_density = density * thickness`, so
-either one determines the other. If the element does not give a thickness, only `area_density`
-can describe how much material a particle passes through.
-The description of each element kind that uses `MaterialP` says which applies.
-
-### Radiation length
-
-The `radiation_length` is the mass radiation length, in mass per unit area. The radiation length as
-a distance is `radiation_length / density`. The radiation length is defined in section 34.4.2 of
-the Review of Particle Physics {footcite:p}`PDG:2026`, which gives Tsai's formula for an element
-{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used above.
-
-### Mean excitation energy
-
-The `mean_excitation_energy` is the mean excitation energy {math}`I` of the Bethe formula for the
-energy loss of a charged particle by ionization. It is discussed in section 34.2.4 of the Review of
-Particle Physics {footcite:p}`PDG:2026`. Values for elements and many compounds are tabulated in
-ICRU Report 37 {footcite:p}`ICRU:37`.
 
 ### Examples
 
