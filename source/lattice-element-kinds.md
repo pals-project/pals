@@ -50,6 +50,7 @@ The following element kinds are for producing or removing beam particles.
 The following element kinds are for instrumentation and diagnostics.
 
 - [Instrument](#s:instrument)
+- [MultiWire](#s:multiwire)
 
 %---------------------------------------------------------------------------------------------------
 (s:map)=
@@ -561,6 +562,22 @@ Element parameter groups associated with this element kind are:
 - [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
 - [**Multipole parameter groups**](#s:multipole.groups): [`ElectricMultipoleP`](#s:elec.mult.params), [`MagneticMultipoleP`](#s:mag.mult.params).
 - [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+
+
+%---------------------------------------------------------------------------------------------------
+(s:multiwire)=
+### MultiWire Element
+
+A MultiWire element is a multi-wire profile monitor, also called a harp: a transverse profile
+monitor with a fixed grid of thin wires that measures, in a single shot, the horizontal and
+vertical projections of the transverse distribution of a particle beam.
+
+Element parameter groups associated with this element kind are:
+- [**Floor-Tracking-Meta parameter groups**](#s:ftm.groups): [`FloorP`](#s:floor.params), [`MetaP`](#s:meta.params), 
+  [`ShiftedFloorP`](#s:shifted.floor.params), [`TrackingP`](#s:tracking.params).
+- [**Body parameter groups**](#s:body.groups): [`ApertureP`](#s:aperture.params), [`BodyShiftP`](#s:bodyshift.params).
+- [**Output parameter groups**](#s:output.groups): [`ParticleP`](#s:particle.params), [`ReferenceP`](#s:ref.params), [`TwissP`](#s:twiss.params).
+- Multi-wire parameters: [`MultiWireP`](#s:multiwire.params). Number of wires, wire spacing, wire width, and orientation.
 
 
 %---------------------------------------------------------------------------------------------------
