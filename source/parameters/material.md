@@ -50,9 +50,12 @@ components:
 ```
 The component `material` is a material name (any of the forms above, including a Geant4 material)
 or a `MaterialP` group. This allows a compound to be built from other compounds.
-A `MaterialP` group used as a component describes only what the component is made of.
-Its `name`, `state`, `radiation_length`, `mean_excitation_energy`, and `components` apply.
-Its `density` and `area_density` must not be set; the density is that of the whole material.
+A `MaterialP` group used as a component gives only what the component is made of, through its
+`name` and `components`. Its other parameters must not be set: `state`, `density`, `area_density`,
+and `mean_excitation_energy` belong to the whole material, and the radiation length of the
+component is the `radiation_length` of the component, not of its `MaterialP` group.
+Likewise, a component given by name, such as `"G4_WATER"`, adds only its composition. Its
+tabulated density and other values are not used.
 
 Each component sets either `atoms` or `mass_fraction`, and all components of a material must use
 the same one. `atoms` values are relative and need not sum to one. `mass_fraction` values must sum to one.
