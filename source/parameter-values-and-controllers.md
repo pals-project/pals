@@ -223,33 +223,9 @@ Similarly, while a constant may not be defined with a deferred expression, the e
 defining a constant may use a variable that is defined with a deferred expression.
 The constant's value is then fixed by the value that variable has when the constant is evaluated.
 
-The names in a deferred expression are matched each time the expression is evaluated, not once
-when the expression is defined. What a name matches thus depends on when the expression is evaluated.
-Before the branches are expanded, an element name matches the element definition. After, it
-matches the elements in the expanded lattice (see [](#s:element.matching)).
-This is also true of a deferred expression that a line item gets from an element definition
-when the branches are expanded. Each time the expression is evaluated, an element parameter
-in it must match exactly one element. Example:
-```{code} yaml
-facility:
-  - q1:
-      kind: Quadrupole
-      MagneticMultipoleP:
-        Kn1L: 0.3
-  - q2:
-      kind: Quadrupole
-      MagneticMultipoleP:
-        Kn1L: expr(-q1>MagneticMultipoleP.Kn1L)
-  - ring:
-      kind: BeamLine
-      line:
-        - q1
-        - q2
-        - q1
-```
-Before the branches are expanded, `q1` in the expression for the `Kn1L` of `q2` matches
-the definition of `q1`. After, it matches both `q1` elements of `ring`, which is an error.
-Using `q1#1` instead of `q1` matches only the first `q1`.
+The names in a deferred expression are matched each time the expression is evaluated. So an
+element name matches the element definition before branch expansion and the elements of the
+expanded lattice after (see [](#s:element.matching)).
 
 %---------------------------------------------------------------------------------------------------
 (s:io.params)=
