@@ -182,7 +182,7 @@ and the PALS defined constants and the user defined constants and variables docu
 [Lattice element parameter](#s:parameter.matching) values can also be incorporated.
 
 The operators, from lowest to highest precedence, are:
-```{code} yaml
+```{code} text
 +  -        # Addition and subtraction. Left associative.
 *  /        # Multiplication and division. Left associative.
 +  -        # Unary plus and minus.
