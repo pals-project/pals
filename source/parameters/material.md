@@ -1,0 +1,155 @@
+(s:material.params)=
+## MaterialP: Material Parameters
+
+The `MaterialP` parameter group describes the material that an element, or part of an element, is
+made of. `MaterialP` describes only the material itself. Geometry, like the thickness of a foil, is
+given by other parameters of the element.
+
+The components of this group and their defaults are:
+```{code} yaml
+MaterialP:
+  name: ""                       # [string] Material name. See below.
+  state: null                    # [enum] SOLID, LIQUID, GAS, or PLASMA.
+  density: null                  # [kg/m^3] Mass density.
+  area_density: null             # [kg/m^2] Mass per unit area. See below.
+  radiation_length: null         # [kg/m^2] Radiation length.
+  mean_excitation_energy: null   # [eV] Mean excitation energy used for energy loss.
+  components: []                 # [list] Components of a user defined material. See below.
+```
+
+A `null` value means the parameter is not set. If a parameter is not set and the material is
+given by name (an element, isotope, chemical formula, or Geant4 material), a program may use
+tabulated values for that material. A value that is set replaces the tabulated value. For example,
+with `name: "G4_WATER"` and `density: 990`, the density is 990 kg/m^3.
+
+### Density and area density
+
+The `density` is the mass density of the material. The `area_density` is the mass per unit area
+seen by a particle going through the material at normal incidence. At most one of the two may be
+set. Setting both is an error. If `area_density` is set, a tabulated density is not used.
+
+If the element gives a thickness, the two are related by `area_density = density * thickness`, so
+either one determines the other. If the element does not give a thickness, only `area_density`
+can describe how much material a particle passes through.
+The description of each element kind that uses `MaterialP` says which applies.
+
+### Radiation length
+
+The `radiation_length` is the mass radiation length, in mass per unit area. The radiation length as
+a distance is `radiation_length / density`. The radiation length is defined in section 34.4.2 of
+the Review of Particle Physics {footcite:p}`PDG:2026`, which gives Tsai's formula for an element
+{footcite:p}`Tsai:Bremsstrahlung` and the rule for a mixture or compound used in
+[Components](#s:material.components) below.
+
+### Mean excitation energy
+
+The `mean_excitation_energy` is the mean excitation energy {math}`I` of the Bethe formula for the
+energy loss of a charged particle by ionization. It is discussed in section 34.2.4 of the Review of
+Particle Physics {footcite:p}`PDG:2026`. Values for elements and many compounds are tabulated in
+ICRU Report 37 {footcite:p}`ICRU:37`.
+
+The mean excitation energy of a mixture or compound can be computed from those of its components by
+Bragg additivity, as given in [Components](#s:material.components) below. Bragg additivity with the
+values for free atoms underestimates {math}`I` of a compound, because the electrons in a compound
+are more tightly bound (section 34.2.10 of the Review of Particle Physics {footcite:p}`PDG:2026`).
+When a tabulated value for the compound exists, it is better to set `mean_excitation_energy` directly.
+
+
+### Material name
+
+The `name` component must be quoted and may be one of the following:
+- **Element or chemical formula** As outlined in [](#s:names). In this case a charge state
+  is not specified. For elements in the periodic table without an isotope number, for example `"Cu"`,
+  the element has its natural isotope abundances.
+- **Geant4 material.** A name from the
+  [Geant4 material database](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html),
+  including the `G4_` prefix. Examples: `"G4_Cu"`, `"G4_WATER"`, `"G4_AIR"`, `"G4_STAINLESS-STEEL"`,
+  `"G4_lH2"` (liquid hydrogen). The composition, density, state, and mean excitation energy are those
+  of the Geant4 database.
+- **User defined material.** Any other name, with the composition given by `components`.
+  In this case the name is a label only.
+
+If the `components` list is set, `name` cannot be an element, chemical formula, or Geant4 material.
+
+(s:material.components)=
+### Components
+
+A user defined material can be built from a list of components. Each component is a dict:
+```{code} yaml
+components:
+  - material:                # [string or MaterialP] Component material.
+    atoms:                   # [-] Relative number of atoms (or molecules) of this component.
+    mass_fraction:           # [-] Fraction of the total mass in this component.
+    radiation_length:        # [kg/m^2] Radiation length of this component.
+    mean_excitation_energy:  # [eV] Mean excitation energy of this component.
+```
+The value of `material` is a material name (any of the forms above for `name`) or a `MaterialP` group.
+Each component sets either `atoms` or `mass_fraction`, and all components of a material must use
+the same one. If `mass_fraction` is used, the values must sum to one.
+`atoms` values are relative to the total sum of `atoms` and need not sum to one. 
+
+The component `radiation_length` is optional. If all components set it, the
+radiation length of the material, if not set directly, is
+```{code}
+  1 / radiation_length = sum over components of (mass_fraction / radiation_length)
+```
+where the mass fractions are computed from `atoms` if `atoms` is used.
+
+The component `mean_excitation_energy` is also optional. If all components set it, the mean
+excitation energy of the material, if not set directly, is given by Bragg additivity:
+```{code}
+  ln(mean_excitation_energy) = sum over components of (w * ln(mean_excitation_energy)) / sum over components of w
+```
+where, for each component, `w = mass_fraction * Z/A`. The `Z/A` of a component is its number of
+electrons divided by its mass in atomic mass units, computed from its composition. For an element,
+this is the atomic number divided by the atomic mass.
+
+A user defined material that is not itself a component must set either `density` or `area_density`.
+
+### Examples
+
+Copper using tabulated values:
+```{code} yaml
+MaterialP:
+  name: "Cu"
+```
+
+Boron carbide with a given density:
+```{code} yaml
+MaterialP:
+  name: "B4C"
+  density: 2.52e3
+```
+
+Deuterated polyethylene, built from elements by atom count:
+```{code} yaml
+MaterialP:
+  name: "deuterated_polyethylene"
+  state: SOLID
+  density: 1.05e3
+  components:
+    - material: "C"
+      atoms: 2
+    - material: "#2H"
+      atoms: 4
+```
+
+Liquid deuterium:
+```{code} yaml
+MaterialP:
+  name: "#2H"
+  state: LIQUID
+  density: 162.4
+```
+
+A mixture of Geant4 materials by mass:
+```{code} yaml
+MaterialP:
+  name: "steel_water_mix"
+  density: 1.78e3
+  components:
+    - material: "G4_STAINLESS-STEEL"
+      mass_fraction: 0.5
+    - material: "G4_WATER"
+      mass_fraction: 0.5
+```
