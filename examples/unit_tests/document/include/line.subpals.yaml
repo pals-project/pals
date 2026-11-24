@@ -1,0 +1,7 @@
+# Included in the facility list by main.pals.yaml: a sequence of facility
+# entries.
+- main:
+    kind: BeamLine
+    line:
+      - begin
+      - q1
