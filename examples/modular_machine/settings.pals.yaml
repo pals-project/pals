@@ -3,7 +3,7 @@
 #
 # Taken from the pals-cpp example lattice_files/load_settings.pals.yaml.
 PALS:
-  version: "0.1"
+  version: "0.1.0"
   notes:
     - "Settings for the nominal focusing configuration."
   facility:
