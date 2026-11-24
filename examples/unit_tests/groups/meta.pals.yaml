@@ -1,0 +1,30 @@
+# The MetaP group on an element, with each of its components set.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        MetaP:
+          alias: "QF_01"
+          ID: "Q-0001"
+          label: "arc focusing quad"
+          description: "Focusing quadrupole in arc cell 1."
+          location:
+            - "tunnel sector 3"
+          history:
+            - "installed 2024"
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q1
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"

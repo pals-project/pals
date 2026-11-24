@@ -1,0 +1,56 @@
+# Parameter-group naming and inheritance.
+# - ap1 and ap2 are named ApertureP groups defined outside any element; ap2
+#   inherits ap1 and adds y limits.
+# - q0 inherits the ap2 group, so it has all four limits.
+# - q2 inherits the ApertureP group of q1 (`q1>ApertureP`).
+# - q3 inherits the whole element q2.
+#
+# From the Naming and Inheriting Parameters section of the standard.
+PALS:
+  facility:
+    - begin:
+        kind: BeginningEle
+        ReferenceP:
+          species_ref: "electron"
+          E_tot_ref: 1.0e9
+    - ap1:
+        kind: ApertureP
+        x_min: -0.03
+        x_max: 0.04
+    - ap2:
+        kind: ApertureP
+        inherit: ap1
+        y_min: -0.02
+        y_max: 0.05
+    - q0:
+        kind: Quadrupole
+        length: 0.5
+        ApertureP:
+          inherit: ap2
+    - q1:
+        kind: Quadrupole
+        length: 0.5
+        ApertureP:
+          x_width: 0.03
+          y_width: 0.02
+    - q2:
+        kind: Quadrupole
+        length: 0.5
+        ApertureP:
+          inherit: q1>ApertureP
+    - q3:
+        kind: Quadrupole
+        inherit: q2
+    - main:
+        kind: BeamLine
+        line:
+          - begin
+          - q0
+          - q1
+          - q2
+          - q3
+    - lat1:
+        kind: Lattice
+        branches:
+          - main
+    - use: "lat1"
