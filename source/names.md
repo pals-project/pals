@@ -13,9 +13,8 @@ to the following:
 - A name can only contain alpha-numeric characters and underscores (A-Z, a-z, 0-9, and _ )
 - A name cannot be a [reserved word](#s:reserved).
 
-The exception is that particle species names, which are considered to be strings and not proper
-computer language variable names, follow the
-[OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md) convention.
+The exception is that [particle species names](#c:species), which are considered to be strings and not proper
+computer language variable names
 Examples:
 ```{code} yaml
 charge_of("#3He+2")          # Helium-3 (mass number three), fully ionized.
