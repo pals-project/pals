@@ -25,5 +25,5 @@ The `dtime_ref` parameter in the above is meant as a correction to take into acc
 for particle motion that is not straight or acceleration that is not linear in energy. For example,
 in a wiggler, `dtime_ref` can be used to correct for the oscillatory nature of the
 particle trajectories.
-Since the PALS standard does not define how tracking is to be done, `dtime_ref` and `dE_ref`
+Since PALS does not define how tracking is to be done, `dtime_ref` and `dE_ref`
 must be calculated by the user.

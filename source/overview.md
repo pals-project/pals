@@ -58,19 +58,20 @@ relatively straightforward.
 - **Translator:** Package supplied with PALS. The Translator has code to put
 information into an "expanded form".
 This includes expanding beam lines, evaluating expressions, etc.
-- **Reader / Writer:** Package to read/write files of a standard format (JSON, YAML, etc). 
+- **Reader / Writer:** Package to read/write files in a common file format (YAML, JSON, TOML, etc.).
 Packages to do this are widely available.
-- **PALS File:** A file conforming to the PALS schema expressed in some standard format such as JSON, YAML, etc.
+- **PALS File:** A file conforming to the PALS schema, written in a file format such as YAML, JSON, TOML, etc.
 
-The PALS standard can be divided into several pieces:
-- **Schema standard:** The schema defines, in a language neutral manner, the information that 
+PALS can be divided into several pieces:
+- **PALS Schema:** The schema defines, in a language agnostic manner, the information that
 can appear in a PALS file. This includes standardized names of lattice elements and 
 lattice parameters, definitions of lattice parameters, how lattice elements can be organized
 into branches to describe the entire accelerator complex, etc.
-- **File format standards:** For various formats like YAML and Python there is a file format
-standard to ensure that different translators are able to read a PALS file.
-
-Note: Since the schema and translator parts are logically intertwined, there has been no attempt
-to separate these in the PALS documentation here.
-The file formats for the various languages like YAML, etc. are separately documented.
+- **File formats:** PALS data consists of dictionaries, lists, strings, numbers, and booleans,
+which YAML, JSON, TOML, and similar formats all represent natively.
+Converting a PALS file between these formats is therefore generally straightforward.
+Some values, however, are not supported in the same way by every format.
+For example, the [special values](#s:specialvalues) `null` and `Inf` have no direct equivalent
+in some formats, and PALS does not yet specify how to write them there
+(see [Data Formats](#s:syntax)).
 

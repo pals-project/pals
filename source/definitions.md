@@ -106,7 +106,7 @@ The advantage of designating a parameter as an enum is that the parameter value 
 (s:extensions)=
 ## Extensions
 
-An Extension is data added to a PALS file that is not part of the PALS standard.
+An Extension is data added to a PALS file that is not part of PALS.
 For example, information specific to a particular machine or simulation program that has no analogue with other
 machines can be put in as an extension. A list of documented extensions is in the 
 [Extension](#c:extension) section.

@@ -159,7 +159,7 @@ Notes:
 - All branches must have unique names. However, different branches may use the same root `BeamLine`.
 - As detailed in [](#s:forking), some `Fork` elements may connect to an existing branch.
 These `Fork` elements will not trigger new branch creation. 
-- The PALS standard does not mandate how branches should be stored in memory after expansion.
+- PALS does not mandate how branches should be stored in memory after expansion.
 For example, branches could be stored using an array or a tree. 
 In any case, the root branches must be marked as such.
 
