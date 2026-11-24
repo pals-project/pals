@@ -23,7 +23,11 @@ mass_of("anti-proton")       # Notice the dash.
 my_particle: "Au+79"         # Assign a species to a variable or constant.
 charge_of(my_particle)       # The variable or constant can be used in an equation.
 ```
-Notice that particle names must be quoted.
+Notice that particle names must be quoted. As per the OpenPMD standard, chemical formulas
+are accepted. A compound written as element symbols each followed by an optional count,
+for example `"B4C"` or `"Al2O3"`. A group of symbols may be put in parentheses followed
+by an optional count, for example `"Ca(OH)2"`. Element symbols are case sensitive: `"CO"` is
+carbon monoxide and `"Co"` is cobalt.
 
 %---------------------------------------------------------------------------------------------------
 (s:name.matching)=

@@ -24,17 +24,10 @@ with `name: "G4_WATER"` and `density: 990`, the density is 990 kg/m^3.
 
 ### Material name
 
-The `name` component may be one of the following:
-- **Element.** The symbol of an element in the periodic table, for example `"Cu"`.
-  The element has its natural isotope abundances.
-- **Isotope.** A pound sign `#` followed by the mass number and the element symbol,
-  for example `"#2H"` for deuterium. This is the [OpenPMD](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/EXT_SpeciesType.md)
-  notation used for particle species names (see [](#s:names)). Since `#` starts a YAML comment,
-  the name must be quoted.
-- **Chemical formula.** A compound written as element symbols each followed by an optional count,
-  for example `"B4C"` or `"Al2O3"`. A group of symbols may be put in parentheses followed
-  by an optional count, for example `"Ca(OH)2"`. Element symbols are case sensitive: `"CO"` is
-  carbon monoxide and `"Co"` is cobalt.
+The `name` component must be quoted and may be one of the following:
+- **Element or chemical formula** As outlined in [](#s:names). In this case a charge state
+  is not specified. For elements in the periodic table without an isotope number, for example `"Cu"`,
+  the element has its natural isotope abundances.
 - **Geant4 material.** A name from the
   [Geant4 material database](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html),
   including the `G4_` prefix. Examples: `"G4_Cu"`, `"G4_WATER"`, `"G4_AIR"`, `"G4_STAINLESS-STEEL"`,
